@@ -1,10 +1,25 @@
 <?php
 
+/*
+Plugin Name: BB Gallery
+Plugin URI: http://magentacuda.wordpress.com
+Description: Backbone Bootstrap Gallery
+Version: 0.1
+Author: Magenta Cuda
+Author URI: http://magentacuda.wordpress.com
+License: GPL2
+*/
+
 # This is not working code but a rough draft of concept only
+
+add_action( 'wp_loaded', function( ) {
+    remove_action( 'gallery', 'gallery_shortcode' );
+    add_action( 'gallery', 'bb_gallery_shortcode' );
+} );
 
 # excerpted from the WordPress function gallery_shortcode() of .../wp-includes/media.php
 
-function gallery_shortcode( $attr ) {
+function bb_gallery_shortcode( $attr ) {
 	$post = get_post();
 
 	static $instance = 0;
@@ -85,6 +100,12 @@ function gallery_shortcode( $attr ) {
 	$i = 0;
 	foreach ( $attachments as $id => $attachment ) {
 
+    $src = wp_get_attachment_image_src( $id, 'full' );
+    $data[ 'url'    ]  = $src[ 0 ];
+    $data[ 'width'  ]  = $src[ 1 ];
+    $data[ 'height' ]  = $src[ 2 ];
+    $data[ 'excerpt' ] = $attachment->post_excerpt;
+  
 		$attr = ( trim( $attachment->post_excerpt ) ) ? array( 'aria-describedby' => "$selector-$id" ) : '';
 		if ( ! empty( $atts['link'] ) && 'file' === $atts['link'] ) {
 			$image_output = wp_get_attachment_link( $id, $atts['size'], false, false, false, $attr );
