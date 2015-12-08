@@ -1,0 +1,1 @@
+<!-- Backbone.js templates for the 'gallery' shortcode -->

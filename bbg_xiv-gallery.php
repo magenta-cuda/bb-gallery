@@ -20,6 +20,8 @@ add_action( 'wp_loaded', function( ) {
 # excerpted from the WordPress function gallery_shortcode() of .../wp-includes/media.php
 
 function bb_gallery_shortcode( $attr ) {
+    require_once(  dirname( __FILE__ ) . '/bbg_xiv-gallery_templates.php' );
+
 	$post = get_post();
 
 	static $instance = 0;
@@ -127,7 +129,17 @@ function bb_gallery_shortcode( $attr ) {
 				" . wptexturize($attachment->post_excerpt) . "
 		}
 	}
+    $bbg_xiv_data = [
+    ];
+    wp_localize_script( 'bbg_xiv-gallery', 'bbg_xiv', $bbg_xiv_data );
 	return $output;
 }
+
+add_action( 'wp_enqueue_scripts', function( ) {
+    wp_enqueue_style( 'bootstrap', plugins_url( '/css/bootstrap.css' , __FILE__ ) );
+    wp_enqueue_style( 'bbg_xiv-gallery', plugins_url( '/css/bbg_xiv-gallery.css' , __FILE__ ), [ 'bootstrap' ] );
+    wp_enqueue_script( 'bootstrap', plugins_url( '/js/bootstrap.js' , __FILE__ ), [ 'jquery' ], FALSE, TRUE );
+    wp_enqueue_script( 'bbg_xiv-gallery', plugins_url( '/js/bbg_xiv-gallery.js' , __FILE__ ), [ 'bootstrap' ], FALSE, TRUE );
+} );
 
 ?>

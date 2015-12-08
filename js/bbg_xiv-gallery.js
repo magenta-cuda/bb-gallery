@@ -1,0 +1,1 @@
+// Backbone.js Model View Presenter for the 'gallery' shortcode
