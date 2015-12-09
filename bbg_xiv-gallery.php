@@ -101,10 +101,16 @@ function bb_gallery_shortcode( $attr ) {
 
     $output = "<div id='$selector' class='gallery galleryid-{$id} gallery-size-{$size_class}'>BB Gallery Container</div>";
 
-    $i = 0;
-    foreach ( $attachments as $id => $attachment ) {
-
+    foreach ( $attachments as $id => &$attachment ) {
         $src = wp_get_attachment_image_src( $id, 'full' );
+        $img_url = wp_get_attachment_url($id);
+        error_log( '$img_url=' . print_r( $img_url, true ) );
+        $attachment->url = $img_url;
+        $meta = wp_get_attachment_metadata($id);
+        error_log( '$meta=' . print_r( $meta, true ) );
+        $attachment->width  = $meta[ 'width'  ];
+        $attachment->height = $meta[ 'height' ];
+        error_log( '$attachment=' . print_r( $attachment, true ) );
         $data[ 'url'    ]  = $src[ 0 ];
         $data[ 'width'  ]  = $src[ 1 ];
         $data[ 'height' ]  = $src[ 2 ];
@@ -133,7 +139,8 @@ function bb_gallery_shortcode( $attr ) {
     }
 
     $bbg_xiv_data = [
-        'version' => '1.0'
+        'version' => '1.0',
+        'data' => json_encode( array_values( $attachments ) )
     ];
     wp_localize_script( 'bbg_xiv-gallery', 'bbg_xiv', $bbg_xiv_data );
 	return $output;
