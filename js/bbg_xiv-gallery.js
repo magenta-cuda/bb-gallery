@@ -64,13 +64,14 @@
         container.append(galleryView.render().$el.find("div.container"));
     }
 
-    bbg_xiv.images=new bbg_xiv.Images();
-    try {
-        bbg_xiv.images.reset(JSON.parse(bbg_xiv.data));
-    }catch(e){
-        console.log("reset(JSON.parse()) failed:",e);
-    }
-
-    bbg_xiv.renderGallery(jQuery("div.gallery"),bbg_xiv.images);
+    jQuery("div.gallery").each(function(){
+        var images=new bbg_xiv.Images();
+        try {
+            images.reset(JSON.parse(window.bbg_xiv[this.id+"-data"]));
+        }catch(e){
+            console.log("reset(JSON.parse()) failed:",e);
+        }
+        bbg_xiv.renderGallery(jQuery(this),images);
+    });
     
 }());

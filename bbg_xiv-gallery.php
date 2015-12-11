@@ -26,6 +26,9 @@ function bb_gallery_shortcode( $attr ) {
 
     static $instance = 0;
     $instance++;
+    static $bbg_xiv_data = [
+        'version' => '1.0'
+    ];
 
     if ( ! empty( $attr['ids'] ) ) {
       // 'ids' is explicitly ordered, unless you specify otherwise.
@@ -138,10 +141,7 @@ function bb_gallery_shortcode( $attr ) {
 */
     }
 
-    $bbg_xiv_data = [
-        'version' => '1.0',
-        'data' => json_encode( array_values( $attachments ) )
-    ];
+    $bbg_xiv_data[ "$selector-data" ] = json_encode( array_values( $attachments ) );
     wp_localize_script( 'bbg_xiv-gallery', 'bbg_xiv', $bbg_xiv_data );
 	return $output;
 }
