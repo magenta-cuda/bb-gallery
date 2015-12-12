@@ -5,6 +5,7 @@ div.bbg_xiv-gallery_container figure {
   border: 2px solid #888;
   margin-bottom: 10px; }
   div.bbg_xiv-gallery_container figure figcaption {
+    font-size: 1.2rem;
     text-align: center;
     background-color: cyan;
     border-top-left-radius: 6px;
@@ -17,5 +18,75 @@ div.bbg_xiv-gallery_container figure {
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     overflow: hidden; }
+
+div.bbg_xiv-flex_container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0; }
+
+div.bbg_xiv-flex_item {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1vh;
+  margin: 0; }
+  div.bbg_xiv-flex_item figure {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    background-color: cyan;
+    border: 2px solid black;
+    border-radius: 2vh;
+    margin: 0;
+    overflow: hidden; }
+    div.bbg_xiv-flex_item figure figcaption {
+      text-align: center;
+      padding: 2px; }
+    div.bbg_xiv-flex_item figure img {
+      box-sizing: border-box;
+      display: block;
+      width: 100%;
+      max-width: 100%; }
+
+div.bbg_xiv-flex_container_props {
+  column-count: 1;
+  -webkit-column-count: 1;
+  -moz-column-count: 1; }
+
+@media (min-width: 480px) {
+  div.bbg_xiv-flex_item {
+    width: 50%; }
+
+  div.bbg_xiv-flex_container_props {
+    column-count: 2;
+    -webkit-column-count: 2;
+    -moz-column-count: 2; } }
+@media (min-width: 768px) {
+  div.bbg_xiv-flex_item {
+    width: 33%; }
+
+  div.bbg_xiv-flex_container_props {
+    column-count: 3;
+    -webkit-column-count: 3;
+    -moz-column-count: 3; } }
+@media (min-width: 992px) {
+  div.bbg_xiv-flex_item {
+    width: 25%; }
+
+  div.bbg_xiv-flex_container_props {
+    column-count: 4;
+    -webkit-column-count: 4;
+    -moz-column-count: 4; } }
+@media (min-width: 1200px) {
+  div.bbg_xiv-flex_item {
+    width: 20%; }
+
+  div.bbg_xiv-flex_container_props {
+    column-count: 5;
+    -webkit-column-count: 5;
+    -moz-column-count: 5; } }
 
 /*# sourceMappingURL=bbg_xiv-gallery.css.map */

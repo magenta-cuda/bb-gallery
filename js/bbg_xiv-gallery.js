@@ -17,7 +17,7 @@
     bbg_xiv.ImageView=Backbone.View.extend({
         render:function(srcOnly){
             var html=this.template(this.model.attributes);
-            if (srcOnly){
+            if(srcOnly){
                 return html;
             }
             this.$el.html(html);
@@ -36,7 +36,7 @@
     bbg_xiv.renderGallery=function(container,collection){
         var imageView=new bbg_xiv.ImageView();
         // attach template to imageView not ImageView.prototype since template is specific to imageView
-        imageView.template=_.template( jQuery( "script#bbg_xiv-template_gallery_item" ).html(),null,bbg_xiv.templateOptions);
+        imageView.template=_.template( jQuery("script#bbg_xiv-template_gallery_item").html(),null,bbg_xiv.templateOptions);
         var imagesHtml="";
         collection.forEach(function(model,index){
             imageView.model=model;
@@ -64,14 +64,36 @@
         container.append(galleryView.render().$el.find("div.container"));
     }
 
+    bbg_xiv.renderFlex=function(container,collection){
+        var imageView=new bbg_xiv.ImageView();
+        // attach template to imageView not ImageView.prototype since template is specific to imageView
+        imageView.template=_.template( jQuery("script#bbg_xiv-template_flex_item").html(),null,bbg_xiv.templateOptions);
+        var imagesHtml="";
+        collection.forEach(function(model,index){
+            imageView.model=model;
+            imagesHtml+=imageView.render(true);
+        } );
+        var galleryView=new bbg_xiv.GalleryView({
+            model:{
+                attributes:{
+                    items:imagesHtml
+                }
+            }
+        } );
+        galleryView.template=_.template(jQuery("script#bbg_xiv-template_flex_container").html(),null,bbg_xiv.templateOptions);
+        container.empty();
+        container.append(galleryView.render().$el.find("div.bbg_xiv-flex_container"));
+    }
+
     jQuery("div.gallery").each(function(){
         var images=new bbg_xiv.Images();
-        try {
+        try{
             images.reset(JSON.parse(window.bbg_xiv[this.id+"-data"]));
         }catch(e){
             console.log("reset(JSON.parse()) failed:",e);
         }
-        bbg_xiv.renderGallery(jQuery(this),images);
+        //bbg_xiv.renderGallery(jQuery(this),images);
+        bbg_xiv.renderFlex(jQuery(this),images);
     });
     
 }());

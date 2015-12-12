@@ -19,3 +19,21 @@
             </figure>
         </div>
 </script>
+
+<!-- Flex Container Template -->
+<script type="text/html" id="bbg_xiv-template_flex_container">
+<div class="bbg_xiv-flex_container">
+    {{{ data.items }}}
+</div>
+</script>
+<!-- Flex Item Template -->
+<script type="text/html" id="bbg_xiv-template_flex_item">
+    <div class="bbg_xiv-flex_item">
+        <figure>
+            <figcaption>{{{ data.post_title }}}</figcaption>
+            <a href="{{{ data.link }}}" target="_blank">
+                <img src="{{{ data.url }}}" alt="{{{ data.post_title }}}">
+            </a>
+        </figure>
+    </div>
+</script>
