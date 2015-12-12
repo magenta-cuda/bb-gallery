@@ -92,8 +92,12 @@
         }catch(e){
             console.log("reset(JSON.parse()) failed:",e);
         }
-        //bbg_xiv.renderGallery(jQuery(this),images);
-        bbg_xiv.renderFlex(jQuery(this),images);
+        if(Modernizr.flexbox&&Modernizr.flexwrap){
+            bbg_xiv.renderFlex(jQuery(this),images);
+        }else{
+            bbg_xiv.renderGallery(jQuery(this),images);
+        }
     });
     
 }());
+
