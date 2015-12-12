@@ -10,7 +10,9 @@ Author URI: http://magentacuda.wordpress.com
 License: GPL2
 */
 
-# This is not working code but a rough draft of concept only
+# This is a plug compatible replacement for the built-in WordPress gallery shortcode.
+# It uses user definable Backbone.js templates styled with a Twitter Bootstrap stylesheets.
+# The user definable templates are in the file ".../js/bbg_xiv-gallery_templates.php".
 
 add_action( 'wp_loaded', function( ) {
     remove_shortcode( 'gallery' );

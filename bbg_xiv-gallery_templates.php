@@ -1,5 +1,11 @@
 <!-- Backbone.js templates for the 'gallery' shortcode -->
 
+<!-- These templates use the WordPress syntax for Backbone.js templates.                   -->
+<!-- See bbg_xiv.templateOptions in the file ".../js/bbg_xiv-gallery.js".                  -->
+<!-- You can modify these templates or even add your own template.                         -->
+<!-- Your template should have ids like "bbg_xiv-template_{your template name}_container"  -->
+<!-- and "bbg_xiv-template_{your template name}_item"                                      -->
+
 <!-- Gallery Container Template -->
 <script type="text/html" id="bbg_xiv-template_gallery_container">
 <div class="container bbg_xiv-bootstrap bbg_xiv-gallery_container">
