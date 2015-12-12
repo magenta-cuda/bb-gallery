@@ -1,9 +1,25 @@
 /* Stylesheet for the Bootstrap views of the 'gallery' shortcode */
 
 div.bbg_xiv-gallery_container{
-  img{
-    width:100%;
-    max-width:100%;
-    height:auto;
+  figure{
+    overflow:hidden;
+    padding:2px;
+    border:2px solid #888;
+    margin-bottom:10px;
+    img{
+      width:100%;
+      max-width:100%;
+      height:auto;
+      border-top-left-radius:6px;
+      border-top-right-radius:6px;
+      overflow:hidden;
+    }
+    figcaption{
+      text-align: center;
+      background-color: cyan;
+      border-bottom-left-radius:6px;
+      border-bottom-right-radius:6px;
+      overflow:hidden;
+    }
   }
 }

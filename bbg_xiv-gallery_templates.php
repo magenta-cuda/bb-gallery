@@ -12,10 +12,10 @@
 <script type="text/html" id="bbg_xiv-template_gallery_item">
         <div class="col-sm-6 col-md-4 col-lg-3">
             <figure class="img-rounded bbg_xiv-gallery_item">
-                <figcaption>{{{ data.post_title }}}</figcaption>
                 <a href="{{{ data.url }}}" target="_blank">
                     <img src="{{{ data.url }}}">
                 </a>
+                <figcaption>{{{ data.post_title }}}</figcaption>
             </figure>
         </div>
 </script>
