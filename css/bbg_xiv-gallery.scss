@@ -6,17 +6,17 @@ div.bbg_xiv-gallery_container{
     padding:2px;
     border:2px solid #888;
     margin-bottom:10px;
-    img{
-      width:100%;
-      max-width:100%;
-      height:auto;
+    figcaption{
+      text-align: center;
+      background-color: cyan;
       border-top-left-radius:6px;
       border-top-right-radius:6px;
       overflow:hidden;
     }
-    figcaption{
-      text-align: center;
-      background-color: cyan;
+    img{
+      width:100%;
+      max-width:100%;
+      height:auto;
       border-bottom-left-radius:6px;
       border-bottom-right-radius:6px;
       overflow:hidden;

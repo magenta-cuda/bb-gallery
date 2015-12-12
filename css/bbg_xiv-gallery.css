@@ -4,16 +4,16 @@ div.bbg_xiv-gallery_container figure {
   padding: 2px;
   border: 2px solid #888;
   margin-bottom: 10px; }
+  div.bbg_xiv-gallery_container figure figcaption {
+    text-align: center;
+    background-color: cyan;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    overflow: hidden; }
   div.bbg_xiv-gallery_container figure img {
     width: 100%;
     max-width: 100%;
     height: auto;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-    overflow: hidden; }
-  div.bbg_xiv-gallery_container figure figcaption {
-    text-align: center;
-    background-color: cyan;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     overflow: hidden; }
