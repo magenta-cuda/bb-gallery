@@ -113,37 +113,25 @@ function bb_gallery_shortcode( $attr ) {
         error_log( '$meta=' . print_r( $meta, true ) );
         $attachment->width  = $meta[ 'width'  ];
         $attachment->height = $meta[ 'height' ];
-        error_log( '$attachment=' . print_r( $attachment, true ) );
-        $data[ 'url'    ]  = $src[ 0 ];
-        $data[ 'width'  ]  = $src[ 1 ];
-        $data[ 'height' ]  = $src[ 2 ];
-        $data[ 'excerpt' ] = $attachment->post_excerpt;
-
         $attr = ( trim( $attachment->post_excerpt ) ) ? array( 'aria-describedby' => "$selector-$id" ) : '';
         if ( ! empty( $atts['link'] ) && 'file' === $atts['link'] ) {
-          $image_output = wp_get_attachment_link( $id, $atts['size'], false, false, false, $attr );
+          $attachment->link = wp_get_attachment_url( $id );
         } elseif ( ! empty( $atts['link'] ) && 'none' === $atts['link'] ) {
-          $image_output = wp_get_attachment_image( $id, $atts['size'], false, $attr );
+          $attachment->link = '';
         } else {
-          $image_output = wp_get_attachment_link( $id, $atts['size'], true, false, false, $attr );
+          $attachment->link = get_attachment_link( $id );
         }
-        $image_meta  = wp_get_attachment_metadata( $id );
+        error_log( '$attachment=' . print_r( $attachment, true ) );
 
+        $image_meta  = wp_get_attachment_metadata( $id );
         $orientation = '';
         if ( isset( $image_meta['height'], $image_meta['width'] ) ) {
           $orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
         }
-/*
-        $output .= "$image_output";
-        if ( trim($attachment->post_excerpt) ) {
-          $output .= " . wptexturize($attachment->post_excerpt) . ";
-        }
-*/
     }
-
     $bbg_xiv_data[ "$selector-data" ] = json_encode( array_values( $attachments ) );
     wp_localize_script( 'bbg_xiv-gallery', 'bbg_xiv', $bbg_xiv_data );
-	return $output;
+    return $output;
 }
 
 add_action( 'wp_enqueue_scripts', function( ) {
