@@ -2,7 +2,7 @@
 
 <!-- Gallery Container Template -->
 <script type="text/html" id="bbg_xiv-template_gallery_container">
-<div class="container bbg_xiv-gallery_container">
+<div class="container bbg_xiv-bootstrap bbg_xiv-gallery_container">
     <div class="row">
         {{{ data.items }}}
     </div>
