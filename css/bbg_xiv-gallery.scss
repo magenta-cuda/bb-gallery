@@ -130,7 +130,7 @@ div.bbg_xiv-bootstrap{
     height: 100vh;
     background-color: white;
     
-    button.st_iv-bs-carousel_close_btn {
+    button.bbg_xiv-carousel_close_btn {
       position: absolute;
       top: 2%;
       right: 2%;
@@ -183,6 +183,10 @@ div.bbg_xiv-bootstrap{
       li {
         border: 1px solid black;
         background-color: gray;
+        
+        &.active{
+          background-color:white;
+        }
       }
     }
   }
