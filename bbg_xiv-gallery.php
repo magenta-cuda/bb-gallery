@@ -2,11 +2,11 @@
 
 /*
 Plugin Name: BB Gallery
-Plugin URI: http://magentacuda.wordpress.com
-Description: Backbone Bootstrap Gallery
+Plugin URI: https://bbfgallery.wordpress.com/
+Description: Gallery using Backbone.js, Bootstrap 3 and CSS3 Flexbox
 Version: 1.0
 Author: Magenta Cuda
-Author URI: http://magentacuda.wordpress.com
+Author URI: https://profiles.wordpress.org/magenta-cuda/
 License: GPL2
 */
 

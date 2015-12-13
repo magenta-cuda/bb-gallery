@@ -7,14 +7,15 @@ Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Plug-compatible replacement for the WordPress built-in gallery shortcode.
+Plug-compatible replacement for the built-in WordPress gallery shortcode.
 
 == Description ==
-This is a plug-compatible replacement for the builtin WordPress gallery shortcode.
-It is implemented using a Backbone Model-View-Presenter (MVP) styled by a Twitter Bootstrap stylesheet.
+This is a plug-compatible replacement for the built-in WordPress gallery shortcode.
+It is implemented using a Backbone.js Model-View-Presenter (MVP) styled by a Twitter Bootstrap 3 stylesheet.
 Using a MVP allows you to switch instantaneously (i.e. without doing a HTTP request) between multiple views of a gallery.
 The default implementation supports a gallery view, carousel view and a tabs view of the gallery.
 The view is styled by a Twitter Bootstrap 3 stylesheet so it is automatically responsive.
+If the browser supports the CSS3 Flexbox the gallery view is implemented using a flexbox.
 You can easily modify the Backbone templates to create your own customized views of the gallery.
 
 == Installation ==
@@ -22,11 +23,8 @@ You can easily modify the Backbone templates to create your own customized views
 2. Activate the plugin through the "Plugins" menu in WordPress.
 
 == Frequently Asked Questions ==
-= TODO? =
-todo.
-
 = Where is the documentation? =
-http://alttypes.wordpress.com/bbg-gallery/
+https://bbfgallery.wordpress.com/
 
 == Screenshots ==
 1. Gallery View.
