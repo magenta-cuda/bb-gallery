@@ -1,0 +1,44 @@
+=== Backbone Bootstrap Gallery ===
+Contributors: Magenta Cuda
+Tags: gallery, shortcode
+Requires at least: 4.4
+Tested up to: 4.4
+Stable tag: 1.0
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+Plug-compatible replacement for the WordPress built-in gallery shortcode.
+
+== Description ==
+This is a plug-compatible replacement for the builtin WordPress gallery shortcode.
+It is implemented using a Backbone Model-View-Presenter (MVP) styled by a Twitter Bootstrap stylesheet.
+Using a MVP allows you to switch instantaneously (i.e. without doing a HTTP request) between multiple views of a gallery.
+The default implementation supports a gallery view, carousel view and a tabs view of the gallery.
+The view is styled by a Twitter Bootstrap 3 stylesheet so it is automatically responsive.
+You can easily modify the Backbone templates to create your own customized views of the gallery.
+
+== Installation ==
+1. Upload the folder "bb-gallery" to the "/wp-content/plugins/" directory.
+2. Activate the plugin through the "Plugins" menu in WordPress.
+
+== Frequently Asked Questions ==
+= TODO? =
+todo.
+
+= Where is the documentation? =
+http://alttypes.wordpress.com/bbg-gallery/
+
+== Screenshots ==
+1. Gallery View.
+2. Carousel View.
+3. Tabs View.
+
+== Changelog ==
+
+= 1.0 =
+* Initial release.
+
+== Upgrade Notice ==
+
+= 1.0 =
+* Initial release.

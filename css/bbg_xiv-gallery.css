@@ -96,5 +96,49 @@ div.bbg_xiv-flex_container_props {
     column-count: 5;
     -webkit-column-count: 5;
     -moz-column-count: 5; } }
+div.bbg_xiv-bootstrap.carousel.slide {
+  width: 100vw;
+  height: 100vh;
+  background-color: white; }
+  div.bbg_xiv-bootstrap.carousel.slide button.st_iv-bs-carousel_close_btn {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    z-index: 5;
+    color: #fff;
+    background-color: transparent; }
+  div.bbg_xiv-bootstrap.carousel.slide .carousel-inner {
+    height: 100%; }
+    div.bbg_xiv-bootstrap.carousel.slide .carousel-inner > .item {
+      width: 100%;
+      height: 100%;
+      position: relative; }
+      div.bbg_xiv-bootstrap.carousel.slide .carousel-inner > .item > img, div.bbg_xiv-bootstrap.carousel.slide .carousel-inner > .item > a > img {
+        height: 90%;
+        width: auto;
+        max-width: none;
+        position: absolute;
+        left: 50%;
+        top: 0px;
+        transform: translate(-50%, 0px);
+        padding: 1%; }
+        @supports (object-fit: contain) {
+          div.bbg_xiv-bootstrap.carousel.slide .carousel-inner > .item > img, div.bbg_xiv-bootstrap.carousel.slide .carousel-inner > .item > a > img {
+            width: 100%;
+            object-fit: contain; } }
+      div.bbg_xiv-bootstrap.carousel.slide .carousel-inner > .item > figcaption {
+        height: 10%;
+        position: absolute;
+        left: 50%;
+        bottom: 0px;
+        transform: translate(-50%, 0px);
+        padding: 0px;
+        text-align: center;
+        font-size: 3vh; }
+  div.bbg_xiv-bootstrap.carousel.slide .carousel-indicators {
+    bottom: 12%; }
+    div.bbg_xiv-bootstrap.carousel.slide .carousel-indicators li {
+      border: 1px solid black;
+      background-color: gray; }
 
 /*# sourceMappingURL=bbg_xiv-gallery.css.map */

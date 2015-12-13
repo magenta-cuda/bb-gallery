@@ -84,6 +84,57 @@
         container.empty();
         container.append(galleryView.render().$el.find("div.bbg_xiv-flex_container"));
     }
+ 
+    bbg_xiv.renderCarousel = function( container, collection, id ) {
+        var imageView=new bbg_xiv.ImageView();
+        imageView.template=_.template(jQuery("script#bbg_xiv-template_carousel_item").html(),null,bbg_xiv.templateOptions);
+        var bulletsHtml="";
+        var imagesHtml="";
+        collection.forEach(function(model,index){
+            model.attributes.index=index;
+            imageView.model=model;
+            var active=index ===0?' class="active"':'';
+            bulletsHtml+='<li data-target="#'+id+'" data-slide-to="'+index+'"'+active+'></li>';
+            imagesHtml+=imageView.render(true);
+        } );
+        var galleryView=new bbg_xiv.GalleryView({
+            model:{
+                attributes:{
+                    id:id,
+                    bullets:bulletsHtml,
+                    items:imagesHtml
+                }
+            }
+        } );
+        galleryView.template=_.template(jQuery("script#bbg_xiv-template_carousel_container").html(),null,bbg_xiv.templateOptions);
+        container.empty();
+        container.append(galleryView.render().$el.find( "div.carousel.slide").css({position:"fixed",left:"0px",top:"0px",zIndex:"1000000"}));
+    }
+
+    // renderGeneric() may work unmodified with your template.
+    // Otherwise you can use it as a base for a render function specific to your template.
+    // See renderGallery(), renderCarousel() or renderTabs() - all of which need some special HTML to work correctly.
+
+    bbg_xiv.renderGeneric=function(container,collection,template){
+        var imageView=new bbg_xiv.ImageView();
+        // attach template to imageView not ImageView.prototype since template is specific to imageView
+        imageView.template=_.template( jQuery("script#bbg_xiv-template_"+template+"_item").html(),null,bbg_xiv.templateOptions);
+        var imagesHtml="";
+        collection.forEach(function(model,index){
+            imageView.model=model;
+            imagesHtml+=imageView.render(true);
+        } );
+        var galleryView=new bbg_xiv.GalleryView({
+            model:{
+                attributes:{
+                    items:imagesHtml
+                }
+            }
+        } );
+        galleryView.template=_.template(jQuery("script#bbg_xiv-template_"+template+"_container").html(),null,bbg_xiv.templateOptions);
+        container.empty();
+        container.append(galleryView.render().$el.find("bbg_xiv-container"));
+    }
 
     jQuery("div.gallery").each(function(){
         var images=new bbg_xiv.Images();
@@ -92,11 +143,14 @@
         }catch(e){
             console.log("reset(JSON.parse()) failed:",e);
         }
+/*
         if(Modernizr.flexbox&&Modernizr.flexwrap){
             bbg_xiv.renderFlex(jQuery(this),images);
         }else{
             bbg_xiv.renderGallery(jQuery(this),images);
         }
+*/
+        bbg_xiv.renderCarousel(jQuery(this),images,"bbg_xiv-carousel_"+this.id);
     });
     
 }());

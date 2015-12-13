@@ -123,3 +123,67 @@ div.bbg_xiv-flex_container_props{
     -moz-column-count: 5;
   }
 }
+
+div.bbg_xiv-bootstrap{
+  &.carousel.slide {
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    
+    button.st_iv-bs-carousel_close_btn {
+      position: absolute;
+      top: 2%;
+      right: 2%;
+      z-index: 5;
+      color: #fff;
+      background-color: transparent;
+    }
+
+    .carousel-inner {
+      height: 100%;
+
+      > .item {
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        > {
+          img, a > img {
+            height: 90%;
+            width: auto;
+            max-width: none;
+            position: absolute;
+            left: 50%;
+            top: 0px;
+            transform: translate(-50%, 0px);
+            padding: 1%;
+            @supports ( object-fit: contain ) {
+              width: 100%;
+              object-fit: contain;
+            }
+          }
+
+          figcaption {
+            height: 10%;
+            position: absolute;
+            left: 50%;
+            bottom: 0px;
+            transform: translate(-50%, 0px);
+            padding: 0px;
+            text-align: center;
+            font-size: 3vh;
+          }
+        }
+      }
+    }
+
+    .carousel-indicators {
+      bottom: 12%;
+
+      li {
+        border: 1px solid black;
+        background-color: gray;
+      }
+    }
+  }
+}
