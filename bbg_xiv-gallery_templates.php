@@ -78,3 +78,43 @@
 </figure>
 </script>
 
+<!-- Tabs Container Template -->
+<script type="text/html" id="bbg_xiv-template_tabs_container">
+<div class="bbg_xiv-bootstrap bbg_xiv-container bbg_xiv-template_tabs_container">
+  <!-- Tabs -->
+  <nav role="navigation" class="navbar navbar-default">
+    <div class="navbar-header">
+      <button type="button" data-target="#bbg_xiv-tabs_tabbar_collapse{{{ data.id }}}" data-toggle="collapse" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div id="bbg_xiv-tabs_tabbar_collapse{{{ data.id }}}" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav nav-tabs">
+        {{{ data.tabs }}}
+      </ul>
+    </div>
+  </nav>
+  <!-- Panes -->
+  <div class="tab-content">
+    {{{ data.items }}}
+  </div>
+</div>
+</script>
+<!-- Tabs Tab Template -->
+<script type="text/html" id="bbg_xiv-template_tabs_tab">
+<li<# if ( data.index === 0 ) { #> class=" active"<# } #>>
+  <a href="#bbg_xiv-tab_pane{{{ data.index }}}" data-toggle="tab">{{{ data.post_title }}}</a>
+</li>
+</script>
+<!-- Tabs Item Template -->
+<script type="text/html" id="bbg_xiv-template_tabs_item">
+<figure id="bbg_xiv-tab_pane{{{ data.index }}}" role="tabpanel" class="tab-pane fade<# if ( data.index === 0 ) { #> active in<# } #>">
+  <a href="{{{ data.link }}}" target="_blank">
+    <img class="img-rounded" src="{{{ data.url }}}">
+  </a>
+  <figcaption>{{{ data.post_title }}}</figcaption>
+</figure>
+</script>
