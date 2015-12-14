@@ -112,10 +112,10 @@
     }
 
     bbg_xiv.renderTabs=function(container,collection,id){
-        var tabView= new bbg_xiv.ImageView();
-        tabView.template=_.template("bbg_xiv-template_tabs_tab").html(),null,bbg_xiv.templateOptions);
-        var imageView= new bbg_xiv.ImageView();
-        imageView.template=_.template("bbg_xiv-template_tabs_item").html(),null,bbg_xiv.templateOptions);
+        var tabView=new bbg_xiv.ImageView();
+        tabView.template=_.template(jQuery("script#bbg_xiv-template_tabs_tab").html(),null,bbg_xiv.templateOptions);
+        var imageView=new bbg_xiv.ImageView();
+        imageView.template=_.template(jQuery("script#bbg_xiv-template_tabs_item").html(),null,bbg_xiv.templateOptions);
         var tabsHtml="";
         var imagesHtml="";
         collection.forEach(function(model,index){
@@ -133,7 +133,7 @@
                 }
             }
         });
-        galleryView.template=_.template("bbg_xiv-template_tabs_container").html(),null,bbg_xiv.templateOptions);
+        galleryView.template=_.template(jQuery("script#bbg_xiv-template_tabs_container").html(),null,bbg_xiv.templateOptions);
         container.empty();
         container.append(galleryView.render().$el.find("div.bbg_xiv-template_tabs_container"));
     }

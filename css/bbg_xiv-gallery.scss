@@ -191,3 +191,36 @@ div.bbg_xiv-bootstrap{
     }
   }
 }
+
+div.bbg_xiv-bootstrap{
+  &.bbg_xiv-template_tabs_container {
+    div.tab-content figure {
+      position: relative;
+      height: 80vh;
+      overflow: hidden;
+      img {
+        position: absolute;
+        left: 50%;
+        top: 0px;
+        transform: translate(-50%, 0px);
+        display: block;
+        height: 90%;
+        max-width: none;
+        padding: 1%;
+        @supports ( object-fit: contain ) {
+          width: 100%;
+          object-fit: contain;
+        }
+      }
+      figcaption {
+        position: absolute;
+        left: 50%;
+        bottom: 0px;
+        transform: translate(-50%, 0px);
+        height: 10%;
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+}
