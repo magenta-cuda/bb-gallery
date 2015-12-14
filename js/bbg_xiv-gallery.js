@@ -163,6 +163,52 @@
         container.append(galleryView.render().$el.find("bbg_xiv-container"));
     }
 
+    // debugging utilities
+    
+    // dumpFieldNames() dumps field names as <th> elements in a <tr> element
+    var fieldNames=[];
+    bbg_xiv.dumpFieldNames=function(collection){
+        collection.forEach(function(model){
+            Object.keys(model.attributes).forEach(function(key){
+                if(fieldNames.indexOf(key)===-1){
+                    fieldNames.push(key);
+                }
+            });
+        });
+        var buffer="<tr>";
+        fieldNames.forEach(function(name){
+            buffer+="<th style=\"border:2px solid black;padding:10px;\">"+name+"</th>";
+        });
+        buffer+="</tr>";
+        return buffer;
+    };
+    
+    // dumpFieldValues() dumps field values as <td> elements in <tr> elements
+    bbg_xiv.dumpFieldValues=function(collection){
+        var buffer="";
+        collection.forEach(function(model){
+            buffer+="<tr>";
+            fieldNames.forEach(function(name){
+                buffer+="<td style=\"border:2px solid black;padding:10px;\">"+model.attributes[name]+"</td>";
+            });
+            buffer+="</tr>";
+        });
+        return buffer;        
+    };
+    
+    bbg_xiv.renderTable=function(container,collection){
+        var galleryView=new bbg_xiv.GalleryView({
+            model:{
+                attributes:{
+                    collection:collection
+                }
+            }
+        } );
+        galleryView.template=_.template(jQuery("script#bbg_xiv-template_table_container").html(),null,bbg_xiv.templateOptions);
+        container.empty();
+        container.append(galleryView.render().$el.find("div.bbg_xiv-table"));
+    };
+    
     jQuery("div.gallery").each(function(){
         var images=new bbg_xiv.Images();
         try{
@@ -177,8 +223,9 @@
             bbg_xiv.renderGallery(jQuery(this),images);
         }
         bbg_xiv.renderCarousel(jQuery(this),images,"bbg_xiv-carousel_"+this.id);
-*/
         bbg_xiv.renderTabs(jQuery(this),images,"bbg_xiv-tabs_"+this.id);
+*/
+        bbg_xiv.renderTable(jQuery(this),images);
     });
     
 }());

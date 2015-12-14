@@ -122,7 +122,7 @@ function bb_gallery_shortcode( $attr ) {
 
     $size_class = sanitize_html_class( $atts['size'] );
 
-    $output = "<div id='$selector' class='gallery galleryid-{$id} gallery-size-{$size_class}'>BB Gallery Container</div>";
+    $output = "<div id='$selector' class='gallery galleryid-{$id} gallery-size-{$size_class} bbg_xiv-bootstrap'>BB Gallery Container</div>";
 
     foreach ( $attachments as $id => &$attachment ) {
         $src = wp_get_attachment_image_src( $id, 'full' );

@@ -224,3 +224,16 @@ div.bbg_xiv-bootstrap{
     }
   }
 }
+
+div.bbg_xiv-bootstrap{
+  div.bbg_xiv-table{
+    height:80vh;
+    overflow-x:scroll;
+    overflow-y:scroll;
+    
+    table.bbg_xiv-table{
+      width:8192px;
+      max-width:none;
+    }
+  }
+}
