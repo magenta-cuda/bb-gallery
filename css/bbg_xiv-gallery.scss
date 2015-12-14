@@ -232,8 +232,9 @@ div.bbg_xiv-bootstrap{
     overflow-y:scroll;
     
     table.bbg_xiv-table{
-      width:8192px;
+      width:6144px;
       max-width:none;
+      table-layout:auto;
     }
   }
 }

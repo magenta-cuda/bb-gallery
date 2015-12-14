@@ -177,7 +177,7 @@
         });
         var buffer="<tr>";
         fieldNames.forEach(function(name){
-            buffer+="<th style=\"border:2px solid black;padding:10px;\">"+name+"</th>";
+            buffer+="<th>"+name+"</th>";
         });
         buffer+="</tr>";
         return buffer;
@@ -189,7 +189,7 @@
         collection.forEach(function(model){
             buffer+="<tr>";
             fieldNames.forEach(function(name){
-                buffer+="<td style=\"border:2px solid black;padding:10px;\">"+model.attributes[name]+"</td>";
+                buffer+="<td>"+model.attributes[name]+"</td>";
             });
             buffer+="</tr>";
         });

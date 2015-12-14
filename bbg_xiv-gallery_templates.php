@@ -122,7 +122,7 @@
 <!-- Table Container Template -->
 <script type="text/html" id="bbg_xiv-template_table_container">
 <div class="bbg_xiv-table">
-  <table class="table bbg_xiv-table">
+  <table class="table table-bordered table-striped bbg_xiv-table">
     <thead>
       <# print(bbg_xiv.dumpFieldNames(data.collection)); #>
     </thead>
