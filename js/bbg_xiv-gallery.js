@@ -111,6 +111,33 @@
         container.append(galleryView.render().$el.find( "div.carousel.slide").css({position:"fixed",left:"0px",top:"0px",zIndex:"1000000"}));
     }
 
+    bbg_xiv.renderTabs=function(container,collection,id){
+        var tabView= new bbg_xiv.ImageView();
+        tabView.template=_.template("bbg_xiv-template_tabs_tab").html(),null,bbg_xiv.templateOptions);
+        var imageView= new bbg_xiv.ImageView();
+        imageView.template=_.template("bbg_xiv-template_tabs_item").html(),null,bbg_xiv.templateOptions);
+        var tabsHtml="";
+        var imagesHtml="";
+        collection.forEach(function(model,index){
+            model.attributes.index=index;
+            imageView.model=tabView.model=model;
+            tabsHtml+=tabView.render(true);
+            imagesHtml+=imageView.render(true);
+        });
+        var galleryView=new bbg_xiv.GalleryView({
+            model:{
+                attributes:{
+                    id:id,
+                    tabs:tabsHtml,
+                    items:imagesHtml
+                }
+            }
+        });
+        galleryView.template=_.template("bbg_xiv-template_tabs_container").html(),null,bbg_xiv.templateOptions);
+        container.empty();
+        container.append(galleryView.render().$el.find("div.bbg_xiv-template_tabs_container"));
+    }
+
     // renderGeneric() may work unmodified with your template.
     // Otherwise you can use it as a base for a render function specific to your template.
     // See renderGallery(), renderCarousel() or renderTabs() - all of which need some special HTML to work correctly.
@@ -149,8 +176,9 @@
         }else{
             bbg_xiv.renderGallery(jQuery(this),images);
         }
-*/
         bbg_xiv.renderCarousel(jQuery(this),images,"bbg_xiv-carousel_"+this.id);
+*/
+        bbg_xiv.renderTabs(jQuery(this),images,"bbg_xiv-tabs_"+this.id);
     });
     
 }());
