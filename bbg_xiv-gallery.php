@@ -33,8 +33,10 @@ License: GPL2
 # The user definable templates are in the file ".../js/bbg_xiv-gallery_templates.php".
 
 add_action( 'wp_loaded', function( ) {
-    remove_shortcode( 'gallery' );
-    add_shortcode( 'gallery', 'bb_gallery_shortcode' );
+    if ( get_option( 'bbg_xiv_shortcode' ) ) {
+        remove_shortcode( 'gallery' );
+        add_shortcode( 'gallery', 'bb_gallery_shortcode' );
+    }
 } );
 
 # excerpted from the WordPress function gallery_shortcode() of .../wp-includes/media.php
@@ -122,6 +124,14 @@ function bb_gallery_shortcode( $attr ) {
 
     $size_class = sanitize_html_class( $atts['size'] );
     
+    # The "Table View" is primarily intended for developers and should be disabled for production environmemts.
+    $table_nav_item = '';
+    if ( get_option( 'bbg_xiv_table' ) ) {
+        $table_nav_item = <<<EOD
+                <li><a href="#">Table</a></li>
+EOD;
+    }
+    
     $output = <<<EOD
 <div class="bbg_xiv-bootstrap">
     <nav role="navigation" class="navbar navbar-inverse">
@@ -138,8 +148,7 @@ function bb_gallery_shortcode( $attr ) {
                 <li class="active"><a href="#">Gallery</a></li>
                 <li><a href="#">Carousel</a></li>
                 <li><a href="#">Tabs</a></li>
-                <!-- TODO: You may want to comment out the "Table" view for production environments. -->
-                <li><a href="#">Table</a></li>
+$table_nav_item
             </ul>
         </div>
     </nav>
@@ -188,5 +197,21 @@ add_action( 'wp_enqueue_scripts', function( ) {
     wp_enqueue_script( 'bootstrap', plugins_url( '/js/bootstrap.js' , __FILE__ ), [ 'jquery' ], FALSE, TRUE );
     wp_enqueue_script( 'bbg_xiv-gallery', plugins_url( '/js/bbg_xiv-gallery.js' , __FILE__ ), [ 'bootstrap' ], FALSE, TRUE );
 } );
-
-?>
+ 
+add_action( 'admin_init', function( ) {
+    add_settings_section( 'bbg_xiv_setting_section', 'BB Gallery', function( ) {
+        echo '<p>BB Gallery is a plug-compatible replacement for the built-in WordPress gallery shortcode.</p>';
+    }, 'media' );
+    add_settings_field( 'bbg_xiv_shortcode', 'Enable BB Gallery', function( ) {
+        echo '<input name="bbg_xiv_shortcode" id="bbg_xiv_shortcode" type="checkbox" value="1" class="code" '
+            . checked( 1, get_option( 'bbg_xiv_shortcode' ), FALSE ) . ' /> This will replace the built-in WordPress gallery shortcode.';
+    }, 'media',	'bbg_xiv_setting_section' );
+    add_settings_field( 'bbg_xiv_table', 'Enable Table View', function( ) {
+        echo '<input name="bbg_xiv_table" id="bbg_xiv_table" type="checkbox" value="1" class="code" '
+            . checked( 1, get_option( 'bbg_xiv_table' ), FALSE ) . ' /> The "Table View" is primarily intended for developers.';
+    }, 'media',	'bbg_xiv_setting_section' );
+    register_setting( 'media', 'bbg_xiv_shortcode' );
+    register_setting( 'media', 'bbg_xiv_table' );
+} );
+ 
+ ?>

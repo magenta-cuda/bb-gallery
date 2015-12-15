@@ -21,6 +21,7 @@ You can easily modify the Backbone templates to create your own customized views
 == Installation ==
 1. Upload the folder "bb-gallery" to the "/wp-content/plugins/" directory.
 2. Activate the plugin through the "Plugins" menu in WordPress.
+3. Enable the BB Gallery option on the "Settings > Media" page.
 
 == Frequently Asked Questions ==
 = Where is the documentation? =
