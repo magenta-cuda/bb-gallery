@@ -33,7 +33,7 @@ License: GPL2
 # The user definable templates are in the file ".../js/bbg_xiv-gallery_templates.php".
 
 add_action( 'wp_loaded', function( ) {
-    if ( get_option( 'bbg_xiv_shortcode' ) ) {
+    if ( get_option( 'bbg_xiv_shortcode', 1 ) ) {
         remove_shortcode( 'gallery' );
         add_shortcode( 'gallery', 'bb_gallery_shortcode' );
     }
@@ -42,6 +42,10 @@ add_action( 'wp_loaded', function( ) {
 # excerpted from the WordPress function gallery_shortcode() of .../wp-includes/media.php
 
 function bb_gallery_shortcode( $attr ) {
+    if ( array_key_exists( 'mode', $attr ) && $attr[ 'mode' ] === 'wordpress' ) {
+        return gallery_shortcode( $attr );
+    }
+    
     require_once(  dirname( __FILE__ ) . '/bbg_xiv-gallery_templates.php' );
 
     $post = get_post();
@@ -204,11 +208,11 @@ add_action( 'admin_init', function( ) {
     }, 'media' );
     add_settings_field( 'bbg_xiv_shortcode', 'Enable BB Gallery', function( ) {
         echo '<input name="bbg_xiv_shortcode" id="bbg_xiv_shortcode" type="checkbox" value="1" class="code" '
-            . checked( 1, get_option( 'bbg_xiv_shortcode' ), FALSE ) . ' /> This will replace the built-in WordPress gallery shortcode.';
+            . checked( get_option( 'bbg_xiv_shortcode', 1 ), 1, FALSE ) . ' /> This will replace the built-in WordPress gallery shortcode.';
     }, 'media',	'bbg_xiv_setting_section' );
     add_settings_field( 'bbg_xiv_table', 'Enable Table View', function( ) {
         echo '<input name="bbg_xiv_table" id="bbg_xiv_table" type="checkbox" value="1" class="code" '
-            . checked( 1, get_option( 'bbg_xiv_table' ), FALSE ) . ' /> The "Table View" is primarily intended for developers.';
+            . checked( get_option( 'bbg_xiv_table' ), 1, FALSE ) . ' /> The "Table View" is primarily intended for developers.';
     }, 'media',	'bbg_xiv_setting_section' );
     register_setting( 'media', 'bbg_xiv_shortcode' );
     register_setting( 'media', 'bbg_xiv_table' );
