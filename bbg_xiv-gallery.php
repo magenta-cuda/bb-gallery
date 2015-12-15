@@ -121,8 +121,32 @@ function bb_gallery_shortcode( $attr ) {
     $selector = "gallery-{$instance}";
 
     $size_class = sanitize_html_class( $atts['size'] );
+    
+    $output = <<<EOD
+<div class="bbg_xiv-bootstrap">
+    <nav role="navigation" class="navbar navbar-inverse">
+        <div class="navbar-header">
+            <button type="button" data-target="#$selector-navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div id="$selector-navbarCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Gallery</a></li>
+                <li><a href="#">Carousel</a></li>
+                <li><a href="#">Tabs</a></li>
+                <!-- TODO: You may want to comment out the "Table" view for production environments. -->
+                <li><a href="#">Table</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+EOD;
 
-    $output = "<div id='$selector' class='gallery galleryid-{$id} gallery-size-{$size_class} bbg_xiv-bootstrap'>BB Gallery Container</div>";
+    $output .= "<div id='$selector' class='gallery galleryid-{$id} gallery-size-{$size_class} bbg_xiv-bootstrap'>BB Gallery Container</div>";
 
     foreach ( $attachments as $id => &$attachment ) {
         $src = wp_get_attachment_image_src( $id, 'full' );
@@ -141,6 +165,8 @@ function bb_gallery_shortcode( $attr ) {
         } else {
           $attachment->link = get_attachment_link( $id );
         }
+        # TODO: For the "Table" view you may want to unset some fields.
+        unset( $attachment->post_password );
         error_log( '$attachment=' . print_r( $attachment, true ) );
 
         $image_meta  = wp_get_attachment_metadata( $id );
