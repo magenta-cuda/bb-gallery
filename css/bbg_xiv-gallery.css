@@ -143,31 +143,41 @@ div.bbg_xiv-bootstrap.carousel.slide {
       div.bbg_xiv-bootstrap.carousel.slide .carousel-indicators li.active {
         background-color: white; }
 
-div.bbg_xiv-bootstrap.bbg_xiv-template_tabs_container div.tab-content figure {
-  position: relative;
-  height: 80vh;
-  overflow: hidden; }
-  div.bbg_xiv-bootstrap.bbg_xiv-template_tabs_container div.tab-content figure img {
-    position: absolute;
-    left: 50%;
-    top: 0px;
-    transform: translate(-50%, 0px);
-    display: block;
-    height: 90%;
-    max-width: none;
-    padding: 1%; }
-    @supports (object-fit: contain) {
-      div.bbg_xiv-bootstrap.bbg_xiv-template_tabs_container div.tab-content figure img {
-        width: 100%;
-        object-fit: contain; } }
-  div.bbg_xiv-bootstrap.bbg_xiv-template_tabs_container div.tab-content figure figcaption {
-    position: absolute;
-    left: 50%;
-    bottom: 0px;
-    transform: translate(-50%, 0px);
-    height: 10%;
-    width: 100%;
-    text-align: center; }
+div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse {
+  height: 10vh !important;
+  overflow: auto !important; }
+  @media (max-width: 767px) {
+    div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse {
+      height: auto !important; } }
+div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container nav.navbar ul.nav li a {
+  padding: 5px 10px; }
+div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content {
+  height: 80vh; }
+  div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure {
+    position: relative;
+    height: 100%;
+    overflow: hidden; }
+    div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure img {
+      position: absolute;
+      left: 50%;
+      top: 0px;
+      transform: translate(-50%, 0px);
+      display: block;
+      height: 90%;
+      max-width: none;
+      padding: 1%; }
+      @supports (object-fit: contain) {
+        div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure img {
+          width: 100%;
+          object-fit: contain; } }
+    div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure figcaption {
+      position: absolute;
+      left: 50%;
+      bottom: 0px;
+      transform: translate(-50%, 0px);
+      height: 10%;
+      width: 100%;
+      text-align: center; }
 
 div.bbg_xiv-bootstrap div.bbg_xiv-table {
   height: 80vh;

@@ -84,15 +84,15 @@
   <!-- Tabs -->
   <nav role="navigation" class="navbar navbar-default">
     <div class="navbar-header">
-      <button type="button" data-target="#bbg_xiv-tabs_tabbar_collapse{{{ data.id }}}" data-toggle="collapse" class="navbar-toggle">
+      <button type="button" data-target="#{{{ data.id }}}_tabbar_collapse" data-toggle="collapse" class="navbar-toggle">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
     </div>
-    <div id="bbg_xiv-tabs_tabbar_collapse{{{ data.id }}}" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav nav-tabs">
+    <div id="{{{ data.id }}}_tabbar_collapse" class="collapse navbar-collapse">
+      <ul class="nav nav-tabs">
         {{{ data.tabs }}}
       </ul>
     </div>
