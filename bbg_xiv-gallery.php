@@ -33,6 +33,7 @@ License: GPL2
 # The user definable templates are in the file ".../js/bbg_xiv-gallery_templates.php".
 
 add_action( 'wp_loaded', function( ) {
+    add_shortcode( 'bb_gallery', 'bb_gallery_shortcode' );
     if ( get_option( 'bbg_xiv_shortcode', 1 ) ) {
         remove_shortcode( 'gallery' );
         add_shortcode( 'gallery', 'bb_gallery_shortcode' );
@@ -138,7 +139,7 @@ EOD;
     
     $output = <<<EOD
 <div class="bbg_xiv-bootstrap">
-    <nav role="navigation" class="navbar navbar-inverse">
+    <nav role="navigation" class="navbar navbar-inverse bbg_xiv-gallery_navbar">
         <div class="navbar-header">
             <button type="button" data-target="#$selector-navbarCollapse" data-toggle="collapse" class="navbar-toggle">
                 <span class="sr-only">Toggle navigation</span>
@@ -152,6 +153,7 @@ EOD;
                 <li class="active"><a href="#">Gallery</a></li>
                 <li><a href="#">Carousel</a></li>
                 <li><a href="#">Tabs</a></li>
+                <!-- TODO: Add entry for new views here. -->
 $table_nav_item
             </ul>
         </div>
@@ -164,12 +166,16 @@ EOD;
     foreach ( $attachments as $id => &$attachment ) {
         $src = wp_get_attachment_image_src( $id, 'full' );
         $img_url = wp_get_attachment_url($id);
-        error_log( '$img_url=' . print_r( $img_url, true ) );
         $attachment->url = $img_url;
-        $meta = wp_get_attachment_metadata($id);
+        $meta = wp_get_attachment_metadata( $id );
         error_log( '$meta=' . print_r( $meta, true ) );
         $attachment->width  = $meta[ 'width'  ];
         $attachment->height = $meta[ 'height' ];
+        $orientation = '';
+        if ( isset( $meta['height'], $meta['width'] ) ) {
+          $orientation = ( $meta['height'] > $meta['width'] ) ? 'portrait' : 'landscape';
+        }
+        $attachment->orientation = $orientation;
         $attr = ( trim( $attachment->post_excerpt ) ) ? array( 'aria-describedby' => "$selector-$id" ) : '';
         if ( ! empty( $atts['link'] ) && 'file' === $atts['link'] ) {
           $attachment->link = wp_get_attachment_url( $id );
@@ -180,13 +186,18 @@ EOD;
         }
         # TODO: For the "Table" view you may want to unset some fields.
         unset( $attachment->post_password );
-        error_log( '$attachment=' . print_r( $attachment, true ) );
-
-        $image_meta  = wp_get_attachment_metadata( $id );
-        $orientation = '';
-        if ( isset( $image_meta['height'], $image_meta['width'] ) ) {
-          $orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
-        }
+        unset( $attachment->ping_status );
+        unset( $attachment->to_ping );
+        unset( $attachment->pinged );
+        unset( $attachment->comment_status );
+        unset( $attachment->comment_count );
+        unset( $attachment->menu_order );
+        unset( $attachment->post_content_filtered );
+        unset( $attachment->filter );
+        unset( $attachment->post_date_gmt );
+        unset( $attachment->post_modified_gmt );
+        unset( $attachment->post_status );
+        unset( $attachment->post_type );
     }
     $bbg_xiv_data[ "$selector-data" ] = json_encode( array_values( $attachments ) );
     wp_localize_script( 'bbg_xiv-gallery', 'bbg_xiv', $bbg_xiv_data );

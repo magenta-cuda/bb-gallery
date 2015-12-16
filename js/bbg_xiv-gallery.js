@@ -209,6 +209,9 @@
         container.append(galleryView.render().$el.find("div.bbg_xiv-table"));
     };
     
+    jQuery("nav.bbg_xiv-gallery_navbar ul.nav li > a").click(function(e){
+        e.preventDefault();
+    });
     jQuery("div.gallery").each(function(){
         var images=new bbg_xiv.Images();
         try{
@@ -222,8 +225,8 @@
             //bbg_xiv.renderGallery(jQuery(this),images);
         }
         //bbg_xiv.renderCarousel(jQuery(this),images,"bbg_xiv-carousel_"+this.id);
-        bbg_xiv.renderTabs(jQuery(this),images,"bbg_xiv-tabs_"+this.id);
-        //bbg_xiv.renderTable(jQuery(this),images);
+        //bbg_xiv.renderTabs(jQuery(this),images,"bbg_xiv-tabs_"+this.id);
+        bbg_xiv.renderTable(jQuery(this),images);
     });
     
 }());
