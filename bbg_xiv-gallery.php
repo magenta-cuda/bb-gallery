@@ -138,7 +138,7 @@ EOD;
     }
     
     $output = <<<EOD
-<div class="bbg_xiv-bootstrap">
+<div class="bbg_xiv-bootstrap bbg_xiv_gallery">
     <nav role="navigation" class="navbar navbar-inverse bbg_xiv-gallery_navbar">
         <div class="navbar-header">
             <button type="button" data-target="#$selector-navbarCollapse" data-toggle="collapse" class="navbar-toggle">
@@ -158,10 +158,10 @@ $table_nav_item
             </ul>
         </div>
     </nav>
+    <div id="$selector" class="gallery galleryid-{$id} gallery-size-{$size_class} bbg_xiv-gallery_envelope">BB Gallery Container</div>
 </div>
 EOD;
 
-    $output .= "<div id='$selector' class='gallery galleryid-{$id} gallery-size-{$size_class} bbg_xiv-bootstrap'>BB Gallery Container</div>";
 
     foreach ( $attachments as $id => &$attachment ) {
         $src = wp_get_attachment_image_src( $id, 'full' );

@@ -10,6 +10,8 @@
         variable:    'data'
     };
     
+    bbg_xiv.images={};
+    
     bbg_xiv.Image=Backbone.Model.extend({idAttribute:"ID"});
     
     bbg_xiv.Images=Backbone.Collection.extend({model:bbg_xiv.Image});
@@ -209,25 +211,51 @@
         container.append(galleryView.render().$el.find("div.bbg_xiv-table"));
     };
     
+    bbg_xiv.renderGallery=function(gallery,view){
+        var jqGallery=jQuery(gallery);
+        var images=bbg_xiv.images[gallery.id];
+        if(!images){
+            images=bbg_xiv.images[gallery.id]=new bbg_xiv.Images();
+            try{
+                images.reset(JSON.parse(window.bbg_xiv[gallery.id+"-data"]));
+            }catch(e){
+                console.log("reset(JSON.parse()) failed:",e);
+            }
+        }
+        switch(view){
+        case "Gallery":
+            if(Modernizr.flexbox&&Modernizr.flexwrap){
+                bbg_xiv.renderFlex(jqGallery,images);
+            }else{
+                bbg_xiv.renderGallery(jqGallery,images);
+            }
+            break;
+        case "Carousel":
+            bbg_xiv.renderCarousel(jqGallery,images,"bbg_xiv-carousel_"+gallery.id);
+            break;
+        case "Tabs":
+            bbg_xiv.renderTabs(jqGallery,images,"bbg_xiv-tabs_"+gallery.id);
+            break;
+        // TODO: Add entry for new views here
+        case "Table":
+            bbg_xiv.renderTable(jqGallery,images);
+            break;
+        default:
+            break;
+        }
+    };
+    
     jQuery("nav.bbg_xiv-gallery_navbar ul.nav li > a").click(function(e){
+        var jqThis=jQuery(this);
+        var gallery=jqThis.parents("div.bbg_xiv_gallery");
+        gallery.find("nav.navbar ul.nav li").removeClass("active");
+        jqThis.parent().addClass("active");
+        bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],this.textContent.trim());
         e.preventDefault();
     });
-    jQuery("div.gallery").each(function(){
-        var images=new bbg_xiv.Images();
-        try{
-            images.reset(JSON.parse(window.bbg_xiv[this.id+"-data"]));
-        }catch(e){
-            console.log("reset(JSON.parse()) failed:",e);
-        }
-        if(Modernizr.flexbox&&Modernizr.flexwrap){
-            //bbg_xiv.renderFlex(jQuery(this),images);
-        }else{
-            //bbg_xiv.renderGallery(jQuery(this),images);
-        }
-        //bbg_xiv.renderCarousel(jQuery(this),images,"bbg_xiv-carousel_"+this.id);
-        //bbg_xiv.renderTabs(jQuery(this),images,"bbg_xiv-tabs_"+this.id);
-        bbg_xiv.renderTable(jQuery(this),images);
-    });
     
+    jQuery("div.bbg_xiv-gallery_envelope").each(function(){
+        bbg_xiv.renderGallery(this,"Gallery");
+    });
 }());
 

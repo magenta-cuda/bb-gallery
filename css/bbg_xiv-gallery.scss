@@ -33,7 +33,6 @@ div.bbg_xiv-gallery_container{
   }
 }
 
-
 div.bbg_xiv-flex_container{
     display:flex;
     flex-direction: row;
@@ -133,10 +132,10 @@ div.bbg_xiv-flex_container_props{
 }
 
 div.bbg_xiv-bootstrap{
-  &.carousel.slide {
-    width: 100vw;
-    height: 100vh;
-    background-color: white;
+  div.carousel.slide{
+    width:100vw;
+    height:100vh;
+    background-color:white;
     
     button.bbg_xiv-carousel_close_btn {
       position: absolute;
