@@ -232,6 +232,12 @@
             break;
         case "Carousel":
             bbg_xiv.renderCarousel(jqGallery,images,"bbg_xiv-carousel_"+gallery.id);
+            jqGallery.find("button.bbg_xiv-carousel_close_btn").click(function(e){
+                var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
+                gallery.find("nav.navbar ul.nav li").removeClass("active").first().addClass("active");
+                bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],"Gallery");
+                e.preventDefault();      
+            });
             break;
         case "Tabs":
             bbg_xiv.renderTabs(jqGallery,images,"bbg_xiv-tabs_"+gallery.id);
@@ -247,7 +253,7 @@
     
     jQuery("nav.bbg_xiv-gallery_navbar ul.nav li > a").click(function(e){
         var jqThis=jQuery(this);
-        var gallery=jqThis.parents("div.bbg_xiv_gallery");
+        var gallery=jqThis.parents("div.bbg_xiv-gallery");
         gallery.find("nav.navbar ul.nav li").removeClass("active");
         jqThis.parent().addClass("active");
         bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],this.textContent.trim());

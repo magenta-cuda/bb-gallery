@@ -138,7 +138,7 @@ EOD;
     }
     
     $output = <<<EOD
-<div class="bbg_xiv-bootstrap bbg_xiv_gallery">
+<div class="bbg_xiv-bootstrap bbg_xiv-gallery">
     <nav role="navigation" class="navbar navbar-inverse bbg_xiv-gallery_navbar">
         <div class="navbar-header">
             <button type="button" data-target="#$selector-navbarCollapse" data-toggle="collapse" class="navbar-toggle">
@@ -184,6 +184,7 @@ EOD;
         } else {
           $attachment->link = get_attachment_link( $id );
         }
+        $attachment->image_alt = get_post_meta( $id, '_wp_attachment_image_alt', TRUE );
         # TODO: For the "Table" view you may want to unset some fields.
         unset( $attachment->post_password );
         unset( $attachment->ping_status );
