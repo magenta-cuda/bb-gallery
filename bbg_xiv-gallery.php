@@ -168,7 +168,6 @@ EOD;
         $img_url = wp_get_attachment_url($id);
         $attachment->url = $img_url;
         $meta = wp_get_attachment_metadata( $id );
-        error_log( '$meta=' . print_r( $meta, true ) );
         $attachment->width  = $meta[ 'width'  ];
         $attachment->height = $meta[ 'height' ];
         $orientation = '';
