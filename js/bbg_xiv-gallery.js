@@ -264,19 +264,19 @@
         bbg_xiv.renderGallery(this,"Gallery");
     });
     
-    var minFlexWidth=128;
+    var minFlexWidth=80;
     bbg_xiv.breakpoints=[
-        {width:2*minFlexWidth,class:"100"},
-        {width:3*minFlexWidth,class:"50"},
-        {width:4*minFlexWidth,class:"33_3333"},
-        {width:5*minFlexWidth,class:"25"},
-        {width:6*minFlexWidth,class:"20"},
-        {width:7*minFlexWidth,class:"16_6666"},
-        {width:8*minFlexWidth,class:"14_2857"},
-        {width:9*minFlexWidth,class:"12_5"},
-        {width:10*minFlexWidth,class:"11_1111"},
-        {width:11*minFlexWidth,class:"10"},
-        {width:12*minFlexWidth,class:"9_0909"},
+        {width:2*minFlexWidth,cssClass:"100"},
+        {width:3*minFlexWidth,cssClass:"50"},
+        {width:4*minFlexWidth,cssClass:"33_3333"},
+        {width:5*minFlexWidth,cssClass:"25"},
+        {width:6*minFlexWidth,cssClass:"20"},
+        {width:7*minFlexWidth,cssClass:"16_6666"},
+        {width:8*minFlexWidth,cssClass:"14_2857"},
+        {width:9*minFlexWidth,cssClass:"12_5"},
+        {width:10*minFlexWidth,cssClass:"11_1111"},
+        {width:11*minFlexWidth,cssClass:"10"},
+        {width:12*minFlexWidth,cssClass:"9_0909"},
         {width:1000000,class:"8_3333"}
     ];
     jQuery(window).resize(function(){
@@ -285,11 +285,18 @@
             var jqThis=jQuery(this);
             var width=jqThis.width();
             breakpoints.forEach(function(breakpoint){
-              jqThis.removeClass("bbg_xiv-flex_width_"+breakpoint.class);
+              jqThis.removeClass("bbg_xiv-flex_width_"+breakpoint.cssClass);
             });
             for(var i=0;i<breakpoints.length;i++){
                 if(width<=breakpoints[i].width){
-                    jqThis.addClass("bbg_xiv-flex_width_"+breakpoints[i].class);
+                    var cssClass=breakpoints[i].cssClass;
+                    jqThis.addClass("bbg_xiv-flex_width_"+cssClass);
+                    var pxWidth=parseFloat(cssClass.replace("_","."))/100.0*width;
+                    if(pxWidth<96){
+                        jqThis.addClass("bbg_xiv-flex_no_caption");
+                    }else{
+                        jqThis.removeClass("bbg_xiv-flex_no_caption");
+                    }
                     break;
                 }
             };

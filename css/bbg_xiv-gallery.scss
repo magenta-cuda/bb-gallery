@@ -40,43 +40,57 @@ div.bbg_xiv-flex_container{
     justify-content: flex-start;
     align-items: center;
     padding: 0;
-}
 
-div.bbg_xiv-flex_item{
-    flex:0 0 auto;
-    box-sizing:border-box;
-    width:100%;
-    padding:1vh;
-    margin:0px 0px 20px 0px;
-
-    figure{
+    div.bbg_xiv-flex_item{
+        flex:0 0 auto;
         box-sizing:border-box;
-        display:block;
         width:100%;
-        padding:3px;
-        border:2px solid #888;
-        border-radius:6px;
-        margin:0;
-        overflow:hidden;
+        padding:1vh;
+        margin:0px 0px 20px 0px;
 
-        figcaption{
-            font-size:1rem;
-            text-align:center;
-            background-color:cyan;
-            padding:2px;
-            border-top-left-radius:6px;
-            border-top-right-radius:6px;
-            overflow:hidden;
-        }
-
-        img{
+        figure{
             box-sizing:border-box;
             display:block;
             width:100%;
-            max-width:100%;
-            border-bottom-left-radius:6px;
-            border-bottom-right-radius:6px;
+            padding:3px;
+            border:2px solid #888;
+            border-radius:6px;
+            margin:0;
             overflow:hidden;
+
+            figcaption{
+                font-size:1rem;
+                text-align:center;
+                background-color:cyan;
+                padding:2px;
+                border-top-left-radius:6px;
+                border-top-right-radius:6px;
+                overflow:hidden;
+            }
+
+            img{
+                box-sizing:border-box;
+                display:block;
+                width:100%;
+                max-width:100%;
+                border-bottom-left-radius:6px;
+                border-bottom-right-radius:6px;
+                overflow:hidden;
+            }
+        }
+    }
+}
+
+div.bbg_xiv-flex_container.bbg_xiv-flex_no_caption{
+    div.bbg_xiv-flex_item{
+        figure{
+            figcaption{
+                display:none;
+            }
+            img{
+                border-top-left-radius:6px;
+                border-top-right-radius:6px;
+            }
         }
     }
 }
