@@ -110,7 +110,7 @@
         } );
         galleryView.template=_.template(jQuery("script#bbg_xiv-template_carousel_container").html(),null,bbg_xiv.templateOptions);
         container.empty();
-        container.append(galleryView.render().$el.find( "div.carousel.slide").css({position:"fixed",left:"0px",top:"0px",zIndex:"1000000"}));
+        container.append(galleryView.render().$el.find( "div.carousel.slide"));
     }
 
     bbg_xiv.renderTabs=function(container,collection,id){
@@ -140,6 +140,33 @@
         container.append(galleryView.render().$el.find("div.bbg_xiv-template_tabs_container"));
     }
 
+    bbg_xiv.renderDense=function(container,collection,id){
+        var titleView=new bbg_xiv.ImageView();
+        titleView.template=_.template(jQuery("script#bbg_xiv-template_dense_title").html(),null,bbg_xiv.templateOptions);
+        var imageView=new bbg_xiv.ImageView();
+        imageView.template=_.template(jQuery("script#bbg_xiv-template_dense_image").html(),null,bbg_xiv.templateOptions);
+        var titlesHtml="";
+        var imagesHtml="";
+        collection.forEach(function(model,index){
+            model.attributes.index=index;
+            imageView.model=titleView.model=model;
+            titlesHtml+=titleView.render(true);
+            imagesHtml+=imageView.render(true);
+        });
+        var galleryView=new bbg_xiv.GalleryView({
+            model:{
+                attributes:{
+                    id:id,
+                    titles:titlesHtml,
+                    images:imagesHtml
+                }
+            }
+        });
+        galleryView.template=_.template(jQuery("script#bbg_xiv-template_dense_container").html(),null,bbg_xiv.templateOptions);
+        container.empty();
+        container.append(galleryView.render().$el.find("div.bbg_xiv-dense_container"));
+    }
+    
     // renderGeneric() may work unmodified with your template.
     // Otherwise you can use it as a base for a render function specific to your template.
     // See renderGallery(), renderCarousel() or renderTabs() - all of which need some special HTML to work correctly.
@@ -236,11 +263,43 @@
                 var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
                 gallery.find("nav.navbar ul.nav li").removeClass("active").first().addClass("active");
                 bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],"Gallery");
+                jQuery(window).resize();
                 e.preventDefault();      
             });
             break;
         case "Tabs":
             bbg_xiv.renderTabs(jqGallery,images,"bbg_xiv-tabs_"+gallery.id);
+            break;
+        case "Dense":
+            bbg_xiv.renderDense(jqGallery,images,"bbg_xiv-dense_"+gallery.id);
+            var highlight="yellow";
+            jqGallery.find("div.bbg_xiv-dense_titles ul li").hover(
+                function(e){
+                    jQuery(this).css({"background-color":highlight});
+                    jQuery("div#"+this.id.replace("title","image")).css({"border-color":highlight});
+                },
+                function(e){
+                    jQuery(this).css({"background-color":"white"});
+                    jQuery("div#"+this.id.replace("title","image")).css({"border-color":"white"});
+                }
+            );
+            jqGallery.find("div.bbg_xiv-dense_flex_item").hover(
+                function(e){
+                    jQuery(this).css({"border-color":highlight});
+                    jQuery("li#"+this.id.replace("image","title")).css({"background-color":highlight});
+                },
+                function(e){
+                    jQuery(this).css({"border-color":"white"});
+                    jQuery("li#"+this.id.replace("image","title")).css({"background-color":"white"});
+                }
+            );
+            jqGallery.find("button.bbg_xiv-dense_close_btn").click(function(e){
+                var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
+                gallery.find("nav.navbar ul.nav li").removeClass("active").first().addClass("active");
+                bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],"Gallery");
+                jQuery(window).resize();
+                e.preventDefault();      
+            });
             break;
         // TODO: Add entry for new views here
         case "Table":
@@ -259,7 +318,7 @@
         bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],this.textContent.trim());
         e.preventDefault();
     });
-    
+
     jQuery("div.bbg_xiv-gallery_envelope").each(function(){
         bbg_xiv.renderGallery(this,"Gallery");
     });
@@ -302,6 +361,11 @@
                 }
             };
         });
+        if(jQuery(window).width()>=1280){
+            jQuery(".bbg_xiv-large_viewport_only").show();
+        }else{
+            jQuery(".bbg_xiv-large_viewport_only").hide();
+        }  
     });
     jQuery(document).ready(function(){
         jQuery(window).resize();

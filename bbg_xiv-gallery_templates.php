@@ -119,6 +119,33 @@
 </figure>
 </script>
 
+<!-- Dense Container Template -->
+<script type="text/html" id="bbg_xiv-template_dense_container">
+<div id="{{{ data.id }}}" class="bbg_xiv-dense_container">
+  <button type="button" class="bbg_xiv-dense_close_btn btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
+  <div class="bbg_xiv-dense_titles">
+    <ul>
+    {{{ data.titles }}}
+    </ul>
+  </div>
+  <div class="bbg_xiv-dense_images">
+    {{{ data.images }}}
+  </div>
+</div>
+</script>
+<!-- Dense Title Template -->
+<script type="text/html" id="bbg_xiv-template_dense_title">
+<li id="bbg_xiv-dense_title_{{{ data.index }}}">{{{ data.post_title }}}</li>
+</script>
+<!-- Dense Image Template -->
+<script type="text/html" id="bbg_xiv-template_dense_image">
+<div id="bbg_xiv-dense_image_{{{ data.index }}}" class="bbg_xiv-dense_flex_item">
+  <a href="{{{ data.link }}}" target="_blank">
+    <img class="img-rounded" src="{{{ data.url }}}">
+  </a>
+</div>
+</script>
+
 <!-- Table Container Template -->
 <script type="text/html" id="bbg_xiv-template_table_container">
 <div class="bbg_xiv-table">

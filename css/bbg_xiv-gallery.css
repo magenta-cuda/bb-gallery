@@ -130,6 +130,10 @@ div.bbg_xiv-flex_container.bbg_xiv-flex_width_8_3333 div.bbg_xiv-flex_item {
   width: 8.3333%; }
 
 div.bbg_xiv-bootstrap div.carousel.slide {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  zIndex: 1000000;
   width: 100vw;
   height: 100vh;
   background-color: white; }
@@ -211,6 +215,46 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content {
       height: 10%;
       width: 100%;
       text-align: center; }
+
+div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100vw;
+  height: 100vh;
+  zIndex: 1000000;
+  background-color: white;
+  padding-top: 20px; }
+  div.bbg_xiv-bootstrap div.bbg_xiv-dense_container button.bbg_xiv-dense_close_btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 5;
+    color: #888;
+    background-color: transparent;
+    line-height: 100%;
+    padding: 0px; }
+  div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_titles {
+    width: 25%;
+    float: left; }
+    div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_titles li {
+      border-radius: 6px; }
+  div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_images {
+    width: 75%;
+    float: left;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center; }
+    div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_images div.bbg_xiv-dense_flex_item {
+      width: 10%;
+      flex: 0 0 auto;
+      border: 6px solid white;
+      border-radius: 6px; }
+      div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_images div.bbg_xiv-dense_flex_item img {
+        width: 100%;
+        max-width: 100%; }
 
 div.bbg_xiv-bootstrap div.bbg_xiv-table {
   height: 80vh;

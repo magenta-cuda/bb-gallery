@@ -156,6 +156,7 @@ EOD;
                 <li class="active"><a href="#">Gallery</a></li>
                 <li><a href="#">Carousel</a></li>
                 <li><a href="#">Tabs</a></li>
+                <li class="bbg_xiv-large_viewport_only"><a href="#">Dense</a></li>
                 <!-- TODO: Add entry for new views here. -->
 $table_nav_item
             </ul>
