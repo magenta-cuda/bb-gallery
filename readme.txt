@@ -3,7 +3,7 @@ Contributors: Magenta Cuda
 Tags: gallery, shortcode
 Requires at least: 4.4
 Tested up to: 4.4
-Stable tag: 1.0
+Stable tag: 1.0.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,6 +17,7 @@ The default implementation supports a gallery view, carousel view and a tabs vie
 The view is styled by a Twitter Bootstrap 3 stylesheet so it is automatically responsive.
 If the browser supports the CSS3 Flexbox the gallery view is implemented using a flexbox.
 You can easily modify the Backbone templates to create your own customized views of the gallery.
+The homepage for this plug-in is [https://bbfgallery.wordpress.com/](https://bbfgallery.wordpress.com/).
 
 == Installation ==
 1. Upload the folder "bb-gallery" to the "/wp-content/plugins/" directory.
@@ -34,10 +35,16 @@ https://bbfgallery.wordpress.com/
 
 == Changelog ==
 
+= 1.0.0.1 =
+* better css for flex gallery and bug fixes
+
 = 1.0 =
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.0.0.1 =
+* better css for flex gallery and bug fixes
 
 = 1.0 =
 * Initial release.

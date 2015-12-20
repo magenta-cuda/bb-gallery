@@ -99,6 +99,31 @@ div.bbg_xiv-flex_container_props {
     column-count: 5;
     -webkit-column-count: 5;
     -moz-column-count: 5; } }
+div.bbg_xiv-flex_container.bbg_xiv-flex_width_100 div.bbg_xiv-flex_item {
+  width: 100%; }
+div.bbg_xiv-flex_container.bbg_xiv-flex_width_50 div.bbg_xiv-flex_item {
+  width: 50%; }
+div.bbg_xiv-flex_container.bbg_xiv-flex_width_33_3333 div.bbg_xiv-flex_item {
+  width: 33.3333%; }
+div.bbg_xiv-flex_container.bbg_xiv-flex_width_25 div.bbg_xiv-flex_item {
+  width: 25%; }
+div.bbg_xiv-flex_container.bbg_xiv-flex_width_20 div.bbg_xiv-flex_item {
+  width: 20%; }
+div.bbg_xiv-flex_container.bbg_xiv-flex_width_16_6666 div.bbg_xiv-flex_item {
+  width: 16.6666%; }
+div.bbg_xiv-flex_container.bbg_xiv-flex_width_14_2857 div.bbg_xiv-flex_item {
+  width: 14.2857%; }
+div.bbg_xiv-flex_container.bbg_xiv-flex_width_12_5 div.bbg_xiv-flex_item {
+  width: 12.5%; }
+div.bbg_xiv-flex_container.bbg_xiv-flex_width_11_1111 div.bbg_xiv-flex_item {
+  width: 11.1111%; }
+div.bbg_xiv-flex_container.bbg_xiv-flex_width_10 div.bbg_xiv-flex_item {
+  width: 10%; }
+div.bbg_xiv-flex_container.bbg_xiv-flex_width_9_0909 div.bbg_xiv-flex_item {
+  width: 9.0909%; }
+div.bbg_xiv-flex_container.bbg_xiv-flex_width_8_3333 div.bbg_xiv-flex_item {
+  width: 8.3333%; }
+
 div.bbg_xiv-bootstrap div.carousel.slide {
   width: 100vw;
   height: 100vh;

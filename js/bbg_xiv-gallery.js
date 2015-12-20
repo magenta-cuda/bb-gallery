@@ -263,5 +263,38 @@
     jQuery("div.bbg_xiv-gallery_envelope").each(function(){
         bbg_xiv.renderGallery(this,"Gallery");
     });
+    
+    var minFlexWidth=128;
+    bbg_xiv.breakpoints=[
+        {width:2*minFlexWidth,class:"100"},
+        {width:3*minFlexWidth,class:"50"},
+        {width:4*minFlexWidth,class:"33_3333"},
+        {width:5*minFlexWidth,class:"25"},
+        {width:6*minFlexWidth,class:"20"},
+        {width:7*minFlexWidth,class:"16_6666"},
+        {width:8*minFlexWidth,class:"14_2857"},
+        {width:9*minFlexWidth,class:"12_5"},
+        {width:10*minFlexWidth,class:"11_1111"},
+        {width:11*minFlexWidth,class:"10"},
+        {width:12*minFlexWidth,class:"9_0909"},
+        {width:1000000,class:"8_3333"}
+    ];
+    jQuery(window).resize(function(){
+        var breakpoints=bbg_xiv.breakpoints;
+        jQuery("div.bbg_xiv-flex_container").each(function(){
+            var jqThis=jQuery(this);
+            var width=jqThis.width();
+            breakpoints.forEach(function(breakpoint){
+              jqThis.removeClass("bbg_xiv-flex_width_"+breakpoint.class);
+            });
+            for(var i=0;i<breakpoints.length;i++){
+                if(width<=breakpoints[i].width){
+                    jqThis.addClass("bbg_xiv-flex_width_"+breakpoints[i].class);
+                    break;
+                }
+            };
+        });
+    });
+    jQuery(window).resize();
 }());
 
