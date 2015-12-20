@@ -286,7 +286,24 @@
             jqGallery.find("div.bbg_xiv-dense_flex_item").hover(
                 function(e){
                     jQuery(this).css({"border-color":highlight});
-                    jQuery("li#"+this.id.replace("image","title")).css({"background-color":highlight});
+                    var li=jQuery("li#"+this.id.replace("image","title")).css({"background-color":highlight});
+                    var top=li.position().top;
+                    var height=li.height();
+                    var bottom=top+height;
+                    console.log("top=",top);
+                    console.log("bottom=",bottom);
+                    var div=li.parents("div.bbg_xiv-dense_titles")
+                    var scrollTop=div.scrollTop();
+                    var scrollHeight=div.height();
+                    var scrollBottom=scrollTop+scrollHeight;
+                    console.log("scrollTop=",scrollTop);
+                    console.log("scrollHeight=",scrollHeight);
+                    console.log("scrollBottom=",scrollBottom);
+                    if(top<0){
+                        div.scrollTop(scrollTop+top-scrollHeight/2-height/2);
+                    }else if(bottom>scrollHeight){
+                        div.scrollTop(scrollTop+(bottom-scrollHeight)+scrollHeight/2-height/2);
+                    }
                 },
                 function(e){
                     jQuery(this).css({"border-color":"white"});

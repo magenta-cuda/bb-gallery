@@ -333,7 +333,7 @@ div.bbg_xiv-bootstrap{
     left:0px;
     top:0px;
     width:100vw;
-    height:100vh;
+    height:96vh;
     zIndex:1000000;
     background-color:white;
     padding:20px 10px 0px 10px;
@@ -353,6 +353,7 @@ div.bbg_xiv-bootstrap{
       width:25%;
       height:100%;
       float:left;
+      position:relative;
       overflow-y:auto;
       
       li{

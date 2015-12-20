@@ -221,7 +221,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
   left: 0px;
   top: 0px;
   width: 100vw;
-  height: 100vh;
+  height: 96vh;
   zIndex: 1000000;
   background-color: white;
   padding: 20px 10px 0px 10px; }
@@ -238,6 +238,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
     width: 25%;
     height: 100%;
     float: left;
+    position: relative;
     overflow-y: auto; }
     div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_titles li {
       font-size: 14px;
