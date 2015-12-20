@@ -4,7 +4,7 @@
 Plugin Name: BB Gallery
 Plugin URI: https://bbfgallery.wordpress.com/
 Description: Gallery using Backbone.js, Bootstrap 3 and CSS3 Flexbox
-Version: 1.0.0.1
+Version: 1.1
 Author: Magenta Cuda
 Author URI: https://profiles.wordpress.org/magenta-cuda/
 License: GPL2
@@ -57,7 +57,8 @@ function bb_gallery_shortcode( $attr ) {
     static $bbg_xiv_data = [
         'version' => '1.0'
     ];
-    $bbg_xiv_data[ 'bbg_xiv_flex_min_width'] = get_option( 'bbg_xiv_flex_min_width', 96 );
+    $bbg_xiv_data[ 'bbg_xiv_flex_min_width' ] = get_option( 'bbg_xiv_flex_min_width', 96 );
+    $bbg_xiv_data[ 'bbg_xiv_flex_min_width_for_caption' ] = get_option( 'bbg_xiv_flex_min_width_for_caption', 96 );
 
     if ( ! empty( $attr['ids'] ) ) {
       // 'ids' is explicitly ordered, unless you specify otherwise.
@@ -231,9 +232,15 @@ add_action( 'admin_init', function( ) {
         echo '<input name="bbg_xiv_flex_min_width" id="bbg_xiv_flex_min_width" type="number" value="' . get_option( 'bbg_xiv_flex_min_width', 96 )
             . '" class="small-text" /> The minimum image width in the "Gallery View" if the CSS3 Flexbox is used.';
     }, 'media',	'bbg_xiv_setting_section' );
+    add_settings_field( 'bbg_xiv_flex_min_width_for_caption', 'Gallery Minimum Image Width', function( ) {
+        echo '<input name="bbg_xiv_flex_min_width_for_caption" id="bbg_xiv_flex_min_width_for_caption" type="number" value="'
+            . get_option( 'bbg_xiv_flex_min_width_for_caption', 96 )
+            . '" class="small-text" /> The minimum image width in the "Gallery View" required to show the caption.';
+    }, 'media',	'bbg_xiv_setting_section' );
     register_setting( 'media', 'bbg_xiv_shortcode' );
     register_setting( 'media', 'bbg_xiv_table' );
     register_setting( 'media', 'bbg_xiv_flex_min_width' );
+    register_setting( 'media', 'bbg_xiv_flex_min_width_for_caption' );
 } );
  
  ?>

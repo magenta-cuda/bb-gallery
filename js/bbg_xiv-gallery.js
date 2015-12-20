@@ -265,6 +265,7 @@
     });
     
     var minFlexWidth=window.bbg_xiv['bbg_xiv_flex_min_width'];
+    var minFlexWidthForCaption=window.bbg_xiv['bbg_xiv_flex_min_width_for_caption'];
     bbg_xiv.breakpoints=[
         {width:2*minFlexWidth,cssClass:"100"},
         {width:3*minFlexWidth,cssClass:"50"},
@@ -288,11 +289,11 @@
               jqThis.removeClass("bbg_xiv-flex_width_"+breakpoint.cssClass);
             });
             for(var i=0;i<breakpoints.length;i++){
-                if(width<=breakpoints[i].width){
+                if(width<breakpoints[i].width){
                     var cssClass=breakpoints[i].cssClass;
                     jqThis.addClass("bbg_xiv-flex_width_"+cssClass);
                     var pxWidth=parseFloat(cssClass.replace("_","."))/100.0*width;
-                    if(pxWidth<96){
+                    if(pxWidth<minFlexWidthForCaption){
                         jqThis.addClass("bbg_xiv-flex_no_caption");
                     }else{
                         jqThis.removeClass("bbg_xiv-flex_no_caption");

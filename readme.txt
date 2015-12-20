@@ -3,7 +3,7 @@ Contributors: Magenta Cuda
 Tags: gallery, shortcode
 Requires at least: 4.4
 Tested up to: 4.4
-Stable tag: 1.0.0.1
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,16 +35,16 @@ https://bbfgallery.wordpress.com/
 
 == Changelog ==
 
-= 1.0.0.1 =
-* better css for flex gallery and bug fixes
+= 1.1 =
+* improved flex gallery
 
 = 1.0 =
 * Initial release.
 
 == Upgrade Notice ==
 
-= 1.0.0.1 =
-* better css for flex gallery and bug fixes
+= 1.1 =
+* improved flex gallery
 
 = 1.0 =
 * Initial release.

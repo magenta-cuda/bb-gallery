@@ -39,7 +39,7 @@
         <figure>
             <figcaption>{{{ data.post_title }}}</figcaption>
             <a href="{{{ data.link }}}" target="_blank">
-                <img src="{{{ data.url }}}" alt="{{{ data.post_title }}}">
+                <img src="{{{ data.url }}}" alt="{{{ data.post_title }}}" title="{{{ data.post_title }}}">
             </a>
         </figure>
     </div>
