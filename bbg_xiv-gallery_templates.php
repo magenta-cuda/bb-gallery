@@ -122,6 +122,8 @@
 <!-- Dense Container Template -->
 <script type="text/html" id="bbg_xiv-template_dense_container">
 <div id="{{{ data.id }}}" class="bbg_xiv-dense_container">
+  <button type="button" id="bbg_xiv-highlight_color"></button>
+  <button type="button" id="bbg_xiv-normal_color"></button>
   <button type="button" class="bbg_xiv-dense_close_btn btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
   <div class="bbg_xiv-dense_titles">
       <ul class="list-unstyled">

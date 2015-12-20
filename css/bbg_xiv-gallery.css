@@ -1,4 +1,5 @@
 /* Stylesheet for the Bootstrap views of the 'gallery' shortcode */
+/* The colors for the Dense View */
 div.bbg_xiv-bootstrap nav.navbar li > a {
   border: 0px none; }
 
@@ -187,6 +188,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse {
     div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse {
       height: auto !important; } }
 div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container nav.navbar ul.nav li a {
+  font-size: 14px;
   padding: 5px 10px; }
 div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content {
   height: 80vh; }
@@ -224,7 +226,14 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
   height: 96vh;
   zIndex: 1000000;
   background-color: white;
-  padding: 20px 10px 0px 10px; }
+  padding: 20px 10px 0px 10px;
+  /* These hidden buttons exists only to hold the highlight and normal colors. */ }
+  div.bbg_xiv-bootstrap div.bbg_xiv-dense_container button#bbg_xiv-normal_color {
+    display: none;
+    background-color: white; }
+  div.bbg_xiv-bootstrap div.bbg_xiv-dense_container button#bbg_xiv-highlight_color {
+    display: none;
+    background-color: yellow; }
   div.bbg_xiv-bootstrap div.bbg_xiv-dense_container button.bbg_xiv-dense_close_btn {
     position: absolute;
     top: 5px;
@@ -242,6 +251,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
     overflow-y: auto; }
     div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_titles li {
       font-size: 14px;
+      background-color: white;
       padding-left: 10px;
       border-radius: 6px; }
   div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_images {

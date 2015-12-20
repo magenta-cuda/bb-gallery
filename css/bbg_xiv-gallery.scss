@@ -1,5 +1,10 @@
 /* Stylesheet for the Bootstrap views of the 'gallery' shortcode */
 
+/* The colors for the Dense View */
+
+$normal-color:white;
+$highlight-color:yellow;
+
 div.bbg_xiv-bootstrap{
   nav.navbar{
     li>a{
@@ -291,6 +296,7 @@ div.bbg_xiv-bootstrap{
     }
     nav.navbar{
       ul.nav li a{
+        font-size:14px;
         padding:5px 10px;
       }
     }
@@ -337,8 +343,20 @@ div.bbg_xiv-bootstrap{
     zIndex:1000000;
     background-color:white;
     padding:20px 10px 0px 10px;
+
+    /* These hidden buttons exists only to hold the highlight and normal colors. */
     
-    button.bbg_xiv-dense_close_btn {
+    button#bbg_xiv-normal_color{
+      display:none;
+      background-color:$normal-color;
+    }
+
+    button#bbg_xiv-highlight_color{
+      display:none;
+      background-color:$highlight-color;
+    }
+
+    button.bbg_xiv-dense_close_btn{
       position:absolute;
       top:5px;
       right:5px;
@@ -358,6 +376,7 @@ div.bbg_xiv-bootstrap{
       
       li{
         font-size:14px;
+        background-color:$normal-color;
         padding-left:10px;
         border-radius:6px;
       }
@@ -378,7 +397,7 @@ div.bbg_xiv-bootstrap{
         div.bbg_xiv-dense_flex_item{
           width:10%;
           flex:0 0 auto;
-          border:6px solid white;
+          border:6px solid $normal-color;
           border-radius:6px;
           
           img{
