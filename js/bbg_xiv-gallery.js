@@ -264,7 +264,7 @@
         bbg_xiv.renderGallery(this,"Gallery");
     });
     
-    var minFlexWidth=80;
+    var minFlexWidth=window.bbg_xiv['bbg_xiv_flex_min_width'];
     bbg_xiv.breakpoints=[
         {width:2*minFlexWidth,cssClass:"100"},
         {width:3*minFlexWidth,cssClass:"50"},
@@ -302,6 +302,8 @@
             };
         });
     });
-    jQuery(window).resize();
+    jQuery(document).ready(function(){
+        jQuery(window).resize();
+    });
 }());
 
