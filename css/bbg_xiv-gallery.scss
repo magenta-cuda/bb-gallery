@@ -336,7 +336,7 @@ div.bbg_xiv-bootstrap{
     height:100vh;
     zIndex:1000000;
     background-color:white;
-    padding-top:20px;
+    padding:20px 10px 0px 10px;
     
     button.bbg_xiv-dense_close_btn {
       position:absolute;
@@ -351,31 +351,39 @@ div.bbg_xiv-bootstrap{
 
     div.bbg_xiv-dense_titles{
       width:25%;
+      height:100%;
       float:left;
+      overflow-y:auto;
       
       li{
+        font-size:14px;
+        padding-left:10px;
         border-radius:6px;
       }
     }
     
     div.bbg_xiv-dense_images{
       width:75%;
+      height:100%;
       float:left;
-      display:flex;
-      flex-direction:row;
-      flex-wrap:wrap;
-      justify-content:flex-start;
-      align-items:center;
-      
-      div.bbg_xiv-dense_flex_item{
-        width:10%;
-        flex:0 0 auto;
-        border:6px solid white;
-        border-radius:6px;
+      overflow-y:auto;
+      div.bbg_xiv-dense_flex_images{
+        display:flex;
+        flex-direction:row;
+        flex-wrap:wrap;
+        justify-content:flex-start;
+        align-items:center;
         
-        img{
-          width:100%;
-          max-width:100%;
+        div.bbg_xiv-dense_flex_item{
+          width:10%;
+          flex:0 0 auto;
+          border:6px solid white;
+          border-radius:6px;
+          
+          img{
+            width:100%;
+            max-width:100%;
+          }
         }
       }
     }

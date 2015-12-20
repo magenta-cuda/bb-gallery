@@ -124,12 +124,14 @@
 <div id="{{{ data.id }}}" class="bbg_xiv-dense_container">
   <button type="button" class="bbg_xiv-dense_close_btn btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
   <div class="bbg_xiv-dense_titles">
-    <ul>
-    {{{ data.titles }}}
-    </ul>
+      <ul class="list-unstyled">
+          {{{ data.titles }}}
+      </ul>
   </div>
   <div class="bbg_xiv-dense_images">
-    {{{ data.images }}}
+      <div class="bbg_xiv-dense_flex_images">
+          {{{ data.images }}}
+      </div>
   </div>
 </div>
 </script>
