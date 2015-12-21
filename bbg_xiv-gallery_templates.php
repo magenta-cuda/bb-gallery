@@ -124,22 +124,32 @@
 <div id="{{{ data.id }}}" class="bbg_xiv-dense_container">
   <button type="button" id="bbg_xiv-highlight_color"></button>
   <button type="button" id="bbg_xiv-normal_color"></button>
+  <div class="bbg_xiv-dense_button_box">
+    <input type="radio" name="bbg_xiv-dense_li_mode" class="bbg_xiv-dense_li_mode" value="title"
+      <# if ( data.mode === "title" ) { #>checked<# } #>>&nbsp;Title&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="radio" name="bbg_xiv-dense_li_mode" class="bbg_xiv-dense_li_mode" value="caption"
+      <# if ( data.mode === "caption" ) { #>checked<# } #>>&nbsp;Caption
+  </div>
   <button type="button" class="bbg_xiv-dense_close_btn btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
   <div class="bbg_xiv-dense_titles">
-      <ul class="list-unstyled">
-          {{{ data.titles }}}
-      </ul>
+    <ul class="list-unstyled">
+      {{{ data.titles }}}
+    </ul>
   </div>
   <div class="bbg_xiv-dense_images">
-      <div class="bbg_xiv-dense_flex_images">
-          {{{ data.images }}}
-      </div>
+    <div class="bbg_xiv-dense_flex_images">
+      {{{ data.images }}}
+    </div>
   </div>
 </div>
 </script>
 <!-- Dense Title Template -->
 <script type="text/html" id="bbg_xiv-template_dense_title">
-<li id="bbg_xiv-dense_title_{{{ data.index }}}">{{{ data.post_title }}}</li>
+<li id="bbg_xiv-dense_title_{{{ data.index }}}">
+  <a href="{{{ data.link }}}" target="_blank">
+    <# if ( data.mode === "title" ) { #>{{{ data.post_title }}}<# } else { #>{{{ data.post_excerpt }}}<# } #>
+  </a>
+</li>
 </script>
 <!-- Dense Image Template -->
 <script type="text/html" id="bbg_xiv-template_dense_image">

@@ -355,6 +355,19 @@ div.bbg_xiv-bootstrap{
       display:none;
       background-color:$highlight-color;
     }
+    
+    div.bbg_xiv-dense_button_box{
+      position:absolute;
+      top:5px;
+      left:25px;
+      z-index:5;
+      padding:0px 7px;
+      border:1px solid gray;
+      border-radius:6px;
+      
+      input.bbg_xiv-dense_li_mode{
+      }
+    }
 
     button.bbg_xiv-dense_close_btn{
       position:absolute;

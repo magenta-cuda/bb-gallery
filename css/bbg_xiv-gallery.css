@@ -234,6 +234,14 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
   div.bbg_xiv-bootstrap div.bbg_xiv-dense_container button#bbg_xiv-highlight_color {
     display: none;
     background-color: yellow; }
+  div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_button_box {
+    position: absolute;
+    top: 5px;
+    left: 25px;
+    z-index: 5;
+    padding: 0px 7px;
+    border: 1px solid gray;
+    border-radius: 6px; }
   div.bbg_xiv-bootstrap div.bbg_xiv-dense_container button.bbg_xiv-dense_close_btn {
     position: absolute;
     top: 5px;
