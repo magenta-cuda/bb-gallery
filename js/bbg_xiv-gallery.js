@@ -299,11 +299,9 @@
                     var top=li.position().top;
                     var height=li.height();
                     var bottom=top+height;
-                    console.log("top=",top);
                     var div=li.parents("div.bbg_xiv-dense_titles")
                     var scrollTop=div.scrollTop();
                     var scrollHeight=div.height();
-                    console.log("scrollTop=",scrollTop);
                     if(top<0){
                         div.scrollTop(scrollTop+top-scrollHeight/2-height/2);
                     }else if(bottom>scrollHeight){

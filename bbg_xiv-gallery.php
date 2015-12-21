@@ -57,7 +57,7 @@ function bb_gallery_shortcode( $attr ) {
     static $bbg_xiv_data = [
         'version' => '1.0'
     ];
-    $bbg_xiv_data[ 'bbg_xiv_flex_min_width' ] = get_option( 'bbg_xiv_flex_min_width', 96 );
+    $bbg_xiv_data[ 'bbg_xiv_flex_min_width' ] = get_option( 'bbg_xiv_flex_min_width', 128 );
     $bbg_xiv_data[ 'bbg_xiv_flex_min_width_for_caption' ] = get_option( 'bbg_xiv_flex_min_width_for_caption', 96 );
 
     if ( ! empty( $attr['ids'] ) ) {
@@ -230,7 +230,7 @@ add_action( 'admin_init', function( ) {
             . checked( get_option( 'bbg_xiv_table' ), 1, FALSE ) . ' /> The "Table View" is primarily intended for developers.';
     }, 'media',	'bbg_xiv_setting_section' );
     add_settings_field( 'bbg_xiv_flex_min_width', 'Gallery Minimum Image Width', function( ) {
-        echo '<input name="bbg_xiv_flex_min_width" id="bbg_xiv_flex_min_width" type="number" value="' . get_option( 'bbg_xiv_flex_min_width', 96 )
+        echo '<input name="bbg_xiv_flex_min_width" id="bbg_xiv_flex_min_width" type="number" value="' . get_option( 'bbg_xiv_flex_min_width', 128 )
             . '" class="small-text" /> The minimum image width in the "Gallery View" if the CSS3 Flexbox is used.';
     }, 'media',	'bbg_xiv_setting_section' );
     add_settings_field( 'bbg_xiv_flex_min_width_for_caption', 'Gallery Minimum Image Width', function( ) {
