@@ -148,6 +148,7 @@
         var titlesHtml="";
         var imagesHtml="";
         collection.forEach(function(model,index){
+            model.attributes.mode=mode;
             model.attributes.index=index;
             imageView.model=titleView.model=model;
             titlesHtml+=titleView.render(true);

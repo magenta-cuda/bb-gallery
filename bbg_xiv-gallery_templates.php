@@ -147,7 +147,10 @@
 <script type="text/html" id="bbg_xiv-template_dense_title">
 <li id="bbg_xiv-dense_title_{{{ data.index }}}">
   <a href="{{{ data.link }}}" target="_blank">
-    <# if ( data.mode === "title" ) { #>{{{ data.post_title }}}<# } else { #>{{{ data.post_excerpt }}}<# } #>
+    <span class="bbg_xiv-dense_li_title" title="{{{ data.post_excerpt }}}"<# if ( data.mode !== "title" ) { #> style="display:none;"<# } #>>
+      {{{ data.post_title }}}</span>
+    <span class="bbg_xiv-dense_li_caption" title="{{{ data.post_title }}}"<# if ( data.mode !== "caption" ) { #> style="display:none;"<# } #>>
+      {{{ data.post_excerpt }}}</span>
   </a>
 </li>
 </script>
@@ -155,7 +158,7 @@
 <script type="text/html" id="bbg_xiv-template_dense_image">
 <div id="bbg_xiv-dense_image_{{{ data.index }}}" class="bbg_xiv-dense_flex_item">
   <a href="{{{ data.link }}}" target="_blank">
-    <img class="img-rounded" src="{{{ data.url }}}">
+    <img class="img-rounded" src="{{{ data.url }}}" title="{{{ data.post_title }}}">
   </a>
 </div>
 </script>
