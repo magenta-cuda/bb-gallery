@@ -150,7 +150,7 @@
     <span class="bbg_xiv-dense_li_title" title="{{{ data.post_excerpt }}}"<# if ( data.mode !== "title" ) { #> style="display:none;"<# } #>>
       {{{ data.post_title }}}</span>
     <span class="bbg_xiv-dense_li_caption" title="{{{ data.post_title }}}"<# if ( data.mode !== "caption" ) { #> style="display:none;"<# } #>>
-      {{{ data.post_excerpt }}}</span>
+      <# if ( data.post_excerpt ) { #>{{{ data.post_excerpt }}}</span><# } else { #>.....<# } #>
   </a>
 </li>
 </script>

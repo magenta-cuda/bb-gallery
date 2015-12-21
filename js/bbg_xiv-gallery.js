@@ -315,6 +315,18 @@
                     jQuery("li#"+this.id.replace("image","title")).css({"background-color":normal});
                 }
             );
+            jqGallery.find("input.bbg_xiv-dense_li_mode").change(function(e){
+                if(this.checked){
+                    var div=jQuery("div.bbg_xiv-dense_container div.bbg_xiv-dense_titles");
+                    if(this.value==="title"){
+                        div.find("span.bbg_xiv-dense_li_caption").hide();
+                        div.find("span.bbg_xiv-dense_li_title").show();
+                    }else if(this.value==="caption"){
+                        div.find("span.bbg_xiv-dense_li_title").hide();
+                        div.find("span.bbg_xiv-dense_li_caption").show();
+                    }
+                }
+            });
             jqGallery.find("button.bbg_xiv-dense_close_btn").click(function(e){
                 // restore "Gallery View"
                 var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
