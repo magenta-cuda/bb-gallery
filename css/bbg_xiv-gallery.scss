@@ -218,7 +218,7 @@ div.bbg_xiv-bootstrap{
     position:fixed;
     left:0px;
     top:0px;
-    zIndex:1000000;
+    z-index:1000000;
     width:100vw;
     height:100vh;
     background-color:white;
@@ -340,9 +340,9 @@ div.bbg_xiv-bootstrap{
     top:0px;
     width:100vw;
     height:96vh;
-    zIndex:1000000;
+    z-index:1000000;
     background-color:white;
-    padding:20px 10px 0px 10px;
+    padding:40px 10px 0px 10px;
 
     /* These hidden buttons exists only to hold the highlight and normal colors. */
     
@@ -359,7 +359,7 @@ div.bbg_xiv-bootstrap{
     button.bbg_xiv-dense_close_btn{
       position:absolute;
       top:5px;
-      right:5px;
+      right:25px;
       z-index:5;
       color:#888;
       background-color:transparent;
