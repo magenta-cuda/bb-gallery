@@ -378,6 +378,7 @@
     
     var minFlexWidth=window.bbg_xiv['bbg_xiv_flex_min_width'];
     var minFlexWidthForCaption=window.bbg_xiv['bbg_xiv_flex_min_width_for_caption'];
+    var minWidthForDenseView=window.bbg_xiv['bbg_xiv_flex_min_width_for_dense_view'];
     bbg_xiv.breakpoints=[
         {width:2*minFlexWidth,cssClass:"100"},
         {width:3*minFlexWidth,cssClass:"50"},
@@ -414,7 +415,7 @@
                 }
             };
         });
-        if(jQuery(window).width()>=1280){
+        if(jQuery(window).width()>=minWidthForDenseView){
             jQuery(".bbg_xiv-large_viewport_only").show();
         }else{
             jQuery(".bbg_xiv-large_viewport_only").hide();

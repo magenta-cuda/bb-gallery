@@ -4,7 +4,7 @@
 Plugin Name: BB Gallery
 Plugin URI: https://bbfgallery.wordpress.com/
 Description: Gallery using Backbone.js, Bootstrap 3 and CSS3 Flexbox
-Version: 1.1
+Version: 1.2
 Author: Magenta Cuda
 Author URI: https://profiles.wordpress.org/magenta-cuda/
 License: GPL2
@@ -59,7 +59,8 @@ function bb_gallery_shortcode( $attr ) {
     ];
     $bbg_xiv_data[ 'bbg_xiv_flex_min_width' ] = get_option( 'bbg_xiv_flex_min_width', 128 );
     $bbg_xiv_data[ 'bbg_xiv_flex_min_width_for_caption' ] = get_option( 'bbg_xiv_flex_min_width_for_caption', 96 );
-
+    $bbg_xiv_data[ 'bbg_xiv_flex_min_width_for_dense_view' ] = get_option( 'bbg_xiv_flex_min_width_for_dense_view', 1280 );
+    
     if ( ! empty( $attr['ids'] ) ) {
       // 'ids' is explicitly ordered, unless you specify otherwise.
       if ( empty( $attr['orderby'] ) ) {
@@ -250,11 +251,17 @@ add_action( 'admin_init', function( ) {
             . get_option( 'bbg_xiv_flex_number_of_dense_view_columns', 10 )
             . '" class="small-text" /> The number of columns in the "Dense View".';
     }, 'media',	'bbg_xiv_setting_section' );
+    add_settings_field( 'bbg_xiv_flex_min_width_for_dense_view', 'Minimum With for Dense View', function( ) {
+        echo '<input name="bbg_xiv_flex_min_width_for_dense_view" id="bbg_xiv_flex_min_width_for_dense_view" type="number" value="'
+            . get_option( 'bbg_xiv_flex_min_width_for_dense_view', 1280 )
+            . '" class="small-text" /> The minimum browser viewport width required to show the "Dense View".';
+    }, 'media',	'bbg_xiv_setting_section' );
     register_setting( 'media', 'bbg_xiv_shortcode' );
     register_setting( 'media', 'bbg_xiv_table' );
     register_setting( 'media', 'bbg_xiv_flex_min_width' );
     register_setting( 'media', 'bbg_xiv_flex_min_width_for_caption' );
     register_setting( 'media', 'bbg_xiv_flex_number_of_dense_view_columns' );
+    register_setting( 'media', 'bbg_xiv_flex_min_width_for_dense_view' );
 } );
  
  ?>
