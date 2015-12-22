@@ -211,6 +211,13 @@ EOD;
 add_action( 'wp_enqueue_scripts', function( ) {
     wp_enqueue_style( 'bootstrap', plugins_url( '/css/bootstrap.css' , __FILE__ ) );
     wp_enqueue_style( 'bbg_xiv-gallery', plugins_url( '/css/bbg_xiv-gallery.css' , __FILE__ ), [ 'bootstrap' ] );
+    $width = ( 100 / (integer) get_option( 'bbg_xiv_flex_number_of_dense_view_columns', 10 ) ) . '%';
+    wp_add_inline_style( 'bbg_xiv-gallery', <<<EOD
+div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_images div.bbg_xiv-dense_flex_images div.bbg_xiv-dense_flex_item{
+  width:$width;
+}
+EOD
+    );
     wp_enqueue_script( 'backbone' );
     wp_enqueue_script( 'modernizr', plugins_url( '/js/modernizr.js' , __FILE__ ) );
     wp_enqueue_script( 'bootstrap', plugins_url( '/js/bootstrap.js' , __FILE__ ), [ 'jquery' ], FALSE, TRUE );
@@ -238,10 +245,16 @@ add_action( 'admin_init', function( ) {
             . get_option( 'bbg_xiv_flex_min_width_for_caption', 96 )
             . '" class="small-text" /> The minimum image width in the "Gallery View" required to show the caption.';
     }, 'media',	'bbg_xiv_setting_section' );
+    add_settings_field( 'bbg_xiv_flex_number_of_dense_view_columns', 'Columns in Dense View', function( ) {
+        echo '<input name="bbg_xiv_flex_number_of_dense_view_columns" id="bbg_xiv_flex_number_of_dense_view_columns" type="number" value="'
+            . get_option( 'bbg_xiv_flex_number_of_dense_view_columns', 10 )
+            . '" class="small-text" /> The number of columns in the "Dense View".';
+    }, 'media',	'bbg_xiv_setting_section' );
     register_setting( 'media', 'bbg_xiv_shortcode' );
     register_setting( 'media', 'bbg_xiv_table' );
     register_setting( 'media', 'bbg_xiv_flex_min_width' );
     register_setting( 'media', 'bbg_xiv_flex_min_width_for_caption' );
+    register_setting( 'media', 'bbg_xiv_flex_number_of_dense_view_columns' );
 } );
  
  ?>
