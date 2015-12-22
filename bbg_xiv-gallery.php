@@ -241,7 +241,7 @@ add_action( 'admin_init', function( ) {
         echo '<input name="bbg_xiv_flex_min_width" id="bbg_xiv_flex_min_width" type="number" value="' . get_option( 'bbg_xiv_flex_min_width', 128 )
             . '" class="small-text" /> The minimum image width in the "Gallery View" if the CSS3 Flexbox is used.';
     }, 'media',	'bbg_xiv_setting_section' );
-    add_settings_field( 'bbg_xiv_flex_min_width_for_caption', 'Gallery Minimum Image Width', function( ) {
+    add_settings_field( 'bbg_xiv_flex_min_width_for_caption', 'Gallery Minimum Image Width for Caption', function( ) {
         echo '<input name="bbg_xiv_flex_min_width_for_caption" id="bbg_xiv_flex_min_width_for_caption" type="number" value="'
             . get_option( 'bbg_xiv_flex_min_width_for_caption', 96 )
             . '" class="small-text" /> The minimum image width in the "Gallery View" required to show the caption.';
