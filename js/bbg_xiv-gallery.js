@@ -290,7 +290,19 @@
                 function(e){
                     // highlight matching image
                     jQuery(this).css({"background-color":highlight});
-                    jQuery("div#"+this.id.replace("title","image")).css({"border-color":highlight});
+                    var img=jQuery("div#"+this.id.replace("title","image")).css({"border-color":highlight});
+                    // scroll images view if matching image is hidden
+                    var top=img.position().top;
+                    var height=img.height();
+                    var bottom=top+height;
+                    var div=img.parents("div.bbg_xiv-dense_images")
+                    var scrollTop=div.scrollTop();
+                    var scrollHeight=div.height();
+                    if(top<0){
+                        div.scrollTop(scrollTop+top-scrollHeight/2-height/2);
+                    }else if(bottom>scrollHeight){
+                        div.scrollTop(scrollTop+(bottom-scrollHeight)+scrollHeight/2-height/2);
+                    }
                 },
                 function(e){
                     jQuery(this).css({"background-color":normal});
