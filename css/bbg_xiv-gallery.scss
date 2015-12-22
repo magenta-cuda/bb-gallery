@@ -339,10 +339,10 @@ div.bbg_xiv-bootstrap{
     left:0px;
     top:0px;
     width:100vw;
-    height:96vh;
+    height:100vh;
     z-index:1000000;
     background-color:white;
-    padding:40px 10px 0px 10px;
+    padding:50px 10px 0px 10px;
 
     /* These hidden buttons exists only to hold the highlight and normal colors. */
     
@@ -382,7 +382,7 @@ div.bbg_xiv-bootstrap{
 
     div.bbg_xiv-dense_titles{
       width:25%;
-      height:100%;
+      height:96%;
       float:left;
       position:relative;
       overflow-y:auto;
@@ -397,7 +397,7 @@ div.bbg_xiv-bootstrap{
     
     div.bbg_xiv-dense_images{
       width:75%;
-      height:100%;
+      height:96%;
       float:left;
       overflow-y:auto;
       div.bbg_xiv-dense_flex_images{

@@ -261,6 +261,8 @@
             }
             break;
         case "Carousel":
+            var overflow=jQuery("html").css("overflow-y");
+            jQuery("html").css("overflow-y","hidden");
             bbg_xiv.renderCarousel(jqGallery,images,"bbg_xiv-carousel_"+gallery.id);
             jqGallery.find("button.bbg_xiv-carousel_close_btn").click(function(e){
                 // restore "Gallery View"
@@ -268,6 +270,7 @@
                 gallery.find("nav.navbar ul.nav li").removeClass("active").first().addClass("active");
                 bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],"Gallery");
                 jQuery(window).resize();
+                jQuery("html").css("overflow-y",overflow);
                 e.preventDefault();      
             });
             break;
@@ -278,6 +281,8 @@
             });
             break;
         case "Dense":
+            var overflow=jQuery("html").css("overflow-y");
+            jQuery("html").css("overflow-y","hidden");
             bbg_xiv.renderDense(jqGallery,images,"bbg_xiv-dense_"+gallery.id,"title");
             var normal=jQuery("div.bbg_xiv-dense_container button#bbg_xiv-normal_color").css("background-color");
             var highlight=jQuery("div.bbg_xiv-dense_container button#bbg_xiv-highlight_color").css("background-color");
@@ -333,6 +338,7 @@
                 gallery.find("nav.navbar ul.nav li").removeClass("active").first().addClass("active");
                 bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],"Gallery");
                 jQuery(window).resize();
+                jQuery("html").css("overflow-y",overflow);
                 e.preventDefault();      
             });
             break;
