@@ -303,31 +303,31 @@ div.bbg_xiv-bootstrap{
     div.tab-content{
       height:80vh;
       figure{
-        position: relative;
+        position:relative;
         height:100%;
-        overflow: hidden;
-        img {
-          position: absolute;
-          left: 50%;
-          top: 0px;
-          transform: translate(-50%, 0px);
-          display: block;
-          height: 90%;
-          max-width: none;
-          padding: 1%;
-          @supports ( object-fit: contain ) {
-            width: 100%;
-            object-fit: contain;
+        overflow-x:hidden;
+        overflow-y:auto;
+        img{
+          position:absolute;
+          left:50%;
+          top:0px;
+          transform:translate(-50%,0px);
+          display:block;
+          height:90%;
+          max-width:none;
+          padding:1%;
+          @supports( object-fit:contain){
+            width:100%;
+            object-fit:contain;
           }
         }
-        figcaption {
-          position: absolute;
-          left: 50%;
-          bottom: 0px;
-          transform: translate(-50%, 0px);
-          height: 10%;
-          width: 100%;
-          text-align: center;
+        figcaption{
+          position:absolute;
+          left:0px;
+          top:90%;
+          width:100%;
+          text-align:center;
+          padding:10px;
         }
       }
     }

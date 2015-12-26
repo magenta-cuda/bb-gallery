@@ -195,7 +195,8 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content {
   div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure {
     position: relative;
     height: 100%;
-    overflow: hidden; }
+    overflow-x: hidden;
+    overflow-y: auto; }
     div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure img {
       position: absolute;
       left: 50%;
@@ -211,12 +212,11 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content {
           object-fit: contain; } }
     div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure figcaption {
       position: absolute;
-      left: 50%;
-      bottom: 0px;
-      transform: translate(-50%, 0px);
-      height: 10%;
+      left: 0px;
+      top: 90%;
       width: 100%;
-      text-align: center; }
+      text-align: center;
+      padding: 10px; }
 
 div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
   position: fixed;
