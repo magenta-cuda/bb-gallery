@@ -1,19 +1,19 @@
 === Backbone Bootstrap Gallery ===
 Contributors: Magenta Cuda
-Tags: gallery, shortcode
+Tags: gallery, shortcode, lightbox, slideshow, responsive, plug-compatible, replacement
 Requires at least: 4.4
 Tested up to: 4.4
 Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Plug-compatible replacement for the built-in WordPress gallery shortcode.
+Responsive plug-compatible replacement for the built-in WordPress gallery shortcode.
 
 == Description ==
 This is a plug-compatible replacement for the built-in WordPress gallery shortcode.
 It is implemented using a Backbone.js Model-View-Presenter (MVP) styled by a Twitter Bootstrap 3 stylesheet.
 Using a MVP allows you to switch instantaneously (i.e. without doing a HTTP request) between multiple views of a gallery.
-The default implementation supports a gallery view, carousel view, tabs view and a dense view of the gallery.
+The default implementation supports a gallery view, carousel (slideshow) view, tabs view and a dense view of the gallery.
 The view is styled by a Twitter Bootstrap 3 stylesheet so it is automatically responsive.
 If the browser supports the CSS3 Flexbox the gallery view is implemented using a flexbox.
 You can easily modify the Backbone templates to create your own customized views of the gallery.
