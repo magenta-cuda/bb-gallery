@@ -173,8 +173,13 @@ EOD;
         $img_url = wp_get_attachment_url($id);
         $attachment->url = $img_url;
         $meta = wp_get_attachment_metadata( $id );
+        foreach( $meta[ 'sizes' ] as $size => &$size_attrs ) {
+            $size_attrs[ 'url' ] = wp_get_attachment_image_src( $id, $size )[0];
+            unset( $size_attrs[ 'file' ] );
+        }
         $attachment->width  = $meta[ 'width'  ];
         $attachment->height = $meta[ 'height' ];
+        $attachment->sizes  = $meta[ 'sizes'  ];
         $orientation = '';
         if ( isset( $meta['height'], $meta['width'] ) ) {
           $orientation = ( $meta['height'] > $meta['width'] ) ? 'portrait' : 'landscape';
@@ -204,6 +209,7 @@ EOD;
         unset( $attachment->post_status );
         unset( $attachment->post_type );
     }
+    error_log( 'bb_gallery_shortcode():$attachments=' . print_r( $attachments, true ) );
     $bbg_xiv_data[ "$selector-data" ] = json_encode( array_values( $attachments ) );
     wp_localize_script( 'bbg_xiv-gallery', 'bbg_xiv', $bbg_xiv_data );
     return $output;
