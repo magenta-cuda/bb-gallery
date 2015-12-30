@@ -276,6 +276,13 @@
             break;
         case "Tabs":
             bbg_xiv.renderTabs(jqGallery,images,"bbg_xiv-tabs_"+gallery.id);
+            // Hide the expand glyph if not needed.
+            jqGallery.find("nav.navbar div.navbar-collapse ul.nav").each(function(e){
+                if(jQuery(this).height()<jQuery(this.parentNode).height()){
+                    jqGallery.find("nav.navbar span.glyphicon").hide();
+                }
+            });
+            // Clicking the expand glpyh shows all the tabs.
             jqGallery.find("span.glyphicon-collapse-down,span.glyphicon-collapse-up").click(function(e){
                 var jqThis=jQuery(this);
                 var navbar=jQuery(this.parentNode).find("div.navbar-collapse");
