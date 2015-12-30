@@ -276,6 +276,17 @@
             break;
         case "Tabs":
             bbg_xiv.renderTabs(jqGallery,images,"bbg_xiv-tabs_"+gallery.id);
+            jqGallery.find("span.glyphicon-collapse-down,span.glyphicon-collapse-up").click(function(e){
+                var jqThis=jQuery(this);
+                var navbar=jQuery(this.parentNode).find("div.navbar-collapse");
+                if(jqThis.hasClass("glyphicon-collapse-down")){
+                    jqThis.removeClass("glyphicon-collapse-down").addClass("glyphicon-collapse-up");
+                    navbar.removeClass("bbg_xiv-closed").addClass("bbg_xiv-open");
+                }else{
+                    jqThis.removeClass("glyphicon-collapse-up").addClass("glyphicon-collapse-down");
+                    navbar.removeClass("bbg_xiv-open").addClass("bbg_xiv-closed");
+                }
+            });
             jqGallery.find("nav.navbar ul.nav li a").click(function(e){
                 if(!Modernizr.objectfit){
                     // Microsoft Edge does not support CSS object-fit so do the object fit with JavaScript code

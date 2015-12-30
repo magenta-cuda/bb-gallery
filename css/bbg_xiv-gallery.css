@@ -182,11 +182,23 @@ div.bbg_xiv-bootstrap div.carousel.slide {
         background-color: white; }
 
 div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse {
-  height: 10vh !important;
+  width: 96%;
+  float: left;
   overflow: auto !important; }
-  @media (max-width: 767px) {
-    div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse {
-      height: auto !important; } }
+  div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse.bbg_xiv-closed {
+    height: 10vh !important; }
+    @media (max-width: 767px) {
+      div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse.bbg_xiv-closed {
+        height: auto !important; } }
+  div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse.bbg_xiv-open {
+    height: auto !important; }
+div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container span.glyphicon-collapse-down, div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container span.glyphicon-collapse-up {
+  float: right;
+  font-size: 20px;
+  display: none; }
+  @media (min-width: 768px) {
+    div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container span.glyphicon-collapse-down, div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container span.glyphicon-collapse-up {
+      display: block; } }
 div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container nav.navbar ul.nav li a {
   font-size: 14px;
   padding: 5px 10px; }

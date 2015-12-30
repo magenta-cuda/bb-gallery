@@ -91,11 +91,12 @@
         <span class="icon-bar"></span>
       </button>
     </div>
-    <div id="{{{ data.id }}}_tabbar_collapse" class="collapse navbar-collapse">
+    <div id="{{{ data.id }}}_tabbar_collapse" class="collapse navbar-collapse bbg_xiv-closed">
       <ul class="nav nav-tabs">
         {{{ data.tabs }}}
       </ul>
     </div>
+    <span class="glyphicon glyphicon-collapse-down"></span>
   </nav>
   <!-- Panes -->
   <div class="tab-content">
