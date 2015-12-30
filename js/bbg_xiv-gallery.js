@@ -281,6 +281,7 @@
                     // Microsoft Edge does not support CSS object-fit so do the object fit with JavaScript code
                     jQuery(this.href.substr(this.href.lastIndexOf("#"))+" img").each(function(){
                         var img=this;
+                        var i=0;
                         window.setTimeout(function f(){
                             var w=img.naturalWidth;
                             var h=img.naturalHeight;
@@ -290,29 +291,25 @@
                             console.log("W=",W);
                             console.log("H=",H);
                             if(!W||!H||W<64||H<64){
-                                window.setTimeout(f,10);
+                                if(i++<8){
+                                    window.setTimeout(f,100);
+                                }
                                 return;
                             }
                             var r=Math.max(w/W,h/H);
                             console.log("r=",r);
-                            jQuery(img).css({width:Math.floor(w/r)+"px",height:Math.floor(h/r)+"px",padding:"0px",border:"0px none"});
-                        },10);
+                            if(r<0.125||r>8){
+                                return;
+                            }
+                            w=Math.floor(w/r);
+                            h=Math.floor(h/r);
+                            var top=(h<H)?(H-h)/2:0;
+                            jQuery(img).css({width:w+"px",height:h+"px",top:top+"px"});
+                        },100);
                     });
                 }
                 jQuery(window).scrollTop(jqGallery.offset().top-40);
             });
-            /*
-            if(!Modernizr.objectfit){
-                // Microsoft Edge does not support CSS object-fit so do the object fit with JavaScript code
-                jqGallery.find("img").each(function(){
-                    var w=this.naturalWidth;
-                    var h=this.naturalHeight;
-                    var parent=jQuery(this.parentNode.parentNode);
-                    var r=Math.max(w/parent.width(),h/parent.height());
-                    jQuery(this).css({width:Math.floor(w/r)+"px",height:Math.floor(h/r)+"px"});
-                });
-            }
-            */
             break;
         case "Dense":
             var overflow=jQuery("html").css("overflow-y");
