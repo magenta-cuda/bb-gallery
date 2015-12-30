@@ -205,7 +205,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content {
       display: block;
       height: 85%;
       max-width: none;
-      padding: 1%; }
+      padding: 0px; }
       @supports (object-fit: contain) {
         div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure img {
           width: 100%;
