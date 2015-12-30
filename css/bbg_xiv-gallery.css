@@ -203,7 +203,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content {
       top: 0px;
       transform: translate(-50%, 0px);
       display: block;
-      height: 90%;
+      height: 85%;
       max-width: none;
       padding: 1%; }
       @supports (object-fit: contain) {
@@ -213,7 +213,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content {
     div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure figcaption {
       position: absolute;
       left: 0px;
-      top: 90%;
+      top: 85%;
       width: 100%;
       text-align: center;
       padding: 10px; }

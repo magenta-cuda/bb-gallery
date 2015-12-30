@@ -277,8 +277,42 @@
         case "Tabs":
             bbg_xiv.renderTabs(jqGallery,images,"bbg_xiv-tabs_"+gallery.id);
             jqGallery.find("nav.navbar ul.nav li a").click(function(e){
+                if(!Modernizr.objectfit){
+                    // Microsoft Edge does not support CSS object-fit so do the object fit with JavaScript code
+                    jQuery(this.href.substr(this.href.lastIndexOf("#"))+" img").each(function(){
+                        var img=this;
+                        window.setTimeout(function f(){
+                            var w=img.naturalWidth;
+                            var h=img.naturalHeight;
+                            var parent=jQuery(img.parentNode.parentNode);
+                            var W=parent.width();
+                            var H=85*parent.height()/100;
+                            console.log("W=",W);
+                            console.log("H=",H);
+                            if(!W||!H||W<64||H<64){
+                                window.setTimeout(f,10);
+                                return;
+                            }
+                            var r=Math.max(w/W,h/H);
+                            console.log("r=",r);
+                            jQuery(img).css({width:Math.floor(w/r)+"px",height:Math.floor(h/r)+"px",padding:"0px",border:"0px none"});
+                        },10);
+                    });
+                }
                 jQuery(window).scrollTop(jqGallery.offset().top-40);
             });
+            /*
+            if(!Modernizr.objectfit){
+                // Microsoft Edge does not support CSS object-fit so do the object fit with JavaScript code
+                jqGallery.find("img").each(function(){
+                    var w=this.naturalWidth;
+                    var h=this.naturalHeight;
+                    var parent=jQuery(this.parentNode.parentNode);
+                    var r=Math.max(w/parent.width(),h/parent.height());
+                    jQuery(this).css({width:Math.floor(w/r)+"px",height:Math.floor(h/r)+"px"});
+                });
+            }
+            */
             break;
         case "Dense":
             var overflow=jQuery("html").css("overflow-y");
