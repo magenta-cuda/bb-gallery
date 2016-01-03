@@ -306,8 +306,6 @@
                             var parent=jQuery(img.parentNode.parentNode);
                             var W=parent.width();
                             var H=85*parent.height()/100;
-                            console.log("W=",W);
-                            console.log("H=",H);
                             if(!W||!H||W<64||H<64){
                                 if(i++<8){
                                     window.setTimeout(f,100);
@@ -315,7 +313,6 @@
                                 return;
                             }
                             var r=Math.max(w/W,h/H);
-                            console.log("r=",r);
                             if(r<0.125||r>8){
                                 return;
                             }
@@ -420,7 +417,7 @@
     bbg_xiv.getCookie=function(name){
         var cookie=document.cookie;
         cookie+=";"
-        console.log("getCookie():cookie=",cookie);
+        //console.log("getCookie():cookie=",cookie);
         var start=cookie.indexOf(name+"=");
         if(start===-1){
             return null;

@@ -209,7 +209,6 @@ EOD;
         unset( $attachment->post_status );
         unset( $attachment->post_type );
     }
-    error_log( 'bb_gallery_shortcode():$attachments=' . print_r( $attachments, true ) );
     $bbg_xiv_data[ "$selector-data" ] = json_encode( array_values( $attachments ) );
     wp_localize_script( 'bbg_xiv-gallery', 'bbg_xiv', $bbg_xiv_data );
     return $output;
