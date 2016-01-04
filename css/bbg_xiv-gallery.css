@@ -201,7 +201,8 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container span.glyphicon-collaps
       display: block; } }
 div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container nav.navbar ul.nav li a {
   font-size: 14px;
-  padding: 5px 10px; }
+  padding: 5px 10px;
+  border: 1px solid transparent; }
 div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content {
   height: 80vh; }
   div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure {
