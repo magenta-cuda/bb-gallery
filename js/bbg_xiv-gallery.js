@@ -45,13 +45,13 @@
             imagesHtml+=imageView.render(true);
             // Bootstrap's grid needs "clear" elements to correctly align non-uniformly sized items
             if(index%4===3){
-                imagesHtml+='<div class="clearfix visible-lg-block"></div>';
+                imagesHtml+='<br class="clearfix visible-lg-block">';
             }
             if(index%3===2){
-                imagesHtml+='<div class="clearfix visible-md-block"></div>';
+                imagesHtml+='<br class="clearfix visible-md-block">';
             }
             if(index%2===1){
-                imagesHtml+='<div class="clearfix visible-sm-block"></div>';
+                imagesHtml+='<br class="clearfix visible-sm-block">';
             }
         } );
         var galleryView=new bbg_xiv.GalleryView({
@@ -253,7 +253,7 @@
         }
         switch(view){
         case "Gallery":
-            if(Modernizr.flexbox&&Modernizr.flexwrap){
+            if(Modernizr.flexbox&&Modernizr.flexwrap&&!window.bbg_xiv['bbg_xiv_disable_flexbox']){
                 bbg_xiv.renderFlex(jqGallery,images);
                 jQuery(window).resize();
             }else{
@@ -463,7 +463,7 @@
 
     jQuery(window).resize(function(){
         var breakpoints=bbg_xiv.breakpoints;
-        jQuery("div.bbg_xiv-flex_container").each(function(){
+        jQuery("div.bbg_xiv-flex_container, div.bbg_xiv-gallery_container").each(function(){
             var jqThis=jQuery(this);
             var width=jqThis.width();
             breakpoints.forEach(function(breakpoint){

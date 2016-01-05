@@ -60,6 +60,7 @@ function bb_gallery_shortcode( $attr ) {
     $bbg_xiv_data[ 'bbg_xiv_flex_min_width' ] = get_option( 'bbg_xiv_flex_min_width', 128 );
     $bbg_xiv_data[ 'bbg_xiv_flex_min_width_for_caption' ] = get_option( 'bbg_xiv_flex_min_width_for_caption', 96 );
     $bbg_xiv_data[ 'bbg_xiv_flex_min_width_for_dense_view' ] = get_option( 'bbg_xiv_flex_min_width_for_dense_view', 1280 );
+    $bbg_xiv_data[ 'bbg_xiv_disable_flexbox' ] = get_option( 'bbg_xiv_disable_flexbox', FALSE );
     
     if ( ! empty( $attr['ids'] ) ) {
       // 'ids' is explicitly ordered, unless you specify otherwise.
