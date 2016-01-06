@@ -142,10 +142,12 @@
       {{{ data.images }}}
     </div>
   </div>
+  <!-- Full Browser Viewport View of an Image -->
   <div class="bbg_xiv-dense_outer">
   </div>
   <div class="bbg_xiv-dense_inner">
     <button class="bbg_xiv-dense_close"><span class="glyphicon glyphicon-remove"></span></button>
+    <h1 class="bbg_xiv-dense_title"></h1>
     <img class="img-rounded">
   </div>
 </div>

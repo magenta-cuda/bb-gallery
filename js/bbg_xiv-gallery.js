@@ -396,8 +396,21 @@
               inner.hide();
               outer.hide();
             });
+            var fullImg=inner.find("img");
+            var fullTitle=inner.find("h1.bbg_xiv-dense_title");
+            // only show title on mouseover
+            fullImg.hover(
+                function(){
+                    fullTitle.show();
+                },
+                function(){
+                    fullTitle.hide();
+                }
+            );
             jqGallery.find("button.bbg_xiv-dense_full_btn").click(function(e){
-                inner.find("img")[0].src=jQuery(this).parents("div.bbg_xiv-dense_flex_item").find("img")[0].src;
+                var img=jQuery(this).parents("div.bbg_xiv-dense_flex_item").find("img")[0];
+                fullImg[0].src=img.src;
+                fullTitle[0].textContent=img.title;
                 outer.show();
                 inner.show();
                 e.preventDefault();
