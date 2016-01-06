@@ -349,6 +349,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
       justify-content: flex-start;
       align-items: center; }
       div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_images div.bbg_xiv-dense_flex_images div.bbg_xiv-dense_flex_item {
+        position: relative;
         width: 10%;
         flex: 0 0 auto;
         border: 6px solid white;
@@ -356,6 +357,29 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
         div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_images div.bbg_xiv-dense_flex_images div.bbg_xiv-dense_flex_item img {
           width: 100%;
           max-width: 100%; }
+        div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_images div.bbg_xiv-dense_flex_images div.bbg_xiv-dense_flex_item div.bbg_xiv-dense_full_btn {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          width: 100%;
+          height: 100%;
+          z-index: 1000;
+          color: transparent;
+          background-color: transparent; }
+          div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_images div.bbg_xiv-dense_flex_images div.bbg_xiv-dense_flex_item div.bbg_xiv-dense_full_btn button.bbg_xiv-dense_full_btn {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            z-index: 1000;
+            font-size: 14px;
+            padding: 2px;
+            color: inherit;
+            border-color: inherit;
+            background-color: transparent;
+            line-height: 100%; }
+          div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_images div.bbg_xiv-dense_flex_images div.bbg_xiv-dense_flex_item div.bbg_xiv-dense_full_btn:hover {
+            color: cyan;
+            border-color: cyan; }
 
 div.bbg_xiv-bootstrap div.bbg_xiv-table {
   height: 80vh;

@@ -158,8 +158,13 @@
 <!-- Dense Image Template -->
 <script type="text/html" id="bbg_xiv-template_dense_image">
 <div id="bbg_xiv-dense_image_{{{ data.index }}}" class="bbg_xiv-dense_flex_item">
+  <img class="img-rounded" src="{{{ data.url }}}" title="{{{ data.post_title }}}">
   <a href="{{{ data.link }}}" target="_blank">
-    <img class="img-rounded" src="{{{ data.url }}}" title="{{{ data.post_title }}}">
+    <div class="bbg_xiv-dense_full_btn">
+      <button class="bbg_xiv-dense_full_btn btn">
+        <span class="glyphicon glyphicon-fullscreen">
+      </button>
+    </div>
   </a>
 </div>
 </script>
