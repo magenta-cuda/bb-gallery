@@ -14,26 +14,30 @@ div.bbg_xiv-bootstrap{
 }
 
 div.bbg_xiv-gallery_container{
-  figure{
-    overflow:hidden;
-    padding:2px;
-    border:2px solid #888;
-    margin-bottom:10px;
-    figcaption{
-      font-size:1.2rem;
-      text-align: center;
-      background-color: cyan;
-      border-top-left-radius:6px;
-      border-top-right-radius:6px;
+  div.bbg_xiv-flex_item{
+    padding-left:1%;
+    padding-right:1%;
+    figure{
       overflow:hidden;
-    }
-    img{
-      width:100%;
-      max-width:100%;
-      height:auto;
-      border-bottom-left-radius:6px;
-      border-bottom-right-radius:6px;
-      overflow:hidden;
+      padding:2px;
+      border:2px solid #888;
+      margin-bottom:10px;
+      figcaption{
+        font-size:1.2rem;
+        text-align: center;
+        background-color: cyan;
+        border-top-left-radius:6px;
+        border-top-right-radius:6px;
+        overflow:hidden;
+      }
+      img{
+        width:100%;
+        max-width:100%;
+        height:auto;
+        border-bottom-left-radius:6px;
+        border-bottom-right-radius:6px;
+        overflow:hidden;
+      }
     }
   }
 }

@@ -3,25 +3,28 @@
 div.bbg_xiv-bootstrap nav.navbar li > a {
   border: 0px none; }
 
-div.bbg_xiv-gallery_container figure {
-  overflow: hidden;
-  padding: 2px;
-  border: 2px solid #888;
-  margin-bottom: 10px; }
-  div.bbg_xiv-gallery_container figure figcaption {
-    font-size: 1.2rem;
-    text-align: center;
-    background-color: cyan;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-    overflow: hidden; }
-  div.bbg_xiv-gallery_container figure img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
-    overflow: hidden; }
+div.bbg_xiv-gallery_container div.bbg_xiv-flex_item {
+  padding-left: 1%;
+  padding-right: 1%; }
+  div.bbg_xiv-gallery_container div.bbg_xiv-flex_item figure {
+    overflow: hidden;
+    padding: 2px;
+    border: 2px solid #888;
+    margin-bottom: 10px; }
+    div.bbg_xiv-gallery_container div.bbg_xiv-flex_item figure figcaption {
+      font-size: 1.2rem;
+      text-align: center;
+      background-color: cyan;
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+      overflow: hidden; }
+    div.bbg_xiv-gallery_container div.bbg_xiv-flex_item figure img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-bottom-left-radius: 6px;
+      border-bottom-right-radius: 6px;
+      overflow: hidden; }
 
 div.bbg_xiv-gallery_container.bbg_xiv-flex_width_100 div.bbg_xiv-flex_item {
   width: 100%; }
