@@ -17,11 +17,11 @@
 </script>
 <!-- Gallery Item Template -->
 <script type="text/html" id="bbg_xiv-template_gallery_item">
-        <div class="bbg_xiv-gallery_item col-sm-6 col-md-4 col-lg-3">
+        <div class="bbg_xiv-flex_item col-sm-6 col-md-4 col-lg-3">
             <figure class="img-rounded bbg_xiv-gallery_item">
                 <figcaption>{{{ data.post_title }}}</figcaption>
                 <a href="{{{ data.link }}}" target="_blank">
-                    <img src="{{{ data.url }}}">
+                    <img src="{{{ data.url }}}" title="{{{ data.post_title }}}">
                 </a>
             </figure>
         </div>
