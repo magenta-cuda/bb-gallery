@@ -363,7 +363,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
           left: 0px;
           width: 100%;
           height: 100%;
-          z-index: 1000;
+          z-index: 10;
           color: transparent;
           background-color: transparent; }
           div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_images div.bbg_xiv-dense_flex_images div.bbg_xiv-dense_flex_item div.bbg_xiv-dense_full_btn button.bbg_xiv-dense_full_btn {
@@ -388,7 +388,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_outer {
   height: 100vh;
   z-index: 100;
   background-color: black;
-  opacity: 0.9;
+  opacity: 0.95;
   display: none; }
 div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner {
   position: fixed;
@@ -410,7 +410,10 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner {
         object-fit: contain; } }
     @supports not (object-fit: contain) {
       div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner img {
-        height: 100%; } }
+        display: block;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto; } }
   div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner button.bbg_xiv-dense_close {
     position: absolute;
     top: 10px;

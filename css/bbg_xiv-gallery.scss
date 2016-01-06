@@ -4,6 +4,8 @@
 
 $normal-color:white;
 $highlight-color:yellow;
+$caption-color:cyan;
+$icon-color:cyan;
 
 div.bbg_xiv-bootstrap{
   nav.navbar{
@@ -24,8 +26,8 @@ div.bbg_xiv-gallery_container{
       margin-bottom:10px;
       figcaption{
         font-size:1.2rem;
-        text-align: center;
-        background-color: cyan;
+        text-align:center;
+        background-color:$caption-color;
         border-top-left-radius:6px;
         border-top-right-radius:6px;
         overflow:hidden;
@@ -177,7 +179,7 @@ div.bbg_xiv-flex_container{
             figcaption{
                 font-size:1rem;
                 text-align:center;
-                background-color:cyan;
+                background-color:$caption-color;
                 padding:2px;
                 border-top-left-radius:6px;
                 border-top-right-radius:6px;
@@ -554,7 +556,7 @@ div.bbg_xiv-bootstrap{
             left:0px;
             width:100%;
             height:100%;
-            z-index:1000;
+            z-index:10;
             color:transparent;
             background-color:transparent;
             button.bbg_xiv-dense_full_btn{
@@ -570,8 +572,8 @@ div.bbg_xiv-bootstrap{
               line-height:100%;
             }
             &:hover{
-              color:cyan;
-              border-color:cyan;
+              color:$icon-color;
+              border-color:$icon-color;
             }
           }
         }
@@ -586,7 +588,7 @@ div.bbg_xiv-bootstrap{
     height:100vh;
     z-index:100;
     background-color:black;
-    opacity:0.9;
+    opacity:0.95;
     display:none;
   }
   div.bbg_xiv-dense_inner{
@@ -608,7 +610,10 @@ div.bbg_xiv-bootstrap{
         object-fit:contain;
       }
       @supports not(object-fit:contain){
+        display:block;
         height:100%;
+        margin-left:auto;
+        margin-right:auto;
       }
     }
     button.bbg_xiv-dense_close{
@@ -618,10 +623,10 @@ div.bbg_xiv-bootstrap{
       z-index:1000;
       line-height:100%;
       font-size:16px;
-      color:cyan;
+      color:$icon-color;
       background-color:transparent;
       padding:3px;
-      border:1px solid cyan;
+      border:1px solid $icon-color;
       border-radius:3px;
     }
   }

@@ -146,7 +146,7 @@
   </div>
   <div class="bbg_xiv-dense_inner">
     <button class="bbg_xiv-dense_close"><span class="glyphicon glyphicon-remove"></span></button>
-    <img>
+    <img class="img-rounded">
   </div>
 </div>
 </script>
@@ -163,7 +163,7 @@
 </script>
 <!-- Dense Image Template -->
 <script type="text/html" id="bbg_xiv-template_dense_image">
-<div id="bbg_xiv-dense_image_{{{ data.index }}}" class="bbg_xiv-dense_flex_item">
+<div id="bbg_xiv-dense_image_{{{ data.index }}}" class="bbg_xiv-dense_flex_item" title="{{{ data.post_title }}}">
   <img class="img-rounded" src="{{{ data.url }}}" title="{{{ data.post_title }}}">
   <a href="{{{ data.link }}}" target="_blank">
     <div class="bbg_xiv-dense_full_btn">
