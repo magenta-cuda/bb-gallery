@@ -390,6 +390,18 @@
                     }
                 }
             });
+            // dense view shows a full browser viewport view of an image when its fullscreen glyph is clicked
+            var outer=jqGallery.find("div.bbg_xiv-dense_outer");
+            var inner=jqGallery.find("div.bbg_xiv-dense_inner").click(function(e){
+              inner.hide();
+              outer.hide();
+            });
+            jqGallery.find("button.bbg_xiv-dense_full_btn").click(function(e){
+                inner.find("img")[0].src=jQuery(this).parents("div.bbg_xiv-dense_flex_item").find("img")[0].src;
+                outer.show();
+                inner.show();
+                e.preventDefault();
+            });
             jqGallery.find("button.bbg_xiv-dense_close_btn").click(function(e){
                 // restore "Gallery View"
                 var gallery=jQuery(this).parents("div.bbg_xiv-gallery");

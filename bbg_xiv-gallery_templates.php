@@ -142,6 +142,12 @@
       {{{ data.images }}}
     </div>
   </div>
+  <div class="bbg_xiv-dense_outer">
+  </div>
+  <div class="bbg_xiv-dense_inner">
+    <button class="bbg_xiv-dense_close"><span class="glyphicon glyphicon-remove"></span></button>
+    <img>
+  </div>
 </div>
 </script>
 <!-- Dense Title Template -->
