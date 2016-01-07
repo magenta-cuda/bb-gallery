@@ -422,6 +422,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner {
     z-index: 1000;
     color: cyan;
     text-align: center;
+    text-shadow: 2px 2px 0px black;
     display: none; }
   div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner button.bbg_xiv-dense_close {
     position: absolute;
