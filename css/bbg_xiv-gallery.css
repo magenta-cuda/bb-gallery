@@ -336,6 +336,12 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
       background-color: white;
       padding-left: 10px;
       border-radius: 6px; }
+      div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_titles li button.bbg_xiv-dense_full_btn {
+        padding: 2px;
+        color: cyan;
+        background-color: transparent;
+        border-color: cyan;
+        line-height: 100%; }
   div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_images {
     width: 75%;
     height: 96%;

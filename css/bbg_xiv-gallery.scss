@@ -522,6 +522,14 @@ div.bbg_xiv-bootstrap{
         background-color:$normal-color;
         padding-left:10px;
         border-radius:6px;
+        
+        button.bbg_xiv-dense_full_btn{
+          padding:2px;
+          color:$caption-color;
+          background-color:transparent;
+          border-color:$caption-color;
+          line-height:100%;
+        }
       }
     }
     

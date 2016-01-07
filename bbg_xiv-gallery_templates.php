@@ -161,6 +161,9 @@
     <span class="bbg_xiv-dense_li_caption" title="{{{ data.post_title }}}"<# if ( data.mode !== "caption" ) { #> style="display:none;"<# } #>>
       <# if ( data.post_excerpt ) { #>{{{ data.post_excerpt }}}</span><# } else { #>.....<# } #>
   </a>
+  <button class="bbg_xiv-dense_full_btn bbg_xiv-dense_from_title btn">
+    <span class="glyphicon glyphicon-fullscreen">
+  </button>
 </li>
 </script>
 <!-- Dense Image Template -->
@@ -169,7 +172,7 @@
   <img class="img-rounded" src="{{{ data.url }}}" title="{{{ data.post_title }}}">
   <a href="{{{ data.link }}}" target="_blank">
     <div class="bbg_xiv-dense_full_btn">
-      <button class="bbg_xiv-dense_full_btn btn">
+      <button class="bbg_xiv-dense_full_btn bbg_xiv-dense_from_image btn">
         <span class="glyphicon glyphicon-fullscreen">
       </button>
     </div>
