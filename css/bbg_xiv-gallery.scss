@@ -590,7 +590,7 @@ div.bbg_xiv-bootstrap{
     background-color:black;
     opacity:0.0;
     display:none;
-    transition:opacity 2s ease-out;
+    transition:opacity 1.5s ease-out;
   }
   div.bbg_xiv-dense_inner{
     position:fixed;
@@ -602,7 +602,7 @@ div.bbg_xiv-bootstrap{
     background-color:transparent;
     opacity:0.0;
     display:none;
-    transition:opacity 2s ease-out;
+    transition:opacity 1.5s ease-out;
     img{
       max-width:100%;
       max-height:100%;
@@ -627,7 +627,9 @@ div.bbg_xiv-bootstrap{
       color:$caption-color;
       text-align:center;
       text-shadow:2px 2px 0px black;
-      display:none;
+      &:hover{
+        color:transparent;
+      }
     }
       
     button.bbg_xiv-dense_close{

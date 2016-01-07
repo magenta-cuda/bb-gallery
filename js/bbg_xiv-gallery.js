@@ -402,13 +402,15 @@
             });
             var fullImg=inner.find("img");
             var fullTitle=inner.find("h1.bbg_xiv-dense_title");
+            var fullTitleColor=fullTitle.css("color");
+            var fullTitleShadow=fullTitle.css("text-shadow");
             // only show title on mouseover
             fullImg.hover(
                 function(){
-                    fullTitle.show();
+                    fullTitle.css({color:fullTitleColor,textShadow:fullTitleShadow});
                 },
                 function(){
-                    fullTitle.hide();
+                    fullTitle.css({color:"transparent",textShadow:"none"});
                 }
             );
             jqGallery.find("button.bbg_xiv-dense_full_btn").click(function(e){
