@@ -393,8 +393,12 @@
             // dense view shows a full browser viewport view of an image when its fullscreen glyph is clicked
             var outer=jqGallery.find("div.bbg_xiv-dense_outer");
             var inner=jqGallery.find("div.bbg_xiv-dense_inner").click(function(e){
-              inner.hide();
-              outer.hide();
+                inner.css("opacity","0.0");
+                outer.css("opacity","0.0");
+                window.setTimeout(function(){
+                    inner.hide();
+                    outer.hide();
+                },2000);
             });
             var fullImg=inner.find("img");
             var fullTitle=inner.find("h1.bbg_xiv-dense_title");
@@ -413,6 +417,10 @@
                 fullTitle[0].textContent=img.title;
                 outer.show();
                 inner.show();
+                window.setTimeout(function(){
+                    inner.css("opacity","1.0");
+                    outer.css("opacity","0.93");
+                },100);
                 e.preventDefault();
             });
             jqGallery.find("button.bbg_xiv-dense_close_btn").click(function(e){

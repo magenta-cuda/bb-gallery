@@ -588,8 +588,9 @@ div.bbg_xiv-bootstrap{
     height:100vh;
     z-index:100;
     background-color:black;
-    opacity:0.95;
+    opacity:0.0;
     display:none;
+    transition:opacity 2s ease-out;
   }
   div.bbg_xiv-dense_inner{
     position:fixed;
@@ -599,8 +600,9 @@ div.bbg_xiv-bootstrap{
     height:90vh;
     z-index:1000;
     background-color:transparent;
-    opacity:1.0;
+    opacity:0.0;
     display:none;
+    transition:opacity 2s ease-out;
     img{
       max-width:100%;
       max-height:100%;
