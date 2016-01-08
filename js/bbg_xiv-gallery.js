@@ -251,6 +251,58 @@
                 console.log("reset(JSON.parse()) failed:",e);
             }
         }
+        function constructOverlay(){
+            // dense view shows a full browser viewport view of an image when its fullscreen glyph is clicked
+            var outer=jqGallery.find("div.bbg_xiv-dense_outer");
+            var inner=jqGallery.find("div.bbg_xiv-dense_inner").click(function(e){
+                inner.css("opacity","0.0");
+                outer.css("opacity","0.0");
+                window.setTimeout(function(){
+                    inner.hide();
+                    outer.hide();
+                },2000);
+            });
+            var fullImg=inner.find("img");
+            var fullTitle=inner.find("h1.bbg_xiv-dense_title");
+            var fullTitleColor=fullTitle.css("color");
+            var fullTitleShadow=fullTitle.css("text-shadow");
+            // only show title on mouseover
+            fullImg.hover(
+                function(){
+                    fullTitle.css({color:fullTitleColor,textShadow:fullTitleShadow});
+                },
+                function(){
+                    fullTitle.css({color:"transparent",textShadow:"none"});
+                }
+            );
+            jqGallery.find("button.bbg_xiv-dense_full_btn").click(function(e){
+                var jqThis=jQuery(this);
+                if(jqThis.hasClass("bbg_xiv-dense_from_image")){
+                    var img=jQuery(this).parents("div.bbg_xiv-dense_flex_item").find("img")[0];
+                }else if(jqThis.hasClass("bbg_xiv-dense_from_title")){
+                    var img=jQuery("div#"+this.parentNode.id.replace("title","image")).find("img")[0];
+                }
+                fullImg[0].src=img.src;
+                fullTitle[0].textContent=img.title;
+                outer.show();
+                inner.show();
+                window.setTimeout(function(){
+                    inner.css("opacity","1.0");
+                    outer.css("opacity","0.93");
+                },100);
+                e.preventDefault();
+                e.stopPropagation();
+            });
+            jqGallery.find("button.bbg_xiv-dense_close_btn").click(function(e){
+                // restore "Gallery View"
+                var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
+                gallery.find("nav.navbar ul.nav li").removeClass("active").first().addClass("active");
+                bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],"Gallery");
+                jQuery(window).resize();
+                jQuery("html").css("overflow-y",overflow);
+                e.preventDefault();      
+            });
+        }
         switch(view){
         case "Gallery":
             if(Modernizr.flexbox&&Modernizr.flexwrap&&!window.bbg_xiv['bbg_xiv_disable_flexbox']){
@@ -390,56 +442,7 @@
                     }
                 }
             });
-            // dense view shows a full browser viewport view of an image when its fullscreen glyph is clicked
-            var outer=jqGallery.find("div.bbg_xiv-dense_outer");
-            var inner=jqGallery.find("div.bbg_xiv-dense_inner").click(function(e){
-                inner.css("opacity","0.0");
-                outer.css("opacity","0.0");
-                window.setTimeout(function(){
-                    inner.hide();
-                    outer.hide();
-                },2000);
-            });
-            var fullImg=inner.find("img");
-            var fullTitle=inner.find("h1.bbg_xiv-dense_title");
-            var fullTitleColor=fullTitle.css("color");
-            var fullTitleShadow=fullTitle.css("text-shadow");
-            // only show title on mouseover
-            fullImg.hover(
-                function(){
-                    fullTitle.css({color:fullTitleColor,textShadow:fullTitleShadow});
-                },
-                function(){
-                    fullTitle.css({color:"transparent",textShadow:"none"});
-                }
-            );
-            jqGallery.find("button.bbg_xiv-dense_full_btn").click(function(e){
-                var jqThis=jQuery(this);
-                if(jqThis.hasClass("bbg_xiv-dense_from_image")){
-                    var img=jQuery(this).parents("div.bbg_xiv-dense_flex_item").find("img")[0];
-                }else if(jqThis.hasClass("bbg_xiv-dense_from_title")){
-                    var img=jQuery("div#"+this.parentNode.id.replace("title","image")).find("img")[0];
-                }
-                fullImg[0].src=img.src;
-                fullTitle[0].textContent=img.title;
-                outer.show();
-                inner.show();
-                window.setTimeout(function(){
-                    inner.css("opacity","1.0");
-                    outer.css("opacity","0.93");
-                },100);
-                e.preventDefault();
-                e.stopPropagation();
-            });
-            jqGallery.find("button.bbg_xiv-dense_close_btn").click(function(e){
-                // restore "Gallery View"
-                var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
-                gallery.find("nav.navbar ul.nav li").removeClass("active").first().addClass("active");
-                bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],"Gallery");
-                jQuery(window).resize();
-                jQuery("html").css("overflow-y",overflow);
-                e.preventDefault();      
-            });
+            constructOverlay();
             break;
         // TODO: Add entry for new views here
         case "Table":
