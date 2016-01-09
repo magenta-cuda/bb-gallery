@@ -211,6 +211,9 @@ div.bbg_xiv-flex_container.bbg_xiv-flex_no_caption div.bbg_xiv-flex_item figure 
 div.bbg_xiv-flex_container.bbg_xiv-flex_no_caption div.bbg_xiv-flex_item figure img, div.bbg_xiv-gallery_container.bbg_xiv-flex_no_caption div.bbg_xiv-flex_item figure img {
   border-top-left-radius: 6px;
   border-top-right-radius: 6px; }
+div.bbg_xiv-flex_container.bbg_xiv-flex_no_caption div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn:hover, div.bbg_xiv-gallery_container.bbg_xiv-flex_no_caption div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn:hover {
+  color: cyan;
+  border-color: cyan; }
 
 div.bbg_xiv-flex_container_props {
   column-count: 1;

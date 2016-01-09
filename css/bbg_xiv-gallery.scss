@@ -228,7 +228,7 @@ div.bbg_xiv-flex_container{
         }
     }
 
-     div.bbg_xiv-dense_outer{
+    div.bbg_xiv-dense_outer{
         position:fixed;
         top:0px;
         left:0px;
@@ -311,6 +311,12 @@ div.bbg_xiv-flex_container.bbg_xiv-flex_no_caption,div.bbg_xiv-gallery_container
             img{
                 border-top-left-radius:6px;
                 border-top-right-radius:6px;
+            }
+        }
+        div.bbg_xiv-dense_full_btn{
+            &:hover{
+                color:$icon-color;
+                border-color:$icon-color;
             }
         }
     }

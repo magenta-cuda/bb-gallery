@@ -252,9 +252,10 @@
             }
         }
         function constructOverlay(){
-            // dense view shows a full browser viewport view of an image when its fullscreen glyph is clicked
+            // gallery or dense view shows a full browser viewport view of an image when its fullscreen glyph is clicked
             var outer=jqGallery.find("div.bbg_xiv-dense_outer");
             var inner=jqGallery.find("div.bbg_xiv-dense_inner").click(function(e){
+                // fade out and hide overlay
                 inner.css("opacity","0.0");
                 outer.css("opacity","0.0");
                 window.setTimeout(function(){
@@ -277,6 +278,7 @@
             );
             jqGallery.find("button.bbg_xiv-dense_full_btn").click(function(e){
                 var jqThis=jQuery(this);
+                // the buttons are of three different types so the associated image is found differently depending on the type
                 if(jqThis.hasClass("bbg_xiv-dense_from_image")){
                     var img=jQuery(this).parents("div.bbg_xiv-dense_flex_item").find("img")[0];
                 }else if(jqThis.hasClass("bbg_xiv-dense_from_title")){
@@ -286,6 +288,7 @@
                 }
                 fullImg[0].src=img.src;
                 fullTitle[0].textContent=img.title;
+                // show and fade in overlay
                 outer.show();
                 inner.show();
                 window.setTimeout(function(){

@@ -51,7 +51,8 @@
             </a>
         </figure>
         <a href="{{{ data.link }}}" target="_blank">
-            <div class="bbg_xiv-dense_full_btn">
+            <!-- overlay for full viewport button -->
+            <div class="bbg_xiv-dense_full_btn" title="{{{ data.post_title }}}">
                 <button class="bbg_xiv-dense_full_btn bbg_xiv-flex_from_image btn">
                     <span class="glyphicon glyphicon-fullscreen">
                 </button>
