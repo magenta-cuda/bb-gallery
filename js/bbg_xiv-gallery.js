@@ -281,6 +281,8 @@
                     var img=jQuery(this).parents("div.bbg_xiv-dense_flex_item").find("img")[0];
                 }else if(jqThis.hasClass("bbg_xiv-dense_from_title")){
                     var img=jQuery("div#"+this.parentNode.id.replace("title","image")).find("img")[0];
+                }else if(jqThis.hasClass("bbg_xiv-flex_from_image")){
+                    var img=jQuery(this).parents("div.bbg_xiv-flex_item").find("img")[0];
                 }
                 fullImg[0].src=img.src;
                 fullTitle[0].textContent=img.title;
@@ -307,6 +309,7 @@
         case "Gallery":
             if(Modernizr.flexbox&&Modernizr.flexwrap&&!window.bbg_xiv['bbg_xiv_disable_flexbox']){
                 bbg_xiv.renderFlex(jqGallery,images);
+                constructOverlay();
                 jQuery(window).resize();
             }else{
                 bbg_xiv.renderBootstrapGallery(jqGallery,images);

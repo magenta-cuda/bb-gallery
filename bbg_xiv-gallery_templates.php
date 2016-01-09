@@ -31,6 +31,14 @@
 <script type="text/html" id="bbg_xiv-template_flex_container">
 <div class="bbg_xiv-container bbg_xiv-flex_container">
     {{{ data.items }}}
+    <!-- Full Browser Viewport View of an Image -->
+    <div class="bbg_xiv-dense_outer">
+    </div>
+    <div class="bbg_xiv-dense_inner">
+      <button class="bbg_xiv-dense_close"><span class="glyphicon glyphicon-remove"></span></button>
+      <h1 class="bbg_xiv-dense_title"></h1>
+      <img class="img-rounded">
+    </div>
 </div>
 </script>
 <!-- Flex Item Template -->
@@ -42,6 +50,13 @@
                 <img src="{{{ data.url }}}" alt="{{{ data.post_title }}}" title="{{{ data.post_title }}}">
             </a>
         </figure>
+        <a href="{{{ data.link }}}" target="_blank">
+            <div class="bbg_xiv-dense_full_btn">
+                <button class="bbg_xiv-dense_full_btn bbg_xiv-flex_from_image btn">
+                    <span class="glyphicon glyphicon-fullscreen">
+                </button>
+            </div>
+        </a>
     </div>
 </script>
 

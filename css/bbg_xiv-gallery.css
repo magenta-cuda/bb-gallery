@@ -92,6 +92,7 @@ div.bbg_xiv-flex_container {
   align-items: center;
   padding: 0; }
   div.bbg_xiv-flex_container div.bbg_xiv-flex_item {
+    position: relative;
     flex: 0 0 auto;
     box-sizing: border-box;
     width: 100%;
@@ -122,6 +123,88 @@ div.bbg_xiv-flex_container {
         border-bottom-left-radius: 6px;
         border-bottom-right-radius: 6px;
         overflow: hidden; }
+    div.bbg_xiv-flex_container div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      color: transparent;
+      background-color: transparent; }
+      div.bbg_xiv-flex_container div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn button.bbg_xiv-dense_full_btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 1000;
+        font-size: 14px;
+        padding: 2px;
+        color: inherit;
+        border-color: inherit;
+        background-color: transparent;
+        line-height: 100%; }
+      div.bbg_xiv-flex_container div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn:hover {
+        color: gray;
+        border-color: gray; }
+  div.bbg_xiv-flex_container div.bbg_xiv-dense_outer {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    background-color: black;
+    opacity: 0.0;
+    display: none;
+    transition: opacity 1.5s ease-out; }
+  div.bbg_xiv-flex_container div.bbg_xiv-dense_inner {
+    position: fixed;
+    top: 5vh;
+    left: 5vw;
+    width: 90vw;
+    height: 90vh;
+    z-index: 1000;
+    background-color: transparent;
+    opacity: 0.0;
+    display: none;
+    transition: opacity 1.5s ease-out; }
+    div.bbg_xiv-flex_container div.bbg_xiv-dense_inner img {
+      max-width: 100%;
+      max-height: 100%; }
+      @supports (object-fit: contain) {
+        div.bbg_xiv-flex_container div.bbg_xiv-dense_inner img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain; } }
+      @supports not (object-fit: contain) {
+        div.bbg_xiv-flex_container div.bbg_xiv-dense_inner img {
+          display: block;
+          height: 100%;
+          margin-left: auto;
+          margin-right: auto; } }
+    div.bbg_xiv-flex_container div.bbg_xiv-dense_inner h1.bbg_xiv-dense_title {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      z-index: 1000;
+      color: cyan;
+      text-align: center;
+      text-shadow: 2px 2px 0px black; }
+      div.bbg_xiv-flex_container div.bbg_xiv-dense_inner h1.bbg_xiv-dense_title:hover {
+        color: transparent; }
+    div.bbg_xiv-flex_container div.bbg_xiv-dense_inner button.bbg_xiv-dense_close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 10000;
+      line-height: 100%;
+      font-size: 16px;
+      color: cyan;
+      background-color: transparent;
+      padding: 3px;
+      border: 1px solid cyan;
+      border-radius: 3px; }
 
 div.bbg_xiv-flex_container.bbg_xiv-flex_no_caption div.bbg_xiv-flex_item figure figcaption, div.bbg_xiv-gallery_container.bbg_xiv-flex_no_caption div.bbg_xiv-flex_item figure figcaption {
   display: none; }
