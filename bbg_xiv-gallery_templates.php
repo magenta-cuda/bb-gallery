@@ -21,7 +21,7 @@
             <figure class="img-rounded bbg_xiv-gallery_item">
                 <figcaption>{{{ data.post_title }}}</figcaption>
                 <a href="{{{ data.link }}}" target="_blank">
-                    <img src="{{{ data.url }}}" title="{{{ data.post_title }}}">
+                    <img src="{{{ data.url }}}" title="{{{ data.post_excerpt }}}">
                 </a>
             </figure>
         </div>
@@ -47,12 +47,12 @@
         <figure>
             <figcaption>{{{ data.post_title }}}</figcaption>
             <a href="{{{ data.link }}}" target="_blank">
-                <img src="{{{ data.url }}}" alt="{{{ data.post_title }}}" title="{{{ data.post_title }}}">
+                <img src="{{{ data.url }}}" alt="{{{ data.post_title }}}" title="{{{ data.post_excerpt }}}">
             </a>
         </figure>
         <a href="{{{ data.link }}}" target="_blank">
             <!-- overlay for full viewport button -->
-            <div class="bbg_xiv-dense_full_btn" title="{{{ data.post_title }}}">
+            <div class="bbg_xiv-dense_full_btn" title="{{{ data.post_excerpt }}}">
                 <button class="bbg_xiv-dense_full_btn bbg_xiv-flex_from_image btn">
                     <span class="glyphicon glyphicon-fullscreen">
                 </button>
