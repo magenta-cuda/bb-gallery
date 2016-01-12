@@ -298,25 +298,16 @@
                 e.preventDefault();
                 e.stopPropagation();
             });
-            jqGallery.find("button.bbg_xiv-dense_close_btn").click(function(e){
-                // restore "Gallery View"
-                var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
-                gallery.find("nav.navbar ul.nav li").removeClass("active").first().addClass("active");
-                bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],"Gallery");
-                jQuery(window).resize();
-                jQuery("html").css("overflow-y",overflow);
-                e.preventDefault();      
-            });
         }
         switch(view){
         case "Gallery":
             if(Modernizr.flexbox&&Modernizr.flexwrap&&!window.bbg_xiv['bbg_xiv_disable_flexbox']){
                 bbg_xiv.renderFlex(jqGallery,images);
                 constructOverlay();
-                jQuery(window).resize();
             }else{
                 bbg_xiv.renderBootstrapGallery(jqGallery,images);
             }
+            jQuery(window).resize();
             break;
         case "Carousel":
             var overflow=jQuery("html").css("overflow-y");
@@ -437,6 +428,7 @@
                 }
             );
             jqGallery.find("input.bbg_xiv-dense_li_mode").change(function(e){
+                // show titles or captions depending on the radio buttons 
                 if(this.checked){
                     var div=jQuery("div.bbg_xiv-dense_container div.bbg_xiv-dense_titles");
                     if(this.value==="title"){
@@ -447,6 +439,15 @@
                         div.find("span.bbg_xiv-dense_li_caption").show();
                     }
                 }
+            });
+            jqGallery.find("button.bbg_xiv-dense_close_btn").click(function(e){
+                // restore "Gallery View"
+                var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
+                gallery.find("nav.navbar ul.nav li").removeClass("active").first().addClass("active");
+                bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],"Gallery");
+                jQuery(window).resize();
+                jQuery("html").css("overflow-y",overflow);
+                e.preventDefault();      
             });
             constructOverlay();
             break;
