@@ -267,13 +267,18 @@
             var fullTitle=inner.find("h1.bbg_xiv-dense_title");
             var fullTitleColor=fullTitle.css("color");
             var fullTitleShadow=fullTitle.css("text-shadow");
+            var fullCaption=inner.find("h1.bbg_xiv-dense_caption");
+            var fullCaptionColor=fullCaption.css("color");
+            var fullCaptionShadow=fullCaption.css("text-shadow");
             // only show title on mouseover
             fullImg.hover(
                 function(){
                     fullTitle.css({color:fullTitleColor,textShadow:fullTitleShadow});
+                    fullCaption.css({color:fullCaptionColor,textShadow:fullCaptionShadow});
                 },
                 function(){
                     fullTitle.css({color:"transparent",textShadow:"none"});
+                    fullCaption.css({color:"transparent",textShadow:"none"});
                 }
             );
             jqGallery.find("button.bbg_xiv-dense_full_btn").click(function(e){
@@ -287,7 +292,8 @@
                     var img=jQuery(this).parents("div.bbg_xiv-flex_item").find("img")[0];
                 }
                 fullImg[0].src=img.src;
-                fullTitle[0].textContent=img.title;
+                fullTitle[0].textContent=img.alt;
+                fullCaption[0].textContent=img.title;
                 // show and fade in overlay
                 outer.show();
                 inner.show();

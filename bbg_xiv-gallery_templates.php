@@ -21,7 +21,7 @@
             <figure class="img-rounded bbg_xiv-gallery_item">
                 <figcaption>{{{ data.post_title }}}</figcaption>
                 <a href="{{{ data.link }}}" target="_blank">
-                    <img src="{{{ data.url }}}" title="{{{ data.post_excerpt }}}">
+                    <img src="{{{ data.url }}}" alt="{{{ data.post_title }}}" title="{{{ data.post_excerpt }}}">
                 </a>
             </figure>
         </div>
@@ -38,6 +38,7 @@
       <button class="bbg_xiv-dense_close"><span class="glyphicon glyphicon-remove"></span></button>
       <h1 class="bbg_xiv-dense_title"></h1>
       <img class="img-rounded">
+      <h1 class="bbg_xiv-dense_caption"></h1>
     </div>
 </div>
 </script>
