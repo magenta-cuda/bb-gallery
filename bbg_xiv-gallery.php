@@ -195,6 +195,7 @@ EOD;
           $attachment->link = get_attachment_link( $id );
         }
         $attachment->image_alt = get_post_meta( $id, '_wp_attachment_image_alt', TRUE );
+        $attachment->post_content = apply_filters( 'the_content', $attachment->post_content );
         # TODO: For the "Table" view you may want to unset some fields.
         unset( $attachment->post_password );
         unset( $attachment->ping_status );

@@ -370,7 +370,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content {
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto; }
-    div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure img {
+    div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure img.bbg_xiv-tabs_img {
       position: absolute;
       left: 50%;
       top: 0px;
@@ -380,7 +380,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content {
       max-width: none;
       padding: 0px; }
       @supports (object-fit: contain) {
-        div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure img {
+        div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure img.bbg_xiv-tabs_img {
           width: 100%;
           object-fit: contain; } }
     div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure figcaption {

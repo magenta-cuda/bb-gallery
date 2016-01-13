@@ -131,7 +131,7 @@
 <script type="text/html" id="bbg_xiv-template_tabs_item">
 <figure id="bbg_xiv-tab_pane{{{ data.index }}}" role="tabpanel" class="tab-pane fade<# if ( data.index === 0 ) { #> active in<# } #>">
   <a href="{{{ data.link }}}" target="_blank">
-    <img class="img-rounded" src="{{{ data.url }}}">
+    <img class="bbg_xiv-tabs_img img-rounded" src="{{{ data.url }}}">
   </a>
   <figcaption><# if ( data.post_content ) { #>{{{ data.post_content }}}<# } else { #>{{{ data.post_excerpt }}}<# } #></figcaption>
 </figure>
