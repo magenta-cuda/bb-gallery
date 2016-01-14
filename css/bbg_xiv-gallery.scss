@@ -541,6 +541,9 @@ div.bbg_xiv-bootstrap{
       &.bbg_xiv-open{
         height:auto !important;
       }
+      &.bbg_xiv-hide_scroll{
+          overflow:hidden !important;
+      }
     }
     span.glyphicon-collapse-down,span.glyphicon-collapse-up{
       float:right;
