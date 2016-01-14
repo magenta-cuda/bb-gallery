@@ -152,6 +152,7 @@ EOD;
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            <a href="#" class="navbar-brand bbg_xiv-images_brand">Images:</a>
         </div>
         <div id="$selector-navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">

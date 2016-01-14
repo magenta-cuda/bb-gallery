@@ -2,6 +2,9 @@
 /* The colors for the Dense View */
 div.bbg_xiv-bootstrap nav.navbar li > a {
   border: 0px none; }
+@media (min-width: 768px) {
+  div.bbg_xiv-bootstrap.bbg_xiv-gallery div.navbar-header a.bbg_xiv-images_brand {
+    display: none; } }
 
 div.bbg_xiv-gallery_container div.bbg_xiv-flex_item {
   padding-left: 1%;
@@ -341,6 +344,9 @@ div.bbg_xiv-bootstrap div.carousel.slide {
       div.bbg_xiv-bootstrap div.carousel.slide .carousel-indicators li.active {
         background-color: white; }
 
+@media (min-width: 768px) {
+  div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-header a.bbg_xiv-tabs_brand {
+    display: none; } }
 div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse {
   width: 96%;
   float: left;

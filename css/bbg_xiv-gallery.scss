@@ -104,6 +104,13 @@ div.bbg_xiv-bootstrap{
       border:0px none;
     }
   }
+  &.bbg_xiv-gallery{
+    div.navbar-header a.bbg_xiv-images_brand{
+      @media(min-width:768px){
+        display:none;
+      }
+    }
+  }
 }
 
 div.bbg_xiv-gallery_container{
@@ -528,6 +535,11 @@ div.bbg_xiv-bootstrap{
 
 div.bbg_xiv-bootstrap{
   div.bbg_xiv-template_tabs_container{
+    div.navbar-header a.bbg_xiv-tabs_brand{
+      @media(min-width:768px){
+        display:none;
+      }
+    }
     div.navbar-collapse{
       width:96%;
       float:left;
