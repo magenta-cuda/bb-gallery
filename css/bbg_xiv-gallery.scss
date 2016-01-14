@@ -561,19 +561,19 @@ div.bbg_xiv-bootstrap{
       }
     }
     div.tab-content{
-      height:80vh;
+      width:100%;
       figure{
         position:relative;
-        height:100%;
+        width:100%;
         overflow-x:hidden;
         overflow-y:auto;
         img.bbg_xiv-tabs_img{
-          position:absolute;
+          position:relative;
           left:50%;
           top:0px;
           transform:translate(-50%,0px);
           display:block;
-          height:85%;
+          height:70vh;
           max-width:none;
           padding:0px;
           @supports(object-fit:contain){
@@ -582,9 +582,6 @@ div.bbg_xiv-bootstrap{
           }
         }
         figcaption{
-          position:absolute;
-          left:0px;
-          top:85%;
           width:100%;
           text-align:center;
           padding:10px;
