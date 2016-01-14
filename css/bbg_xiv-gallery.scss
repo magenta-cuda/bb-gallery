@@ -566,12 +566,20 @@ div.bbg_xiv-bootstrap{
       }
     }
     nav.navbar{
-      ul.nav li a{
-        font-size:14px;
-        padding:5px 10px;
-        border:1px solid transparent;
+      ul.nav{
+        text-align:justify;
+        li{
+          display:inline-block;
+          float:none;
+          a{
+            font-size:14px;
+            padding:5px 10px;
+            border:1px solid transparent;
+          }
+        }
       }
     }
+    
     div.tab-content{
       width:100%;
       figure{
