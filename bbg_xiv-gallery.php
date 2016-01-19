@@ -254,6 +254,11 @@ add_action( 'admin_init', function( ) {
             . get_option( 'bbg_xiv_flex_min_width_for_caption', 96 )
             . '" class="small-text" /> The minimum image width in the "Gallery View" required to show the caption.';
     }, 'media',	'bbg_xiv_setting_section' );
+    add_settings_field( 'bbg_xiv_carousel_interval', 'Carousel Interval', function( ) {
+        echo '<input name="bbg_xiv_carousel_interval" id="bbg_xiv_carousel_interval" type="number" value="'
+            . get_option( 'bbg_xiv_carousel_interval', 2500 )
+            . '" class="small-text" /> The time delay between two slides.';
+    }, 'media',	'bbg_xiv_setting_section' );
     add_settings_field( 'bbg_xiv_flex_number_of_dense_view_columns', 'Columns in Dense View', function( ) {
         echo '<input name="bbg_xiv_flex_number_of_dense_view_columns" id="bbg_xiv_flex_number_of_dense_view_columns" type="number" value="'
             . get_option( 'bbg_xiv_flex_number_of_dense_view_columns', 10 )
@@ -268,6 +273,7 @@ add_action( 'admin_init', function( ) {
     register_setting( 'media', 'bbg_xiv_table' );
     register_setting( 'media', 'bbg_xiv_flex_min_width' );
     register_setting( 'media', 'bbg_xiv_flex_min_width_for_caption' );
+    register_setting( 'media', 'bbg_xiv_carousel_interval' );
     register_setting( 'media', 'bbg_xiv_flex_number_of_dense_view_columns' );
     register_setting( 'media', 'bbg_xiv_flex_min_width_for_dense_view' );
 } );
