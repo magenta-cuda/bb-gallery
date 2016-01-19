@@ -91,7 +91,7 @@
   <a href="{{{ data.link }}}" target="_blank">
     <img src="{{{ data.url }}}">
   </a>
-  <figcaption>{{{ data.post_title }}}</figcaption>
+  <figcaption>{{{ data.post_title }}}<br>{{{ data.post_excerpt }}}</figcaption>
 </figure>
 </script>
 

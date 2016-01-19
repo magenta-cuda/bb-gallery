@@ -335,7 +335,9 @@ div.bbg_xiv-bootstrap div.carousel.slide {
         transform: translate(-50%, 0px);
         padding: 0px;
         text-align: center;
-        font-size: 3vh; }
+        font-size: 3vh;
+        line-height: 1.4;
+        overflow: hidden; }
   div.bbg_xiv-bootstrap div.carousel.slide .carousel-indicators {
     bottom: 12%; }
     div.bbg_xiv-bootstrap div.carousel.slide .carousel-indicators li {
