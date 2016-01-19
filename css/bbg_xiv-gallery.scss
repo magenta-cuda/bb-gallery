@@ -7,31 +7,39 @@ $highlight-color:yellow;
 $caption-color:cyan;
 $icon-color:cyan;
 
+@mixin overlay_outer(){
+  position:fixed;
+  top:0px;
+  left:0px;
+  width:100vw;
+  height:100vh;
+  z-index:100;
+  background-color:black;
+  opacity:0.0;
+  display:none;
+}
+
+@mixin overlay_inner($top,$left,$width,$height){
+  position:fixed;
+  top:$top;
+  left:$left;
+  width:$width;
+  height:$height;
+  overflow-x:hidden;
+  z-index:1000;
+  background-color:transparent;
+  opacity:0.0;
+  display:none;
+}
+
 @mixin full_viewport_image_overlay(){
     div.bbg_xiv-dense_outer{
-        position:fixed;
-        top:0px;
-        left:0px;
-        width:100vw;
-        height:100vh;
-        z-index:100;
-        background-color:black;
-        opacity:0.0;
-        display:none;
+        @include overlay_outer();
         transition:opacity 1.5s ease-out;
     }
 
     div.bbg_xiv-dense_inner{
-        position:fixed;
-        top:5vh;
-        left:5vw;
-        width:90vw;
-        height:90vh;
-        overflow-x:hidden;
-        z-index:1000;
-        background-color:transparent;
-        opacity:0.0;
-        display:none;
+        @include overlay_inner(5vh,5vw,90vw,90vh);
         transition:opacity 1.5s ease-out;
 
         img{
@@ -103,13 +111,27 @@ div.bbg_xiv-bootstrap{
     li>a{
       border:0px none;
     }
+    button.bbg_xiv-configure{
+      float:right;
+      margin-top:9px;
+      margin-bottom:9px;
+    }
   }
+  
   &.bbg_xiv-gallery{
     div.navbar-header a.bbg_xiv-images_brand{
       @media(min-width:768px){
         display:none;
       }
     }
+  }
+  
+  div.bbg_xiv-configure_outer{
+    @include overlay_outer();
+  }
+
+  div.bbg_xiv-configure_inner{
+    @include overlay_inner(5vh,5vw,90vw,90vh);
   }
 }
 

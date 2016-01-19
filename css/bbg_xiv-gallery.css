@@ -2,9 +2,34 @@
 /* The colors for the Dense View */
 div.bbg_xiv-bootstrap nav.navbar li > a {
   border: 0px none; }
+div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure {
+  float: right;
+  margin-top: 9px;
+  margin-bottom: 9px; }
 @media (min-width: 768px) {
   div.bbg_xiv-bootstrap.bbg_xiv-gallery div.navbar-header a.bbg_xiv-images_brand {
     display: none; } }
+div.bbg_xiv-bootstrap div.bbg_xiv-configure_outer {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  background-color: black;
+  opacity: 0.0;
+  display: none; }
+div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner {
+  position: fixed;
+  top: 5vh;
+  left: 5vw;
+  width: 90vw;
+  height: 90vh;
+  overflow-x: hidden;
+  z-index: 1000;
+  background-color: transparent;
+  opacity: 0.0;
+  display: none; }
 
 div.bbg_xiv-gallery_container div.bbg_xiv-flex_item {
   padding-left: 1%;
