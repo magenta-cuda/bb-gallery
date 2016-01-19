@@ -318,7 +318,8 @@
         case "Carousel":
             var overflow=jQuery("html").css("overflow-y");
             jQuery("html").css("overflow-y","hidden");
-            bbg_xiv.renderCarousel(jqGallery,images,"bbg_xiv-carousel_"+gallery.id);
+            var carouselId="bbg_xiv-carousel_"+gallery.id;
+            bbg_xiv.renderCarousel(jqGallery,images,carouselId);
             jqGallery.find("button.bbg_xiv-carousel_close_btn").click(function(e){
                 // restore "Gallery View"
                 var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
@@ -328,6 +329,7 @@
                 jQuery("html").css("overflow-y",overflow);
                 e.preventDefault();      
             });
+            jQuery("#"+carouselId).carousel();
             break;
         case "Tabs":
             bbg_xiv.renderTabs(jqGallery,images,"bbg_xiv-tabs_"+gallery.id);

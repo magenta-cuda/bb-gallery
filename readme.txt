@@ -3,7 +3,7 @@ Contributors: Magenta Cuda
 Tags: gallery, shortcode, lightbox, slideshow, responsive, plug-compatible, replacement
 Requires at least: 4.4
 Tested up to: 4.4
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,9 @@ https://bbfgallery.wordpress.com/
 
 == Changelog ==
 
+= 1.3.2 =
+* add carousel interval option
+
 = 1.3.1 =
 * better support for captions
 * description now supports shortcodes
@@ -59,6 +62,9 @@ https://bbfgallery.wordpress.com/
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.3.2 =
+* add carousel interval option
 
 = 1.3.1 =
 * better support for captions

@@ -7,6 +7,7 @@ if ( !defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 $option_names = [
     'bbg_xiv_flex_min_width',
     'bbg_xiv_flex_min_width_for_caption',
+    'bbg_xiv_carousel_interval',
     'bbg_xiv_flex_min_width_for_dense_view',
     'bbg_xiv_flex_number_of_dense_view_columns',
     'bbg_xiv_shortcode',
