@@ -30,6 +30,20 @@ $icon-color:cyan;
   display:none;
 }
 
+@mixin overlay_close_button(){
+  position:absolute;
+  top:10px;
+  right:10px;
+  z-index:10000;
+  line-height:100%;
+  font-size:16px;
+  color:$icon-color;
+  background-color:transparent;
+  padding:3px;
+  border:1px solid $icon-color;
+  border-radius:3px;
+}
+
 @mixin full_viewport_image_overlay(){
     div.bbg_xiv-dense_outer{
         @include overlay_outer();
@@ -91,17 +105,7 @@ $icon-color:cyan;
             }
         }
         button.bbg_xiv-dense_close{
-            position:absolute;
-            top:10px;
-            right:10px;
-            z-index:10000;
-            line-height:100%;
-            font-size:16px;
-            color:$icon-color;
-            background-color:transparent;
-            padding:3px;
-            border:1px solid $icon-color;
-            border-radius:3px;
+            @include overlay_close_button();
         }
     }
 }
@@ -131,7 +135,15 @@ div.bbg_xiv-bootstrap{
   }
 
   div.bbg_xiv-configure_inner{
-    @include overlay_inner(5vh,5vw,90vw,90vh);
+    @include overlay_inner(20vh,10vw,80vw,60vh);
+    padding: 10px 20px;
+    background-color:white;
+    border:3px solid cyan;
+    border-radius:11px;
+    
+    button.bbg_xiv-configure_close{
+      @include overlay_close_button();
+    }
   }
 }
 

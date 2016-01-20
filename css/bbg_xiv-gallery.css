@@ -20,14 +20,30 @@ div.bbg_xiv-bootstrap div.bbg_xiv-configure_outer {
   display: none; }
 div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner {
   position: fixed;
-  top: 5vh;
-  left: 5vw;
-  width: 90vw;
-  height: 90vh;
+  top: 20vh;
+  left: 10vw;
+  width: 80vw;
+  height: 60vh;
   overflow-x: hidden;
   z-index: 1000;
   background-color: transparent;
-  display: none; }
+  display: none;
+  padding: 10px 20px;
+  background-color: white;
+  border: 3px solid cyan;
+  border-radius: 11px; }
+  div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner button.bbg_xiv-configure_close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10000;
+    line-height: 100%;
+    font-size: 16px;
+    color: cyan;
+    background-color: transparent;
+    padding: 3px;
+    border: 1px solid cyan;
+    border-radius: 3px; }
 
 div.bbg_xiv-gallery_container div.bbg_xiv-flex_item {
   padding-left: 1%;
