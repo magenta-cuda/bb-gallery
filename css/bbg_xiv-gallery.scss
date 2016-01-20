@@ -15,7 +15,6 @@ $icon-color:cyan;
   height:100vh;
   z-index:100;
   background-color:black;
-  opacity:0.0;
   display:none;
 }
 
@@ -28,18 +27,19 @@ $icon-color:cyan;
   overflow-x:hidden;
   z-index:1000;
   background-color:transparent;
-  opacity:0.0;
   display:none;
 }
 
 @mixin full_viewport_image_overlay(){
     div.bbg_xiv-dense_outer{
         @include overlay_outer();
+        opacity:0.0;
         transition:opacity 1.5s ease-out;
     }
 
     div.bbg_xiv-dense_inner{
         @include overlay_inner(5vh,5vw,90vw,90vh);
+        opacity:0.0;
         transition:opacity 1.5s ease-out;
 
         img{

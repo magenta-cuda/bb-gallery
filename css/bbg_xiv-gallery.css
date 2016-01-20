@@ -17,7 +17,6 @@ div.bbg_xiv-bootstrap div.bbg_xiv-configure_outer {
   height: 100vh;
   z-index: 100;
   background-color: black;
-  opacity: 0.0;
   display: none; }
 div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner {
   position: fixed;
@@ -28,7 +27,6 @@ div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner {
   overflow-x: hidden;
   z-index: 1000;
   background-color: transparent;
-  opacity: 0.0;
   display: none; }
 
 div.bbg_xiv-gallery_container div.bbg_xiv-flex_item {
@@ -182,8 +180,8 @@ div.bbg_xiv-flex_container {
     height: 100vh;
     z-index: 100;
     background-color: black;
-    opacity: 0.0;
     display: none;
+    opacity: 0.0;
     transition: opacity 1.5s ease-out; }
   div.bbg_xiv-flex_container div.bbg_xiv-dense_inner {
     position: fixed;
@@ -194,8 +192,8 @@ div.bbg_xiv-flex_container {
     overflow-x: hidden;
     z-index: 1000;
     background-color: transparent;
-    opacity: 0.0;
     display: none;
+    opacity: 0.0;
     transition: opacity 1.5s ease-out; }
     @supports (object-fit: contain) {
       div.bbg_xiv-flex_container div.bbg_xiv-dense_inner img {
@@ -530,8 +528,8 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
     height: 100vh;
     z-index: 100;
     background-color: black;
-    opacity: 0.0;
     display: none;
+    opacity: 0.0;
     transition: opacity 1.5s ease-out; }
   div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner {
     position: fixed;
@@ -542,8 +540,8 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
     overflow-x: hidden;
     z-index: 1000;
     background-color: transparent;
-    opacity: 0.0;
     display: none;
+    opacity: 0.0;
     transition: opacity 1.5s ease-out; }
     @supports (object-fit: contain) {
       div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner img {

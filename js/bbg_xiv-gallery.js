@@ -247,6 +247,24 @@
             images=bbg_xiv.images[gallery.id]=new bbg_xiv.Images();
             try{
                 images.reset(JSON.parse(window.bbg_xiv[gallery.id+"-data"]));
+                var width=Math.log(bbg_xiv.bbg_xiv_flex_min_width);
+                var diff=Number.MAX_VALUE;
+                var url;
+                images.models.forEach(function(model){
+                    var sizes=model.attributes.sizes;
+                    Object.keys(sizes).forEach(function(size){
+                        var image=sizes[size];
+                        console.log("size=",size);
+                        console.log("image.width=",image.width);
+                        var d=Math.abs(Math.log(image.width)-width);
+                        if(d<diff){
+                            d=diff;
+                            url=image.url;
+                        }
+                        console.log("image.url=",image.url);
+                    });
+                    model.attributes.bbg_xiv_thumbnail_url=url;
+                });
             }catch(e){
                 console.log("reset(JSON.parse()) failed:",e);
             }
@@ -559,6 +577,20 @@
     });
 
     jQuery(document).ready(function(){
+        jQuery("button.bbg_xiv-configure").click(function(e){
+            var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
+            var outer=gallery.find("div.bbg_xiv-configure_outer");
+            outer.show();
+            var inner=gallery.find("div.bbg_xiv-configure_inner");
+            inner.show();
+        });
+        jQuery("button.bbg_xiv-configure_close").click(function(e){
+            var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
+            var outer=gallery.find("div.bbg_xiv-configure_outer");
+            outer.hide();
+            var inner=gallery.find("div.bbg_xiv-configure_inner");
+            inner.hide();
+        });
         jQuery(window).resize();
     });
 

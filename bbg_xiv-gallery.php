@@ -163,9 +163,16 @@ EOD;
                 <!-- TODO: Add entry for new views here. -->
 $table_nav_item
             </ul>
+            <button type="button" class="btn btn-info bbg_xiv-configure" title="configure bandwidth, carousel interval, ...">Options</button>
         </div>
     </nav>
     <div id="$selector" class="gallery galleryid-{$id} gallery-size-{$size_class} bbg_xiv-gallery_envelope">BB Gallery Container</div>
+    <div class="bbg_xiv-configure_outer">
+    </div>
+    <div class="bbg_xiv-configure_inner">
+      <button class="bbg_xiv-configure_close"><span class="glyphicon glyphicon-remove"></span></button>
+      <h1>BB Gallery Options</h1>
+    </div>
 </div>
 EOD;
 
