@@ -172,6 +172,31 @@ $table_nav_item
     <div class="bbg_xiv-configure_inner">
       <button class="bbg_xiv-configure_close"><span class="glyphicon glyphicon-remove"></span></button>
       <h1>BB Gallery Options</h1>
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label for="carousel-delay" class="control-label col-xs-offset-3 col-xs-4">Carousel Time Interval</label>
+          <div class="col-xs-2">
+            <input type="number" class="form-control" id="carousel-delay">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="carousel-delay" class="control-label col-xs-offset-3 col-xs-4">Minimum Width for Gallery Images</label>
+          <div class="col-xs-2">
+            <input type="number" class="form-control" id="min-image-width"></label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="columns-in-dense-view" class="control-label col-xs-offset-3 col-xs-4">Number of Columns in Dense View</label>
+          <div class="col-xs-2">
+            <input type="number" class="form-control" id="columns-in-dense-view"></label>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-offset-10 col-xs-2">
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </form>
     </div>
 </div>
 EOD;
