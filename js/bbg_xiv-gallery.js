@@ -347,7 +347,7 @@
                 jQuery("html").css("overflow-y",overflow);
                 e.preventDefault();      
             });
-            jQuery("#"+carouselId).carousel();
+            jQuery("#"+carouselId).carousel({interval:bbg_xiv.bbg_xiv_carousel_interval});
             break;
         case "Tabs":
             bbg_xiv.renderTabs(jqGallery,images,"bbg_xiv-tabs_"+gallery.id);
@@ -414,6 +414,8 @@
             var overflow=jQuery("html").css("overflow-y");
             jQuery("html").css("overflow-y","hidden");
             bbg_xiv.renderDense(jqGallery,images,"bbg_xiv-dense_"+gallery.id,"title");
+            jqGallery.find("div.bbg_xiv-dense_images div.bbg_xiv-dense_flex_images div.bbg_xiv-dense_flex_item")
+                .css("width",100/bbg_xiv.bbg_xiv_flex_number_of_dense_view_columns+"%");
             var normal=jQuery("div.bbg_xiv-dense_container button#bbg_xiv-normal_color").css("background-color");
             var highlight=jQuery("div.bbg_xiv-dense_container button#bbg_xiv-highlight_color").css("background-color");
             jqGallery.find("div.bbg_xiv-dense_titles ul li").hover(
@@ -516,6 +518,24 @@
         return cookie.substring(start,end);
     };
 
+    bbg_xiv.calcBreakpoints=function(){
+        var minFlexWidth=window.bbg_xiv['bbg_xiv_flex_min_width'];
+        bbg_xiv.breakpoints=[
+            {width:2*minFlexWidth,cssClass:"100"},
+            {width:3*minFlexWidth,cssClass:"50"},
+            {width:4*minFlexWidth,cssClass:"33_3333"},
+            {width:5*minFlexWidth,cssClass:"25"},
+            {width:6*minFlexWidth,cssClass:"20"},
+            {width:7*minFlexWidth,cssClass:"16_6666"},
+            {width:8*minFlexWidth,cssClass:"14_2857"},
+            {width:9*minFlexWidth,cssClass:"12_5"},
+            {width:10*minFlexWidth,cssClass:"11_1111"},
+            {width:11*minFlexWidth,cssClass:"10"},
+            {width:12*minFlexWidth,cssClass:"9_0909"},
+            {width:1000000,class:"8_3333"}
+        ];
+    };
+
     jQuery("nav.bbg_xiv-gallery_navbar ul.nav li > a").click(function(e){
         var jqThis=jQuery(this);
         var gallery=jqThis.parents("div.bbg_xiv-gallery");
@@ -529,23 +549,10 @@
         bbg_xiv.renderGallery(this,"Gallery");
     });
     
-    var minFlexWidth=window.bbg_xiv['bbg_xiv_flex_min_width'];
+    bbg_xiv.calcBreakpoints();
     var minFlexWidthForCaption=window.bbg_xiv['bbg_xiv_flex_min_width_for_caption'];
     var minWidthForDenseView=window.bbg_xiv['bbg_xiv_flex_min_width_for_dense_view'];
-    bbg_xiv.breakpoints=[
-        {width:2*minFlexWidth,cssClass:"100"},
-        {width:3*minFlexWidth,cssClass:"50"},
-        {width:4*minFlexWidth,cssClass:"33_3333"},
-        {width:5*minFlexWidth,cssClass:"25"},
-        {width:6*minFlexWidth,cssClass:"20"},
-        {width:7*minFlexWidth,cssClass:"16_6666"},
-        {width:8*minFlexWidth,cssClass:"14_2857"},
-        {width:9*minFlexWidth,cssClass:"12_5"},
-        {width:10*minFlexWidth,cssClass:"11_1111"},
-        {width:11*minFlexWidth,cssClass:"10"},
-        {width:12*minFlexWidth,cssClass:"9_0909"},
-        {width:1000000,class:"8_3333"}
-    ];
+    
 
     jQuery(window).resize(function(){
         var breakpoints=bbg_xiv.breakpoints;
@@ -598,11 +605,16 @@
             bbg_xiv.bbg_xiv_carousel_interval=divConfigure.find("input#carousel-delay").val();
             bbg_xiv.bbg_xiv_flex_min_width=divConfigure.find("input#min-image-width").val();
             bbg_xiv.bbg_xiv_flex_number_of_dense_view_columns=divConfigure.find("input#columns-in-dense-view").val();
+            bbg_xiv.calcBreakpoints();
             var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
             var outer=gallery.find("div.bbg_xiv-configure_outer");
             outer.hide();
             var inner=gallery.find("div.bbg_xiv-configure_inner");
             inner.hide();
+            var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
+            gallery.find("nav.navbar ul.nav li").removeClass("active").first().addClass("active");
+            bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],"Gallery");
+            jQuery(window).resize();
             e.preventDefault();
         });
         jQuery(window).resize();
