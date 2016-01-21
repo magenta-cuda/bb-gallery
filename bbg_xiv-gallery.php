@@ -60,8 +60,10 @@ function bb_gallery_shortcode( $attr ) {
     $bbg_xiv_data[ 'bbg_xiv_flex_min_width' ] = get_option( 'bbg_xiv_flex_min_width', 128 );
     $bbg_xiv_data[ 'bbg_xiv_flex_min_width_for_caption' ] = get_option( 'bbg_xiv_flex_min_width_for_caption', 96 );
     $bbg_xiv_data[ 'bbg_xiv_flex_min_width_for_dense_view' ] = get_option( 'bbg_xiv_flex_min_width_for_dense_view', 1280 );
+    $bbg_xiv_data[ 'bbg_xiv_flex_number_of_dense_view_columns' ] = get_option( 'bbg_xiv_flex_number_of_dense_view_columns', 10 );
+    $bbg_xiv_data[ 'bbg_xiv_carousel_interval' ] = get_option( 'bbg_xiv_carousel_interval', 2500 );
     $bbg_xiv_data[ 'bbg_xiv_disable_flexbox' ] = get_option( 'bbg_xiv_disable_flexbox', FALSE );
-    
+
     if ( ! empty( $attr['ids'] ) ) {
       // 'ids' is explicitly ordered, unless you specify otherwise.
       if ( empty( $attr['orderby'] ) ) {
@@ -193,7 +195,7 @@ $table_nav_item
         </div>
         <div class="form-group">
           <div class="col-xs-offset-10 col-xs-2">
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary bbg_xiv-save_options">Save</button>
           </div>
         </div>
       </form>
