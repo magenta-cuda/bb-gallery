@@ -602,9 +602,9 @@
     jQuery(document).ready(function(){
         // wireup the front end for setting options 
         jQuery("button.bbg_xiv-configure").click(function(e){
-            divConfigure.find("input#carousel-delay").val(bbg_xiv.bbg_xiv_carousel_interval);
-            divConfigure.find("input#min-image-width").val(bbg_xiv.bbg_xiv_flex_min_width);
-            divConfigure.find("input#columns-in-dense-view").val(bbg_xiv.bbg_xiv_flex_number_of_dense_view_columns);
+            divConfigure.find("input#bbg_xiv-carousel_delay").val(bbg_xiv.bbg_xiv_carousel_interval);
+            divConfigure.find("input#bbg_xiv-min_image_width").val(bbg_xiv.bbg_xiv_flex_min_width);
+            divConfigure.find("input#bbg_xiv-columns_in_dense_view").val(bbg_xiv.bbg_xiv_flex_number_of_dense_view_columns);
             var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
             var outer=gallery.find("div.bbg_xiv-configure_outer");
             outer.show();
@@ -621,9 +621,9 @@
         });
         divConfigure.find("button.bbg_xiv-save_options").click(function(e){
             // save the options
-            bbg_xiv.bbg_xiv_carousel_interval=divConfigure.find("input#carousel-delay").val();
-            bbg_xiv.bbg_xiv_flex_min_width=divConfigure.find("input#min-image-width").val();
-            bbg_xiv.bbg_xiv_flex_number_of_dense_view_columns=divConfigure.find("input#columns-in-dense-view").val();
+            bbg_xiv.bbg_xiv_carousel_interval=divConfigure.find("input#bbg_xiv-carousel_delay").val();
+            bbg_xiv.bbg_xiv_flex_min_width=divConfigure.find("input#bbg_xiv-min_image_width").val();
+            bbg_xiv.bbg_xiv_flex_number_of_dense_view_columns=divConfigure.find("input#bbg_xiv-columns_in_dense_view").val();
             var cookie=JSON.stringify({
                 bbg_xiv_carousel_interval:bbg_xiv.bbg_xiv_carousel_interval,
                 bbg_xiv_flex_min_width:bbg_xiv.bbg_xiv_flex_min_width,
