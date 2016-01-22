@@ -536,6 +536,27 @@
         ];
     };
 
+    var cookie=bbg_xiv.getCookie("bbg_xiv");
+    console.log("cookie=",cookie);
+    if(cookie){
+        var options=JSON.parse(cookie);
+        var carousel_interval=options.bbg_xiv_carousel_interval;
+        if(jQuery.isNumeric(carousel_interval)&&carousel_interval>=1000){
+            bbg_xiv.bbg_xiv_carousel_interval=carousel_interval;
+        }
+        var flex_min_width=options.bbg_xiv_flex_min_width;
+        if(jQuery.isNumeric(flex_min_width)&&flex_min_width>=32&&flex_min_width<=1024){
+            bbg_xiv.bbg_xiv_flex_min_width=flex_min_width;
+        }
+        var flex_number_of_dense_view_columns=options.bbg_xiv_flex_number_of_dense_view_columns;
+        if(jQuery.isNumeric(flex_number_of_dense_view_columns)&&flex_number_of_dense_view_columns>=2&&flex_number_of_dense_view_columns<=32){
+            bbg_xiv.bbg_xiv_flex_number_of_dense_view_columns=flex_number_of_dense_view_columns;
+        }
+    }
+    bbg_xiv.calcBreakpoints();
+    var minFlexWidthForCaption=window.bbg_xiv['bbg_xiv_flex_min_width_for_caption'];
+    var minWidthForDenseView=window.bbg_xiv['bbg_xiv_flex_min_width_for_dense_view'];
+    
     jQuery("nav.bbg_xiv-gallery_navbar ul.nav li > a").click(function(e){
         var jqThis=jQuery(this);
         var gallery=jqThis.parents("div.bbg_xiv-gallery");
@@ -544,15 +565,6 @@
         bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],this.textContent.trim());
         e.preventDefault();
     });
-
-    jQuery("div.bbg_xiv-gallery_envelope").each(function(){
-        bbg_xiv.renderGallery(this,"Gallery");
-    });
-    
-    bbg_xiv.calcBreakpoints();
-    var minFlexWidthForCaption=window.bbg_xiv['bbg_xiv_flex_min_width_for_caption'];
-    var minWidthForDenseView=window.bbg_xiv['bbg_xiv_flex_min_width_for_dense_view'];
-    
 
     jQuery(window).resize(function(){
         var breakpoints=bbg_xiv.breakpoints;
@@ -583,9 +595,16 @@
         }  
     });
 
+    jQuery("div.bbg_xiv-gallery_envelope").each(function(){
+        bbg_xiv.renderGallery(this,"Gallery");
+    });
+
     jQuery(document).ready(function(){
         // wireup the front end for setting options 
         jQuery("button.bbg_xiv-configure").click(function(e){
+            divConfigure.find("input#carousel-delay").val(bbg_xiv.bbg_xiv_carousel_interval);
+            divConfigure.find("input#min-image-width").val(bbg_xiv.bbg_xiv_flex_min_width);
+            divConfigure.find("input#columns-in-dense-view").val(bbg_xiv.bbg_xiv_flex_number_of_dense_view_columns);
             var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
             var outer=gallery.find("div.bbg_xiv-configure_outer");
             outer.show();
@@ -605,6 +624,12 @@
             bbg_xiv.bbg_xiv_carousel_interval=divConfigure.find("input#carousel-delay").val();
             bbg_xiv.bbg_xiv_flex_min_width=divConfigure.find("input#min-image-width").val();
             bbg_xiv.bbg_xiv_flex_number_of_dense_view_columns=divConfigure.find("input#columns-in-dense-view").val();
+            var cookie=JSON.stringify({
+                bbg_xiv_carousel_interval:bbg_xiv.bbg_xiv_carousel_interval,
+                bbg_xiv_flex_min_width:bbg_xiv.bbg_xiv_flex_min_width,
+                bbg_xiv_flex_number_of_dense_view_columns:bbg_xiv.bbg_xiv_flex_number_of_dense_view_columns
+            });
+            bbg_xiv.setCookie("bbg_xiv",cookie,30);
             bbg_xiv.calcBreakpoints();
             var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
             var outer=gallery.find("div.bbg_xiv-configure_outer");

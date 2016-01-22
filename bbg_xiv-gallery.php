@@ -178,19 +178,19 @@ $table_nav_item
         <div class="form-group">
           <label for="carousel-delay" class="control-label col-xs-offset-3 col-xs-4">Carousel Time Interval</label>
           <div class="col-xs-2">
-            <input type="number" class="form-control" id="carousel-delay">
+            <input type="number" class="form-control" id="carousel-delay" min="1000">
           </div>
         </div>
         <div class="form-group">
           <label for="carousel-delay" class="control-label col-xs-offset-3 col-xs-4">Minimum Width for Gallery Images</label>
           <div class="col-xs-2">
-            <input type="number" class="form-control" id="min-image-width"></label>
+            <input type="number" class="form-control" id="min-image-width" min="32" max="1024"></label>
           </div>
         </div>
         <div class="form-group">
           <label for="columns-in-dense-view" class="control-label col-xs-offset-3 col-xs-4">Number of Columns in Dense View</label>
           <div class="col-xs-2">
-            <input type="number" class="form-control" id="columns-in-dense-view"></label>
+            <input type="number" class="form-control" id="columns-in-dense-view"min="2" max="32"></label>
           </div>
         </div>
         <div class="form-group">
