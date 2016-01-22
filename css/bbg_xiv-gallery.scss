@@ -116,9 +116,12 @@ div.bbg_xiv-bootstrap{
       border:0px none;
     }
     button.bbg_xiv-configure{
-      float:right;
+      display:block;
       margin-top:9px;
       margin-bottom:9px;
+      @media(min-width:768px){
+        float:right;
+      }
     }
   }
   
