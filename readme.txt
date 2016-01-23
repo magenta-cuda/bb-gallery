@@ -39,6 +39,7 @@ https://bbfgallery.wordpress.com/
 
 = 1.3.2 =
 * add carousel interval option
+* allow front-end to set options (minimum image width, number of columns, carousel interval) and save as a cookie
 
 = 1.3.1 =
 * better support for captions
@@ -65,6 +66,7 @@ https://bbfgallery.wordpress.com/
 
 = 1.3.2 =
 * add carousel interval option
+* allow front-end to set options (minimum image width, number of columns, carousel interval) and save as a cookie
 
 = 1.3.1 =
 * better support for captions
