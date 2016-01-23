@@ -20,7 +20,8 @@ div.bbg_xiv-bootstrap div.bbg_xiv-configure_outer {
   height: 100vh;
   z-index: 100;
   background-color: black;
-  display: none; }
+  display: none;
+  opacity: 0.9; }
 div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner {
   position: fixed;
   top: 20vh;

@@ -135,6 +135,7 @@ div.bbg_xiv-bootstrap{
   
   div.bbg_xiv-configure_outer{
     @include overlay_outer();
+    opacity:0.9;
   }
 
   div.bbg_xiv-configure_inner{

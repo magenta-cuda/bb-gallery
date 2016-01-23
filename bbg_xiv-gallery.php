@@ -176,23 +176,24 @@ $table_nav_item
       <h1>BB Gallery Options</h1>
       <form class="form-horizontal">
         <div class="form-group">
-          <label for="bbg_xiv-carousel_delay" class="control-label col-sm-offset-3 col-sm-4">Carousel Time Interval</label>
-          <div class="col-sm-2">
+          <label for="bbg_xiv-carousel_delay" class="control-label col-sm-offset-1 col-sm-7 col-md-offset-3 col-md-4">Carousel Time Interval</label>
+          <div class="col-sm-3 col-md-2">
             <input type="number" class="form-control" id="bbg_xiv-carousel_delay" min="1000" step="100">
           </div>
         </div>
         <div class="form-group">
-          <label for="bbg_xiv-min_image_width" class="control-label col-sm-offset-3 col-sm-4">Minimum Width for Gallery Images</label>
-          <div class="col-sm-2">
+          <label for="bbg_xiv-min_image_width" class="control-label col-sm-offset-1 col-sm-7 col-md-offset-3 col-md-4">Minimum Width for Gallery Images</label>
+          <div class="col-sm-3 col-md-2">
             <input type="number" class="form-control" id="bbg_xiv-min_image_width" min="32" max="1024"></label>
           </div>
         </div>
         <div class="form-group">
-          <label for="bbg_xiv-columns_in_dense_view" class="control-label col-sm-offset-3 col-sm-4">Number of Columns in the Dense View</label>
-          <div class="col-sm-2">
+          <label for="bbg_xiv-columns_in_dense_view" class="control-label col-sm-offset-1 col-sm-7 col-md-offset-3 col-md-4">Number of Columns in the Dense View</label>
+          <div class="col-sm-3 col-md-2">
             <input type="number" class="form-control" id="bbg_xiv-columns_in_dense_view"min="2" max="32"></label>
           </div>
         </div>
+        <br>
         <div class="form-group">
           <div class="col-sm-offset-10 col-sm-2">
             <button type="submit" class="btn btn-primary bbg_xiv-save_options">Save</button>
