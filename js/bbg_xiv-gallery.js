@@ -254,14 +254,11 @@
                     var sizes=model.attributes.sizes;
                     Object.keys(sizes).forEach(function(size){
                         var image=sizes[size];
-                        console.log("size=",size);
-                        console.log("image.width=",image.width);
                         var d=Math.abs(Math.log(image.width)-width);
                         if(d<diff){
                             d=diff;
                             url=image.url;
                         }
-                        console.log("image.url=",image.url);
                     });
                     model.attributes.bbg_xiv_thumbnail_url=url;
                 });
@@ -505,7 +502,6 @@
     bbg_xiv.getCookie=function(name){
         var cookie=document.cookie;
         cookie+=";"
-        //console.log("getCookie():cookie=",cookie);
         var start=cookie.indexOf(name+"=");
         if(start===-1){
             return null;
@@ -537,7 +533,6 @@
     };
 
     var cookie=bbg_xiv.getCookie("bbg_xiv");
-    console.log("cookie=",cookie);
     if(cookie){
         var options=JSON.parse(cookie);
         var carousel_interval=options.bbg_xiv_carousel_interval;
