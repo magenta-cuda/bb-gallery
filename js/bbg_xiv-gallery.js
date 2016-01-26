@@ -247,20 +247,27 @@
             images=bbg_xiv.images[gallery.id]=new bbg_xiv.Images();
             try{
                 images.reset(JSON.parse(window.bbg_xiv[gallery.id+"-data"]));
-                var width=Math.log(bbg_xiv.bbg_xiv_flex_min_width);
-                var diff=Number.MAX_VALUE;
-                var url;
+                // find closest match for thumbnail, small, medium and large
+                var widths=[Math.log(bbg_xiv.bbg_xiv_flex_min_width),Math.log(768),Math.log(992),Math.log(1200)];
                 images.models.forEach(function(model){
+                    var diffs=[Number.MAX_VALUE,Number.MAX_VALUE,Number.MAX_VALUE,Number.MAX_VALUE];
+                    var urls=[];
                     var sizes=model.attributes.sizes;
                     Object.keys(sizes).forEach(function(size){
                         var image=sizes[size];
-                        var d=Math.abs(Math.log(image.width)-width);
-                        if(d<diff){
-                            d=diff;
-                            url=image.url;
-                        }
+                        widths.forEach(function(width,i){
+                            var diff=Math.abs(Math.log(image.width)-width);
+                            if(diff<diffs[i]){
+                                diffs[i]=diff;
+                                urls[i]=image.url;
+                            }
+                        });
                     });
-                    model.attributes.bbg_xiv_thumbnail_url=url;
+                    model.attributes.bbg_xiv_thumbnail_url=urls[0];
+                    model.attributes.bbg_xiv_small_url=urls[1];
+                    model.attributes.bbg_xiv_medium_url=urls[2];
+                    model.attributes.bbg_xiv_large_url=urls[3];
+                    console.log("model.attributes=",model.attributes);
                 });
             }catch(e){
                 console.log("reset(JSON.parse()) failed:",e);
