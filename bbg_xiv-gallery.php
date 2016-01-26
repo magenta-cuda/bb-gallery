@@ -206,10 +206,9 @@ EOD;
 
 
     foreach ( $attachments as $id => &$attachment ) {
-        $src = wp_get_attachment_image_src( $id, 'full' );
-        $img_url = wp_get_attachment_url($id);
-        $attachment->url = $img_url;
+        $attachment->url = wp_get_attachment_url( $id );
         $meta = wp_get_attachment_metadata( $id );
+        error_log( '$meta=' . print_r( $meta, true ) );
         foreach( $meta[ 'sizes' ] as $size => &$size_attrs ) {
             $size_attrs[ 'url' ] = wp_get_attachment_image_src( $id, $size )[0];
             unset( $size_attrs[ 'file' ] );

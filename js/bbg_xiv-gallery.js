@@ -252,7 +252,9 @@
                 images.models.forEach(function(model){
                     var diffs=[Number.MAX_VALUE,Number.MAX_VALUE,Number.MAX_VALUE,Number.MAX_VALUE];
                     var urls=[];
-                    var sizes=model.attributes.sizes;
+                    var attributes=model.attributes;
+                    var sizes=attributes.sizes;
+                    sizes.full={url:attributes.url,width:attributes.width,height:attributes.height};
                     Object.keys(sizes).forEach(function(size){
                         var image=sizes[size];
                         widths.forEach(function(width,i){
