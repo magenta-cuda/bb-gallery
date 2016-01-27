@@ -148,6 +148,21 @@ div.bbg_xiv-bootstrap{
     button.bbg_xiv-configure_close{
       @include overlay_close_button();
     }
+    
+    span.bbg_xiv-radio_input{
+      padding:6px 12px;
+      border:1px solid #ccc;
+      border-radius:4px;
+      span.bbg_xiv-radio_text{
+        font-size:14px;
+      }
+    }
+
+    input.form-control[type="radio"][name="bbg_xiv-bandwidth"]{
+      display:inline;
+      width:auto;
+      vertical-align:bottom;
+    }
   }
 }
 

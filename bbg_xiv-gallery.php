@@ -176,21 +176,38 @@ $table_nav_item
       <h1>BB Gallery Options</h1>
       <form class="form-horizontal">
         <div class="form-group">
-          <label for="bbg_xiv-carousel_delay" class="control-label col-sm-offset-1 col-sm-7 col-md-offset-3 col-md-4">Carousel Time Interval</label>
+          <label for="bbg_xiv-carousel_delay" class="control-label col-sm-offset-1 col-sm-7 col-md-offset-2 col-md-6">Carousel Time Interval</label>
           <div class="col-sm-3 col-md-2">
             <input type="number" class="form-control" id="bbg_xiv-carousel_delay" min="1000" step="100">
           </div>
         </div>
         <div class="form-group">
-          <label for="bbg_xiv-min_image_width" class="control-label col-sm-offset-1 col-sm-7 col-md-offset-3 col-md-4">Minimum Width for Gallery Images</label>
+          <label for="bbg_xiv-min_image_width" class="control-label col-sm-offset-1 col-sm-7 col-md-offset-2 col-md-6">Minimum Width for Gallery Images</label>
           <div class="col-sm-3 col-md-2">
-            <input type="number" class="form-control" id="bbg_xiv-min_image_width" min="32" max="1024"></label>
+            <input type="number" class="form-control" id="bbg_xiv-min_image_width" min="32" max="1024">
           </div>
         </div>
         <div class="form-group">
-          <label for="bbg_xiv-columns_in_dense_view" class="control-label col-sm-offset-1 col-sm-7 col-md-offset-3 col-md-4">Number of Columns in the Dense View</label>
+          <label for="bbg_xiv-columns_in_dense_view" class="control-label col-sm-offset-1 col-sm-7 col-md-offset-2 col-md-6">Number of Columns in the Dense View</label>
           <div class="col-sm-3 col-md-2">
-            <input type="number" class="form-control" id="bbg_xiv-columns_in_dense_view"min="2" max="32"></label>
+            <input type="number" class="form-control" id="bbg_xiv-columns_in_dense_view" min="2" max="32">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="bbg_xiv-bandwidth" class="control-label col-sm-offset-1 col-sm-4 col-md-offset-2 col-md-3">Bandwidth</label>
+          <div class="col-sm-6 col-md-5">
+            <span class="bbg_xiv-radio_input">
+                <input type="radio" class="form-control" name="bbg_xiv-bandwidth" value="normal" id="bbg_xiv-bandwidth_normal" checked>
+                <span class="bbg_xiv-radio_text">Normal&nbsp;&nbsp;</span>
+            </span>
+            <span class="bbg_xiv-radio_input">
+                <input type="radio" class="form-control" name="bbg_xiv-bandwidth" value="low" id="bbg_xiv-bandwidth_low">
+                <span class="bbg_xiv-radio_text">Low&nbsp;&nbsp;</span>
+            </span>
+            <span class="bbg_xiv-radio_input">
+                <input type="radio" class="form-control" name="bbg_xiv-bandwidth" value="very low" id="bbg_xiv-bandwidth_very_low">
+                <span class="bbg_xiv-radio_text">Very Low&nbsp;&nbsp;</span>
+            </span>
           </div>
         </div>
         <br>
