@@ -49,14 +49,22 @@ div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner {
     border: 1px solid cyan;
     border-radius: 3px; }
   div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner span.bbg_xiv-radio_input {
-    padding: 6px 12px;
+    display: block;
+    width: 33.3333%;
+    float: left;
+    padding: 0px 6px;
     border: 1px solid #ccc;
     border-radius: 4px; }
+    @media (max-width: 767px) {
+      div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner span.bbg_xiv-radio_input {
+        width: 100%;
+        float: none; } }
     div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner span.bbg_xiv-radio_input span.bbg_xiv-radio_text {
       font-size: 14px; }
   div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner input.form-control[type="radio"][name="bbg_xiv-bandwidth"] {
     display: inline;
     width: auto;
+    margin: 0px;
     vertical-align: bottom; }
 
 div.bbg_xiv-gallery_container div.bbg_xiv-flex_item {

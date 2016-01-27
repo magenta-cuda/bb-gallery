@@ -198,15 +198,15 @@ $table_nav_item
           <div class="col-sm-6 col-md-5">
             <span class="bbg_xiv-radio_input">
                 <input type="radio" class="form-control" name="bbg_xiv-bandwidth" value="normal" id="bbg_xiv-bandwidth_normal" checked>
-                <span class="bbg_xiv-radio_text">Normal&nbsp;&nbsp;</span>
+                <span class="bbg_xiv-radio_text">High</span>
             </span>
             <span class="bbg_xiv-radio_input">
                 <input type="radio" class="form-control" name="bbg_xiv-bandwidth" value="low" id="bbg_xiv-bandwidth_low">
-                <span class="bbg_xiv-radio_text">Low&nbsp;&nbsp;</span>
+                <span class="bbg_xiv-radio_text">Medium</span>
             </span>
             <span class="bbg_xiv-radio_input">
                 <input type="radio" class="form-control" name="bbg_xiv-bandwidth" value="very low" id="bbg_xiv-bandwidth_very_low">
-                <span class="bbg_xiv-radio_text">Very Low&nbsp;&nbsp;</span>
+                <span class="bbg_xiv-radio_text">Low</span>
             </span>
           </div>
         </div>

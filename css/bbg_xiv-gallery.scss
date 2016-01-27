@@ -150,9 +150,17 @@ div.bbg_xiv-bootstrap{
     }
     
     span.bbg_xiv-radio_input{
-      padding:6px 12px;
+      display:block;
+      width:33.3333%;
+      float:left;
+      padding:0px 6px;
       border:1px solid #ccc;
       border-radius:4px;
+      @media(max-width:767px){
+        width:100%;
+        float:none;
+      }
+      
       span.bbg_xiv-radio_text{
         font-size:14px;
       }
@@ -161,6 +169,7 @@ div.bbg_xiv-bootstrap{
     input.form-control[type="radio"][name="bbg_xiv-bandwidth"]{
       display:inline;
       width:auto;
+      margin:0px;
       vertical-align:bottom;
     }
   }
