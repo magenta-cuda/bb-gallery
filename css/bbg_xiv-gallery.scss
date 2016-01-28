@@ -163,14 +163,15 @@ div.bbg_xiv-bootstrap{
       
       span.bbg_xiv-radio_text{
         font-size:14px;
+        vertical-align:middle;
       }
-    }
 
-    input.form-control[type="radio"][name="bbg_xiv-bandwidth"]{
-      display:inline;
-      width:auto;
-      margin:0px;
-      vertical-align:bottom;
+      input.form-control[type="radio"][name="bbg_xiv-bandwidth"]{
+        display:inline;
+        width:auto;
+        margin:0px;
+        vertical-align:middle;
+      }
     }
   }
 }
