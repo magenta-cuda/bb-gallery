@@ -29,7 +29,7 @@
 
 <!-- Flex Container Template -->
 <script type="text/html" id="bbg_xiv-template_flex_container">
-<div class="bbg_xiv-container bbg_xiv-flex_container">
+<div class="bbg_xiv-container bbg_xiv-flex_container" data-bbg_xiv-gallery-id="{{{ data.id }}}">
     {{{ data.items }}}
     <!-- Full Browser Viewport View of an Image -->
     <div class="bbg_xiv-dense_outer">
@@ -48,7 +48,7 @@
         <figure>
             <figcaption>{{{ data.post_title }}}</figcaption>
             <a href="{{{ data.link }}}" target="_blank">
-                <img src="{{{ data.url }}}" alt="{{{ data.post_title }}}" title="{{{ data.post_excerpt }}}">
+                <img src="<# print(bbg_xiv.getThumbnailUrl(data).src); #>" alt="{{{ data.post_title }}}" title="{{{ data.post_excerpt }}}" data-bbg_xiv-image-id="{{{ data.ID }}}">
             </a>
         </figure>
         <a href="{{{ data.link }}}" target="_blank">

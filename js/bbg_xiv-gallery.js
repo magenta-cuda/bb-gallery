@@ -78,6 +78,7 @@
         var galleryView=new bbg_xiv.GalleryView({
             model:{
                 attributes:{
+                    id:collection.id,
                     items:imagesHtml
                 }
             }
@@ -245,6 +246,7 @@
         var images=bbg_xiv.images[gallery.id];
         if(!images){
             images=bbg_xiv.images[gallery.id]=new bbg_xiv.Images();
+            images.id=gallery.id;
             try{
                 images.reset(JSON.parse(window.bbg_xiv[gallery.id+"-data"]));
                 // find closest match for thumbnail, small, medium and large
@@ -501,6 +503,15 @@
         default:
             break;
         }
+    };
+    
+    bbg_xiv.getThumbnailUrl=function(data){
+        console.log("bbg_xiv.getThumbnailUrl():data=",data);
+        return {src:data.url};
+    };
+    
+    bbg_xiv.getImageUrl=function(data){
+        return {src:data.url};
     };
     
     bbg_xiv.setCookie=function(name,value,expires){
