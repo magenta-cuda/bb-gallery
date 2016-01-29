@@ -318,6 +318,19 @@
                     var img=jQuery(this).parents("div.bbg_xiv-flex_item").find("img")[0];
                 }
                 fullImg[0].src=img.src;
+                // try and replace img src with better match 
+                try{
+                    var imageId=img.dataset.bbg_xivImageId;
+                    if(imageId){
+                        var galleryId=jQuery(img).parents("div[data-bbg_xiv-gallery-id]")[0].dataset.bbg_xivGalleryId;
+                        if(galleryId){
+                            var urls=bbg_xiv.getImageUrl(bbg_xiv.images[galleryId].get(imageId).attributes);
+                            console.log("urls=",urls);
+                            fullImg[0].src=urls.src;
+                        }
+                    }
+                }catch(e){
+                }
                 fullTitle[0].textContent=img.alt;
                 fullCaption[0].textContent=img.title;
                 // show and fade in overlay
@@ -511,6 +524,7 @@
     };
     
     bbg_xiv.getImageUrl=function(data){
+        console.log("bbg_xiv.getImageUrl():data=",data);
         return {src:data.url};
     };
     
