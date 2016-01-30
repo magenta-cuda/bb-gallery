@@ -581,6 +581,7 @@
         if(jQuery.isNumeric(flex_number_of_dense_view_columns)&&flex_number_of_dense_view_columns>=2&&flex_number_of_dense_view_columns<=32){
             bbg_xiv.bbg_xiv_flex_number_of_dense_view_columns=flex_number_of_dense_view_columns;
         }
+        var bandwidth=bbg_xiv.bbg_xiv_bandwidth=options.bbg_xiv_bandwidth;
     }
     bbg_xiv.calcBreakpoints();
     var minFlexWidthForCaption=window.bbg_xiv['bbg_xiv_flex_min_width_for_caption'];
@@ -634,6 +635,8 @@
             divConfigure.find("input#bbg_xiv-carousel_delay").val(bbg_xiv.bbg_xiv_carousel_interval);
             divConfigure.find("input#bbg_xiv-min_image_width").val(bbg_xiv.bbg_xiv_flex_min_width);
             divConfigure.find("input#bbg_xiv-columns_in_dense_view").val(bbg_xiv.bbg_xiv_flex_number_of_dense_view_columns);
+            divConfigure.find("input[name='bbg_xiv-bandwidth']").prop("checked",false);
+            divConfigure.find("input[name='bbg_xiv-bandwidth'][value='"+bbg_xiv.bbg_xiv_bandwidth+"']").prop("checked",true);
             var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
             var outer=gallery.find("div.bbg_xiv-configure_outer");
             outer.show();
@@ -653,10 +656,12 @@
             bbg_xiv.bbg_xiv_carousel_interval=divConfigure.find("input#bbg_xiv-carousel_delay").val();
             bbg_xiv.bbg_xiv_flex_min_width=divConfigure.find("input#bbg_xiv-min_image_width").val();
             bbg_xiv.bbg_xiv_flex_number_of_dense_view_columns=divConfigure.find("input#bbg_xiv-columns_in_dense_view").val();
+            bbg_xiv.bbg_xiv_bandwidth=divConfigure.find("input[name='bbg_xiv-bandwidth']:checked").val();
             var cookie=JSON.stringify({
                 bbg_xiv_carousel_interval:bbg_xiv.bbg_xiv_carousel_interval,
                 bbg_xiv_flex_min_width:bbg_xiv.bbg_xiv_flex_min_width,
-                bbg_xiv_flex_number_of_dense_view_columns:bbg_xiv.bbg_xiv_flex_number_of_dense_view_columns
+                bbg_xiv_flex_number_of_dense_view_columns:bbg_xiv.bbg_xiv_flex_number_of_dense_view_columns,
+                bbg_xiv_bandwidth:bbg_xiv.bbg_xiv_bandwidth
             });
             bbg_xiv.setCookie("bbg_xiv",cookie,30);
             bbg_xiv.calcBreakpoints();

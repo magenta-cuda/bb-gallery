@@ -194,10 +194,14 @@ $table_nav_item
           </div>
         </div>
         <div class="form-group">
-          <label for="bbg_xiv-bandwidth" class="control-label col-sm-offset-1 col-sm-4 col-md-offset-2 col-md-3">Bandwidth</label>
-          <div class="col-sm-6 col-md-5">
+          <label for="bbg_xiv-bandwidth" class="control-label col-sm-offset-1 col-sm-3 col-md-offset-2 col-md-3">Bandwidth</label>
+          <div class="col-sm-7 col-md-5">
             <span class="bbg_xiv-radio_input">
-                <input type="radio" class="form-control" name="bbg_xiv-bandwidth" value="normal" id="bbg_xiv-bandwidth_normal" checked>
+                <input type="radio" class="form-control" name="bbg_xiv-bandwidth" value="auto" id="bbg_xiv-bandwidth_auto" checked>
+                <span class="bbg_xiv-radio_text">Auto</span>
+            </span>
+            <span class="bbg_xiv-radio_input">
+                <input type="radio" class="form-control" name="bbg_xiv-bandwidth" value="normal" id="bbg_xiv-bandwidth_normal">
                 <span class="bbg_xiv-radio_text">High</span>
             </span>
             <span class="bbg_xiv-radio_input">
