@@ -214,6 +214,27 @@ $table_nav_item
             </span>
           </div>
         </div>
+        <div class="form-group">
+          <label for="bbg_xiv-interface" class="control-label col-sm-offset-1 col-sm-3 col-md-offset-2 col-md-3">Interface</label>
+          <div class="col-sm-7 col-md-5">
+            <span class="bbg_xiv-radio_input">
+                <input type="radio" class="form-control" name="bbg_xiv-interface" value="auto" id="bbg_xiv-interface_auto" checked>
+                <span class="bbg_xiv-radio_text">Auto</span>
+            </span>
+            <span class="bbg_xiv-radio_input">
+                <input type="radio" class="form-control" name="bbg_xiv-interface" value="mouse" id="bbg_xiv-interface_mouse">
+                <span class="bbg_xiv-radio_text">Mouse</span>
+            </span>
+            <span class="bbg_xiv-radio_input">
+                <input type="radio" class="form-control" name="bbg_xiv-interface" value="touch" id="bbg_xiv-interface_touch">
+                <span class="bbg_xiv-radio_text">Touch</span>
+            </span>
+            <span class="bbg_xiv-radio_input">
+                <input type="radio" class="form-control" name="bbg_xiv-interface" value="null" id="bbg_xiv-interface_null" disabled>
+                <span class="bbg_xiv-radio_text"></span>
+            </span>
+          </div>
+        </div>
         <br>
         <div class="form-group">
           <div class="col-sm-offset-10 col-sm-2">

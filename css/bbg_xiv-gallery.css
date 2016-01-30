@@ -62,7 +62,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner {
     div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner span.bbg_xiv-radio_input span.bbg_xiv-radio_text {
       font-size: 14px;
       vertical-align: middle; }
-    div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner span.bbg_xiv-radio_input input.form-control[type="radio"][name="bbg_xiv-bandwidth"] {
+    div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner span.bbg_xiv-radio_input input.form-control[type="radio"][name="bbg_xiv-bandwidth"], div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner span.bbg_xiv-radio_input input.form-control[type="radio"][name="bbg_xiv-interface"] {
       display: inline;
       width: auto;
       margin: 0px;
