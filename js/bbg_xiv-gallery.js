@@ -86,8 +86,8 @@
         galleryView.template=_.template(jQuery("script#bbg_xiv-template_flex_container").html(),null,bbg_xiv.templateOptions);
         container.empty();
         container.append(galleryView.render().$el.find("div.bbg_xiv-flex_container"));
-        if(Modernizr.touchevents){
-            container.find("div.bbg_xiv-flex_container div.bbg_xiv-flex_item figure div.bbg_xiv-dense_full_btn").css({color:"gray",borderColor:"gray"});
+        if(bbg_xiv.interface==="touch"){
+            container.find("div.bbg_xiv-flex_container div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn").css({color:"gray",borderColor:"gray"});
         }
     }
  
@@ -586,6 +586,15 @@
         }
         var bandwidth=bbg_xiv.bbg_xiv_bandwidth=options.bbg_xiv_bandwidth;
         var interface_=bbg_xiv.bbg_xiv_interface=options.bbg_xiv_interface;
+        if(interface_==="auto"){
+            if(Modernizr.touchevents){
+                bbg_xiv.interface="touch";
+            }else{
+                bbg_xiv.interface="mouse";
+            }
+        }else{
+            bbg_xiv.interface=interface_;
+        }
     }
     bbg_xiv.calcBreakpoints();
     var minFlexWidthForCaption=window.bbg_xiv['bbg_xiv_flex_min_width_for_caption'];
