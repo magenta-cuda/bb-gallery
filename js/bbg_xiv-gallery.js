@@ -310,6 +310,11 @@
                     fullCaption.css({color:"transparent",textShadow:"none"});
                 }
             );
+            // force hover effects on touchscreen
+            if(bbg_xiv.interface==="touch"){
+                fullTitle.css({color:fullTitleColor,textShadow:fullTitleShadow});
+                fullCaption.css({color:fullCaptionColor,textShadow:fullCaptionShadow});
+            }
             jqGallery.find("button.bbg_xiv-dense_full_btn").click(function(e){
                 var jqThis=jQuery(this);
                 // the buttons are of three different types so the associated image is found differently depending on the type
@@ -569,6 +574,9 @@
         ];
     };
 
+    bbg_xiv.bbg_xiv_bandwidth="auto";
+    bbg_xiv.bbg_xiv_interface="auto";
+    // override options with cookie values if they exists
     var cookie=bbg_xiv.getCookie("bbg_xiv");
     if(cookie){
         var options=JSON.parse(cookie);
@@ -584,17 +592,32 @@
         if(jQuery.isNumeric(flex_number_of_dense_view_columns)&&flex_number_of_dense_view_columns>=2&&flex_number_of_dense_view_columns<=32){
             bbg_xiv.bbg_xiv_flex_number_of_dense_view_columns=flex_number_of_dense_view_columns;
         }
-        var bandwidth=bbg_xiv.bbg_xiv_bandwidth=options.bbg_xiv_bandwidth;
-        var interface_=bbg_xiv.bbg_xiv_interface=options.bbg_xiv_interface;
-        if(interface_==="auto"){
-            if(Modernizr.touchevents){
-                bbg_xiv.interface="touch";
-            }else{
-                bbg_xiv.interface="mouse";
-            }
-        }else{
-            bbg_xiv.interface=interface_;
+        if(typeof options.bbg_xiv_bandwidth==="string"){
+            bbg_xiv.bbg_xiv_bandwidth=options.bbg_xiv_bandwidth;
         }
+        if(typeof options.bbg_xiv_interface==="string"){
+            bbg_xiv.bbg_xiv_interface=options.bbg_xiv_interface;
+        }
+    }
+    // compute bandwidth if bandwidth is auto
+    if(bbg_xiv.bbg_xiv_bandwidth==="auto"){
+        if(Modernizr.lowbandwidth){
+            bbg_xiv.bandwidth="very low";
+        }else{
+            bbg_xiv.bandwidth="normal";
+        }
+    }else{
+        bbg_xiv.bandwidth=bbg_xiv.bbg_xiv_bandwidth;
+    }
+    // compute interface if interface is auto
+    if(bbg_xiv.bbg_xiv_interface==="auto"){
+        if(Modernizr.touchevents){
+            bbg_xiv.interface="touch";
+        }else{
+            bbg_xiv.interface="mouse";
+        }
+    }else{
+        bbg_xiv.interface=bbg_xiv.bbg_xiv_interface;
     }
     bbg_xiv.calcBreakpoints();
     var minFlexWidthForCaption=window.bbg_xiv['bbg_xiv_flex_min_width_for_caption'];
