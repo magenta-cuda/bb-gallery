@@ -552,7 +552,7 @@ div.bbg_xiv-bootstrap{
         position: relative;
 
         > {
-          img, a > img {
+          img, a > img, a > picture > img {
             height: 90%;
             width: auto;
             max-width: none;

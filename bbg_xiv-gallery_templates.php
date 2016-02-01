@@ -53,12 +53,12 @@
         <figure>
             <figcaption>{{{ data.post_title }}}</figcaption>
             <a href="{{{ data.link }}}" target="_blank">
-            <picture>
-                <source media="(min-width:1200px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).large); #>">
-                <source media="(min-width:992px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).medium); #>">
-                <source media="(max-width:991px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).small); #>">
-                <img src="<# print(bbg_xiv.getThumbnailUrl(data).src); #>" alt="{{{ data.post_title }}}" title="{{{ data.post_excerpt }}}" data-bbg_xiv-image-id="{{{ data.ID }}}">
-            </picture>
+                <picture>
+                    <source media="(min-width:1200px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).large); #>">
+                    <source media="(min-width:992px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).medium); #>">
+                    <source media="(max-width:991px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).small); #>">
+                    <img src="<# print(bbg_xiv.getThumbnailUrl(data).src); #>" alt="{{{ data.post_title }}}" title="{{{ data.post_excerpt }}}" data-bbg_xiv-image-id="{{{ data.ID }}}">
+                </picture>
             </a>
         </figure>
         <a href="{{{ data.link }}}" target="_blank">
@@ -99,7 +99,12 @@
 <script type="text/html" id="bbg_xiv-template_carousel_item">
 <figure class="item bbg_xiv-item<# if ( data.index === 0 ) { #> active<# } #>">
   <a href="{{{ data.link }}}" target="_blank">
-    <img src="{{{ data.url }}}">
+    <picture>
+      <source media="(min-width:1200px)" srcset="<# print(bbg_xiv.getImageUrl(data).large); #>">
+      <source media="(min-width:992px)" srcset="<# print(bbg_xiv.getImageUrl(data).medium); #>">
+      <source media="(max-width:991px)" srcset="<# print(bbg_xiv.getImageUrl(data).small); #>">
+      <img src="{{{ data.url }}}">
+    </picture>
   </a>
   <figcaption>{{{ data.post_title }}}<br>{{{ data.post_excerpt }}}</figcaption>
 </figure>
