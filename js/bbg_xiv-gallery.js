@@ -295,7 +295,7 @@
             var fullImg=inner.find("img");
             var fullLarge=inner.find("source[media='(min-width:1200px)']");
             var fullMedium=inner.find("source[media='(min-width:992px)']");
-            var fullSmall=inner.find("source[media='(min-width:768px)']");
+            var fullSmall=inner.find("source[media='(max-width:991px)']");
             var fullTitle=inner.find("h1.bbg_xiv-dense_title");
             var fullTitleColor=fullTitle.css("color");
             var fullTitleShadow=fullTitle.css("text-shadow");
@@ -537,7 +537,7 @@
     
     bbg_xiv.getThumbnailUrl=function(data){
         console.log("bbg_xiv.getThumbnailUrl():data=",data);
-        return {src:data.url};
+        return {src:data.url,thumbnail:data.bbg_xiv_thumbnail_url,small:data.bbg_xiv_small_url,medium:data.bbg_xiv_medium_url,large:data.bbg_xiv_large_url};
     };
     
     bbg_xiv.getImageUrl=function(data){
