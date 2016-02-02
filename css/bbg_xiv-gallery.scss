@@ -139,7 +139,7 @@ div.bbg_xiv-bootstrap{
   }
 
   div.bbg_xiv-configure_inner{
-    @include overlay_inner(20vh,10vw,80vw,60vh);
+    @include overlay_inner(15vh,10vw,80vw,70vh);
     padding: 10px 20px;
     background-color:white;
     border:3px solid cyan;
@@ -172,6 +172,11 @@ div.bbg_xiv-bootstrap{
         margin:0px;
         vertical-align:middle;
       }
+    }
+    
+    button.bbg_xiv-options_btn{
+      float:right;
+      margin:0px 5px;
     }
   }
 }

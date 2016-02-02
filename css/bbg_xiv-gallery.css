@@ -24,10 +24,10 @@ div.bbg_xiv-bootstrap div.bbg_xiv-configure_outer {
   opacity: 0.9; }
 div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner {
   position: fixed;
-  top: 20vh;
+  top: 15vh;
   left: 10vw;
   width: 80vw;
-  height: 60vh;
+  height: 70vh;
   overflow-x: hidden;
   z-index: 1000;
   background-color: transparent;
@@ -67,6 +67,9 @@ div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner {
       width: auto;
       margin: 0px;
       vertical-align: middle; }
+  div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner button.bbg_xiv-options_btn {
+    float: right;
+    margin: 0px 5px; }
 
 div.bbg_xiv-gallery_container div.bbg_xiv-flex_item {
   padding-left: 1%;

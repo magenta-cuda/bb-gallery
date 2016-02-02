@@ -237,9 +237,9 @@ $table_nav_item
         </div>
         <br>
         <div class="form-group">
-          <div class="col-sm-offset-10 col-sm-2">
-            <button type="submit" class="btn btn-info bbg_xiv-help_options">Help</button>
-            <button type="submit" class="btn btn-primary bbg_xiv-save_options">Save</button>
+          <div class="col-sm-offset-8 col-sm-4">
+            <button type="submit" class="btn btn-primary bbg_xiv-options_btn bbg_xiv-save_options">Save</button>
+            <button type="submit" class="btn btn-info bbg_xiv-options_btn bbg_xiv-help_options">Help</button>
           </div>
         </div>
       </form>
