@@ -21,7 +21,7 @@
             <figure class="img-rounded bbg_xiv-gallery_item">
                 <figcaption>{{{ data.post_title }}}</figcaption>
                 <a href="{{{ data.link }}}" target="_blank">
-                    <img src="{{{ data.url }}}" alt="{{{ data.post_title }}}" title="{{{ data.post_excerpt }}}">
+                    <img src="<# print(bbg_xiv.getImageUrl(data).src); #>" alt="{{{ data.post_title }}}" title="{{{ data.post_excerpt }}}">
                 </a>
             </figure>
         </div>
@@ -103,7 +103,7 @@
       <source media="(min-width:1200px)" srcset="<# print(bbg_xiv.getImageUrl(data).large); #>">
       <source media="(min-width:992px)" srcset="<# print(bbg_xiv.getImageUrl(data).medium); #>">
       <source media="(max-width:991px)" srcset="<# print(bbg_xiv.getImageUrl(data).small); #>">
-      <img src="{{{ data.url }}}">
+      <img src="<# print(bbg_xiv.getImageUrl(data).src); #>">
     </picture>
   </a>
   <figcaption>{{{ data.post_title }}}<br>{{{ data.post_excerpt }}}</figcaption>
@@ -151,7 +151,7 @@
       <source media="(min-width:1200px)" srcset="<# print(bbg_xiv.getImageUrl(data).large); #>">
       <source media="(min-width:992px)" srcset="<# print(bbg_xiv.getImageUrl(data).medium); #>">
       <source media="(max-width:991px)" srcset="<# print(bbg_xiv.getImageUrl(data).small); #>">
-      <img class="bbg_xiv-tabs_img img-rounded" src="{{{ data.url }}}">
+      <img class="bbg_xiv-tabs_img img-rounded" src="<# print(bbg_xiv.getImageUrl(data).src); #>">
     </picture>
   </a>
   <figcaption><# if ( data.post_content ) { #>{{{ data.post_content }}}<# } else { #>{{{ data.post_excerpt }}}<# } #></figcaption>
