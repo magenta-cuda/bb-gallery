@@ -147,7 +147,12 @@
 <script type="text/html" id="bbg_xiv-template_tabs_item">
 <figure id="bbg_xiv-tab_pane{{{ data.index }}}" role="tabpanel" class="tab-pane fade<# if ( data.index === 0 ) { #> active in<# } #>">
   <a href="{{{ data.link }}}" target="_blank">
-    <img class="bbg_xiv-tabs_img img-rounded" src="{{{ data.url }}}">
+    <picture>
+      <source media="(min-width:1200px)" srcset="<# print(bbg_xiv.getImageUrl(data).large); #>">
+      <source media="(min-width:992px)" srcset="<# print(bbg_xiv.getImageUrl(data).medium); #>">
+      <source media="(max-width:991px)" srcset="<# print(bbg_xiv.getImageUrl(data).small); #>">
+      <img class="bbg_xiv-tabs_img img-rounded" src="{{{ data.url }}}">
+    </picture>
   </a>
   <figcaption><# if ( data.post_content ) { #>{{{ data.post_content }}}<# } else { #>{{{ data.post_excerpt }}}<# } #></figcaption>
 </figure>
