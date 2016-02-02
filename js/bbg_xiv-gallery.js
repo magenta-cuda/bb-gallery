@@ -2,6 +2,7 @@
 
 (function(){
     var bbg_xiv=window.bbg_xiv=window.bbg_xiv||{};
+    bbg_xiv.helpUrl="https://bbfgallery.wordpress.com/#options";
     // use WordPress templating syntax; see .../wp-includes/js/wp-util.js
     bbg_xiv.templateOptions={
         evaluate:    /<#([\s\S]+?)#>/g,
@@ -698,6 +699,10 @@
             outer.hide();
             var inner=gallery.find("div.bbg_xiv-configure_inner");
             inner.hide();
+        });
+        divConfigure.find("button.bbg_xiv-help_options").click(function(e){
+            window.open(bbg_xiv.helpUrl,"_blank");
+            e.preventDefault();
         });
         divConfigure.find("button.bbg_xiv-save_options").click(function(e){
             // save the options
