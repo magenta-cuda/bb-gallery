@@ -160,7 +160,7 @@
 
 <!-- Dense Container Template -->
 <script type="text/html" id="bbg_xiv-template_dense_container">
-<div id="{{{ data.id }}}" class="bbg_xiv-dense_container">
+<div id="{{{ data.id }}}" class="bbg_xiv-dense_container" data-bbg_xiv-gallery-id="{{{ data.gallery }}}">
   <button type="button" id="bbg_xiv-highlight_color"></button>
   <button type="button" id="bbg_xiv-normal_color"></button>
   <div class="bbg_xiv-dense_button_box">
@@ -186,7 +186,12 @@
   <div class="bbg_xiv-dense_inner">
     <button class="bbg_xiv-dense_close"><span class="glyphicon glyphicon-remove"></span></button>
     <h1 class="bbg_xiv-dense_title"></h1>
-    <img class="img-rounded">
+    <picture>
+      <source media="(min-width:1200px)">
+      <source media="(min-width:992px)">
+      <source media="(max-width:991px)">
+      <img class="img-rounded">
+    </picture>
     <h1 class="bbg_xiv-dense_caption"></h1>
   </div>
 </div>
@@ -208,7 +213,12 @@
 <!-- Dense Image Template -->
 <script type="text/html" id="bbg_xiv-template_dense_image">
 <div id="bbg_xiv-dense_image_{{{ data.index }}}" class="bbg_xiv-dense_flex_item" title="{{{ data.post_title }}}">
-  <img class="img-rounded" src="{{{ data.url }}}" alt="{{{ data.post_title }}}" title="{{{ data.post_excerpt }}}">
+  <picture>
+    <source media="(min-width:1200px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).large); #>">
+    <source media="(min-width:992px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).medium); #>">
+    <source media="(max-width:991px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).small); #>">
+    <img class="img-rounded" src="<# print(bbg_xiv.getThumbnailUrl(data).src); #>" alt="{{{ data.post_title }}}" title="{{{ data.post_excerpt }}}" data-bbg_xiv-image-id="{{{ data.ID }}}">
+  </picture>
   <a href="{{{ data.link }}}" target="_blank">
     <div class="bbg_xiv-dense_full_btn">
       <button class="bbg_xiv-dense_full_btn bbg_xiv-dense_from_image btn">

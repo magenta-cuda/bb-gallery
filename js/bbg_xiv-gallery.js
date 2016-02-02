@@ -162,6 +162,7 @@
             model:{
                 attributes:{
                     id:id,
+                    gallery:collection.id,
                     mode:mode,
                     titles:titlesHtml,
                     images:imagesHtml
