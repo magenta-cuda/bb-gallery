@@ -585,54 +585,60 @@
         ];
     };
 
-    bbg_xiv.bbg_xiv_bandwidth="auto";
-    bbg_xiv.bbg_xiv_interface="auto";
-    // override options with cookie values if they exists
-    var cookie=bbg_xiv.getCookie("bbg_xiv");
-    if(cookie){
-        var options=JSON.parse(cookie);
-        var carousel_interval=options.bbg_xiv_carousel_interval;
-        if(jQuery.isNumeric(carousel_interval)&&carousel_interval>=1000){
-            bbg_xiv.bbg_xiv_carousel_interval=carousel_interval;
+    bbg_xiv.getOptionsFromCookie=function(){
+        bbg_xiv.bbg_xiv_bandwidth="auto";
+        bbg_xiv.bbg_xiv_interface="auto";
+        // override options with cookie values if they exists
+        var cookie=bbg_xiv.getCookie("bbg_xiv");
+        if(cookie){
+            var options=JSON.parse(cookie);
+            var carousel_interval=options.bbg_xiv_carousel_interval;
+            if(jQuery.isNumeric(carousel_interval)&&carousel_interval>=1000){
+                bbg_xiv.bbg_xiv_carousel_interval=carousel_interval;
+            }
+            var flex_min_width=options.bbg_xiv_flex_min_width;
+            if(jQuery.isNumeric(flex_min_width)&&flex_min_width>=32&&flex_min_width<=1024){
+                bbg_xiv.bbg_xiv_flex_min_width=flex_min_width;
+            }
+            var flex_number_of_dense_view_columns=options.bbg_xiv_flex_number_of_dense_view_columns;
+            if(jQuery.isNumeric(flex_number_of_dense_view_columns)&&flex_number_of_dense_view_columns>=2&&flex_number_of_dense_view_columns<=32){
+                bbg_xiv.bbg_xiv_flex_number_of_dense_view_columns=flex_number_of_dense_view_columns;
+            }
+            if(typeof options.bbg_xiv_bandwidth==="string"){
+                bbg_xiv.bbg_xiv_bandwidth=options.bbg_xiv_bandwidth;
+            }
+            if(typeof options.bbg_xiv_interface==="string"){
+                bbg_xiv.bbg_xiv_interface=options.bbg_xiv_interface;
+            }
         }
-        var flex_min_width=options.bbg_xiv_flex_min_width;
-        if(jQuery.isNumeric(flex_min_width)&&flex_min_width>=32&&flex_min_width<=1024){
-            bbg_xiv.bbg_xiv_flex_min_width=flex_min_width;
-        }
-        var flex_number_of_dense_view_columns=options.bbg_xiv_flex_number_of_dense_view_columns;
-        if(jQuery.isNumeric(flex_number_of_dense_view_columns)&&flex_number_of_dense_view_columns>=2&&flex_number_of_dense_view_columns<=32){
-            bbg_xiv.bbg_xiv_flex_number_of_dense_view_columns=flex_number_of_dense_view_columns;
-        }
-        if(typeof options.bbg_xiv_bandwidth==="string"){
-            bbg_xiv.bbg_xiv_bandwidth=options.bbg_xiv_bandwidth;
-        }
-        if(typeof options.bbg_xiv_interface==="string"){
-            bbg_xiv.bbg_xiv_interface=options.bbg_xiv_interface;
-        }
-    }
-    // compute bandwidth if bandwidth is auto
-    if(bbg_xiv.bbg_xiv_bandwidth==="auto"){
-        if(Modernizr.lowbandwidth){
-            bbg_xiv.bandwidth="very low";
+        // compute bandwidth if bandwidth is set to auto - currently since this is not done reliably the user should set the bandwidth option manually
+        if(bbg_xiv.bbg_xiv_bandwidth==="auto"){
+            if(Modernizr.lowbandwidth){
+                // this uses navigator.connection which is only supported by Android
+                bbg_xiv.bandwidth="very low";
+            }else if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+                // determining bandwidth by device type is not reliable!
+                bbg_xiv.bandwidth="very_low";
+            }else{
+                bbg_xiv.bandwidth="normal";
+            }
         }else{
-            bbg_xiv.bandwidth="normal";
+            bbg_xiv.bandwidth=bbg_xiv.bbg_xiv_bandwidth;
         }
-    }else{
-        bbg_xiv.bandwidth=bbg_xiv.bbg_xiv_bandwidth;
-    }
-    // compute interface if interface is auto
-    if(bbg_xiv.bbg_xiv_interface==="auto"){
-        if(Modernizr.touchevents){
-            bbg_xiv.interface="touch";
+        // compute interface if interface is auto
+        if(bbg_xiv.bbg_xiv_interface==="auto"){
+            if(Modernizr.touchevents){
+                bbg_xiv.interface="touch";
+            }else{
+                bbg_xiv.interface="mouse";
+            }
         }else{
-            bbg_xiv.interface="mouse";
+            bbg_xiv.interface=bbg_xiv.bbg_xiv_interface;
         }
-    }else{
-        bbg_xiv.interface=bbg_xiv.bbg_xiv_interface;
-    }
+    };
+    
     bbg_xiv.calcBreakpoints();
-    var minFlexWidthForCaption=window.bbg_xiv['bbg_xiv_flex_min_width_for_caption'];
-    var minWidthForDenseView=window.bbg_xiv['bbg_xiv_flex_min_width_for_dense_view'];
+    bbg_xiv.getOptionsFromCookie();
     
     jQuery("nav.bbg_xiv-gallery_navbar ul.nav li > a").click(function(e){
         var jqThis=jQuery(this);
@@ -651,6 +657,7 @@
             breakpoints.forEach(function(breakpoint){
               jqThis.removeClass("bbg_xiv-flex_width_"+breakpoint.cssClass);
             });
+            var minFlexWidthForCaption=window.bbg_xiv.bbg_xiv_flex_min_width_for_caption;
             for(var i=0;i<breakpoints.length;i++){
                 if(width<breakpoints[i].width){
                     var cssClass=breakpoints[i].cssClass;
@@ -665,7 +672,7 @@
                 }
             };
         });
-        if(jQuery(window).width()>=minWidthForDenseView){
+        if(bbg_xiv.interface==="mouse"&&jQuery(window).width()>=bbg_xiv.bbg_xiv_flex_min_width_for_dense_view){
             jQuery(".bbg_xiv-large_viewport_only").show();
         }else{
             jQuery(".bbg_xiv-large_viewport_only").hide();
@@ -719,6 +726,7 @@
                 bbg_xiv_interface:bbg_xiv.bbg_xiv_interface
             });
             bbg_xiv.setCookie("bbg_xiv",cookie,30);
+            bbg_xiv.getOptionsFromCookie();
             bbg_xiv.calcBreakpoints();
             var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
             var outer=gallery.find("div.bbg_xiv-configure_outer");
