@@ -100,7 +100,7 @@
 <figure class="item bbg_xiv-item<# if ( data.index === 0 ) { #> active<# } #>">
   <a href="{{{ data.link }}}" target="_blank">
     <picture>
-      <source media="(min-width:1200px)" srcset="<# print(bbg_xiv.getImageUrl(data).large); #>">
+      <source media="(min-width:1200px)" srcset="<# print(bbg_xiv.getImageUrl(data).src); #>">
       <source media="(min-width:992px)" srcset="<# print(bbg_xiv.getImageUrl(data).medium); #>">
       <source media="(max-width:991px)" srcset="<# print(bbg_xiv.getImageUrl(data).small); #>">
       <img src="<# print(bbg_xiv.getImageUrl(data).src); #>">
@@ -148,7 +148,7 @@
 <figure id="bbg_xiv-tab_pane{{{ data.index }}}" role="tabpanel" class="tab-pane fade<# if ( data.index === 0 ) { #> active in<# } #>">
   <a href="{{{ data.link }}}" target="_blank">
     <picture>
-      <source media="(min-width:1200px)" srcset="<# print(bbg_xiv.getImageUrl(data).large); #>">
+      <source media="(min-width:1200px)" srcset="<# print(bbg_xiv.getImageUrl(data).src); #>">
       <source media="(min-width:992px)" srcset="<# print(bbg_xiv.getImageUrl(data).medium); #>">
       <source media="(max-width:991px)" srcset="<# print(bbg_xiv.getImageUrl(data).small); #>">
       <img class="bbg_xiv-tabs_img img-rounded" src="<# print(bbg_xiv.getImageUrl(data).src); #>">

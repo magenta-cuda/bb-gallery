@@ -343,7 +343,7 @@
                             var urls=bbg_xiv.getImageUrl(bbg_xiv.images[galleryId].get(imageId).attributes);
                             console.log("urls=",urls);
                             fullImg[0].src=urls.src;
-                            fullLarge[0].srcset=urls.large;
+                            fullLarge[0].srcset=urls.src;
                             fullMedium[0].srcset=urls.medium;
                             fullSmall[0].srcset=urls.small;
                         }
