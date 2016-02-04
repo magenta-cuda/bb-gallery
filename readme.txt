@@ -3,7 +3,7 @@ Contributors: Magenta Cuda
 Tags: gallery, shortcode, lightbox, slideshow, responsive, plug-compatible, replacement
 Requires at least: 4.4
 Tested up to: 4.4
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,8 +34,12 @@ https://bbfgallery.wordpress.com/
 3. Tabs View.
 4. Dense View.
 5. Overlay of a Selected Image.
+6. User Options Pane
 
 == Changelog ==
+
+= 1.3.3 =
+* fixes for problems with mobile (touch screen, small screen and/or low bandwidth) devices
 
 = 1.3.2 =
 * add carousel interval option
@@ -63,6 +67,9 @@ https://bbfgallery.wordpress.com/
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.3.3 =
+* fixes for problems with mobile (touch screen, small screen and/or low bandwidth) devices
 
 = 1.3.2 =
 * add carousel interval option
