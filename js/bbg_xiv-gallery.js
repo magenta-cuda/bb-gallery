@@ -549,7 +549,8 @@
     
     bbg_xiv.setCookie=function(name,value,expires){
         var d=new Date();
-        document.cookie=name+"="+value+"; expires="+d.setTime(d.getTime()+(expires*24*60*60*1000)+"; path=/");
+        d.setTime(d.getTime()+(expires*24*60*60*1000));
+        document.cookie=name+"="+value+"; expires="+d.toUTCString()+"; path=/";
     };
 
     bbg_xiv.getCookie=function(name){
@@ -586,8 +587,6 @@
     };
 
     bbg_xiv.getOptionsFromCookie=function(){
-        bbg_xiv.bbg_xiv_bandwidth="auto";
-        bbg_xiv.bbg_xiv_interface="auto";
         // override options with cookie values if they exists
         var cookie=bbg_xiv.getCookie("bbg_xiv");
         if(cookie){
@@ -610,6 +609,9 @@
             if(typeof options.bbg_xiv_interface==="string"){
                 bbg_xiv.bbg_xiv_interface=options.bbg_xiv_interface;
             }
+        }else{
+            bbg_xiv.bbg_xiv_bandwidth="auto";
+            bbg_xiv.bbg_xiv_interface="auto";
         }
         // compute bandwidth if bandwidth is set to auto - currently since this is not done reliably the user should set the bandwidth option manually
         if(bbg_xiv.bbg_xiv_bandwidth==="auto"){
