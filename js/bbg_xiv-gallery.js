@@ -674,8 +674,10 @@
         });
         if(bbg_xiv.interface==="mouse"&&jQuery(window).width()>=bbg_xiv.bbg_xiv_flex_min_width_for_dense_view){
             jQuery(".bbg_xiv-large_viewport_only").show();
+            jQuery(".bbg_xiv-configure_inner .bbg_xiv-mouse_only_option").show();
         }else{
             jQuery(".bbg_xiv-large_viewport_only").hide();
+            jQuery(".bbg_xiv-configure_inner .bbg_xiv-mouse_only_option").hide();
         }  
     });
 

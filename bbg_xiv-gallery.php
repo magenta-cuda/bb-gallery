@@ -187,7 +187,7 @@ $table_nav_item
             <input type="number" class="form-control" id="bbg_xiv-min_image_width" min="32" max="1024">
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group bbg_xiv-mouse_only_option">
           <label for="bbg_xiv-columns_in_dense_view" class="control-label col-sm-offset-1 col-sm-7 col-md-offset-2 col-md-6">Number of Columns in the Dense View</label>
           <div class="col-sm-3 col-md-2">
             <input type="number" class="form-control" id="bbg_xiv-columns_in_dense_view" min="2" max="32">
