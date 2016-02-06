@@ -539,12 +539,55 @@
     
     bbg_xiv.getThumbnailUrl=function(data){
         console.log("bbg_xiv.getThumbnailUrl():data=",data);
-        return {src:data.url,thumbnail:data.bbg_xiv_thumbnail_url,small:data.bbg_xiv_small_url,medium:data.bbg_xiv_medium_url,large:data.bbg_xiv_large_url};
+        switch(bbg_xiv.bandwidth){
+        case "normal":
+            return {
+                src      :data.url,
+                thumbnail:data.bbg_xiv_thumbnail_url,
+                small    :data.bbg_xiv_small_url,
+                medium   :data.bbg_xiv_medium_url,
+                large    :data.bbg_xiv_large_url
+            };
+        case "low":
+            return {
+                src      :data.bbg_xiv_small_url,
+                thumbnail:data.bbg_xiv_thumbnail_url,
+                small    :data.bbg_xiv_small_url,
+                medium   :data.bbg_xiv_small_url,
+                large    :data.bbg_xiv_small_url
+            };
+        case "very low":
+            return {
+                src      :data.bbg_xiv_thumbnail_url,
+                thumbnail:data.bbg_xiv_thumbnail_url,
+                small    :data.bbg_xiv_thumbnail_url,
+                medium   :data.bbg_xiv_thumbnail_url,
+                large    :data.bbg_xiv_thumbnail_url
+            }; 
+        }
     };
     
     bbg_xiv.getImageUrl=function(data){
         console.log("bbg_xiv.getImageUrl():data=",data);
-        return {src:data.url,thumbnail:data.bbg_xiv_thumbnail_url,small:data.bbg_xiv_small_url,medium:data.bbg_xiv_medium_url,large:data.bbg_xiv_large_url};
+        switch(bbg_xiv.bandwidth){
+        case "normal":
+            return {
+                src      :data.url,
+                thumbnail:data.bbg_xiv_thumbnail_url,
+                small    :data.bbg_xiv_small_url,
+                medium   :data.bbg_xiv_medium_url,
+                large    :data.bbg_xiv_large_url
+            };
+        case "low":
+        case "very low":
+            return {
+                src      :data.bbg_xiv_small_url,
+                thumbnail:data.bbg_xiv_thumbnail_url,
+                small    :data.bbg_xiv_small_url,
+                medium   :data.bbg_xiv_small_url,
+                large    :data.bbg_xiv_small_url
+            };
+        }
     };
     
     bbg_xiv.setCookie=function(name,value,expires){
@@ -620,7 +663,7 @@
                 bbg_xiv.bandwidth="very low";
             }else if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
                 // determining bandwidth by device type is not reliable!
-                bbg_xiv.bandwidth="very_low";
+                bbg_xiv.bandwidth="very low";
             }else{
                 bbg_xiv.bandwidth="normal";
             }
