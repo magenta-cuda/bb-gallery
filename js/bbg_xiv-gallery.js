@@ -682,8 +682,8 @@
         }
     };
     
-    bbg_xiv.calcBreakpoints();
     bbg_xiv.getOptionsFromCookie();
+    bbg_xiv.calcBreakpoints();
     
     jQuery("nav.bbg_xiv-gallery_navbar ul.nav li > a").click(function(e){
         var jqThis=jQuery(this);
