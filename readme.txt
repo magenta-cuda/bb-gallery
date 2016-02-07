@@ -25,6 +25,11 @@ The homepage for this plug-in is [https://bbfgallery.wordpress.com/](https://bbf
 3. Enable the BB Gallery option on the "Settings > Media" page.
 
 == Frequently Asked Questions ==
+= Why is the page loading slowly? =
+BB Gallery can preload full size images for better user interactivity.
+This does not work well for low bandwidth and/or slow cpus.
+You can set the bandwidth option to "low" to prevent preloading and force the use of low resolution images.
+
 = Where is the documentation? =
 https://bbfgallery.wordpress.com/
 

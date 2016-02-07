@@ -276,7 +276,6 @@
                     model.attributes.bbg_xiv_small_url=urls[1];
                     model.attributes.bbg_xiv_medium_url=urls[2];
                     model.attributes.bbg_xiv_large_url=urls[3];
-                    console.log("model.attributes=",model.attributes);
                 });
             }catch(e){
                 console.log("reset(JSON.parse()) failed:",e);
@@ -421,7 +420,7 @@
                         window.setTimeout(function f(){
                             var w=img.naturalWidth;
                             var h=img.naturalHeight;
-                            var parent=jQuery(img.parentNode.parentNode);
+                            var parent=jQuery(img.parentNode.parentNode.parentNode);
                             var W=parent.width();
                             var H=0.7*jQuery(window).height();
                             if(!w||!h||!W||!H||W<64||H<64){
@@ -538,7 +537,6 @@
     };
     
     bbg_xiv.getThumbnailUrl=function(data){
-        console.log("bbg_xiv.getThumbnailUrl():data=",data);
         switch(bbg_xiv.bandwidth){
         case "normal":
             return {
@@ -568,7 +566,6 @@
     };
     
     bbg_xiv.getImageUrl=function(data){
-        console.log("bbg_xiv.getImageUrl():data=",data);
         switch(bbg_xiv.bandwidth){
         case "normal":
             return {
