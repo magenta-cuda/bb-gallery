@@ -1,14 +1,16 @@
 /* Stylesheet for the Bootstrap views of the 'gallery' shortcode */
 /* The colors for the Dense View */
-div.bbg_xiv-bootstrap nav.navbar li > a {
-  border: 0px none; }
-div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure {
-  display: block;
-  margin-top: 9px;
-  margin-bottom: 9px; }
-  @media (min-width: 768px) {
-    div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure {
-      float: right; } }
+div.bbg_xiv-bootstrap nav.navbar {
+  overflow: visible; }
+  div.bbg_xiv-bootstrap nav.navbar li > a {
+    border: 0px none; }
+  div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure {
+    display: block;
+    margin-top: 9px;
+    margin-bottom: 9px; }
+    @media (min-width: 768px) {
+      div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure {
+        float: right; } }
 @media (min-width: 768px) {
   div.bbg_xiv-bootstrap.bbg_xiv-gallery div.navbar-header a.bbg_xiv-images_brand {
     display: none; } }

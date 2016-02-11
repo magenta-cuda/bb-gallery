@@ -112,9 +112,12 @@ $icon-color:cyan;
 
 div.bbg_xiv-bootstrap{
   nav.navbar{
+    overflow:visible;
+
     li>a{
       border:0px none;
     }
+
     button.bbg_xiv-configure{
       display:block;
       margin-top:9px;

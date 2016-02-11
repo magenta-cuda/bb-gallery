@@ -158,13 +158,24 @@ EOD;
         </div>
         <div id="$selector-navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Gallery</a></li>
-                <li><a href="#">Carousel</a></li>
-                <li><a href="#">Tabs</a></li>
-                <li class="bbg_xiv-large_viewport_only"><a href="#">Dense</a></li>
-                <!-- TODO: Add entry for new views here. -->
-$table_nav_item
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">View <b class="caret"></b></a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li class="active"><a href="#">Gallery</a></li>
+                        <li><a href="#">Carousel</a></li>
+                        <li><a href="#">Tabs</a></li>
+                        <li class="bbg_xiv-large_viewport_only"><a href="#">Dense</a></li>
+                        <!-- TODO: Add entry for new views here. -->
+                        $table_nav_item
+                    </ul>
+                </li>
             </ul>
+            <form role="search" class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" placeholder="Search" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-default">Search</button>
+            </form>
             <button type="button" class="btn btn-info bbg_xiv-configure" title="configure bandwidth, carousel interval, ...">Options</button>
         </div>
     </nav>
