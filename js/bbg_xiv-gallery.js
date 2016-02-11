@@ -728,7 +728,12 @@
     });
 
     jQuery(document).ready(function(){
-        // wireup the front end for setting options 
+        // wireup the front end for setting options
+        jQuery("button.bbg_xiv-search").click(function(e){
+            jQuery.post(bbg_xiv.ajaxurl,{action:"bbg_xiv_search_media",query:jQuery(this).parents("form[role='search']").find("input[type='text']").val()},function(r){
+            });
+            e.preventDefault();
+        });
         jQuery("button.bbg_xiv-configure").click(function(e){
             divConfigure.find("input#bbg_xiv-carousel_delay").val(bbg_xiv.bbg_xiv_carousel_interval);
             divConfigure.find("input#bbg_xiv-min_image_width").val(bbg_xiv.bbg_xiv_flex_min_width);

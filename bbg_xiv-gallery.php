@@ -57,12 +57,13 @@ function bb_gallery_shortcode( $attr ) {
     static $bbg_xiv_data = [
         'version' => '1.0'
     ];
-    $bbg_xiv_data[ 'bbg_xiv_flex_min_width' ] = get_option( 'bbg_xiv_flex_min_width', 128 );
-    $bbg_xiv_data[ 'bbg_xiv_flex_min_width_for_caption' ] = get_option( 'bbg_xiv_flex_min_width_for_caption', 96 );
-    $bbg_xiv_data[ 'bbg_xiv_flex_min_width_for_dense_view' ] = get_option( 'bbg_xiv_flex_min_width_for_dense_view', 1280 );
+    $bbg_xiv_data[ 'ajaxurl' ]                                   = admin_url( 'admin-ajax.php' );
+    $bbg_xiv_data[ 'bbg_xiv_flex_min_width' ]                    = get_option( 'bbg_xiv_flex_min_width', 128 );
+    $bbg_xiv_data[ 'bbg_xiv_flex_min_width_for_caption' ]        = get_option( 'bbg_xiv_flex_min_width_for_caption', 96 );
+    $bbg_xiv_data[ 'bbg_xiv_flex_min_width_for_dense_view' ]     = get_option( 'bbg_xiv_flex_min_width_for_dense_view', 1280 );
     $bbg_xiv_data[ 'bbg_xiv_flex_number_of_dense_view_columns' ] = get_option( 'bbg_xiv_flex_number_of_dense_view_columns', 10 );
-    $bbg_xiv_data[ 'bbg_xiv_carousel_interval' ] = get_option( 'bbg_xiv_carousel_interval', 2500 );
-    $bbg_xiv_data[ 'bbg_xiv_disable_flexbox' ] = get_option( 'bbg_xiv_disable_flexbox', FALSE );
+    $bbg_xiv_data[ 'bbg_xiv_carousel_interval' ]                 = get_option( 'bbg_xiv_carousel_interval', 2500 );
+    $bbg_xiv_data[ 'bbg_xiv_disable_flexbox' ]                   = get_option( 'bbg_xiv_disable_flexbox', FALSE );
 
     if ( ! empty( $attr['ids'] ) ) {
       // 'ids' is explicitly ordered, unless you specify otherwise.
@@ -174,7 +175,7 @@ EOD;
                 <div class="form-group">
                     <input type="text" placeholder="Search" class="form-control">
                 </div>
-                <button type="submit" class="btn btn-default">Search</button>
+                <button type="submit" class="btn btn-default bbg_xiv-search">Search</button>
             </form>
             <button type="button" class="btn btn-info bbg_xiv-configure" title="configure bandwidth, carousel interval, ...">Options</button>
         </div>
@@ -365,4 +366,12 @@ add_action( 'admin_init', function( ) {
     register_setting( 'media', 'bbg_xiv_flex_min_width_for_dense_view' );
 } );
  
+if ( is_admin( ) ) {
+    function bbg_xiv_search_media( ) {
+        error_log( '$_POST=' . print_r( $_POST, true ) );
+    }
+    add_action( 'wp_ajax_nopriv_bbg_xiv_search_media', 'bbg_xiv_search_media' );
+    add_action( 'wp_ajax_bbg_xiv_search_media', 'bbg_xiv_search_media' );
+}
+    
  ?>
