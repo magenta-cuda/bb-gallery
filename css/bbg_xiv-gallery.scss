@@ -113,6 +113,10 @@ $icon-color:cyan;
 div.bbg_xiv-bootstrap{
   nav.navbar{
     overflow:visible;
+    
+    div.navbar-collapse ul.nav li.dropdown{
+      margin:0;
+    }
 
     li>a{
       border:0px none;

@@ -2,6 +2,8 @@
 /* The colors for the Dense View */
 div.bbg_xiv-bootstrap nav.navbar {
   overflow: visible; }
+  div.bbg_xiv-bootstrap nav.navbar div.navbar-collapse ul.nav li.dropdown {
+    margin: 0; }
   div.bbg_xiv-bootstrap nav.navbar li > a {
     border: 0px none; }
   div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure {
