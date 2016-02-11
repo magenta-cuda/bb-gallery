@@ -173,7 +173,7 @@ EOD;
             </ul>
             <form role="search" class="navbar-form navbar-left">
                 <div class="form-group">
-                    <input type="text" placeholder="Search" class="form-control">
+                    <input type="text" placeholder="Search Images on Site" class="form-control">
                 </div>
                 <button type="submit" class="btn btn-default bbg_xiv-search">Search</button>
             </form>
@@ -259,7 +259,13 @@ EOD;
 </div>
 EOD;
 
+    bbg_xiv_do_attachments( $attachments );
+    $bbg_xiv_data[ "$selector-data" ] = json_encode( array_values( $attachments ) );
+    wp_localize_script( 'bbg_xiv-gallery', 'bbg_xiv', $bbg_xiv_data );
+    return $output;
+}
 
+function bbg_xiv_do_attachments( $attachments ) {
     foreach ( $attachments as $id => &$attachment ) {
         $attachment->url = wp_get_attachment_url( $id );
         $meta = wp_get_attachment_metadata( $id );
@@ -275,7 +281,7 @@ EOD;
           $orientation = ( $meta['height'] > $meta['width'] ) ? 'portrait' : 'landscape';
         }
         $attachment->orientation = $orientation;
-        $attr = ( trim( $attachment->post_excerpt ) ) ? array( 'aria-describedby' => "$selector-$id" ) : '';
+        #$attr = ( trim( $attachment->post_excerpt ) ) ? array( 'aria-describedby' => "$selector-$id" ) : '';   # What is this for?
         if ( ! empty( $atts['link'] ) && 'file' === $atts['link'] ) {
           $attachment->link = wp_get_attachment_url( $id );
         } elseif ( ! empty( $atts['link'] ) && 'none' === $atts['link'] ) {
@@ -300,9 +306,6 @@ EOD;
         unset( $attachment->post_status );
         unset( $attachment->post_type );
     }
-    $bbg_xiv_data[ "$selector-data" ] = json_encode( array_values( $attachments ) );
-    wp_localize_script( 'bbg_xiv-gallery', 'bbg_xiv', $bbg_xiv_data );
-    return $output;
 }
 
 add_action( 'wp_enqueue_scripts', function( ) {
