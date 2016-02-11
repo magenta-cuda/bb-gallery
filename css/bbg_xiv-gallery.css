@@ -373,10 +373,15 @@ div.bbg_xiv-bootstrap div.carousel.slide {
   div.bbg_xiv-bootstrap div.carousel.slide button.bbg_xiv-carousel_close_btn {
     position: absolute;
     top: 2%;
-    right: 2%;
+    right: 0;
+    width: 7%;
     z-index: 5;
     color: #fff;
-    background-color: transparent; }
+    background-color: transparent;
+    border: 1px solid transparent; }
+    @media (min-width: 768px) {
+      div.bbg_xiv-bootstrap div.carousel.slide button.bbg_xiv-carousel_close_btn {
+        font-size: 30px; } }
   div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner {
     height: 100%; }
     div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item {
@@ -407,6 +412,8 @@ div.bbg_xiv-bootstrap div.carousel.slide {
         font-size: 3vh;
         line-height: 1.4;
         overflow: hidden; }
+  div.bbg_xiv-bootstrap div.carousel.slide .carousel-control {
+    width: 7%; }
   div.bbg_xiv-bootstrap div.carousel.slide .carousel-indicators {
     bottom: 12%; }
     div.bbg_xiv-bootstrap div.carousel.slide .carousel-indicators li {
