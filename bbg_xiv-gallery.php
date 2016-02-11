@@ -161,7 +161,7 @@ EOD;
             <ul class="nav navbar-nav">
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">View <b class="caret"></b></a>
-                    <ul role="menu" class="dropdown-menu">
+                    <ul role="menu" class="dropdown-menu bbg_xiv-view_menu">
                         <li class="active"><a href="#">Gallery</a></li>
                         <li><a href="#">Carousel</a></li>
                         <li><a href="#">Tabs</a></li>

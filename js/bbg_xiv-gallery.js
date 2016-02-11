@@ -380,10 +380,10 @@
             jqGallery.find("button.bbg_xiv-carousel_close_btn").click(function(e){
                 // restore "Gallery View"
                 var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
-                gallery.find("nav.navbar ul.nav li").removeClass("active").first().addClass("active");
                 bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],"Gallery");
                 jQuery(window).resize();
                 jQuery("html").css("overflow-y",overflow);
+                jQuery("nav.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.bbg_xiv-view_menu li").removeClass("active").first().addClass("active");
                 e.preventDefault();      
             });
             jQuery("#"+carouselId).carousel({interval:bbg_xiv.bbg_xiv_carousel_interval});
@@ -519,10 +519,10 @@
             jqGallery.find("button.bbg_xiv-dense_close_btn").click(function(e){
                 // restore "Gallery View"
                 var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
-                gallery.find("nav.navbar ul.nav li").removeClass("active").first().addClass("active");
                 bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],"Gallery");
                 jQuery(window).resize();
                 jQuery("html").css("overflow-y",overflow);
+                jQuery("nav.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.bbg_xiv-view_menu li").removeClass("active").first().addClass("active");
                 e.preventDefault();      
             });
             constructOverlay();
@@ -682,11 +682,12 @@
     bbg_xiv.getOptionsFromCookie();
     bbg_xiv.calcBreakpoints();
     
-    jQuery("nav.bbg_xiv-gallery_navbar ul.nav li > a").click(function(e){
+    jQuery("nav.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.bbg_xiv-view_menu li > a").click(function(e){
         var jqThis=jQuery(this);
+        var li=jqThis.parent();
+        li.parent().find("li").removeClass("active");
+        li.addClass("active");
         var gallery=jqThis.parents("div.bbg_xiv-gallery");
-        gallery.find("nav.navbar ul.nav li").removeClass("active");
-        jqThis.parent().addClass("active");
         bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],this.textContent.trim());
         e.preventDefault();
     });
@@ -783,7 +784,6 @@
             var inner=gallery.find("div.bbg_xiv-configure_inner");
             inner.hide();
             var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
-            gallery.find("nav.navbar ul.nav li").removeClass("active").first().addClass("active");
             bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],"Gallery");
             jQuery(window).resize();
             e.preventDefault();
