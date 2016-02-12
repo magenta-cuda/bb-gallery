@@ -159,8 +159,8 @@ EOD;
         </div>
         <div id="$selector-navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">View <b class="caret"></b></a>
+                <li class="dropdown bbg_xiv-select_view">
+                    <a data-toggle="dropdown" class="dropdown-toggle bbg_xiv-selected_view" href="#"><span>View</span> <b class="caret"></b></a>
                     <ul role="menu" class="dropdown-menu bbg_xiv-view_menu">
                         <li class="active"><a href="#">Gallery</a></li>
                         <li><a href="#">Carousel</a></li>

@@ -381,9 +381,11 @@
                 // restore "Gallery View"
                 var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
                 bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],"Gallery");
+                var liSelectView=jqGallery.parent().find("nav.bbg_xiv-gallery_navbar ul.nav li.bbg_xiv-select_view");
+                var liFirst=liSelectView.find("ul.bbg_xiv-view_menu li").removeClass("active").first().addClass("active");
+                liSelectView.find("a.bbg_xiv-selected_view span").text(liFirst.text());
                 jQuery(window).resize();
                 jQuery("html").css("overflow-y",overflow);
-                jQuery("nav.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.bbg_xiv-view_menu li").removeClass("active").first().addClass("active");
                 e.preventDefault();      
             });
             jQuery("#"+carouselId).carousel({interval:bbg_xiv.bbg_xiv_carousel_interval});
@@ -520,9 +522,11 @@
                 // restore "Gallery View"
                 var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
                 bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],"Gallery");
+                var liSelectView=jqGallery.parent().find("nav.bbg_xiv-gallery_navbar ul.nav li.bbg_xiv-select_view");
+                var liFirst=liSelectView.find("ul.bbg_xiv-view_menu li").removeClass("active").first().addClass("active");
+                liSelectView.find("a.bbg_xiv-selected_view span").text(liFirst.text());
                 jQuery(window).resize();
                 jQuery("html").css("overflow-y",overflow);
-                jQuery("nav.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.bbg_xiv-view_menu li").removeClass("active").first().addClass("active");
                 e.preventDefault();      
             });
             constructOverlay();
@@ -682,16 +686,6 @@
     bbg_xiv.getOptionsFromCookie();
     bbg_xiv.calcBreakpoints();
     
-    jQuery("nav.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.bbg_xiv-view_menu li > a").click(function(e){
-        var jqThis=jQuery(this);
-        var li=jqThis.parent();
-        li.parent().find("li").removeClass("active");
-        li.addClass("active");
-        var gallery=jqThis.parents("div.bbg_xiv-gallery");
-        bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],this.textContent.trim());
-        e.preventDefault();
-    });
-
     jQuery(window).resize(function(){
         var breakpoints=bbg_xiv.breakpoints;
         jQuery("div.bbg_xiv-flex_container, div.bbg_xiv-gallery_container").each(function(){
@@ -729,12 +723,25 @@
     });
 
     jQuery(document).ready(function(){
-        // wireup the front end for setting options
+        // wireup the event handlers
+        // wireup the handler for view selection
+        jQuery("nav.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.bbg_xiv-view_menu li > a").click(function(e){
+            var jqThis=jQuery(this);
+            var li=jqThis.parent();
+            li.parent().find("li").removeClass("active");
+            li.addClass("active");
+            li.parents("li.bbg_xiv-select_view").find("a.bbg_xiv-selected_view span").text(this.textContent);
+            var gallery=jqThis.parents("div.bbg_xiv-gallery");
+            bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],this.textContent.trim());
+            e.preventDefault();
+        });
+        // wireup the handler for searching
         jQuery("form.bbg_xiv-search_form button").click(function(e){
             jQuery.post(bbg_xiv.ajaxurl,{action:"bbg_xiv_search_media",query:jQuery(this).parents("form[role='search']").find("input[type='text']").val()},function(r){
             });
             e.preventDefault();
         });
+        // wireup the handler for setting options
         jQuery("button.bbg_xiv-configure").click(function(e){
             divConfigure.find("input#bbg_xiv-carousel_delay").val(bbg_xiv.bbg_xiv_carousel_interval);
             divConfigure.find("input#bbg_xiv-min_image_width").val(bbg_xiv.bbg_xiv_flex_min_width);
