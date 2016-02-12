@@ -377,6 +377,9 @@ if ( is_admin( ) ) {
         $pattern = '%' . $_POST[ 'query' ] . '%';
         $results = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_title LIKE %s", $pattern ) );
         error_log( '$results=' . print_r( $results, true ) );
+        if ( !$results ) {
+            wp_die( );
+        }
         $attachments = [ ];
         foreach ( get_posts( [ 'include' => implode( ',', $results ), 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image' ] ) as $key => $val ) {
             $attachments[ $val->ID ] = $val;
