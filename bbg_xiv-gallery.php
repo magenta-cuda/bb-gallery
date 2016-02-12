@@ -71,6 +71,7 @@ function bb_gallery_shortcode( $attr ) {
         $attr['orderby'] = 'post__in';
       }
       $attr['include'] = $attr['ids'];
+      error_log( '$attr["include"]=' . print_r( $attr['include'], true ) );
     }
 
     /**
@@ -371,7 +372,19 @@ add_action( 'admin_init', function( ) {
  
 if ( is_admin( ) ) {
     function bbg_xiv_search_media( ) {
+        global $wpdb;
         error_log( '$_POST=' . print_r( $_POST, true ) );
+        $pattern = '%' . $_POST[ 'query' ] . '%';
+        $results = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_title LIKE %s", $pattern ) );
+        error_log( '$results=' . print_r( $results, true ) );
+        $attachments = [ ];
+        foreach ( get_posts( [ 'include' => implode( ',', $results ), 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image' ] ) as $key => $val ) {
+            $attachments[ $val->ID ] = $val;
+        }
+        bbg_xiv_do_attachments( $attachments );
+        error_log( '$attachments=' . print_r( $attachments, true ) );
+        echo json_encode( array_values( $attachments ) );
+        wp_die( );
     }
     add_action( 'wp_ajax_nopriv_bbg_xiv_search_media', 'bbg_xiv_search_media' );
     add_action( 'wp_ajax_bbg_xiv_search_media', 'bbg_xiv_search_media' );

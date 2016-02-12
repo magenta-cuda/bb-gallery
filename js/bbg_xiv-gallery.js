@@ -738,6 +738,7 @@
         // wireup the handler for searching
         jQuery("form.bbg_xiv-search_form button").click(function(e){
             jQuery.post(bbg_xiv.ajaxurl,{action:"bbg_xiv_search_media",query:jQuery(this).parents("form[role='search']").find("input[type='text']").val()},function(r){
+                console.log("r=",r);
             });
             e.preventDefault();
         });
