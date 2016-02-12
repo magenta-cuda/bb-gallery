@@ -860,3 +860,14 @@ div.bbg_xiv-bootstrap{
     }
   }
 }
+
+div.bbg_xiv-bootstrap{
+  .dropdown-toggle{
+    top:auto;
+    width:auto;
+    height:auto;
+    &::after{
+      content:none
+    }
+  }
+}
