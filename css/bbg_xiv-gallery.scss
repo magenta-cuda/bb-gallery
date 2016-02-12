@@ -122,6 +122,27 @@ div.bbg_xiv-bootstrap{
       border:0px none;
     }
 
+    @media(max-width:767px){
+      form.bbg_xiv-search_form{
+        height:54px;
+ 
+        div.form-group{
+          width:90%;
+          float:left;
+        }
+
+        button[type='submit']{
+          width:10%;
+          padding:6px;
+          float:left;
+        }
+      }
+
+      button.bbg_xiv-configure{
+        clear:both;
+      }
+    }
+
     button.bbg_xiv-configure{
       display:block;
       margin-top:9px;

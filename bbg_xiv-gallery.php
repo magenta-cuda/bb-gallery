@@ -171,11 +171,11 @@ EOD;
                     </ul>
                 </li>
             </ul>
-            <form role="search" class="navbar-form navbar-left">
+            <form role="search" class="navbar-form navbar-left bbg_xiv-search_form">
                 <div class="form-group">
                     <input type="text" placeholder="Search Images on Site" class="form-control">
                 </div>
-                <button type="submit" class="btn btn-default bbg_xiv-search">Search</button>
+                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
             </form>
             <button type="button" class="btn btn-info bbg_xiv-configure" title="configure bandwidth, carousel interval, ...">Options</button>
         </div>

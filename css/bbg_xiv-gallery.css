@@ -6,6 +6,18 @@ div.bbg_xiv-bootstrap nav.navbar {
     margin: 0; }
   div.bbg_xiv-bootstrap nav.navbar li > a {
     border: 0px none; }
+  @media (max-width: 767px) {
+    div.bbg_xiv-bootstrap nav.navbar form.bbg_xiv-search_form {
+      height: 54px; }
+      div.bbg_xiv-bootstrap nav.navbar form.bbg_xiv-search_form div.form-group {
+        width: 90%;
+        float: left; }
+      div.bbg_xiv-bootstrap nav.navbar form.bbg_xiv-search_form button[type='submit'] {
+        width: 10%;
+        padding: 6px;
+        float: left; }
+    div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure {
+      clear: both; } }
   div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure {
     display: block;
     margin-top: 9px;

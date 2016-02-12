@@ -730,7 +730,7 @@
 
     jQuery(document).ready(function(){
         // wireup the front end for setting options
-        jQuery("button.bbg_xiv-search").click(function(e){
+        jQuery("form.bbg_xiv-search_form button").click(function(e){
             jQuery.post(bbg_xiv.ajaxurl,{action:"bbg_xiv_search_media",query:jQuery(this).parents("form[role='search']").find("input[type='text']").val()},function(r){
             });
             e.preventDefault();
