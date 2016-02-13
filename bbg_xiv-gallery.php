@@ -375,7 +375,8 @@ if ( is_admin( ) ) {
         global $wpdb;
         error_log( '$_POST=' . print_r( $_POST, true ) );
         $pattern = '%' . $_POST[ 'query' ] . '%';
-        $results = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_title LIKE %s", $pattern ) );
+        $results = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_title LIKE %s OR post_excerpt LIKE %s OR post_content LIKE %s",
+            $pattern, $pattern, $pattern ) );
         error_log( '$results=' . print_r( $results, true ) );
         if ( !$results ) {
             wp_die( );
