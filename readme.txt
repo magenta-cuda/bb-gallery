@@ -40,6 +40,7 @@ https://bbfgallery.wordpress.com/
 4. Dense View.
 5. Overlay of a Selected Image.
 6. User Options Pane
+7. Mobile Portrait View
 
 == Changelog ==
 
