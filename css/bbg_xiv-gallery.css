@@ -486,6 +486,11 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content {
         div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure img.bbg_xiv-tabs_img {
           width: 100%;
           object-fit: contain; } }
+      @media (max-aspect-ratio: 1 / 1) {
+        div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure img.bbg_xiv-tabs_img {
+          object-fit: fill;
+          height: auto;
+          width: 100%; } }
     div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure figcaption {
       width: 100%;
       text-align: center;

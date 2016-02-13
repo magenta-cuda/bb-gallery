@@ -707,6 +707,11 @@ div.bbg_xiv-bootstrap{
             width:100%;
             object-fit:contain;
           }
+          @media(max-aspect-ratio:1/1){
+            object-fit:fill;
+            height:auto;
+            width:100%;
+          }
         }
         figcaption{
           width:100%;
