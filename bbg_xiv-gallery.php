@@ -4,7 +4,7 @@
 Plugin Name: BB Gallery
 Plugin URI: https://bbfgallery.wordpress.com/
 Description: Gallery using Backbone.js, Bootstrap 3 and CSS3 Flexbox
-Version: 1.3.3
+Version: 1.5
 Author: Magenta Cuda
 Author URI: https://profiles.wordpress.org/magenta-cuda/
 License: GPL2
@@ -71,7 +71,6 @@ function bb_gallery_shortcode( $attr ) {
         $attr['orderby'] = 'post__in';
       }
       $attr['include'] = $attr['ids'];
-      error_log( '$attr["include"]=' . print_r( $attr['include'], true ) );
     }
 
     /**
@@ -373,11 +372,9 @@ add_action( 'admin_init', function( ) {
 if ( is_admin( ) ) {
     function bbg_xiv_search_media( ) {
         global $wpdb;
-        error_log( '$_POST=' . print_r( $_POST, true ) );
         $pattern = '%' . $_POST[ 'query' ] . '%';
         $results = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_title LIKE %s OR post_excerpt LIKE %s OR post_content LIKE %s",
             $pattern, $pattern, $pattern ) );
-        error_log( '$results=' . print_r( $results, true ) );
         if ( !$results ) {
             wp_die( );
         }
@@ -386,7 +383,6 @@ if ( is_admin( ) ) {
             $attachments[ $val->ID ] = $val;
         }
         bbg_xiv_do_attachments( $attachments );
-        error_log( '$attachments=' . print_r( $attachments, true ) );
         echo json_encode( array_values( $attachments ) );
         wp_die( );
     }
