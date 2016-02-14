@@ -206,8 +206,8 @@ EOD;
           </div>
         </div>
         <div class="form-group">
-          <label for="bbg_xiv-bandwidth" class="control-label col-sm-3 col-md-offset-2 col-md-3">Bandwidth</label>
-          <div class="col-sm-9 col-md-5">
+          <label for="bbg_xiv-bandwidth" class="control-label col-sm-3 col-md-offset-2 col-md-2">Bandwidth</label>
+          <div class="col-sm-9 col-md-6">
             <span class="bbg_xiv-radio_input">
                 <input type="radio" class="form-control" name="bbg_xiv-bandwidth" value="auto" id="bbg_xiv-bandwidth_auto" checked>
                 <span class="bbg_xiv-radio_text">Auto</span>
@@ -227,8 +227,8 @@ EOD;
           </div>
         </div>
         <div class="form-group">
-          <label for="bbg_xiv-interface" class="control-label col-sm-3 col-md-offset-2 col-md-3">Interface</label>
-          <div class="col-sm-9 col-md-5">
+          <label for="bbg_xiv-interface" class="control-label col-sm-3 col-md-offset-2 col-md-2">Interface</label>
+          <div class="col-sm-9 col-md-6">
             <span class="bbg_xiv-radio_input">
                 <input type="radio" class="form-control" name="bbg_xiv-interface" value="auto" id="bbg_xiv-interface_auto" checked>
                 <span class="bbg_xiv-radio_text">Auto</span>
