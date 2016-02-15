@@ -222,9 +222,9 @@ div.bbg_xiv-flex_container {
         right: 10px;
         z-index: 1000;
         font-size: 14px;
-        padding: 2px;
+        padding: 2px 2px 16px 16px;
         color: inherit;
-        border-color: inherit;
+        border-color: transparent;
         background-color: transparent;
         line-height: 100%; }
       div.bbg_xiv-flex_container div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn:hover {
