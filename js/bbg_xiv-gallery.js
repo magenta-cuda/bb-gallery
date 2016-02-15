@@ -303,21 +303,22 @@
             var fullCaption=inner.find("h1.bbg_xiv-dense_caption");
             var fullCaptionColor=fullCaption.css("color");
             var fullCaptionShadow=fullCaption.css("text-shadow");
-            // only show title on mouseover
-            fullImg.hover(
-                function(){
-                    fullTitle.css({color:fullTitleColor,textShadow:fullTitleShadow});
-                    fullCaption.css({color:fullCaptionColor,textShadow:fullCaptionShadow});
-                },
-                function(){
-                    fullTitle.css({color:"transparent",textShadow:"none"});
-                    fullCaption.css({color:"transparent",textShadow:"none"});
-                }
-            );
-            // force hover effects on touchscreen
             if(bbg_xiv.interface==="touch"){
+                // force hover effects on touchscreen
                 fullTitle.css({color:fullTitleColor,textShadow:fullTitleShadow});
                 fullCaption.css({color:fullCaptionColor,textShadow:fullCaptionShadow});
+            }else{
+                // only show title on mouseover
+                fullImg.hover(
+                    function(){
+                        fullTitle.css({color:fullTitleColor,textShadow:fullTitleShadow});
+                        fullCaption.css({color:fullCaptionColor,textShadow:fullCaptionShadow});
+                    },
+                    function(){
+                        fullTitle.css({color:"transparent",textShadow:"none"});
+                        fullCaption.css({color:"transparent",textShadow:"none"});
+                    }
+                );
             }
             jqGallery.find("button.bbg_xiv-dense_full_btn").click(function(e){
                 var jqThis=jQuery(this);
@@ -340,7 +341,6 @@
                         var galleryId=jQuery(img).parents("div[data-bbg_xiv-gallery-id]")[0].dataset.bbg_xivGalleryId;
                         if(galleryId){
                             var urls=bbg_xiv.getImageUrl(bbg_xiv.images[galleryId].get(imageId).attributes);
-                            console.log("urls=",urls);
                             fullImg[0].src=urls.src;
                             fullLarge[0].srcset=urls.src;
                             fullMedium[0].srcset=urls.medium;
@@ -448,7 +448,11 @@
                         },250);
                     });
                 }
-                jQuery(window).scrollTop(jqGallery.offset().top-40);
+                if(window.matchMedia("(max-aspect-ratio:1/1)").matches){
+                    jQuery(window).scrollTop(jqGallery.find("div.tab-content").offset().top-40);
+                }else{
+                    jQuery(window).scrollTop(jqGallery.offset().top-40);
+                }
             });
             break;
         case "Dense":
@@ -737,8 +741,14 @@
         });
         // wireup the handler for searching
         jQuery("form.bbg_xiv-search_form button").click(function(e){
+            var divGallery=jQuery(this).parents("div.bbg_xiv-gallery").find("div.bbg_xiv-gallery_envelope")[0];
             jQuery.post(bbg_xiv.ajaxurl,{action:"bbg_xiv_search_media",query:jQuery(this).parents("form[role='search']").find("input[type='text']").val()},function(r){
-                console.log("r=",r);
+                bbg_xiv.images[divGallery.id]=null;
+                bbg_xiv[divGallery.id+"-data"]=r;
+                bbg_xiv.renderGallery(divGallery,"Gallery");
+                var liSelectView=jQuery(divGallery.parentNode).find("nav.bbg_xiv-gallery_navbar ul.nav li.bbg_xiv-select_view");
+                var liFirst=liSelectView.find("ul.bbg_xiv-view_menu li").removeClass("active").first().addClass("active");
+                liSelectView.find("a.bbg_xiv-selected_view span").text(liFirst.text());
             });
             e.preventDefault();
         });
