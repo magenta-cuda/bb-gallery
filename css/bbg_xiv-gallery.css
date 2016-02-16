@@ -87,6 +87,9 @@ div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner {
     float: right;
     margin: 0px 5px; }
 
+#content nav.navbar.bbg_xiv-gallery_navbar {
+  overflow: visible; }
+
 div.bbg_xiv-gallery_container div.bbg_xiv-flex_item {
   padding-left: 1%;
   padding-right: 1%; }
