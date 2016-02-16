@@ -768,7 +768,7 @@
             inner.show();
         });
         var divConfigure=jQuery(".bbg_xiv-configure_inner");
-        divConfigure.find("button.bbg_xiv-configure_close").click(function(e){
+        divConfigure.find("button.bbg_xiv-configure_close,button.bbg_xiv-cancel_options").click(function(e){
             var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
             var outer=gallery.find("div.bbg_xiv-configure_outer");
             outer.hide();

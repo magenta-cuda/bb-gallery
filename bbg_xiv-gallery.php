@@ -250,8 +250,9 @@ EOD;
         <br>
         <div class="form-group">
           <div class="col-sm-offset-8 col-sm-4">
-            <button type="submit" class="btn btn-primary bbg_xiv-options_btn bbg_xiv-save_options">Save</button>
-            <button type="submit" class="btn btn-info bbg_xiv-options_btn bbg_xiv-help_options">Help</button>
+            <button type="button" class="btn btn-primary bbg_xiv-options_btn bbg_xiv-save_options">&nbsp;&nbsp;Save&nbsp;&nbsp;</button>
+            <button type="button" class="btn btn-default bbg_xiv-options_btn bbg_xiv-cancel_options">Cancel</button>
+            <button type="button" class="btn btn-info bbg_xiv-options_btn bbg_xiv-help_options">&nbsp;&nbsp;Help&nbsp;&nbsp;</button>
           </div>
         </div>
       </form>
