@@ -45,7 +45,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner {
   width: 80vw;
   height: 70vh;
   overflow-x: hidden;
-  z-index: 1000;
+  z-index: 10000;
   background-color: transparent;
   display: none;
   padding: 10px 20px;
@@ -251,7 +251,7 @@ div.bbg_xiv-flex_container {
     width: 90vw;
     height: 90vh;
     overflow-x: hidden;
-    z-index: 1000;
+    z-index: 10000;
     background-color: transparent;
     display: none;
     opacity: 0.0;
@@ -611,7 +611,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
     width: 90vw;
     height: 90vh;
     overflow-x: hidden;
-    z-index: 1000;
+    z-index: 10000;
     background-color: transparent;
     display: none;
     opacity: 0.0;
