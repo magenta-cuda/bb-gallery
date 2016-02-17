@@ -455,8 +455,11 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse {
   div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse.bbg_xiv-hide_scroll {
     overflow: hidden !important; }
 div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container span.glyphicon-collapse-down, div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container span.glyphicon-collapse-up {
+  width: 5%;
   float: right;
-  font-size: 20px;
+  font-size: 24px;
+  text-align: right;
+  padding-bottom: 16px;
   display: none; }
   @media (min-width: 768px) {
     div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container span.glyphicon-collapse-down, div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container span.glyphicon-collapse-up {

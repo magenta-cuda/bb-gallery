@@ -449,9 +449,11 @@
                     });
                 }
                 if(window.matchMedia("(max-aspect-ratio:1/1)").matches){
+                    // portrait mode
                     jQuery(window).scrollTop(jqGallery.find("div.tab-content").offset().top-40);
                 }else{
-                    jQuery(window).scrollTop(jqGallery.offset().top-40);
+                    // landscape mode
+                    jQuery(window).scrollTop(jqGallery.find("div.tab-content").offset().top-80);
                 }
             });
             break;
