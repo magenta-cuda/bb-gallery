@@ -757,9 +757,11 @@
             var query;
             var offset;
             jQuery(this).click(function(e){
-                var input=jQuery(this).parents("form[role='search']").find("input[type='text']").val();
-                if(input!=="Continue Current Search"){
-                    query=input;
+                var continueSearch="continue current search";
+                var input=jQuery(this).parents("form[role='search']").find("input[type='text']");
+                var value=input.val();
+                if(value!==continueSearch){
+                    query=value;
                     offset=0;
                 }
                 var divGallery=jQuery(this).parents("div.bbg_xiv-gallery").find("div.bbg_xiv-gallery_envelope")[0];
@@ -773,7 +775,16 @@
                     bbg_xiv.images[divGallery.id]=null;
                     bbg_xiv[divGallery.id+"-data"]=r;
                     if(r){
-                        bbg_xiv.constructImages(divGallery);
+                        var images=bbg_xiv.constructImages(divGallery);
+                        var search_limit=parseInt(bbg_xiv.bbg_xiv_max_search_results);
+                        if(images.models.length===search_limit+1){
+                            images.pop();
+                            offset+=search_limit;
+                            input.val(continueSearch);
+                        }else{
+                            offset=0;
+                            input.val(query);
+                        }
                         bbg_xiv.renderGallery(divGallery,"Gallery");
                     }else{
                         jQuery(divGallery).empty().append('<h1 class="bbg_xiv-warning">Nothing Found</h1>');
