@@ -246,40 +246,45 @@
         container.append(galleryView.render().$el.find("div.bbg_xiv-table"));
     };
     
+    bbg_xiv.constructImages=function(gallery){
+        var images=bbg_xiv.images[gallery.id]=new bbg_xiv.Images();
+        images.id=gallery.id;
+        try{
+            images.reset(JSON.parse(window.bbg_xiv[gallery.id+"-data"]));
+            // find closest match for thumbnail, small, medium and large
+            var widths=[Math.log(bbg_xiv.bbg_xiv_flex_min_width),Math.log(768),Math.log(992),Math.log(1200)];
+            images.models.forEach(function(model){
+                var diffs=[Number.MAX_VALUE,Number.MAX_VALUE,Number.MAX_VALUE,Number.MAX_VALUE];
+                var urls=[];
+                var attributes=model.attributes;
+                var sizes=attributes.sizes;
+                sizes.full={url:attributes.url,width:attributes.width,height:attributes.height};
+                Object.keys(sizes).forEach(function(size){
+                    var image=sizes[size];
+                    widths.forEach(function(width,i){
+                        var diff=Math.abs(Math.log(image.width)-width);
+                        if(diff<diffs[i]){
+                            diffs[i]=diff;
+                            urls[i]=image.url;
+                        }
+                    });
+                });
+                model.attributes.bbg_xiv_thumbnail_url=urls[0];
+                model.attributes.bbg_xiv_small_url=urls[1];
+                model.attributes.bbg_xiv_medium_url=urls[2];
+                model.attributes.bbg_xiv_large_url=urls[3];
+            });
+        }catch(e){
+            console.log("reset(JSON.parse()) failed:",e);
+        }
+        return images;
+    };
+    
     bbg_xiv.renderGallery=function(gallery,view){
         var jqGallery=jQuery(gallery);
         var images=bbg_xiv.images[gallery.id];
         if(!images){
-            images=bbg_xiv.images[gallery.id]=new bbg_xiv.Images();
-            images.id=gallery.id;
-            try{
-                images.reset(JSON.parse(window.bbg_xiv[gallery.id+"-data"]));
-                // find closest match for thumbnail, small, medium and large
-                var widths=[Math.log(bbg_xiv.bbg_xiv_flex_min_width),Math.log(768),Math.log(992),Math.log(1200)];
-                images.models.forEach(function(model){
-                    var diffs=[Number.MAX_VALUE,Number.MAX_VALUE,Number.MAX_VALUE,Number.MAX_VALUE];
-                    var urls=[];
-                    var attributes=model.attributes;
-                    var sizes=attributes.sizes;
-                    sizes.full={url:attributes.url,width:attributes.width,height:attributes.height};
-                    Object.keys(sizes).forEach(function(size){
-                        var image=sizes[size];
-                        widths.forEach(function(width,i){
-                            var diff=Math.abs(Math.log(image.width)-width);
-                            if(diff<diffs[i]){
-                                diffs[i]=diff;
-                                urls[i]=image.url;
-                            }
-                        });
-                    });
-                    model.attributes.bbg_xiv_thumbnail_url=urls[0];
-                    model.attributes.bbg_xiv_small_url=urls[1];
-                    model.attributes.bbg_xiv_medium_url=urls[2];
-                    model.attributes.bbg_xiv_large_url=urls[3];
-                });
-            }catch(e){
-                console.log("reset(JSON.parse()) failed:",e);
-            }
+            images=bbg_xiv.constructImages(gallery);
         }
         function constructOverlay(){
             // gallery or dense view shows a full browser viewport view of an image when its fullscreen glyph is clicked
@@ -748,27 +753,37 @@
             e.preventDefault();
         });
         // wireup the handler for searching
-        jQuery("form.bbg_xiv-search_form button").click(function(e){
-            var divGallery=jQuery(this).parents("div.bbg_xiv-gallery").find("div.bbg_xiv-gallery_envelope")[0];
-            var postData={
-                action:"bbg_xiv_search_media",
-                query:jQuery(this).parents("form[role='search']").find("input[type='text']").val(),
-                limit:bbg_xiv.bbg_xiv_max_search_results,
-                offset:0
-            };
-            jQuery.post(bbg_xiv.ajaxurl,postData,function(r){
-                bbg_xiv.images[divGallery.id]=null;
-                bbg_xiv[divGallery.id+"-data"]=r;
-                if(r){
-                    bbg_xiv.renderGallery(divGallery,"Gallery");
-                }else{
-                    jQuery(divGallery).empty().append('<h1 class="bbg_xiv-warning">Nothing Found</h1>');
+        jQuery("form.bbg_xiv-search_form button").each(function(){
+            var query;
+            var offset;
+            jQuery(this).click(function(e){
+                var input=jQuery(this).parents("form[role='search']").find("input[type='text']").val();
+                if(input!=="Continue Current Search"){
+                    query=input;
+                    offset=0;
                 }
-                var liSelectView=jQuery(divGallery.parentNode).find("nav.bbg_xiv-gallery_navbar ul.nav li.bbg_xiv-select_view");
-                var liFirst=liSelectView.find("ul.bbg_xiv-view_menu li").removeClass("active").first().addClass("active");
-                liSelectView.find("a.bbg_xiv-selected_view span").text(liFirst.text());
+                var divGallery=jQuery(this).parents("div.bbg_xiv-gallery").find("div.bbg_xiv-gallery_envelope")[0];
+                var postData={
+                    action:"bbg_xiv_search_media",
+                    query:query,
+                    limit:parseInt(bbg_xiv.bbg_xiv_max_search_results)+1,
+                    offset:offset
+                };
+                jQuery.post(bbg_xiv.ajaxurl,postData,function(r){
+                    bbg_xiv.images[divGallery.id]=null;
+                    bbg_xiv[divGallery.id+"-data"]=r;
+                    if(r){
+                        bbg_xiv.constructImages(divGallery);
+                        bbg_xiv.renderGallery(divGallery,"Gallery");
+                    }else{
+                        jQuery(divGallery).empty().append('<h1 class="bbg_xiv-warning">Nothing Found</h1>');
+                    }
+                    var liSelectView=jQuery(divGallery.parentNode).find("nav.bbg_xiv-gallery_navbar ul.nav li.bbg_xiv-select_view");
+                    var liFirst=liSelectView.find("ul.bbg_xiv-view_menu li").removeClass("active").first().addClass("active");
+                    liSelectView.find("a.bbg_xiv-selected_view span").text(liFirst.text());
+                });
+                e.preventDefault();
             });
-            e.preventDefault();
         });
         // wireup the handler for setting options
         jQuery("button.bbg_xiv-configure").click(function(e){
