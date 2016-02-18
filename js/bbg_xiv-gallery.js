@@ -448,13 +448,15 @@
                         },250);
                     });
                 }
-                if(window.matchMedia("(max-aspect-ratio:1/1)").matches){
-                    // portrait mode
-                    jQuery(window).scrollTop(jqGallery.find("div.tab-content").offset().top-40);
-                }else{
-                    // landscape mode
-                    jQuery(window).scrollTop(jqGallery.find("div.tab-content").offset().top-80);
-                }
+                window.setTimeout(function(){
+                    if(window.matchMedia("(max-aspect-ratio:1/1)").matches){
+                        // portrait mode
+                        jQuery(window).scrollTop(jqGallery.find("div.tab-content").offset().top-40);
+                    }else{
+                        // landscape mode
+                        jQuery(window).scrollTop(jqGallery.find("div.tab-content").offset().top-80);
+                    }
+                },100);
             });
             break;
         case "Dense":
@@ -649,6 +651,10 @@
             if(jQuery.isNumeric(flex_min_width)&&flex_min_width>=32&&flex_min_width<=1024){
                 bbg_xiv.bbg_xiv_flex_min_width=flex_min_width;
             }
+            var max_search_results=options.bbg_xiv_max_search_results;
+            if(jQuery.isNumeric(max_search_results)&&max_search_results>=1&&max_search_results<1048576){
+                bbg_xiv.bbg_xiv_max_search_results=max_search_results;
+            }
             var flex_number_of_dense_view_columns=options.bbg_xiv_flex_number_of_dense_view_columns;
             if(jQuery.isNumeric(flex_number_of_dense_view_columns)&&flex_number_of_dense_view_columns>=2&&flex_number_of_dense_view_columns<=32){
                 bbg_xiv.bbg_xiv_flex_number_of_dense_view_columns=flex_number_of_dense_view_columns;
@@ -744,7 +750,13 @@
         // wireup the handler for searching
         jQuery("form.bbg_xiv-search_form button").click(function(e){
             var divGallery=jQuery(this).parents("div.bbg_xiv-gallery").find("div.bbg_xiv-gallery_envelope")[0];
-            jQuery.post(bbg_xiv.ajaxurl,{action:"bbg_xiv_search_media",query:jQuery(this).parents("form[role='search']").find("input[type='text']").val()},function(r){
+            var postData={
+                action:"bbg_xiv_search_media",
+                query:jQuery(this).parents("form[role='search']").find("input[type='text']").val(),
+                limit:bbg_xiv.bbg_xiv_max_search_results,
+                offset:0
+            };
+            jQuery.post(bbg_xiv.ajaxurl,postData,function(r){
                 bbg_xiv.images[divGallery.id]=null;
                 bbg_xiv[divGallery.id+"-data"]=r;
                 bbg_xiv.renderGallery(divGallery,"Gallery");
@@ -758,6 +770,7 @@
         jQuery("button.bbg_xiv-configure").click(function(e){
             divConfigure.find("input#bbg_xiv-carousel_delay").val(bbg_xiv.bbg_xiv_carousel_interval);
             divConfigure.find("input#bbg_xiv-min_image_width").val(bbg_xiv.bbg_xiv_flex_min_width);
+            divConfigure.find("input#bbg_xiv-max_search_results").val(bbg_xiv.bbg_xiv_max_search_results);
             divConfigure.find("input#bbg_xiv-columns_in_dense_view").val(bbg_xiv.bbg_xiv_flex_number_of_dense_view_columns);
             divConfigure.find("input[name='bbg_xiv-bandwidth']").prop("checked",false);
             divConfigure.find("input[name='bbg_xiv-bandwidth'][value='"+bbg_xiv.bbg_xiv_bandwidth+"']").prop("checked",true);
@@ -785,12 +798,14 @@
             // save the options
             bbg_xiv.bbg_xiv_carousel_interval=divConfigure.find("input#bbg_xiv-carousel_delay").val();
             bbg_xiv.bbg_xiv_flex_min_width=divConfigure.find("input#bbg_xiv-min_image_width").val();
+            bbg_xiv.bbg_xiv_max_search_results=divConfigure.find("input#bbg_xiv-max_search_results").val();
             bbg_xiv.bbg_xiv_flex_number_of_dense_view_columns=divConfigure.find("input#bbg_xiv-columns_in_dense_view").val();
             bbg_xiv.bbg_xiv_bandwidth=divConfigure.find("input[name='bbg_xiv-bandwidth']:checked").val();
             bbg_xiv.bbg_xiv_interface=divConfigure.find("input[name='bbg_xiv-interface']:checked").val();
             var cookie=JSON.stringify({
                 bbg_xiv_carousel_interval:bbg_xiv.bbg_xiv_carousel_interval,
                 bbg_xiv_flex_min_width:bbg_xiv.bbg_xiv_flex_min_width,
+                bbg_xiv_max_search_results:bbg_xiv.bbg_xiv_max_search_results,
                 bbg_xiv_flex_number_of_dense_view_columns:bbg_xiv.bbg_xiv_flex_number_of_dense_view_columns,
                 bbg_xiv_bandwidth:bbg_xiv.bbg_xiv_bandwidth,
                 bbg_xiv_interface:bbg_xiv.bbg_xiv_interface

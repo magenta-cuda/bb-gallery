@@ -199,6 +199,12 @@ EOD;
             <input type="number" class="form-control" id="bbg_xiv-min_image_width" min="32" max="1024">
           </div>
         </div>
+        <div class="form-group">
+          <label for="bbg_xiv-max_search_results" class="control-label col-sm-9 col-md-offset-2 col-md-6">Maximum Number of Images Returned by Search</label>
+          <div class="col-sm-3 col-md-2">
+            <input type="number" class="form-control" id="bbg_xiv-max_search_results" min="1" max="1024">
+          </div>
+        </div>
         <div class="form-group bbg_xiv-mouse_only_option">
           <label for="bbg_xiv-columns_in_dense_view" class="control-label col-sm-9 col-md-offset-2 col-md-6">Number of Columns in the Dense View</label>
           <div class="col-sm-3 col-md-2">
@@ -249,7 +255,7 @@ EOD;
         </div>
         <br>
         <div class="form-group">
-          <div class="col-sm-offset-8 col-sm-4">
+          <div class="col-sm-offset-4 col-sm-8">
             <button type="button" class="btn btn-primary bbg_xiv-options_btn bbg_xiv-save_options">&nbsp;&nbsp;Save&nbsp;&nbsp;</button>
             <button type="button" class="btn btn-default bbg_xiv-options_btn bbg_xiv-cancel_options">Cancel</button>
             <button type="button" class="btn btn-info bbg_xiv-options_btn bbg_xiv-help_options">&nbsp;&nbsp;Help&nbsp;&nbsp;</button>
@@ -373,9 +379,17 @@ add_action( 'admin_init', function( ) {
 if ( is_admin( ) ) {
     function bbg_xiv_search_media( ) {
         global $wpdb;
+        error_log( '$_POST=' . print_r( $_POST, true ) );
         $pattern = '%' . $_POST[ 'query' ] . '%';
-        $results = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_title LIKE %s OR post_excerpt LIKE %s OR post_content LIKE %s",
-            $pattern, $pattern, $pattern ) );
+        $offset = (integer) $_POST[ 'offset' ];
+        $count = (integer) $_POST[ 'limit' ];
+        $results = $wpdb->get_col( $wpdb->prepare( <<<EOD
+SELECT ID FROM $wpdb->posts
+    WHERE post_status = 'inherit' AND post_type = 'attachment' AND post_mime_type LIKE 'image/%%' AND ( post_title LIKE %s OR post_excerpt LIKE %s OR post_content LIKE %s )
+    LIMIT %d, %d
+EOD
+            , $pattern, $pattern, $pattern, $offset, $count ) );
+        error_log( '$results=' . print_r( $results, true ) );
         if ( !$results ) {
             wp_die( );
         }
@@ -384,6 +398,7 @@ if ( is_admin( ) ) {
             $attachments[ $val->ID ] = $val;
         }
         bbg_xiv_do_attachments( $attachments );
+        error_log( '$attachments=' . print_r( $attachments, true ) );
         echo json_encode( array_values( $attachments ) );
         wp_die( );
     }
