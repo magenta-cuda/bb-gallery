@@ -759,7 +759,11 @@
             jQuery.post(bbg_xiv.ajaxurl,postData,function(r){
                 bbg_xiv.images[divGallery.id]=null;
                 bbg_xiv[divGallery.id+"-data"]=r;
-                bbg_xiv.renderGallery(divGallery,"Gallery");
+                if(r){
+                    bbg_xiv.renderGallery(divGallery,"Gallery");
+                }else{
+                    jQuery(divGallery).empty().append('<h1 class="bbg_xiv-warning">Nothing Found</h1>');
+                }
                 var liSelectView=jQuery(divGallery.parentNode).find("nav.bbg_xiv-gallery_navbar ul.nav li.bbg_xiv-select_view");
                 var liFirst=liSelectView.find("ul.bbg_xiv-view_menu li").removeClass("active").first().addClass("active");
                 liSelectView.find("a.bbg_xiv-selected_view span").text(liFirst.text());

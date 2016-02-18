@@ -28,6 +28,8 @@ div.bbg_xiv-bootstrap nav.navbar {
 @media (min-width: 768px) {
   div.bbg_xiv-bootstrap.bbg_xiv-gallery div.navbar-header a.bbg_xiv-images_brand {
     display: none; } }
+div.bbg_xiv-bootstrap.bbg_xiv-gallery .bbg_xiv-warning {
+  color: red; }
 div.bbg_xiv-bootstrap div.bbg_xiv-configure_outer {
   position: fixed;
   top: 0px;
