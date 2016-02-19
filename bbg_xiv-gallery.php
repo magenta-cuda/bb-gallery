@@ -60,6 +60,7 @@ function bb_gallery_shortcode( $attr ) {
     $bbg_xiv_data[ 'ajaxurl' ]                                   = admin_url( 'admin-ajax.php' );
     $bbg_xiv_data[ 'bbg_xiv_flex_min_width' ]                    = get_option( 'bbg_xiv_flex_min_width', 128 );
     $bbg_xiv_data[ 'bbg_xiv_flex_min_width_for_caption' ]        = get_option( 'bbg_xiv_flex_min_width_for_caption', 96 );
+    $bbg_xiv_data[ 'bbg_xiv_max_search_results' ]                = get_option( 'bbg_xiv_max_search_results', 250 );
     $bbg_xiv_data[ 'bbg_xiv_flex_min_width_for_dense_view' ]     = get_option( 'bbg_xiv_flex_min_width_for_dense_view', 1280 );
     $bbg_xiv_data[ 'bbg_xiv_flex_number_of_dense_view_columns' ] = get_option( 'bbg_xiv_flex_number_of_dense_view_columns', 10 );
     $bbg_xiv_data[ 'bbg_xiv_carousel_interval' ]                 = get_option( 'bbg_xiv_carousel_interval', 2500 );
@@ -202,7 +203,7 @@ EOD;
         <div class="form-group">
           <label for="bbg_xiv-max_search_results" class="control-label col-sm-9 col-md-offset-2 col-md-6">Maximum Number of Images Returned by Search</label>
           <div class="col-sm-3 col-md-2">
-            <input type="number" class="form-control" id="bbg_xiv-max_search_results" min="1" max="1024">
+            <input type="number" class="form-control" id="bbg_xiv-max_search_results" min="1" max="{$bbg_xiv_data['bbg_xiv_max_search_results']}">
           </div>
         </div>
         <div class="form-group bbg_xiv-mouse_only_option">
@@ -359,6 +360,10 @@ add_action( 'admin_init', function( ) {
             . get_option( 'bbg_xiv_carousel_interval', 2500 )
             . '" class="small-text" /> The time delay between two slides.';
     }, 'media',	'bbg_xiv_setting_section' );
+    add_settings_field( 'bbg_xiv_max_search_results', 'Maximum Number of Images Returned by Search', function( ) {
+        echo '<input name="bbg_xiv_max_search_results" id="bbg_xiv_max_search_results" type="number" value="' . get_option( 'bbg_xiv_max_search_results', 128 )
+            . '" class="small-text" /> The minimum image width in the "Gallery View" if the CSS3 Flexbox is used.';
+    }, 'media',	'bbg_xiv_setting_section' );
     add_settings_field( 'bbg_xiv_flex_number_of_dense_view_columns', 'Columns in Dense View', function( ) {
         echo '<input name="bbg_xiv_flex_number_of_dense_view_columns" id="bbg_xiv_flex_number_of_dense_view_columns" type="number" value="'
             . get_option( 'bbg_xiv_flex_number_of_dense_view_columns', 10 )
@@ -374,6 +379,7 @@ add_action( 'admin_init', function( ) {
     register_setting( 'media', 'bbg_xiv_flex_min_width' );
     register_setting( 'media', 'bbg_xiv_flex_min_width_for_caption' );
     register_setting( 'media', 'bbg_xiv_carousel_interval' );
+    register_setting( 'media', 'bbg_xiv_max_search_results' );
     register_setting( 'media', 'bbg_xiv_flex_number_of_dense_view_columns' );
     register_setting( 'media', 'bbg_xiv_flex_min_width_for_dense_view' );
 } );
@@ -381,7 +387,6 @@ add_action( 'admin_init', function( ) {
 if ( is_admin( ) ) {
     function bbg_xiv_search_media( ) {
         global $wpdb;
-        error_log( '$_POST=' . print_r( $_POST, true ) );
         $pattern = '%' . $_POST[ 'query' ] . '%';
         $offset = (integer) $_POST[ 'offset' ];
         $count = (integer) $_POST[ 'limit' ];
@@ -400,7 +405,6 @@ EOD
             $attachments[ $val->ID ] = $val;
         }
         bbg_xiv_do_attachments( $attachments );
-        error_log( '$attachments=' . print_r( $attachments, true ) );
         echo json_encode( array_values( $attachments ) );
         wp_die( );
     }
