@@ -790,6 +790,7 @@
                         var images=bbg_xiv.constructImages(divGallery);
                         var search_limit=parseInt(bbg_xiv.bbg_xiv_max_search_results);
                         var prevOffset=offset;
+                        var prevQuery=query;
                         if(images.models.length===search_limit+1){
                             // this search has more images
                             images.pop();
@@ -804,7 +805,7 @@
                         // maintain a history of all images returned by this search
                         bbg_xiv.history[divGallery.id].push(images);
                         bbg_xiv.renderGallery(divGallery,"Gallery");
-                        var status="Images "+prevOffset+"-"+(prevOffset+images.models.length-1)+" of "+count;
+                        var status="Search Results for \""+prevQuery+"\"<br>Images "+(prevOffset+1)+" to "+(prevOffset+images.models.length)+" of "+count;
                         jQuery(divGallery).prepend('<div class="bbg_xiv-search_header">'+status+'</div>');
                     }else{
                         jQuery(divGallery).empty().append('<h1 class="bbg_xiv-warning">Nothing Found</h1>');

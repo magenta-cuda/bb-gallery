@@ -396,7 +396,6 @@ SELECT ID FROM $wpdb->posts
     LIMIT %d, %d
 EOD
             , $pattern, $pattern, $pattern, $offset, $count ) );
-        error_log( '$results=' . print_r( $results, true ) );
         if ( !$results ) {
             wp_die( );
         }
