@@ -758,15 +758,19 @@
             var offset;
             var count;
             jQuery(this).click(function(e){
+                var startSearch="search images on site";
                 var continueSearch="continue current search";
                 var input=jQuery(this).parents("form[role='search']").find("input[type='text']");
                 var value=input.val();
-                if(value!==continueSearch){
+                if(value){
                     query=value;
                     offset=0;
                     jQuery.post(bbg_xiv.ajaxurl,{action:"bbg_xiv_search_media_count",query:query},function(r){
                         count=parseInt(r);
                     });
+                }else if(typeof query==="undefined"){
+                    e.preventDefault();
+                    return;
                 }
                 var divGallery=jQuery(this).parents("div.bbg_xiv-gallery").find("div.bbg_xiv-gallery_envelope")[0];
                 var postData={
@@ -784,10 +788,11 @@
                         if(images.models.length===search_limit+1){
                             images.pop();
                             offset+=search_limit;
-                            input.val(continueSearch);
+                            input.val("").attr("placeholder",continueSearch);
                         }else{
-                            offset=0;
-                            input.val(query);
+                            input.attr("placeholder",startSearch).val(query);
+                            query=undefined;
+                            offset=undefined;
                         }
                         bbg_xiv.renderGallery(divGallery,"Gallery");
                     }else{
