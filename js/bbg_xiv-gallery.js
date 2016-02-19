@@ -12,6 +12,7 @@
     };
     
     bbg_xiv.images={};
+    bbg_xiv.history={};   // for multi part search results
     
     bbg_xiv.Image=Backbone.Model.extend({idAttribute:"ID"});
     
@@ -760,11 +761,15 @@
             jQuery(this).click(function(e){
                 var startSearch="search images on site";
                 var continueSearch="continue current search";
+                var divGallery=jQuery(this).parents("div.bbg_xiv-gallery").find("div.bbg_xiv-gallery_envelope")[0];
                 var input=jQuery(this).parents("form[role='search']").find("input[type='text']");
                 var value=input.val();
                 if(value){
+                    // new search
                     query=value;
                     offset=0;
+                    // start new history
+                    bbg_xiv.history[divGallery.id]=[];
                     jQuery.post(bbg_xiv.ajaxurl,{action:"bbg_xiv_search_media_count",query:query},function(r){
                         count=parseInt(r);
                     });
@@ -772,7 +777,6 @@
                     e.preventDefault();
                     return;
                 }
-                var divGallery=jQuery(this).parents("div.bbg_xiv-gallery").find("div.bbg_xiv-gallery_envelope")[0];
                 var postData={
                     action:"bbg_xiv_search_media",
                     query:query,
@@ -785,16 +789,23 @@
                     if(r){
                         var images=bbg_xiv.constructImages(divGallery);
                         var search_limit=parseInt(bbg_xiv.bbg_xiv_max_search_results);
+                        var prevOffset=offset;
                         if(images.models.length===search_limit+1){
+                            // this search has more images
                             images.pop();
                             offset+=search_limit;
                             input.val("").attr("placeholder",continueSearch);
                         }else{
+                            // all search results have been returned
                             input.attr("placeholder",startSearch).val(query);
                             query=undefined;
                             offset=undefined;
                         }
+                        // maintain a history of all images returned by this search
+                        bbg_xiv.history[divGallery.id].push(images);
                         bbg_xiv.renderGallery(divGallery,"Gallery");
+                        var status="Images "+prevOffset+"-"+(prevOffset+images.models.length-1)+" of "+count;
+                        jQuery(divGallery).prepend('<div class="bbg_xiv-search_header">'+status+'</div>');
                     }else{
                         jQuery(divGallery).empty().append('<h1 class="bbg_xiv-warning">Nothing Found</h1>');
                     }

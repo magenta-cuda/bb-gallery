@@ -362,7 +362,7 @@ add_action( 'admin_init', function( ) {
     }, 'media',	'bbg_xiv_setting_section' );
     add_settings_field( 'bbg_xiv_max_search_results', 'Maximum Number of Images Returned by Search', function( ) {
         echo '<input name="bbg_xiv_max_search_results" id="bbg_xiv_max_search_results" type="number" value="' . get_option( 'bbg_xiv_max_search_results', 128 )
-            . '" class="small-text" /> The minimum image width in the "Gallery View" if the CSS3 Flexbox is used.';
+            . '" class="small-text" /> The browser user can override this limit.';
     }, 'media',	'bbg_xiv_setting_section' );
     add_settings_field( 'bbg_xiv_flex_number_of_dense_view_columns', 'Columns in Dense View', function( ) {
         echo '<input name="bbg_xiv_flex_number_of_dense_view_columns" id="bbg_xiv_flex_number_of_dense_view_columns" type="number" value="'
