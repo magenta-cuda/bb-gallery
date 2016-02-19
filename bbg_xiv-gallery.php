@@ -276,13 +276,15 @@ function bbg_xiv_do_attachments( $attachments ) {
     foreach ( $attachments as $id => &$attachment ) {
         $attachment->url = wp_get_attachment_url( $id );
         $meta = wp_get_attachment_metadata( $id );
-        foreach( $meta[ 'sizes' ] as $size => &$size_attrs ) {
-            $size_attrs[ 'url' ] = wp_get_attachment_image_src( $id, $size )[0];
-            unset( $size_attrs[ 'file' ] );
-        }
         $attachment->width  = $meta[ 'width'  ];
         $attachment->height = $meta[ 'height' ];
-        $attachment->sizes  = $meta[ 'sizes'  ];
+        if ( isset( $meta[ 'sizes' ] ) ) {
+            foreach ( $meta[ 'sizes' ] as $size => &$size_attrs ) {
+                $size_attrs[ 'url' ] = wp_get_attachment_image_src( $id, $size )[0];
+                unset( $size_attrs[ 'file' ] );
+            }
+            $attachment->sizes = $meta[ 'sizes' ];
+        }
         $orientation = '';
         if ( isset( $meta['height'], $meta['width'] ) ) {
           $orientation = ( $meta['height'] > $meta['width'] ) ? 'portrait' : 'landscape';
@@ -404,6 +406,19 @@ EOD
     }
     add_action( 'wp_ajax_nopriv_bbg_xiv_search_media', 'bbg_xiv_search_media' );
     add_action( 'wp_ajax_bbg_xiv_search_media', 'bbg_xiv_search_media' );
+    function bbg_xiv_search_media_count( ) {
+        global $wpdb;
+        $pattern = '%' . $_POST[ 'query' ] . '%';
+        $count = $wpdb->get_var( $wpdb->prepare( <<<EOD
+SELECT COUNT(*) FROM $wpdb->posts
+    WHERE post_status = 'inherit' AND post_type = 'attachment' AND post_mime_type LIKE 'image/%%' AND ( post_title LIKE %s OR post_excerpt LIKE %s OR post_content LIKE %s )
+EOD
+            , $pattern, $pattern, $pattern ) );
+        echo $count;
+        wp_die( );
+    }
+    add_action( 'wp_ajax_nopriv_bbg_xiv_search_media_count', 'bbg_xiv_search_media_count' );
+    add_action( 'wp_ajax_bbg_xiv_search_media_count', 'bbg_xiv_search_media_count' );
 }
     
  ?>
