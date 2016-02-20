@@ -13,6 +13,7 @@
     
     bbg_xiv.images={};
     bbg_xiv.history={};   // for multi part search results
+    bbg_xiv.heading={};   // for multi part search results
     
     bbg_xiv.Image=Backbone.Model.extend({idAttribute:"ID"});
     
@@ -377,6 +378,11 @@
                 bbg_xiv.renderBootstrapGallery(jqGallery,images);
             }
             jQuery(window).resize();
+            var heading=bbg_xiv.heading[gallery.id];
+            if(heading){
+                // search results have a heading
+                jqGallery.prepend(heading);
+            }
             break;
         case "Carousel":
             var overflow=jQuery("html").css("overflow-y");
@@ -804,9 +810,10 @@
                         }
                         // maintain a history of all images returned by this search
                         bbg_xiv.history[divGallery.id].push(images);
-                        bbg_xiv.renderGallery(divGallery,"Gallery");
+                        // search results uses a heading to show status
                         var status="Search Results for \""+prevQuery+"\"<br>Images "+(prevOffset+1)+" to "+(prevOffset+images.models.length)+" of "+count;
-                        jQuery(divGallery).prepend('<div class="bbg_xiv-search_header">'+status+'</div>');
+                        bbg_xiv.heading[divGallery.id]='<div class="bbg_xiv-search_header">'+status+'</div>';
+                        bbg_xiv.renderGallery(divGallery,"Gallery");
                     }else{
                         jQuery(divGallery).empty().append('<h1 class="bbg_xiv-warning">Nothing Found</h1>');
                     }
