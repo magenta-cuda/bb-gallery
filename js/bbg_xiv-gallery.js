@@ -13,7 +13,6 @@
     
     bbg_xiv.images={};
     bbg_xiv.history={};   // for multi part search results
-    bbg_xiv.heading={};   // for multi part search results
     
     bbg_xiv.Image=Backbone.Model.extend({idAttribute:"ID"});
     
@@ -378,10 +377,9 @@
                 bbg_xiv.renderBootstrapGallery(jqGallery,images);
             }
             jQuery(window).resize();
-            var heading=bbg_xiv.heading[gallery.id];
-            if(heading){
+            if(bbg_xiv.history[gallery.id]){
                 // search results have a heading
-                jqGallery.prepend(heading);
+                jQuery("div#"+gallery.id+"-heading").show();
             }
             break;
         case "Carousel":
@@ -811,8 +809,9 @@
                         // maintain a history of all images returned by this search
                         bbg_xiv.history[divGallery.id].push(images);
                         // search results uses a heading to show status
-                        var status="Search Results for \""+prevQuery+"\"<br>Images "+(prevOffset+1)+" to "+(prevOffset+images.models.length)+" of "+count;
-                        bbg_xiv.heading[divGallery.id]='<div class="bbg_xiv-search_header">'+status+'</div>';
+                        var heading=jQuery("div#"+divGallery.id+"-heading");
+                        heading.find("span.bbg_xiv-search_heading_first").text("Search Results for \""+prevQuery+"\"");
+                        heading.find("span.bbg_xiv-search_heading_second").text("Images "+(prevOffset+1)+" to "+(prevOffset+images.models.length)+" of "+count);
                         bbg_xiv.renderGallery(divGallery,"Gallery");
                     }else{
                         jQuery(divGallery).empty().append('<h1 class="bbg_xiv-warning">Nothing Found</h1>');

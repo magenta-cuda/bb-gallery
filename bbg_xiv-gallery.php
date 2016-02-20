@@ -181,6 +181,10 @@ EOD;
             <button type="button" class="btn btn-info bbg_xiv-configure" title="configure bandwidth, carousel interval, ...">Options</button>
         </div>
     </nav>
+    <div id="$selector-heading" class="bbg_xiv-search_header">
+        <span class="bbg_xiv-search_heading_first"></span><br>
+        <span class="bbg_xiv-search_heading_second"></span>
+    </div>
     <div id="$selector" class="gallery galleryid-{$id} gallery-size-{$size_class} bbg_xiv-gallery_envelope">BB Gallery Container</div>
     <div class="bbg_xiv-configure_outer">
     </div>
