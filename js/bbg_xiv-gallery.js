@@ -785,7 +785,7 @@
                 var postData={
                     action:"bbg_xiv_search_media",
                     query:query,
-                    limit:parseInt(bbg_xiv.bbg_xiv_max_search_results)+1,
+                    limit:parseInt(bbg_xiv.bbg_xiv_max_search_results),
                     offset:offset
                 };
                 jQuery.post(bbg_xiv.ajaxurl,postData,function(r){
@@ -796,9 +796,8 @@
                         var search_limit=parseInt(bbg_xiv.bbg_xiv_max_search_results);
                         var prevOffset=offset;
                         var prevQuery=query;
-                        if(images.models.length===search_limit+1){
+                        if(offset+images.models.length<count){
                             // this search has more images
-                            images.pop();
                             offset+=search_limit;
                             input.val("").attr("placeholder",continueSearch);
                         }else{
