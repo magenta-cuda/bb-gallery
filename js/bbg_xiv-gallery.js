@@ -843,6 +843,13 @@
             inner.show();
         });
         var divConfigure=jQuery(".bbg_xiv-configure_inner");
+        divConfigure.find("input[type='number']#bbg_xiv-max_search_results").change(function(e){
+            // max seems to be broken so fix with javascript
+            var jqThis=jQuery(this);
+            if(parseInt(jqThis.val())>parseInt(jqThis.attr("max"))){
+                jqThis.val(jqThis.attr("max"));
+            }
+        });
         divConfigure.find("button.bbg_xiv-configure_close,button.bbg_xiv-cancel_options").click(function(e){
             var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
             var outer=gallery.find("div.bbg_xiv-configure_outer");
