@@ -12,7 +12,7 @@
     };
     
     bbg_xiv.images={};
-    bbg_xiv.history={};   // for multi part search results
+    bbg_xiv.search={};   // for multi part search results
     
     bbg_xiv.Image=Backbone.Model.extend({idAttribute:"ID"});
     
@@ -377,7 +377,7 @@
                 bbg_xiv.renderBootstrapGallery(jqGallery,images);
             }
             jQuery(window).resize();
-            if(bbg_xiv.history[gallery.id]){
+            if(bbg_xiv.search[gallery.id]){
                 // search results have a heading
                 jQuery("div#"+gallery.id+"-heading").show();
             }
@@ -772,8 +772,9 @@
                     // new search
                     query=value;
                     offset=0;
-                    // start new history
-                    bbg_xiv.history[divGallery.id]=[];
+                    // start new search history
+                    var search=bbg_xiv.search[divGallery.id]={};
+                    search.history=[];
                     jQuery.post(bbg_xiv.ajaxurl,{action:"bbg_xiv_search_media_count",query:query},function(r){
                         count=parseInt(r);
                     });
@@ -806,12 +807,15 @@
                             query=undefined;
                             offset=undefined;
                         }
-                        // maintain a history of all images returned by this search
-                        bbg_xiv.history[divGallery.id].push(images);
                         // search results uses a heading to show status
                         var heading=jQuery("div#"+divGallery.id+"-heading");
                         heading.find("span.bbg_xiv-search_heading_first").text("Search Results for \""+prevQuery+"\"");
-                        heading.find("span.bbg_xiv-search_heading_second").text("Images "+(prevOffset+1)+" to "+(prevOffset+images.models.length)+" of "+count);
+                        var title="Images "+(prevOffset+1)+" to "+(prevOffset+images.models.length)+" of "+count;
+                        heading.find("span.bbg_xiv-search_heading_second").text(title);
+                        // maintain a history of all images returned by this search
+                        var search=bbg_xiv.search[divGallery.id];
+                        search.history.push({images:images,title:title});
+                        search.index=search.history.length-1;
                         bbg_xiv.renderGallery(divGallery,"Gallery");
                     }else{
                         jQuery(divGallery).empty().append('<h1 class="bbg_xiv-warning">Nothing Found</h1>');
