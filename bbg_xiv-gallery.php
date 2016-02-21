@@ -183,7 +183,9 @@ EOD;
     </nav>
     <div id="$selector-heading" class="bbg_xiv-search_header">
         <span class="bbg_xiv-search_heading_first"></span><br>
+        <button class="btn btn-primary btn-sm bbg_xiv-search_scroll_left"><span class="glyphicon glyphicon-chevron-left"></span></button>
         <span class="bbg_xiv-search_heading_second"></span>
+        <button class="btn btn-primary btn-sm bbg_xiv-search_scroll_right"><span class="glyphicon glyphicon-chevron-right"></span></button>
     </div>
     <div id="$selector" class="gallery galleryid-{$id} gallery-size-{$size_class} bbg_xiv-gallery_envelope">BB Gallery Container</div>
     <div class="bbg_xiv-configure_outer">

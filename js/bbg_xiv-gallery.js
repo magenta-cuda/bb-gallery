@@ -883,6 +883,10 @@
             jQuery(window).resize();
             e.preventDefault();
         });
+        // wireup the handler for scrolling through search results
+        jQuery("div.bbg_xiv-search_header button.bbg_xiv-search_scroll_left,div.bbg_xiv-search_header button.bbg_xiv-search_scroll_right").click(function(e){
+            window.alert("TODO");
+        });
         jQuery(window).resize();
     });
 

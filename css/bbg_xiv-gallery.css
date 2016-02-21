@@ -30,6 +30,7 @@ div.bbg_xiv-bootstrap nav.navbar {
     display: none; } }
 div.bbg_xiv-bootstrap.bbg_xiv-gallery .bbg_xiv-search_header {
   text-align: center;
+  margin-bottom: 10px;
   display: none; }
   div.bbg_xiv-bootstrap.bbg_xiv-gallery .bbg_xiv-search_header span {
     font-size: 16px;
