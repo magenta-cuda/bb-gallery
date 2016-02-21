@@ -195,13 +195,13 @@ EOD;
       <h1>BB Gallery Options</h1>
       <form class="form-horizontal">
         <div class="form-group">
-          <label for="bbg_xiv-carousel_delay" class="control-label col-sm-9 col-md-offset-2 col-md-6">Carousel Time Interval</label>
+          <label for="bbg_xiv-carousel_delay" class="control-label col-sm-9 col-md-offset-2 col-md-6">Carousel Time Interval in ms</label>
           <div class="col-sm-3 col-md-2">
             <input type="number" class="form-control" id="bbg_xiv-carousel_delay" min="1000" step="100">
           </div>
         </div>
         <div class="form-group">
-          <label for="bbg_xiv-min_image_width" class="control-label col-sm-9 col-md-offset-2 col-md-6">Minimum Width for Gallery Images</label>
+          <label for="bbg_xiv-min_image_width" class="control-label col-sm-9 col-md-offset-2 col-md-6">Minimum Width for Gallery Images in px</label>
           <div class="col-sm-3 col-md-2">
             <input type="number" class="form-control" id="bbg_xiv-min_image_width" min="32" max="1024">
           </div>
