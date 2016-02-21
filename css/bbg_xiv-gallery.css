@@ -35,6 +35,9 @@ div.bbg_xiv-bootstrap.bbg_xiv-gallery .bbg_xiv-search_header {
   div.bbg_xiv-bootstrap.bbg_xiv-gallery .bbg_xiv-search_header span {
     font-size: 16px;
     font-weight: bold; }
+  div.bbg_xiv-bootstrap.bbg_xiv-gallery .bbg_xiv-search_header button {
+    display: none;
+    /* hide for now as this feature is not yet implemented */ }
 div.bbg_xiv-bootstrap.bbg_xiv-gallery .bbg_xiv-warning {
   color: red; }
 div.bbg_xiv-bootstrap div.bbg_xiv-configure_outer {
