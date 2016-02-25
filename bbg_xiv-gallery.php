@@ -4,7 +4,7 @@
 Plugin Name: BB Gallery
 Plugin URI: https://bbfgallery.wordpress.com/
 Description: Gallery using Backbone.js, Bootstrap 3 and CSS3 Flexbox
-Version: 1.5.1
+Version: 1.5.2
 Author: Magenta Cuda
 Author URI: https://profiles.wordpress.org/magenta-cuda/
 License: GPL2
@@ -183,7 +183,7 @@ EOD;
     </nav>
     <div id="$selector-heading" class="bbg_xiv-search_header">
         <span class="bbg_xiv-search_heading_first"></span><br>
-        <button class="btn btn-primary btn-sm bbg_xiv-search_scroll_left"><span class="glyphicon glyphicon-chevron-left"></span></button>
+        <button class="btn btn-primary btn-sm bbg_xiv-search_scroll_left" disabled><span class="glyphicon glyphicon-chevron-left"></span></button>
         <span class="bbg_xiv-search_heading_second"></span>
         <button class="btn btn-primary btn-sm bbg_xiv-search_scroll_right"><span class="glyphicon glyphicon-chevron-right"></span></button>
     </div>
