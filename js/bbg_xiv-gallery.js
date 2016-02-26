@@ -773,8 +773,7 @@
                     query=value;
                     offset=0;
                     // start new search history
-                    var search=bbg_xiv.search[divGallery.id]={};
-                    search.history=[];
+                    bbg_xiv.search[divGallery.id]={history:[],index:-1,done:false};
                     jQuery.post(bbg_xiv.ajaxurl,{action:"bbg_xiv_search_media_count",query:query},function(r){
                         count=parseInt(r);
                     });
@@ -796,26 +795,30 @@
                         var search_limit=parseInt(bbg_xiv.bbg_xiv_max_search_results);
                         var prevOffset=offset;
                         var prevQuery=query;
+                        var heading=jQuery("div#"+divGallery.id+"-heading");
+                        var search=bbg_xiv.search[divGallery.id];
                         if(offset+images.models.length<count){
                             // this search has more images
                             offset+=search_limit;
                             input.val("").attr("placeholder",continueSearch);
+                            heading.find("button.bbg_xiv-search_scroll_right").attr("disabled",false);
                         }else{
                             // all search results have been returned
+                            search.done=true;
                             input.attr("placeholder",startSearch).val(query);
                             query=undefined;
                             offset=undefined;
+                            heading.find("button.bbg_xiv-search_scroll_right").attr("disabled",true);
                         }
                         // search results uses a heading to show status
-                        var heading=jQuery("div#"+divGallery.id+"-heading");
                         heading.find("span.bbg_xiv-search_heading_first").text("Search Results for \""+prevQuery+"\"");
                         var title="Images "+(prevOffset+1)+" to "+(prevOffset+images.models.length)+" of "+count;
                         heading.find("span.bbg_xiv-search_heading_second").text(title);
                         // maintain a history of all images returned by this search
-                        var search=bbg_xiv.search[divGallery.id];
                         search.history.push({images:images,title:title});
                         search.index=search.history.length-1;
                         bbg_xiv.renderGallery(divGallery,"Gallery");
+                        heading.find("button.bbg_xiv-search_scroll_left").attr("disabled",search.index===0);
                     }else{
                         jQuery(divGallery).empty().append('<h1 class="bbg_xiv-warning">Nothing Found</h1>');
                     }
@@ -897,7 +900,36 @@
         });
         // wireup the handler for scrolling through search results
         jQuery("div.bbg_xiv-search_header button.bbg_xiv-search_scroll_left,div.bbg_xiv-search_header button.bbg_xiv-search_scroll_right").click(function(e){
-            window.alert("TODO");
+            jqThis=jQuery(this);
+            var heading=jqThis.parents("div.bbg_xiv-search_header");
+            var id=heading.attr("id").replace("-heading","");
+            var gallery=heading.parents("div.bbg_xiv-gallery");
+            var search=bbg_xiv.search[id];
+            if(jqThis.hasClass("bbg_xiv-search_scroll_left")){
+                if(search.index>0){
+                    if(!--search.index){
+                        jqThis.attr("disabled",true);
+                    }
+                    heading.find("button.bbg_xiv-search_scroll_right").attr("disabled",false);
+                }else{
+                }
+            }else{
+                if(search.index<search.history.length-1){
+                    ++search.index;
+                    if(search.index===search.history.length-1&&search.done){
+                        heading.find("button.bbg_xiv-search_scroll_right").attr("disabled",true);
+                    }
+                    heading.find("button.bbg_xiv-search_scroll_left").attr("disabled",false);
+                }else{
+                    gallery.find("nav.navbar form.bbg_xiv-search_form button[type='submit']").click();
+                }
+            }
+            if(search.index>=0&&search.index<search.history.length){
+                var history=search.history[search.index];
+                bbg_xiv.images[id]=history.images;
+                heading.find("span.bbg_xiv-search_heading_second").text(history.title);
+                bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],"Gallery");
+            }
         });
         jQuery(window).resize();
     });
