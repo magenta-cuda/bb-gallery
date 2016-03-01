@@ -793,6 +793,7 @@
                     limit:parseInt(bbg_xiv.bbg_xiv_max_search_results),
                     offset:offset
                 };
+                jQuery(divGallery).empty().append('<h1 class="bbg_xiv-info">Loading... please wait.</h1>');
                 jQuery.post(bbg_xiv.ajaxurl,postData,function(r){
                     bbg_xiv.images[divGallery.id]=null;
                     bbg_xiv[divGallery.id+"-data"]=r;

@@ -38,7 +38,13 @@ div.bbg_xiv-bootstrap.bbg_xiv-gallery .bbg_xiv-search_header {
   div.bbg_xiv-bootstrap.bbg_xiv-gallery .bbg_xiv-search_header button {
     display: inline; }
 div.bbg_xiv-bootstrap.bbg_xiv-gallery .bbg_xiv-warning {
-  color: red; }
+  color: red;
+  text-align: center;
+  margin-top: 50px; }
+div.bbg_xiv-bootstrap.bbg_xiv-gallery .bbg_xiv-info {
+  color: gray;
+  text-align: center;
+  margin-top: 50px; }
 div.bbg_xiv-bootstrap div.bbg_xiv-configure_outer {
   position: fixed;
   top: 0px;
