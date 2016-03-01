@@ -758,6 +758,12 @@
             e.preventDefault();
         });
         // wireup the handler for searching
+        jQuery("form.bbg_xiv-search_form input[type='text']").keypress(function(e){
+            if(e.which===13){
+                // need to do this to hide virtual keyboard on mobile devices
+                jQuery(this).blur();
+            }
+        });
         jQuery("form.bbg_xiv-search_form button").each(function(){
             var query;
             var offset;
