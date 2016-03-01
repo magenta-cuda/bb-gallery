@@ -928,7 +928,9 @@
                     }
                     heading.find("button.bbg_xiv-search_scroll_left").attr("disabled",false);
                 }else{
+                    // load the next part of the multi-part search
                     gallery.find("nav.navbar form.bbg_xiv-search_form button[type='submit']").click();
+                    return;
                 }
             }
             if(search.index>=0&&search.index<search.history.length){
