@@ -145,7 +145,9 @@ function bb_gallery_shortcode( $attr ) {
                 <li><a href="#">Table</a></li>
 EOD;
     }
-    
+    ob_start( );
+    wp_nonce_field( 'bbg_xiv-search' );
+    $nonce_field = ob_get_clean( );
     $output = <<<EOD
 <div class="bbg_xiv-bootstrap bbg_xiv-gallery">
     <nav role="navigation" class="navbar navbar-inverse bbg_xiv-gallery_navbar">
@@ -177,6 +179,7 @@ EOD;
                     <input type="text" placeholder="Search Images on Site" class="form-control">
                 </div>
                 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                $nonce_field
             </form>
             <button type="button" class="btn btn-info bbg_xiv-configure" title="configure bandwidth, carousel interval, ...">Options</button>
         </div>
@@ -393,6 +396,7 @@ add_action( 'admin_init', function( ) {
 if ( is_admin( ) ) {
     function bbg_xiv_search_media( ) {
         global $wpdb;
+        check_ajax_referer( 'bbg_xiv-search' );
         $pattern = '%' . $_POST[ 'query' ] . '%';
         $offset = (integer) $_POST[ 'offset' ];
         $count = (integer) $_POST[ 'limit' ];
@@ -417,6 +421,8 @@ EOD
     add_action( 'wp_ajax_bbg_xiv_search_media', 'bbg_xiv_search_media' );
     function bbg_xiv_search_media_count( ) {
         global $wpdb;
+        error_log( 'bbg_xiv_search_media_count():$_POST=' . print_r( $_POST, true ) );
+        check_ajax_referer( 'bbg_xiv-search' );
         $pattern = '%' . $_POST[ 'query' ] . '%';
         $count = $wpdb->get_var( $wpdb->prepare( <<<EOD
 SELECT COUNT(*) FROM $wpdb->posts
