@@ -33,6 +33,8 @@ License: GPL2
 # The user definable templates are in the file ".../js/bbg_xiv-gallery_templates.php".
 
 class BBG_XIV_Gallery {
+
+    public static $nonce_action = 'bbg_xiv-search';
   
     # excerpted from the WordPress function gallery_shortcode() of .../wp-includes/media.php
 
@@ -140,7 +142,7 @@ class BBG_XIV_Gallery {
 EOD;
         }
         ob_start( );
-        wp_nonce_field( 'bbg_xiv-search' );
+        wp_nonce_field( self::$nonce_action );
         $nonce_field = ob_get_clean( );
         $output = <<<EOD
 <div class="bbg_xiv-bootstrap bbg_xiv-gallery">
@@ -399,7 +401,7 @@ EOD
         if ( is_admin( ) ) {
             function bbg_xiv_search_media( ) {
                 global $wpdb;
-                check_ajax_referer( 'bbg_xiv-search' );
+                check_ajax_referer( BBG_XIV_Gallery::$nonce_action );
                 $pattern = '%' . $_POST[ 'query' ] . '%';
                 $offset = (integer) $_POST[ 'offset' ];
                 $count = (integer) $_POST[ 'limit' ];
@@ -425,7 +427,7 @@ EOD
             function bbg_xiv_search_media_count( ) {
                 global $wpdb;
                 error_log( 'bbg_xiv_search_media_count():$_POST=' . print_r( $_POST, true ) );
-                check_ajax_referer( 'bbg_xiv-search' );
+                check_ajax_referer( BBG_XIV_Gallery::$nonce_action );
                 $pattern = '%' . $_POST[ 'query' ] . '%';
                 $count = $wpdb->get_var( $wpdb->prepare( <<<EOD
 SELECT COUNT(*) FROM $wpdb->posts
