@@ -32,123 +32,117 @@ License: GPL2
 # It uses user definable Backbone.js templates styled with a Twitter Bootstrap stylesheets.
 # The user definable templates are in the file ".../js/bbg_xiv-gallery_templates.php".
 
-add_action( 'wp_loaded', function( ) {
-    add_shortcode( 'bb_gallery', 'bb_gallery_shortcode' );
-    if ( get_option( 'bbg_xiv_shortcode', 1 ) ) {
-        remove_shortcode( 'gallery' );
-        add_shortcode( 'gallery', 'bb_gallery_shortcode' );
-    }
-} );
+class BBG_XIV_Gallery {
+  
+    # excerpted from the WordPress function gallery_shortcode() of .../wp-includes/media.php
 
-# excerpted from the WordPress function gallery_shortcode() of .../wp-includes/media.php
+    public static function bb_gallery_shortcode( $attr ) {
+        if ( is_array( $attr ) && array_key_exists( 'mode', $attr ) && $attr[ 'mode' ] === 'wordpress' ) {
+            return gallery_shortcode( $attr );
+        }
+        
+        require_once(  dirname( __FILE__ ) . '/bbg_xiv-gallery_templates.php' );
 
-function bb_gallery_shortcode( $attr ) {
-    if ( is_array( $attr ) && array_key_exists( 'mode', $attr ) && $attr[ 'mode' ] === 'wordpress' ) {
-        return gallery_shortcode( $attr );
-    }
-    
-    require_once(  dirname( __FILE__ ) . '/bbg_xiv-gallery_templates.php' );
+        $post = get_post();
 
-    $post = get_post();
+        static $instance = 0;
+        $instance++;
+        
+        static $bbg_xiv_data = [
+            'version' => '1.0'
+        ];
+        $bbg_xiv_data[ 'ajaxurl' ]                                   = admin_url( 'admin-ajax.php' );
+        $bbg_xiv_data[ 'bbg_xiv_flex_min_width' ]                    = get_option( 'bbg_xiv_flex_min_width', 128 );
+        $bbg_xiv_data[ 'bbg_xiv_flex_min_width_for_caption' ]        = get_option( 'bbg_xiv_flex_min_width_for_caption', 96 );
+        $bbg_xiv_data[ 'bbg_xiv_max_search_results' ]                = get_option( 'bbg_xiv_max_search_results', 250 );
+        $bbg_xiv_data[ 'bbg_xiv_flex_min_width_for_dense_view' ]     = get_option( 'bbg_xiv_flex_min_width_for_dense_view', 1280 );
+        $bbg_xiv_data[ 'bbg_xiv_flex_number_of_dense_view_columns' ] = get_option( 'bbg_xiv_flex_number_of_dense_view_columns', 10 );
+        $bbg_xiv_data[ 'bbg_xiv_carousel_interval' ]                 = get_option( 'bbg_xiv_carousel_interval', 2500 );
+        $bbg_xiv_data[ 'bbg_xiv_disable_flexbox' ]                   = get_option( 'bbg_xiv_disable_flexbox', FALSE );
 
-    static $instance = 0;
-    $instance++;
-    
-    static $bbg_xiv_data = [
-        'version' => '1.0'
-    ];
-    $bbg_xiv_data[ 'ajaxurl' ]                                   = admin_url( 'admin-ajax.php' );
-    $bbg_xiv_data[ 'bbg_xiv_flex_min_width' ]                    = get_option( 'bbg_xiv_flex_min_width', 128 );
-    $bbg_xiv_data[ 'bbg_xiv_flex_min_width_for_caption' ]        = get_option( 'bbg_xiv_flex_min_width_for_caption', 96 );
-    $bbg_xiv_data[ 'bbg_xiv_max_search_results' ]                = get_option( 'bbg_xiv_max_search_results', 250 );
-    $bbg_xiv_data[ 'bbg_xiv_flex_min_width_for_dense_view' ]     = get_option( 'bbg_xiv_flex_min_width_for_dense_view', 1280 );
-    $bbg_xiv_data[ 'bbg_xiv_flex_number_of_dense_view_columns' ] = get_option( 'bbg_xiv_flex_number_of_dense_view_columns', 10 );
-    $bbg_xiv_data[ 'bbg_xiv_carousel_interval' ]                 = get_option( 'bbg_xiv_carousel_interval', 2500 );
-    $bbg_xiv_data[ 'bbg_xiv_disable_flexbox' ]                   = get_option( 'bbg_xiv_disable_flexbox', FALSE );
+        if ( ! empty( $attr['ids'] ) ) {
+          // 'ids' is explicitly ordered, unless you specify otherwise.
+          if ( empty( $attr['orderby'] ) ) {
+            $attr['orderby'] = 'post__in';
+          }
+          $attr['include'] = $attr['ids'];
+        }
 
-    if ( ! empty( $attr['ids'] ) ) {
-      // 'ids' is explicitly ordered, unless you specify otherwise.
-      if ( empty( $attr['orderby'] ) ) {
-        $attr['orderby'] = 'post__in';
-      }
-      $attr['include'] = $attr['ids'];
-    }
+        /**
+         * Filter the default gallery shortcode output.
+         *
+         * If the filtered output isn't empty, it will be used instead of generating
+         * the default gallery template.
+         *
+         * @since 2.5.0
+         * @since 4.2.0 The `$instance` parameter was added.
+         *
+         * @see gallery_shortcode()
+         *
+         * @param string $output   The gallery output. Default empty.
+         * @param array  $attr     Attributes of the gallery shortcode.
+         * @param int    $instance Unique numeric ID of this gallery shortcode instance.
+         */
 
-    /**
-     * Filter the default gallery shortcode output.
-     *
-     * If the filtered output isn't empty, it will be used instead of generating
-     * the default gallery template.
-     *
-     * @since 2.5.0
-     * @since 4.2.0 The `$instance` parameter was added.
-     *
-     * @see gallery_shortcode()
-     *
-     * @param string $output   The gallery output. Default empty.
-     * @param array  $attr     Attributes of the gallery shortcode.
-     * @param int    $instance Unique numeric ID of this gallery shortcode instance.
-     */
+        $output = apply_filters( 'post_gallery', '', $attr, $instance );
+        if ( $output != '' ) {
+          return $output;
+        }
 
-    $output = apply_filters( 'post_gallery', '', $attr, $instance );
-    if ( $output != '' ) {
-      return $output;
-    }
+        $atts = shortcode_atts( array(
+          'order'      => 'ASC',
+          'orderby'    => 'menu_order ID',
+          'id'         => $post ? $post->ID : 0,
+          'size'       => 'thumbnail',
+          'include'    => '',
+          'exclude'    => '',
+          'link'       => ''
+        ), $attr, 'gallery' );
 
-    $atts = shortcode_atts( array(
-      'order'      => 'ASC',
-      'orderby'    => 'menu_order ID',
-      'id'         => $post ? $post->ID : 0,
-      'size'       => 'thumbnail',
-      'include'    => '',
-      'exclude'    => '',
-      'link'       => ''
-    ), $attr, 'gallery' );
+        $id = intval( $atts['id'] );
 
-    $id = intval( $atts['id'] );
+        if ( ! empty( $atts['include'] ) ) {
+          $_attachments = get_posts( array( 'include' => $atts['include'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
 
-    if ( ! empty( $atts['include'] ) ) {
-      $_attachments = get_posts( array( 'include' => $atts['include'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
+          $attachments = array();
+          foreach ( $_attachments as $key => $val ) {
+            $attachments[$val->ID] = $_attachments[$key];
+          }
+        } elseif ( ! empty( $atts['exclude'] ) ) {
+          $attachments = get_children( array( 'post_parent' => $id, 'exclude' => $atts['exclude'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
+        } else {
+          $attachments = get_children( array( 'post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
+        }
 
-      $attachments = array();
-      foreach ( $_attachments as $key => $val ) {
-        $attachments[$val->ID] = $_attachments[$key];
-      }
-    } elseif ( ! empty( $atts['exclude'] ) ) {
-      $attachments = get_children( array( 'post_parent' => $id, 'exclude' => $atts['exclude'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
-    } else {
-      $attachments = get_children( array( 'post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
-    }
+        if ( empty( $attachments ) ) {
+          return '';
+        }
 
-    if ( empty( $attachments ) ) {
-      return '';
-    }
+        if ( is_feed() ) {
+          $output = "\n";
+          foreach ( $attachments as $att_id => $attachment ) {
+            $output .= wp_get_attachment_link( $att_id, $atts['size'], true ) . "\n";
+          }
+          return $output;
+        }
 
-    if ( is_feed() ) {
-      $output = "\n";
-      foreach ( $attachments as $att_id => $attachment ) {
-        $output .= wp_get_attachment_link( $att_id, $atts['size'], true ) . "\n";
-      }
-      return $output;
-    }
+        $float = is_rtl() ? 'right' : 'left';
 
-    $float = is_rtl() ? 'right' : 'left';
+        $selector = "gallery-{$instance}";
 
-    $selector = "gallery-{$instance}";
-
-    $size_class = sanitize_html_class( $atts['size'] );
-    
-    # The "Table View" is primarily intended for developers and should be disabled for production environmemts.
-    $table_nav_item = '';
-    if ( get_option( 'bbg_xiv_table' ) ) {
-        $table_nav_item = <<<EOD
-                <li><a href="#">Table</a></li>
+        $size_class = sanitize_html_class( $atts['size'] );
+        
+        # The "Table View" is primarily intended for developers and should be disabled for production environmemts.
+        $table_nav_item = '';
+        if ( get_option( 'bbg_xiv_table' ) ) {
+            $table_nav_item = <<<EOD
+                        <li><a href="#">Table</a></li>
 EOD;
-    }
-    ob_start( );
-    wp_nonce_field( 'bbg_xiv-search' );
-    $nonce_field = ob_get_clean( );
-    $output = <<<EOD
+        }
+        ob_start( );
+        wp_nonce_field( 'bbg_xiv-search' );
+        $nonce_field = ob_get_clean( );
+        $output = <<<EOD
 <div class="bbg_xiv-bootstrap bbg_xiv-gallery">
     <nav role="navigation" class="navbar navbar-inverse bbg_xiv-gallery_navbar">
         <div class="navbar-header">
@@ -275,165 +269,178 @@ EOD;
     </div>
 </div>
 EOD;
-
-    bbg_xiv_do_attachments( $attachments );
-    $bbg_xiv_data[ "$selector-data" ] = json_encode( array_values( $attachments ) );
-    wp_localize_script( 'bbg_xiv-gallery', 'bbg_xiv', $bbg_xiv_data );
-    return $output;
-}
-
-function bbg_xiv_do_attachments( $attachments ) {
-    foreach ( $attachments as $id => &$attachment ) {
-        $attachment->url = wp_get_attachment_url( $id );
-        $meta = wp_get_attachment_metadata( $id );
-        $attachment->width  = $meta[ 'width'  ];
-        $attachment->height = $meta[ 'height' ];
-        if ( isset( $meta[ 'sizes' ] ) ) {
-            foreach ( $meta[ 'sizes' ] as $size => &$size_attrs ) {
-                $size_attrs[ 'url' ] = wp_get_attachment_image_src( $id, $size )[0];
-                unset( $size_attrs[ 'file' ] );
-            }
-            $attachment->sizes = $meta[ 'sizes' ];
-        }
-        $orientation = '';
-        if ( isset( $meta['height'], $meta['width'] ) ) {
-          $orientation = ( $meta['height'] > $meta['width'] ) ? 'portrait' : 'landscape';
-        }
-        $attachment->orientation = $orientation;
-        #$attr = ( trim( $attachment->post_excerpt ) ) ? array( 'aria-describedby' => "$selector-$id" ) : '';   # What is this for?
-        if ( ! empty( $atts['link'] ) && 'file' === $atts['link'] ) {
-          $attachment->link = wp_get_attachment_url( $id );
-        } elseif ( ! empty( $atts['link'] ) && 'none' === $atts['link'] ) {
-          $attachment->link = '';
-        } else {
-          $attachment->link = get_attachment_link( $id );
-        }
-        $attachment->image_alt = get_post_meta( $id, '_wp_attachment_image_alt', TRUE );
-        $attachment->post_content = apply_filters( 'the_content', $attachment->post_content );
-        # TODO: For the "Table" view you may want to unset some fields.
-        unset( $attachment->post_password );
-        unset( $attachment->ping_status );
-        unset( $attachment->to_ping );
-        unset( $attachment->pinged );
-        unset( $attachment->comment_status );
-        unset( $attachment->comment_count );
-        unset( $attachment->menu_order );
-        unset( $attachment->post_content_filtered );
-        unset( $attachment->filter );
-        unset( $attachment->post_date_gmt );
-        unset( $attachment->post_modified_gmt );
-        unset( $attachment->post_status );
-        unset( $attachment->post_type );
+        self::bbg_xiv_do_attachments( $attachments );
+        $bbg_xiv_data[ "$selector-data" ] = json_encode( array_values( $attachments ) );
+        wp_localize_script( 'bbg_xiv-gallery', 'bbg_xiv', $bbg_xiv_data );
+        return $output;
     }
-}
 
-add_action( 'wp_enqueue_scripts', function( ) {
-    wp_enqueue_style( 'bootstrap', plugins_url( '/css/bootstrap.css' , __FILE__ ) );
-    wp_enqueue_style( 'bbg_xiv-gallery', plugins_url( '/css/bbg_xiv-gallery.css' , __FILE__ ), [ 'bootstrap' ] );
-    $width = ( 100 / (integer) get_option( 'bbg_xiv_flex_number_of_dense_view_columns', 10 ) ) . '%';
-    wp_add_inline_style( 'bbg_xiv-gallery', <<<EOD
-div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_images div.bbg_xiv-dense_flex_images div.bbg_xiv-dense_flex_item{
-  width:$width;
-}
+    public static function bbg_xiv_do_attachments( $attachments ) {
+        foreach ( $attachments as $id => &$attachment ) {
+            $attachment->url = wp_get_attachment_url( $id );
+            $meta = wp_get_attachment_metadata( $id );
+            $attachment->width  = $meta[ 'width'  ];
+            $attachment->height = $meta[ 'height' ];
+            if ( isset( $meta[ 'sizes' ] ) ) {
+                foreach ( $meta[ 'sizes' ] as $size => &$size_attrs ) {
+                    $size_attrs[ 'url' ] = wp_get_attachment_image_src( $id, $size )[0];
+                    unset( $size_attrs[ 'file' ] );
+                }
+                $attachment->sizes = $meta[ 'sizes' ];
+            }
+            $orientation = '';
+            if ( isset( $meta['height'], $meta['width'] ) ) {
+              $orientation = ( $meta['height'] > $meta['width'] ) ? 'portrait' : 'landscape';
+            }
+            $attachment->orientation = $orientation;
+            #$attr = ( trim( $attachment->post_excerpt ) ) ? array( 'aria-describedby' => "$selector-$id" ) : '';   # What is this for?
+            if ( ! empty( $atts['link'] ) && 'file' === $atts['link'] ) {
+              $attachment->link = wp_get_attachment_url( $id );
+            } elseif ( ! empty( $atts['link'] ) && 'none' === $atts['link'] ) {
+              $attachment->link = '';
+            } else {
+              $attachment->link = get_attachment_link( $id );
+            }
+            $attachment->image_alt = get_post_meta( $id, '_wp_attachment_image_alt', TRUE );
+            $attachment->post_content = apply_filters( 'the_content', $attachment->post_content );
+            # TODO: For the "Table" view you may want to unset some fields.
+            unset( $attachment->post_password );
+            unset( $attachment->ping_status );
+            unset( $attachment->to_ping );
+            unset( $attachment->pinged );
+            unset( $attachment->comment_status );
+            unset( $attachment->comment_count );
+            unset( $attachment->menu_order );
+            unset( $attachment->post_content_filtered );
+            unset( $attachment->filter );
+            unset( $attachment->post_date_gmt );
+            unset( $attachment->post_modified_gmt );
+            unset( $attachment->post_status );
+            unset( $attachment->post_type );
+        }
+    }
+
+    public static function init( ) {
+
+        add_action( 'wp_loaded', function( ) {
+            add_shortcode( 'bb_gallery', __CLASS__ . '::bb_gallery_shortcode' );
+            if ( get_option( 'bbg_xiv_shortcode', 1 ) ) {
+                remove_shortcode( 'gallery' );
+                add_shortcode( 'gallery', __CLASS__ . '::bb_gallery_shortcode' );
+            }
+        } );
+
+        add_action( 'wp_enqueue_scripts', function( ) {
+            wp_enqueue_style( 'bootstrap', plugins_url( '/css/bootstrap.css' , __FILE__ ) );
+            wp_enqueue_style( 'bbg_xiv-gallery', plugins_url( '/css/bbg_xiv-gallery.css' , __FILE__ ), [ 'bootstrap' ] );
+            $width = ( 100 / (integer) get_option( 'bbg_xiv_flex_number_of_dense_view_columns', 10 ) ) . '%';
+            wp_add_inline_style( 'bbg_xiv-gallery', <<<EOD
+        div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_images div.bbg_xiv-dense_flex_images div.bbg_xiv-dense_flex_item{
+          width:$width;
+        }
 EOD
-    );
-    wp_enqueue_script( 'backbone' );
-    wp_enqueue_script( 'modernizr', plugins_url( '/js/modernizr.js' , __FILE__ ) );
-    wp_enqueue_script( 'bootstrap', plugins_url( '/js/bootstrap.js' , __FILE__ ), [ 'jquery' ], FALSE, TRUE );
-    wp_enqueue_script( 'bbg_xiv-gallery', plugins_url( '/js/bbg_xiv-gallery.js' , __FILE__ ), [ 'bootstrap' ], FALSE, TRUE );
-} );
+            );
+            wp_enqueue_script( 'backbone' );
+            wp_enqueue_script( 'modernizr', plugins_url( '/js/modernizr.js' , __FILE__ ) );
+            wp_enqueue_script( 'bootstrap', plugins_url( '/js/bootstrap.js' , __FILE__ ), [ 'jquery' ], FALSE, TRUE );
+            wp_enqueue_script( 'bbg_xiv-gallery', plugins_url( '/js/bbg_xiv-gallery.js' , __FILE__ ), [ 'bootstrap' ], FALSE, TRUE );
+        } );
  
-add_action( 'admin_init', function( ) {
-    add_settings_section( 'bbg_xiv_setting_section', 'BB Gallery', function( ) {
-        echo '<p>BB Gallery is a plug-compatible replacement for the built-in WordPress gallery shortcode.</p>';
-    }, 'media' );
-    add_settings_field( 'bbg_xiv_shortcode', 'Enable BB Gallery', function( ) {
-        echo '<input name="bbg_xiv_shortcode" id="bbg_xiv_shortcode" type="checkbox" value="1" class="code" '
-            . checked( get_option( 'bbg_xiv_shortcode', 1 ), 1, FALSE ) . ' /> This will replace the built-in WordPress gallery shortcode.';
-    }, 'media',	'bbg_xiv_setting_section' );
-    add_settings_field( 'bbg_xiv_table', 'Enable Table View', function( ) {
-        echo '<input name="bbg_xiv_table" id="bbg_xiv_table" type="checkbox" value="1" class="code" '
-            . checked( get_option( 'bbg_xiv_table' ), 1, FALSE ) . ' /> The "Table View" is primarily intended for developers.';
-    }, 'media',	'bbg_xiv_setting_section' );
-    add_settings_field( 'bbg_xiv_flex_min_width', 'Gallery Minimum Image Width', function( ) {
-        echo '<input name="bbg_xiv_flex_min_width" id="bbg_xiv_flex_min_width" type="number" value="' . get_option( 'bbg_xiv_flex_min_width', 128 )
-            . '" class="small-text" /> The minimum image width in the "Gallery View" if the CSS3 Flexbox is used.';
-    }, 'media',	'bbg_xiv_setting_section' );
-    add_settings_field( 'bbg_xiv_flex_min_width_for_caption', 'Gallery Minimum Image Width for Caption', function( ) {
-        echo '<input name="bbg_xiv_flex_min_width_for_caption" id="bbg_xiv_flex_min_width_for_caption" type="number" value="'
-            . get_option( 'bbg_xiv_flex_min_width_for_caption', 96 )
-            . '" class="small-text" /> The minimum image width in the "Gallery View" required to show the caption.';
-    }, 'media',	'bbg_xiv_setting_section' );
-    add_settings_field( 'bbg_xiv_carousel_interval', 'Carousel Interval', function( ) {
-        echo '<input name="bbg_xiv_carousel_interval" id="bbg_xiv_carousel_interval" type="number" value="'
-            . get_option( 'bbg_xiv_carousel_interval', 2500 )
-            . '" class="small-text" /> The time delay between two slides.';
-    }, 'media',	'bbg_xiv_setting_section' );
-    add_settings_field( 'bbg_xiv_max_search_results', 'Maximum Number of Images Returned by Search', function( ) {
-        echo '<input name="bbg_xiv_max_search_results" id="bbg_xiv_max_search_results" type="number" value="' . get_option( 'bbg_xiv_max_search_results', 128 )
-            . '" class="small-text" /> The browser user can override this limit.';
-    }, 'media',	'bbg_xiv_setting_section' );
-    add_settings_field( 'bbg_xiv_flex_number_of_dense_view_columns', 'Columns in Dense View', function( ) {
-        echo '<input name="bbg_xiv_flex_number_of_dense_view_columns" id="bbg_xiv_flex_number_of_dense_view_columns" type="number" value="'
-            . get_option( 'bbg_xiv_flex_number_of_dense_view_columns', 10 )
-            . '" class="small-text" /> The number of columns in the "Dense View".';
-    }, 'media',	'bbg_xiv_setting_section' );
-    add_settings_field( 'bbg_xiv_flex_min_width_for_dense_view', 'Minimum With for Dense View', function( ) {
-        echo '<input name="bbg_xiv_flex_min_width_for_dense_view" id="bbg_xiv_flex_min_width_for_dense_view" type="number" value="'
-            . get_option( 'bbg_xiv_flex_min_width_for_dense_view', 1280 )
-            . '" class="small-text" /> The minimum browser viewport width required to show the "Dense View".';
-    }, 'media',	'bbg_xiv_setting_section' );
-    register_setting( 'media', 'bbg_xiv_shortcode' );
-    register_setting( 'media', 'bbg_xiv_table' );
-    register_setting( 'media', 'bbg_xiv_flex_min_width' );
-    register_setting( 'media', 'bbg_xiv_flex_min_width_for_caption' );
-    register_setting( 'media', 'bbg_xiv_carousel_interval' );
-    register_setting( 'media', 'bbg_xiv_max_search_results' );
-    register_setting( 'media', 'bbg_xiv_flex_number_of_dense_view_columns' );
-    register_setting( 'media', 'bbg_xiv_flex_min_width_for_dense_view' );
-} );
+        add_action( 'admin_init', function( ) {
+            add_settings_section( 'bbg_xiv_setting_section', 'BB Gallery', function( ) {
+                echo '<p>BB Gallery is a plug-compatible replacement for the built-in WordPress gallery shortcode.</p>';
+            }, 'media' );
+            add_settings_field( 'bbg_xiv_shortcode', 'Enable BB Gallery', function( ) {
+                echo '<input name="bbg_xiv_shortcode" id="bbg_xiv_shortcode" type="checkbox" value="1" class="code" '
+                    . checked( get_option( 'bbg_xiv_shortcode', 1 ), 1, FALSE ) . ' /> This will replace the built-in WordPress gallery shortcode.';
+            }, 'media',	'bbg_xiv_setting_section' );
+            add_settings_field( 'bbg_xiv_table', 'Enable Table View', function( ) {
+                echo '<input name="bbg_xiv_table" id="bbg_xiv_table" type="checkbox" value="1" class="code" '
+                    . checked( get_option( 'bbg_xiv_table' ), 1, FALSE ) . ' /> The "Table View" is primarily intended for developers.';
+            }, 'media',	'bbg_xiv_setting_section' );
+            add_settings_field( 'bbg_xiv_flex_min_width', 'Gallery Minimum Image Width', function( ) {
+                echo '<input name="bbg_xiv_flex_min_width" id="bbg_xiv_flex_min_width" type="number" value="' . get_option( 'bbg_xiv_flex_min_width', 128 )
+                    . '" class="small-text" /> The minimum image width in the "Gallery View" if the CSS3 Flexbox is used.';
+            }, 'media',	'bbg_xiv_setting_section' );
+            add_settings_field( 'bbg_xiv_flex_min_width_for_caption', 'Gallery Minimum Image Width for Caption', function( ) {
+                echo '<input name="bbg_xiv_flex_min_width_for_caption" id="bbg_xiv_flex_min_width_for_caption" type="number" value="'
+                    . get_option( 'bbg_xiv_flex_min_width_for_caption', 96 )
+                    . '" class="small-text" /> The minimum image width in the "Gallery View" required to show the caption.';
+            }, 'media',	'bbg_xiv_setting_section' );
+            add_settings_field( 'bbg_xiv_carousel_interval', 'Carousel Interval', function( ) {
+                echo '<input name="bbg_xiv_carousel_interval" id="bbg_xiv_carousel_interval" type="number" value="'
+                    . get_option( 'bbg_xiv_carousel_interval', 2500 )
+                    . '" class="small-text" /> The time delay between two slides.';
+            }, 'media',	'bbg_xiv_setting_section' );
+            add_settings_field( 'bbg_xiv_max_search_results', 'Maximum Number of Images Returned by Search', function( ) {
+                echo '<input name="bbg_xiv_max_search_results" id="bbg_xiv_max_search_results" type="number" value="' . get_option( 'bbg_xiv_max_search_results', 128 )
+                    . '" class="small-text" /> The browser user can override this limit.';
+            }, 'media',	'bbg_xiv_setting_section' );
+            add_settings_field( 'bbg_xiv_flex_number_of_dense_view_columns', 'Columns in Dense View', function( ) {
+                echo '<input name="bbg_xiv_flex_number_of_dense_view_columns" id="bbg_xiv_flex_number_of_dense_view_columns" type="number" value="'
+                    . get_option( 'bbg_xiv_flex_number_of_dense_view_columns', 10 )
+                    . '" class="small-text" /> The number of columns in the "Dense View".';
+            }, 'media',	'bbg_xiv_setting_section' );
+            add_settings_field( 'bbg_xiv_flex_min_width_for_dense_view', 'Minimum With for Dense View', function( ) {
+                echo '<input name="bbg_xiv_flex_min_width_for_dense_view" id="bbg_xiv_flex_min_width_for_dense_view" type="number" value="'
+                    . get_option( 'bbg_xiv_flex_min_width_for_dense_view', 1280 )
+                    . '" class="small-text" /> The minimum browser viewport width required to show the "Dense View".';
+            }, 'media',	'bbg_xiv_setting_section' );
+            register_setting( 'media', 'bbg_xiv_shortcode' );
+            register_setting( 'media', 'bbg_xiv_table' );
+            register_setting( 'media', 'bbg_xiv_flex_min_width' );
+            register_setting( 'media', 'bbg_xiv_flex_min_width_for_caption' );
+            register_setting( 'media', 'bbg_xiv_carousel_interval' );
+            register_setting( 'media', 'bbg_xiv_max_search_results' );
+            register_setting( 'media', 'bbg_xiv_flex_number_of_dense_view_columns' );
+            register_setting( 'media', 'bbg_xiv_flex_min_width_for_dense_view' );
+        } );
  
-if ( is_admin( ) ) {
-    function bbg_xiv_search_media( ) {
-        global $wpdb;
-        check_ajax_referer( 'bbg_xiv-search' );
-        $pattern = '%' . $_POST[ 'query' ] . '%';
-        $offset = (integer) $_POST[ 'offset' ];
-        $count = (integer) $_POST[ 'limit' ];
-        $results = $wpdb->get_col( $wpdb->prepare( <<<EOD
+        if ( is_admin( ) ) {
+            function bbg_xiv_search_media( ) {
+                global $wpdb;
+                check_ajax_referer( 'bbg_xiv-search' );
+                $pattern = '%' . $_POST[ 'query' ] . '%';
+                $offset = (integer) $_POST[ 'offset' ];
+                $count = (integer) $_POST[ 'limit' ];
+                $results = $wpdb->get_col( $wpdb->prepare( <<<EOD
 SELECT ID FROM $wpdb->posts
     WHERE post_status = 'inherit' AND post_type = 'attachment' AND post_mime_type LIKE 'image/%%' AND ( post_title LIKE %s OR post_excerpt LIKE %s OR post_content LIKE %s )
     LIMIT %d, %d
 EOD
-            , $pattern, $pattern, $pattern, $offset, $count ) );
-        if ( !$results ) {
-            wp_die( );
-        }
-        $attachments = [ ];
-        foreach ( get_posts( [ 'include' => implode( ',', $results ), 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image' ] ) as $key => $val ) {
-            $attachments[ $val->ID ] = $val;
-        }
-        bbg_xiv_do_attachments( $attachments );
-        echo json_encode( array_values( $attachments ) );
-        wp_die( );
-    }
-    add_action( 'wp_ajax_nopriv_bbg_xiv_search_media', 'bbg_xiv_search_media' );
-    add_action( 'wp_ajax_bbg_xiv_search_media', 'bbg_xiv_search_media' );
-    function bbg_xiv_search_media_count( ) {
-        global $wpdb;
-        error_log( 'bbg_xiv_search_media_count():$_POST=' . print_r( $_POST, true ) );
-        check_ajax_referer( 'bbg_xiv-search' );
-        $pattern = '%' . $_POST[ 'query' ] . '%';
-        $count = $wpdb->get_var( $wpdb->prepare( <<<EOD
+                    , $pattern, $pattern, $pattern, $offset, $count ) );
+                if ( !$results ) {
+                    wp_die( );
+                }
+                $attachments = [ ];
+                foreach ( get_posts( [ 'include' => implode( ',', $results ), 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image' ] ) as $key => $val ) {
+                    $attachments[ $val->ID ] = $val;
+                }
+                BBG_XIV_Gallery::bbg_xiv_do_attachments( $attachments );
+                echo json_encode( array_values( $attachments ) );
+                wp_die( );
+            }
+            add_action( 'wp_ajax_nopriv_bbg_xiv_search_media', 'bbg_xiv_search_media' );
+            add_action( 'wp_ajax_bbg_xiv_search_media', 'bbg_xiv_search_media' );
+            function bbg_xiv_search_media_count( ) {
+                global $wpdb;
+                error_log( 'bbg_xiv_search_media_count():$_POST=' . print_r( $_POST, true ) );
+                check_ajax_referer( 'bbg_xiv-search' );
+                $pattern = '%' . $_POST[ 'query' ] . '%';
+                $count = $wpdb->get_var( $wpdb->prepare( <<<EOD
 SELECT COUNT(*) FROM $wpdb->posts
     WHERE post_status = 'inherit' AND post_type = 'attachment' AND post_mime_type LIKE 'image/%%' AND ( post_title LIKE %s OR post_excerpt LIKE %s OR post_content LIKE %s )
 EOD
-            , $pattern, $pattern, $pattern ) );
-        echo $count;
-        wp_die( );
+                    , $pattern, $pattern, $pattern ) );
+                echo $count;
+                wp_die( );
+            }
+            add_action( 'wp_ajax_nopriv_bbg_xiv_search_media_count', 'bbg_xiv_search_media_count' );
+            add_action( 'wp_ajax_bbg_xiv_search_media_count', 'bbg_xiv_search_media_count' );
+        }
     }
-    add_action( 'wp_ajax_nopriv_bbg_xiv_search_media_count', 'bbg_xiv_search_media_count' );
-    add_action( 'wp_ajax_bbg_xiv_search_media_count', 'bbg_xiv_search_media_count' );
 }
-    
- ?>
+
+BBG_XIV_Gallery::init( );
+
+?>
