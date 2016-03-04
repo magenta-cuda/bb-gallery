@@ -475,6 +475,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse {
     overflow: hidden !important; }
 div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container span.glyphicon-collapse-down, div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container span.glyphicon-collapse-up {
   width: 5%;
+  height: 10vh;
   float: right;
   font-size: 24px;
   text-align: right;
