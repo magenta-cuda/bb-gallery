@@ -247,7 +247,8 @@ div.bbg_xiv-flex_container {
         color: inherit;
         border-color: transparent;
         background-color: transparent;
-        line-height: 100%; }
+        line-height: 100%;
+        box-shadow: none; }
       div.bbg_xiv-flex_container div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn:hover {
         color: gray;
         border-color: gray; }
@@ -411,7 +412,8 @@ div.bbg_xiv-bootstrap div.carousel.slide {
     z-index: 5;
     color: #fff;
     background-color: transparent;
-    border: 1px solid transparent; }
+    border: 1px solid transparent;
+    box-shadow: none; }
     @media (min-width: 768px) {
       div.bbg_xiv-bootstrap div.carousel.slide button.bbg_xiv-carousel_close_btn {
         font-size: 30px; } }
@@ -569,7 +571,8 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
         color: cyan;
         background-color: transparent;
         border-color: cyan;
-        line-height: 100%; }
+        line-height: 100%;
+        box-shadow: none; }
   div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_images {
     width: 75%;
     height: 96%;
@@ -610,7 +613,8 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
             color: inherit;
             border-color: inherit;
             background-color: transparent;
-            line-height: 100%; }
+            line-height: 100%;
+            box-shadow: none; }
           div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_images div.bbg_xiv-dense_flex_images div.bbg_xiv-dense_flex_item div.bbg_xiv-dense_full_btn:hover {
             color: cyan;
             border-color: cyan; }

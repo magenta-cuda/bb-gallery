@@ -445,6 +445,7 @@ div.bbg_xiv-flex_container{
                 border-color:transparent;
                 background-color:transparent;
                 line-height:100%;
+                box-shadow:none;
             }
 
             &:hover{
@@ -608,6 +609,7 @@ div.bbg_xiv-bootstrap{
       color: #fff;
       background-color: transparent;
       border:1px solid transparent;
+      box-shadow:none;
       @media(min-width:768px){
         font-size: 30px;
       }
@@ -824,6 +826,7 @@ div.bbg_xiv-bootstrap{
           background-color:transparent;
           border-color:$caption-color;
           line-height:100%;
+          box-shadow:none;
         }
       }
     }
@@ -873,6 +876,7 @@ div.bbg_xiv-bootstrap{
               border-color:inherit;
               background-color:transparent;
               line-height:100%;
+              box-shadow:none;
             }
             &:hover{
               color:$icon-color;
