@@ -459,14 +459,15 @@
                     });
                 }
                 window.setTimeout(function(){
+                    // the timeout is necessary to give browser time to render the image before the scrolling is done
                     if(window.matchMedia("(max-aspect-ratio:1/1)").matches){
                         // portrait mode
-                        jQuery(window).scrollTop(jqGallery.find("div.tab-content").offset().top-40);
+                        jQuery(window).scrollTop(jqGallery.find("div.tab-content").offset().top-60);
                     }else{
                         // landscape mode
                         jQuery(window).scrollTop(jqGallery.find("div.tab-content").offset().top-80);
                     }
-                },100);
+                },500);
             });
             break;
         case "Dense":
