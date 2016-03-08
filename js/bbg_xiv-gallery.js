@@ -957,6 +957,26 @@
                 liSelectView.find("a.bbg_xiv-selected_view span").text(liFirst.text());
             }
         });
+        // wireup mobile only events
+        jQuery(window).on("swipe",function(e){
+            // hide/show title and caption of overlay on swipe
+            var inner=jQuery("div.bbg_xiv-dense_inner");
+            inner.find(".bbg_xiv-dense_title,.bbg_xiv-dense_caption").each(function(){
+                var jqThis=jQuery(this);
+                var color=jqThis.css("color");
+                if(color!=="transparent"&&color!=="rgba(0, 0, 0, 0)"){   // TODO: find safer test for transparent
+                    if(typeof bbg_xiv.titleColor==="undefined"){
+                        bbg_xiv.titleColor=color;
+                        bbg_xiv.titleShadow=jqThis.css("text-shadow");
+                    }
+                    jqThis.css("color","transparent");
+                    jqThis.css("text-shadow","none");
+                }else{
+                    jqThis.css("color",bbg_xiv.titleColor);
+                    jqThis.css("text-shadow",bbg_xiv.titleShadow);
+                }
+            });
+        });
         jQuery(window).resize();
     });
 
