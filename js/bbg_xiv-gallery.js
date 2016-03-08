@@ -402,8 +402,15 @@
             break;
         case "Tabs":
             bbg_xiv.renderTabs(jqGallery,images,"bbg_xiv-tabs_"+gallery.id);
+            var navbar=jqGallery.find("nav.navbar");
+            var toggle=navbar.find("button.navbar-toggle");
+            if(toggle.css("display")!=="none"){
+                toggle.click();
+            }
             // Hide the expand glyph if not needed.
-            jqGallery.find("nav.navbar div.navbar-collapse ul.nav").each(function(e){
+            navbar.find("div.navbar-collapse ul.nav").each(function(e){
+                var h0=jQuery(this).height();
+                var h1=jQuery(this.parentNode).height();
                 if(jQuery(this).height()-3<=jQuery(this.parentNode).height()){
                     jqGallery.find("nav.navbar span.glyphicon").hide();
                     jQuery(this.parentNode).addClass("bbg_xiv-hide_scroll");
@@ -462,7 +469,7 @@
                     // the timeout is necessary to give browser time to render the image before the scrolling is done
                     if(window.matchMedia("(max-aspect-ratio:1/1)").matches){
                         // portrait mode
-                        jQuery(window).scrollTop(jqGallery.find("div.tab-content").offset().top-jQuery(window).height()/3);
+                        jQuery(window).scrollTop(jqGallery.find("div.tab-content").offset().top-jQuery(window).height()/3-20);
                     }else{
                         // landscape mode
                         jQuery(window).scrollTop(jqGallery.find("div.tab-content").offset().top-80);

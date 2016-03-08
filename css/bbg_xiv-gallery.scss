@@ -689,6 +689,7 @@ div.bbg_xiv-bootstrap{
         height:10vh !important;
         @media(max-width:767px){
           height:auto !important;
+          max-height:33.3333vh;
         }
       }
       &.bbg_xiv-open{
