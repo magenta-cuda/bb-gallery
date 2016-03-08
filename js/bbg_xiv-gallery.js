@@ -959,6 +959,15 @@
         });
         // wireup mobile only events
         jQuery(window).on("swipe",function(e){
+            var carousel=jQuery("div.bbg_xiv-gallery_envelope div.carousel");
+            if(carousel.length){
+                if(e.swipestop.coords[0]>e.swipestart.coords[0]){
+                    carousel.find("a.left.carousel-control").click();
+                }else{
+                    carousel.find("a.right.carousel-control").click();
+                }
+                return;
+            }
             // hide/show title and caption of overlay on swipe
             var inner=jQuery("div.bbg_xiv-dense_inner");
             inner.find(".bbg_xiv-dense_title,.bbg_xiv-dense_caption").each(function(){
