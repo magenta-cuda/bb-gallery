@@ -498,6 +498,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content {
   div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure {
     position: relative;
     width: 100%;
+    min-height: 100vh;
     overflow-x: hidden;
     overflow-y: auto; }
     div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure img.bbg_xiv-tabs_img {
