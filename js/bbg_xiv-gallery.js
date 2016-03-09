@@ -389,12 +389,7 @@
             bbg_xiv.renderCarousel(jqGallery,images,carouselId);
             jqGallery.find("button.bbg_xiv-carousel_close_btn").click(function(e){
                 // restore "Gallery View"
-                var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
-                bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],"Gallery");
-                var liSelectView=jqGallery.parent().find("nav.bbg_xiv-gallery_navbar ul.nav li.bbg_xiv-select_view");
-                var liFirst=liSelectView.find("ul.bbg_xiv-view_menu li").removeClass("active").first().addClass("active");
-                liSelectView.find("a.bbg_xiv-selected_view span").text(liFirst.text());
-                jQuery(window).resize();
+                bbg_xiv.resetGallery(jQuery(this).parents("div.bbg_xiv-gallery"));
                 jQuery("html").css("overflow-y",overflow);
                 e.preventDefault();      
             });
@@ -556,12 +551,7 @@
             });
             jqGallery.find("button.bbg_xiv-dense_close_btn").click(function(e){
                 // restore "Gallery View"
-                var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
-                bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],"Gallery");
-                var liSelectView=jqGallery.parent().find("nav.bbg_xiv-gallery_navbar ul.nav li.bbg_xiv-select_view");
-                var liFirst=liSelectView.find("ul.bbg_xiv-view_menu li").removeClass("active").first().addClass("active");
-                liSelectView.find("a.bbg_xiv-selected_view span").text(liFirst.text());
-                jQuery(window).resize();
+                bbg_xiv.resetGallery(jQuery(this).parents("div.bbg_xiv-gallery"));
                 jQuery("html").css("overflow-y",overflow);
                 e.preventDefault();      
             });
@@ -935,13 +925,7 @@
             var inner=gallery.find("div.bbg_xiv-configure_inner");
             inner.hide();
             // redisplay the "Gallery" view using the new option values
-            var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
-            bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],"Gallery");
-            // reset navbar to "Gallery" view
-            var liSelectView=gallery.find("nav.bbg_xiv-gallery_navbar ul.nav li.bbg_xiv-select_view");
-            var liFirst=liSelectView.find("ul.bbg_xiv-view_menu li").removeClass("active").first().addClass("active");
-            liSelectView.find("a.bbg_xiv-selected_view span").text(liFirst.text());
-            jQuery(window).resize();
+            bbg_xiv.resetGallery(jQuery(this).parents("div.bbg_xiv-gallery"));
             e.preventDefault();
         });
         // wireup the handler for scrolling through search results
