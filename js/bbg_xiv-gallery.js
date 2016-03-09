@@ -402,20 +402,21 @@
             break;
         case "Tabs":
             bbg_xiv.renderTabs(jqGallery,images,"bbg_xiv-tabs_"+gallery.id);
+            // Adjust the tab view according to its environment
             var navbar=jqGallery.find("nav.navbar");
+            // In portrait mode show the tabs navbar uncollapsed
             var toggle=navbar.find("button.navbar-toggle");
             if(toggle.css("display")!=="none"){
                 toggle.click();
             }
-            // Hide the expand glyph if not needed.
-            navbar.find("div.navbar-collapse ul.nav").each(function(e){
-                var h0=jQuery(this).height();
-                var h1=jQuery(this.parentNode).height();
+            // Hide the expand glyph and scrollbar if not needed.
+            navbar.find("div.navbar-collapse ul.nav").each(function(){
                 if(jQuery(this).height()-3<=jQuery(this.parentNode).height()){
-                    jqGallery.find("nav.navbar span.glyphicon").hide();
+                    jQuery(this).parents("nav.navbar").find("nav.navbar span.glyphicon").hide();
                     jQuery(this.parentNode).addClass("bbg_xiv-hide_scroll");
                 }
             });
+            // Wireup the handlers - this must be done here as the elements in the tab view are dynamically created
             // Clicking the expand glpyh shows all the tabs.
             jqGallery.find("span.glyphicon-collapse-down,span.glyphicon-collapse-up").click(function(e){
                 var jqThis=jQuery(this);
@@ -476,6 +477,15 @@
                     }
                 },500);
             });
+            if( bbg_xiv.interface==="touch"){
+                // For mobile devices if a scrollbar is needed then initially expand the tab navbar as the collapsed tab navbar is not user friendly on mobile devices
+                navbar.find("span.glyphicon-collapse-down").each(function(){
+                    var jqThis=jQuery(this);
+                    if(jqThis.css("display")!=="none"){
+                        jqThis.click();
+                    }
+                });
+            }
             break;
         case "Dense":
             var overflow=jQuery("html").css("overflow-y");
@@ -564,6 +574,15 @@
         default:
             break;
         }
+    };
+    
+    bbg_xiv.resetGallery=function(gallery){
+        // restore "Gallery View"
+        bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],"Gallery");
+        var liSelectView=gallery.find("nav.bbg_xiv-gallery_navbar ul.nav li.bbg_xiv-select_view");
+        var liFirst=liSelectView.find("ul.bbg_xiv-view_menu li").removeClass("active").first().addClass("active");
+        liSelectView.find("a.bbg_xiv-selected_view span").text(liFirst.text());
+        jQuery(window).resize();
     };
     
     bbg_xiv.getThumbnailUrl=function(data){
@@ -991,6 +1010,11 @@
                     jqThis.css("color",bbg_xiv.titleColor);
                     jqThis.css("text-shadow",bbg_xiv.titleShadow);
                 }
+            });
+        });
+        jQuery(window).on("orientationchange",function(e){
+            jQuery("div.bbg_xiv-gallery").each(function(){
+                bbg_xiv.resetGallery(jQuery(this));
             });
         });
         jQuery(window).resize();
