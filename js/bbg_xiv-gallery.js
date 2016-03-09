@@ -967,6 +967,14 @@
                 liSelectView.find("a.bbg_xiv-selected_view span").text(liFirst.text());
             }
         });
+        // make the "Images" brand clickable for mobile devices and send click to the toggle button
+        jQuery("a.bbg_xiv-images_brand").click(function(e){
+            var toggle=jQuery(this).siblings("button.navbar-toggle");
+            if(toggle.css("display")!=="none"){
+                toggle.click();
+            }
+            e.preventDefault();
+        });
         // wireup mobile only events
         jQuery(window).on("swipe",function(e){
             var carousel=jQuery("div.bbg_xiv-gallery_envelope div.carousel");
