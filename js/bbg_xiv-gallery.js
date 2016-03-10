@@ -387,13 +387,26 @@
             jQuery("html").css("overflow-y","hidden");
             var carouselId="bbg_xiv-carousel_"+gallery.id;
             bbg_xiv.renderCarousel(jqGallery,images,carouselId);
+            // Wireup the handlers - this must be done here as the elements in the carousel view are dynamically created
+            jqGallery.find("button.bbg_xiv-carousel_pause_btn").click(function(e){
+                var carousel=jQuery(this.parentNode);
+                var jqThis=jQuery(this).find("span");
+                if(jqThis.hasClass("glyphicon-pause")){
+                    jqThis.removeClass("glyphicon-pause").addClass("glyphicon-play");
+                    carousel.carousel("pause");
+                }else{
+                    jqThis.removeClass("glyphicon-play").addClass("glyphicon-pause");
+                    carousel.carousel("cycle");
+                }
+                e.preventDefault();      
+            });
             jqGallery.find("button.bbg_xiv-carousel_close_btn").click(function(e){
                 // restore "Gallery View"
                 bbg_xiv.resetGallery(jQuery(this).parents("div.bbg_xiv-gallery"));
                 jQuery("html").css("overflow-y",overflow);
                 e.preventDefault();      
             });
-            jQuery("#"+carouselId).carousel({interval:bbg_xiv.bbg_xiv_carousel_interval});
+            jQuery("#"+carouselId).carousel({interval:bbg_xiv.bbg_xiv_carousel_interval,pause:false});
             break;
         case "Tabs":
             bbg_xiv.renderTabs(jqGallery,images,"bbg_xiv-tabs_"+gallery.id);
