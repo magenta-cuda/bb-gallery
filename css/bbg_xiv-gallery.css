@@ -541,7 +541,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content {
 #content div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container nav.navbar {
   padding: 0; }
 
-div.bbg_xiv-bootstrap img {
+div.bbg_xiv-bootstrap img, div.bbg_xiv-bootstrap button {
   box-shadow: none; }
 
 div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {

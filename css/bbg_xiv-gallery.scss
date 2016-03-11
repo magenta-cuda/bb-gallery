@@ -782,8 +782,10 @@ div.bbg_xiv-bootstrap{
   padding:0;
 }
 
-div.bbg_xiv-bootstrap img{
-  box-shadow:none;
+div.bbg_xiv-bootstrap{
+  img,button{
+    box-shadow:none;
+  }
 }
 
 div.bbg_xiv-bootstrap{
