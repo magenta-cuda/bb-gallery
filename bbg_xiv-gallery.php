@@ -47,7 +47,7 @@ class BBG_XIV_Gallery {
 
         $post = get_post();
 
-        static $instance = 0;
+        static $instance = 10000;    # not 0 to create a different space from the WordPress "gallery" shortcode
         $instance++;
         
         static $bbg_xiv_data = [
