@@ -41,7 +41,7 @@
         <source media="(min-width:1200px)">
         <source media="(min-width:992px)">
         <source media="(max-width:991px)">
-        <img class="img-rounded">
+        <img class="img-rounded bbg_xiv-img_overlay">
       </picture>
       <h1 class="bbg_xiv-dense_caption"></h1>
     </div>
@@ -191,7 +191,7 @@
       <source media="(min-width:1200px)">
       <source media="(min-width:992px)">
       <source media="(max-width:991px)">
-      <img class="img-rounded">
+      <img class="img-rounded bbg_xiv-img_overlay">
     </picture>
     <h1 class="bbg_xiv-dense_caption"></h1>
   </div>

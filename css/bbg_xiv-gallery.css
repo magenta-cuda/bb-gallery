@@ -275,13 +275,22 @@ div.bbg_xiv-flex_container {
     display: none;
     opacity: 0.0;
     transition: opacity 1.5s ease-out; }
+    div.bbg_xiv-flex_container div.bbg_xiv-dense_inner img {
+      display: block;
+      width: auto;
+      height: 100%;
+      max-width: none;
+      position: absolute;
+      left: 50%;
+      top: 0px;
+      transform: translate(-50%, 0px); }
     @supports (object-fit: contain) {
-      div.bbg_xiv-flex_container div.bbg_xiv-dense_inner img {
+      div.bbg_xiv-flex_container div.bbg_xiv-dense_inner img.bbg_xiv-img_overlay {
         width: 100%;
         height: 100%;
         object-fit: contain; } }
     @supports not (object-fit: contain) {
-      div.bbg_xiv-flex_container div.bbg_xiv-dense_inner img {
+      div.bbg_xiv-flex_container div.bbg_xiv-dense_inner img.bbg_xiv-img_overlay {
         display: block;
         width: auto;
         height: 100%;
@@ -663,13 +672,22 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
     display: none;
     opacity: 0.0;
     transition: opacity 1.5s ease-out; }
+    div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner img {
+      display: block;
+      width: auto;
+      height: 100%;
+      max-width: none;
+      position: absolute;
+      left: 50%;
+      top: 0px;
+      transform: translate(-50%, 0px); }
     @supports (object-fit: contain) {
-      div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner img {
+      div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner img.bbg_xiv-img_overlay {
         width: 100%;
         height: 100%;
         object-fit: contain; } }
     @supports not (object-fit: contain) {
-      div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner img {
+      div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner img.bbg_xiv-img_overlay {
         display: block;
         width: auto;
         height: 100%;

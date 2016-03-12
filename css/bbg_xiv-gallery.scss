@@ -57,6 +57,17 @@ $icon-color:cyan;
         transition:opacity 1.5s ease-out;
 
         img{
+            display:block;
+            width:auto;
+            height:100%;
+            max-width:none;
+            position:absolute;
+            left:50%;
+            top:0px;
+            transform:translate(-50%,0px);
+        }
+        
+        img.bbg_xiv-img_overlay{
             @supports(object-fit:contain){
                 width:100%;
                 height:100%;
