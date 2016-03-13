@@ -48,6 +48,8 @@ https://bbfgallery.wordpress.com/
 = 1.5.3 =
 
 * added support for mobile features: swipe, orientation change, ...
+* fix overlay bug on old Internet Explorer
+* add pause control to carousel
 
 = 1.5.2.1 =
 * various enhancements, bug fixes and improvements to code quality
@@ -96,6 +98,8 @@ https://bbfgallery.wordpress.com/
 = 1.5.3 =
 
 * added support for mobile features: swipe, orientation change, ...
+* fix overlay bug on old Internet Explorer
+* add pause control to carousel
 
 = 1.5.2.1 =
 * various enhancements, bug fixes and improvements to code quality
