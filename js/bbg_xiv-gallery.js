@@ -400,6 +400,15 @@
                 }
                 e.preventDefault();      
             });
+            jqGallery.find("button.bbg_xiv-carousel_start_btn,button.bbg_xiv-carousel_end_btn").click(function(e){
+                var carousel=jQuery(this.parentNode);
+                if(jQuery(this).hasClass("bbg_xiv-carousel_start_btn")){
+                    carousel.carousel(0);
+                }else{
+                    carousel.carousel(images.length-1);
+                }
+                e.preventDefault();      
+            });
             jqGallery.find("button.bbg_xiv-carousel_close_btn").click(function(e){
                 // restore "Gallery View"
                 bbg_xiv.resetGallery(jQuery(this).parents("div.bbg_xiv-gallery"));

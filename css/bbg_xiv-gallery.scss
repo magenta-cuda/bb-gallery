@@ -626,18 +626,26 @@ div.bbg_xiv-bootstrap{
       }
     }
 
-    button.bbg_xiv-carousel_pause_btn {
+    button.bbg_xiv-carousel_control_btn {
       position: absolute;
       bottom: 2%;
-      left: 0;
       width: 7%;
       z-index: 5;
-      color: #fff;
+      color: cyan;
       background-color: transparent;
       border:1px solid transparent;
       box-shadow:none;
       @media(min-width:768px){
         font-size: 30px;
+      }
+      &.bbg_xiv-carousel_pause_btn{
+        left:0;
+      }
+      &.bbg_xiv-carousel_start_btn{
+        left:7%;
+      }
+      &.bbg_xiv-carousel_end_btn{
+        left:14%;
       }
     }
 
