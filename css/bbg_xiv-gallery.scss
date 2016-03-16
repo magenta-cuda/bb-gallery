@@ -626,12 +626,16 @@ div.bbg_xiv-bootstrap{
       }
     }
 
+    a.carousel-control span.glyphicon {
+      color: #7ff;
+    }
+    
     button.bbg_xiv-carousel_control_btn {
       position: absolute;
       bottom: 2%;
       width: 7%;
       z-index: 5;
-      color: cyan;
+      color: #7ff;
       background-color: transparent;
       border:1px solid transparent;
       box-shadow:none;
