@@ -13,6 +13,8 @@
 /* Font
 -----------------------------------------------------------------------------------------------------------*/
 
+div.bbg_xiv-bootstrap div.bbg_xiv-jquery_mobile {
+
 html {
 	font-size: 100%;
 }
@@ -614,4 +616,6 @@ button[disabled],
 .ui-noboxshadow .ui-focus {
 	outline-width: 1px;
 	outline-style: auto;
+}
+
 }
