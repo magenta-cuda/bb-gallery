@@ -109,6 +109,7 @@
             model:{
                 attributes:{
                     id:id,
+                    size:collection.length,
                     bullets:bulletsHtml,
                     items:imagesHtml
                 }
@@ -427,6 +428,7 @@
             input.attr("type","number").change(function(e){
                 prevChangeTime=Date.now();
                 var carousel=jQuery(this).parents("div.carousel");
+                // Since change events will occur much too rapidly wait until they quiesce
                 window.setTimeout(function(){
                     if(Date.now()-prevChangeTime>=1000){
                         var i=input.val();
@@ -436,11 +438,16 @@
                                 carousel.carousel("pause");
                                 carousel.find("button.bbg_xiv-carousel_pause_btn span.glyphicon").removeClass("glyphicon-pause").addClass("glyphicon-play");
                                 carousel.carousel(i);
-                                console.log("i=",i);
+                                console.log("input:change:i=",i);
                             }
                         }
                     }
                 },1000);
+            });
+            jqGallery.find("div.carousel").on("slid.bs.carousel",function(e){
+                console.log("slid.bs.carousel:e=",e);
+                console.log("e.relatedTarget.dataset.index=",e.relatedTarget.dataset.index);
+                jQuery(this).find("div.bbg_xiv-jquery_mobile input[type='number']").val(parseInt(e.relatedTarget.dataset.index,10)+1);
             });
             jQuery("#"+carouselId).carousel({interval:bbg_xiv.bbg_xiv_carousel_interval,pause:false});
             break;

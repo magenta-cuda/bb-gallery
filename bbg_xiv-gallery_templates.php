@@ -88,7 +88,7 @@
   <div class="carousel-indicators bbg_xiv-jquery_mobile">
     <form>
       <label for="slider-{{{ data.id }}}" class="ui-hidden-accessible"></label>
-      <input type="range" name="slider-{{{ data.id }}}" id="slider-{{{ data.id }}}" value="50" min="1" max="100">
+      <input type="range" name="slider-{{{ data.id }}}" id="slider-{{{ data.id }}}" value="1" min="1" max="{{{ data.size }}}">
     </form>
   </div>
   <!-- Wrapper for slides -->
@@ -108,7 +108,7 @@
 </script>
 <!-- Carousel Item Template -->
 <script type="text/html" id="bbg_xiv-template_carousel_item">
-<figure class="item bbg_xiv-item<# if ( data.index === 0 ) { #> active<# } #>">
+<figure class="item bbg_xiv-item<# if ( data.index === 0 ) { #> active<# } #>" data-index="{{{ data.index }}}">
   <a href="{{{ data.link }}}" target="_blank">
     <picture>
       <source media="(min-width:1200px)" srcset="<# print(bbg_xiv.getImageUrl(data).src); #>">
