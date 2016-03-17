@@ -80,9 +80,17 @@
   <button type="button" class="bbg_xiv-carousel_control_btn bbg_xiv-carousel_start_btn btn btn-default"><span class="glyphicon glyphicon-fast-backward"></span></button>
   <button type="button" class="bbg_xiv-carousel_control_btn bbg_xiv-carousel_end_btn btn btn-default"><span class="glyphicon glyphicon-fast-forward"></span></button>
   <!-- Indicators -->
+  <!--
   <ol class="carousel-indicators">
     {{{ data.bullets }}}
   </ol>
+  -->
+  <div class="carousel-indicators bbg_xiv-jquery_mobile">
+    <form>
+      <label for="slider-{{{ data.id }}}" class="ui-hidden-accessible"></label>
+      <input type="range" name="slider-{{{ data.id }}}" id="slider-{{{ data.id }}}" value="50" min="1" max="100">
+    </form>
+  </div>
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     {{{ data.items }}}

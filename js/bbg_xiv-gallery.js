@@ -405,13 +405,12 @@
             jqGallery.find("button.bbg_xiv-carousel_start_btn,button.bbg_xiv-carousel_end_btn").click(function(e){
                 var carousel=jQuery(this.parentNode);
                 carousel.carousel("pause");
-                var jqThis=jQuery(this);
-                if(jqThis.hasClass("bbg_xiv-carousel_start_btn")){
+                if(jQuery(this).hasClass("bbg_xiv-carousel_start_btn")){
                     carousel.carousel(0);
                 }else{
                     carousel.carousel(images.length-1);
                 }
-                jqThis.parent().find("button.bbg_xiv-carousel_pause_btn span.glyphicon").removeClass("glyphicon-pause").addClass("glyphicon-play");
+                carousel.find("button.bbg_xiv-carousel_pause_btn span.glyphicon").removeClass("glyphicon-pause").addClass("glyphicon-play");
                 e.preventDefault();      
             });
             jqGallery.find("button.bbg_xiv-carousel_close_btn").click(function(e){
@@ -419,6 +418,29 @@
                 bbg_xiv.resetGallery(jQuery(this).parents("div.bbg_xiv-gallery"));
                 jQuery("html").css("overflow-y",overflow);
                 e.preventDefault();      
+            });
+            var input=jqGallery.find("div.bbg_xiv-jquery_mobile input[type='range']");
+            input.slider();
+            // jQuery Mobile should change the "type" from "range" to "number" but does not so force it.
+            // TODO: Find out why jQuery Mobile is not doing this here - maybe I am doing something wrong.
+            var prevChangeTime;
+            input.attr("type","number").change(function(e){
+                prevChangeTime=Date.now();
+                var carousel=jQuery(this).parents("div.carousel");
+                window.setTimeout(function(){
+                    if(Date.now()-prevChangeTime>=1000){
+                        var i=input.val();
+                        if(jQuery.isNumeric(i)){
+                            i=parseInt(i)-1;
+                            if(i>=0&&i<images.length){
+                                carousel.carousel("pause");
+                                carousel.find("button.bbg_xiv-carousel_pause_btn span.glyphicon").removeClass("glyphicon-pause").addClass("glyphicon-play");
+                                carousel.carousel(i);
+                                console.log("i=",i);
+                            }
+                        }
+                    }
+                },1000);
             });
             jQuery("#"+carouselId).carousel({interval:bbg_xiv.bbg_xiv_carousel_interval,pause:false});
             break;
