@@ -448,6 +448,14 @@
                         }
                     }
                 },1000);
+            }).keypress(function(e){
+                if(e.which===13){
+                    jQuery(this).blur();
+                    e.preventDefault();
+                }
+            }).focus(function(e){
+                var carousel=jQuery(this).parents("div.carousel");
+                carousel.carousel("pause");
             });
             jqGallery.find("div.carousel").on("slid.bs.carousel",function(e){
                 console.log("slid.bs.carousel:e=",e);
