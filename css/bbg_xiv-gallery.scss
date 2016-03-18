@@ -626,49 +626,73 @@ div.bbg_xiv-bootstrap{
       }
     }
 
-    a.carousel-control{
+    div.carousel-control{
+      top:0;
+      bottom:0;
+      left:0;
       width:7%;
-     
-      span.glyphicon{
-        position:absolute;
-        top:50%;
-        z-index:5;
-        display:inline-block;
-        margin-top:-10px;
-        color:#7ff;
 
-        @media(min-width:768px){
-          width:30px;
-          height:30px;
-          font-size:30px;
-
-          &.glyphicon-fast-backward{
-            margin-left:-10px;
-          }
- 
-          &.glyphicon-fast-forward{
-            right:50%;
-            margin-right:-10px;
-          }
-        }
+      &.left{
+        background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
+        background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
+        background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.0001)));
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+        background-repeat: repeat-x;
       }
 
-      &.left,&.right{
-        top:25%;
-        bottom:50%;
-      }
-
-      &.bbg_xiv-carousel_first,&.bbg_xiv-carousel_last{
-        top:50%;
-        bottom:25%;
-      }
-
-      &.bbg_xiv-carousel_last{
+      &.right{
         right:0;
         left:auto;
       }
+
+      a.carousel-control{
+        width:100%;
+        border-bottom:0;
+        
+        span.glyphicon{
+          position:absolute;
+          top:50%;
+          z-index:5;
+          display:inline-block;
+          margin-top:-10px;
+          color:#7ff;
+
+          @media(min-width:768px){
+            width:30px;
+            height:30px;
+            font-size:30px;
+
+            &.glyphicon-fast-backward{
+              margin-left:-10px;
+            }
+   
+            &.glyphicon-fast-forward{
+              right:50%;
+              margin-right:-10px;
+            }
+          }
+        }
+
+        &.left,&.right{
+          top:25%;
+          bottom:50%;
+          background-image:none;
+          background-color:transparent;
+        }
+
+        &.bbg_xiv-carousel_first,&.bbg_xiv-carousel_last{
+          top:50%;
+          bottom:25%;
+        }
+
+        &.bbg_xiv-carousel_last{
+          right:0;
+          left:auto;
+        }
+      }
     }
-    
+
     button.bbg_xiv-carousel_control_btn {
       position: absolute;
       bottom: 2%;

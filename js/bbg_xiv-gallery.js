@@ -404,7 +404,7 @@
             });
             // Carousel rewind handler
             jqGallery.find("button.bbg_xiv-carousel_start_btn span.glyphicon,button.bbg_xiv-carousel_end_btn span.glyphicon,a.bbg_xiv-carousel_first span.glyphicon,a.bbg_xiv-carousel_last span.glyphicon").click(function(e){
-                var carousel=jQuery(this.parentNode.parentNode);
+                var carousel=jQuery(this).parents("div.carousel");
                 carousel.carousel("pause");
                 if(jQuery(this.parentNode).hasClass("bbg_xiv-carousel_start_btn")||jQuery(this.parentNode).hasClass("bbg_xiv-carousel_first")){
                     carousel.carousel(0);

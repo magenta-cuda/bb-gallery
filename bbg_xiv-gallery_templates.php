@@ -98,22 +98,26 @@
     {{{ data.items }}}
   </div>
   <!-- Left and right controls -->
-  <a class="left carousel-control" href="#{{{ data.id }}}" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#{{{ data.id }}}" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-    <span class="sr-only">Next</span>
-  </a>
-  <a class="bbg_xiv-carousel_first carousel-control" href="#{{{ data.id }}}">
-    <span class="glyphicon glyphicon-fast-backward"></span>
-    <span class="sr-only">First</span>
-  </a>
-  <a class="bbg_xiv-carousel_last carousel-control" href="#{{{ data.id }}}">
-    <span class="glyphicon glyphicon-fast-forward"></span>
-    <span class="sr-only">Last</span>
-  </a>
+  <div class="left carousel-control">
+    <a class="left carousel-control" href="#{{{ data.id }}}" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="bbg_xiv-carousel_first carousel-control" href="#{{{ data.id }}}">
+      <span class="glyphicon glyphicon-fast-backward"></span>
+      <span class="sr-only">First</span>
+    </a>
+  </div>
+  <div class="right carousel-control">
+    <a class="right carousel-control" href="#{{{ data.id }}}" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    <a class="bbg_xiv-carousel_last carousel-control" href="#{{{ data.id }}}">
+      <span class="glyphicon glyphicon-fast-forward"></span>
+      <span class="sr-only">Last</span>
+    </a>
+  </div>
 </div>
 </script>
 <!-- Carousel Item Template -->
