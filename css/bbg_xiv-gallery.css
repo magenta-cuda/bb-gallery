@@ -426,23 +426,35 @@ div.bbg_xiv-bootstrap div.carousel.slide {
     @media (min-width: 768px) {
       div.bbg_xiv-bootstrap div.carousel.slide button.bbg_xiv-carousel_close_btn {
         font-size: 30px; } }
-  div.bbg_xiv-bootstrap div.carousel.slide a.carousel-control span.glyphicon {
-    position: absolute;
-    top: 50%;
-    z-index: 5;
-    display: inline-block;
-    margin: -10px;
-    color: #7ff; }
-  div.bbg_xiv-bootstrap div.carousel.slide a.carousel-control.left {
-    margin-top: -100px; }
-  div.bbg_xiv-bootstrap div.carousel.slide a.carousel-control.right {
-    margin-top: -100px; }
-  div.bbg_xiv-bootstrap div.carousel.slide a.carousel-control.bbg_xiv-carousel_first {
-    margin-bottom: -100px; }
-  div.bbg_xiv-bootstrap div.carousel.slide a.carousel-control.bbg_xiv-carousel_last {
-    right: 0;
-    left: auto;
-    margin-bottom: -100px; }
+  div.bbg_xiv-bootstrap div.carousel.slide a.carousel-control {
+    width: 7%; }
+    div.bbg_xiv-bootstrap div.carousel.slide a.carousel-control span.glyphicon {
+      position: absolute;
+      top: 50%;
+      z-index: 5;
+      display: inline-block;
+      margin-top: -10px;
+      color: #7ff; }
+      @media (min-width: 768px) {
+        div.bbg_xiv-bootstrap div.carousel.slide a.carousel-control span.glyphicon {
+          width: 30px;
+          height: 30px;
+          font-size: 30px; }
+          div.bbg_xiv-bootstrap div.carousel.slide a.carousel-control span.glyphicon.glyphicon-fast-backward {
+            margin-left: -10px; }
+          div.bbg_xiv-bootstrap div.carousel.slide a.carousel-control span.glyphicon.glyphicon-fast-forward {
+            right: 50%;
+            margin-right: -10px; } }
+    div.bbg_xiv-bootstrap div.carousel.slide a.carousel-control.left {
+      margin-top: -100px; }
+    div.bbg_xiv-bootstrap div.carousel.slide a.carousel-control.right {
+      margin-top: -100px; }
+    div.bbg_xiv-bootstrap div.carousel.slide a.carousel-control.bbg_xiv-carousel_first {
+      margin-bottom: -100px; }
+    div.bbg_xiv-bootstrap div.carousel.slide a.carousel-control.bbg_xiv-carousel_last {
+      right: 0;
+      left: auto;
+      margin-bottom: -100px; }
   div.bbg_xiv-bootstrap div.carousel.slide button.bbg_xiv-carousel_control_btn {
     position: absolute;
     bottom: 2%;
@@ -491,8 +503,6 @@ div.bbg_xiv-bootstrap div.carousel.slide {
         font-size: 3vh;
         line-height: 1.3;
         overflow: hidden; }
-  div.bbg_xiv-bootstrap div.carousel.slide .carousel-control {
-    width: 7%; }
   div.bbg_xiv-bootstrap div.carousel.slide .carousel-indicators {
     bottom: 2%; }
     div.bbg_xiv-bootstrap div.carousel.slide .carousel-indicators li {

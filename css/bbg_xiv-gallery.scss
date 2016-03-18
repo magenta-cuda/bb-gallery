@@ -627,23 +627,44 @@ div.bbg_xiv-bootstrap{
     }
 
     a.carousel-control{
+      width:7%;
+     
       span.glyphicon{
         position:absolute;
         top:50%;
         z-index:5;
         display:inline-block;
-        margin:-10px;
-        color: #7ff;
+        margin-top:-10px;
+        color:#7ff;
+
+        @media(min-width:768px){
+          width:30px;
+          height:30px;
+          font-size:30px;
+
+          &.glyphicon-fast-backward{
+            margin-left:-10px;
+          }
+ 
+          &.glyphicon-fast-forward{
+            right:50%;
+            margin-right:-10px;
+          }
+        }
       }
+
       &.left{
         margin-top:-100px;
       }
+
       &.right{
         margin-top:-100px;
       }
+
       &.bbg_xiv-carousel_first{
         margin-bottom:-100px;
       }
+
       &.bbg_xiv-carousel_last{
         right:0;
         left:auto;
@@ -714,10 +735,6 @@ div.bbg_xiv-bootstrap{
       }
     }
 
-    .carousel-control {
-      width: 7%;
-    }
-    
     .carousel-indicators {
       bottom: 2%;
 
