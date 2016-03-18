@@ -663,12 +663,12 @@ div.bbg_xiv-bootstrap{
 
         > {
           img, a > img, a > picture > img {
-            height: 90%;
+            height: 80%;
             width: auto;
             max-width: none;
             position: absolute;
             left: 50%;
-            top: 0px;
+            top: 10%;
             transform: translate(-50%, 0px);
             padding: 1%;
             @supports ( object-fit: contain ) {
@@ -681,12 +681,12 @@ div.bbg_xiv-bootstrap{
             height: 10%;
             position: absolute;
             left: 50%;
-            bottom: 0px;
+            top: 0px;
             transform: translate(-50%, 0px);
-            padding: 0px;
+            padding: 15px 0px 0px 0px;
             text-align: center;
             font-size: 3vh;
-            line-height:1.4;
+            line-height:1.3;
             overflow:hidden;
           }
         }
@@ -698,7 +698,7 @@ div.bbg_xiv-bootstrap{
     }
     
     .carousel-indicators {
-      bottom: 12%;
+      bottom: 2%;
 
       li {
         border: 1px solid black;

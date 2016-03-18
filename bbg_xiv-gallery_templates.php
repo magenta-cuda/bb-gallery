@@ -87,8 +87,10 @@
   -->
   <div class="carousel-indicators bbg_xiv-jquery_mobile">
     <form>
-      <label for="slider-{{{ data.id }}}" class="ui-hidden-accessible"></label>
-      <input type="range" name="slider-{{{ data.id }}}" id="slider-{{{ data.id }}}" value="1" min="1" max="{{{ data.size }}}">
+      <div class="ui-field-contain">
+        <label for="slider-{{{ data.id }}}" class="ui-hidden-accessible"></label>
+        <input type="range" name="slider-{{{ data.id }}}" id="slider-{{{ data.id }}}" value="1" min="1" max="{{{ data.size }}}" step="1" data-highlight="true">
+      </div>
     </form>
   </div>
   <!-- Wrapper for slides -->
