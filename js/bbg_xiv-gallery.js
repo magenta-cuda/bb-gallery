@@ -403,10 +403,10 @@
                 e.preventDefault();      
             });
             // Carousel rewind handler
-            jqGallery.find("button.bbg_xiv-carousel_start_btn,button.bbg_xiv-carousel_end_btn,a.bbg_xiv-carousel_first,a.bbg_xiv-carousel_last").click(function(e){
-                var carousel=jQuery(this.parentNode);
+            jqGallery.find("button.bbg_xiv-carousel_start_btn span.glyphicon,button.bbg_xiv-carousel_end_btn span.glyphicon,a.bbg_xiv-carousel_first span.glyphicon,a.bbg_xiv-carousel_last span.glyphicon").click(function(e){
+                var carousel=jQuery(this.parentNode.parentNode);
                 carousel.carousel("pause");
-                if(jQuery(this).hasClass("bbg_xiv-carousel_start_btn")||jQuery(this).hasClass("bbg_xiv-carousel_first")){
+                if(jQuery(this.parentNode).hasClass("bbg_xiv-carousel_start_btn")||jQuery(this.parentNode).hasClass("bbg_xiv-carousel_first")){
                     carousel.carousel(0);
                 }else{
                     carousel.carousel(images.length-1);

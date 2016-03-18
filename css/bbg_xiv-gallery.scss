@@ -653,22 +653,19 @@ div.bbg_xiv-bootstrap{
         }
       }
 
-      &.left{
-        margin-top:-100px;
+      &.left,&.right{
+        top:25%;
+        bottom:50%;
       }
 
-      &.right{
-        margin-top:-100px;
-      }
-
-      &.bbg_xiv-carousel_first{
-        margin-bottom:-100px;
+      &.bbg_xiv-carousel_first,&.bbg_xiv-carousel_last{
+        top:50%;
+        bottom:25%;
       }
 
       &.bbg_xiv-carousel_last{
         right:0;
         left:auto;
-        margin-bottom:-100px;
       }
     }
     
