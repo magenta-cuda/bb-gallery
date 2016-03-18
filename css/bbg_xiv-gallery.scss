@@ -626,8 +626,29 @@ div.bbg_xiv-bootstrap{
       }
     }
 
-    a.carousel-control span.glyphicon {
-      color: #7ff;
+    a.carousel-control{
+      span.glyphicon{
+        position:absolute;
+        top:50%;
+        z-index:5;
+        display:inline-block;
+        margin:-10px;
+        color: #7ff;
+      }
+      &.left{
+        margin-top:-100px;
+      }
+      &.right{
+        margin-top:-100px;
+      }
+      &.bbg_xiv-carousel_first{
+        margin-bottom:-100px;
+      }
+      &.bbg_xiv-carousel_last{
+        right:0;
+        left:auto;
+        margin-bottom:-100px;
+      }
     }
     
     button.bbg_xiv-carousel_control_btn {
