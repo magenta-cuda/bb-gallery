@@ -651,14 +651,14 @@ div.bbg_xiv-bootstrap{
             width:30px;
             height:30px;
             font-size:30px;
+            margin-top:-15px;
 
             &.glyphicon-fast-backward{
-              margin-left:-10px;
+              margin-left:-15px;
             }
    
             &.glyphicon-fast-forward{
-              right:50%;
-              margin-right:-10px;
+              margin-right:-15px;
             }
           }
         }
@@ -667,7 +667,7 @@ div.bbg_xiv-bootstrap{
           top:25%;
           bottom:50%;
           background-image:none;
-          background-color:transparent;
+          background-color:transparent;         
         }
 
         &.bbg_xiv-carousel_first,&.bbg_xiv-carousel_last{
@@ -675,9 +675,20 @@ div.bbg_xiv-bootstrap{
           bottom:25%;
         }
 
+        &.bbg_xiv-carousel_first{
+          span.glyphicon{
+            left:50%;
+            margin-left:-10px;
+          }
+        }
+
         &.bbg_xiv-carousel_last{
           right:0;
           left:auto;
+          span.glyphicon{
+            right:50%;
+            margin-right:-10px;
+          }
         }
       }
     }
