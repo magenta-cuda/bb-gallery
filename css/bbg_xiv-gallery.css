@@ -429,28 +429,19 @@ div.bbg_xiv-bootstrap div.carousel.slide {
   div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control {
     top: 0;
     bottom: 0;
-    left: 0;
-    width: 7%; }
-    div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control.left {
-      background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
-      background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
-      background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.0001)));
-      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
-      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
-      background-repeat: repeat-x; }
+    left: 0; }
     div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control.right {
       right: 0;
       left: auto; }
     div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control {
-      width: 100%;
+      width: 50%;
       border-bottom: 0; }
       div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control span.glyphicon {
         position: absolute;
         top: 50%;
         z-index: 5;
         display: inline-block;
-        margin-top: -10px;
-        color: #7ff; }
+        margin-top: -10px; }
         @media (min-width: 768px) {
           div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control span.glyphicon {
             width: 30px;
