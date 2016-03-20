@@ -653,7 +653,7 @@ div.bbg_xiv-bootstrap{
             font-size:30px;
             margin-top:-15px;
 
-            &.glyphicon-fast-backward{
+            &.glyphicon-fast-backward,&.glyphicon-pause{
               margin-left:-15px;
             }
    
@@ -675,7 +675,12 @@ div.bbg_xiv-bootstrap{
           bottom:25%;
         }
 
-        &.bbg_xiv-carousel_first{
+        &.bbg_xiv-carousel_play{
+          top:75%;
+          bottom:0%;
+        }
+
+        &.bbg_xiv-carousel_first,&.bbg_xiv-carousel_play{
           span.glyphicon{
             left:50%;
             margin-left:-10px;

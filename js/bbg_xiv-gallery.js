@@ -390,8 +390,8 @@
             bbg_xiv.renderCarousel(jqGallery,images,carouselId);
             // Wireup the handlers - this must be done here as the elements in the carousel view are dynamically created
             // Carousel pause handler
-            jqGallery.find("button.bbg_xiv-carousel_pause_btn").click(function(e){
-                var carousel=jQuery(this.parentNode);
+            jqGallery.find("button.bbg_xiv-carousel_pause_btn,a.bbg_xiv-carousel_play").click(function(e){
+                var carousel=jQuery(this).parents("div.carousel");
                 var jqThis=jQuery(this).find("span");
                 if(jqThis.hasClass("glyphicon-pause")){
                     jqThis.removeClass("glyphicon-pause").addClass("glyphicon-play");
@@ -411,7 +411,7 @@
                 }else{
                     carousel.carousel(images.length-1);
                 }
-                carousel.find("button.bbg_xiv-carousel_pause_btn span.glyphicon").removeClass("glyphicon-pause").addClass("glyphicon-play");
+                carousel.find("button.bbg_xiv-carousel_pause_btn span.glyphicon,a.bbg_xiv-carousel_play span.glyphicon").removeClass("glyphicon-pause").addClass("glyphicon-play");
                 e.preventDefault();      
             });
             jqGallery.find("button.bbg_xiv-carousel_close_btn").click(function(e){
@@ -441,7 +441,7 @@
                             i=parseInt(i)-1;
                             if(i>=0&&i<images.length){
                                 carousel.carousel("pause");
-                                carousel.find("button.bbg_xiv-carousel_pause_btn span.glyphicon").removeClass("glyphicon-pause").addClass("glyphicon-play");
+                                carousel.find("button.bbg_xiv-carousel_pause_btn span.glyphicon,a.bbg_xiv-carousel_play span.glyphicon").removeClass("glyphicon-pause").addClass("glyphicon-play");
                                 carousel.carousel(i);
                                 console.log("input:change:i=",i);
                             }

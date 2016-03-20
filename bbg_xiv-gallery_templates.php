@@ -107,7 +107,11 @@
       <span class="glyphicon glyphicon-fast-backward"></span>
       <span class="sr-only">First</span>
     </a>
-  </div>
+      <a class="bbg_xiv-carousel_play carousel-control" href="#{{{ data.id }}}">
+      <span class="glyphicon glyphicon-pause"></span>
+      <span class="sr-only">Pause</span>
+    </a>
+</div>
   <div class="right carousel-control">
     <a class="right carousel-control" href="#{{{ data.id }}}" data-slide="next">
       <span class="glyphicon glyphicon-chevron-right"></span>
