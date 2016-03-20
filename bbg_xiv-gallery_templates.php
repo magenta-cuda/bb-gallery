@@ -76,9 +76,6 @@
 <script type="text/html" id="bbg_xiv-template_carousel_container">
 <div id="{{{ data.id }}}" class="carousel slide bbg_xiv-container" data-ride="carousel" data-interval="<?php echo get_option( 'bbg_xiv_carousel_interval', '2500' ); ?>">
   <button type="button" class="bbg_xiv-carousel_close_btn btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
-  <button type="button" class="bbg_xiv-carousel_control_btn bbg_xiv-carousel_pause_btn btn btn-default"><span class="glyphicon glyphicon-pause"></span></button>
-  <button type="button" class="bbg_xiv-carousel_control_btn bbg_xiv-carousel_start_btn btn btn-default"><span class="glyphicon glyphicon-fast-backward"></span></button>
-  <button type="button" class="bbg_xiv-carousel_control_btn bbg_xiv-carousel_end_btn btn btn-default"><span class="glyphicon glyphicon-fast-forward"></span></button>
   <!-- Indicators -->
   <!--
   <ol class="carousel-indicators">

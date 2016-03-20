@@ -656,7 +656,7 @@ div.bbg_xiv-bootstrap{
             &.glyphicon-fast-backward,&.glyphicon-pause{
               margin-left:-15px;
             }
-   
+
             &.glyphicon-fast-forward{
               margin-right:-15px;
             }
@@ -709,15 +709,6 @@ div.bbg_xiv-bootstrap{
       box-shadow:none;
       @media(min-width:768px){
         font-size: 30px;
-      }
-      &.bbg_xiv-carousel_pause_btn{
-        left:0;
-      }
-      &.bbg_xiv-carousel_start_btn{
-        left:7%;
-      }
-      &.bbg_xiv-carousel_end_btn{
-        left:14%;
       }
     }
 

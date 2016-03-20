@@ -484,12 +484,6 @@ div.bbg_xiv-bootstrap div.carousel.slide {
     @media (min-width: 768px) {
       div.bbg_xiv-bootstrap div.carousel.slide button.bbg_xiv-carousel_control_btn {
         font-size: 30px; } }
-    div.bbg_xiv-bootstrap div.carousel.slide button.bbg_xiv-carousel_control_btn.bbg_xiv-carousel_pause_btn {
-      left: 0; }
-    div.bbg_xiv-bootstrap div.carousel.slide button.bbg_xiv-carousel_control_btn.bbg_xiv-carousel_start_btn {
-      left: 7%; }
-    div.bbg_xiv-bootstrap div.carousel.slide button.bbg_xiv-carousel_control_btn.bbg_xiv-carousel_end_btn {
-      left: 14%; }
   div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner {
     height: 100%; }
     div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item {

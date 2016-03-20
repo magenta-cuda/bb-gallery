@@ -390,7 +390,7 @@
             bbg_xiv.renderCarousel(jqGallery,images,carouselId);
             // Wireup the handlers - this must be done here as the elements in the carousel view are dynamically created
             // Carousel pause handler
-            jqGallery.find("button.bbg_xiv-carousel_pause_btn,a.bbg_xiv-carousel_play").click(function(e){
+            jqGallery.find("a.bbg_xiv-carousel_play").click(function(e){
                 var carousel=jQuery(this).parents("div.carousel");
                 var jqThis=jQuery(this).find("span");
                 if(jqThis.hasClass("glyphicon-pause")){
@@ -403,15 +403,15 @@
                 e.preventDefault();      
             });
             // Carousel rewind handler
-            jqGallery.find("button.bbg_xiv-carousel_start_btn span.glyphicon,button.bbg_xiv-carousel_end_btn span.glyphicon,a.bbg_xiv-carousel_first span.glyphicon,a.bbg_xiv-carousel_last span.glyphicon").click(function(e){
+            jqGallery.find("a.bbg_xiv-carousel_first span.glyphicon,a.bbg_xiv-carousel_last span.glyphicon").click(function(e){
                 var carousel=jQuery(this).parents("div.carousel");
                 carousel.carousel("pause");
-                if(jQuery(this.parentNode).hasClass("bbg_xiv-carousel_start_btn")||jQuery(this.parentNode).hasClass("bbg_xiv-carousel_first")){
+                if(jQuery(this.parentNode).hasClass("bbg_xiv-carousel_first")){
                     carousel.carousel(0);
                 }else{
                     carousel.carousel(images.length-1);
                 }
-                carousel.find("button.bbg_xiv-carousel_pause_btn span.glyphicon,a.bbg_xiv-carousel_play span.glyphicon").removeClass("glyphicon-pause").addClass("glyphicon-play");
+                carousel.find("a.bbg_xiv-carousel_play span.glyphicon").removeClass("glyphicon-pause").addClass("glyphicon-play");
                 e.preventDefault();      
             });
             jqGallery.find("button.bbg_xiv-carousel_close_btn").click(function(e){
@@ -441,7 +441,7 @@
                             i=parseInt(i)-1;
                             if(i>=0&&i<images.length){
                                 carousel.carousel("pause");
-                                carousel.find("button.bbg_xiv-carousel_pause_btn span.glyphicon,a.bbg_xiv-carousel_play span.glyphicon").removeClass("glyphicon-pause").addClass("glyphicon-play");
+                                carousel.find("a.bbg_xiv-carousel_play span.glyphicon").removeClass("glyphicon-pause").addClass("glyphicon-play");
                                 carousel.carousel(i);
                                 console.log("input:change:i=",i);
                             }
