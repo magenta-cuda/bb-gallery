@@ -450,7 +450,7 @@ div.bbg_xiv-bootstrap div.carousel.slide {
             margin-top: -15px; }
             div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control span.glyphicon.glyphicon-fast-backward, div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control span.glyphicon.glyphicon-pause {
               margin-left: -15px; }
-            div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control span.glyphicon.glyphicon-fast-forward {
+            div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control span.glyphicon.glyphicon-fast-forward, div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control span.glyphicon.glyphicon-remove {
               margin-right: -15px; } }
       div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.left, div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.right {
         top: 25%;
@@ -463,13 +463,16 @@ div.bbg_xiv-bootstrap div.carousel.slide {
       div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.bbg_xiv-carousel_play {
         top: 75%;
         bottom: 0%; }
+      div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.bbg_xiv-carousel_close {
+        top: 0%;
+        bottom: 75%; }
       div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.bbg_xiv-carousel_first span.glyphicon, div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.bbg_xiv-carousel_play span.glyphicon {
         left: 50%;
         margin-left: -10px; }
-      div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.bbg_xiv-carousel_last {
+      div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.bbg_xiv-carousel_last, div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.bbg_xiv-carousel_close {
         right: 0;
         left: auto; }
-        div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.bbg_xiv-carousel_last span.glyphicon {
+        div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.bbg_xiv-carousel_last span.glyphicon, div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.bbg_xiv-carousel_close span.glyphicon {
           right: 50%;
           margin-right: -10px; }
   div.bbg_xiv-bootstrap div.carousel.slide button.bbg_xiv-carousel_control_btn {

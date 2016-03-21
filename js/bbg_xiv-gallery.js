@@ -414,7 +414,7 @@
                 carousel.find("a.bbg_xiv-carousel_play span.glyphicon").removeClass("glyphicon-pause").addClass("glyphicon-play");
                 e.preventDefault();      
             });
-            jqGallery.find("button.bbg_xiv-carousel_close_btn").click(function(e){
+            jqGallery.find("button.bbg_xiv-carousel_close_btn,a.bbg_xiv-carousel_close").click(function(e){
                 // restore "Gallery View"
                 bbg_xiv.resetGallery(jQuery(this).parents("div.bbg_xiv-gallery"));
                 jQuery("html").css("overflow-y",overflow);
