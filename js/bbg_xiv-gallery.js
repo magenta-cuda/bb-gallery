@@ -426,6 +426,7 @@
             // TODO: Find out why jQuery Mobile is not doing this here - maybe I am doing something wrong.
             var prevChangeTime;
             var slideChange=false;   // change event triggered by a carousel slid event
+            // update Bootstrap carousel slide when jQuery mobile slider changes
             input.attr("type","number").change(function(e){
                 if(slideChange){
                     // ignore change events triggered by a carousel slid event
@@ -456,7 +457,12 @@
             }).focus(function(e){
                 var carousel=jQuery(this).parents("div.carousel");
                 carousel.carousel("pause");
+            }).on("slidestart",function(e){
+                var carousel=jQuery(this).parents("div.carousel");
+                carousel.carousel("pause");
+                carousel.find("a.bbg_xiv-carousel_play span.glyphicon").removeClass("glyphicon-pause").addClass("glyphicon-play");
             });
+            // update jQuery Mobile slider when Bootstrap carousel changes slide
             jqGallery.find("div.carousel").on("slid.bs.carousel",function(e){
                 console.log("slid.bs.carousel:e=",e);
                 console.log("e.relatedTarget.dataset.index=",e.relatedTarget.dataset.index);
