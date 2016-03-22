@@ -388,6 +388,12 @@
             jQuery("html").css("overflow-y","hidden");
             var carouselId="bbg_xiv-carousel_"+gallery.id;
             bbg_xiv.renderCarousel(jqGallery,images,carouselId);
+            // pause() can be called from a button's event handler to pause the carousel, the argument is the button
+            function pause(button){
+                var carousel=jQuery(button).parents("div.carousel");
+                carousel.carousel("pause");
+                carousel.find("a.bbg_xiv-carousel_play span.glyphicon").removeClass("glyphicon-pause").addClass("glyphicon-play");
+            }
             // Wireup the handlers - this must be done here as the elements in the carousel view are dynamically created
             // Carousel pause handler
             jqGallery.find("a.bbg_xiv-carousel_play").click(function(e){
@@ -401,6 +407,9 @@
                     carousel.carousel("cycle");
                 }
                 e.preventDefault();      
+            });
+            jqGallery.find("a.bbg_xiv-carousel_left,a.bbg_xiv-carousel_right").click(function(e){
+                pause(this);
             });
             // Carousel rewind handler
             jqGallery.find("a.bbg_xiv-carousel_first span.glyphicon,a.bbg_xiv-carousel_last span.glyphicon").click(function(e){
