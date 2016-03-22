@@ -757,8 +757,11 @@ div.bbg_xiv-bootstrap{
       }
     }
 
-    .carousel-indicators {
-      bottom: 2%;
+    .carousel-indicators{
+      bottom:2%;
+      width:80%;
+      margin-left:-40%;
+      
 
       li {
         border: 1px solid black;
