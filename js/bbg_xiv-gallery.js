@@ -403,6 +403,7 @@
                     pause(this);
                 }else{
                     jqThis.removeClass("glyphicon-play").addClass("glyphicon-pause");
+                    carousel.carousel("next");
                     carousel.carousel("cycle");
                 }
                 e.preventDefault();      
