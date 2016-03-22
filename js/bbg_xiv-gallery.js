@@ -398,10 +398,9 @@
             // Carousel pause handler
             jqGallery.find("a.bbg_xiv-carousel_play").click(function(e){
                 var carousel=jQuery(this).parents("div.carousel");
-                var jqThis=jQuery(this).find("span");
+                var jqThis=jQuery(this).find("span.glyphicon");
                 if(jqThis.hasClass("glyphicon-pause")){
-                    jqThis.removeClass("glyphicon-pause").addClass("glyphicon-play");
-                    carousel.carousel("pause");
+                    pause(this);
                 }else{
                     jqThis.removeClass("glyphicon-play").addClass("glyphicon-pause");
                     carousel.carousel("cycle");
@@ -413,14 +412,13 @@
             });
             // Carousel rewind handler
             jqGallery.find("a.bbg_xiv-carousel_first span.glyphicon,a.bbg_xiv-carousel_last span.glyphicon").click(function(e){
+                pause(this)
                 var carousel=jQuery(this).parents("div.carousel");
-                carousel.carousel("pause");
                 if(jQuery(this.parentNode).hasClass("bbg_xiv-carousel_first")){
                     carousel.carousel(0);
                 }else{
                     carousel.carousel(images.length-1);
                 }
-                carousel.find("a.bbg_xiv-carousel_play span.glyphicon").removeClass("glyphicon-pause").addClass("glyphicon-play");
                 e.preventDefault();      
             });
             jqGallery.find("button.bbg_xiv-carousel_close_btn,a.bbg_xiv-carousel_close").click(function(e){
@@ -450,8 +448,7 @@
                         if(jQuery.isNumeric(i)){
                             i=parseInt(i)-1;
                             if(i>=0&&i<images.length){
-                                carousel.carousel("pause");
-                                carousel.find("a.bbg_xiv-carousel_play span.glyphicon").removeClass("glyphicon-pause").addClass("glyphicon-play");
+                                pause(input);
                                 carousel.carousel(i);
                                 console.log("input:change:i=",i);
                             }
@@ -464,12 +461,9 @@
                     e.preventDefault();
                 }
             }).focus(function(e){
-                var carousel=jQuery(this).parents("div.carousel");
-                carousel.carousel("pause");
+                pause(this);
             }).on("slidestart",function(e){
-                var carousel=jQuery(this).parents("div.carousel");
-                carousel.carousel("pause");
-                carousel.find("a.bbg_xiv-carousel_play span.glyphicon").removeClass("glyphicon-pause").addClass("glyphicon-play");
+                pause(this);
             });
             // update jQuery Mobile slider when Bootstrap carousel changes slide
             jqGallery.find("div.carousel").on("slid.bs.carousel",function(e){
