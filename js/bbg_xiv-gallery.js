@@ -430,12 +430,12 @@
             });
             var input=jqGallery.find("div.bbg_xiv-jquery_mobile input[type='range']");
             input.slider();
-            // jQuery Mobile should change the "type" from "range" to "number" but does not so force it.
-            // TODO: Find out why jQuery Mobile is not doing this here - maybe I am doing something wrong.
             var prevChangeTime;
             var slideChange=false;   // change event triggered by a carousel slid event
             // update Bootstrap carousel slide when jQuery mobile slider changes
-            input.attr("type","number").change(function(e){
+            // jQuery Mobile should change the "type" from "range" to "number" but does not so force it.
+            // TODO: Find out why jQuery Mobile is not doing this here - maybe I am doing something wrong.
+            input.attr("type","number").val("1").change(function(e){
                 if(slideChange){
                     // ignore change events triggered by a carousel slid event
                     return;
