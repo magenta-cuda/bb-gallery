@@ -451,7 +451,6 @@
                             if(i>=0&&i<images.length){
                                 pause(input);
                                 carousel.carousel(i);
-                                console.log("input:change:i=",i);
                             }
                         }
                     }
@@ -468,8 +467,6 @@
             });
             // update jQuery Mobile slider when Bootstrap carousel changes slide
             jqGallery.find("div.carousel").on("slid.bs.carousel",function(e){
-                console.log("slid.bs.carousel:e=",e);
-                console.log("e.relatedTarget.dataset.index=",e.relatedTarget.dataset.index);
                 slideChange=true;
                 // update input element and trigger change event to force update of slider position
                 jQuery(this).find("div.bbg_xiv-jquery_mobile input[type='number']").val(parseInt(e.relatedTarget.dataset.index,10)+1).change();

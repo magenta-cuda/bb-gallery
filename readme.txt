@@ -3,7 +3,7 @@ Contributors: Magenta Cuda
 Tags: gallery, shortcode, lightbox, slideshow, responsive, plug-compatible, replacement
 Requires at least: 4.4
 Tested up to: 4.4
-Stable tag: 1.5.3
+Stable tag: 1.5.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,6 +44,10 @@ https://bbfgallery.wordpress.com/
 8. Search Results
 
 == Changelog ==
+
+= 1.5.3.1 =
+
+* replaced the Bootstrap carousel indicators with a jQuery mobile slider which is much more mobile friendly
 
 = 1.5.3 =
 
@@ -94,6 +98,10 @@ https://bbfgallery.wordpress.com/
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.5.3.1 =
+
+* replaced the Bootstrap carousel indicators with a jQuery mobile slider which is much more mobile friendly
 
 = 1.5.3 =
 
