@@ -75,9 +75,8 @@
 <!-- Carousel Container Template -->
 <script type="text/html" id="bbg_xiv-template_carousel_container">
 <div id="{{{ data.id }}}" class="carousel slide bbg_xiv-container" data-ride="carousel" data-interval="<?php echo get_option( 'bbg_xiv_carousel_interval', '2500' ); ?>">
-  <button type="button" class="bbg_xiv-carousel_close_btn btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
   <!-- Indicators -->
-  <!--
+  <!-- the original Bootstrap carousel slide indicators which actually works very well in desktop browser but is a failure for mobile
   <ol class="carousel-indicators">
     {{{ data.bullets }}}
   </ol>

@@ -422,7 +422,7 @@
                 }
                 e.preventDefault();      
             });
-            jqGallery.find("button.bbg_xiv-carousel_close_btn,a.bbg_xiv-carousel_close").click(function(e){
+            jqGallery.find("a.bbg_xiv-carousel_close").click(function(e){
                 // restore "Gallery View"
                 bbg_xiv.resetGallery(jQuery(this).parents("div.bbg_xiv-gallery"));
                 jQuery("html").css("overflow-y",overflow);
@@ -444,7 +444,7 @@
                 var carousel=jQuery(this).parents("div.carousel");
                 // Since change events will occur much too rapidly wait until they quiesce
                 window.setTimeout(function(){
-                    if(Date.now()-prevChangeTime>=1000){
+                    if(Date.now()-prevChangeTime>=500){
                         var i=input.val();
                         if(jQuery.isNumeric(i)){
                             i=parseInt(i)-1;

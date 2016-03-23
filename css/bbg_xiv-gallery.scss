@@ -611,21 +611,6 @@ div.bbg_xiv-bootstrap{
     height:100vh;
     background-color:white;
     
-    button.bbg_xiv-carousel_close_btn {
-      position: absolute;
-      top: 2%;
-      right: 0;
-      width: 7%;
-      z-index: 5;
-      color: #fff;
-      background-color: transparent;
-      border:1px solid transparent;
-      box-shadow:none;
-      @media(min-width:768px){
-        font-size: 30px;
-      }
-    }
-
     div.carousel-control{
       top:0;
       bottom:0;
