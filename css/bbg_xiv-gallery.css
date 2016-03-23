@@ -526,6 +526,14 @@ div.bbg_xiv-bootstrap div.carousel.slide {
       background-color: gray; }
       div.bbg_xiv-bootstrap div.carousel.slide .carousel-indicators li.active {
         background-color: white; }
+    div.bbg_xiv-bootstrap div.carousel.slide .carousel-indicators div.ui-slider input.ui-slider-input {
+      background-color: cyan;
+      border: 1px solid gray;
+      border-radius: 7px; }
+    div.bbg_xiv-bootstrap div.carousel.slide .carousel-indicators div.ui-slider div.ui-slider-track a.ui-slider-handle {
+      background-color: cyan;
+      border: 1px solid gray;
+      margin: -14px 0 0 -14px; }
 
 @media (min-width: 768px) {
   div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-header a.bbg_xiv-tabs_brand {

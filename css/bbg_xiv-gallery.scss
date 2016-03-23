@@ -761,7 +761,6 @@ div.bbg_xiv-bootstrap{
       bottom:2%;
       width:80%;
       margin-left:-40%;
-      
 
       li {
         border: 1px solid black;
@@ -769,6 +768,19 @@ div.bbg_xiv-bootstrap{
         
         &.active{
           background-color:white;
+        }
+      }
+
+      div.ui-slider{
+        input.ui-slider-input{
+          background-color:cyan;
+          border:1px solid gray;
+          border-radius:7px;
+        }
+        div.ui-slider-track a.ui-slider-handle{
+          background-color:cyan;
+          border:1px solid gray;
+          margin:-14px 0 0 -14px;
         }
       }
     }

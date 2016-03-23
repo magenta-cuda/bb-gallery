@@ -1061,6 +1061,10 @@
         jQuery(window).on("swipe",function(e){
             var carousel=jQuery("div.bbg_xiv-gallery_envelope div.carousel");
             if(carousel.length){
+                // ignore swipes near carousel slider
+                if(e.pageY>jQuery("div.carousel-indicators").offset().top-50){
+                    return;
+                }
                 if(e.swipestop.coords[0]>e.swipestart.coords[0]){
                     carousel.find("a.left.carousel-control").click();
                 }else{
