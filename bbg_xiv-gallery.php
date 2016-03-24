@@ -334,9 +334,9 @@ EOD;
 
         add_action( 'wp_enqueue_scripts', function( ) {
             wp_enqueue_style( 'bootstrap',               plugins_url( '/css/bootstrap.css' ,               __FILE__ ) );
-            wp_enqueue_style( 'bbg_xiv-gallery',         plugins_url( '/css/bbg_xiv-gallery.css' ,         __FILE__ ), [ 'bootstrap' ] );
             wp_enqueue_style( 'jquery-mobile-structure', plugins_url( '/css/jquery-mobile-structure.css' , __FILE__ ) );
             wp_enqueue_style( 'jquery-mobile-theme',     plugins_url( '/css/jquery-mobile-theme.css' ,     __FILE__ ) );
+            wp_enqueue_style( 'bbg_xiv-gallery',         plugins_url( '/css/bbg_xiv-gallery.css' ,         __FILE__ ), [ 'bootstrap' ] );
             $width = ( 100 / (integer) get_option( 'bbg_xiv_flex_number_of_dense_view_columns', 10 ) ) . '%';
             wp_add_inline_style( 'bbg_xiv-gallery', <<<EOD
         div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_images div.bbg_xiv-dense_flex_images div.bbg_xiv-dense_flex_item{
