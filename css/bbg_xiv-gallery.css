@@ -793,12 +793,20 @@ div.bbg_xiv-bootstrap .dropdown-toggle {
   div.bbg_xiv-bootstrap .dropdown-toggle::after {
     content: none; }
 
-.ui-icon-loading {
-  background: url("images/ajax-loader.gif");
-  background-size: 100% 100%;
-  display: block;
-  width: 50px;
-  height: 50px;
-  border-radius: 25px; }
+div.ui-loader {
+  text-align: center; }
+  div.ui-loader span.ui-icon-loading {
+    background: url("images/ajax-loader.gif");
+    background-size: 100% 100%;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    vertical-align: middle;
+    margin-right: 20px; }
+  div.ui-loader h1 {
+    display: inline;
+    vertical-align: middle;
+    font-size: 25px; }
 
 /*# sourceMappingURL=bbg_xiv-gallery.css.map */
