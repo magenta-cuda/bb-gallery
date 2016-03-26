@@ -379,7 +379,7 @@ EOD
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_max_search_results', 'Maximum Number of Images Returned by Search', function( ) {
                 echo '<input name="bbg_xiv_max_search_results" id="bbg_xiv_max_search_results" type="number" value="' . get_option( 'bbg_xiv_max_search_results', 128 )
-                    . '" class="small-text" /> The browser user can override this limit.';
+                    . '" class="small-text" /> The browser user can lower this limit.';
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_flex_number_of_dense_view_columns', 'Columns in Dense View', function( ) {
                 echo '<input name="bbg_xiv_flex_number_of_dense_view_columns" id="bbg_xiv_flex_number_of_dense_view_columns" type="number" value="'
@@ -401,6 +401,10 @@ EOD
             register_setting( 'media', 'bbg_xiv_flex_min_width_for_dense_view' );
         } );
  
+        add_action( 'plugins_loaded', function( ) {
+            load_plugin_textdomain( 'bb_gallery', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
+        } );
+
         if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
             # AJAX search handlers
             add_action( 'wp_ajax_nopriv_bbg_xiv_search_media', function( ) {

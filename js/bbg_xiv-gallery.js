@@ -900,9 +900,24 @@
                     _wpnonce:form.find("input[name='_wpnonce']").val(),
                     _wp_http_referer:form.find("input[name='_wp_http_referer']").val()
                 };
-                jQuery(divGallery).empty().append('<h1 class="bbg_xiv-info">Loading... please wait.</h1>');
+                var jqueryLoading=true;
+                try{
+                    // There is a very rare failure of the following
+                    jQuery(divGallery).empty().append(jQuery.mobile.loading("show",{text:"Loading... please wait.",textVisible:true,textonly:false}));
+                    console.log("jQuery.mobile.loading._widget=",jQuery.mobile.loading._widget);
+                }catch(e){
+                    console.log(e);
+                    console.log("jQuery.mobile.loading._widget=",jQuery.mobile.loading._widget);
+                    jQuery(divGallery).empty().append('<h1 class="bbg_xiv-info">Loading... please wait.</h1>');
+                    jQuery.mobile.loading._widget=undefined;
+                    jqueryLoading=false;
+                }
                 jQuery(divGallery).parent().find("div.bbg_xiv-search_header").hide();
                 jQuery.post(bbg_xiv.ajaxurl,postData,function(r){
+                    if(jqueryLoading){
+                        jQuery.mobile.loading("hide");
+                        jQuery(divGallery).children().detach();
+                    }
                     bbg_xiv.images[divGallery.id]=null;
                     bbg_xiv[divGallery.id+"-data"]=r;
                     if(r){
