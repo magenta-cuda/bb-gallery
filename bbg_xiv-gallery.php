@@ -141,6 +141,28 @@ class BBG_XIV_Gallery {
                         <li><a href="#">Table</a></li>
 EOD;
         }
+        $translations = [
+            'Images:'                                     => __( 'Images:',                                     'bb_gallery' ),
+            'View'                                        => __( 'View',                                        'bb_gallery' ),
+            'Gallery'                                     => __( 'Gallery',                                     'bb_gallery' ),
+            'Carousel'                                    => __( 'Carousel',                                    'bb_gallery' ),
+            'Tabs'                                        => __( 'Tabs',                                        'bb_gallery' ),
+            'Dense'                                       => __( 'Dense',                                       'bb_gallery' ),
+            'Search Images on Site'                       => __( 'Search Images on Site',                       'bb_gallery' ),
+            'Options'                                     => __( 'Options',                                     'bb_gallery' ),
+            'Carousel Time Interval in ms'                => __( 'Carousel Time Interval in ms',                'bb_gallery' ),
+            'Minimum Width for Gallery Images in px'      => __( 'Minimum Width for Gallery Images in px',      'bb_gallery' ),
+            'Maximum Number of Images Returned by Search' => __( 'Maximum Number of Images Returned by Search', 'bb_gallery' ),
+            'Number of Columns in the Dense View'         => __( 'Number of Columns in the Dense View',         'bb_gallery' ),
+            'Bandwidth'                                   => __( 'Bandwidth',                                   'bb_gallery' ),
+            'Auto'                                        => __( 'Auto',                                        'bb_gallery' ),
+            'High'                                        => __( 'High',                                        'bb_gallery' ),
+            'Medium'                                      => __( 'Medium',                                      'bb_gallery' ),
+            'Low'                                         => __( 'Low',                                         'bb_gallery' ),
+            'Interface'                                   => __( 'Interface',                                   'bb_gallery' ),
+            'Mouse'                                       => __( 'Mouse',                                       'bb_gallery' ),
+            'Touch'                                       => __( 'Touch',                                       'bb_gallery' )
+        ];
         ob_start( );
         wp_nonce_field( self::$nonce_action );
         $nonce_field = ob_get_clean( );
@@ -154,17 +176,17 @@ EOD;
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand bbg_xiv-images_brand">Images:</a>
+            <a href="#" class="navbar-brand bbg_xiv-images_brand">{$translations['Images:']}</a>
         </div>
         <div id="$selector-navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="dropdown bbg_xiv-select_view">
-                    <a data-toggle="dropdown" class="dropdown-toggle bbg_xiv-selected_view" href="#"><span>View</span> <b class="caret"></b></a>
+                    <a data-toggle="dropdown" class="dropdown-toggle bbg_xiv-selected_view" href="#"><span>$translations[View]</span> <b class="caret"></b></a>
                     <ul role="menu" class="dropdown-menu bbg_xiv-view_menu">
-                        <li class="active"><a href="#">Gallery</a></li>
-                        <li><a href="#">Carousel</a></li>
-                        <li><a href="#">Tabs</a></li>
-                        <li class="bbg_xiv-large_viewport_only"><a href="#">Dense</a></li>
+                        <li class="active"><a href="#">$translations[Gallery]</a></li>
+                        <li><a href="#">$translations[Carousel]</a></li>
+                        <li><a href="#">$translations[Tabs]</a></li>
+                        <li class="bbg_xiv-large_viewport_only"><a href="#">$translations[Dense]</a></li>
                         <!-- TODO: Add entry for new views here. -->
                         $table_nav_item
                     </ul>
@@ -172,12 +194,12 @@ EOD;
             </ul>
             <form role="search" class="navbar-form navbar-left bbg_xiv-search_form">
                 <div class="form-group">
-                    <input type="text" placeholder="Search Images on Site" class="form-control">
+                    <input type="text" placeholder="{$translations['Search Images on Site']}" class="form-control">
                 </div>
                 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
                 $nonce_field
             </form>
-            <button type="button" class="btn btn-info bbg_xiv-configure" title="configure bandwidth, carousel interval, ...">Options</button>
+            <button type="button" class="btn btn-info bbg_xiv-configure" title="configure bandwidth, carousel interval, ...">$translations[Options]</button>
         </div>
     </nav>
     <div id="$selector-heading" class="bbg_xiv-search_header">
@@ -194,64 +216,64 @@ EOD;
       <h1>BB Gallery Options</h1>
       <form class="form-horizontal">
         <div class="form-group">
-          <label for="bbg_xiv-carousel_delay" class="control-label col-sm-9 col-md-offset-2 col-md-6">Carousel Time Interval in ms</label>
+          <label for="bbg_xiv-carousel_delay" class="control-label col-sm-9 col-md-offset-2 col-md-6">{$translations['Carousel Time Interval in ms']}</label>
           <div class="col-sm-3 col-md-2">
             <input type="number" class="form-control" id="bbg_xiv-carousel_delay" min="1000" step="100">
           </div>
         </div>
         <div class="form-group">
-          <label for="bbg_xiv-min_image_width" class="control-label col-sm-9 col-md-offset-2 col-md-6">Minimum Width for Gallery Images in px</label>
+          <label for="bbg_xiv-min_image_width" class="control-label col-sm-9 col-md-offset-2 col-md-6">{$translations['Minimum Width for Gallery Images in px']}</label>
           <div class="col-sm-3 col-md-2">
             <input type="number" class="form-control" id="bbg_xiv-min_image_width" min="32" max="1024">
           </div>
         </div>
         <div class="form-group">
-          <label for="bbg_xiv-max_search_results" class="control-label col-sm-9 col-md-offset-2 col-md-6">Maximum Number of Images Returned by Search</label>
+          <label for="bbg_xiv-max_search_results" class="control-label col-sm-9 col-md-offset-2 col-md-6">{$translations['Maximum Number of Images Returned by Search']}</label>
           <div class="col-sm-3 col-md-2">
             <input type="number" class="form-control" id="bbg_xiv-max_search_results" min="1" max="{$bbg_xiv_data['bbg_xiv_max_search_results']}">
           </div>
         </div>
         <div class="form-group bbg_xiv-mouse_only_option">
-          <label for="bbg_xiv-columns_in_dense_view" class="control-label col-sm-9 col-md-offset-2 col-md-6">Number of Columns in the Dense View</label>
+          <label for="bbg_xiv-columns_in_dense_view" class="control-label col-sm-9 col-md-offset-2 col-md-6">{$translations['Number of Columns in the Dense View']}</label>
           <div class="col-sm-3 col-md-2">
             <input type="number" class="form-control" id="bbg_xiv-columns_in_dense_view" min="2" max="32">
           </div>
         </div>
         <div class="form-group">
-          <label for="bbg_xiv-bandwidth" class="control-label col-sm-3 col-md-offset-2 col-md-2">Bandwidth</label>
+          <label for="bbg_xiv-bandwidth" class="control-label col-sm-3 col-md-offset-2 col-md-2">$translations[Bandwidth]</label>
           <div class="col-sm-9 col-md-6">
             <span class="bbg_xiv-radio_input">
                 <input type="radio" class="form-control" name="bbg_xiv-bandwidth" value="auto" id="bbg_xiv-bandwidth_auto" checked>
-                <span class="bbg_xiv-radio_text">Auto</span>
+                <span class="bbg_xiv-radio_text">$translations[Auto]</span>
             </span>
             <span class="bbg_xiv-radio_input">
                 <input type="radio" class="form-control" name="bbg_xiv-bandwidth" value="normal" id="bbg_xiv-bandwidth_normal">
-                <span class="bbg_xiv-radio_text">High</span>
+                <span class="bbg_xiv-radio_text">$translations[High]</span>
             </span>
             <span class="bbg_xiv-radio_input">
                 <input type="radio" class="form-control" name="bbg_xiv-bandwidth" value="low" id="bbg_xiv-bandwidth_low">
-                <span class="bbg_xiv-radio_text">Medium</span>
+                <span class="bbg_xiv-radio_text">$translations[Medium]</span>
             </span>
             <span class="bbg_xiv-radio_input">
                 <input type="radio" class="form-control" name="bbg_xiv-bandwidth" value="very low" id="bbg_xiv-bandwidth_very_low">
-                <span class="bbg_xiv-radio_text">Low</span>
+                <span class="bbg_xiv-radio_text">$translations[Low]</span>
             </span>
           </div>
         </div>
         <div class="form-group">
-          <label for="bbg_xiv-interface" class="control-label col-sm-3 col-md-offset-2 col-md-2">Interface</label>
+          <label for="bbg_xiv-interface" class="control-label col-sm-3 col-md-offset-2 col-md-2">$translations[Interface]</label>
           <div class="col-sm-9 col-md-6">
             <span class="bbg_xiv-radio_input">
                 <input type="radio" class="form-control" name="bbg_xiv-interface" value="auto" id="bbg_xiv-interface_auto" checked>
-                <span class="bbg_xiv-radio_text">Auto</span>
+                <span class="bbg_xiv-radio_text">$translations[Auto]</span>
             </span>
             <span class="bbg_xiv-radio_input">
                 <input type="radio" class="form-control" name="bbg_xiv-interface" value="mouse" id="bbg_xiv-interface_mouse">
-                <span class="bbg_xiv-radio_text">Mouse</span>
+                <span class="bbg_xiv-radio_text">$translations[Mouse]</span>
             </span>
             <span class="bbg_xiv-radio_input">
                 <input type="radio" class="form-control" name="bbg_xiv-interface" value="touch" id="bbg_xiv-interface_touch">
-                <span class="bbg_xiv-radio_text">Touch</span>
+                <span class="bbg_xiv-radio_text">$translations[Touch]</span>
             </span>
             <span class="bbg_xiv-radio_input">
                 <input type="radio" class="form-control" name="bbg_xiv-interface" value="null" id="bbg_xiv-interface_null" disabled>
