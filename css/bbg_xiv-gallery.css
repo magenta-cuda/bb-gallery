@@ -102,7 +102,11 @@ div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner {
       vertical-align: middle; }
   div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner button.bbg_xiv-options_btn {
     float: right;
-    margin: 0px 5px; }
+    margin: 0px 5px;
+    width: 15%; }
+    @media (max-width: 767px) {
+      div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner button.bbg_xiv-options_btn {
+        width: 20%; } }
 
 #content nav.navbar.bbg_xiv-gallery_navbar {
   overflow: visible;

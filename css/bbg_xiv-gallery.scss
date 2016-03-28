@@ -243,6 +243,10 @@ div.bbg_xiv-bootstrap{
     button.bbg_xiv-options_btn{
       float:right;
       margin:0px 5px;
+      width:15%;
+      @media(max-width:767px){
+        width:20%;
+      }
     }
   }
 }
