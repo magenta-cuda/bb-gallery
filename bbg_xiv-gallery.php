@@ -379,44 +379,44 @@ EOD
         } );
  
         add_action( 'admin_init', function( ) {
-            add_settings_section( 'bbg_xiv_setting_section', 'BB Gallery', function( ) {
-                echo '<p>BB Gallery is a plug-compatible replacement for the built-in WordPress gallery shortcode.</p>';
+            add_settings_section( 'bbg_xiv_setting_section', __( 'BB Gallery', 'bb_gallery' ), function( ) {
+                echo '<p>' . __( 'BB Gallery is a plug-compatible replacement for the built-in WordPress gallery shortcode.', 'bb_gallery' ) . '</p>';
             }, 'media' );
-            add_settings_field( 'bbg_xiv_shortcode', 'Enable BB Gallery', function( ) {
+            add_settings_field( 'bbg_xiv_shortcode', __( 'Enable BB Gallery', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_shortcode" id="bbg_xiv_shortcode" type="checkbox" value="1" class="code" '
-                    . checked( get_option( 'bbg_xiv_shortcode', 1 ), 1, FALSE ) . ' /> This will replace the built-in WordPress gallery shortcode.';
+                    . checked( get_option( 'bbg_xiv_shortcode', 1 ), 1, FALSE ) . ' /> ' . __( 'This will replace the built-in WordPress gallery shortcode.', 'bb_gallery' );
             }, 'media',	'bbg_xiv_setting_section' );
-            add_settings_field( 'bbg_xiv_table', 'Enable Table View', function( ) {
+            add_settings_field( 'bbg_xiv_table', __( 'Enable Table View', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_table" id="bbg_xiv_table" type="checkbox" value="1" class="code" '
-                    . checked( get_option( 'bbg_xiv_table' ), 1, FALSE ) . ' /> The "Table View" is primarily intended for developers.';
+                    . checked( get_option( 'bbg_xiv_table' ), 1, FALSE ) . ' /> ' . __( 'The "Table View" is primarily intended for developers.', 'bb_gallery' );
             }, 'media',	'bbg_xiv_setting_section' );
-            add_settings_field( 'bbg_xiv_flex_min_width', 'Gallery Minimum Image Width', function( ) {
+            add_settings_field( 'bbg_xiv_flex_min_width', __( 'Gallery Minimum Image Width', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_flex_min_width" id="bbg_xiv_flex_min_width" type="number" value="' . get_option( 'bbg_xiv_flex_min_width', 128 )
-                    . '" class="small-text" /> The minimum image width in the "Gallery View" if the CSS3 Flexbox is used.';
+                    . '" class="small-text" /> ' . __( 'The minimum image width in the "Gallery View" if the CSS3 Flexbox is used.', 'bb_gallery' );
             }, 'media',	'bbg_xiv_setting_section' );
-            add_settings_field( 'bbg_xiv_flex_min_width_for_caption', 'Gallery Minimum Image Width for Caption', function( ) {
+            add_settings_field( 'bbg_xiv_flex_min_width_for_caption', __( 'Gallery Minimum Image Width for Caption', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_flex_min_width_for_caption" id="bbg_xiv_flex_min_width_for_caption" type="number" value="'
                     . get_option( 'bbg_xiv_flex_min_width_for_caption', 96 )
-                    . '" class="small-text" /> The minimum image width in the "Gallery View" required to show the caption.';
+                    . '" class="small-text" /> ' . __( 'The minimum image width in the "Gallery View" required to show the caption.', 'bb_gallery' );
             }, 'media',	'bbg_xiv_setting_section' );
-            add_settings_field( 'bbg_xiv_carousel_interval', 'Carousel Interval', function( ) {
+            add_settings_field( 'bbg_xiv_carousel_interval', __( 'Carousel Interval', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_carousel_interval" id="bbg_xiv_carousel_interval" type="number" value="'
                     . get_option( 'bbg_xiv_carousel_interval', 2500 )
-                    . '" class="small-text" /> The time delay between two slides.';
+                    . '" class="small-text" /> ' . __( 'The time delay between two slides.', 'bb_gallery' );
             }, 'media',	'bbg_xiv_setting_section' );
-            add_settings_field( 'bbg_xiv_max_search_results', 'Maximum Number of Images Returned by Search', function( ) {
+            add_settings_field( 'bbg_xiv_max_search_results', __( 'Maximum Number of Images Returned by Search', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_max_search_results" id="bbg_xiv_max_search_results" type="number" value="' . get_option( 'bbg_xiv_max_search_results', 128 )
-                    . '" class="small-text" /> The browser user can lower this limit.';
+                    . '" class="small-text" /> ' . __( 'The browser user can lower this limit.', 'bb_gallery' );
             }, 'media',	'bbg_xiv_setting_section' );
-            add_settings_field( 'bbg_xiv_flex_number_of_dense_view_columns', 'Columns in Dense View', function( ) {
+            add_settings_field( 'bbg_xiv_flex_number_of_dense_view_columns', __( 'Columns in Dense View', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_flex_number_of_dense_view_columns" id="bbg_xiv_flex_number_of_dense_view_columns" type="number" value="'
                     . get_option( 'bbg_xiv_flex_number_of_dense_view_columns', 10 )
-                    . '" class="small-text" /> The number of columns in the "Dense View".';
+                    . '" class="small-text" /> ' . __( 'The number of columns in the "Dense View".', 'bb_gallery' );
             }, 'media',	'bbg_xiv_setting_section' );
-            add_settings_field( 'bbg_xiv_flex_min_width_for_dense_view', 'Minimum With for Dense View', function( ) {
+            add_settings_field( 'bbg_xiv_flex_min_width_for_dense_view', __( 'Minimum With for Dense View', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_flex_min_width_for_dense_view" id="bbg_xiv_flex_min_width_for_dense_view" type="number" value="'
                     . get_option( 'bbg_xiv_flex_min_width_for_dense_view', 1280 )
-                    . '" class="small-text" /> The minimum browser viewport width required to show the "Dense View".';
+                    . '" class="small-text" /> ' . __( 'The minimum browser viewport width required to show the "Dense View".', 'bb_gallery' );
             }, 'media',	'bbg_xiv_setting_section' );
             register_setting( 'media', 'bbg_xiv_shortcode' );
             register_setting( 'media', 'bbg_xiv_table' );
