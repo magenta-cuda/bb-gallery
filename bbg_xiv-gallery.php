@@ -161,7 +161,10 @@ EOD;
             'Low'                                         => __( 'Low',                                         'bb_gallery' ),
             'Interface'                                   => __( 'Interface',                                   'bb_gallery' ),
             'Mouse'                                       => __( 'Mouse',                                       'bb_gallery' ),
-            'Touch'                                       => __( 'Touch',                                       'bb_gallery' )
+            'Touch'                                       => __( 'Touch',                                       'bb_gallery' ),
+            'Save'                                        => __( 'Save',                                        'bb_gallery' ),
+            'Cancel'                                      => __( 'Cancel',                                      'bb_gallery' ),
+            'Help'                                        => __( 'Help',                                        'bb_gallery' )
         ];
         ob_start( );
         wp_nonce_field( self::$nonce_action );
@@ -286,9 +289,9 @@ EOD;
         <br>
         <div class="form-group">
           <div class="col-sm-offset-4 col-sm-8">
-            <button type="button" class="btn btn-primary bbg_xiv-options_btn bbg_xiv-save_options">&nbsp;&nbsp;Save&nbsp;&nbsp;</button>
-            <button type="button" class="btn btn-default bbg_xiv-options_btn bbg_xiv-cancel_options">Cancel</button>
-            <button type="button" class="btn btn-info bbg_xiv-options_btn bbg_xiv-help_options">&nbsp;&nbsp;Help&nbsp;&nbsp;</button>
+            <button type="button" class="btn btn-primary bbg_xiv-options_btn bbg_xiv-save_options">$translations[Save]</button>
+            <button type="button" class="btn btn-default bbg_xiv-options_btn bbg_xiv-cancel_options">$translations[Cancel]</button>
+            <button type="button" class="btn btn-info bbg_xiv-options_btn bbg_xiv-help_options">$translations[Help]</button>
           </div>
         </div>
       </form>
