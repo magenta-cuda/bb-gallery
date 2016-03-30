@@ -432,6 +432,14 @@ EOD
             load_plugin_textdomain( 'bb_gallery', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
         } );
 
+        add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), function( $links ) {
+            return array_merge( [ '<a href="options-media.php">Settings</a>'], $links );
+        } );
+
+        add_filter( 'plugin_row_meta', function( $links, $file ) {
+            return array_merge( $links, [ 'docs' => '<a href="https://bbfgallery.wordpress.com/" target="_blank">View Documentation</a>' ] );
+        }, 10, 2 );
+
         if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
             # AJAX search handlers
             add_action( 'wp_ajax_nopriv_bbg_xiv_search_media', function( ) {
