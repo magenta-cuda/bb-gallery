@@ -1,0 +1,192 @@
+# Copyright (C) 2016 BB Gallery
+# This file is distributed under the same license as the BB Gallery package.
+msgid ""
+msgstr ""
+"Project-Id-Version: BB Gallery 1.5.3.1.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/bb-galleryz\n"
+"POT-Creation-Date: 2016-03-31 03:38:23+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: bbg_xiv-gallery.php:145
+msgid "Images:"
+msgstr ""
+
+#: bbg_xiv-gallery.php:146
+msgid "View"
+msgstr ""
+
+#: bbg_xiv-gallery.php:147
+msgid "Gallery"
+msgstr ""
+
+#: bbg_xiv-gallery.php:148
+msgid "Carousel"
+msgstr ""
+
+#: bbg_xiv-gallery.php:149
+msgid "Tabs"
+msgstr ""
+
+#: bbg_xiv-gallery.php:150
+msgid "Dense"
+msgstr ""
+
+#: bbg_xiv-gallery.php:151
+msgid "Search Images on Site"
+msgstr ""
+
+#: bbg_xiv-gallery.php:152
+msgid "Options"
+msgstr ""
+
+#: bbg_xiv-gallery.php:153
+msgid "Carousel Time Interval in ms"
+msgstr ""
+
+#: bbg_xiv-gallery.php:154
+msgid "Minimum Width for Gallery Images in px"
+msgstr ""
+
+#: bbg_xiv-gallery.php:155 bbg_xiv-gallery.php:407
+msgid "Maximum Number of Images Returned by Search"
+msgstr ""
+
+#: bbg_xiv-gallery.php:156
+msgid "Number of Columns in the Dense View"
+msgstr ""
+
+#: bbg_xiv-gallery.php:157
+msgid "Bandwidth"
+msgstr ""
+
+#: bbg_xiv-gallery.php:158
+msgid "Auto"
+msgstr ""
+
+#: bbg_xiv-gallery.php:159
+msgid "High"
+msgstr ""
+
+#: bbg_xiv-gallery.php:160
+msgid "Medium"
+msgstr ""
+
+#: bbg_xiv-gallery.php:161
+msgid "Low"
+msgstr ""
+
+#: bbg_xiv-gallery.php:162
+msgid "Interface"
+msgstr ""
+
+#: bbg_xiv-gallery.php:163
+msgid "Mouse"
+msgstr ""
+
+#: bbg_xiv-gallery.php:164
+msgid "Touch"
+msgstr ""
+
+#: bbg_xiv-gallery.php:165
+msgid "Save"
+msgstr ""
+
+#: bbg_xiv-gallery.php:166
+msgid "Cancel"
+msgstr ""
+
+#: bbg_xiv-gallery.php:167
+msgid "Help"
+msgstr ""
+
+#: bbg_xiv-gallery.php:382
+msgid "BB Gallery"
+msgstr ""
+
+#: bbg_xiv-gallery.php:383
+msgid "BB Gallery is a plug-compatible replacement for the built-in WordPress gallery shortcode."
+msgstr ""
+
+#: bbg_xiv-gallery.php:385
+msgid "Enable BB Gallery"
+msgstr ""
+
+#: bbg_xiv-gallery.php:387
+msgid "This will replace the built-in WordPress gallery shortcode."
+msgstr ""
+
+#: bbg_xiv-gallery.php:389
+msgid "Enable Table View"
+msgstr ""
+
+#: bbg_xiv-gallery.php:391
+msgid "The \"Table View\" is primarily intended for developers."
+msgstr ""
+
+#: bbg_xiv-gallery.php:393
+msgid "Gallery Minimum Image Width"
+msgstr ""
+
+#: bbg_xiv-gallery.php:395
+msgid "The minimum image width in the \"Gallery View\" if the CSS3 Flexbox is used."
+msgstr ""
+
+#: bbg_xiv-gallery.php:397
+msgid "Gallery Minimum Image Width for Caption"
+msgstr ""
+
+#: bbg_xiv-gallery.php:400
+msgid "The minimum image width in the \"Gallery View\" required to show the caption."
+msgstr ""
+
+#: bbg_xiv-gallery.php:402
+msgid "Carousel Interval"
+msgstr ""
+
+#: bbg_xiv-gallery.php:405
+msgid "The time delay between two slides."
+msgstr ""
+
+#: bbg_xiv-gallery.php:409
+msgid "The browser user can lower this limit."
+msgstr ""
+
+#: bbg_xiv-gallery.php:411
+msgid "Columns in Dense View"
+msgstr ""
+
+#: bbg_xiv-gallery.php:414
+msgid "The number of columns in the \"Dense View\"."
+msgstr ""
+
+#: bbg_xiv-gallery.php:416
+msgid "Minimum With for Dense View"
+msgstr ""
+
+#: bbg_xiv-gallery.php:419
+msgid "The minimum browser viewport width required to show the \"Dense View\"."
+msgstr ""
+#. Plugin Name of the plugin/theme
+msgid "BB Gallery"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://bbfgallery.wordpress.com/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Gallery using Backbone.js, Bootstrap 3 and CSS3 Flexbox"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Magenta Cuda"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://profiles.wordpress.org/magenta-cuda/"
+msgstr ""
