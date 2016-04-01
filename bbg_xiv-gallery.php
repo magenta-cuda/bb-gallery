@@ -379,7 +379,7 @@ EOD
         } );
  
         add_action( 'admin_init', function( ) {
-            add_settings_section( 'bbg_xiv_setting_section', __( 'BB Gallery', 'bb_gallery' ), function( ) {
+            add_settings_section( 'bbg_xiv_setting_section', 'BB Gallery', function( ) {
                 echo '<p>' . __( 'BB Gallery is a plug-compatible replacement for the built-in WordPress gallery shortcode.', 'bb_gallery' ) . '</p>';
             }, 'media' );
             add_settings_field( 'bbg_xiv_shortcode', __( 'Enable BB Gallery', 'bb_gallery' ), function( ) {
