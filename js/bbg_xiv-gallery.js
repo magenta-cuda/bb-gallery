@@ -865,10 +865,12 @@
             var offset;
             var count;
             jQuery(this).click(function(e){
+                var searchBtn=jQuery(this);
+                searchBtn.prop("disabled",true);
                 var startSearch="search images on site";
                 var continueSearch="continue current search";
-                var divGallery=jQuery(this).parents("div.bbg_xiv-gallery").find("div.bbg_xiv-gallery_envelope")[0];
-                var form=jQuery(this).parents("form[role='search']");
+                var divGallery=searchBtn.parents("div.bbg_xiv-gallery").find("div.bbg_xiv-gallery_envelope")[0];
+                var form=searchBtn.parents("form[role='search']");
                 var input=form.find("input[type='text']");
                 var value=input.val();
                 if(value){
@@ -955,6 +957,7 @@
                     var liSelectView=jQuery(divGallery.parentNode).find("nav.bbg_xiv-gallery_navbar ul.nav li.bbg_xiv-select_view");
                     var liFirst=liSelectView.find("ul.bbg_xiv-view_menu li").removeClass("active").first().addClass("active");
                     liSelectView.find("a.bbg_xiv-selected_view span").text(liFirst.text());
+                    searchBtn.prop("disabled",false);
                 });
                 e.preventDefault();
             });
