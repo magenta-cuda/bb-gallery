@@ -351,6 +351,12 @@ EOD;
 
     public static function init( ) {
 
+        add_action( 'plugins_loaded', function( ) {
+            if ( !load_plugin_textdomain( 'bb_gallery', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' ) ) {
+                error_log( 'load_plugin_textdomain() failed' );
+            }
+        } );
+
         add_action( 'wp_loaded', function( ) {
             add_shortcode( 'bb_gallery', __CLASS__ . '::bb_gallery_shortcode' );
             if ( get_option( 'bbg_xiv_shortcode', 1 ) ) {
@@ -426,19 +432,14 @@ EOD
             register_setting( 'media', 'bbg_xiv_max_search_results' );
             register_setting( 'media', 'bbg_xiv_flex_number_of_dense_view_columns' );
             register_setting( 'media', 'bbg_xiv_flex_min_width_for_dense_view' );
-        } );
  
-        add_action( 'plugins_loaded', function( ) {
-            load_plugin_textdomain( 'bb_gallery', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
+            add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), function( $links ) {
+                return array_merge( [ '<a href="options-media.php">Settings</a>'], $links );
+            } );
+            add_filter( 'plugin_row_meta', function( $links, $file ) {
+                return array_merge( $links, [ 'docs' => '<a href="https://bbfgallery.wordpress.com/" target="_blank">View Documentation</a>' ] );
+            }, 10, 2 );
         } );
-
-        add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), function( $links ) {
-            return array_merge( [ '<a href="options-media.php">Settings</a>'], $links );
-        } );
-
-        add_filter( 'plugin_row_meta', function( $links, $file ) {
-            return array_merge( $links, [ 'docs' => '<a href="https://bbfgallery.wordpress.com/" target="_blank">View Documentation</a>' ] );
-        }, 10, 2 );
 
         if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
             # AJAX search handlers
