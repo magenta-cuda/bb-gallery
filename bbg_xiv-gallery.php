@@ -353,7 +353,7 @@ EOD;
 
         add_action( 'plugins_loaded', function( ) {
             if ( !load_plugin_textdomain( 'bb_gallery', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' ) ) {
-                error_log( 'load_plugin_textdomain() failed' );
+                #error_log( 'load_plugin_textdomain() failed' );
             }
         } );
 

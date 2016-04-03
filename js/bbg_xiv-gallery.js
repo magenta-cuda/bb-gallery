@@ -906,10 +906,9 @@
                 try{
                     // There is a very rare failure of the following
                     jQuery(divGallery).empty().append(jQuery.mobile.loading("show",{text:"Loading... please wait.",textVisible:true,textonly:false}));
-                    console.log("jQuery.mobile.loading._widget=",jQuery.mobile.loading._widget);
                 }catch(e){
                     console.log(e);
-                    console.log("jQuery.mobile.loading._widget=",jQuery.mobile.loading._widget);
+                    //console.log("jQuery.mobile.loading._widget=",jQuery.mobile.loading._widget);
                     jQuery(divGallery).empty().append('<h1 class="bbg_xiv-info">Loading... please wait.</h1>');
                     jQuery.mobile.loading._widget=undefined;
                     jqueryLoading=false;
