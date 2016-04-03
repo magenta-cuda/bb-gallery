@@ -437,7 +437,10 @@ EOD
                 return array_merge( [ '<a href="options-media.php">Settings</a>'], $links );
             } );
             add_filter( 'plugin_row_meta', function( $links, $file ) {
-                return array_merge( $links, [ 'docs' => '<a href="https://bbfgallery.wordpress.com/" target="_blank">View Documentation</a>' ] );
+                if ( $file === plugin_basename( __FILE__ ) ) {
+                    return array_merge( $links, [ 'docs' => '<a href="https://bbfgallery.wordpress.com/" target="_blank">View Documentation</a>' ] );
+                }
+                return (array) $links;
             }, 10, 2 );
         } );
 
