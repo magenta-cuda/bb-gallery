@@ -249,36 +249,41 @@
     };
     
     bbg_xiv.constructImages=function(gallery){
-        var images=bbg_xiv.images[gallery.id]=new bbg_xiv.Images();
-        images.id=gallery.id;
-        try{
-            images.reset(JSON.parse(window.bbg_xiv[gallery.id+"-data"]));
-            // find closest match for thumbnail, small, medium and large
-            var widths=[Math.log(bbg_xiv.bbg_xiv_flex_min_width),Math.log(768),Math.log(992),Math.log(1200)];
-            images.models.forEach(function(model){
-                var diffs=[Number.MAX_VALUE,Number.MAX_VALUE,Number.MAX_VALUE,Number.MAX_VALUE];
-                var urls=[];
-                var attributes=model.attributes;
-                var sizes=attributes.sizes;
-                sizes.full={url:attributes.url,width:attributes.width,height:attributes.height};
-                Object.keys(sizes).forEach(function(size){
-                    var image=sizes[size];
-                    widths.forEach(function(width,i){
-                        var diff=Math.abs(Math.log(image.width)-width);
-                        if(diff<diffs[i]){
-                            diffs[i]=diff;
-                            urls[i]=image.url;
-                        }
-                    });
-                });
-                model.attributes.bbg_xiv_thumbnail_url=urls[0];
-                model.attributes.bbg_xiv_small_url=urls[1];
-                model.attributes.bbg_xiv_medium_url=urls[2];
-                model.attributes.bbg_xiv_large_url=urls[3];
-            });
-        }catch(e){
-            console.log("reset(JSON.parse()) failed:",e);
+        if(window.bbg_xiv.bbg_xiv_wp_rest_api){
+            var images=bbg_xiv.images[gallery.id];
+        }else{
+            var images=bbg_xiv.images[gallery.id]=new bbg_xiv.Images();
+            try{
+                images.reset(JSON.parse(window.bbg_xiv[gallery.id+"-data"]));
+            }catch(e){
+                console.log("reset(JSON.parse()) failed:",e);
+                return images;
+            }
         }
+        images.id=gallery.id;
+        // find closest match for thumbnail, small, medium and large
+        var widths=[Math.log(bbg_xiv.bbg_xiv_flex_min_width),Math.log(768),Math.log(992),Math.log(1200)];
+        images.models.forEach(function(model){
+            var diffs=[Number.MAX_VALUE,Number.MAX_VALUE,Number.MAX_VALUE,Number.MAX_VALUE];
+            var urls=[];
+            var attributes=model.attributes;
+            var sizes=attributes.sizes;
+            sizes.full={url:attributes.url,width:attributes.width,height:attributes.height};
+            Object.keys(sizes).forEach(function(size){
+                var image=sizes[size];
+                widths.forEach(function(width,i){
+                    var diff=Math.abs(Math.log(image.width)-width);
+                    if(diff<diffs[i]){
+                        diffs[i]=diff;
+                        urls[i]=image.url;
+                    }
+                });
+            });
+            model.attributes.bbg_xiv_thumbnail_url=urls[0];
+            model.attributes.bbg_xiv_small_url=urls[1];
+            model.attributes.bbg_xiv_medium_url=urls[2];
+            model.attributes.bbg_xiv_large_url=urls[3];
+        });
         return images;
     };
     
@@ -836,11 +841,14 @@
         }  
     });
 
-    jQuery("div.bbg_xiv-gallery_envelope").each(function(){
-        bbg_xiv.renderGallery(this,"Gallery");
-    });
-
     jQuery(document).ready(function(){
+        jQuery("div.bbg_xiv-gallery_envelope").each(function(){
+            if(window.bbg_xiv.bbg_xiv_wp_rest_api){
+                bbg_xiv.images[this.id]=new wp.api.collections.Posts();
+            }
+            bbg_xiv.renderGallery(this,"Gallery");
+        });
+
         // wireup the event handlers
         // wireup the handler for view selection
         jQuery("nav.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.bbg_xiv-view_menu li > a").click(function(e){
@@ -914,13 +922,11 @@
                     jqueryLoading=false;
                 }
                 jQuery(divGallery).parent().find("div.bbg_xiv-search_header").hide();
-                jQuery.post(bbg_xiv.ajaxurl,postData,function(r){
+                function handleResponse(r){
                     if(jqueryLoading){
                         jQuery.mobile.loading("hide");
                         jQuery(divGallery).children().detach();
                     }
-                    bbg_xiv.images[divGallery.id]=null;
-                    bbg_xiv[divGallery.id+"-data"]=r;
                     if(r){
                         var images=bbg_xiv.constructImages(divGallery);
                         var search_limit=parseInt(bbg_xiv.bbg_xiv_max_search_results);
@@ -957,7 +963,33 @@
                     var liFirst=liSelectView.find("ul.bbg_xiv-view_menu li").removeClass("active").first().addClass("active");
                     liSelectView.find("a.bbg_xiv-selected_view span").text(liFirst.text());
                     searchBtn.prop("disabled",false);
-                });
+                };
+                if(window.bbg_xiv.bbg_xiv_wp_rest_api){
+                    // use the WP REST API - requires the WP REST API plugin
+                    var images=bbg_xiv.images[divGallery.id]=new wp.api.collections.Posts();
+                    images.fetch({
+                        data:{
+                            per_page:2
+                        },
+                        success:function(c,r,o){
+                            console.log("success():r=",r);
+                            console.log("success():c=",c);
+                            console.log("images=",images);
+                            handleResponse(images.length);
+                        },
+                        error:function(c,r,o){
+                            console.log("error:r=",r);
+                            handleResponse(false);
+                        }
+                    });
+                }else{
+                    // old proprietary non REST way to load the Backbone image collection - does not require the WP REST API plugin
+                    jQuery.post(bbg_xiv.ajaxurl,postData,function(r){
+                        bbg_xiv.images[divGallery.id]=null;
+                        bbg_xiv[divGallery.id+"-data"]=r;
+                        handleResponse(!!r);
+                    });
+                }
                 e.preventDefault();
             });
         });
