@@ -104,34 +104,71 @@ class BBG_XIV_Gallery {
 
         $id = intval( $atts['id'] );
 
-        if ( ! empty( $atts['include'] ) ) {
-          $_attachments = get_posts( array( 'include' => $atts['include'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
+        $selector = "gallery-{$instance}";
 
-          $attachments = array();
-          foreach ( $_attachments as $key => $val ) {
-            $attachments[$val->ID] = $_attachments[$key];
-          }
-        } elseif ( ! empty( $atts['exclude'] ) ) {
-          $attachments = get_children( array( 'post_parent' => $id, 'exclude' => $atts['exclude'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
+        if ( class_exists( 'WP_REST_Controller' ) && !is_feed( ) ) {
+            // Initialize the Backbone.js collection using data from the WP REST API for the WP REST API model
+            $request = [
+                'author'         => [ ],
+                'author_exclude' => [ ],
+                'menu_order'     => '', 
+                'offset'         => '',
+                'order'          => 'desc',
+                'orderby'        => 'date',
+                'page'           => 1,
+                'include'        => [ ],
+                'exclude'        => [ ],
+                'per_page'       => 10,
+                'slug'           => '',
+                'parent'         => '',
+                'parent_exclude' => '',
+                'status'         => 'publish',
+                'search'         => ''
+            ];
+            if ( ! empty( $atts[ 'include' ] ) ) {
+                $request[ 'include' ] = explode( ',', $atts[ 'include' ] );
+            } elseif ( !empty( $atts[ 'exclude' ] ) ) {
+                // TODO:
+            } else {
+                $request[ 'post_parent__in' ] = $id;
+            }
+            $controller = new WP_REST_Posts_Controller( "post" );
+            $attachments = $controller->get_items( $request )->data;
+            $bbg_xiv_data[ "$selector-data" ] = json_encode( $attachments );
         } else {
-          $attachments = get_children( array( 'post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
-        }
+            // initialize the Backbone.js collection using data for my proprietary model 
+            if ( ! empty( $atts['include'] ) ) {
+              $_attachments = get_posts( array( 'include' => $atts['include'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
 
-        if ( empty( $attachments ) ) {
-          return '';
-        }
+              $attachments = array();
+              foreach ( $_attachments as $key => $val ) {
+                $attachments[$val->ID] = $_attachments[$key];
+              }
+            } elseif ( ! empty( $atts['exclude'] ) ) {
+              $attachments = get_children( array( 'post_parent' => $id, 'exclude' => $atts['exclude'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
+            } else {
+              $attachments = get_children( array( 'post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
+            }
 
-        if ( is_feed() ) {
-          $output = "\n";
-          foreach ( $attachments as $att_id => $attachment ) {
-            $output .= wp_get_attachment_link( $att_id, $atts['size'], true ) . "\n";
-          }
-          return $output;
+            if ( empty( $attachments ) ) {
+              return '';
+            }
+
+            if ( is_feed() ) {
+              $output = "\n";
+              foreach ( $attachments as $att_id => $attachment ) {
+                $output .= wp_get_attachment_link( $att_id, $atts['size'], true ) . "\n";
+              }
+              return $output;
+            }
+
+            self::bbg_xiv_do_attachments( $attachments );
+            $bbg_xiv_data[ "$selector-data" ] = json_encode( array_values( $attachments ) );
         }
+ 
+        wp_localize_script( 'bbg_xiv-gallery', 'bbg_xiv', $bbg_xiv_data );
 
         $float = is_rtl() ? 'right' : 'left';
-
-        $selector = "gallery-{$instance}";
 
         $size_class = sanitize_html_class( $atts['size'] );
         
@@ -299,9 +336,6 @@ EOD;
     </div>
 </div>
 EOD;
-        self::bbg_xiv_do_attachments( $attachments );
-        $bbg_xiv_data[ "$selector-data" ] = json_encode( array_values( $attachments ) );
-        wp_localize_script( 'bbg_xiv-gallery', 'bbg_xiv', $bbg_xiv_data );
         return $output;
     }
 
