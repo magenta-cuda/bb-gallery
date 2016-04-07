@@ -844,7 +844,8 @@
     jQuery(document).ready(function(){
         jQuery("div.bbg_xiv-gallery_envelope").each(function(){
             if(window.bbg_xiv.bbg_xiv_wp_rest_api){
-                bbg_xiv.images[this.id]=new wp.api.collections.Posts();
+                var images=bbg_xiv.images[this.id]=new wp.api.collections.Posts();
+                images.reset(JSON.parse(window.bbg_xiv[this.id+"-data"]));
             }
             bbg_xiv.renderGallery(this,"Gallery");
         });
