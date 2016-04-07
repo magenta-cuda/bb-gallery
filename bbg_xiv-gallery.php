@@ -108,7 +108,7 @@ class BBG_XIV_Gallery {
 
         if ( class_exists( 'WP_REST_Controller' ) && !is_feed( ) ) {
             // Initialize the Backbone.js collection using data from the WP REST API for the WP REST API model
-            $request = [
+            $attributes = [
                 'author'         => [ ],
                 'author_exclude' => [ ],
                 'menu_order'     => '', 
@@ -126,14 +126,25 @@ class BBG_XIV_Gallery {
                 'search'         => ''
             ];
             if ( ! empty( $atts[ 'include' ] ) ) {
-                $request[ 'include' ] = explode( ',', $atts[ 'include' ] );
+                $attributes[ 'include' ] = explode( ',', $atts[ 'include' ] );
             } elseif ( !empty( $atts[ 'exclude' ] ) ) {
-                // TODO:
+                # TODO:
             } else {
-                $request[ 'post_parent__in' ] = $id;
+                $attributes[ 'post_parent__in' ] = $id;
             }
+            $request = new WP_REST_Request( 'GET', '/wp/v2/posts' );
+            $request->set_query_params( $attributes );
+            # TODO: $request may need to set some of the params below
+            #$request->set_body_params( wp_unslash( $_POST ) );
+            #$request->set_file_params( $_FILES );
+            #$request->set_headers( $this->get_headers( wp_unslash( $_SERVER ) ) );
+            #$request->set_body( $this->get_raw_data() );
+            #$request->set_url_params( $args );
+            #$request->set_attributes( $handler );
+            #$request->set_default_params( $defaults );
             $controller = new WP_REST_Posts_Controller( "post" );
             $attachments = $controller->get_items( $request )->data;
+            error_log( 'BBG_XIV_Gallery::bb_gallery_shortcode():$attachments=' . print_r( $attachments, true ) );
             $bbg_xiv_data[ "$selector-data" ] = json_encode( $attachments );
         } else {
             // initialize the Backbone.js collection using data for my proprietary model 
