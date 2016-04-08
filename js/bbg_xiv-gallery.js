@@ -267,6 +267,9 @@
             var diffs=[Number.MAX_VALUE,Number.MAX_VALUE,Number.MAX_VALUE,Number.MAX_VALUE];
             var urls=[];
             var attributes=model.attributes;
+            if(!attributes.sizes){
+                attributes.sizes={};
+            }
             var sizes=attributes.sizes;
             sizes.full={url:attributes.url,width:attributes.width,height:attributes.height};
             Object.keys(sizes).forEach(function(size){
@@ -289,10 +292,7 @@
     
     bbg_xiv.renderGallery=function(gallery,view){
         var jqGallery=jQuery(gallery);
-        var images=bbg_xiv.images[gallery.id];
-        if(!images){
-            images=bbg_xiv.constructImages(gallery);
-        }
+        var images=bbg_xiv.constructImages(gallery);
         function constructOverlay(){
             // gallery or dense view shows a full browser viewport view of an image when its fullscreen glyph is clicked
             var outer=jqGallery.find("div.bbg_xiv-dense_outer");
@@ -873,7 +873,8 @@
         jQuery("form.bbg_xiv-search_form button").each(function(){
             var query;
             var offset;
-            var count;
+            var page;
+            var count = Number.MAX_SAFE_INTEGER;
             jQuery(this).click(function(e){
                 var searchBtn=jQuery(this);
                 searchBtn.prop("disabled",true);
@@ -887,31 +888,27 @@
                     // new search
                     query=value;
                     offset=0;
+                    page=1;
                     // start new search history
                     bbg_xiv.search[divGallery.id]={history:[],index:-1,done:false};
                     // get count
-                    var postData={
-                        action:"bbg_xiv_search_media_count",
-                        query:query,
-                        _wpnonce:form.find("input[name='_wpnonce']").val(),
-                        _wp_http_referer:form.find("input[name='_wp_http_referer']").val()
-                    };
-                    jQuery.post(bbg_xiv.ajaxurl,postData,function(r){
-                        count=parseInt(r);
-                    });
+                    if(window.bbg_xiv.bbg_xiv_wp_rest_api){
+                        // TODO:
+                    }else{
+                        var postData={
+                            action:"bbg_xiv_search_media_count",
+                            query:query,
+                            _wpnonce:form.find("input[name='_wpnonce']").val(),
+                            _wp_http_referer:form.find("input[name='_wp_http_referer']").val()
+                        };
+                        jQuery.post(bbg_xiv.ajaxurl,postData,function(r){
+                            count=parseInt(r);
+                        });
+                    }
                 }else if(typeof query==="undefined"){
                     e.preventDefault();
                     return;
                 }
-                // get the next part of the multi-part search result
-                var postData={
-                    action:"bbg_xiv_search_media",
-                    query:query,
-                    limit:parseInt(bbg_xiv.bbg_xiv_max_search_results),
-                    offset:offset,
-                    _wpnonce:form.find("input[name='_wpnonce']").val(),
-                    _wp_http_referer:form.find("input[name='_wp_http_referer']").val()
-                };
                 var jqueryLoading=true;
                 try{
                     // There is a very rare failure of the following
@@ -971,7 +968,9 @@
                     var images=bbg_xiv.images[divGallery.id]=new wp.api.collections.Posts();
                     images.fetch({
                         data:{
-                            per_page:2
+                            search:query,
+                            page:page++,
+                            per_page:parseInt(bbg_xiv.bbg_xiv_max_search_results)
                         },
                         success:function(c,r,o){
                             console.log("success():r=",r);
@@ -986,6 +985,15 @@
                     });
                 }else{
                     // old proprietary non REST way to load the Backbone image collection - does not require the WP REST API plugin
+                    // get the next part of the multi-part search result
+                    var postData={
+                        action:"bbg_xiv_search_media",
+                        query:query,
+                        limit:parseInt(bbg_xiv.bbg_xiv_max_search_results),
+                        offset:offset,
+                        _wpnonce:form.find("input[name='_wpnonce']").val(),
+                        _wp_http_referer:form.find("input[name='_wp_http_referer']").val()
+                    };
                     jQuery.post(bbg_xiv.ajaxurl,postData,function(r){
                         bbg_xiv.images[divGallery.id]=null;
                         bbg_xiv[divGallery.id+"-data"]=r;

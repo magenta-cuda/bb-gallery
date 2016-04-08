@@ -1,4 +1,4 @@
-<!-- Backbone.js templates for the 'gallery' shortcode -->
+<!-- Backbone.js templates for the 'gallery' shortcode using the WP REST API models        -->
 
 <!-- These templates use the WordPress syntax for Backbone.js templates.                   -->
 <!-- See bbg_xiv.templateOptions in the file ".../js/bbg_xiv-gallery.js".                  -->
