@@ -875,6 +875,7 @@
             var offset;
             var page;
             var count = Number.MAX_SAFE_INTEGER;
+            var pages;
             jQuery(this).click(function(e){
                 var searchBtn=jQuery(this);
                 searchBtn.prop("disabled",true);
@@ -948,7 +949,7 @@
                         }
                         // search results uses a heading to show status
                         heading.find("span.bbg_xiv-search_heading_first").text("Search Results for \""+prevQuery+"\"");
-                        var title="Images "+(prevOffset+1)+" to "+(prevOffset+images.models.length)+" of "+count;
+                        var title="Images "+(prevOffset+1)+" to "+(prevOffset+images.models.length)+" of "+(count!==Number.MAX_SAFE_INTEGER?count:"?");
                         heading.find("span.bbg_xiv-search_heading_second").text(title);
                         // maintain a history of all images returned by this search
                         search.history.push({images:images,title:title});
@@ -976,6 +977,8 @@
                             console.log("success():r=",r);
                             console.log("success():c=",c);
                             console.log("images=",images);
+                            count=images.state.totalObjects;
+                            pages=images.state.totalPages;
                             handleResponse(images.length);
                         },
                         error:function(c,r,o){
