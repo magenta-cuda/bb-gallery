@@ -846,6 +846,7 @@
             if(window.bbg_xiv.bbg_xiv_wp_rest_api){
                 var images=bbg_xiv.images[this.id]=new wp.api.collections.Posts();
                 images.reset(JSON.parse(window.bbg_xiv[this.id+"-data"]));
+                console.log("images=",images);
             }
             bbg_xiv.renderGallery(this,"Gallery");
         });

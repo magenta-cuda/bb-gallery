@@ -43,7 +43,11 @@ class BBG_XIV_Gallery {
             return gallery_shortcode( $attr );
         }
         
-        require_once(  dirname( __FILE__ ) . '/bbg_xiv-gallery_templates.php' );
+        if ( class_exists( 'WP_REST_Controller' ) ) {
+            require_once(  dirname( __FILE__ ) . '/bbg_xiv-gallery_templates_wp_rest.php' );
+        } else {
+            require_once(  dirname( __FILE__ ) . '/bbg_xiv-gallery_templates.php' );
+        }
 
         $post = get_post();
 
