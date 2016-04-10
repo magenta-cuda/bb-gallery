@@ -843,12 +843,18 @@
 
     jQuery(document).ready(function(){
         jQuery("div.bbg_xiv-gallery_envelope").each(function(){
-            if(window.bbg_xiv.bbg_xiv_wp_rest_api){
-                var images=bbg_xiv.images[this.id]=new wp.api.collections.Posts();
-                images.reset(JSON.parse(window.bbg_xiv[this.id+"-data"]));
-                console.log("images=",images);
+            if(bbg_xiv.bbg_xiv_wp_rest_api){
+                var gallery=this;
+                var id=this.id;
+                wp.api.loadPromise.done(function(){
+                    var images=bbg_xiv.images[id]=new wp.api.collections.Posts();
+                    images.reset(JSON.parse(bbg_xiv[id+"-data"]));
+                    console.log("images=",images);
+                    bbg_xiv.renderGallery(gallery,"Gallery");
+                });
+            }else{
+                bbg_xiv.renderGallery(this,"Gallery");
             }
-            bbg_xiv.renderGallery(this,"Gallery");
         });
 
         // wireup the event handlers
@@ -893,9 +899,7 @@
                     // start new search history
                     bbg_xiv.search[divGallery.id]={history:[],index:-1,done:false};
                     // get count
-                    if(window.bbg_xiv.bbg_xiv_wp_rest_api){
-                        // TODO:
-                    }else{
+                    if(!window.bbg_xiv.bbg_xiv_wp_rest_api){
                         var postData={
                             action:"bbg_xiv_search_media_count",
                             query:query,
