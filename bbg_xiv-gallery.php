@@ -130,7 +130,8 @@ class BBG_XIV_Gallery {
                 'search'         => ''
             ];
             if ( ! empty( $atts[ 'include' ] ) ) {
-                $attributes[ 'include' ] = explode( ',', $atts[ 'include' ] );
+                $attributes[ 'include'  ] = explode( ',', $atts[ 'include' ] );
+                $attributes[ 'per_page' ] = count( $attributes[ 'include' ] );
             } elseif ( !empty( $atts[ 'exclude' ] ) ) {
                 # TODO:
             } else {
