@@ -136,7 +136,8 @@ class BBG_XIV_Gallery {
             } else {
                 $attributes[ 'post_parent__in' ] = $id;
             }
-            $request = new WP_REST_Request( 'GET', '/wp/v2/posts' );
+            error_log( 'BBG_XIV_Gallery::bb_gallery_shortcode():$attributes=' . print_r( $attributes, true ) );
+            $request = new WP_REST_Request( 'GET', '/wp/v2/media' );
             $request->set_query_params( $attributes );
             # TODO: $request may need to set some of the params below
             #$request->set_body_params( wp_unslash( $_POST ) );
@@ -146,7 +147,7 @@ class BBG_XIV_Gallery {
             #$request->set_url_params( $args );
             #$request->set_attributes( $handler );
             #$request->set_default_params( $defaults );
-            $controller = new WP_REST_Posts_Controller( "post" );
+            $controller = new WP_REST_Attachments_Controller( "attachment" );
             $attachments = $controller->get_items( $request )->data;
             error_log( 'BBG_XIV_Gallery::bb_gallery_shortcode():$attachments=' . print_r( $attachments, true ) );
             $bbg_xiv_data[ "$selector-data" ] = json_encode( $attachments );

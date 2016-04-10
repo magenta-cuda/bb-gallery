@@ -267,18 +267,22 @@
             var diffs=[Number.MAX_VALUE,Number.MAX_VALUE,Number.MAX_VALUE,Number.MAX_VALUE];
             var urls=[];
             var attributes=model.attributes;
-            if(!attributes.sizes){
-                attributes.sizes={};
+            if(bbg_xiv.bbg_xiv_wp_rest_api){
+                var sizes=attributes.media_details.sizes;
+            }else{
+                if(!attributes.sizes){
+                    attributes.sizes={};
+                }
+                var sizes=attributes.sizes;
+                sizes.full={url:attributes.url,width:attributes.width,height:attributes.height};
             }
-            var sizes=attributes.sizes;
-            sizes.full={url:attributes.url,width:attributes.width,height:attributes.height};
             Object.keys(sizes).forEach(function(size){
                 var image=sizes[size];
                 widths.forEach(function(width,i){
                     var diff=Math.abs(Math.log(image.width)-width);
                     if(diff<diffs[i]){
                         diffs[i]=diff;
-                        urls[i]=image.url;
+                        urls[i]=bbg_xiv.bbg_xiv_wp_rest_api?image.source_url:image.url;
                     }
                 });
             });
@@ -844,11 +848,11 @@
     jQuery(document).ready(function(){
         jQuery("div.bbg_xiv-gallery_envelope").each(function(){
             if(bbg_xiv.bbg_xiv_wp_rest_api){
+                // the schema is loaded asynchronously so must use wp.api.loadPromise.done()
                 var gallery=this;
-                var id=this.id;
                 wp.api.loadPromise.done(function(){
-                    var images=bbg_xiv.images[id]=new wp.api.collections.Posts();
-                    images.reset(JSON.parse(bbg_xiv[id+"-data"]));
+                    var images=bbg_xiv.images[gallery.id]=new wp.api.collections.Media();
+                    images.reset(JSON.parse(bbg_xiv[gallery.id+"-data"]));
                     console.log("images=",images);
                     bbg_xiv.renderGallery(gallery,"Gallery");
                 });
