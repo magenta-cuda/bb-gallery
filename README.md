@@ -19,4 +19,4 @@ If the [WordPress REST API (Version 2) plugin](https://wordpress.org/plugins/res
 
 ## Warning
 
-Using the WordPress REST API is not stable and is complete.
+Using the WordPress REST API is not stable and is not complete.
