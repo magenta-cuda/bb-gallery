@@ -667,7 +667,7 @@
         switch(bbg_xiv.bandwidth){
         case "normal":
             return {
-                src      :data.url,
+                src      :bbg_xiv.bbg_xiv_wp_rest_api?data.source_url:data.url,
                 thumbnail:data.bbg_xiv_thumbnail_url,
                 small    :data.bbg_xiv_small_url,
                 medium   :data.bbg_xiv_medium_url,
@@ -696,7 +696,7 @@
         switch(bbg_xiv.bandwidth){
         case "normal":
             return {
-                src      :data.url,
+                src      :bbg_xiv.bbg_xiv_wp_rest_api?data.source_url:data.url,
                 thumbnail:data.bbg_xiv_thumbnail_url,
                 small    :data.bbg_xiv_small_url,
                 medium   :data.bbg_xiv_medium_url,
@@ -848,12 +848,11 @@
     jQuery(document).ready(function(){
         jQuery("div.bbg_xiv-gallery_envelope").each(function(){
             if(bbg_xiv.bbg_xiv_wp_rest_api){
-                // the schema is loaded asynchronously so must use wp.api.loadPromise.done()
+                // If the schema is not in sessionStorage it will be loaded asynchronously so must use wp.api.loadPromise.done()
                 var gallery=this;
                 wp.api.loadPromise.done(function(){
                     var images=bbg_xiv.images[gallery.id]=new wp.api.collections.Media();
                     images.reset(JSON.parse(bbg_xiv[gallery.id+"-data"]));
-                    console.log("images=",images);
                     bbg_xiv.renderGallery(gallery,"Gallery");
                 });
             }else{
@@ -982,9 +981,6 @@
                             per_page:parseInt(bbg_xiv.bbg_xiv_max_search_results)
                         },
                         success:function(c,r,o){
-                            console.log("success():r=",r);
-                            console.log("success():c=",c);
-                            console.log("images=",images);
                             count=images.state.totalObjects;
                             pages=images.state.totalPages;
                             handleResponse(images.length);
