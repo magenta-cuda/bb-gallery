@@ -974,7 +974,7 @@
                 };
                 if(window.bbg_xiv.bbg_xiv_wp_rest_api){
                     // use the WP REST API - requires the WP REST API plugin
-                    var images=bbg_xiv.images[divGallery.id]=new wp.api.collections.Posts();
+                    var images=bbg_xiv.images[divGallery.id]=new wp.api.collections.Media();
                     images.fetch({
                         data:{
                             search:query,
