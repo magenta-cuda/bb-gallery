@@ -66,6 +66,7 @@ class BBG_XIV_Gallery {
         $bbg_xiv_data[ 'bbg_xiv_carousel_interval' ]                 = get_option( 'bbg_xiv_carousel_interval', 2500 );
         $bbg_xiv_data[ 'bbg_xiv_disable_flexbox' ]                   = get_option( 'bbg_xiv_disable_flexbox', FALSE );
         $bbg_xiv_data[ 'bbg_xiv_wp_rest_api' ]                       = class_exists( 'WP_REST_Controller' );
+        $bbg_xiv_data[ 'Nothing Found' ]                             = __( 'Nothing Found', 'bb_gallery' );
 
         if ( ! empty( $attr['ids'] ) ) {
           // 'ids' is explicitly ordered, unless you specify otherwise.

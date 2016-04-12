@@ -964,7 +964,7 @@
                         bbg_xiv.renderGallery(divGallery,"Gallery");
                         heading.find("button.bbg_xiv-search_scroll_left").attr("disabled",search.index===0);
                     }else{
-                        jQuery(divGallery).empty().append('<h1 class="bbg_xiv-warning">Nothing Found</h1>');
+                        jQuery(divGallery).empty().append('<h1 class="bbg_xiv-warning">'+bbg_xiv["Nothing Found"]+'</h1>');
                     }
                     var liSelectView=jQuery(divGallery.parentNode).find("nav.bbg_xiv-gallery_navbar ul.nav li.bbg_xiv-select_view");
                     var liFirst=liSelectView.find("ul.bbg_xiv-view_menu li").removeClass("active").first().addClass("active");
@@ -975,10 +975,8 @@
                     // use the WP REST API - requires the WP REST API plugin
                     var images=bbg_xiv.images[divGallery.id]=new wp.api.collections.Media();
                     images.once("sync",function(){
-                        console.log("sync():this=",this);
-                        handleResponse(images.length);
+                        handleResponse(this.length);
                     },images);
-                    console.log("fetch():page=",page);
                     images.fetch({
                         data:{
                             search:query,
@@ -988,7 +986,6 @@
                         success:function(c,r,o){
                             count=images.state.totalObjects;
                             pages=images.state.totalPages;
-                            console.log("fetch(),success():images=",images);
                         },
                         error:function(c,r,o){
                             console.log("error:r=",r);
