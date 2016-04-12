@@ -974,6 +974,11 @@
                 if(window.bbg_xiv.bbg_xiv_wp_rest_api){
                     // use the WP REST API - requires the WP REST API plugin
                     var images=bbg_xiv.images[divGallery.id]=new wp.api.collections.Media();
+                    images.once("sync",function(){
+                        console.log("sync():this=",this);
+                        handleResponse(images.length);
+                    },images);
+                    console.log("fetch():page=",page);
                     images.fetch({
                         data:{
                             search:query,
@@ -983,7 +988,7 @@
                         success:function(c,r,o){
                             count=images.state.totalObjects;
                             pages=images.state.totalPages;
-                            handleResponse(images.length);
+                            console.log("fetch(),success():images=",images);
                         },
                         error:function(c,r,o){
                             console.log("error:r=",r);

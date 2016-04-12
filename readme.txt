@@ -3,7 +3,7 @@ Contributors: Magenta Cuda
 Tags: gallery, shortcode, lightbox, slideshow, responsive, plug-compatible, replacement
 Requires at least: 4.4
 Tested up to: 4.5
-Stable tag: 1.5.3.1.1
+Stable tag: 1.5.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,6 +44,10 @@ https://bbfgallery.wordpress.com/
 8. Search Results
 
 == Changelog ==
+
+= 1.5.5 =
+
+* use the WordPress REST API if available - using the WP REST API affects the search feature as the WP REST API does not search the description
 
 = 1.5.3.1.1 =
 
@@ -104,6 +108,10 @@ https://bbfgallery.wordpress.com/
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.5.5 =
+
+* use the WordPress REST API if available - using the WP REST API affects the search feature as the WP REST API does not search the description
 
 = 1.5.3.1.1 =
 
