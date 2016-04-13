@@ -134,9 +134,10 @@ class BBG_XIV_Gallery {
                 $attributes[ 'include'  ] = explode( ',', $atts[ 'include' ] );
                 $attributes[ 'per_page' ] = count( $attributes[ 'include' ] );
             } elseif ( !empty( $atts[ 'exclude' ] ) ) {
-                # TODO:
+                $attributes[ 'parent' ] = [ $id ];
+                $attributes[ 'exclude' ] = explode( ',', $atts[ 'exclude' ] );
             } else {
-                $attributes[ 'post_parent__in' ] = $id;
+                $attributes[ 'parent' ] = [ $id ];
             }
             $request = new WP_REST_Request( 'GET', '/wp/v2/media' );
             $request->set_query_params( $attributes );
