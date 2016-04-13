@@ -885,6 +885,7 @@
             var page;
             var count = Number.MAX_SAFE_INTEGER;
             var pages;
+            var searchLimit=parseInt(bbg_xiv.bbg_xiv_max_search_results);
             jQuery(this).click(function(e){
                 var searchBtn=jQuery(this);
                 searchBtn.prop("disabled",true);
@@ -936,14 +937,13 @@
                     }
                     if(r){
                         var images=bbg_xiv.constructImages(divGallery);
-                        var search_limit=parseInt(bbg_xiv.bbg_xiv_max_search_results);
                         var prevOffset=offset;
                         var prevQuery=query;
                         var heading=jQuery("div#"+divGallery.id+"-heading");
                         var search=bbg_xiv.search[divGallery.id];
                         if(offset+images.models.length<count){
                             // this search has more images
-                            offset+=search_limit;
+                            offset+=searchLimit;
                             input.val("").attr("placeholder",continueSearch);
                             heading.find("button.bbg_xiv-search_scroll_right").attr("disabled",false);
                         }else{
@@ -972,18 +972,21 @@
                     searchBtn.prop("disabled",false);
                 };
                 if(window.bbg_xiv.bbg_xiv_wp_rest_api){
-                    // use the WP REST API - requires the WP REST API plugin
+                    // uses the WP REST API - requires the WP REST API plugin
                     var images=bbg_xiv.images[divGallery.id]=new wp.api.collections.Media();
                     images.once("sync",function(){
-                        handleResponse(this.length);
+                        // the sync event will occur once only on the Backbone fetch of the collection
+                        handleResponse(!!this.length);
                     },images);
+                    // get the next part of the multi-part search result as specified by page
                     images.fetch({
                         data:{
                             search:query,
                             page:page++,
-                            per_page:parseInt(bbg_xiv.bbg_xiv_max_search_results)
+                            per_page:searchLimit
                         },
                         success:function(c,r,o){
+                            // get count and pages from the HTTP header fields: X-WP-Total, X-WP-TotalPages
                             count=images.state.totalObjects;
                             pages=images.state.totalPages;
                         },
@@ -998,7 +1001,7 @@
                     var postData={
                         action:"bbg_xiv_search_media",
                         query:query,
-                        limit:parseInt(bbg_xiv.bbg_xiv_max_search_results),
+                        limit:searchLimit,
                         offset:offset,
                         _wpnonce:form.find("input[name='_wpnonce']").val(),
                         _wp_http_referer:form.find("input[name='_wp_http_referer']").val()
