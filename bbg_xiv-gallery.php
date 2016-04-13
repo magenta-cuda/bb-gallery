@@ -421,7 +421,8 @@ EOD;
         } );
 
         add_action( 'init', function( ) {
-            self::$wp_rest_api_available = class_exists( 'WP_REST_Controller' );
+            self::$wp_rest_api_available        = class_exists( 'WP_REST_Controller' );
+            self::$use_wp_rest_api_if_available = get_option( 'bbg_xiv_wp_rest', TRUE );
         } );
 
         add_action( 'wp_enqueue_scripts', function( ) {
@@ -449,15 +450,12 @@ EOD
  
         add_action( 'admin_init', function( ) {
             add_settings_section( 'bbg_xiv_setting_section', 'BB Gallery', function( ) {
-                echo '<p>' . __( 'BB Gallery is a plug-compatible replacement for the built-in WordPress gallery shortcode.', 'bb_gallery' ) . '</p>';
+                echo '<p><a href="https://bbfgallery.wordpress.com/" target="_blank">BB Gallery</a>'
+                    . __( ' is a plug-compatible replacement for the built-in WordPress gallery shortcode.', 'bb_gallery' ) . '</p>';
             }, 'media' );
             add_settings_field( 'bbg_xiv_shortcode', __( 'Enable BB Gallery', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_shortcode" id="bbg_xiv_shortcode" type="checkbox" value="1" class="code" '
                     . checked( get_option( 'bbg_xiv_shortcode', 1 ), 1, FALSE ) . ' /> ' . __( 'This will replace the built-in WordPress gallery shortcode.', 'bb_gallery' );
-            }, 'media',	'bbg_xiv_setting_section' );
-            add_settings_field( 'bbg_xiv_table', __( 'Enable Table View', 'bb_gallery' ), function( ) {
-                echo '<input name="bbg_xiv_table" id="bbg_xiv_table" type="checkbox" value="1" class="code" '
-                    . checked( get_option( 'bbg_xiv_table' ), 1, FALSE ) . ' /> ' . __( 'The "Table View" is primarily intended for developers.', 'bb_gallery' );
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_flex_min_width', __( 'Gallery Minimum Image Width', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_flex_min_width" id="bbg_xiv_flex_min_width" type="number" value="' . get_option( 'bbg_xiv_flex_min_width', 128 )
@@ -487,14 +485,24 @@ EOD
                     . get_option( 'bbg_xiv_flex_min_width_for_dense_view', 1280 )
                     . '" class="small-text" /> ' . __( 'The minimum browser viewport width required to show the "Dense View".', 'bb_gallery' );
             }, 'media',	'bbg_xiv_setting_section' );
+            add_settings_field( 'bbg_xiv_wp_rest', __( 'Use the WP REST API', 'bb_gallery' ), function( ) {
+                echo '<input name="bbg_xiv_wp_rest" id="bbg_xiv_wp_rest" type="checkbox" value="1" class="code" '
+                    . checked( get_option( 'bbg_xiv_wp_rest', TRUE ), 1, FALSE ) . ' /> ' . __( 'Use the WordPress REST API if available, i.e. the ', 'bb_gallery' )
+                    . '<a href="https://wordpress.org/plugins/rest-api/" target="blank">WordPress REST API plugin</a>' . __( ' is installed.', 'bb_gallery' );
+            }, 'media',	'bbg_xiv_setting_section' );
+            add_settings_field( 'bbg_xiv_table', __( 'Enable Table View', 'bb_gallery' ), function( ) {
+                echo '<input name="bbg_xiv_table" id="bbg_xiv_table" type="checkbox" value="1" class="code" '
+                    . checked( get_option( 'bbg_xiv_table' ), 1, FALSE ) . ' /> ' . __( 'The "Table View" is primarily intended for developers.', 'bb_gallery' );
+            }, 'media',	'bbg_xiv_setting_section' );
             register_setting( 'media', 'bbg_xiv_shortcode' );
-            register_setting( 'media', 'bbg_xiv_table' );
             register_setting( 'media', 'bbg_xiv_flex_min_width' );
             register_setting( 'media', 'bbg_xiv_flex_min_width_for_caption' );
             register_setting( 'media', 'bbg_xiv_carousel_interval' );
             register_setting( 'media', 'bbg_xiv_max_search_results' );
             register_setting( 'media', 'bbg_xiv_flex_number_of_dense_view_columns' );
             register_setting( 'media', 'bbg_xiv_flex_min_width_for_dense_view' );
+            register_setting( 'media', 'bbg_xiv_wp_rest' );
+            register_setting( 'media', 'bbg_xiv_table' );
  
             add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), function( $links ) {
                 return array_merge( [ '<a href="options-media.php">Settings</a>'], $links );
