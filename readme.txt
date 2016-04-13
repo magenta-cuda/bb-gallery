@@ -47,7 +47,7 @@ https://bbfgallery.wordpress.com/
 
 = 1.5.5 =
 
-* use the WordPress REST API if available - using the WP REST API affects the search feature as the WP REST API does not search the description
+* use the WordPress REST API if available
 
 = 1.5.3.1.1 =
 
@@ -111,7 +111,7 @@ https://bbfgallery.wordpress.com/
 
 = 1.5.5 =
 
-* use the WordPress REST API if available - using the WP REST API affects the search feature as the WP REST API does not search the description
+* use the WordPress REST API if available
 
 = 1.5.3.1.1 =
 

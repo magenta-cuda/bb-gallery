@@ -35,6 +35,8 @@ License: GPL2
 class BBG_XIV_Gallery {
 
     public static $nonce_action = 'bbg_xiv-search';
+    private static $wp_rest_api_available = FALSE;
+    private static $use_wp_rest_api_if_available = TRUE;
   
     # excerpted from the WordPress function gallery_shortcode() of .../wp-includes/media.php
 
@@ -43,7 +45,7 @@ class BBG_XIV_Gallery {
             return gallery_shortcode( $attr );
         }
         
-        if ( class_exists( 'WP_REST_Controller' ) ) {
+        if ( self::$wp_rest_api_available && self::$use_wp_rest_api_if_available ) {
             require_once(  dirname( __FILE__ ) . '/bbg_xiv-gallery_templates_wp_rest.php' );
         } else {
             require_once(  dirname( __FILE__ ) . '/bbg_xiv-gallery_templates.php' );
@@ -65,7 +67,7 @@ class BBG_XIV_Gallery {
         $bbg_xiv_data[ 'bbg_xiv_flex_number_of_dense_view_columns' ] = get_option( 'bbg_xiv_flex_number_of_dense_view_columns', 10 );
         $bbg_xiv_data[ 'bbg_xiv_carousel_interval' ]                 = get_option( 'bbg_xiv_carousel_interval', 2500 );
         $bbg_xiv_data[ 'bbg_xiv_disable_flexbox' ]                   = get_option( 'bbg_xiv_disable_flexbox', FALSE );
-        $bbg_xiv_data[ 'bbg_xiv_wp_rest_api' ]                       = class_exists( 'WP_REST_Controller' );
+        $bbg_xiv_data[ 'bbg_xiv_wp_rest_api' ]                       = self::$wp_rest_api_available && self::$use_wp_rest_api_if_available;
         $bbg_xiv_data[ 'Nothing Found' ]                             = __( 'Nothing Found', 'bb_gallery' );
 
         if ( ! empty( $attr['ids'] ) ) {
@@ -111,7 +113,7 @@ class BBG_XIV_Gallery {
 
         $selector = "gallery-{$instance}";
 
-        if ( class_exists( 'WP_REST_Controller' ) && !is_feed( ) ) {
+        if ( self::$wp_rest_api_available && self::$use_wp_rest_api_if_available && !is_feed( ) ) {
             // Initialize the Backbone.js collection using data from the WP REST API for the WP REST API model
             $attributes = [
                 'author'         => [ ],
@@ -134,10 +136,12 @@ class BBG_XIV_Gallery {
                 $attributes[ 'include'  ] = explode( ',', $atts[ 'include' ] );
                 $attributes[ 'per_page' ] = count( $attributes[ 'include' ] );
             } elseif ( !empty( $atts[ 'exclude' ] ) ) {
-                $attributes[ 'parent' ] = [ $id ];
-                $attributes[ 'exclude' ] = explode( ',', $atts[ 'exclude' ] );
+                $attributes[ 'parent'   ] = [ $id ];
+                $attributes[ 'exclude'  ] = explode( ',', $atts[ 'exclude' ] );
+                $attributes[ 'per_page' ] = 1024;
             } else {
-                $attributes[ 'parent' ] = [ $id ];
+                $attributes[ 'parent'   ] = [ $id ];
+                $attributes[ 'per_page' ] = 1024;
             }
             $request = new WP_REST_Request( 'GET', '/wp/v2/media' );
             $request->set_query_params( $attributes );
@@ -402,7 +406,6 @@ EOD;
     }
 
     public static function init( ) {
-
         add_action( 'plugins_loaded', function( ) {
             if ( !load_plugin_textdomain( 'bb_gallery', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' ) ) {
                 #error_log( 'load_plugin_textdomain() failed' );
@@ -415,6 +418,10 @@ EOD;
                 remove_shortcode( 'gallery' );
                 add_shortcode( 'gallery', __CLASS__ . '::bb_gallery_shortcode' );
             }
+        } );
+
+        add_action( 'init', function( ) {
+            self::$wp_rest_api_available = class_exists( 'WP_REST_Controller' );
         } );
 
         add_action( 'wp_enqueue_scripts', function( ) {
@@ -434,7 +441,7 @@ EOD
             wp_enqueue_script( 'jquery-mobile',   plugins_url( '/js/jquery-mobile.js' ,   __FILE__ ), [ 'jquery' ] );
             wp_enqueue_script( 'bootstrap',       plugins_url( '/js/bootstrap.js' ,       __FILE__ ), [ 'jquery' ],    FALSE, TRUE );
             $deps = [ 'bootstrap' ];
-            if ( class_exists( 'WP_REST_Controller' ) ) {
+            if ( self::$wp_rest_api_available && self::$use_wp_rest_api_if_available ) {
                 $deps[ ] = 'wp-api';
             }
             wp_enqueue_script( 'bbg_xiv-gallery', plugins_url( '/js/bbg_xiv-gallery.js' , __FILE__ ), $deps, FALSE, TRUE );
