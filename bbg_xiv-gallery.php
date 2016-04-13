@@ -4,7 +4,7 @@
 Plugin Name: BB Gallery
 Plugin URI: https://bbfgallery.wordpress.com/
 Description: Gallery using Backbone.js, Bootstrap 3 and CSS3 Flexbox
-Version: 1.5.3.1.1
+Version: 1.5.5
 Author: Magenta Cuda
 Author URI: https://profiles.wordpress.org/magenta-cuda/
 License: GPL2
@@ -138,7 +138,6 @@ class BBG_XIV_Gallery {
             } else {
                 $attributes[ 'post_parent__in' ] = $id;
             }
-            error_log( 'BBG_XIV_Gallery::bb_gallery_shortcode():$attributes=' . print_r( $attributes, true ) );
             $request = new WP_REST_Request( 'GET', '/wp/v2/media' );
             $request->set_query_params( $attributes );
             # TODO: $request may need to set some of the params below
@@ -151,7 +150,6 @@ class BBG_XIV_Gallery {
             #$request->set_default_params( $defaults );
             $controller = new WP_REST_Attachments_Controller( "attachment" );
             $attachments = $controller->get_items( $request )->data;
-            error_log( 'BBG_XIV_Gallery::bb_gallery_shortcode():$attachments=' . print_r( $attachments, true ) );
             $bbg_xiv_data[ "$selector-data" ] = json_encode( $attachments );
         } else {
             // initialize the Backbone.js collection using data for my proprietary model 

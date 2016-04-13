@@ -63,7 +63,7 @@
         </figure>
         <a href="{{{ data.link }}}" target="_blank">
             <!-- overlay for full viewport button -->
-            <div class="bbg_xiv-dense_full_btn" title="{{{ data.post_excerpt }}}">
+            <div class="bbg_xiv-dense_full_btn" title="{{{ data.caption }}}">
                 <button class="bbg_xiv-dense_full_btn bbg_xiv-flex_from_image btn">
                     <span class="glyphicon glyphicon-fullscreen">
                 </button>
@@ -135,7 +135,7 @@
       <img src="<# print(bbg_xiv.getImageUrl(data).src); #>">
     </picture>
   </a>
-  <figcaption>{{{ data.post_title }}}<br>{{{ data.post_excerpt }}}</figcaption>
+  <figcaption>{{{ data.title.rendered }}}<br>{{{ data.caption }}}</figcaption>
 </figure>
 </script>
 
@@ -169,7 +169,7 @@
 <!-- Tabs Tab Template -->
 <script type="text/html" id="bbg_xiv-template_tabs_tab">
 <li<# if ( data.index === 0 ) { #> class=" active"<# } #>>
-  <a href="#bbg_xiv-tab_pane{{{ data.index }}}" data-toggle="tab">{{{ data.post_title }}}</a>
+  <a href="#bbg_xiv-tab_pane{{{ data.index }}}" data-toggle="tab">{{{ data.title.rendered }}}</a>
 </li>
 </script>
 <!-- Tabs Item Template -->
@@ -183,7 +183,7 @@
       <img class="bbg_xiv-tabs_img img-rounded" src="<# print(bbg_xiv.getImageUrl(data).src); #>">
     </picture>
   </a>
-  <figcaption><# if ( data.post_content ) { #>{{{ data.post_content }}}<# } else { #>{{{ data.post_excerpt }}}<# } #></figcaption>
+  <figcaption><# if ( data.post_content ) { #>{{{ data.post_content }}}<# } else { #>{{{ data.caption }}}<# } #></figcaption>
 </figure>
 </script>
 
@@ -229,10 +229,10 @@
 <script type="text/html" id="bbg_xiv-template_dense_title">
 <li id="bbg_xiv-dense_title_{{{ data.index }}}">
   <a href="{{{ data.link }}}" target="_blank">
-    <span class="bbg_xiv-dense_li_title" title="{{{ data.post_excerpt }}}"<# if ( data.mode !== "title" ) { #> style="display:none;"<# } #>>
-      {{{ data.post_title }}}</span>
-    <span class="bbg_xiv-dense_li_caption" title="{{{ data.post_title }}}"<# if ( data.mode !== "caption" ) { #> style="display:none;"<# } #>>
-      <# if ( data.post_excerpt ) { #>{{{ data.post_excerpt }}}</span><# } else { #>.....<# } #>
+    <span class="bbg_xiv-dense_li_title" title="{{{ data.caption }}}"<# if ( data.mode !== "title" ) { #> style="display:none;"<# } #>>
+      {{{ data.title.rendered }}}</span>
+    <span class="bbg_xiv-dense_li_caption" title="{{{ data.title.rendered }}}"<# if ( data.mode !== "caption" ) { #> style="display:none;"<# } #>>
+      <# if ( data.caption ) { #>{{{ data.caption }}}</span><# } else { #>.....<# } #>
   </a>
   <button class="bbg_xiv-dense_full_btn bbg_xiv-dense_from_title btn">
     <span class="glyphicon glyphicon-fullscreen">
@@ -241,7 +241,7 @@
 </script>
 <!-- Dense Image Template -->
 <script type="text/html" id="bbg_xiv-template_dense_image">
-<div id="bbg_xiv-dense_image_{{{ data.index }}}" class="bbg_xiv-dense_flex_item" title="{{{ data.post_title }}}">
+<div id="bbg_xiv-dense_image_{{{ data.index }}}" class="bbg_xiv-dense_flex_item" title="{{{ data.title.rendered }}}">
   <picture>
     <source media="(min-width:1200px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).src); #>">
     <source media="(min-width:992px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).medium); #>">
