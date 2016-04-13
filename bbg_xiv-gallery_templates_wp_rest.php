@@ -21,7 +21,7 @@
             <figure class="img-rounded bbg_xiv-gallery_item">
                 <figcaption>{{{ data.title.rendered }}}</figcaption>
                 <a href="{{{ data.link }}}" target="_blank">
-                    <img src="<# print(bbg_xiv.getImageUrl(data).src); #>" alt="{{{ data.post_title }}}" title="{{{ data.post_excerpt }}}">
+                    <img src="<# print(bbg_xiv.getImageUrl(data).src); #>" alt="{{{ data.title.rendered }}}" title="{{{ data.caption }}}">
                 </a>
             </figure>
         </div>
@@ -57,7 +57,7 @@
                     <source media="(min-width:1200px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).src); #>">
                     <source media="(min-width:992px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).medium); #>">
                     <source media="(max-width:991px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).small); #>">
-                    <img src="<# print(bbg_xiv.getThumbnailUrl(data).src); #>" alt="{{{ data.post_title }}}" title="{{{ data.post_excerpt }}}" data-bbg_xiv-image-id="{{{ data.ID }}}">
+                    <img src="<# print(bbg_xiv.getThumbnailUrl(data).src); #>" alt="{{{ data.title.rendered }}}" title="{{{ data.caption }}}" data-bbg_xiv-image-id="{{{ data.ID }}}">
                 </picture>
             </a>
         </figure>
@@ -246,7 +246,7 @@
     <source media="(min-width:1200px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).src); #>">
     <source media="(min-width:992px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).medium); #>">
     <source media="(max-width:991px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).small); #>">
-    <img class="img-rounded" src="<# print(bbg_xiv.getThumbnailUrl(data).src); #>" alt="{{{ data.post_title }}}" title="{{{ data.post_excerpt }}}" data-bbg_xiv-image-id="{{{ data.ID }}}">
+    <img class="img-rounded" src="<# print(bbg_xiv.getThumbnailUrl(data).src); #>" alt="{{{ data.title.rendered }}}" title="{{{ data.caption }}}" data-bbg_xiv-image-id="{{{ data.ID }}}">
   </picture>
   <a href="{{{ data.link }}}" target="_blank">
     <div class="bbg_xiv-dense_full_btn">
