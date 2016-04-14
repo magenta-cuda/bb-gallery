@@ -42,6 +42,7 @@ https://bbfgallery.wordpress.com/
 6. User Options Pane
 7. Mobile Portrait View
 8. Search Results
+9. Settings
 
 == Changelog ==
 
