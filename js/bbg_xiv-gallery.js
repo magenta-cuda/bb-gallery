@@ -460,6 +460,7 @@
                             i=parseInt(i)-1;
                             if(i>=0&&i<images.length){
                                 carousel.carousel(i);
+                                pause(input);
                             }
                         }
                     }
@@ -885,8 +886,8 @@
             var page;
             var count = Number.MAX_SAFE_INTEGER;
             var pages;
-            var searchLimit=parseInt(bbg_xiv.bbg_xiv_max_search_results);
             jQuery(this).click(function(e){
+                var searchLimit=parseInt(bbg_xiv.bbg_xiv_max_search_results);
                 var searchBtn=jQuery(this);
                 searchBtn.prop("disabled",true);
                 var startSearch="search images on site";
