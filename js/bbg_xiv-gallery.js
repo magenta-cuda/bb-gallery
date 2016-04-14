@@ -987,7 +987,15 @@
                             per_page:searchLimit
                         },
                         success:function(c,r,o){
-                            // get count and pages from the HTTP header fields: X-WP-Total, X-WP-TotalPages
+                            // set the page variable from the page query parameter of the next page url in the HTTP header field "Link"
+                            var link=o.xhr.getResponseHeader("link");
+                            if(link){
+                                var matches=link.match(/(\?|&)page=(\d+)(&[^>]+>;|>;)\s+rel="next"/);
+                                if(matches.length===4&&jQuery.isNumeric(matches[2])){
+                                    page=parseInt(matches[2]);
+                                }
+                            }
+                            // get count and pages from the HTTP header fields: "X-WP-Total", "X-WP-TotalPages" via wp-api.js
                             count=images.state.totalObjects;
                             pages=images.state.totalPages;
                         },
