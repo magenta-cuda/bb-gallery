@@ -47,7 +47,7 @@ https://bbfgallery.wordpress.com/
 
 = 1.5.5 =
 
-* use the WordPress REST API if available
+* use the WordPress REST API if available - no new features just a more modern implementation
 
 = 1.5.3.1.1 =
 
@@ -111,7 +111,7 @@ https://bbfgallery.wordpress.com/
 
 = 1.5.5 =
 
-* use the WordPress REST API if available
+* use the WordPress REST API if available - no new features just a more modern implementation
 
 = 1.5.3.1.1 =
 
