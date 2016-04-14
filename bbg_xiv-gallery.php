@@ -101,7 +101,7 @@ class BBG_XIV_Gallery {
 
         $atts = shortcode_atts( array(
           'order'      => 'ASC',
-          'orderby'    => 'menu_order ID',
+          'orderby'    => 'menu_order',
           'id'         => $post ? $post->ID : 0,
           'size'       => 'thumbnail',
           'include'    => '',
@@ -114,14 +114,26 @@ class BBG_XIV_Gallery {
         $selector = "gallery-{$instance}";
 
         if ( self::$wp_rest_api_available && self::$use_wp_rest_api_if_available && !is_feed( ) ) {
-            // Initialize the Backbone.js collection using data from the WP REST API for the WP REST API model
+            # map gallery shortcode parameters to WP REST API parameters
+            $orderby_map = [
+                'menu_order' => 'menu_order',
+                'title'      => 'title',
+                'post_date'  => 'date',
+                'rand'       => 'rand',
+                'ID'         => 'id'
+            ];
+            $order_map = [
+                'ASC'  => 'asc',
+                'DESC' => 'desc'
+            ];
+            # Initialize the Backbone.js collection using data from the WP REST API for the WP REST API model
             $attributes = [
                 'author'         => [ ],
                 'author_exclude' => [ ],
                 'menu_order'     => '', 
                 'offset'         => '',
-                'order'          => 'desc',
-                'orderby'        => 'date',
+                'order'          => $order_map[ $atts[ 'order' ] ],
+                'orderby'        => $orderby_map[ $atts[ 'orderby' ] ],
                 'page'           => 1,
                 'include'        => [ ],
                 'exclude'        => [ ],

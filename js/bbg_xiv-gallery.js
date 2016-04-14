@@ -451,6 +451,7 @@
                 }
                 prevChangeTime=Date.now();
                 var carousel=jQuery(this).parents("div.carousel");
+                pause(input);
                 // Since change events will occur much too rapidly wait until they quiesce
                 window.setTimeout(function(){
                     if(Date.now()-prevChangeTime>=500){
@@ -458,12 +459,11 @@
                         if(jQuery.isNumeric(i)){
                             i=parseInt(i)-1;
                             if(i>=0&&i<images.length){
-                                pause(input);
                                 carousel.carousel(i);
                             }
                         }
                     }
-                },1000);
+                },500);
             }).keypress(function(e){
                 if(e.which===13){
                     jQuery(this).blur();
@@ -475,7 +475,7 @@
                 pause(this);
             });
             // update jQuery Mobile slider when Bootstrap carousel changes slide
-            jqGallery.find("div.carousel").on("slid.bs.carousel",function(e){
+            jqGallery.find("div.carousel").on("slide.bs.carousel slid.bs.carousel",function(e){
                 slideChange=true;
                 // update input element and trigger change event to force update of slider position
                 jQuery(this).find("div.bbg_xiv-jquery_mobile input[type='number']").val(parseInt(e.relatedTarget.dataset.index,10)+1).change();
