@@ -884,8 +884,8 @@
             var query;
             var offset;
             var page;
-            var count = Number.MAX_SAFE_INTEGER;
-            var pages;
+            var count=Number.MAX_SAFE_INTEGER;
+            var pages=Number.MAX_SAFE_INTEGER;
             jQuery(this).click(function(e){
                 var searchLimit=parseInt(bbg_xiv.bbg_xiv_max_search_results);
                 var searchBtn=jQuery(this);
@@ -942,7 +942,7 @@
                         var prevQuery=query;
                         var heading=jQuery("div#"+divGallery.id+"-heading");
                         var search=bbg_xiv.search[divGallery.id];
-                        if(offset+images.models.length<count){
+                        if((window.bbg_xiv.bbg_xiv_wp_rest_api&&page<=pages)||(!window.bbg_xiv.bbg_xiv_wp_rest_api&&offset+images.models.length<count)){
                             // this search has more images
                             offset+=searchLimit;
                             input.val("").attr("placeholder",continueSearch);
@@ -957,7 +957,11 @@
                         }
                         // search results uses a heading to show status
                         heading.find("span.bbg_xiv-search_heading_first").text("Search Results for \""+prevQuery+"\"");
-                        var title="Images "+(prevOffset+1)+" to "+(prevOffset+images.models.length)+" of "+(count!==Number.MAX_SAFE_INTEGER?count:"?");
+                        if(window.bbg_xiv.bbg_xiv_wp_rest_api){
+                            var title="Page "+(page-1)+" of "+(pages!==Number.MAX_SAFE_INTEGER?pages:"?");
+                        }else{
+                            var title="Images "+(prevOffset+1)+" to "+(prevOffset+images.models.length)+" of "+(count!==Number.MAX_SAFE_INTEGER?count:"?");
+                        }
                         heading.find("span.bbg_xiv-search_heading_second").text(title);
                         // maintain a history of all images returned by this search
                         search.history.push({images:images,title:title});
@@ -991,9 +995,13 @@
                             var link=o.xhr.getResponseHeader("link");
                             if(link){
                                 var matches=link.match(/(\?|&)page=(\d+)(&[^>]+>;|>;)\s+rel="next"/);
-                                if(matches.length===4&&jQuery.isNumeric(matches[2])){
+                                if(matches&&matches.length===4&&jQuery.isNumeric(matches[2])){
                                     page=parseInt(matches[2]);
+                                }else{
+                                    // no next page means search is complete
                                 }
+                            }else{
+                                // no HTTP "Link" header field means only one page so search is complete
                             }
                             // get count and pages from the HTTP header fields: "X-WP-Total", "X-WP-TotalPages" via wp-api.js
                             count=images.state.totalObjects;
