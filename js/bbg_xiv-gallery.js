@@ -809,6 +809,10 @@
         }else{
             bbg_xiv.interface=bbg_xiv.bbg_xiv_interface;
         }
+        if(bbg_xiv.bbg_xiv_wp_rest_api){
+            // WP REST API requires that per_page be between 1 and 100 inclusive
+            bbg_xiv.wpRestApiMaxPerPage=100;
+        }
     };
     
     bbg_xiv.getOptionsFromCookie();
@@ -888,6 +892,9 @@
             var pages=Number.MAX_SAFE_INTEGER;
             jQuery(this).click(function(e){
                 var searchLimit=parseInt(bbg_xiv.bbg_xiv_max_search_results);
+                if(bbg_xiv.bbg_xiv_wp_rest_api&&searchLimit>bbg_xiv.wpRestApiMaxPerPage){
+                    searchLimit=bbg_xiv.wpRestApiMaxPerPage;
+                }
                 var searchBtn=jQuery(this);
                 searchBtn.prop("disabled",true);
                 var startSearch="search images on site";
@@ -1052,8 +1059,14 @@
         divConfigure.find("input[type='number']#bbg_xiv-max_search_results").change(function(e){
             // max seems to be broken so fix with javascript
             var jqThis=jQuery(this);
-            if(parseInt(jqThis.val())>parseInt(jqThis.attr("max"))){
-                jqThis.val(jqThis.attr("max"));
+            var max=parseInt(jqThis.val());
+            var attrMax=parseInt(jqThis.attr("max"));
+            if(bbg_xiv.bbg_xiv_wp_rest_api&&attrMax>bbg_xiv.wpRestApiMaxPerPage){
+                // WP REST API requires that per_page be between 1 and 100 inclusive
+                attrMax=bbg_xiv.wpRestApiMaxPerPage;
+            }
+            if(max>attrMax){
+                jqThis.val(attrMax);
             }
         });
         divConfigure.find("button.bbg_xiv-configure_close,button.bbg_xiv-cancel_options").click(function(e){
