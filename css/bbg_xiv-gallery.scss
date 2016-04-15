@@ -628,6 +628,10 @@ div.bbg_xiv-bootstrap{
       a.carousel-control{
         width:50%;
         border-bottom:0;
+        color:#fff;
+        background-image:none;
+        background-color:transparent;
+        opacity:0.5;
         
         span.glyphicon{
           position:absolute;
@@ -655,8 +659,6 @@ div.bbg_xiv-bootstrap{
         &.left,&.right{
           top:25%;
           bottom:50%;
-          background-image:none;
-          background-color:transparent;         
         }
 
         &.bbg_xiv-carousel_first,&.bbg_xiv-carousel_last{
@@ -674,14 +676,14 @@ div.bbg_xiv-bootstrap{
           bottom:75%;
         }
 
-        &.bbg_xiv-carousel_first,&.bbg_xiv-carousel_play{
+        &.bbg_xiv-carousel_left,&.bbg_xiv-carousel_first,&.bbg_xiv-carousel_play{
           span.glyphicon{
             left:50%;
             margin-left:-10px;
           }
         }
 
-        &.bbg_xiv-carousel_last,&.bbg_xiv-carousel_close{
+        &.bbg_xiv-carousel_right,&.bbg_xiv-carousel_last,&.bbg_xiv-carousel_close{
           right:0;
           left:auto;
           span.glyphicon{
