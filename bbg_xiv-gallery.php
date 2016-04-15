@@ -120,7 +120,8 @@ class BBG_XIV_Gallery {
                 'title'      => 'title',
                 'post_date'  => 'date',
                 'rand'       => 'rand',
-                'ID'         => 'id'
+                'ID'         => 'id',
+                'post__in'   => 'include'
             ];
             $order_map = [
                 'ASC'  => 'asc',
@@ -484,8 +485,9 @@ EOD
                     . '" class="small-text" /> ' . __( 'The time delay between two slides.', 'bb_gallery' );
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_max_search_results', __( 'Maximum Number of Images Returned by Search', 'bb_gallery' ), function( ) {
-                echo '<input name="bbg_xiv_max_search_results" id="bbg_xiv_max_search_results" type="number" value="' . get_option( 'bbg_xiv_max_search_results', 128 )
-                    . '" class="small-text" /> ' . __( 'The browser user can lower this limit.', 'bb_gallery' );
+                echo '<input name="bbg_xiv_max_search_results" id="bbg_xiv_max_search_results" type="number" value="' . get_option( 'bbg_xiv_max_search_results', 100 )
+                    . '" class="small-text" min="1" ' . ( self::$use_wp_rest_api_if_available ? 'max="100" ' : '' ) . '/> '
+                    . __( 'The browser user can lower this limit.', 'bb_gallery' );
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_flex_number_of_dense_view_columns', __( 'Columns in Dense View', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_flex_number_of_dense_view_columns" id="bbg_xiv_flex_number_of_dense_view_columns" type="number" value="'
