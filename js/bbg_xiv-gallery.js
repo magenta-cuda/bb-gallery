@@ -291,12 +291,16 @@
             model.attributes.bbg_xiv_medium_url=urls[2];
             model.attributes.bbg_xiv_large_url=urls[3];
         });
+        images.constructed=true;
         return images;
     };
     
     bbg_xiv.renderGallery=function(gallery,view){
         var jqGallery=jQuery(gallery);
-        var images=bbg_xiv.constructImages(gallery);
+        var images=bbg_xiv.images[gallery.id];
+        if(!images||!images.constructed){
+            images=bbg_xiv.constructImages(gallery);
+        }
         function constructOverlay(){
             // gallery or dense view shows a full browser viewport view of an image when its fullscreen glyph is clicked
             var outer=jqGallery.find("div.bbg_xiv-dense_outer");
