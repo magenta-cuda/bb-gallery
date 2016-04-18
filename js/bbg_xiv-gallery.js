@@ -882,9 +882,6 @@
                 var gallery=jqThis.parents("div.bbg_xiv-gallery");
                 bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],view);
             }else{
-                var title=this.textContent;
-                var specifiers=this.dataset.specifiers;
-                var divGallery=jqThis.parents("div.bbg_xiv-gallery").find("div.bbg_xiv-gallery_envelope")[0];
                 var jqueryLoading=true;
                 try{
                     // There is a very rare failure of the following
@@ -896,6 +893,17 @@
                     jQuery.mobile.loading._widget=undefined;
                     jqueryLoading=false;
                 }
+                var title=this.textContent;
+                var specifiers=this.dataset.specifiers;
+                // extract individual gallery parameters
+                var matches=specifiers.match(/(\w+)="([^"]+)"/g);
+                var parameters={};
+                matches.forEach(function(match){
+                    var specifier=match.match(/(\w+)="([^"]+)"/);
+                    parameters[specifier[1]]=specifier[2];
+                });
+                var divGallery=jqThis.parents("div.bbg_xiv-gallery").find("div.bbg_xiv-gallery_envelope")[0];
+                var form=jqThis.parents("form[role='search']");
                 function handleResponse(r){
                     if(jqueryLoading){
                         jQuery.mobile.loading("hide");
@@ -911,6 +919,20 @@
                     // TODO:
                 }else{
                     // old proprietary non REST way to load the Backbone image collection - does not require the WP REST API plugin
+                    var postData={
+                        action:"bbg_xiv_search_media",
+                        _wpnonce:form.find("input[name='_wpnonce']").val(),
+                        _wp_http_referer:form.find("input[name='_wp_http_referer']").val()
+                    };
+                    // add individual gallery parameters to post data
+                    for(var parameter in parameters){
+                        postData[parameter]=parameters[parameter];
+                    }
+                    jQuery.post(bbg_xiv.ajaxurl,postData,function(r){
+                        bbg_xiv.images[divGallery.id]=null;
+                        bbg_xiv[divGallery.id+"-data"]=r;
+                        handleResponse(!!r);
+                    });
                     // TODO:
                 }
                 
