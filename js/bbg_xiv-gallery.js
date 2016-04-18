@@ -929,11 +929,13 @@
                         postData[parameter]=parameters[parameter];
                     }
                     jQuery.post(bbg_xiv.ajaxurl,postData,function(r){
+                        if(r==="-1"){
+                            r="";
+                        }
                         bbg_xiv.images[divGallery.id]=null;
                         bbg_xiv[divGallery.id+"-data"]=r;
                         handleResponse(!!r);
                     });
-                    // TODO:
                 }
                 
             }

@@ -565,21 +565,26 @@ EOD
             add_action( 'wp_ajax_nopriv_bbg_xiv_search_media', function( ) {
                 global $wpdb;
                 check_ajax_referer( BBG_XIV_Gallery::$nonce_action );
-                $pattern = '%' . $_POST[ 'query' ] . '%';
-                $offset = (integer) $_POST[ 'offset' ];
-                $count = (integer) $_POST[ 'limit' ];
-                $results = $wpdb->get_col( $wpdb->prepare( <<<EOD
+                $attachments = [ ];
+                if ( array_key_exists( 'query', $_POST ) ) {
+                    $pattern = '%' . $_POST[ 'query' ] . '%';
+                    $offset = (integer) $_POST[ 'offset' ];
+                    $count = (integer) $_POST[ 'limit' ];
+                    $results = $wpdb->get_col( $wpdb->prepare( <<<EOD
 SELECT ID FROM $wpdb->posts
     WHERE post_status = 'inherit' AND post_type = 'attachment' AND post_mime_type LIKE 'image/%%' AND ( post_title LIKE %s OR post_excerpt LIKE %s OR post_content LIKE %s )
     LIMIT %d, %d
 EOD
-                    , $pattern, $pattern, $pattern, $offset, $count ) );
-                if ( !$results ) {
+                      , $pattern, $pattern, $pattern, $offset, $count ) );
+                    if ( !$results ) {
+                        wp_die( );
+                    }
+                    foreach ( get_posts( [ 'include' => implode( ',', $results ), 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image' ] ) as $key => $val ) {
+                        $attachments[ $val->ID ] = $val;
+                    }
+                } else {
+                    // TODO:
                     wp_die( );
-                }
-                $attachments = [ ];
-                foreach ( get_posts( [ 'include' => implode( ',', $results ), 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image' ] ) as $key => $val ) {
-                    $attachments[ $val->ID ] = $val;
                 }
                 BBG_XIV_Gallery::bbg_xiv_do_attachments( $attachments );
                 echo json_encode( array_values( $attachments ) );
