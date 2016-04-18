@@ -10,8 +10,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Responsive plug-compatible replacement for the built-in WordPress gallery shortcode.
 
 == Description ==
-This is a plug-compatible replacement for the built-in WordPress gallery shortcode.
-It is implemented using a Backbone.js Model-View-Presenter (MVP) styled by a Twitter Bootstrap 3 stylesheet.
+This is a responsive, mobile-friendly plug-compatible replacement for the built-in WordPress gallery shortcode.
+It is implemented using a [Backbone.js](http://backbonejs.org/) Model-View-Presenter (MVP) populated via the [WordPress REST API](http://v2.wp-api.org/).
+It is styled by a [Twitter Bootstrap 3](http://getbootstrap.com/) stylesheet and has touch optimizations from [jQuery Mobile](https://jquerymobile.com/).
 Using a MVP allows you to switch instantaneously (i.e. without doing a HTTP request) between multiple views of a gallery.
 The default implementation supports a gallery view, carousel (slideshow) view, tabs view and a dense view of the gallery.
 The view is styled by a Twitter Bootstrap 3 stylesheet so it is automatically responsive.
