@@ -872,13 +872,49 @@
         // wireup the event handlers
         // wireup the handler for view selection
         jQuery("nav.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.bbg_xiv-view_menu li > a").click(function(e){
+            var view=this.dataset.view;
             var jqThis=jQuery(this);
-            var li=jqThis.parent();
-            li.parent().find("li").removeClass("active");
-            li.addClass("active");
-            li.parents("li.bbg_xiv-select_view").find("a.bbg_xiv-selected_view span").text(this.textContent);
-            var gallery=jqThis.parents("div.bbg_xiv-gallery");
-            bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],this.textContent.trim());
+            if(["Gallery","Carousel","Tabs","Dense"].indexOf(view)>=0){
+                var li=jqThis.parent();
+                li.parent().find("li").removeClass("active");
+                li.addClass("active");
+                li.parents("li.bbg_xiv-select_view").find("a.bbg_xiv-selected_view span").text(this.textContent);
+                var gallery=jqThis.parents("div.bbg_xiv-gallery");
+                bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],view);
+            }else{
+                var title=this.textContent;
+                var specifiers=this.dataset.specifiers;
+                var divGallery=jqThis.parents("div.bbg_xiv-gallery").find("div.bbg_xiv-gallery_envelope")[0];
+                var jqueryLoading=true;
+                try{
+                    // There is a very rare failure of the following
+                    jQuery(divGallery).empty().append(jQuery.mobile.loading("show",{text:"Loading... please wait.",textVisible:true,textonly:false}));
+                }catch(e){
+                    console.log(e);
+                    //console.log("jQuery.mobile.loading._widget=",jQuery.mobile.loading._widget);
+                    jQuery(divGallery).empty().append('<h1 class="bbg_xiv-info">Loading... please wait.</h1>');
+                    jQuery.mobile.loading._widget=undefined;
+                    jqueryLoading=false;
+                }
+                function handleResponse(r){
+                    if(jqueryLoading){
+                        jQuery.mobile.loading("hide");
+                        jQuery(divGallery).children().detach();
+                    }
+                    if(r){
+                    }else{
+                        jQuery(divGallery).empty().append('<h1 class="bbg_xiv-warning">'+bbg_xiv["Nothing Found"]+'</h1>');
+                    }
+                }
+                if(window.bbg_xiv.bbg_xiv_wp_rest_api){
+                    // uses the WP REST API - requires the WP REST API plugin
+                    // TODO:
+                }else{
+                    // old proprietary non REST way to load the Backbone image collection - does not require the WP REST API plugin
+                    // TODO:
+                }
+                
+            }
             e.preventDefault();
         });
         // wireup the handler for searching

@@ -37,6 +37,7 @@ class BBG_XIV_Gallery {
     public static $nonce_action = 'bbg_xiv-search';
     private static $wp_rest_api_available = FALSE;
     private static $use_wp_rest_api_if_available = TRUE;
+    private static $gallery_menu_items_count = 5;
   
     # excerpted from the WordPress function gallery_shortcode() of .../wp-includes/media.php
 
@@ -258,12 +259,25 @@ EOD;
                 <li class="dropdown bbg_xiv-select_view">
                     <a data-toggle="dropdown" class="dropdown-toggle bbg_xiv-selected_view" href="#"><span>$translations[View]</span> <b class="caret"></b></a>
                     <ul role="menu" class="dropdown-menu bbg_xiv-view_menu">
-                        <li class="active"><a href="#">$translations[Gallery]</a></li>
-                        <li><a href="#">$translations[Carousel]</a></li>
-                        <li><a href="#">$translations[Tabs]</a></li>
-                        <li class="bbg_xiv-large_viewport_only"><a href="#">$translations[Dense]</a></li>
+                        <li class="dropdown-header">VIEW</li>
+                        <li class="active"><a data-view="Gallery" href="#">$translations[Gallery]</a></li>
+                        <li><a data-view="Carousel" href="#">$translations[Carousel]</a></li>
+                        <li><a data-view="Tabs" href="#">$translations[Tabs]</a></li>
+                        <li class="bbg_xiv-large_viewport_only"><a data-view="Dense" href="#">$translations[Dense]</a></li>
                         <!-- TODO: Add entry for new views here. -->
                         $table_nav_item
+                        <li class="dropdown-header">GALLERIES</li>
+EOD;
+        for ( $i = 1; $i <= self::$gallery_menu_items_count; $i++ ) {
+            $option = get_option( "bbg_xiv_gallery_menu_$i", '' );
+            if ( preg_match( '/^"([^"]+)":(.+)$/', $option, $matches ) === 1 ) {
+                error_log( '$matches=' . print_r( $matches, true ) );
+                $output .= <<<EOD
+                        <li><a data-view="gallery_$i" data-specifiers='$matches[2]' href="#">$matches[1]</a></li>
+EOD;
+            }
+        }
+        $output .= <<<EOD
                     </ul>
                 </li>
             </ul>
@@ -419,6 +433,12 @@ EOD;
     }
 
     public static function init( ) {
+        add_action( 'admin_enqueue_scripts', function( $hook ) {
+            if ( $hook === 'options-media.php' ) {
+                wp_enqueue_script( "bbg_xiv-admin", plugins_url( '/js/bbg_xiv-admin.js', __FILE__ ) );
+            }
+        } );
+
         add_action( 'plugins_loaded', function( ) {
             if ( !load_plugin_textdomain( 'bb_gallery', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' ) ) {
                 #error_log( 'load_plugin_textdomain() failed' );
@@ -508,6 +528,14 @@ EOD
                 echo '<input name="bbg_xiv_table" id="bbg_xiv_table" type="checkbox" value="1" class="code" '
                     . checked( get_option( 'bbg_xiv_table' ), 1, FALSE ) . ' /> ' . __( 'The "Table View" is primarily intended for developers.', 'bb_gallery' );
             }, 'media',	'bbg_xiv_setting_section' );
+            for ( $i = 1; $i <= self::$gallery_menu_items_count; $i++ ) {
+                add_settings_field( "bbg_xiv_gallery_menu_$i", __( 'Gallery Menu Item', 'bb_gallery' ) . " $i", function( ) use ( $i ) {
+                    echo "<input name=\"bbg_xiv_gallery_menu_$i\" id=\"bbg_xiv_gallery_menu_$i\""
+                        . ' type="text" size="40" placeholder=\'e.g., "My Gallery":ids="11,13,7,57" orderby="title"\''
+                        . ' value=\'' . get_option( "bbg_xiv_gallery_menu_$i", '' ) . '\' /> '
+                        . __( "gallery shortcode for gallery menu item $i - format:\"gallery name\":gallery specifiers", 'bb_gallery' );
+                }, 'media',	'bbg_xiv_setting_section' );
+            }
             register_setting( 'media', 'bbg_xiv_shortcode' );
             register_setting( 'media', 'bbg_xiv_flex_min_width' );
             register_setting( 'media', 'bbg_xiv_flex_min_width_for_caption' );
@@ -517,7 +545,10 @@ EOD
             register_setting( 'media', 'bbg_xiv_flex_min_width_for_dense_view' );
             register_setting( 'media', 'bbg_xiv_wp_rest' );
             register_setting( 'media', 'bbg_xiv_table' );
- 
+            for ( $i = 1; $i <= self::$gallery_menu_items_count; $i++ ) {
+                register_setting( 'media', "bbg_xiv_gallery_menu_$i" );
+            }
+
             add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), function( $links ) {
                 return array_merge( [ '<a href="options-media.php">Settings</a>'], $links );
             } );
