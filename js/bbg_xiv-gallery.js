@@ -900,10 +900,14 @@
                 var parameters={};
                 matches.forEach(function(match){
                     var specifier=match.match(/(\w+)="([^"]+)"/);
-                    parameters[specifier[1]]=specifier[2];
+                    if(window.bbg_xiv.bbg_xiv_wp_rest_api){
+                        parameters[specifier[1]]=specifier[2];
+                    }else{
+                        parameters[specifier[1]]=specifier[2];
+                    }
                 });
                 var divGallery=jqThis.parents("div.bbg_xiv-gallery").find("div.bbg_xiv-gallery_envelope")[0];
-                var form=jqThis.parents("form[role='search']");
+                var form=jqThis.parents("div.navbar-collapse").first().find("form[role='search']");
                 function handleResponse(r){
                     if(jqueryLoading){
                         jQuery.mobile.loading("hide");
@@ -916,7 +920,21 @@
                 }
                 if(window.bbg_xiv.bbg_xiv_wp_rest_api){
                     // uses the WP REST API - requires the WP REST API plugin
-                    // TODO:
+                    var images=bbg_xiv.images[divGallery.id]=new wp.api.collections.Media();
+                    images.once("sync",function(){
+                        // the sync event will occur once only on the Backbone fetch of the collection
+                        handleResponse(!!this.length);
+                    },images);
+                    // get the collection specified by the parameters
+                    images.fetch({
+                        data:parameters,
+                        success:function(c,r,o){
+                        },
+                        error:function(c,r,o){
+                            console.log("error:r=",r);
+                            handleResponse(false);
+                        }
+                    });
                 }else{
                     // old proprietary non REST way to load the Backbone image collection - does not require the WP REST API plugin
                     var postData={

@@ -171,7 +171,7 @@ class BBG_XIV_Gallery {
             $attachments = $controller->get_items( $request )->data;
             $bbg_xiv_data[ "$selector-data" ] = json_encode( $attachments );
         } else {
-            // initialize the Backbone.js collection using data for my proprietary model 
+            // initialize the Backbone.js collection using data for my proprietary model
             if ( ! empty( $atts['include'] ) ) {
               $_attachments = get_posts( array( 'include' => $atts['include'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
 
@@ -567,6 +567,7 @@ EOD
                 check_ajax_referer( BBG_XIV_Gallery::$nonce_action );
                 $attachments = [ ];
                 if ( array_key_exists( 'query', $_POST ) ) {
+                    // This is an AJAX search request.
                     $pattern = '%' . $_POST[ 'query' ] . '%';
                     $offset = (integer) $_POST[ 'offset' ];
                     $count = (integer) $_POST[ 'limit' ];
@@ -583,10 +584,67 @@ EOD
                         $attachments[ $val->ID ] = $val;
                     }
                 } else {
-                    // TODO:
-                    wp_die( );
+                    // This is an AJAX gallery request.
+                    $attr = $_POST;
+                    if ( ! empty( $attr[ 'ids' ] ) ) {
+                        // 'ids' is explicitly ordered, unless you specify otherwise.
+                        if ( empty( $attr[ 'orderby' ] ) ) {
+                            $attr[ 'orderby' ] = 'post__in';
+                        }
+                        $attr[ 'include' ] = $_attr[ 'ids' ];
+                    }
+                    $atts = shortcode_atts( [
+                      'order'      => 'ASC',
+                      'orderby'    => 'menu_order',
+                      'id'         => 0,
+                      'size'       => 'thumbnail',
+                      'include'    => '',
+                      'exclude'    => '',
+                      'link'       => ''
+                    ], $attr, 'gallery' );
+                    error_log( 'wp_ajax_nopriv_bbg_xiv_search_media()::$_POST=' . print_r( $_POST, true ) );
+                    error_log( 'wp_ajax_nopriv_bbg_xiv_search_media()::$atts=' . print_r( $atts, true ) );
+                    $id = intval( $atts['id'] );
+                    if ( ! empty( $atts[ 'include' ] ) ) {
+                        $_attachments = get_posts( [
+                            'include'        => $atts[ 'include' ],
+                            'post_status'    => 'inherit',
+                            'post_type'      => 'attachment',
+                            'post_mime_type' => 'image',
+                            'order'          => $atts[ 'order' ],
+                            'orderby'        => $atts[ 'orderby' ]
+                        ] );
+
+                        $attachments = [ ];
+                        foreach ( $_attachments as $key => $val ) {
+                            $attachments[ $val->ID ] = $_attachments[$key];
+                        }
+                    } elseif ( ! empty( $atts['exclude'] ) ) {
+                        $attachments = get_children( [
+                            'post_parent'    => $id,
+                            'exclude'        => $atts[ 'exclude' ],
+                            'post_status'    => 'inherit',
+                            'post_type'      => 'attachment',
+                            'post_mime_type' => 'image',
+                            'order'          => $atts[ 'order' ],
+                            'orderby'        => $atts[ 'orderby' ]
+                        ] );
+                    } else {
+                        $attachments = get_children( [
+                            'post_parent'    => $id,
+                            'post_status'    => 'inherit',
+                            'post_type'      => 'attachment',
+                            'post_mime_type' => 'image',
+                            'order'          => $atts[ 'order' ],
+                            'orderby'        => $atts[ 'orderby' ]
+                        ] );
+                    }
+                    if ( empty( $attachments ) ) {
+                        wp_die( );
+                    }
                 }
                 BBG_XIV_Gallery::bbg_xiv_do_attachments( $attachments );
+                error_log( 'wp_ajax_nopriv_bbg_xiv_search_media()::$attachments=' . print_r( $attachments, true ) );
                 echo json_encode( array_values( $attachments ) );
                 wp_die( );
             } );
