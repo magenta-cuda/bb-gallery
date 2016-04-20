@@ -896,12 +896,22 @@
                 var title=this.textContent;
                 var specifiers=this.dataset.specifiers;
                 // extract individual gallery parameters
+                if(window.bbg_xiv.bbg_xiv_wp_rest_api){
+                    // translation maps for gallery shortcode parameter names and values to WP REST API option names and values
+                    var nameMap={
+                        id:"parent",
+                        ids:"include"
+                    };
+                    var valueMap={
+                    };
+                }
                 var matches=specifiers.match(/(\w+)="([^"]+)"/g);
                 var parameters={};
                 matches.forEach(function(match){
                     var specifier=match.match(/(\w+)="([^"]+)"/);
                     if(window.bbg_xiv.bbg_xiv_wp_rest_api){
-                        parameters[specifier[1]]=specifier[2];
+                        // translate gallery shortcode parameters to WP REST API parameters
+                        parameters[nameMap[specifier[1]]?nameMap[specifier[1]]:specifier[1]]=valueMap[specifier[2]]?valueMap[specifier[2]]:specifier[2];
                     }else{
                         parameters[specifier[1]]=specifier[2];
                     }
