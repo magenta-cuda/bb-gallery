@@ -259,13 +259,14 @@ EOD;
                 <li class="dropdown bbg_xiv-select_view">
                     <a data-toggle="dropdown" class="dropdown-toggle bbg_xiv-selected_view" href="#"><span>$translations[View]</span> <b class="caret"></b></a>
                     <ul role="menu" class="dropdown-menu bbg_xiv-view_menu">
-                        <li class="dropdown-header">VIEW</li>
+                        <li class="dropdown-header">VIEWS</li>
                         <li class="active"><a data-view="Gallery" href="#">$translations[Gallery]</a></li>
                         <li><a data-view="Carousel" href="#">$translations[Carousel]</a></li>
                         <li><a data-view="Tabs" href="#">$translations[Tabs]</a></li>
                         <li class="bbg_xiv-large_viewport_only"><a data-view="Dense" href="#">$translations[Dense]</a></li>
                         <!-- TODO: Add entry for new views here. -->
                         $table_nav_item
+                        <li class="divider"></li>
                         <li class="dropdown-header">GALLERIES</li>
 EOD;
         for ( $i = 1; $i <= self::$gallery_menu_items_count; $i++ ) {

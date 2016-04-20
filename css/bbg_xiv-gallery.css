@@ -25,6 +25,11 @@ div.bbg_xiv-bootstrap nav.navbar {
     @media (min-width: 768px) {
       div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure {
         float: right; } }
+  div.bbg_xiv-bootstrap nav.navbar ul.nav li.dropdown ul.dropdown-menu li.dropdown-header {
+    padding-left: 5px;
+    font-size: 110%;
+    font-weight: bold;
+    text-decoration: underline; }
 @media (min-width: 768px) {
   div.bbg_xiv-bootstrap.bbg_xiv-gallery div.navbar-header a.bbg_xiv-images_brand {
     display: none; } }

@@ -162,6 +162,13 @@ div.bbg_xiv-bootstrap{
         float:right;
       }
     }
+    
+    ul.nav li.dropdown ul.dropdown-menu li.dropdown-header{
+      padding-left:5px;
+      font-size:110%;
+      font-weight:bold;
+      text-decoration:underline;
+    }
   }
   
   &.bbg_xiv-gallery{
