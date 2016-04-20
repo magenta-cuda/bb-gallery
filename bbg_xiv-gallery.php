@@ -243,10 +243,16 @@ EOD;
         $galleries = [ ];
         if ( $content ) {
             error_log( 'bb_gallery_shortcode():$content=' . $content );
-            $content = preg_replace( '/&#8221;|&#8243;/', '"', $content );    # TODO: not complete
+            # Unfortunately (and also I think incorrectly) the 'the_content' filter wptexturize() from formatting.php will process the parameters of shortcodes
+            # prettifying the quote marks. So, we need to undo this mutilation and restore the original content.
+            # Opinion: WordPress seems to love regex but regex is simply inadequate for parsing HTML!
+            $content = preg_replace( '/&#8216;|&#8217;|&#8220;|&#8221;|&#8242;|&#8243;/', '"', $content );
             error_log( 'bb_gallery_shortcode():$content=' . $content );
-            if ( preg_match_all( '#\[\w+\s+\title="([^"]+)"\s+([^\]]+)\]#', $content, $matches, PREG_SET_ORDER ) ) {
+            if ( preg_match_all( '#\[\w+\s+title="([^"]+)"\s+([^\]]+)\]#', $content, $matches, PREG_SET_ORDER ) ) {
                 error_log( 'bb_gallery_shortcode():$matches=' . print_r( $matches, true ) );
+                foreach ( $matches as $match ) {
+                    $galleries[ ] = (object) [ 'title' => $match[ 1 ], 'specifiers' => $match[ 2 ] ];
+                }
             }
         }
         if ( !$galleries ) {
@@ -258,6 +264,7 @@ EOD;
                 }
             }
         }
+        error_log( 'bb_gallery_shortcode():$galleries=' . print_r( $galleries, true ) );
 
         ob_start( );
         wp_nonce_field( self::$nonce_action );
