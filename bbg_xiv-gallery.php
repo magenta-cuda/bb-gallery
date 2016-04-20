@@ -529,14 +529,6 @@ EOD
                 echo '<input name="bbg_xiv_table" id="bbg_xiv_table" type="checkbox" value="1" class="code" '
                     . checked( get_option( 'bbg_xiv_table' ), 1, FALSE ) . ' /> ' . __( 'The "Table View" is primarily intended for developers.', 'bb_gallery' );
             }, 'media',	'bbg_xiv_setting_section' );
-            for ( $i = 1; $i <= self::$gallery_menu_items_count; $i++ ) {
-                add_settings_field( "bbg_xiv_gallery_menu_$i", __( 'Gallery Menu Item', 'bb_gallery' ) . " $i", function( ) use ( $i ) {
-                    echo "<input name=\"bbg_xiv_gallery_menu_$i\" id=\"bbg_xiv_gallery_menu_$i\""
-                        . ' type="text" size="40" placeholder=\'e.g., "My Gallery":ids="11,13,7,57" orderby="title"\''
-                        . ' value=\'' . get_option( "bbg_xiv_gallery_menu_$i", '' ) . '\' /> '
-                        . __( "gallery shortcode for gallery menu item $i - format:\"gallery name\":gallery specifiers", 'bb_gallery' );
-                }, 'media',	'bbg_xiv_setting_section' );
-            }
             register_setting( 'media', 'bbg_xiv_shortcode' );
             register_setting( 'media', 'bbg_xiv_flex_min_width' );
             register_setting( 'media', 'bbg_xiv_flex_min_width_for_caption' );
@@ -546,6 +538,19 @@ EOD
             register_setting( 'media', 'bbg_xiv_flex_min_width_for_dense_view' );
             register_setting( 'media', 'bbg_xiv_wp_rest' );
             register_setting( 'media', 'bbg_xiv_table' );
+
+            add_settings_section( 'bbg_xiv_menu_section', 'BB Gallery Menu Settings', function( ) {
+                echo '<p>' . __( 'You can specify a list of galleries to be dynamically loaded into the same page using ', 'bb_gallery' )
+                    . '<a href="https://bbfgallery.wordpress.com/#galleries" target="_blank">' . __( 'BB Gallery\'s Menu', 'bb_gallery' ) . '.</a></p>';
+            }, 'media' );
+            for ( $i = 1; $i <= self::$gallery_menu_items_count; $i++ ) {
+                add_settings_field( "bbg_xiv_gallery_menu_$i", __( 'Gallery Menu Item', 'bb_gallery' ) . " $i", function( ) use ( $i ) {
+                    echo "<input name=\"bbg_xiv_gallery_menu_$i\" id=\"bbg_xiv_gallery_menu_$i\""
+                        . ' type="text" size="40" placeholder=\'e.g., "My Gallery":ids="11,13,7,57" orderby="title"\''
+                        . ' value=\'' . get_option( "bbg_xiv_gallery_menu_$i", '' ) . '\' /> '
+                        . __( "gallery shortcode for gallery menu item $i - format:\"gallery name\":gallery specifiers", 'bb_gallery' );
+                }, 'media',	'bbg_xiv_menu_section' );
+            }
             for ( $i = 1; $i <= self::$gallery_menu_items_count; $i++ ) {
                 register_setting( 'media', "bbg_xiv_gallery_menu_$i" );
             }
