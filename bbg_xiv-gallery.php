@@ -41,7 +41,7 @@ class BBG_XIV_Gallery {
   
     # excerpted from the WordPress function gallery_shortcode() of .../wp-includes/media.php
 
-    public static function bb_gallery_shortcode( $attr ) {
+    public static function bb_gallery_shortcode( $attr, $content = '' ) {
         if ( is_array( $attr ) && array_key_exists( 'mode', $attr ) && $attr[ 'mode' ] === 'wordpress' ) {
             return gallery_shortcode( $attr );
         }
@@ -239,6 +239,19 @@ EOD;
             'Cancel'                                      => __( 'Cancel',                                      'bb_gallery' ),
             'Help'                                        => __( 'Help',                                        'bb_gallery' )
         ];
+
+        $galleries = [ ];
+        if ( $content ) {
+        } else {
+            for ( $i = 1; $i <= self::$gallery_menu_items_count; $i++ ) {
+                $option = get_option( "bbg_xiv_gallery_menu_$i", '' );
+                if ( preg_match( '/^"([^"]+)":(.+)$/', $option, $matches ) === 1 ) {
+                    error_log( '$matches=' . print_r( $matches, true ) );
+                    $galleries[ ] = (object) [ 'title' => $matches[ 1 ], 'specifiers' => $matches[ 2 ] ];
+                }
+            }
+        }
+
         ob_start( );
         wp_nonce_field( self::$nonce_action );
         $nonce_field = ob_get_clean( );
@@ -266,15 +279,17 @@ EOD;
                         <li class="bbg_xiv-large_viewport_only"><a data-view="Dense" href="#">$translations[Dense]</a></li>
                         <!-- TODO: Add entry for new views here. -->
                         $table_nav_item
+EOD;
+        if ( $galleries ) {
+            # output menu items for dynamically loaded galleries
+            $output .= <<<EOD
                         <li class="divider"></li>
                         <li class="dropdown-header">GALLERIES</li>
 EOD;
-        for ( $i = 1; $i <= self::$gallery_menu_items_count; $i++ ) {
-            $option = get_option( "bbg_xiv_gallery_menu_$i", '' );
-            if ( preg_match( '/^"([^"]+)":(.+)$/', $option, $matches ) === 1 ) {
-                error_log( '$matches=' . print_r( $matches, true ) );
+            foreach ( $galleries as $i => $gallery ) {
+                error_log( '$gallery=' . print_r( $gallery, true ) );
                 $output .= <<<EOD
-                        <li><a data-view="gallery_$i" data-specifiers='$matches[2]' href="#">$matches[1]</a></li>
+                        <li><a data-view="gallery_$i" data-specifiers='$gallery->specifiers' href="#">$gallery->title</a></li>
 EOD;
             }
         }
