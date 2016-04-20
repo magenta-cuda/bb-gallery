@@ -242,11 +242,18 @@ EOD;
 
         $galleries = [ ];
         if ( $content ) {
-        } else {
+            error_log( 'bb_gallery_shortcode():$content=' . $content );
+            $content = preg_replace( '/&#8221;|&#8243;/', '"', $content );    # TODO: not complete
+            error_log( 'bb_gallery_shortcode():$content=' . $content );
+            if ( preg_match_all( '#\[\w+\s+\title="([^"]+)"\s+([^\]]+)\]#', $content, $matches, PREG_SET_ORDER ) ) {
+                error_log( 'bb_gallery_shortcode():$matches=' . print_r( $matches, true ) );
+            }
+        }
+        if ( !$galleries ) {
             for ( $i = 1; $i <= self::$gallery_menu_items_count; $i++ ) {
                 $option = get_option( "bbg_xiv_gallery_menu_$i", '' );
                 if ( preg_match( '/^"([^"]+)":(.+)$/', $option, $matches ) === 1 ) {
-                    error_log( '$matches=' . print_r( $matches, true ) );
+                    error_log( 'bb_gallery_shortcode():$matches=' . print_r( $matches, true ) );
                     $galleries[ ] = (object) [ 'title' => $matches[ 1 ], 'specifiers' => $matches[ 2 ] ];
                 }
             }

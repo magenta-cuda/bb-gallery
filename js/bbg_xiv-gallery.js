@@ -910,7 +910,7 @@
                 matches.forEach(function(match){
                     var specifier=match.match(/(\w+)="([^"]+)"/);
                     if(window.bbg_xiv.bbg_xiv_wp_rest_api){
-                        // translate gallery shortcode parameters to WP REST API parameters
+                        // translate gallery shortcode parameters to WP REST API options
                         parameters[nameMap[specifier[1]]?nameMap[specifier[1]]:specifier[1]]=valueMap[specifier[2]]?valueMap[specifier[2]]:specifier[2];
                     }else{
                         parameters[specifier[1]]=specifier[2];
