@@ -299,11 +299,12 @@ EOD;
             $output .= <<<EOD
                         <li class="divider"></li>
                         <li class="dropdown-header">GALLERIES</li>
+                        <li class="active"><a data-view="gallery_home" data-specifiers="" href="#">Home</a></li>
 EOD;
             foreach ( $galleries as $i => $gallery ) {
                 error_log( '$gallery=' . print_r( $gallery, true ) );
                 $output .= <<<EOD
-                        <li><a data-view="gallery_$i" data-specifiers='$gallery->specifiers' href="#">$gallery->title</a></li>
+                        <li><a data-view="gallery_$i" data-specifiers="$gallery->specifiers" href="#">$gallery->title</a></li>
 EOD;
             }
         }
