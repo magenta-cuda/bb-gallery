@@ -327,6 +327,9 @@ EOD;
         <span class="bbg_xiv-search_heading_second"></span>
         <button class="btn btn-primary btn-sm bbg_xiv-search_scroll_right"><span class="glyphicon glyphicon-chevron-right"></span></button>
     </div>
+    <div id="$selector-alt_gallery_heading" class="bbg_xiv-alt_gallery_header">
+        <span class="bbg_xiv-alt_gallery_heading"></span>
+    </div>
     <div id="$selector" class="gallery galleryid-{$id} gallery-size-{$size_class} bbg_xiv-gallery_envelope">
         <div class="ui-loader"><span class="ui-icon-loading"></span></div>
    </div>

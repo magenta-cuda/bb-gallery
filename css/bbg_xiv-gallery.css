@@ -33,14 +33,14 @@ div.bbg_xiv-bootstrap nav.navbar {
 @media (min-width: 768px) {
   div.bbg_xiv-bootstrap.bbg_xiv-gallery div.navbar-header a.bbg_xiv-images_brand {
     display: none; } }
-div.bbg_xiv-bootstrap.bbg_xiv-gallery .bbg_xiv-search_header {
+div.bbg_xiv-bootstrap.bbg_xiv-gallery .bbg_xiv-search_header, div.bbg_xiv-bootstrap.bbg_xiv-gallery .bbg_xiv-alt_gallery_header {
   text-align: center;
   margin-bottom: 10px;
   display: none; }
-  div.bbg_xiv-bootstrap.bbg_xiv-gallery .bbg_xiv-search_header span {
+  div.bbg_xiv-bootstrap.bbg_xiv-gallery .bbg_xiv-search_header span, div.bbg_xiv-bootstrap.bbg_xiv-gallery .bbg_xiv-alt_gallery_header span {
     font-size: 16px;
     font-weight: bold; }
-  div.bbg_xiv-bootstrap.bbg_xiv-gallery .bbg_xiv-search_header button {
+  div.bbg_xiv-bootstrap.bbg_xiv-gallery .bbg_xiv-search_header button, div.bbg_xiv-bootstrap.bbg_xiv-gallery .bbg_xiv-alt_gallery_header button {
     display: inline; }
 div.bbg_xiv-bootstrap.bbg_xiv-gallery .bbg_xiv-warning {
   color: red;
