@@ -630,7 +630,7 @@ EOD
                         if ( empty( $attr[ 'orderby' ] ) ) {
                             $attr[ 'orderby' ] = 'post__in';
                         }
-                        $attr[ 'include' ] = $_attr[ 'ids' ];
+                        $attr[ 'include' ] = $attr[ 'ids' ];
                     }
                     $atts = shortcode_atts( [
                       'order'      => 'ASC',
