@@ -185,9 +185,9 @@ class BBG_XIV_Gallery {
               $attachments = get_children( array( 'post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
             }
 
-            if ( empty( $attachments ) ) {
-              return '';
-            }
+            #if ( empty( $attachments ) ) {
+            #  return '';
+            #}
 
             if ( is_feed() ) {
               $output = "\n";
