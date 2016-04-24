@@ -287,10 +287,10 @@ EOD;
                     <a data-toggle="dropdown" class="dropdown-toggle bbg_xiv-selected_view" href="#"><span>$translations[View]</span> <b class="caret"></b></a>
                     <ul role="menu" class="dropdown-menu bbg_xiv-view_menu">
                         <li class="dropdown-header">VIEWS</li>
-                        <li class="active"><a data-view="Gallery" href="#">$translations[Gallery]</a></li>
-                        <li><a data-view="Carousel" href="#">$translations[Carousel]</a></li>
-                        <li><a data-view="Tabs" href="#">$translations[Tabs]</a></li>
-                        <li class="bbg_xiv-large_viewport_only"><a data-view="Dense" href="#">$translations[Dense]</a></li>
+                        <li class="bbg_xiv-view bbg_xiv-view_gallery active"><a data-view="Gallery" href="#">$translations[Gallery]</a></li>
+                        <li class="bbg_xiv-view"><a data-view="Carousel" href="#">$translations[Carousel]</a></li>
+                        <li class="bbg_xiv-view"><a data-view="Tabs" href="#">$translations[Tabs]</a></li>
+                        <li class="bbg_xiv-view bbg_xiv-large_viewport_only"><a data-view="Dense" href="#">$translations[Dense]</a></li>
                         <!-- TODO: Add entry for new views here. -->
                         $table_nav_item
 EOD;
@@ -299,12 +299,12 @@ EOD;
             $output .= <<<EOD
                         <li class="divider"></li>
                         <li class="dropdown-header">GALLERIES</li>
-                        <li class="active"><a data-view="gallery_home" data-specifiers='' href="#">Home</a></li>
+                        <li class="bbg_xiv-alt_gallery bbg_xiv-alt_gallery_home active"><a data-view="gallery_home" data-specifiers='' href="#">Home</a></li>
 EOD;
             foreach ( $galleries as $i => $gallery ) {
                 error_log( '$gallery=' . print_r( $gallery, true ) );
                 $output .= <<<EOD
-                        <li><a data-view="gallery_$i" data-specifiers='$gallery->specifiers' href="#">$gallery->title</a></li>
+                        <li class="bbg_xiv-alt_gallery"><a data-view="gallery_$i" data-specifiers='$gallery->specifiers' href="#">$gallery->title</a></li>
 EOD;
             }
         }
