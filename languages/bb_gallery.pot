@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the BB Gallery package.
 msgid ""
 msgstr ""
-"Project-Id-Version: BB Gallery 1.5.5\n"
+"Project-Id-Version: BB Gallery 1.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/bb-gallery\n"
-"POT-Creation-Date: 2016-04-15 01:50:01+00:00\n"
+"POT-Creation-Date: 2016-04-25 19:46:01+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,176 +12,208 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: bbg_xiv-gallery.php:71
+#: bbg_xiv-gallery.php:72
 msgid "Nothing Found"
 msgstr ""
 
-#: bbg_xiv-gallery.php:217
-msgid "Images:"
+#: bbg_xiv-gallery.php:73
+msgid "Search Results for"
 msgstr ""
 
-#: bbg_xiv-gallery.php:218
-msgid "View"
+#: bbg_xiv-gallery.php:74
+msgid "Page"
 msgstr ""
 
-#: bbg_xiv-gallery.php:219
-msgid "Gallery"
+#: bbg_xiv-gallery.php:75
+msgid "of"
 msgstr ""
 
-#: bbg_xiv-gallery.php:220
-msgid "Carousel"
+#: bbg_xiv-gallery.php:76
+msgid "Images"
 msgstr ""
 
-#: bbg_xiv-gallery.php:221
-msgid "Tabs"
-msgstr ""
-
-#: bbg_xiv-gallery.php:222
-msgid "Dense"
+#: bbg_xiv-gallery.php:77
+msgid "to"
 msgstr ""
 
 #: bbg_xiv-gallery.php:223
-msgid "Search Images on Site"
+msgid "Images:"
 msgstr ""
 
 #: bbg_xiv-gallery.php:224
-msgid "Options"
+msgid "View"
 msgstr ""
 
 #: bbg_xiv-gallery.php:225
-msgid "Carousel Time Interval in ms"
+msgid "Gallery"
 msgstr ""
 
 #: bbg_xiv-gallery.php:226
-msgid "Minimum Width for Gallery Images in px"
+msgid "Carousel"
 msgstr ""
 
-#: bbg_xiv-gallery.php:227 bbg_xiv-gallery.php:487
-msgid "Maximum Number of Images Returned by Search"
+#: bbg_xiv-gallery.php:227
+msgid "Tabs"
 msgstr ""
 
 #: bbg_xiv-gallery.php:228
-msgid "Number of Columns in the Dense View"
+msgid "Dense"
 msgstr ""
 
 #: bbg_xiv-gallery.php:229
-msgid "Bandwidth"
+msgid "Search Images on Site"
 msgstr ""
 
 #: bbg_xiv-gallery.php:230
-msgid "Auto"
+msgid "Options"
 msgstr ""
 
 #: bbg_xiv-gallery.php:231
-msgid "High"
+msgid "Carousel Time Interval in ms"
 msgstr ""
 
 #: bbg_xiv-gallery.php:232
-msgid "Medium"
+msgid "Minimum Width for Gallery Images in px"
 msgstr ""
 
-#: bbg_xiv-gallery.php:233
-msgid "Low"
+#: bbg_xiv-gallery.php:233 bbg_xiv-gallery.php:540
+msgid "Maximum Number of Images Returned by Search"
 msgstr ""
 
 #: bbg_xiv-gallery.php:234
-msgid "Interface"
+msgid "Number of Columns in the Dense View"
 msgstr ""
 
 #: bbg_xiv-gallery.php:235
-msgid "Mouse"
+msgid "Bandwidth"
 msgstr ""
 
 #: bbg_xiv-gallery.php:236
-msgid "Touch"
+msgid "Auto"
 msgstr ""
 
 #: bbg_xiv-gallery.php:237
-msgid "Save"
+msgid "High"
 msgstr ""
 
 #: bbg_xiv-gallery.php:238
-msgid "Cancel"
+msgid "Medium"
 msgstr ""
 
 #: bbg_xiv-gallery.php:239
+msgid "Low"
+msgstr ""
+
+#: bbg_xiv-gallery.php:240
+msgid "Interface"
+msgstr ""
+
+#: bbg_xiv-gallery.php:241
+msgid "Mouse"
+msgstr ""
+
+#: bbg_xiv-gallery.php:242
+msgid "Touch"
+msgstr ""
+
+#: bbg_xiv-gallery.php:243
+msgid "Save"
+msgstr ""
+
+#: bbg_xiv-gallery.php:244
+msgid "Cancel"
+msgstr ""
+
+#: bbg_xiv-gallery.php:245
 msgid "Help"
 msgstr ""
 
-#: bbg_xiv-gallery.php:467
+#: bbg_xiv-gallery.php:520
 msgid " is a plug-compatible replacement for the built-in WordPress gallery shortcode."
 msgstr ""
 
-#: bbg_xiv-gallery.php:469
+#: bbg_xiv-gallery.php:522
 msgid "Enable BB Gallery"
 msgstr ""
 
-#: bbg_xiv-gallery.php:471
+#: bbg_xiv-gallery.php:524
 msgid "This will replace the built-in WordPress gallery shortcode."
 msgstr ""
 
-#: bbg_xiv-gallery.php:473
+#: bbg_xiv-gallery.php:526
 msgid "Gallery Minimum Image Width"
 msgstr ""
 
-#: bbg_xiv-gallery.php:475
+#: bbg_xiv-gallery.php:528
 msgid "The minimum image width in the \"Gallery View\" if the CSS3 Flexbox is used."
 msgstr ""
 
-#: bbg_xiv-gallery.php:477
+#: bbg_xiv-gallery.php:530
 msgid "Gallery Minimum Image Width for Caption"
 msgstr ""
 
-#: bbg_xiv-gallery.php:480
+#: bbg_xiv-gallery.php:533
 msgid "The minimum image width in the \"Gallery View\" required to show the caption."
 msgstr ""
 
-#: bbg_xiv-gallery.php:482
+#: bbg_xiv-gallery.php:535
 msgid "Carousel Interval"
 msgstr ""
 
-#: bbg_xiv-gallery.php:485
+#: bbg_xiv-gallery.php:538
 msgid "The time delay between two slides."
 msgstr ""
 
-#: bbg_xiv-gallery.php:490
+#: bbg_xiv-gallery.php:543
 msgid "The browser user can lower this limit."
 msgstr ""
 
-#: bbg_xiv-gallery.php:492
+#: bbg_xiv-gallery.php:545
 msgid "Columns in Dense View"
 msgstr ""
 
-#: bbg_xiv-gallery.php:495
+#: bbg_xiv-gallery.php:548
 msgid "The number of columns in the \"Dense View\"."
 msgstr ""
 
-#: bbg_xiv-gallery.php:497
+#: bbg_xiv-gallery.php:550
 msgid "Minimum With for Dense View"
 msgstr ""
 
-#: bbg_xiv-gallery.php:500
+#: bbg_xiv-gallery.php:553
 msgid "The minimum browser viewport width required to show the \"Dense View\"."
 msgstr ""
 
-#: bbg_xiv-gallery.php:502
+#: bbg_xiv-gallery.php:555
 msgid "Use the WP REST API"
 msgstr ""
 
-#: bbg_xiv-gallery.php:504
+#: bbg_xiv-gallery.php:557
 msgid "Use the WordPress REST API if available, i.e. the "
 msgstr ""
 
-#: bbg_xiv-gallery.php:505
+#: bbg_xiv-gallery.php:558
 msgid " is installed."
 msgstr ""
 
-#: bbg_xiv-gallery.php:507
+#: bbg_xiv-gallery.php:560
 msgid "Enable Table View"
 msgstr ""
 
-#: bbg_xiv-gallery.php:509
+#: bbg_xiv-gallery.php:562
 msgid "The \"Table View\" is primarily intended for developers."
+msgstr ""
+
+#: bbg_xiv-gallery.php:575
+msgid "You can specify a list of galleries to be dynamically loaded into the same page using "
+msgstr ""
+
+#: bbg_xiv-gallery.php:576
+msgid "BB Gallery's Menu"
+msgstr ""
+
+#: bbg_xiv-gallery.php:579
+msgid "Gallery Menu Item"
 msgstr ""
 #. Plugin Name of the plugin/theme
 msgid "BB Gallery"

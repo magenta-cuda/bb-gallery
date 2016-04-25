@@ -4,7 +4,7 @@
 Plugin Name: BB Gallery
 Plugin URI: https://bbfgallery.wordpress.com/
 Description: Gallery using Backbone.js, Bootstrap 3 and CSS3 Flexbox
-Version: 1.5.5
+Version: 1.7
 Author: Magenta Cuda
 Author URI: https://profiles.wordpress.org/magenta-cuda/
 License: GPL2
@@ -69,7 +69,12 @@ class BBG_XIV_Gallery {
         $bbg_xiv_data[ 'bbg_xiv_carousel_interval' ]                 = get_option( 'bbg_xiv_carousel_interval', 2500 );
         $bbg_xiv_data[ 'bbg_xiv_disable_flexbox' ]                   = get_option( 'bbg_xiv_disable_flexbox', FALSE );
         $bbg_xiv_data[ 'bbg_xiv_wp_rest_api' ]                       = self::$wp_rest_api_available && self::$use_wp_rest_api_if_available;
-        $bbg_xiv_data[ 'Nothing Found' ]                             = __( 'Nothing Found', 'bb_gallery' );
+        $bbg_xiv_data[ 'Nothing Found' ]                             = __( 'Nothing Found',      'bb_gallery' );
+        $bbg_xiv_data[ 'Search Results for' ]                        = __( 'Search Results for', 'bb_gallery' );
+        $bbg_xiv_data[ 'Page' ]                                      = __( 'Page',               'bb_gallery' );
+        $bbg_xiv_data[ 'of' ]                                        = __( 'of',                 'bb_gallery' );
+        $bbg_xiv_data[ 'Images' ]                                    = __( 'Images',             'bb_gallery' );
+        $bbg_xiv_data[ 'to' ]                                        = __( 'to',                 'bb_gallery' );
 
         if ( ! empty( $attr['ids'] ) ) {
           // 'ids' is explicitly ordered, unless you specify otherwise.
@@ -242,14 +247,11 @@ EOD;
 
         $galleries = [ ];
         if ( $content ) {
-            error_log( 'bb_gallery_shortcode():$content=' . $content );
             # Unfortunately (and also I think incorrectly) the 'the_content' filter wptexturize() from formatting.php will process the parameters of shortcodes
             # prettifying the quote marks. So, we need to undo this mutilation and restore the original content.
             # Opinion: WordPress seems to love regex but regex is simply inadequate for parsing HTML!
             $content = preg_replace( '/&#8216;|&#8217;|&#8220;|&#8221;|&#8242;|&#8243;/', '"', $content );
-            error_log( 'bb_gallery_shortcode():$content=' . $content );
             if ( preg_match_all( '#\[\w+\s+title="([^"]+)"\s+([^\]]+)\]#', $content, $matches, PREG_SET_ORDER ) ) {
-                error_log( 'bb_gallery_shortcode():$matches=' . print_r( $matches, true ) );
                 foreach ( $matches as $match ) {
                     $galleries[ ] = (object) [ 'title' => $match[ 1 ], 'specifiers' => $match[ 2 ] ];
                 }
@@ -259,12 +261,10 @@ EOD;
             for ( $i = 1; $i <= self::$gallery_menu_items_count; $i++ ) {
                 $option = get_option( "bbg_xiv_gallery_menu_$i", '' );
                 if ( preg_match( '/^"([^"]+)":(.+)$/', $option, $matches ) === 1 ) {
-                    error_log( 'bb_gallery_shortcode():$matches=' . print_r( $matches, true ) );
                     $galleries[ ] = (object) [ 'title' => $matches[ 1 ], 'specifiers' => $matches[ 2 ] ];
                 }
             }
         }
-        error_log( 'bb_gallery_shortcode():$galleries=' . print_r( $galleries, true ) );
 
         ob_start( );
         wp_nonce_field( self::$nonce_action );
@@ -302,7 +302,6 @@ EOD;
                         <li class="bbg_xiv-alt_gallery bbg_xiv-alt_gallery_home active"><a data-view="gallery_home" data-specifiers='' href="#">Home</a></li>
 EOD;
             foreach ( $galleries as $i => $gallery ) {
-                error_log( '$gallery=' . print_r( $gallery, true ) );
                 $output .= <<<EOD
                         <li class="bbg_xiv-alt_gallery"><a data-view="gallery_$i" data-specifiers='$gallery->specifiers' href="#">$gallery->title</a></li>
 EOD;
@@ -641,8 +640,6 @@ EOD
                       'exclude'    => '',
                       'link'       => ''
                     ], $attr, 'gallery' );
-                    error_log( 'wp_ajax_nopriv_bbg_xiv_search_media()::$_POST=' . print_r( $_POST, true ) );
-                    error_log( 'wp_ajax_nopriv_bbg_xiv_search_media()::$atts=' . print_r( $atts, true ) );
                     $id = intval( $atts['id'] );
                     if ( ! empty( $atts[ 'include' ] ) ) {
                         $_attachments = get_posts( [
@@ -683,7 +680,6 @@ EOD
                     }
                 }
                 BBG_XIV_Gallery::bbg_xiv_do_attachments( $attachments );
-                error_log( 'wp_ajax_nopriv_bbg_xiv_search_media()::$attachments=' . print_r( $attachments, true ) );
                 echo json_encode( array_values( $attachments ) );
                 wp_die( );
             } );
