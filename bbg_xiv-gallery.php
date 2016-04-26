@@ -69,12 +69,13 @@ class BBG_XIV_Gallery {
         $bbg_xiv_data[ 'bbg_xiv_carousel_interval' ]                 = get_option( 'bbg_xiv_carousel_interval', 2500 );
         $bbg_xiv_data[ 'bbg_xiv_disable_flexbox' ]                   = get_option( 'bbg_xiv_disable_flexbox', FALSE );
         $bbg_xiv_data[ 'bbg_xiv_wp_rest_api' ]                       = self::$wp_rest_api_available && self::$use_wp_rest_api_if_available;
-        $bbg_xiv_data[ 'Nothing Found' ]                             = __( 'Nothing Found',      'bb_gallery' );
-        $bbg_xiv_data[ 'Search Results for' ]                        = __( 'Search Results for', 'bb_gallery' );
-        $bbg_xiv_data[ 'Page' ]                                      = __( 'Page',               'bb_gallery' );
-        $bbg_xiv_data[ 'of' ]                                        = __( 'of',                 'bb_gallery' );
-        $bbg_xiv_data[ 'Images' ]                                    = __( 'Images',             'bb_gallery' );
-        $bbg_xiv_data[ 'to' ]                                        = __( 'to',                 'bb_gallery' );
+        # translations for JavaScript side
+        $bbg_xiv_lang[ 'Nothing Found' ]                             = __( 'Nothing Found',      'bb_gallery' );
+        $bbg_xiv_lang[ 'Search Results for' ]                        = __( 'Search Results for', 'bb_gallery' );
+        $bbg_xiv_lang[ 'Page' ]                                      = __( 'Page',               'bb_gallery' );
+        $bbg_xiv_lang[ 'of' ]                                        = __( 'of',                 'bb_gallery' );
+        $bbg_xiv_lang[ 'Images' ]                                    = __( 'Images',             'bb_gallery' );
+        $bbg_xiv_lang[ 'to' ]                                        = __( 'to',                 'bb_gallery' );
 
         if ( ! empty( $attr['ids'] ) ) {
           // 'ids' is explicitly ordered, unless you specify otherwise.
@@ -207,6 +208,7 @@ class BBG_XIV_Gallery {
         }
  
         wp_localize_script( 'bbg_xiv-gallery', 'bbg_xiv', $bbg_xiv_data );
+        wp_localize_script( 'bbg_xiv-gallery', 'bbg_xiv_lang', $bbg_xiv_lang );
 
         $float = is_rtl() ? 'right' : 'left';
 
