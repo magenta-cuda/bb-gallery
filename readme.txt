@@ -36,15 +36,17 @@ You can set the bandwidth option to "low" to prevent preloading and force the us
 https://bbfgallery.wordpress.com/
 
 == Screenshots ==
-1. Gallery View
-2. Carousel View
-3. Tabs View
-4. Dense View
-5. Overlay of a Selected Image
-6. User Options Pane
-7. Mobile Portrait View
-8. Search Results
-9. Settings
+1. Multiple Views of a Gallery
+2. Gallery View
+3. Carousel View
+4. Tabs View
+5. Dense View
+6. Dynamically Loading Galleries
+7. Dynamically Generating Galleries from Search Criteria
+8. Overlay of a Selected Image
+9. Mobile Portrait View
+10. User Options Pane
+11. Admin Settings
 
 == Changelog ==
 
