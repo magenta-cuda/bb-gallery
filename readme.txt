@@ -13,9 +13,9 @@ Responsive plug-compatible replacement for the built-in WordPress gallery shortc
 This is a responsive, mobile-friendly plug-compatible replacement for the built-in WordPress gallery shortcode.
 It is implemented using a [Backbone.js](http://backbonejs.org/) Model-View-Presenter (MVP) populated via the [WordPress REST API](http://v2.wp-api.org/).
 It is styled by a [Twitter Bootstrap 3](http://getbootstrap.com/) stylesheet and has touch optimizations from [jQuery Mobile](https://jquerymobile.com/).
-Using a MVP allows you to switch instantaneously (i.e. without doing a HTTP request) between multiple views of a gallery.
+Using a MVP allows you to [switch instantaneously](https://bbfgallery.wordpress.com/#navbar) (i.e. without doing a HTTP request) between multiple views of a gallery.
 The default implementation supports a gallery view, carousel (slideshow) view, tabs view and a dense view of the gallery.
-Using the WP REST API allows you to dynamically load (i.e. without reloading the entire page) new galleries.
+Using the WP REST API allows you to [dynamically load](https://bbfgallery.wordpress.com/#alt_galleries) (i.e. without reloading the entire page) new galleries.
 The view is styled by a Twitter Bootstrap 3 stylesheet so it is automatically responsive.
 If the browser supports the CSS3 Flexbox the gallery view is implemented using a flexbox.
 You can easily modify the Backbone templates to create your own customized views of the gallery.
