@@ -3,7 +3,7 @@ Contributors: Magenta Cuda
 Tags: gallery, shortcode, lightbox, slideshow, responsive, plug-compatible, replacement
 Requires at least: 4.4
 Tested up to: 4.5
-Stable tag: 1.5.5
+Stable tag: 1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,6 +15,7 @@ It is implemented using a [Backbone.js](http://backbonejs.org/) Model-View-Prese
 It is styled by a [Twitter Bootstrap 3](http://getbootstrap.com/) stylesheet and has touch optimizations from [jQuery Mobile](https://jquerymobile.com/).
 Using a MVP allows you to switch instantaneously (i.e. without doing a HTTP request) between multiple views of a gallery.
 The default implementation supports a gallery view, carousel (slideshow) view, tabs view and a dense view of the gallery.
+Using the WP REST API allows you to dynamically load (i.e. without reloading the entire page) new galleries.
 The view is styled by a Twitter Bootstrap 3 stylesheet so it is automatically responsive.
 If the browser supports the CSS3 Flexbox the gallery view is implemented using a flexbox.
 You can easily modify the Backbone templates to create your own customized views of the gallery.
@@ -46,6 +47,10 @@ https://bbfgallery.wordpress.com/
 9. Settings
 
 == Changelog ==
+
+= 1.7 =
+
+* support for dynamically loading galleries using the WordPress REST API to populate Backbone.js collections.
 
 = 1.5.5 =
 
@@ -111,6 +116,10 @@ https://bbfgallery.wordpress.com/
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.7 =
+
+* support for dynamically loading galleries using the WordPress REST API to populate Backbone.js collections.
 
 = 1.5.5 =
 
