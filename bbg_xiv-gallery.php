@@ -575,7 +575,7 @@ EOD
 
             add_settings_section( 'bbg_xiv_menu_section', 'BB Gallery Menu Settings', function( ) {
                 echo '<p>' . __( 'You can specify a list of galleries to be dynamically loaded into the same page using ', 'bb_gallery' )
-                    . '<a href="https://bbfgallery.wordpress.com/#galleries" target="_blank">' . __( 'BB Gallery\'s Menu', 'bb_gallery' ) . '.</a></p>';
+                    . '<a href="https://bbfgallery.wordpress.com/#alt_galleries" target="_blank">' . __( 'BB Gallery\'s Menu', 'bb_gallery' ) . '.</a></p>';
             }, 'media' );
             for ( $i = 1; $i <= self::$gallery_menu_items_count; $i++ ) {
                 add_settings_field( "bbg_xiv_gallery_menu_$i", __( 'Gallery Menu Item', 'bb_gallery' ) . " $i", function( ) use ( $i ) {
