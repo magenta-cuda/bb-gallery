@@ -32,6 +32,9 @@ BB Gallery can preload full size images for better user interactivity.
 This does not work well for low bandwidth and/or slow cpus.
 You can set the bandwidth option to "low" to prevent preloading and force the use of low resolution images.
 
+= Is it necessary to install the WP REST API plugin? =
+No. If the WP REST API plugin is not installed this plugin will use its own proprietary AJAX API to populate the Backbone.js collections.
+
 = Where is the documentation? =
 https://bbfgallery.wordpress.com/
 
