@@ -68,6 +68,7 @@ class BBG_XIV_Gallery {
         $bbg_xiv_data[ 'bbg_xiv_flex_number_of_dense_view_columns' ] = get_option( 'bbg_xiv_flex_number_of_dense_view_columns', 10 );
         $bbg_xiv_data[ 'bbg_xiv_carousel_interval' ]                 = get_option( 'bbg_xiv_carousel_interval', 2500 );
         $bbg_xiv_data[ 'bbg_xiv_disable_flexbox' ]                   = get_option( 'bbg_xiv_disable_flexbox', FALSE );
+        $bbg_xiv_data[ 'bbg_xiv_default_view' ]                      = get_option( 'bbg_xiv_default_view', 'Gallery' );
         $bbg_xiv_data[ 'bbg_xiv_wp_rest_api' ]                       = self::$wp_rest_api_available && self::$use_wp_rest_api_if_available;
         # translations for JavaScript side
         $bbg_xiv_lang[ 'Nothing Found' ]                             = __( 'Nothing Found',      'bb_gallery' );
@@ -554,6 +555,18 @@ EOD
                     . get_option( 'bbg_xiv_flex_min_width_for_dense_view', 1280 )
                     . '" class="small-text" /> ' . __( 'The minimum browser viewport width required to show the "Dense View".', 'bb_gallery' );
             }, 'media',	'bbg_xiv_setting_section' );
+            add_settings_field( 'bbg_xiv_default_view', __( 'Default View', 'bb_gallery' ), function( ) {
+                echo '<input name="bbg_xiv_default_view" id="bbg_xiv_default_view_gallery"  type="radio" value="Gallery" '
+                    . ( get_option( 'bbg_xiv_default_view', 'Gallery' ) === 'Gallery'  ? 'checked />' : '/>' )
+                    . '<span class="bbg_xiv-radio_text">Gallery&nbsp;&nbsp;&nbsp;&nbsp;</span>';
+                echo '<input name="bbg_xiv_default_view" id="bbg_xiv_default_view_carousel" type="radio" value="Carousel" '
+                    . ( get_option( 'bbg_xiv_default_view', 'Gallery' ) === 'Carousel' ? 'checked />' : '/>' )
+                    . '<span class="bbg_xiv-radio_text">Carousel&nbsp;&nbsp;&nbsp;&nbsp;</span>';
+                echo '<input name="bbg_xiv_default_view" id="bbg_xiv_default_view_tabs"     type="radio" value="Tabs" '
+                    . ( get_option( 'bbg_xiv_default_view', 'Gallery' ) === 'Tabs'     ? 'checked />' : '/>' )
+                    . '<span class="bbg_xiv-radio_text">Tabs&nbsp;&nbsp;&nbsp;&nbsp;</span>';
+                echo __( 'This is the initial view of the gallery".', 'bb_gallery' );
+            }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_wp_rest', __( 'Use the WP REST API', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_wp_rest" id="bbg_xiv_wp_rest" type="checkbox" value="1" class="code" '
                     . checked( get_option( 'bbg_xiv_wp_rest', TRUE ), 1, FALSE ) . ' /> ' . __( 'Use the WordPress REST API if available, i.e. the ', 'bb_gallery' )
@@ -570,6 +583,7 @@ EOD
             register_setting( 'media', 'bbg_xiv_max_search_results' );
             register_setting( 'media', 'bbg_xiv_flex_number_of_dense_view_columns' );
             register_setting( 'media', 'bbg_xiv_flex_min_width_for_dense_view' );
+            register_setting( 'media', 'bbg_xiv_default_view' );
             register_setting( 'media', 'bbg_xiv_wp_rest' );
             register_setting( 'media', 'bbg_xiv_table' );
 
