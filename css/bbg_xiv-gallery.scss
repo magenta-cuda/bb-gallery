@@ -657,7 +657,7 @@ div.bbg_xiv-bootstrap{
               margin-left:-15px;
             }
 
-            &.glyphicon-fast-forward,&.glyphicon-remove{
+            &.glyphicon-fast-forward,&.glyphicon-remove,&.glyphicon-question-sign{
               margin-right:-15px;
             }
           }
@@ -673,7 +673,7 @@ div.bbg_xiv-bootstrap{
           bottom:25%;
         }
 
-        &.bbg_xiv-carousel_play{
+        &.bbg_xiv-carousel_play,&.bbg_xiv-carousel_help{
           top:75%;
           bottom:0%;
         }
@@ -690,7 +690,7 @@ div.bbg_xiv-bootstrap{
           }
         }
 
-        &.bbg_xiv-carousel_right,&.bbg_xiv-carousel_last,&.bbg_xiv-carousel_close{
+        &.bbg_xiv-carousel_right,&.bbg_xiv-carousel_last,&.bbg_xiv-carousel_close,&.bbg_xiv-carousel_help{
           right:0;
           left:auto;
           span.glyphicon{
