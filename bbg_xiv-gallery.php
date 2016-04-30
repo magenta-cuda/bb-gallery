@@ -231,6 +231,7 @@ EOD;
             'Dense'                                       => __( 'Dense',                                       'bb_gallery' ),
             'Search Images on Site'                       => __( 'Search Images on Site',                       'bb_gallery' ),
             'Options'                                     => __( 'Options',                                     'bb_gallery' ),
+            'Help'                                        => __( 'Help',                                        'bb_gallery' ),
             'Carousel Time Interval in ms'                => __( 'Carousel Time Interval in ms',                'bb_gallery' ),
             'Minimum Width for Gallery Images in px'      => __( 'Minimum Width for Gallery Images in px',      'bb_gallery' ),
             'Maximum Number of Images Returned by Search' => __( 'Maximum Number of Images Returned by Search', 'bb_gallery' ),
@@ -321,8 +322,14 @@ EOD;
                 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
                 $nonce_field
             </form>
-            <button type="button" class="btn btn-info bbg_xiv-help" title="help"><span class="glyphicon glyphicon-question-sign"></span></button>
-            <button type="button" class="btn btn-info bbg_xiv-configure" title="configure bandwidth, carousel interval, ..."><span class="glyphicon glyphicon-cog"></span></button>
+            <button type="button" class="btn btn-info bbg_xiv-help" title="help">
+                <span class="glyphicon glyphicon-question-sign"></span>
+                <span class="bbg_xiv-navbar_button_text">{$translations['Help']}</span>
+            </button>
+            <button type="button" class="btn btn-info bbg_xiv-configure" title="configure bandwidth, carousel interval, ...">
+                <span class="glyphicon glyphicon-cog"></span>
+                <span class="bbg_xiv-navbar_button_text">{$translations['Options']}</span>
+            </button>
         </div>
     </nav>
     <div id="$selector-heading" class="bbg_xiv-search_header">

@@ -133,6 +133,32 @@ div.bbg_xiv-bootstrap{
       border:0px none;
     }
 
+    button.bbg_xiv-configure,button.bbg_xiv-help{
+      display:block;
+      margin-top:9px;
+      margin-bottom:9px;
+      font-size:100%;
+      line-height:1.0;
+      background-color:transparent;
+      border:0 solid transparent;
+      &:focus{
+        border:0 solid transparent;
+      }
+      @media(min-width:768px){
+        float:right;
+      }
+      span.bbg_xiv-navbar_button_text{
+        display:none;
+      }
+    }
+    
+    ul.nav li.dropdown ul.dropdown-menu li.dropdown-header{
+      padding-left:5px;
+      font-size:110%;
+      font-weight:bold;
+      text-decoration:underline;
+    }
+
     @media(max-width:767px){
       form.bbg_xiv-search_form{
         height:54px;
@@ -151,30 +177,10 @@ div.bbg_xiv-bootstrap{
 
       button.bbg_xiv-configure,button.bbg_xiv-help{
         clear:both;
+        span.bbg_xiv-navbar_button_text{
+          display:inline;
+        }
       }
-    }
-
-    button.bbg_xiv-configure,button.bbg_xiv-help{
-      display:block;
-      margin-top:9px;
-      margin-bottom:9px;
-      font-size:100%;
-      line-height:1.0;
-      background-color:transparent;
-      border:0 solid transparent;
-      &:focus{
-        border:0 solid transparent;
-      }
-      @media(min-width:768px){
-        float:right;
-      }
-    }
-    
-    ul.nav li.dropdown ul.dropdown-menu li.dropdown-header{
-      padding-left:5px;
-      font-size:110%;
-      font-weight:bold;
-      text-decoration:underline;
     }
   }
   
