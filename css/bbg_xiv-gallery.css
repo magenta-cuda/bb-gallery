@@ -21,7 +21,13 @@ div.bbg_xiv-bootstrap nav.navbar {
   div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure, div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-help {
     display: block;
     margin-top: 9px;
-    margin-bottom: 9px; }
+    margin-bottom: 9px;
+    font-size: 100%;
+    line-height: 1.0;
+    background-color: transparent;
+    border: 0 solid transparent; }
+    div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure:focus, div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-help:focus {
+      border: 0 solid transparent; }
     @media (min-width: 768px) {
       div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure, div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-help {
         float: right; } }

@@ -158,6 +158,13 @@ div.bbg_xiv-bootstrap{
       display:block;
       margin-top:9px;
       margin-bottom:9px;
+      font-size:100%;
+      line-height:1.0;
+      background-color:transparent;
+      border:0 solid transparent;
+      &:focus{
+        border:0 solid transparent;
+      }
       @media(min-width:768px){
         float:right;
       }
