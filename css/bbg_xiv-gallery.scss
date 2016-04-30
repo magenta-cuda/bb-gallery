@@ -127,6 +127,10 @@ div.bbg_xiv-bootstrap{
     
     div.navbar-collapse ul.nav li.dropdown{
       margin:0;
+
+      a.dropdown-toggle.bbg_xiv-selected_view{
+        text-transform:capitalize;
+      }
     }
 
     li>a{
