@@ -16,14 +16,14 @@ div.bbg_xiv-bootstrap nav.navbar {
         width: 10%;
         padding: 6px;
         float: left; }
-    div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure {
+    div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure, div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-help {
       clear: both; } }
-  div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure {
+  div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure, div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-help {
     display: block;
     margin-top: 9px;
     margin-bottom: 9px; }
     @media (min-width: 768px) {
-      div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure {
+      div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure, div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-help {
         float: right; } }
   div.bbg_xiv-bootstrap nav.navbar ul.nav li.dropdown ul.dropdown-menu li.dropdown-header {
     padding-left: 5px;

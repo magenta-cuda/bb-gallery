@@ -321,7 +321,8 @@ EOD;
                 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
                 $nonce_field
             </form>
-            <button type="button" class="btn btn-info bbg_xiv-configure" title="configure bandwidth, carousel interval, ...">$translations[Options]</button>
+            <button type="button" class="btn btn-info bbg_xiv-help" title="help"><span class="glyphicon glyphicon-question-sign"></span></button>
+            <button type="button" class="btn btn-info bbg_xiv-configure" title="configure bandwidth, carousel interval, ..."><span class="glyphicon glyphicon-cog"></span></button>
         </div>
     </nav>
     <div id="$selector-heading" class="bbg_xiv-search_header">
