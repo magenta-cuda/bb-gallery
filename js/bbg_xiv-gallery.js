@@ -2,7 +2,9 @@
 
 (function(){
     var bbg_xiv=window.bbg_xiv=window.bbg_xiv||{};
-    bbg_xiv.helpUrl="https://bbfgallery.wordpress.com/#options";
+    // URLs
+    bbg_xiv.helpMVPUrl="https://bbfgallery.wordpress.com/#navbar";
+    bbg_xiv.helpOptionsUrl="https://bbfgallery.wordpress.com/#options";
     // use WordPress templating syntax; see .../wp-includes/js/wp-util.js
     bbg_xiv.templateOptions={
         evaluate:    /<#([\s\S]+?)#>/g,
@@ -500,33 +502,7 @@
             break;
         case "Tabs":
             bbg_xiv.renderTabs(jqGallery,images,"bbg_xiv-tabs_"+gallery.id);
-            // Adjust the tab view according to its environment
-            var navbar=jqGallery.find("nav.navbar");
-            // In portrait mode show the tabs navbar uncollapsed
-            var toggle=navbar.find("button.navbar-toggle");
-            if(toggle.css("display")!=="none"){
-                toggle.click();
-            }
-            // Hide the expand glyph and scrollbar if not needed.
-            navbar.find("div.navbar-collapse ul.nav").each(function(){
-                if(jQuery(this).height()-3<=jQuery(this.parentNode).height()){
-                    jQuery(this).parents("nav.navbar").find("nav.navbar span.glyphicon").hide();
-                    jQuery(this.parentNode).addClass("bbg_xiv-hide_scroll");
-                }
-            });
-            // Wireup the handlers - this must be done here as the elements in the tab view are dynamically created
-            // Clicking the expand glpyh shows all the tabs.
-            jqGallery.find("span.glyphicon-collapse-down,span.glyphicon-collapse-up").click(function(e){
-                var jqThis=jQuery(this);
-                var navbar=jQuery(this.parentNode).find("div.navbar-collapse");
-                if(jqThis.hasClass("glyphicon-collapse-down")){
-                    jqThis.removeClass("glyphicon-collapse-down").addClass("glyphicon-collapse-up");
-                    navbar.removeClass("bbg_xiv-closed").addClass("bbg_xiv-open");
-                }else{
-                    jqThis.removeClass("glyphicon-collapse-up").addClass("glyphicon-collapse-down");
-                    navbar.removeClass("bbg_xiv-open").addClass("bbg_xiv-closed");
-                }
-            });
+            bbg_xiv.prettifyTabs(jqGallery);
             jqGallery.find("nav.navbar ul.nav li a").click(function(e){
                 if(!Modernizr.objectfit){
                     // Microsoft Edge does not support CSS object-fit so do the object fit with JavaScript code
@@ -669,6 +645,37 @@
         }
     };
     
+    // tabs are used twice - to show a list of gallery titles and a list of image titles. prettifyTabs() implements the common functionality for both
+    bbg_xiv.prettifyTabs=function(jqGallery){
+        // Adjust the tab view according to its environment
+        var navbar=jqGallery.find("nav.navbar");
+        // In portrait mode show the tabs navbar uncollapsed
+        var toggle=navbar.find("button.navbar-toggle");
+        if(toggle.css("display")!=="none"){
+            toggle.click();
+        }
+        // Hide the expand glyph and scrollbar if not needed.
+        navbar.find("div.navbar-collapse ul.nav").each(function(){
+            if(jQuery(this).height()-8<=jQuery(this.parentNode).height()){
+                jQuery(this).parents("nav.navbar").find("span.glyphicon").hide();
+                jQuery(this.parentNode).addClass("bbg_xiv-hide_scroll");
+            }
+        });
+        // Wireup the handlers - this must be done here as the elements in the tab view are dynamically created
+        // Clicking the expand glpyh shows all the tabs.
+        jqGallery.find("span.glyphicon-collapse-down,span.glyphicon-collapse-up").click(function(e){
+            var jqThis=jQuery(this);
+            var navbar=jQuery(this.parentNode).find("div.navbar-collapse");
+            if(jqThis.hasClass("glyphicon-collapse-down")){
+                jqThis.removeClass("glyphicon-collapse-down").addClass("glyphicon-collapse-up");
+                navbar.removeClass("bbg_xiv-closed").addClass("bbg_xiv-open");
+            }else{
+                jqThis.removeClass("glyphicon-collapse-up").addClass("glyphicon-collapse-down");
+                navbar.removeClass("bbg_xiv-open").addClass("bbg_xiv-closed");
+            }
+        });
+    };
+
     bbg_xiv.resetGallery=function(gallery){
         // restore "Gallery View"
         bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],"Gallery");
@@ -866,16 +873,16 @@
 
     jQuery(document).ready(function(){
         jQuery("div.bbg_xiv-gallery_envelope").each(function(){
+            var gallery=this;
+            // prettify Galleries tabs
+            bbg_xiv.prettifyTabs(jQuery(gallery.parentNode).find("div.bbg_xiv-container"));
             if(bbg_xiv.bbg_xiv_wp_rest_api){
                 // If the schema is not in sessionStorage it will be loaded asynchronously so must use wp.api.loadPromise.done()
-                var gallery=this;
                 wp.api.loadPromise.done(function(){
                     var images=bbg_xiv.images[gallery.id]=new wp.api.collections.Media();
                     images.reset(JSON.parse(bbg_xiv[gallery.id+"-data"]));
                     bbg_xiv.renderGallery(gallery,"Gallery");
                 });
-            }else{
-                bbg_xiv.renderGallery(this,"Gallery");
             }
         });
 
@@ -1225,7 +1232,7 @@
             inner.hide();
         });
         divConfigure.find("button.bbg_xiv-help_options").click(function(e){
-            window.open(bbg_xiv.helpUrl,"_blank");
+            window.open(bbg_xiv.helpOptionsUrl,"_blank");
             e.preventDefault();
         });
         divConfigure.find("button.bbg_xiv-save_options").click(function(e){
@@ -1255,6 +1262,11 @@
             // redisplay the "Gallery" view using the new option values
             bbg_xiv.resetGallery(jQuery(this).parents("div.bbg_xiv-gallery"));
             e.preventDefault();
+        });
+        jQuery("button.bbg_xiv-help").click(function(e){
+            window.open(bbg_xiv.helpMVPUrl,"_blank");
+            this.blur();
+            e.preventDefault();            
         });
         // wireup the handler for scrolling through search results
         jQuery("div.bbg_xiv-search_header button.bbg_xiv-search_scroll_left,div.bbg_xiv-search_header button.bbg_xiv-search_scroll_right").click(function(e){
