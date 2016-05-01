@@ -554,20 +554,21 @@ div.bbg_xiv-bootstrap div.carousel.slide {
 div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse {
   width: 95%;
   float: left;
+  height: auto !important;
   overflow: auto !important; }
   div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse.bbg_xiv-closed {
-    height: 10vh !important; }
+    max-height: 10vh !important; }
     @media (max-width: 767px) {
       div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse.bbg_xiv-closed {
-        height: auto !important;
         max-height: 33.3333vh; } }
   div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse.bbg_xiv-open {
     height: auto !important; }
   div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse.bbg_xiv-hide_scroll {
     overflow: hidden !important; }
+  div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse ul.nav-tabs {
+    border-bottom: 0 solid transparent; }
 div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container span.glyphicon-collapse-down, div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container span.glyphicon-collapse-up {
   width: 5%;
-  height: 10vh;
   float: right;
   font-size: 24px;
   text-align: right;
@@ -576,15 +577,17 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container span.glyphicon-collaps
   @media (min-width: 768px) {
     div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container span.glyphicon-collapse-down, div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container span.glyphicon-collapse-up {
       display: block; } }
-div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container nav.navbar ul.nav {
-  text-align: justify; }
-  div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container nav.navbar ul.nav li {
-    display: inline-block;
-    float: none; }
-    div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container nav.navbar ul.nav li a {
-      font-size: 14px;
-      padding: 5px 10px;
-      border: 1px solid transparent; }
+div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container nav.navbar {
+  min-height: 0; }
+  div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container nav.navbar ul.nav {
+    text-align: justify; }
+    div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container nav.navbar ul.nav li {
+      display: inline-block;
+      float: none; }
+      div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container nav.navbar ul.nav li a {
+        font-size: 14px;
+        padding: 5px 10px;
+        border: 1px solid transparent; }
 div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content {
   width: 100%; }
   div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure {
