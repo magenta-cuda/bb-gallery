@@ -332,6 +332,42 @@ EOD;
             </button>
         </div>
     </nav>
+EOD;
+        # Optionally show titles of dynamically loadable galleries as tab items
+        if ( $galleries ) {
+            $output .= <<<EOD
+    <!-- Gallery Tabs -->
+    <div class="bbg_xiv-container bbg_xiv-gallery_tabs_container">
+      <nav role="navigation" class="navbar navbar-default">
+        <div class="navbar-header">
+          <button type="button" data-target="#gallery_tabbar_collapse" data-toggle="collapse" class="navbar-toggle">
+            <span class="sr-only">Toggle galleries</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="#" class="navbar-brand bbg_xiv-tabs_brand">Galleries:</a>
+        </div>
+        <div id="gallery_tabbar_collapse" class="collapse navbar-collapse bbg_xiv-closed">
+          <ul class="nav nav-tabs">
+            <li class="bbg_xiv-tabs_title">Galleries:</li>
+            <li class="active"><a data-view="gallery_home" data-specifiers='' href="#">Home</a></li>
+EOD;
+            foreach ( $galleries as $i => $gallery ) {
+                $output .= <<<EOD
+            <li><a data-view="gallery_$i" data-specifiers='$gallery->specifiers' href="#">$gallery->title</a></li>
+EOD;
+            }
+            $output .= <<<EOD
+          </ul>
+        </div>
+        <span class="glyphicon glyphicon-collapse-down"></span>
+      </nav>
+    </div>
+EOD;
+        }
+        $output .= <<<EOD
+    <!-- Search or Gallery Headings -->
     <div id="$selector-heading" class="bbg_xiv-search_header">
         <span class="bbg_xiv-search_heading_first"></span><br>
         <button class="btn btn-primary btn-sm bbg_xiv-search_scroll_left" disabled><span class="glyphicon glyphicon-chevron-left"></span></button>
