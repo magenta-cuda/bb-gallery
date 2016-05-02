@@ -839,8 +839,9 @@ div.bbg_xiv-bootstrap{
       ul.nav-tabs li.bbg_xiv-tabs_title{
         font-weight:bold;
         background-color:#ccc;
-        padding-left:5px;
-        padding-right:5px;
+        padding-left:10px;
+        padding-right:10px;
+        margin-left:-15px;
         @media(max-width:767px){
           display:none;
         }

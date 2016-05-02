@@ -159,6 +159,7 @@
     </div>
     <div id="{{{ data.id }}}_tabbar_collapse" class="collapse navbar-collapse bbg_xiv-closed">
       <ul class="nav nav-tabs">
+        <li class="bbg_xiv-tabs_title">Images:</li>
         {{{ data.tabs }}}
       </ul>
     </div>
