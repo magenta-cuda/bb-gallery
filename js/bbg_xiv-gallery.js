@@ -1028,6 +1028,9 @@
                         handleResponse(!!r);
                     });
                 }
+                // update active in gallery tabs
+                jqThis.parents("div.bbg_xiv-bootstrap.bbg_xiv-gallery").find("div.bbg_xiv-gallery_tabs_container nav.navbar ul.nav-tabs li").removeClass("active")
+                    .find("a[data-view='"+view+"']").parent().addClass("active");
             }
             e.preventDefault();
         });
