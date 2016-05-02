@@ -883,6 +883,8 @@
                     images.reset(JSON.parse(bbg_xiv[gallery.id+"-data"]));
                     bbg_xiv.renderGallery(gallery,"Gallery");
                 });
+            }else{
+                bbg_xiv.renderGallery(gallery,"Gallery");
             }
         });
 

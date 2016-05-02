@@ -553,16 +553,16 @@ div.bbg_xiv-bootstrap div.carousel.slide {
     display: none; } }
 div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse {
   width: 95%;
-  float: left;
-  height: auto !important;
-  overflow: auto !important; }
+  float: left; }
   div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse.bbg_xiv-closed {
-    max-height: 10vh !important; }
+    max-height: 10vh !important;
+    overflow: auto !important; }
     @media (max-width: 767px) {
       div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse.bbg_xiv-closed {
         max-height: 33.3333vh; } }
   div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse.bbg_xiv-open {
-    height: auto !important; }
+    height: auto !important;
+    overflow: hidden !important; }
   div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse.bbg_xiv-hide_scroll {
     overflow: hidden !important; }
   div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse ul.nav-tabs {

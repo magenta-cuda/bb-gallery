@@ -817,16 +817,16 @@ div.bbg_xiv-bootstrap{
     div.navbar-collapse{
       width:95%;
       float:left;
-      height:auto !important;
-      overflow:auto !important;
       &.bbg_xiv-closed{
         max-height:10vh !important;
+        overflow:auto !important;
         @media(max-width:767px){
           max-height:33.3333vh;
         }
       }
       &.bbg_xiv-open{
         height:auto !important;
+        overflow:hidden !important;
       }
       &.bbg_xiv-hide_scroll{
         overflow:hidden !important;
