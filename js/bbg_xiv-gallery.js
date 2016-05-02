@@ -1031,6 +1031,11 @@
             }
             e.preventDefault();
         });
+        // wireup Galleries tabs 
+        jQuery("div.bbg_xiv-gallery_tabs_container nav.navbar ul.nav-tabs li a[data-view^='gallery_']").click(function(e){
+            var gallery=this.dataset.view;
+            console.log("gallery=",gallery);
+        });
         // wireup the handler for searching
         jQuery("form.bbg_xiv-search_form input[type='text']").keypress(function(e){
             if(e.which===13){
