@@ -548,9 +548,13 @@ div.bbg_xiv-bootstrap div.carousel.slide {
       border: 1px solid gray;
       margin: -14px 0 0 -14px; }
 
-@media (min-width: 768px) {
+div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-header, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-header {
+  background-color: #222; }
   div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-header a.bbg_xiv-tabs_brand, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-header a.bbg_xiv-tabs_brand {
-    display: none; } }
+    border-bottom: 0 solid transparent; }
+    @media (min-width: 768px) {
+      div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-header a.bbg_xiv-tabs_brand, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-header a.bbg_xiv-tabs_brand {
+        display: none; } }
 div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-collapse {
   width: 95%;
   float: left; }
@@ -559,7 +563,9 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse, d
     overflow: auto !important; }
     @media (max-width: 767px) {
       div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse.bbg_xiv-closed, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-collapse.bbg_xiv-closed {
-        max-height: 33.3333vh; } }
+        height: auto !important;
+        max-height: none !important;
+        overflow: hidden !important; } }
   div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse.bbg_xiv-open, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-collapse.bbg_xiv-open {
     height: auto !important;
     overflow: hidden !important; }

@@ -502,7 +502,7 @@
             break;
         case "Tabs":
             bbg_xiv.renderTabs(jqGallery,images,"bbg_xiv-tabs_"+gallery.id);
-            bbg_xiv.prettifyTabs(jqGallery);
+            bbg_xiv.prettifyTabs(jqGallery,true);
             jqGallery.find("nav.navbar ul.nav li a").click(function(e){
                 if(!Modernizr.objectfit){
                     // Microsoft Edge does not support CSS object-fit so do the object fit with JavaScript code
@@ -646,7 +646,7 @@
     };
     
     // tabs are used twice - to show a list of gallery titles and a list of image titles. prettifyTabs() implements the common functionality for both
-    bbg_xiv.prettifyTabs=function(jqGallery){
+    bbg_xiv.prettifyTabs=function(jqGallery,initial){
         // Adjust the tab view according to its environment
         var navbar=jqGallery.find("nav.navbar");
         // In portrait mode show the tabs navbar uncollapsed
@@ -661,19 +661,21 @@
                 jQuery(this.parentNode).addClass("bbg_xiv-hide_scroll");
             }
         });
-        // Wireup the handlers - this must be done here as the elements in the tab view are dynamically created
-        // Clicking the expand glpyh shows all the tabs.
-        jqGallery.find("span.glyphicon-collapse-down,span.glyphicon-collapse-up").click(function(e){
-            var jqThis=jQuery(this);
-            var navbar=jQuery(this.parentNode).find("div.navbar-collapse");
-            if(jqThis.hasClass("glyphicon-collapse-down")){
-                jqThis.removeClass("glyphicon-collapse-down").addClass("glyphicon-collapse-up");
-                navbar.removeClass("bbg_xiv-closed").addClass("bbg_xiv-open");
-            }else{
-                jqThis.removeClass("glyphicon-collapse-up").addClass("glyphicon-collapse-down");
-                navbar.removeClass("bbg_xiv-open").addClass("bbg_xiv-closed");
-            }
-        });
+        if(initial){
+            // Wireup the handlers - this must be done here as the elements in the tab view are dynamically created
+            // Clicking the expand glpyh shows all the tabs.
+            jqGallery.find("span.glyphicon-collapse-down,span.glyphicon-collapse-up").click(function(e){
+                var jqThis=jQuery(this);
+                var navbar=jQuery(this.parentNode).find("div.navbar-collapse");
+                if(jqThis.hasClass("glyphicon-collapse-down")){
+                    jqThis.removeClass("glyphicon-collapse-down").addClass("glyphicon-collapse-up");
+                    navbar.removeClass("bbg_xiv-closed").addClass("bbg_xiv-open");
+                }else{
+                    jqThis.removeClass("glyphicon-collapse-up").addClass("glyphicon-collapse-down");
+                    navbar.removeClass("bbg_xiv-open").addClass("bbg_xiv-closed");
+                }
+            });
+        }
     };
 
     bbg_xiv.resetGallery=function(gallery){
@@ -875,7 +877,7 @@
         jQuery("div.bbg_xiv-gallery_envelope").each(function(){
             var gallery=this;
             // prettify Galleries tabs
-            bbg_xiv.prettifyTabs(jQuery(gallery.parentNode).find("div.bbg_xiv-container"));
+            bbg_xiv.prettifyTabs(jQuery(gallery.parentNode).find("div.bbg_xiv-container"),true);
             if(bbg_xiv.bbg_xiv_wp_rest_api){
                 // If the schema is not in sessionStorage it will be loaded asynchronously so must use wp.api.loadPromise.done()
                 wp.api.loadPromise.done(function(){
@@ -1318,7 +1320,7 @@
             }
         });
         // make the "Images" brand clickable for mobile devices and send click to the toggle button
-        jQuery("a.bbg_xiv-images_brand").click(function(e){
+        jQuery("a.bbg_xiv-images_brand,a.bbg_xiv-tabs_brand").click(function(e){
             var toggle=jQuery(this).siblings("button.navbar-toggle");
             if(toggle.css("display")!=="none"){
                 toggle.click();

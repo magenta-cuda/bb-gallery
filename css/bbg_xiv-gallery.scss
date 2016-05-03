@@ -810,25 +810,36 @@ div.bbg_xiv-bootstrap{
 
 div.bbg_xiv-bootstrap{
   div.bbg_xiv-template_tabs_container,div.bbg_xiv-gallery_tabs_container{
-    div.navbar-header a.bbg_xiv-tabs_brand{
-      @media(min-width:768px){
-        display:none;
+    div.navbar-header{
+      background-color:#222;
+
+      a.bbg_xiv-tabs_brand{
+        border-bottom:0 solid transparent;
+        @media(min-width:768px){
+          display:none;
+        }
       }
     }
+ 
     div.navbar-collapse{
       width:95%;
       float:left;
+
       &.bbg_xiv-closed{
         max-height:10vh !important;
         overflow:auto !important;
         @media(max-width:767px){
-          max-height:33.3333vh;
+          height:auto !important;
+          max-height:none !important;
+          overflow:hidden !important;
         }
       }
+
       &.bbg_xiv-open{
         height:auto !important;
         overflow:hidden !important;
       }
+
       &.bbg_xiv-hide_scroll{
         overflow:hidden !important;
       }
