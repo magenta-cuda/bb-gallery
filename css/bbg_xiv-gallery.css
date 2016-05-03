@@ -548,6 +548,9 @@ div.bbg_xiv-bootstrap div.carousel.slide {
       border: 1px solid gray;
       margin: -14px 0 0 -14px; }
 
+div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container nav.navbar, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container nav.navbar {
+  background-color: #ddd;
+  border-color: #888; }
 div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-header, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-header {
   background-color: #222; }
   div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-header a.bbg_xiv-tabs_brand, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-header a.bbg_xiv-tabs_brand {
@@ -576,8 +579,10 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse, d
   div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse ul.nav-tabs li.active a, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-collapse ul.nav-tabs li.active a {
     background-color: cyan; }
   div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse ul.nav-tabs li.bbg_xiv-tabs_title, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-collapse ul.nav-tabs li.bbg_xiv-tabs_title {
+    width: 7em;
+    text-align: center;
     font-weight: bold;
-    background-color: #ccc;
+    background-color: #aaa;
     padding-left: 10px;
     padding-right: 10px;
     border-right: 2px solid #666;
