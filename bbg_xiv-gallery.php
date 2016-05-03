@@ -283,7 +283,7 @@ EOD;
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand bbg_xiv-images_brand">{$translations['Images:']}</a>
+            <a href="#" class="navbar-brand bbg_xiv-images_brand">{$translations['Gallery']}</a>
         </div>
         <div id="$selector-navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -346,11 +346,11 @@ EOD;
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="#" class="navbar-brand bbg_xiv-tabs_brand">Galleries:</a>
+          <a href="#" class="navbar-brand bbg_xiv-tabs_brand">Other Galleries:</a>
         </div>
         <div id="gallery_tabbar_collapse" class="collapse navbar-collapse bbg_xiv-closed">
           <ul class="nav nav-tabs">
-            <li class="bbg_xiv-tabs_title" href="#">Galleries:</li>
+            <li class="bbg_xiv-tabs_title" href="#">Other Galleries:</li>
             <li class="active"><a data-view="gallery_home" data-specifiers='' href="#">Home</a></li>
 EOD;
             foreach ( $galleries as $i => $gallery ) {
