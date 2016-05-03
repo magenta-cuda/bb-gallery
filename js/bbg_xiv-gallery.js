@@ -551,6 +551,14 @@
                     }
                 },500);
             });
+            // make the "Tabs" brand clickable for mobile devices and send click to the toggle button
+            jqGallery.find("a.bbg_xiv-tabs_brand").click(function(e){
+                var toggle=jQuery(this).siblings("button.navbar-toggle");
+                if(toggle.css("display")!=="none"){
+                    toggle.click();
+                }
+                e.preventDefault();
+            });
             if( bbg_xiv.interface==="touch"){
                 // For mobile devices if a scrollbar is needed then initially expand the tab navbar as the collapsed tab navbar is not user friendly on mobile devices
                 navbar.find("span.glyphicon-collapse-down").each(function(){
