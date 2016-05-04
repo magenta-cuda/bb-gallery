@@ -224,6 +224,7 @@ EOD;
         }
         $translations = [
             'Images:'                                     => __( 'Images:',                                     'bb_gallery' ),
+            'Other Galleries:'                            => __( 'Other Galleries:',                            'bb_gallery' ),            
             'View'                                        => __( 'View',                                        'bb_gallery' ),
             'Gallery'                                     => __( 'Gallery',                                     'bb_gallery' ),
             'Carousel'                                    => __( 'Carousel',                                    'bb_gallery' ),
@@ -346,11 +347,11 @@ EOD;
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="#" class="navbar-brand bbg_xiv-tabs_brand">Other Galleries:</a>
+          <a href="#" class="navbar-brand bbg_xiv-tabs_brand">{$translations['Other Galleries:']}</a>
         </div>
         <div id="gallery_tabbar_collapse" class="collapse navbar-collapse bbg_xiv-closed">
           <ul class="nav nav-tabs">
-            <li class="bbg_xiv-tabs_title" href="#">Other Galleries:</li>
+            <li class="bbg_xiv-tabs_title" href="#">{$translations['Other Galleries:']}</li>
             <li class="active"><a data-view="gallery_home" data-specifiers='' href="#">Home</a></li>
 EOD;
             foreach ( $galleries as $i => $gallery ) {
