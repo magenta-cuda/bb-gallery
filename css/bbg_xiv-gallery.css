@@ -8,8 +8,22 @@ div.bbg_xiv-bootstrap nav.navbar {
       text-transform: capitalize; }
   div.bbg_xiv-bootstrap nav.navbar li > a {
     border: 0px none; }
+  div.bbg_xiv-bootstrap nav.navbar form.bbg_xiv-search_form {
+    margin-top: 0;
+    margin-bottom: 0; }
+    div.bbg_xiv-bootstrap nav.navbar form.bbg_xiv-search_form button.bbg_xiv-search {
+      color: white;
+      margin-top: 9px;
+      margin-bottom: 9px;
+      font-size: 100%;
+      line-height: 1.0;
+      background-color: transparent;
+      border: 0 solid transparent; }
+      div.bbg_xiv-bootstrap nav.navbar form.bbg_xiv-search_form button.bbg_xiv-search:focus {
+        border: 0 solid transparent; }
   div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure, div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-help {
     display: block;
+    color: white;
     margin-top: 9px;
     margin-bottom: 9px;
     font-size: 100%;

@@ -320,7 +320,7 @@ EOD;
                 <div class="form-group">
                     <input type="text" placeholder="{$translations['Search Images on Site']}" class="form-control">
                 </div>
-                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                <button type="submit" class="btn btn-default bbg_xiv-search"><span class="glyphicon glyphicon-search"></span></button>
                 $nonce_field
             </form>
             <button type="button" class="btn btn-info bbg_xiv-help" title="help">

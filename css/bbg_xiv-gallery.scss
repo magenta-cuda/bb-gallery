@@ -8,6 +8,19 @@ $caption-color:cyan;
 $icon-color:cyan;
 $tabs-highlight-color:cyan;
 
+@mixin navbar_icons(){
+  color:white;
+  margin-top:9px;
+  margin-bottom:9px;
+  font-size:100%;
+  line-height:1.0;
+  background-color:transparent;
+  border:0 solid transparent;
+  &:focus{
+    border:0 solid transparent;
+  }
+}
+
 @mixin overlay_outer(){
   position:fixed;
   top:0px;
@@ -138,20 +151,22 @@ div.bbg_xiv-bootstrap{
       border:0px none;
     }
 
+    form.bbg_xiv-search_form{
+      margin-top:0;
+      margin-bottom:0;
+      button.bbg_xiv-search{
+        @include navbar_icons();
+      }
+    }
+
     button.bbg_xiv-configure,button.bbg_xiv-help{
       display:block;
-      margin-top:9px;
-      margin-bottom:9px;
-      font-size:100%;
-      line-height:1.0;
-      background-color:transparent;
-      border:0 solid transparent;
-      &:focus{
-        border:0 solid transparent;
-      }
+      @include navbar_icons();
+
       @media(min-width:768px){
         float:right;
       }
+
       span.bbg_xiv-navbar_button_text{
         display:none;
       }
