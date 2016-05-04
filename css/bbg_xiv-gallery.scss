@@ -833,12 +833,25 @@ div.bbg_xiv-bootstrap{
       border-color:#888;
     }
     div.navbar-header{
+      color:white;
       background-color:#222;
 
       a.bbg_xiv-tabs_brand{
+        color:white;
         border-bottom:0 solid transparent;
         @media(min-width:768px){
           display:none;
+        }
+      }
+
+      button.navbar-toggle{
+        color:white;
+        border:0 solid transparent;
+        &:focus{
+          background-color:#222;
+        }
+        span.icon-bar{
+          background-color:white;
         }
       }
     }
