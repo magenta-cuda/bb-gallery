@@ -50,12 +50,15 @@ div.bbg_xiv-bootstrap nav.navbar {
         float: left; }
       div.bbg_xiv-bootstrap nav.navbar form.bbg_xiv-search_form button[type='submit'] {
         width: 10%;
-        padding: 6px;
+        padding: 8px;
+        margin-top: 2px;
+        margin-bottom: 0;
         float: left; }
     div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure, div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-help {
       clear: both; }
       div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure span.bbg_xiv-navbar_button_text, div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-help span.bbg_xiv-navbar_button_text {
-        display: inline; } }
+        display: inline;
+        padding-left: 8px; } }
 @media (min-width: 768px) {
   div.bbg_xiv-bootstrap.bbg_xiv-gallery div.navbar-header a.bbg_xiv-images_brand {
     display: none; } }
