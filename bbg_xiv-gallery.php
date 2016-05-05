@@ -583,12 +583,12 @@ EOD
             add_settings_field( 'bbg_xiv_carousel_interval', __( 'Carousel Interval', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_carousel_interval" id="bbg_xiv_carousel_interval" type="number" value="'
                     . get_option( 'bbg_xiv_carousel_interval', 2500 )
-                    . '" class="small-text" /> ' . __( 'The time delay between two slides.', 'bb_gallery' );
+                    . '" class="small-text" /> ' . __( 'The time delay between two slides in milliseconds.', 'bb_gallery' );
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_max_search_results', __( 'Maximum Number of Images Returned by Search', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_max_search_results" id="bbg_xiv_max_search_results" type="number" value="' . get_option( 'bbg_xiv_max_search_results', 100 )
                     . '" class="small-text" min="1" ' . ( self::$use_wp_rest_api_if_available ? 'max="100" ' : '' ) . '/> '
-                    . __( 'The browser user can lower this limit.', 'bb_gallery' );
+                    . __( 'The browser user can lower this limit. (For the WP REST API this limit must be <= 100.)', 'bb_gallery' );
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_flex_number_of_dense_view_columns', __( 'Columns in Dense View', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_flex_number_of_dense_view_columns" id="bbg_xiv_flex_number_of_dense_view_columns" type="number" value="'
@@ -609,8 +609,8 @@ EOD
                     . '<span class="bbg_xiv-radio_text">Carousel&nbsp;&nbsp;&nbsp;&nbsp;</span>';
                 echo '<input name="bbg_xiv_default_view" id="bbg_xiv_default_view_tabs"     type="radio" value="Tabs" '
                     . ( get_option( 'bbg_xiv_default_view', 'Gallery' ) === 'Tabs'     ? 'checked />' : '/>' )
-                    . '<span class="bbg_xiv-radio_text">Tabs&nbsp;&nbsp;&nbsp;&nbsp;</span>';
-                echo __( 'This is the initial view of the gallery".', 'bb_gallery' );
+                    . '<span class="bbg_xiv-radio_text">Tabs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>';
+                echo __( 'This is the initial view of the gallery.', 'bb_gallery' );
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_use_gallery_tabs', __( 'Use Gallery Tabs', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_use_gallery_tabs" id="bbg_xiv_use_gallery_tabs" type="checkbox" value="1" class="code" '
