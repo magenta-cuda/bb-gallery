@@ -136,13 +136,14 @@ $tabs-highlight-color:cyan;
 }
 
 div.bbg_xiv-bootstrap{
-  nav.navbar{
+  nav.navbar.bbg_xiv-gallery_navbar{
     overflow:visible;
     
     div.navbar-collapse ul.nav li.dropdown{
       margin:0;
 
       a.dropdown-toggle.bbg_xiv-selected_view{
+        color:white;
         text-transform:capitalize;
       }
     }
@@ -179,6 +180,10 @@ div.bbg_xiv-bootstrap{
       text-decoration:underline;
     }
 
+    div.navbar-header button.navbar-toggle{
+      border:0 solid transparent;
+    }
+    
     @media(max-width:767px){
       form.bbg_xiv-search_form{
         height:54px;

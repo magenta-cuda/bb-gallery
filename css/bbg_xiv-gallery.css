@@ -1,17 +1,18 @@
 /* Stylesheet for the Bootstrap views of the 'gallery' shortcode */
 /* The colors for the Dense View */
-div.bbg_xiv-bootstrap nav.navbar {
+div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar {
   overflow: visible; }
-  div.bbg_xiv-bootstrap nav.navbar div.navbar-collapse ul.nav li.dropdown {
+  div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar div.navbar-collapse ul.nav li.dropdown {
     margin: 0; }
-    div.bbg_xiv-bootstrap nav.navbar div.navbar-collapse ul.nav li.dropdown a.dropdown-toggle.bbg_xiv-selected_view {
+    div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar div.navbar-collapse ul.nav li.dropdown a.dropdown-toggle.bbg_xiv-selected_view {
+      color: white;
       text-transform: capitalize; }
-  div.bbg_xiv-bootstrap nav.navbar li > a {
+  div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar li > a {
     border: 0px none; }
-  div.bbg_xiv-bootstrap nav.navbar form.bbg_xiv-search_form {
+  div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar form.bbg_xiv-search_form {
     margin-top: 0;
     margin-bottom: 0; }
-    div.bbg_xiv-bootstrap nav.navbar form.bbg_xiv-search_form button.bbg_xiv-search {
+    div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar form.bbg_xiv-search_form button.bbg_xiv-search {
       color: white;
       margin-top: 9px;
       margin-bottom: 9px;
@@ -19,9 +20,9 @@ div.bbg_xiv-bootstrap nav.navbar {
       line-height: 1.0;
       background-color: transparent;
       border: 0 solid transparent; }
-      div.bbg_xiv-bootstrap nav.navbar form.bbg_xiv-search_form button.bbg_xiv-search:focus {
+      div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar form.bbg_xiv-search_form button.bbg_xiv-search:focus {
         border: 0 solid transparent; }
-  div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure, div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-help {
+  div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-configure, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-help {
     display: block;
     color: white;
     margin-top: 9px;
@@ -30,33 +31,35 @@ div.bbg_xiv-bootstrap nav.navbar {
     line-height: 1.0;
     background-color: transparent;
     border: 0 solid transparent; }
-    div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure:focus, div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-help:focus {
+    div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-configure:focus, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-help:focus {
       border: 0 solid transparent; }
     @media (min-width: 768px) {
-      div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure, div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-help {
+      div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-configure, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-help {
         float: right; } }
-    div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure span.bbg_xiv-navbar_button_text, div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-help span.bbg_xiv-navbar_button_text {
+    div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-configure span.bbg_xiv-navbar_button_text, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-help span.bbg_xiv-navbar_button_text {
       display: none; }
-  div.bbg_xiv-bootstrap nav.navbar ul.nav li.dropdown ul.dropdown-menu li.dropdown-header {
+  div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.dropdown-menu li.dropdown-header {
     padding-left: 5px;
     font-size: 110%;
     font-weight: bold;
     text-decoration: underline; }
+  div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar div.navbar-header button.navbar-toggle {
+    border: 0 solid transparent; }
   @media (max-width: 767px) {
-    div.bbg_xiv-bootstrap nav.navbar form.bbg_xiv-search_form {
+    div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar form.bbg_xiv-search_form {
       height: 54px; }
-      div.bbg_xiv-bootstrap nav.navbar form.bbg_xiv-search_form div.form-group {
+      div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar form.bbg_xiv-search_form div.form-group {
         width: 90%;
         float: left; }
-      div.bbg_xiv-bootstrap nav.navbar form.bbg_xiv-search_form button[type='submit'] {
+      div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar form.bbg_xiv-search_form button[type='submit'] {
         width: 10%;
         padding: 8px;
         margin-top: 2px;
         margin-bottom: 0;
         float: left; }
-    div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure, div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-help {
+    div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-configure, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-help {
       clear: both; }
-      div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-configure span.bbg_xiv-navbar_button_text, div.bbg_xiv-bootstrap nav.navbar button.bbg_xiv-help span.bbg_xiv-navbar_button_text {
+      div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-configure span.bbg_xiv-navbar_button_text, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-help span.bbg_xiv-navbar_button_text {
         display: inline;
         padding-left: 8px; } }
 @media (min-width: 768px) {
