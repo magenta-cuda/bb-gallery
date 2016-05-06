@@ -230,6 +230,9 @@ EOD;
             'Carousel'                                    => __( 'Carousel',                                    'bb_gallery' ),
             'Tabs'                                        => __( 'Tabs',                                        'bb_gallery' ),
             'Dense'                                       => __( 'Dense',                                       'bb_gallery' ),
+            'VIEWS'                                       => __( 'VIEWS',                                       'bb_gallery' ),
+            'GALLERIES'                                   => __( 'GALLERIES',                                   'bb_gallery' ),
+            'Home'                                        => __( 'Home',                                        'bb_gallery' ),
             'Search Images on Site'                       => __( 'Search Images on Site',                       'bb_gallery' ),
             'Options'                                     => __( 'Options',                                     'bb_gallery' ),
             'Help'                                        => __( 'Help',                                        'bb_gallery' ),
@@ -291,7 +294,7 @@ EOD;
                 <li class="dropdown bbg_xiv-select_view">
                     <a data-toggle="dropdown" class="dropdown-toggle bbg_xiv-selected_view" href="#"><span>$translations[View]</span> <b class="caret"></b></a>
                     <ul role="menu" class="dropdown-menu bbg_xiv-view_menu">
-                        <li class="dropdown-header">VIEWS</li>
+                        <li class="dropdown-header">{$translations['VIEWS']}</li>
                         <li class="bbg_xiv-view bbg_xiv-view_gallery active"><a data-view="Gallery" href="#">$translations[Gallery]</a></li>
                         <li class="bbg_xiv-view"><a data-view="Carousel" href="#">$translations[Carousel]</a></li>
                         <li class="bbg_xiv-view"><a data-view="Tabs" href="#">$translations[Tabs]</a></li>
@@ -303,8 +306,8 @@ EOD;
             # output menu items for dynamically loaded galleries
             $output .= <<<EOD
                         <li class="divider"></li>
-                        <li class="dropdown-header">GALLERIES</li>
-                        <li class="bbg_xiv-alt_gallery bbg_xiv-alt_gallery_home active"><a data-view="gallery_home" data-specifiers='' href="#">Home</a></li>
+                        <li class="dropdown-header">{$translations['GALLERIES']}</li>
+                        <li class="bbg_xiv-alt_gallery bbg_xiv-alt_gallery_home active"><a data-view="gallery_home" data-specifiers='' href="#">{$translations['Home']}</a></li>
 EOD;
             foreach ( $galleries as $i => $gallery ) {
                 $output .= <<<EOD
@@ -351,8 +354,8 @@ EOD;
         </div>
         <div id="gallery_tabbar_collapse" class="collapse navbar-collapse bbg_xiv-closed">
           <ul class="nav nav-tabs">
-            <li class="bbg_xiv-tabs_title" href="#">{$translations['Other Galleries:']}</li>
-            <li class="active"><a data-view="gallery_home" data-specifiers='' href="#">Home</a></li>
+            <li class="bbg_xiv-tabs_title"><a href="#">{$translations['Other Galleries:']}</a></li>
+        <li class="active"><a data-view="gallery_home" data-specifiers='' href="#">{$translations['Home']}</a></li>
 EOD;
             foreach ( $galleries as $i => $gallery ) {
                 $output .= <<<EOD

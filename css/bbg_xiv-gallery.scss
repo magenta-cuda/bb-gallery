@@ -868,6 +868,8 @@ div.bbg_xiv-bootstrap{
     div.navbar-collapse{
       width:95%;
       float:left;
+      padding-left:0;
+      padding-right:0;
 
       &.bbg_xiv-closed{
         max-height:10vh !important;
@@ -900,6 +902,7 @@ div.bbg_xiv-bootstrap{
         &.bbg_xiv-tabs_title{
           width:12em;
           text-align:center;
+          font-size:14px;
           font-weight:bold;
           background-color:#aaa;
           padding-left:5px;
