@@ -646,6 +646,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container nav.navbar, div.bbg_xi
       display: inline-block;
       float: none; }
       div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container nav.navbar ul.nav li a, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container nav.navbar ul.nav li a {
+        font-weight: bold;
         font-size: 14px;
         padding: 5px 10px;
         border: 1px solid transparent; }
