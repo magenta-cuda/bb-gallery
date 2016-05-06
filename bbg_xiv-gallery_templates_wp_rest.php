@@ -159,7 +159,7 @@
     </div>
     <div id="{{{ data.id }}}_tabbar_collapse" class="collapse navbar-collapse bbg_xiv-closed">
       <ul class="nav nav-tabs">
-        <li class="bbg_xiv-tabs_title"><?php _e( 'Images:', 'bb_gallery' ); ?></li>
+        <li class="bbg_xiv-tabs_title"><a href="#"><?php _e( 'Images:', 'bb_gallery' ); ?></a></li>
         {{{ data.tabs }}}
       </ul>
     </div>

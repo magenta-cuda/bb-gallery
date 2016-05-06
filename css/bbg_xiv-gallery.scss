@@ -892,6 +892,7 @@ div.bbg_xiv-bootstrap{
 
       ul.nav-tabs{
         border-bottom:0 solid transparent;
+        margin:0;
       }
 
       ul.nav-tabs li{
@@ -902,8 +903,6 @@ div.bbg_xiv-bootstrap{
         &.bbg_xiv-tabs_title{
           width:12em;
           text-align:center;
-          font-size:14px;
-          font-weight:bold;
           background-color:#aaa;
           padding-left:5px;
           padding-right:5px;
@@ -912,6 +911,11 @@ div.bbg_xiv-bootstrap{
           margin-left:-15px;
           @media(max-width:767px){
             display:none;
+          }
+          a{
+            color:black;
+            font-size:14px;
+            font-weight:bold;
           }
         }
       }

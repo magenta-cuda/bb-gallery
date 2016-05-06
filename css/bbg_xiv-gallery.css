@@ -608,14 +608,13 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse, d
   div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse.bbg_xiv-hide_scroll, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-collapse.bbg_xiv-hide_scroll {
     overflow: hidden !important; }
   div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse ul.nav-tabs, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-collapse ul.nav-tabs {
-    border-bottom: 0 solid transparent; }
+    border-bottom: 0 solid transparent;
+    margin: 0; }
   div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse ul.nav-tabs li.active a, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-collapse ul.nav-tabs li.active a {
     background-color: cyan; }
   div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse ul.nav-tabs li.bbg_xiv-tabs_title, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-collapse ul.nav-tabs li.bbg_xiv-tabs_title {
     width: 12em;
     text-align: center;
-    font-size: 14px;
-    font-weight: bold;
     background-color: #aaa;
     padding-left: 5px;
     padding-right: 5px;
@@ -625,6 +624,10 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse, d
     @media (max-width: 767px) {
       div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse ul.nav-tabs li.bbg_xiv-tabs_title, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-collapse ul.nav-tabs li.bbg_xiv-tabs_title {
         display: none; } }
+    div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse ul.nav-tabs li.bbg_xiv-tabs_title a, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-collapse ul.nav-tabs li.bbg_xiv-tabs_title a {
+      color: black;
+      font-size: 14px;
+      font-weight: bold; }
 div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container span.glyphicon-collapse-down, div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container span.glyphicon-collapse-up, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container span.glyphicon-collapse-down, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container span.glyphicon-collapse-up {
   width: 5%;
   float: right;
