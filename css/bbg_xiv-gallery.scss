@@ -894,26 +894,27 @@ div.bbg_xiv-bootstrap{
         line-height:1.0;
         border-bottom:0 solid transparent;
         margin:0;
-      }
 
-      ul.nav-tabs li{
-        &.active a{
-          background-color:$tabs-highlight-color;
-        }
+        li{
+          margin:0 0 2px 0;
 
-        &.bbg_xiv-tabs_title{
-          width:10em;
-          text-align:center;
-          background-color:#aaa;
-          padding:2px 5px;
-          border:0;
-          @media(max-width:767px){
-            display:none;
+          &.active a{
+            background-color:$tabs-highlight-color;
           }
-          a{
-            color:black;
-            font-size:14px;
-            font-weight:bold;
+
+          &.bbg_xiv-tabs_title{
+            width:10em;
+            text-align:center;
+            background-color:#aaa;
+            border:0;
+            @media(max-width:767px){
+              display:none;
+            }
+            a{
+              color:black;
+              font-size:14px;
+              font-weight:bold;
+            }
           }
         }
       }
