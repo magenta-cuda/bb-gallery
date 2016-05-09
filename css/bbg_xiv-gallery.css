@@ -12,6 +12,7 @@ div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar {
   div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar li > a {
     border: 0px none; }
   div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar form.bbg_xiv-search_form {
+    padding: 0 5px;
     margin-top: 0;
     margin-bottom: 0; }
     div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar form.bbg_xiv-search_form button.bbg_xiv-search {
