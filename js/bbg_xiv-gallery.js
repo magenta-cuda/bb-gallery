@@ -891,10 +891,10 @@
                 wp.api.loadPromise.done(function(){
                     var images=bbg_xiv.images[gallery.id]=new wp.api.collections.Media();
                     images.reset(JSON.parse(bbg_xiv[gallery.id+"-data"]));
-                    bbg_xiv.renderGallery(gallery,"Gallery");
+                    bbg_xiv.renderGallery(gallery,bbg_xiv.bbg_xiv_default_view?bbg_xiv.bbg_xiv_default_view:"Gallery");
                 });
             }else{
-                bbg_xiv.renderGallery(gallery,"Gallery");
+                bbg_xiv.renderGallery(gallery,bbg_xiv.bbg_xiv_default_view?bbg_xiv.bbg_xiv_default_view:"Gallery");
             }
         });
 
@@ -1050,7 +1050,9 @@
         // wireup Galleries tabs 
         jQuery("div.bbg_xiv-gallery_tabs_container nav.navbar ul.nav-tabs li a[data-view^='gallery_']").click(function(e){
             var gallery=this.dataset.view;
-            console.log("gallery=",gallery);
+            jQuery(this).parents("div.bbg_xiv-bootstrap.bbg_xiv-gallery")
+                .find("nav.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.bbg_xiv-view_menu li > a[data-view='"+this.dataset.view+"']").click();
+            e.preventDefault();
         });
         // wireup the handler for searching
         jQuery("form.bbg_xiv-search_form input[type='text']").keypress(function(e){
