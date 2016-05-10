@@ -65,9 +65,11 @@ div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar {
       div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-configure span.bbg_xiv-navbar_button_text, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-help span.bbg_xiv-navbar_button_text {
         display: inline;
         padding-left: 8px; } }
-@media (min-width: 768px) {
-  div.bbg_xiv-bootstrap.bbg_xiv-gallery div.navbar-header a.bbg_xiv-images_brand {
-    display: none; } }
+div.bbg_xiv-bootstrap.bbg_xiv-gallery div.navbar-header a.bbg_xiv-images_brand {
+  color: white; }
+  @media (min-width: 768px) {
+    div.bbg_xiv-bootstrap.bbg_xiv-gallery div.navbar-header a.bbg_xiv-images_brand {
+      display: none; } }
 div.bbg_xiv-bootstrap.bbg_xiv-gallery .bbg_xiv-search_header, div.bbg_xiv-bootstrap.bbg_xiv-gallery .bbg_xiv-alt_gallery_header {
   text-align: center;
   margin-bottom: 10px;

@@ -223,6 +223,7 @@ class BBG_XIV_Gallery {
 EOD;
         }
         $translations = [
+            'GALLERY MENU'                                => __( 'GALLERY MENU',                                'bb_gallery' ),
             'IMAGES:'                                     => __( 'IMAGES:',                                     'bb_gallery' ),
             'GALLERIES:'                                  => __( 'GALLERIES:',                                  'bb_gallery' ),            
             'View'                                        => __( 'View',                                        'bb_gallery' ),
@@ -287,7 +288,7 @@ EOD;
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand bbg_xiv-images_brand">{$translations['Gallery']}</a>
+            <a href="#" class="navbar-brand bbg_xiv-images_brand">{$translations['GALLERY MENU']}</a>
         </div>
         <div id="$selector-navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
