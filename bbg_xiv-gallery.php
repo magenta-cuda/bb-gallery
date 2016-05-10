@@ -4,7 +4,7 @@
 Plugin Name: BB Gallery
 Plugin URI: https://bbfgallery.wordpress.com/
 Description: Gallery using Backbone.js, Bootstrap 3 and CSS3 Flexbox
-Version: 1.7
+Version: 1.7.1
 Author: Magenta Cuda
 Author URI: https://profiles.wordpress.org/magenta-cuda/
 License: GPL2
@@ -223,8 +223,8 @@ class BBG_XIV_Gallery {
 EOD;
         }
         $translations = [
-            'Images:'                                     => __( 'Images:',                                     'bb_gallery' ),
-            'Galleries:'                                  => __( 'Galleries:',                                  'bb_gallery' ),            
+            'IMAGES:'                                     => __( 'IMAGES:',                                     'bb_gallery' ),
+            'GALLERIES:'                                  => __( 'GALLERIES:',                                  'bb_gallery' ),            
             'View'                                        => __( 'View',                                        'bb_gallery' ),
             'Gallery'                                     => __( 'Gallery',                                     'bb_gallery' ),
             'Carousel'                                    => __( 'Carousel',                                    'bb_gallery' ),
@@ -323,7 +323,7 @@ EOD;
                 <div class="form-group">
                     <input type="text" placeholder="{$translations['Search Images on Site']}" class="form-control">
                 </div>
-                <button type="submit" class="btn btn-default bbg_xiv-search"><span class="glyphicon glyphicon-search"></span></button>
+                <button type="submit" class="btn btn-default bbg_xiv-search" title="start search"><span class="glyphicon glyphicon-search"></span></button>
                 $nonce_field
             </form>
             <button type="button" class="btn btn-info bbg_xiv-help" title="help">
@@ -350,11 +350,11 @@ EOD;
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="#" class="navbar-brand bbg_xiv-tabs_brand">{$translations['Galleries:']}</a>
+          <a href="#" class="navbar-brand bbg_xiv-tabs_brand">{$translations['GALLERIES:']}</a>
         </div>
         <div id="gallery_tabbar_collapse" class="collapse navbar-collapse bbg_xiv-closed">
           <ul class="nav nav-tabs">
-            <li class="bbg_xiv-tabs_title"><a href="#">{$translations['Galleries:']}</a></li>
+            <li class="bbg_xiv-tabs_title"><a href="#">{$translations['GALLERIES:']}</a></li>
         <li class="active"><a data-view="gallery_home" data-specifiers='' href="#">{$translations['Home']}</a></li>
 EOD;
             foreach ( $galleries as $i => $gallery ) {

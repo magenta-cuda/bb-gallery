@@ -155,11 +155,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="#" class="navbar-brand bbg_xiv-tabs_brand"><?php _e( 'Images:', 'bb_gallery' ); ?></a>
+      <a href="#" class="navbar-brand bbg_xiv-tabs_brand"><?php _e( 'IMAGES:', 'bb_gallery' ); ?></a>
     </div>
     <div id="{{{ data.id }}}_tabbar_collapse" class="collapse navbar-collapse bbg_xiv-closed">
       <ul class="nav nav-tabs">
-        <li class="bbg_xiv-tabs_title"><a href="#"><?php _e( 'Images:', 'bb_gallery' ); ?></a></li>
+        <li class="bbg_xiv-tabs_title"><a href="#"><?php _e( 'IMAGES:', 'bb_gallery' ); ?></a></li>
         {{{ data.tabs }}}
       </ul>
     </div>

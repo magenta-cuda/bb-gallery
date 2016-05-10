@@ -3,7 +3,7 @@ Contributors: Magenta Cuda
 Tags: gallery, shortcode, lightbox, slideshow, responsive, plug-compatible, replacement
 Requires at least: 4.4
 Tested up to: 4.5
-Stable tag: 1.7
+Stable tag: 1.7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,12 @@ https://bbfgallery.wordpress.com/
 11. Admin Settings
 
 == Changelog ==
+
+= 1.7.1 =
+
+* option to make the carousel as the initial view
+* option to show the dynamically loadable galleries as tabs
+* bug fixes, css tweaks and usability enhancements
 
 = 1.7 =
 
@@ -121,6 +127,12 @@ https://bbfgallery.wordpress.com/
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.7.1 =
+
+* option to make the carousel as the initial view
+* option to show the dynamically loadable galleries as tabs
+* bug fixes, css tweaks and usability enhancements
 
 = 1.7 =
 
