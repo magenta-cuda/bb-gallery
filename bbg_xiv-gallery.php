@@ -101,9 +101,9 @@ class BBG_XIV_Gallery {
             }
             if ( $gallery_icons_mode ) {
                 // construct a 'ids' parameter with ids of gallery icons
-                $attr[ 'ids' ] = array_map( function( $gallery ) {
+                $attr[ 'ids' ] = implode( ',', array_map( function( $gallery ) {
                     return $gallery->image;
-                }, $galleries );
+                }, $galleries ) );
             }
         }
 
@@ -205,6 +205,7 @@ class BBG_XIV_Gallery {
             #$request->set_default_params( $defaults );
             $controller = new WP_REST_Attachments_Controller( "attachment" );
             $attachments = $controller->get_items( $request )->data;
+            error_log( 'bb_gallery_shortcode():$attachments=' . print_r( $attachments, true ) );
             $bbg_xiv_data[ "$selector-data" ] = json_encode( $attachments );
         } else {
             // initialize the Backbone.js collection using data for my proprietary model
@@ -234,6 +235,15 @@ class BBG_XIV_Gallery {
             }
 
             self::bbg_xiv_do_attachments( $attachments );
+            if ( $gallery_icons_mode ) {
+                # replace title and caption for image with title and caption for gallery
+                foreach ( $galleries as $gallery ) {
+                    $attachments[ $gallery->image ]->post_title   = $gallery->title;
+                    $attachments[ $gallery->image ]->post_excerpt = $gallery->caption;
+                    $attachments[ $gallery->image ]->post_content = '';
+                }
+            }
+            error_log( 'bb_gallery_shortcode():$attachments=' . print_r( $attachments, true ) );
             $bbg_xiv_data[ "$selector-data" ] = json_encode( array_values( $attachments ) );
         }
  
