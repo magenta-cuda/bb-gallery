@@ -91,10 +91,11 @@ class BBG_XIV_Gallery {
                 foreach ( $matches as $match ) {
                     $gallery = $galleries[ ] = (object) [ 'title' => $match[ 1 ], 'specifiers' => $match[ 2 ] ];
                     if ( $gallery_icons_mode ) {
-                        $gallery->specifiers = preg_replace_callback( [ '/(^|\s+)gallery_(image)="(\d+)"/', '/(^|\s+)gallery_(caption)="([^"]*)"/' ], function( $matches ) use ( $gallery ) {
-                            $gallery->$matches[ 2 ] = $matches[ 3 ];
-                            return '';
-                        }, $gallery->specifiers );
+                        $gallery->specifiers = preg_replace_callback( [ '/(^|\s+)gallery_(image)="(\d+)"/', '/(^|\s+)gallery_(caption)="([^"]*)"/' ],
+                            function( $matches ) use ( $gallery ) {
+                                $gallery->$matches[ 2 ] = $matches[ 3 ];
+                                return '';
+                            }, $gallery->specifiers );
                     }
                 }
                 error_log( 'bb_gallery_shortcode():$galleries=' . print_r( $galleries, true ) );
@@ -236,11 +237,13 @@ class BBG_XIV_Gallery {
 
             self::bbg_xiv_do_attachments( $attachments );
             if ( $gallery_icons_mode ) {
-                # replace title and caption for image with title and caption for gallery
-                foreach ( $galleries as $gallery ) {
-                    $attachments[ $gallery->image ]->post_title   = $gallery->title;
-                    $attachments[ $gallery->image ]->post_excerpt = $gallery->caption;
-                    $attachments[ $gallery->image ]->post_content = '';
+                # replace title and caption for image with title and caption for gallery and also remember the gallery index
+                foreach ( $galleries as $i => $gallery ) {
+                    $attachment = $attachments[ $gallery->image ];
+                    $attachment->gallery_index = $i;
+                    $attachment->post_title    = $gallery->title;
+                    $attachment->post_excerpt  = $gallery->caption;
+                    $attachment->post_content  = '';
                 }
             }
             error_log( 'bb_gallery_shortcode():$attachments=' . print_r( $attachments, true ) );
@@ -324,9 +327,9 @@ EOD;
                     <ul role="menu" class="dropdown-menu bbg_xiv-view_menu">
                         <li class="dropdown-header">{$translations['VIEWS']}</li>
                         <li class="bbg_xiv-view bbg_xiv-view_gallery active"><a data-view="Gallery" href="#">$translations[Gallery]</a></li>
-                        <li class="bbg_xiv-view"><a data-view="Carousel" href="#">$translations[Carousel]</a></li>
+                        <li class="bbg_xiv-view bbg_xiv-hide_for_gallery_icons"><a data-view="Carousel" href="#">$translations[Carousel]</a></li>
                         <li class="bbg_xiv-view"><a data-view="Tabs" href="#">$translations[Tabs]</a></li>
-                        <li class="bbg_xiv-view bbg_xiv-large_viewport_only"><a data-view="Dense" href="#">$translations[Dense]</a></li>
+                        <li class="bbg_xiv-view bbg_xiv-hide_for_gallery_icons bbg_xiv-large_viewport_only"><a data-view="Dense" href="#">$translations[Dense]</a></li>
                         <!-- TODO: Add entry for new views here. -->
                         $table_nav_item
 EOD;
@@ -366,7 +369,7 @@ EOD;
     </nav>
 EOD;
         # Optionally show titles of dynamically loadable galleries as tab items
-        if ( $galleries && get_option( 'bbg_xiv_use_gallery_tabs', TRUE ) ) {
+        if ( $galleries && !$gallery_icons_mode && get_option( 'bbg_xiv_use_gallery_tabs', TRUE ) ) {
             $output .= <<<EOD
     <!-- Gallery Tabs -->
     <div class="bbg_xiv-container bbg_xiv-gallery_tabs_container">
