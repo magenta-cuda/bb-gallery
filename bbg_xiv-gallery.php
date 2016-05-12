@@ -78,6 +78,35 @@ class BBG_XIV_Gallery {
         $bbg_xiv_lang[ 'Images' ]                                    = __( 'Images',             'bb_gallery' );
         $bbg_xiv_lang[ 'to' ]                                        = __( 'to',                 'bb_gallery' );
 
+        $gallery_icons_mode = !empty( $attr[ 'mode' ] ) && $attr[ 'mode' ] === "show_gallery_icons";
+        // this is a proprietary mode to display altgallery entries as a gallery of icons
+
+        $galleries = [ ];
+        if ( $content ) {
+            # Unfortunately (and also I think incorrectly) the 'the_content' filter wptexturize() from formatting.php will process the parameters of shortcodes
+            # prettifying the quote marks. So, we need to undo this mutilation and restore the original content.
+            # Opinion: WordPress seems to love regex but regex is simply inadequate for parsing HTML!
+            $content = preg_replace( '/&#8216;|&#8217;|&#8220;|&#8221;|&#8242;|&#8243;/', '"', $content );
+            if ( preg_match_all( '#\[\w+\s+title="([^"]+)"\s+([^\]]+)\]#', $content, $matches, PREG_SET_ORDER ) ) {
+                foreach ( $matches as $match ) {
+                    $gallery = $galleries[ ] = (object) [ 'title' => $match[ 1 ], 'specifiers' => $match[ 2 ] ];
+                    if ( $gallery_icons_mode ) {
+                        $gallery->specifiers = preg_replace_callback( [ '/(^|\s+)gallery_(image)="(\d+)"/', '/(^|\s+)gallery_(caption)="([^"]*)"/' ], function( $matches ) use ( $gallery ) {
+                            $gallery->$matches[ 2 ] = $matches[ 3 ];
+                            return '';
+                        }, $gallery->specifiers );
+                    }
+                }
+                error_log( 'bb_gallery_shortcode():$galleries=' . print_r( $galleries, true ) );
+            }
+            if ( $gallery_icons_mode ) {
+                // construct a 'ids' parameter with ids of gallery icons
+                $attr[ 'ids' ] = array_map( function( $gallery ) {
+                    return $gallery->image;
+                }, $galleries );
+            }
+        }
+
         if ( ! empty( $attr['ids'] ) ) {
           // 'ids' is explicitly ordered, unless you specify otherwise.
           if ( empty( $attr['orderby'] ) ) {
@@ -254,18 +283,6 @@ EOD;
             'Help'                                        => __( 'Help',                                        'bb_gallery' )
         ];
 
-        $galleries = [ ];
-        if ( $content ) {
-            # Unfortunately (and also I think incorrectly) the 'the_content' filter wptexturize() from formatting.php will process the parameters of shortcodes
-            # prettifying the quote marks. So, we need to undo this mutilation and restore the original content.
-            # Opinion: WordPress seems to love regex but regex is simply inadequate for parsing HTML!
-            $content = preg_replace( '/&#8216;|&#8217;|&#8220;|&#8221;|&#8242;|&#8243;/', '"', $content );
-            if ( preg_match_all( '#\[\w+\s+title="([^"]+)"\s+([^\]]+)\]#', $content, $matches, PREG_SET_ORDER ) ) {
-                foreach ( $matches as $match ) {
-                    $galleries[ ] = (object) [ 'title' => $match[ 1 ], 'specifiers' => $match[ 2 ] ];
-                }
-            }
-        }
         if ( !$galleries ) {
             for ( $i = 1; $i <= self::$gallery_menu_items_count; $i++ ) {
                 $option = get_option( "bbg_xiv_gallery_menu_$i", '' );
