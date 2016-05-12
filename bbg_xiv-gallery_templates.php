@@ -20,7 +20,7 @@
         <div class="bbg_xiv-flex_item col-sm-6 col-md-4 col-lg-3">
             <figure class="img-rounded bbg_xiv-gallery_item">
                 <figcaption>{{{ data.post_title }}}</figcaption>
-                <a href="{{{ data.link }}}" target="_blank">
+                <a href="{{{ data.link }}}" target="_blank"<# if ( typeof data.gallery_index !== "undefined" ) { #> class="bbg_xiv-gallery_icon" data-gallery-index="{{{ data.gallery_index }}}"<# } #>>
                     <img src="<# print(bbg_xiv.getImageUrl(data).src); #>" alt="{{{ data.post_title }}}" title="{{{ data.post_excerpt }}}">
                 </a>
             </figure>
@@ -52,7 +52,7 @@
     <div class="bbg_xiv-flex_item">
         <figure>
             <figcaption>{{{ data.post_title }}}</figcaption>
-            <a href="{{{ data.link }}}" target="_blank">
+            <a href="{{{ data.link }}}" target="_blank"<# if ( typeof data.gallery_index !== "undefined" ) { #> class="bbg_xiv-gallery_icon" data-gallery-index="{{{ data.gallery_index }}}"<# } #>>
                 <picture>
                     <source media="(min-width:1200px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).src); #>">
                     <source media="(min-width:992px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).medium); #>">
