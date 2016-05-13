@@ -25,7 +25,7 @@ div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar {
       border: 0 solid transparent; }
       div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar form.bbg_xiv-search_form button.bbg_xiv-search:focus {
         border: 0 solid transparent; }
-  div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-configure, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-help {
+  div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-home, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-configure, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-help {
     display: block;
     color: white;
     margin-top: 9px;
@@ -34,12 +34,12 @@ div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar {
     line-height: 1.0;
     background-color: transparent;
     border: 0 solid transparent; }
-    div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-configure:focus, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-help:focus {
+    div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-home:focus, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-configure:focus, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-help:focus {
       border: 0 solid transparent; }
     @media (min-width: 768px) {
-      div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-configure, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-help {
+      div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-home, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-configure, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-help {
         float: right; } }
-    div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-configure span.bbg_xiv-navbar_button_text, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-help span.bbg_xiv-navbar_button_text {
+    div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-home span.bbg_xiv-navbar_button_text, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-configure span.bbg_xiv-navbar_button_text, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-help span.bbg_xiv-navbar_button_text {
       display: none; }
   div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.dropdown-menu li.dropdown-header {
     padding-left: 5px;
@@ -60,9 +60,9 @@ div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar {
         margin-top: 2px;
         margin-bottom: 0;
         float: left; }
-    div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-configure, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-help {
+    div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-home, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-configure, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-help {
       clear: both; }
-      div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-configure span.bbg_xiv-navbar_button_text, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-help span.bbg_xiv-navbar_button_text {
+      div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-home span.bbg_xiv-navbar_button_text, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-configure span.bbg_xiv-navbar_button_text, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-help span.bbg_xiv-navbar_button_text {
         display: inline;
         padding-left: 8px; } }
 div.bbg_xiv-bootstrap.bbg_xiv-gallery div.navbar-header a.bbg_xiv-images_brand {

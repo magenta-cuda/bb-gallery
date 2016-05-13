@@ -1244,6 +1244,10 @@
                 e.preventDefault();
             });
         });
+        jQuery("button.bbg_xiv-home").click(function(e){
+            // TODO: home handler
+            e.preventDefault();
+        });
         // wireup the handler for setting options
         jQuery("button.bbg_xiv-configure").click(function(e){
             divConfigure.find("input#bbg_xiv-carousel_delay").val(bbg_xiv.bbg_xiv_carousel_interval);
@@ -1259,6 +1263,7 @@
             outer.show();
             var inner=gallery.find("div.bbg_xiv-configure_inner");
             inner.show();
+            e.preventDefault();
         });
         var divConfigure=jQuery(".bbg_xiv-configure_inner");
         divConfigure.find("input[type='number']#bbg_xiv-max_search_results").change(function(e){
@@ -1316,7 +1321,7 @@
         jQuery("button.bbg_xiv-help").click(function(e){
             window.open(bbg_xiv.helpMVPUrl,"_blank");
             this.blur();
-            e.preventDefault();            
+            e.preventDefault();
         });
         // wireup the handler for scrolling through search results
         jQuery("div.bbg_xiv-search_header button.bbg_xiv-search_scroll_left,div.bbg_xiv-search_header button.bbg_xiv-search_scroll_right").click(function(e){
