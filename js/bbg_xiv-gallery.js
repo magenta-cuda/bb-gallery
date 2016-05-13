@@ -1,5 +1,23 @@
 // Backbone.js Model View Presenter for the 'gallery' shortcode
 
+/*
+    This program is free software; you can redistribute it and/or
+    modify it under the terms of the GNU General Public License
+    as published by the Free Software Foundation; either version 2
+    of the License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+    Copyright 2015  Magenta Cuda
+*/
+
 (function(){
     var bbg_xiv=window.bbg_xiv=window.bbg_xiv||{};
     // URLs
@@ -879,6 +897,13 @@
             jQuery(".bbg_xiv-large_viewport_only").hide();
             jQuery(".bbg_xiv-configure_inner .bbg_xiv-mouse_only_option").hide();
         }  
+        jQuery("div.bbg_xiv-gallery_envelope").each(function(){
+            if(typeof bbg_xiv.images[this.id].models[0].attributes.gallery_index!=="undefined"){
+                // for a gallery of gallery icons hide some irrelevent HTML elements
+                console.log("bbg_xiv.images[this.id].models[0].attributes.gallery_index=",bbg_xiv.images[this.id].models[0].attributes.gallery_index);
+                jQuery(this.parentNode).find("nav.bbg_xiv-gallery_navbar ul.nav ul.bbg_xiv-view_menu li.bbg_xiv-hide_for_gallery_icons").hide();
+            }
+        });
     });
 
     jQuery(document).ready(function(){
@@ -1338,6 +1363,12 @@
             if(toggle.css("display")!=="none"){
                 toggle.click();
             }
+            e.preventDefault();
+        });
+        // click handler for gallery icon images
+        jQuery("a.bbg_xiv-gallery_icon").click(function(e){
+            console.log("a.bbg_xiv-gallery_icon:click:galleryIndex=",this.dataset.galleryIndex);
+            // TODO: load the gallery with index this.dataset.galleryIndex
             e.preventDefault();
         });
         // wireup mobile only events

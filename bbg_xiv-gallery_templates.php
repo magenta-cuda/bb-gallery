@@ -61,7 +61,7 @@
                 </picture>
             </a>
         </figure>
-        <a href="{{{ data.link }}}" target="_blank">
+        <a href="{{{ data.link }}}" target="_blank"<# if ( typeof data.gallery_index !== "undefined" ) { #> class="bbg_xiv-gallery_icon" data-gallery-index="{{{ data.gallery_index }}}"<# } #>>
             <!-- overlay for full viewport button -->
             <div class="bbg_xiv-dense_full_btn" title="{{{ data.post_excerpt }}}">
                 <button class="bbg_xiv-dense_full_btn bbg_xiv-flex_from_image btn">
