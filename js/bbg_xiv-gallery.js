@@ -415,13 +415,15 @@
             }
             jQuery(window).resize();
             if(bbg_xiv.search[gallery.id]){
+                // displaying search results so hide gallery headings
                 jQuery("div#"+gallery.id+"-alt_gallery_heading").hide();
-                // search results have a heading
+                // and show search results heading
                 jQuery("div#"+gallery.id+"-heading").show();
             }else if(bbg_xiv.galleries[gallery.id]){
+                // displaying a gallery so hide search results heading
                 jQuery("div#"+gallery.id+"-heading").hide();
-                if(bbg_xiv.galleries[gallery.id].view!=="gallery_home"){
-                    // show title of alternate galleries; except hide title for home gallery
+                if(bbg_xiv.galleries[gallery.id].view!=="gallery_home"||typeof bbg_xiv.images[gallery.id].models[0].attributes.gallery_index!=="undefined"){
+                    // and show title of alternate galleries or heads up for gallery of galleries; except hide title for home gallery; 
                     jQuery("div#"+gallery.id+"-alt_gallery_heading").show();
                 }
             }
@@ -899,6 +901,7 @@
         }  
         jQuery("div.bbg_xiv-gallery_envelope").each(function(){
             if(typeof bbg_xiv.images[this.id].models[0].attributes.gallery_index!=="undefined"){
+                // TODO: doing this on resize is not neccessary
                 // for a gallery of gallery icons hide some irrelevent HTML elements
                 console.log("bbg_xiv.images[this.id].models[0].attributes.gallery_index=",bbg_xiv.images[this.id].models[0].attributes.gallery_index);
                 jQuery(this.parentNode).find("nav.bbg_xiv-gallery_navbar ul.nav ul.bbg_xiv-view_menu li.bbg_xiv-hide_for_gallery_icons").hide();
@@ -920,6 +923,10 @@
                 });
             }else{
                 bbg_xiv.renderGallery(gallery,bbg_xiv.bbg_xiv_default_view?bbg_xiv.bbg_xiv_default_view:"Gallery");
+                if(typeof bbg_xiv.images[gallery.id].models[0].attributes.gallery_index!=="undefined"){
+                    // For a gallery of galleries insert a heads up that this is not just a gallery of images
+                    jQuery(gallery.parentNode).find("div#"+gallery.id+"-alt_gallery_heading span.bbg_xiv-alt_gallery_heading").text("TODO:this is a gallery of galleries");
+                }
             }
         });
 

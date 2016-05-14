@@ -4,7 +4,7 @@
 Plugin Name: BB Gallery
 Plugin URI: https://bbfgallery.wordpress.com/
 Description: Gallery using Backbone.js, Bootstrap 3 and CSS3 Flexbox
-Version: 1.7.1
+Version: 1.7.1.1
 Author: Magenta Cuda
 Author URI: https://profiles.wordpress.org/magenta-cuda/
 License: GPL2
@@ -279,6 +279,9 @@ EOD;
             'Search Images on Site'                       => __( 'Search Images on Site',                       'bb_gallery' ),
             'Options'                                     => __( 'Options',                                     'bb_gallery' ),
             'Help'                                        => __( 'Help',                                        'bb_gallery' ),
+            'get help'                                    => __( 'get help',                                    'bb_gallery' ),
+            'configure bandwidth, carousel interval, ...' => __( 'configure bandwidth, carousel interval, ...', 'bb_gallery' ),
+            'return to home gallery'                      => __( 'return to home gallery',                      'bb_gallery' ),
             'Carousel Time Interval in ms'                => __( 'Carousel Time Interval in ms',                'bb_gallery' ),
             'Minimum Width for Gallery Images in px'      => __( 'Minimum Width for Gallery Images in px',      'bb_gallery' ),
             'Maximum Number of Images Returned by Search' => __( 'Maximum Number of Images Returned by Search', 'bb_gallery' ),
@@ -357,15 +360,15 @@ EOD;
                 <button type="submit" class="btn btn-default bbg_xiv-search" title="start search"><span class="glyphicon glyphicon-search"></span></button>
                 $nonce_field
             </form>
-            <button type="button" class="btn btn-info bbg_xiv-help" title="get help">
+            <button type="button" class="btn btn-info bbg_xiv-help" title="{$translations['get help']}">
                 <span class="glyphicon glyphicon-question-sign"></span>
                 <span class="bbg_xiv-navbar_button_text">{$translations['Help']}</span>
             </button>
-            <button type="button" class="btn btn-info bbg_xiv-configure" title="configure bandwidth, carousel interval, ...">
+            <button type="button" class="btn btn-info bbg_xiv-configure" title="{$translations['configure bandwidth, carousel interval, ...']}">
                 <span class="glyphicon glyphicon-cog"></span>
                 <span class="bbg_xiv-navbar_button_text">{$translations['Options']}</span>
             </button>
-            <button type="button" class="btn btn-info bbg_xiv-home" title="go home">
+            <button type="button" class="btn btn-info bbg_xiv-home" title="{$translations['return to home gallery']}">
                 <span class="glyphicon glyphicon-home"></span>
                 <span class="bbg_xiv-navbar_button_text">{$translations['Home']}</span>
             </button>
