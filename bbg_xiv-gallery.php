@@ -77,6 +77,9 @@ class BBG_XIV_Gallery {
         $bbg_xiv_lang[ 'of' ]                                        = __( 'of',                 'bb_gallery' );
         $bbg_xiv_lang[ 'Images' ]                                    = __( 'Images',             'bb_gallery' );
         $bbg_xiv_lang[ 'to' ]                                        = __( 'to',                 'bb_gallery' );
+        $bbg_xiv_lang[ 'galleryOfGalleriesTitle' ]                   = __(
+            'Each image below represents a gallery. Please click on an image to load its gallery.',
+                                                                                                 'bb_gallery' );
 
         $gallery_icons_mode = !empty( $attr[ 'mode' ] ) && $attr[ 'mode' ] === "show_gallery_icons";
         // this is a proprietary mode to display altgallery entries as a gallery of icons

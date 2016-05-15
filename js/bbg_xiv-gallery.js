@@ -24,7 +24,7 @@
     bbg_xiv.helpMVPUrl="https://bbfgallery.wordpress.com/#navbar";
     bbg_xiv.helpOptionsUrl="https://bbfgallery.wordpress.com/#options";
     // Strings
-    bbg_xiv.galleryOfGalleriesTitle="TODO:this is a gallery of galleries";
+    bbg_xiv.galleryOfGalleriesTitle=bbg_xiv_lang.galleryOfGalleriesTitle;
     // use WordPress templating syntax; see .../wp-includes/js/wp-util.js
     bbg_xiv.templateOptions={
         evaluate:    /<#([\s\S]+?)#>/g,
