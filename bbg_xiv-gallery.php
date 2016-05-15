@@ -91,7 +91,7 @@ class BBG_XIV_Gallery {
                 foreach ( $matches as $match ) {
                     $gallery = $galleries[ ] = (object) [ 'title' => $match[ 1 ], 'specifiers' => $match[ 2 ] ];
                     if ( $gallery_icons_mode ) {
-                        $gallery->specifiers = preg_replace_callback( [ '/(^|\s+)gallery_(image)="(\d+)"/', '/(^|\s+)gallery_(caption)="([^"]*)"/' ],
+                        $gallery->specifiers = preg_replace_callback( [ '/(^|\s+)(image)="(\d+)"/', '/(^|\s+)(caption)="([^"]*)"/' ],
                             function( $matches ) use ( $gallery ) {
                                 $gallery->$matches[ 2 ] = $matches[ 3 ];
                                 return '';

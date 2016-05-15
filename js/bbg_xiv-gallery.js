@@ -23,6 +23,8 @@
     // URLs
     bbg_xiv.helpMVPUrl="https://bbfgallery.wordpress.com/#navbar";
     bbg_xiv.helpOptionsUrl="https://bbfgallery.wordpress.com/#options";
+    // Strings
+    bbg_xiv.galleryOfGalleriesTitle="TODO:this is a gallery of galleries";
     // use WordPress templating syntax; see .../wp-includes/js/wp-util.js
     bbg_xiv.templateOptions={
         evaluate:    /<#([\s\S]+?)#>/g,
@@ -893,18 +895,20 @@
             };
         });
         if(bbg_xiv.interface==="mouse"&&jQuery(window).width()>=bbg_xiv.bbg_xiv_flex_min_width_for_dense_view){
-            jQuery(".bbg_xiv-large_viewport_only").show();
             jQuery(".bbg_xiv-configure_inner .bbg_xiv-mouse_only_option").show();
         }else{
-            jQuery(".bbg_xiv-large_viewport_only").hide();
             jQuery(".bbg_xiv-configure_inner .bbg_xiv-mouse_only_option").hide();
         }  
         jQuery("div.bbg_xiv-gallery_envelope").each(function(){
+            var menuItems=jQuery(this.parentNode).find("nav.bbg_xiv-gallery_navbar ul.nav ul.bbg_xiv-view_menu li").show();
+            if(bbg_xiv.interface!=="mouse"||jQuery(window).width()<bbg_xiv.bbg_xiv_flex_min_width_for_dense_view){
+                // for touch and small screen devices hide the dense menu item
+                menuItems.filter(".bbg_xiv-large_viewport_only").hide();
+            }  
             if(typeof bbg_xiv.images[this.id].models[0].attributes.gallery_index!=="undefined"){
-                // TODO: doing this on resize is not neccessary
-                // for a gallery of gallery icons hide some irrelevent HTML elements
+                // for a gallery of gallery icons hide the carousel and the dense menu items
                 console.log("bbg_xiv.images[this.id].models[0].attributes.gallery_index=",bbg_xiv.images[this.id].models[0].attributes.gallery_index);
-                jQuery(this.parentNode).find("nav.bbg_xiv-gallery_navbar ul.nav ul.bbg_xiv-view_menu li.bbg_xiv-hide_for_gallery_icons").hide();
+                menuItems.filter(".bbg_xiv-hide_for_gallery_icons").hide();
             }
         });
     });
@@ -925,7 +929,7 @@
                 bbg_xiv.renderGallery(gallery,bbg_xiv.bbg_xiv_default_view?bbg_xiv.bbg_xiv_default_view:"Gallery");
                 if(typeof bbg_xiv.images[gallery.id].models[0].attributes.gallery_index!=="undefined"){
                     // For a gallery of galleries insert a heads up that this is not just a gallery of images
-                    jQuery(gallery.parentNode).find("div#"+gallery.id+"-alt_gallery_heading span.bbg_xiv-alt_gallery_heading").text("TODO:this is a gallery of galleries");
+                    jQuery(gallery.parentNode).find("div#"+gallery.id+"-alt_gallery_heading span.bbg_xiv-alt_gallery_heading").text(bbg_xiv.galleryOfGalleriesTitle);
                 }
             }
         });
@@ -963,8 +967,10 @@
                     // images were previously loaded so just restore  the collection
                     bbg_xiv.images[divGallery.id]=galleries.images[view];
                     galleries.view=view;
-                    if(view!=="gallery_home"){
-                        container.find("div#"+divGallery.id+"-alt_gallery_heading span.bbg_xiv-alt_gallery_heading").text(title);
+                    var galleryOfGalleries=typeof bbg_xiv.images[divGallery.id].models[0].attributes.gallery_index!=="undefined";
+                    if(view!=="gallery_home"||galleryOfGalleries){
+                        container.find("div#"+divGallery.id+"-alt_gallery_heading span.bbg_xiv-alt_gallery_heading")
+                          .text(galleryOfGalleries?bbg_xiv.galleryOfGalleriesTitle:title);
                     }
                     bbg_xiv.renderGallery(divGallery,"Gallery");
                     // update active in gallery tabs
@@ -1252,7 +1258,8 @@
             });
         });
         jQuery("button.bbg_xiv-home").click(function(e){
-            // TODO: home handler
+            jQuery(this).parents("div.bbg_xiv-bootstrap.bbg_xiv-gallery")
+                .find("nav.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.bbg_xiv-view_menu li > a[data-view='gallery_home']").click();
             e.preventDefault();
         });
         // wireup the handler for setting options

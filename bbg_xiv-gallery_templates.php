@@ -180,7 +180,7 @@
 <!-- Tabs Item Template -->
 <script type="text/html" id="bbg_xiv-template_tabs_item">
 <figure id="bbg_xiv-tab_pane{{{ data.index }}}" role="tabpanel" class="tab-pane fade<# if ( data.index === 0 ) { #> active in<# } #>">
-  <a href="{{{ data.link }}}" target="_blank">
+  <a href="{{{ data.link }}}" target="_blank"<# if ( typeof data.gallery_index !== "undefined" ) { #> class="bbg_xiv-gallery_icon" data-gallery-index="{{{ data.gallery_index }}}"<# } #>>
     <picture>
       <source media="(min-width:1200px)" srcset="<# print(bbg_xiv.getImageUrl(data).src); #>">
       <source media="(min-width:992px)" srcset="<# print(bbg_xiv.getImageUrl(data).medium); #>">
