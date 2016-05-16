@@ -339,9 +339,9 @@
                 },2000);
             });
             var fullImg=inner.find("img");
-            var fullLarge=inner.find("source[media='(min-width:1200px)']");
-            var fullMedium=inner.find("source[media='(min-width:992px)']");
-            var fullSmall=inner.find("source[media='(max-width:991px)']");
+            var fullLarge=inner.find("source[media='(min-width:1200px)']")[0];
+            var fullMedium=inner.find("source[media='(min-width:992px)']")[0];
+            var fullSmall=inner.find("source[media='(max-width:991px)']")[0];
             var fullTitle=inner.find("h1.bbg_xiv-dense_title");
             var fullTitleColor=fullTitle.css("color");
             var fullTitleShadow=fullTitle.css("text-shadow");
@@ -376,21 +376,22 @@
                     var img=jQuery(this).parents("div.bbg_xiv-flex_item").find("img")[0];
                 }
                 fullImg[0].src=img.src;
-                fullLarge[0].srcset=img.src;
-                fullMedium[0].srcset=img.src;
-                fullSmall[0].srcset=img.src;
+                fullLarge.srcset=img.src;
+                fullMedium.srcset=img.src;
+                fullSmall.srcset=img.src;
                 // try and replace img src with better match 
                 try{
                     var imageId=img.dataset.bbg_xivImageId;
                     // TODO: id needs checking
+                    console.log("bbg_xiv.renderGallery():imageId=",imageId);
                     if(imageId){
                         var galleryId=jQuery(img).parents("div[data-bbg_xiv-gallery-id]")[0].dataset.bbg_xivGalleryId;
                         if(galleryId){
                             var urls=bbg_xiv.getImageUrl(bbg_xiv.images[galleryId].get(imageId).attributes);
                             fullImg[0].src=urls.src;
-                            fullLarge[0].srcset=urls.src;
-                            fullMedium[0].srcset=urls.medium;
-                            fullSmall[0].srcset=urls.small;
+                            fullLarge.srcset=urls.src;
+                            fullMedium.srcset=urls.medium;
+                            fullSmall.srcset=urls.small;
                         }
                     }
                 }catch(e){
@@ -925,6 +926,7 @@
                     var images=bbg_xiv.images[gallery.id]=new wp.api.collections.Media();
                     images.reset(JSON.parse(bbg_xiv[gallery.id+"-data"]));
                     bbg_xiv.renderGallery(gallery,bbg_xiv.bbg_xiv_default_view?bbg_xiv.bbg_xiv_default_view:"Gallery");
+                    jQuery(window).resize();
                 });
             }else{
                 bbg_xiv.renderGallery(gallery,bbg_xiv.bbg_xiv_default_view?bbg_xiv.bbg_xiv_default_view:"Gallery");
@@ -1429,8 +1431,11 @@
                 bbg_xiv.resetGallery(jQuery(this));
             });
         });
-        jQuery(window).resize();
-    });
+        if(!bbg_xiv.bbg_xiv_wp_rest_api){
+            // if using the REST API cannot do resize here since the models may be asynchronously created
+            jQuery(window).resize();
+        }
+    });   // jQuery(document).ready(function(){
 
     //cookie test code
     //window.alert("bbg_xiv_test="+bbg_xiv.getCookie("bbg_xiv_test"));
