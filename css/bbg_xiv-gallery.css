@@ -17,6 +17,7 @@ div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar {
     margin-bottom: 0; }
     div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar form.bbg_xiv-search_form button.bbg_xiv-search {
       color: white;
+      padding: 6px 8px;
       margin-top: 9px;
       margin-bottom: 9px;
       font-size: 100%;
@@ -28,6 +29,7 @@ div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar {
   div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-home, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-configure, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-help {
     display: block;
     color: white;
+    padding: 6px 8px;
     margin-top: 9px;
     margin-bottom: 9px;
     font-size: 100%;
