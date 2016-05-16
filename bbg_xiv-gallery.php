@@ -42,10 +42,20 @@ class BBG_XIV_Gallery {
     # excerpted from the WordPress function gallery_shortcode() of .../wp-includes/media.php
 
     public static function bb_gallery_shortcode( $attr, $content = '' ) {
-        if ( is_array( $attr ) && array_key_exists( 'mode', $attr ) && $attr[ 'mode' ] === 'wordpress' ) {
+        if (  is_feed( ) || ( is_array( $attr ) && !empty( $attr[ 'mode' ] ) && $attr[ 'mode' ] === 'wordpress' ) ) {
+            // invoke the standard WordPress gallery shortcode function
+            unset( $attr[ 'mode' ] );
             return gallery_shortcode( $attr );
         }
-        
+
+        if ( is_array( $attr ) && !empty( $attr[ 'mode' ] ) && $attr[ 'mode' ] === 'get_first' ) {
+            // in this mode only the first image is returned for use as a representative image for a gallery
+            unset( $attr[ 'mode' ] );
+            $get_first = TRUE;
+            ob_start( );
+            #TODO: set underlying SQL LIMIT to 1
+        }
+
         if ( self::$wp_rest_api_available && self::$use_wp_rest_api_if_available ) {
             require_once(  dirname( __FILE__ ) . '/bbg_xiv-gallery_templates_wp_rest.php' );
         } else {
@@ -81,8 +91,10 @@ class BBG_XIV_Gallery {
             'Each image below represents a gallery. Please click on an image to load its gallery.',
                                                                                                  'bb_gallery' );
 
-        $gallery_icons_mode = !empty( $attr[ 'mode' ] ) && $attr[ 'mode' ] === "show_gallery_icons";
-        // this is a proprietary mode to display altgallery entries as a gallery of icons
+        if ( is_array( $attr) && !empty( $attr[ 'mode' ] ) && $attr[ 'mode' ] === "show_gallery_icons" ) {
+            // this is a proprietary mode to display altgallery entries as a gallery of representative images
+            $gallery_icons_mode = TRUE;
+        }
 
         $galleries = [ ];
         if ( $content ) {
@@ -93,17 +105,33 @@ class BBG_XIV_Gallery {
             if ( preg_match_all( '#\[\w+\s+title="([^"]+)"\s+([^\]]+)\]#', $content, $matches, PREG_SET_ORDER ) ) {
                 foreach ( $matches as $match ) {
                     $gallery = $galleries[ ] = (object) [ 'title' => $match[ 1 ], 'specifiers' => $match[ 2 ] ];
-                    if ( $gallery_icons_mode ) {
+                    if ( !empty( $gallery_icons_mode ) ) {
                         $gallery->specifiers = preg_replace_callback( [ '/(^|\s+)(image)="(\d+)"/', '/(^|\s+)(caption)="([^"]*)"/' ],
                             function( $matches ) use ( $gallery ) {
                                 $gallery->$matches[ 2 ] = $matches[ 3 ];
                                 return '';
                             }, $gallery->specifiers );
+                        if ( empty( $gallery->image ) ) {
+                            # no image specified so use first image of gallery
+                            error_log( 'image parameter missing' );
+                            $gallery_attr = [ 'mode' => 'get_first' ];
+                            # TODO: also handle single quoted parameters
+                            preg_replace_callback( '/(\w+)="([^"]+)"/', function( $matches ) use ( &$gallery_attr ) {
+                                $gallery_attr[ $matches[ 1 ] ] = $matches[ 2 ];
+                            }, $gallery->specifiers );
+                            error_log( '$gallery_attr=' . print_r( $gallery_attr, true ) );
+                            $attachment = self::bb_gallery_shortcode( $gallery_attr );
+                            error_log( '$attachment=' . print_r( $attachment, true ) );
+                            $gallery->image = $attachment->ID;
+                        }
+                        if ( empty( $gallery->caption ) ) {
+                            $gallery->caption = '';
+                        }
                     }
                 }
                 error_log( 'bb_gallery_shortcode():$galleries=' . print_r( $galleries, true ) );
             }
-            if ( $gallery_icons_mode ) {
+            if ( !empty( $gallery_icons_mode ) ) {
                 // construct a 'ids' parameter with ids of gallery icons
                 $attr[ 'ids' ] = implode( ',', array_map( function( $gallery ) {
                     return $gallery->image;
@@ -226,20 +254,17 @@ class BBG_XIV_Gallery {
               $attachments = get_children( array( 'post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
             }
 
+            if ( !empty( $get_first ) ) {
+                ob_end_clean( );
+                return reset( $attachments );
+            }
+
             #if ( empty( $attachments ) ) {
             #  return '';
             #}
 
-            if ( is_feed() ) {
-              $output = "\n";
-              foreach ( $attachments as $att_id => $attachment ) {
-                $output .= wp_get_attachment_link( $att_id, $atts['size'], true ) . "\n";
-              }
-              return $output;
-            }
-
             self::bbg_xiv_do_attachments( $attachments );
-            if ( $gallery_icons_mode ) {
+            if ( !empty( $gallery_icons_mode ) ) {
                 # replace title and caption for image with title and caption for gallery and also remember the gallery index
                 foreach ( $galleries as $i => $gallery ) {
                     $attachment = $attachments[ $gallery->image ];
@@ -379,7 +404,7 @@ EOD;
     </nav>
 EOD;
         # Optionally show titles of dynamically loadable galleries as tab items
-        if ( $galleries && !$gallery_icons_mode && get_option( 'bbg_xiv_use_gallery_tabs', TRUE ) ) {
+        if ( $galleries && empty( $gallery_icons_mode ) && get_option( 'bbg_xiv_use_gallery_tabs', TRUE ) ) {
             $output .= <<<EOD
     <!-- Gallery Tabs -->
     <div class="bbg_xiv-container bbg_xiv-gallery_tabs_container">
