@@ -926,6 +926,10 @@
                     var images=bbg_xiv.images[gallery.id]=new wp.api.collections.Media();
                     images.reset(JSON.parse(bbg_xiv[gallery.id+"-data"]));
                     bbg_xiv.renderGallery(gallery,bbg_xiv.bbg_xiv_default_view?bbg_xiv.bbg_xiv_default_view:"Gallery");
+                    if(typeof bbg_xiv.images[gallery.id].models[0].attributes.gallery_index!=="undefined"){
+                        // For a gallery of galleries insert a heads up that this is not just a gallery of images
+                        jQuery(gallery.parentNode).find("div#"+gallery.id+"-alt_gallery_heading span.bbg_xiv-alt_gallery_heading").text(bbg_xiv.galleryOfGalleriesTitle);
+                    }
                     jQuery(window).resize();
                 });
             }else{
