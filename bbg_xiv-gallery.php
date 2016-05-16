@@ -43,13 +43,13 @@ class BBG_XIV_Gallery {
 
     public static function bb_gallery_shortcode( $attr, $content = '' ) {
         if (  is_feed( ) || ( is_array( $attr ) && !empty( $attr[ 'mode' ] ) && $attr[ 'mode' ] === 'wordpress' ) ) {
-            // invoke the standard WordPress gallery shortcode function
+            # invoke the standard WordPress gallery shortcode function
             unset( $attr[ 'mode' ] );
             return gallery_shortcode( $attr );
         }
 
         if ( is_array( $attr ) && !empty( $attr[ 'mode' ] ) && $attr[ 'mode' ] === 'get_first' ) {
-            // in this mode only the first image is returned for use as a representative image for a gallery
+            # in this mode only the first image is returned for use as a representative image for a gallery
             unset( $attr[ 'mode' ] );
             $get_first = TRUE;
             ob_start( );
@@ -112,12 +112,10 @@ class BBG_XIV_Gallery {
                                 return '';
                             }, $gallery->specifiers );
                         if ( empty( $gallery->image ) ) {
-                            # no image specified so use first image of gallery
-                            error_log( 'image parameter missing' );
+                            # no image specified so use the first image of the gallery
                             $gallery_attr = [ 'mode' => 'get_first' ];
-                            # TODO: also handle single quoted parameters
-                            preg_replace_callback( '/(\w+)="([^"]+)"/', function( $matches ) use ( &$gallery_attr ) {
-                                $gallery_attr[ $matches[ 1 ] ] = $matches[ 2 ];
+                            preg_replace_callback( '/(\w+)=("|\')(.*?)\2/', function( $matches ) use ( &$gallery_attr ) {
+                                $gallery_attr[ $matches[ 1 ] ] = $matches[ 3 ];
                             }, $gallery->specifiers );
                             error_log( '$gallery_attr=' . print_r( $gallery_attr, true ) );
                             $attachment = self::bb_gallery_shortcode( $gallery_attr );
