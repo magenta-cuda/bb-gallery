@@ -120,7 +120,7 @@ class BBG_XIV_Gallery {
                             error_log( '$gallery_attr=' . print_r( $gallery_attr, true ) );
                             $attachment = self::bb_gallery_shortcode( $gallery_attr );
                             error_log( '$attachment=' . print_r( $attachment, true ) );
-                            $gallery->image = $attachment->ID;
+                            $gallery->image = ( self::$wp_rest_api_available && self::$use_wp_rest_api_if_available ) ? $attachment[ 'id' ] : $attachment->ID;
                         }
                         if ( empty( $gallery->caption ) ) {
                             $gallery->caption = '';
@@ -180,7 +180,7 @@ class BBG_XIV_Gallery {
 
         $selector = "gallery-{$instance}";
 
-        if ( self::$wp_rest_api_available && self::$use_wp_rest_api_if_available && !is_feed( ) ) {
+        if ( self::$wp_rest_api_available && self::$use_wp_rest_api_if_available ) {
             # map gallery shortcode parameters to WP REST API parameters
             $orderby_map = [
                 'menu_order' => 'menu_order',
@@ -235,7 +235,33 @@ class BBG_XIV_Gallery {
             #$request->set_default_params( $defaults );
             $controller = new WP_REST_Attachments_Controller( "attachment" );
             $attachments = $controller->get_items( $request )->data;
-            error_log( 'bb_gallery_shortcode():$attachments=' . print_r( $attachments, true ) );
+            error_log( 'REST2:bb_gallery_shortcode():$attachments=' . print_r( $attachments, true ) );
+
+            if ( !empty( $get_first ) ) {
+                ob_end_clean( );
+                return reset( $attachments );
+            }
+
+            if ( !empty( $gallery_icons_mode ) ) {
+                # replace title and caption for image with title and caption for gallery and also remember the gallery index
+                foreach ( $galleries as $i => $gallery ) {
+                    $attachment =& $attachments[ $i ];
+                    error_log( 'REST3:$gallery->image=' . $gallery->image );
+                    error_log( 'REST3:$gallery->image=' . gettype( $gallery->image ) );
+                    error_log( 'REST3:$attachment[ "id" ]=' . $attachment[ 'id' ] );
+                    error_log( 'REST3:$attachment[ "id" ]=' . gettype( $attachment[ 'id' ] ) );
+                    if ( (integer) $gallery->image === (integer) $attachment[ 'id' ] ) {
+                        # This should always be true
+                        $attachment[ 'gallery_index' ]       = $i;
+                        $attachment[ 'title' ][ 'rendered' ] = $gallery->title;
+                        $attachment[ 'caption' ]             = $gallery->caption;
+                        $attachment[ 'description' ]         = '';
+                        error_log( 'REST3:$i=' . $i );
+                    }
+                }
+                error_log( 'REST3:bb_gallery_shortcode():$attachments=' . print_r( $attachments, true ) );
+            }
+
             $bbg_xiv_data[ "$selector-data" ] = json_encode( $attachments );
         } else {
             // initialize the Backbone.js collection using data for my proprietary model
@@ -262,6 +288,7 @@ class BBG_XIV_Gallery {
             #}
 
             self::bbg_xiv_do_attachments( $attachments );
+
             if ( !empty( $gallery_icons_mode ) ) {
                 # replace title and caption for image with title and caption for gallery and also remember the gallery index
                 foreach ( $galleries as $i => $gallery ) {
@@ -272,6 +299,7 @@ class BBG_XIV_Gallery {
                     $attachment->post_content  = '';
                 }
             }
+
             error_log( 'bb_gallery_shortcode():$attachments=' . print_r( $attachments, true ) );
             $bbg_xiv_data[ "$selector-data" ] = json_encode( array_values( $attachments ) );
         }
