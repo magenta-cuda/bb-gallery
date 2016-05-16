@@ -37,7 +37,7 @@
     bbg_xiv.search={};      // state info for multi part search results
     bbg_xiv.galleries={};   // state info for alternate galleries
     
-    bbg_xiv.Image=Backbone.Model.extend({idAttribute:"ID"});
+    bbg_xiv.Image=Backbone.Model.extend({idAttribute:window.bbg_xiv.bbg_xiv_wp_rest_api?"id":"ID"});
     
     bbg_xiv.Images=Backbone.Collection.extend({model:bbg_xiv.Image});
     
@@ -382,6 +382,7 @@
                 // try and replace img src with better match 
                 try{
                     var imageId=img.dataset.bbg_xivImageId;
+                    // TODO: id needs checking
                     if(imageId){
                         var galleryId=jQuery(img).parents("div[data-bbg_xiv-gallery-id]")[0].dataset.bbg_xivGalleryId;
                         if(galleryId){

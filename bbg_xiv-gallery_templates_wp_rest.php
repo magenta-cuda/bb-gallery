@@ -20,7 +20,7 @@
         <div class="bbg_xiv-flex_item col-sm-6 col-md-4 col-lg-3">
             <figure class="img-rounded bbg_xiv-gallery_item">
                 <figcaption>{{{ data.title.rendered }}}</figcaption>
-                <a href="{{{ data.link }}}" target="_blank">
+                <a href="{{{ data.link }}}" target="_blank"<# if ( typeof data.gallery_index !== "undefined" ) { #> class="bbg_xiv-gallery_icon" data-gallery-index="{{{ data.gallery_index }}}"<# } #>>
                     <img src="<# print(bbg_xiv.getImageUrl(data).src); #>" alt="{{{ data.title.rendered }}}" title="{{{ data.caption }}}">
                 </a>
             </figure>
@@ -52,7 +52,7 @@
     <div class="bbg_xiv-flex_item">
         <figure>
             <figcaption>{{{ data.title.rendered }}}</figcaption>
-            <a href="{{{ data.link }}}" target="_blank">
+            <a href="{{{ data.link }}}" target="_blank"<# if ( typeof data.gallery_index !== "undefined" ) { #> class="bbg_xiv-gallery_icon" data-gallery-index="{{{ data.gallery_index }}}"<# } #>>
                 <picture>
                     <source media="(min-width:1200px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).src); #>">
                     <source media="(min-width:992px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).medium); #>">
@@ -61,7 +61,7 @@
                 </picture>
             </a>
         </figure>
-        <a href="{{{ data.link }}}" target="_blank">
+        <a href="{{{ data.link }}}" target="_blank"<# if ( typeof data.gallery_index !== "undefined" ) { #> class="bbg_xiv-gallery_icon" data-gallery-index="{{{ data.gallery_index }}}"<# } #>>
             <!-- overlay for full viewport button -->
             <div class="bbg_xiv-dense_full_btn" title="{{{ data.caption }}}">
                 <button class="bbg_xiv-dense_full_btn bbg_xiv-flex_from_image btn">
@@ -180,7 +180,7 @@
 <!-- Tabs Item Template -->
 <script type="text/html" id="bbg_xiv-template_tabs_item">
 <figure id="bbg_xiv-tab_pane{{{ data.index }}}" role="tabpanel" class="tab-pane fade<# if ( data.index === 0 ) { #> active in<# } #>">
-  <a href="{{{ data.link }}}" target="_blank">
+  <a href="{{{ data.link }}}" target="_blank"<# if ( typeof data.gallery_index !== "undefined" ) { #> class="bbg_xiv-gallery_icon" data-gallery-index="{{{ data.gallery_index }}}"<# } #>>
     <picture>
       <source media="(min-width:1200px)" srcset="<# print(bbg_xiv.getImageUrl(data).src); #>">
       <source media="(min-width:992px)" srcset="<# print(bbg_xiv.getImageUrl(data).medium); #>">
