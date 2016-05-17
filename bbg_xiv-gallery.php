@@ -104,7 +104,7 @@ class BBG_XIV_Gallery {
             error_log( '$content=' . $content );
             $content = preg_replace( '/&#8216;|&#8217;|&#8220;|&#8221;|&#8242;|&#8243;/', '"', $content );
             error_log( '$content=' . $content );
-            if ( preg_match_all( '#\[\w+\s+title="([^"]+)"\s+([^\]]+)\]#m', $content, $matches, PREG_SET_ORDER ) ) {
+            if ( preg_match_all( '#\[altgallery\s+title="([^"]+)"\s+([^\]]+)\]#m', $content, $matches, PREG_SET_ORDER ) ) {
                 foreach ( $matches as $match ) {
                     $gallery = $galleries[ ] = (object) [ 'title' => $match[ 1 ], 'specifiers' => $match[ 2 ] ];
                     if ( !empty( $gallery_icons_mode ) ) {
@@ -249,13 +249,17 @@ class BBG_XIV_Gallery {
             if ( !empty( $gallery_icons_mode ) ) {
                 # replace title and caption for image with title and caption for gallery and also remember the gallery index
                 foreach ( $galleries as $i => $gallery ) {
+                    if ( empty( $attachments[ $i ] ) ) {
+                        # this is an error probably caused by a duplicate image id
+                        continue;
+                    }
                     $attachment =& $attachments[ $i ];
                     error_log( 'REST3:$gallery->image=' . $gallery->image );
                     error_log( 'REST3:$gallery->image=' . gettype( $gallery->image ) );
                     error_log( 'REST3:$attachment[ "id" ]=' . $attachment[ 'id' ] );
                     error_log( 'REST3:$attachment[ "id" ]=' . gettype( $attachment[ 'id' ] ) );
                     if ( (integer) $gallery->image === (integer) $attachment[ 'id' ] ) {
-                        # This should always be true
+                        # if this is not true then there probably is a duplicate image id
                         $attachment[ 'gallery_index' ]       = $i;
                         $attachment[ 'title' ][ 'rendered' ] = $gallery->title;
                         $attachment[ 'caption' ]             = $gallery->caption;
