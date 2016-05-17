@@ -91,7 +91,7 @@ class BBG_XIV_Gallery {
             'Each image below represents a gallery. Please click on an image to load its gallery.',
                                                                                                  'bb_gallery' );
 
-        if ( is_array( $attr) && !empty( $attr[ 'mode' ] ) && $attr[ 'mode' ] === "show_gallery_icons" ) {
+        if ( is_array( $attr) && !empty( $attr[ 'mode' ] ) && $attr[ 'mode' ] === "galleries" ) {
             // this is a proprietary mode to display altgallery entries as a gallery of representative images
             $gallery_icons_mode = TRUE;
         }
@@ -101,8 +101,10 @@ class BBG_XIV_Gallery {
             # Unfortunately (and also I think incorrectly) the 'the_content' filter wptexturize() from formatting.php will process the parameters of shortcodes
             # prettifying the quote marks. So, we need to undo this mutilation and restore the original content.
             # Opinion: WordPress seems to love regex but regex is simply inadequate for parsing HTML!
+            error_log( '$content=' . $content );
             $content = preg_replace( '/&#8216;|&#8217;|&#8220;|&#8221;|&#8242;|&#8243;/', '"', $content );
-            if ( preg_match_all( '#\[\w+\s+title="([^"]+)"\s+([^\]]+)\]#', $content, $matches, PREG_SET_ORDER ) ) {
+            error_log( '$content=' . $content );
+            if ( preg_match_all( '#\[\w+\s+title="([^"]+)"\s+([^\]]+)\]#m', $content, $matches, PREG_SET_ORDER ) ) {
                 foreach ( $matches as $match ) {
                     $gallery = $galleries[ ] = (object) [ 'title' => $match[ 1 ], 'specifiers' => $match[ 2 ] ];
                     if ( !empty( $gallery_icons_mode ) ) {
@@ -111,7 +113,9 @@ class BBG_XIV_Gallery {
                                 $gallery->$matches[ 2 ] = $matches[ 3 ];
                                 return '';
                             }, $gallery->specifiers );
+                        error_log( '$gallery=' . print_r( $gallery, true ) );
                         if ( empty( $gallery->image ) ) {
+                            error_log( '$gallery->specifiers=' . print_r( $gallery->specifiers, true ) );
                             # no image specified so use the first image of the gallery
                             $gallery_attr = [ 'mode' => 'get_first' ];
                             preg_replace_callback( '/(\w+)=("|\')(.*?)\2/', function( $matches ) use ( &$gallery_attr ) {
@@ -123,7 +127,7 @@ class BBG_XIV_Gallery {
                             $gallery->image = ( self::$wp_rest_api_available && self::$use_wp_rest_api_if_available ) ? $attachment[ 'id' ] : $attachment->ID;
                         }
                         if ( empty( $gallery->caption ) ) {
-                            $gallery->caption = '';
+                            $gallery->caption = $gallery->title;
                         }
                     }
                 }
