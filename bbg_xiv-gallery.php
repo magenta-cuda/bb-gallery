@@ -101,9 +101,7 @@ class BBG_XIV_Gallery {
             # Unfortunately (and also I think incorrectly) the 'the_content' filter wptexturize() from formatting.php will process the parameters of shortcodes
             # prettifying the quote marks. So, we need to undo this mutilation and restore the original content.
             # Opinion: WordPress seems to love regex but regex is simply inadequate for parsing HTML!
-            error_log( '$content=' . $content );
             $content = preg_replace( '/&#8216;|&#8217;|&#8220;|&#8221;|&#8242;|&#8243;/', '"', $content );
-            error_log( '$content=' . $content );
             if ( preg_match_all( '#\[altgallery\s+title="([^"]+)"\s+([^\]]+)\]#m', $content, $matches, PREG_SET_ORDER ) ) {
                 foreach ( $matches as $match ) {
                     $gallery = $galleries[ ] = (object) [ 'title' => $match[ 1 ], 'specifiers' => $match[ 2 ] ];
@@ -113,17 +111,13 @@ class BBG_XIV_Gallery {
                                 $gallery->$matches[ 2 ] = $matches[ 3 ];
                                 return '';
                             }, $gallery->specifiers );
-                        error_log( '$gallery=' . print_r( $gallery, true ) );
                         if ( empty( $gallery->image ) ) {
-                            error_log( '$gallery->specifiers=' . print_r( $gallery->specifiers, true ) );
                             # no image specified so use the first image of the gallery
                             $gallery_attr = [ 'mode' => 'get_first' ];
                             preg_replace_callback( '/(\w+)=("|\')(.*?)\2/', function( $matches ) use ( &$gallery_attr ) {
                                 $gallery_attr[ $matches[ 1 ] ] = $matches[ 3 ];
                             }, $gallery->specifiers );
-                            error_log( '$gallery_attr=' . print_r( $gallery_attr, true ) );
                             $attachment = self::bb_gallery_shortcode( $gallery_attr );
-                            error_log( '$attachment=' . print_r( $attachment, true ) );
                             $gallery->image = ( self::$wp_rest_api_available && self::$use_wp_rest_api_if_available ) ? $attachment[ 'id' ] : $attachment->ID;
                         }
                         if ( empty( $gallery->caption ) ) {
@@ -131,7 +125,6 @@ class BBG_XIV_Gallery {
                         }
                     }
                 }
-                error_log( 'bb_gallery_shortcode():$galleries=' . print_r( $galleries, true ) );
             }
             if ( !empty( $gallery_icons_mode ) ) {
                 // construct a 'ids' parameter with ids of gallery icons
@@ -239,7 +232,6 @@ class BBG_XIV_Gallery {
             #$request->set_default_params( $defaults );
             $controller = new WP_REST_Attachments_Controller( "attachment" );
             $attachments = $controller->get_items( $request )->data;
-            error_log( 'REST2:bb_gallery_shortcode():$attachments=' . print_r( $attachments, true ) );
 
             if ( !empty( $get_first ) ) {
                 ob_end_clean( );
@@ -254,20 +246,14 @@ class BBG_XIV_Gallery {
                         continue;
                     }
                     $attachment =& $attachments[ $i ];
-                    error_log( 'REST3:$gallery->image=' . $gallery->image );
-                    error_log( 'REST3:$gallery->image=' . gettype( $gallery->image ) );
-                    error_log( 'REST3:$attachment[ "id" ]=' . $attachment[ 'id' ] );
-                    error_log( 'REST3:$attachment[ "id" ]=' . gettype( $attachment[ 'id' ] ) );
                     if ( (integer) $gallery->image === (integer) $attachment[ 'id' ] ) {
                         # if this is not true then there probably is a duplicate image id
                         $attachment[ 'gallery_index' ]       = $i;
                         $attachment[ 'title' ][ 'rendered' ] = $gallery->title;
                         $attachment[ 'caption' ]             = $gallery->caption;
                         $attachment[ 'description' ]         = '';
-                        error_log( 'REST3:$i=' . $i );
                     }
                 }
-                error_log( 'REST3:bb_gallery_shortcode():$attachments=' . print_r( $attachments, true ) );
             }
 
             $bbg_xiv_data[ "$selector-data" ] = json_encode( $attachments );
@@ -308,7 +294,6 @@ class BBG_XIV_Gallery {
                 }
             }
 
-            error_log( 'bb_gallery_shortcode():$attachments=' . print_r( $attachments, true ) );
             $bbg_xiv_data[ "$selector-data" ] = json_encode( array_values( $attachments ) );
         }
  
