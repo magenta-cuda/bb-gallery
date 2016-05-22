@@ -382,8 +382,6 @@
                 // try and replace img src with better match 
                 try{
                     var imageId=img.dataset.bbg_xivImageId;
-                    // TODO: id needs checking
-                    console.log("bbg_xiv.renderGallery():imageId=",imageId);
                     if(imageId){
                         var galleryId=jQuery(img).parents("div[data-bbg_xiv-gallery-id]")[0].dataset.bbg_xivGalleryId;
                         if(galleryId){
@@ -426,9 +424,20 @@
             }else if(bbg_xiv.galleries[gallery.id]){
                 // displaying a gallery so hide search results heading
                 jQuery("div#"+gallery.id+"-heading").hide();
-                if(bbg_xiv.galleries[gallery.id].view!=="gallery_home"||typeof bbg_xiv.images[gallery.id].models[0].attributes.gallery_index!=="undefined"){
+                var galleryOfGalleries=typeof bbg_xiv.images[gallery.id].models[0].attributes.gallery_index!=="undefined";
+                var divAltGalleryHeading=jQuery("div#"+gallery.id+"-alt_gallery_heading");
+                if(galleryOfGalleries){
+                    // show heads up for gallery of galleries
+                    divAltGalleryHeading.find("span.bbg_xiv-alt_gallery_heading").text(bbg_xiv.galleryOfGalleriesTitle);
+                    // click handler for gallery icon images
+                    jqGallery.find("a.bbg_xiv-gallery_icon").click(function(e){
+                        jqGallery.parent().find("nav.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.bbg_xiv-view_menu li > a[data-view='gallery_"+this.dataset.galleryIndex+"']").click();
+                        e.preventDefault();
+                    });
+                }
+                if(bbg_xiv.galleries[gallery.id].view!=="gallery_home"||galleryOfGalleries){
                     // and show title of alternate galleries or heads up for gallery of galleries; except hide title for home gallery; 
-                    jQuery("div#"+gallery.id+"-alt_gallery_heading").show();
+                    divAltGalleryHeading.show();
                 }
             }
             break;
@@ -909,7 +918,6 @@
             }  
             if(typeof bbg_xiv.images[this.id].models[0].attributes.gallery_index!=="undefined"){
                 // for a gallery of gallery icons hide the carousel and the dense menu items
-                console.log("bbg_xiv.images[this.id].models[0].attributes.gallery_index=",bbg_xiv.images[this.id].models[0].attributes.gallery_index);
                 menuItems.filter(".bbg_xiv-hide_for_gallery_icons").hide();
             }
         });
@@ -918,7 +926,7 @@
     jQuery(document).ready(function(){
         jQuery("div.bbg_xiv-gallery_envelope").each(function(){
             var gallery=this;
-            var galleryIconsMode=jQuery(this).hasClass("gallery_icons_mode");
+            var galleryIconsMode=jQuery(this).hasClass("bbg_xiv-gallery_icons_mode");
             // prettify Galleries tabs
             bbg_xiv.prettifyTabs(jQuery(gallery.parentNode).find("div.bbg_xiv-container"),true);
             if(bbg_xiv.bbg_xiv_wp_rest_api){
@@ -927,18 +935,10 @@
                     var images=bbg_xiv.images[gallery.id]=new wp.api.collections.Media();
                     images.reset(JSON.parse(bbg_xiv[gallery.id+"-data"]));
                     bbg_xiv.renderGallery(gallery,(!galleryIconsMode&&bbg_xiv.bbg_xiv_default_view)?bbg_xiv.bbg_xiv_default_view:"Gallery");
-                    if(typeof bbg_xiv.images[gallery.id].models[0].attributes.gallery_index!=="undefined"){
-                        // For a gallery of galleries insert a heads up that this is not just a gallery of images
-                        jQuery(gallery.parentNode).find("div#"+gallery.id+"-alt_gallery_heading span.bbg_xiv-alt_gallery_heading").text(bbg_xiv.galleryOfGalleriesTitle);
-                    }
                     jQuery(window).resize();
                 });
             }else{
                 bbg_xiv.renderGallery(gallery,(!galleryIconsMode&&bbg_xiv.bbg_xiv_default_view)?bbg_xiv.bbg_xiv_default_view:"Gallery");
-                if(typeof bbg_xiv.images[gallery.id].models[0].attributes.gallery_index!=="undefined"){
-                    // For a gallery of galleries insert a heads up that this is not just a gallery of images
-                    jQuery(gallery.parentNode).find("div#"+gallery.id+"-alt_gallery_heading span.bbg_xiv-alt_gallery_heading").text(bbg_xiv.galleryOfGalleriesTitle);
-                }
             }
         });
 
@@ -950,7 +950,7 @@
             var li=jqThis.parent();
             var select=li.parent();
             var liSelectView=li.parents("li.bbg_xiv-select_view");
-            var container=jqThis.parents("div.bbg_xiv-gallery");
+            var container=jqThis.parents("div.bbg_xiv-bootstrap.bbg_xiv-gallery");
             var divGallery=container.find("div.bbg_xiv-gallery_envelope")[0];
             if(["Gallery","Carousel","Tabs","Dense"].indexOf(view)>=0){
                 select.find("li.bbg_xiv-view").removeClass("active");
@@ -975,15 +975,12 @@
                     // images were previously loaded so just restore  the collection
                     bbg_xiv.images[divGallery.id]=galleries.images[view];
                     galleries.view=view;
-                    var galleryOfGalleries=typeof bbg_xiv.images[divGallery.id].models[0].attributes.gallery_index!=="undefined";
-                    if(view!=="gallery_home"||galleryOfGalleries){
-                        container.find("div#"+divGallery.id+"-alt_gallery_heading span.bbg_xiv-alt_gallery_heading")
-                          .text(galleryOfGalleries?bbg_xiv.galleryOfGalleriesTitle:title);
+                    if(view!=="gallery_home"){
+                        container.find("div#"+divGallery.id+"-alt_gallery_heading span.bbg_xiv-alt_gallery_heading").text(title);
                     }
                     bbg_xiv.renderGallery(divGallery,"Gallery");
                     // update active in gallery tabs
-                    jqThis.parents("div.bbg_xiv-bootstrap.bbg_xiv-gallery").find("div.bbg_xiv-gallery_tabs_container nav.navbar ul.nav-tabs li").removeClass("active")
-                        .find("a[data-view='"+view+"']").parent().addClass("active");
+                    container.find("div.bbg_xiv-gallery_tabs_container nav.navbar ul.nav-tabs li").removeClass("active").find("a[data-view='"+view+"']").parent().addClass("active");
                     e.preventDefault();
                     return;
                 }
@@ -1390,12 +1387,6 @@
             if(toggle.css("display")!=="none"){
                 toggle.click();
             }
-            e.preventDefault();
-        });
-        // click handler for gallery icon images
-        jQuery("a.bbg_xiv-gallery_icon").click(function(e){
-            console.log("a.bbg_xiv-gallery_icon:click:galleryIndex=",this.dataset.galleryIndex);
-            // TODO: load the gallery with index this.dataset.galleryIndex
             e.preventDefault();
         });
         // wireup mobile only events

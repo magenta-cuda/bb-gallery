@@ -455,7 +455,7 @@ EOD;
     </div>
 EOD;
         }
-        $class_gallery_icons_mode = empty( $gallery_icons_mode ) ? '' : ' gallery_icons_mode';
+        $class_gallery_icons_mode = empty( $gallery_icons_mode ) ? '' : ' bbg_xiv-gallery_icons_mode';
         $output .= <<<EOD
     <!-- Search or Gallery Headings -->
     <div id="$selector-heading" class="bbg_xiv-search_header">
