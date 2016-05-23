@@ -669,7 +669,7 @@ div.bbg_xiv-bootstrap{
     width:100vw;
     height:100vh;
     background-color:white;
-    
+
     div.carousel-control{
       top:0;
       bottom:0;
@@ -834,6 +834,14 @@ div.bbg_xiv-bootstrap{
           margin:-14px 0 0 -14px;
         }
       }
+    }
+  }
+
+  div.bbg_xiv-embedded_carousel{
+    div.carousel.slide{
+      position:relative;
+      width:100%;
+      height:70vh;
     }
   }
 }

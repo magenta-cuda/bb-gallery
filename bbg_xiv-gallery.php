@@ -97,8 +97,13 @@ class BBG_XIV_Gallery {
         }
 
         if ( is_array( $attr) && !empty( $attr[ 'view' ] ) ) {
-            // this sets the initial view of a gallery - gallery, carousel, tabs or dense
+            // this sets the initial view of a gallery - gallery, carousel or tabs
             $default_view = $attr[ 'view' ];
+        }
+
+        if ( is_array( $attr) && !empty( $attr[ 'flags' ] ) ) {
+            // flag to set carousel mode
+            $flags = $attr[ 'flags' ];
         }
 
         $galleries = [ ];
@@ -473,7 +478,7 @@ EOD;
     <div id="$selector-alt_gallery_heading" class="bbg_xiv-alt_gallery_header">
         <span class="bbg_xiv-alt_gallery_heading"></span>
     </div>
-    <div id="$selector" class="gallery galleryid-{$id} gallery-size-{$size_class} bbg_xiv-gallery_envelope{$class_gallery_icons_mode}{$class_default_view}">
+    <div id="$selector" class="gallery galleryid-{$id} gallery-size-{$size_class} bbg_xiv-gallery_envelope{$class_gallery_icons_mode}{$class_default_view}" data-flags="{$flags}">
         <div class="ui-loader"><span class="ui-icon-loading"></span></div>
    </div>
     <div class="bbg_xiv-configure_outer">

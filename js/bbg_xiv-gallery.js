@@ -318,7 +318,10 @@
         return images;
     };
     
-    bbg_xiv.renderGallery=function(gallery,view){
+    bbg_xiv.renderGallery=function(gallery,view,flags){
+        if(!flags){
+            flags=[];
+        }
         var jqGallery=jQuery(gallery);
         var images=bbg_xiv.images[gallery.id];
         if(!images||!images.constructed){
@@ -443,7 +446,12 @@
             break;
         case "Carousel":
             var overflow=jQuery("html").css("overflow-y");
-            jQuery("html").css("overflow-y","hidden");
+            var embeddedCarousel=flags.indexOf("embedded-carousel")!==-1;
+            if(embeddedCarousel){
+                jqGallery.addClass("bbg_xiv-embedded_carousel");
+            }else{
+                jQuery("html").css("overflow-y","hidden");
+            }
             var carouselId="bbg_xiv-carousel_"+gallery.id;
             bbg_xiv.renderCarousel(jqGallery,images,carouselId);
             // pause() can be called from a button's event handler to pause the carousel, the argument is the button
@@ -937,6 +945,8 @@
             }else if(jqThis.hasClass("bbg_xiv-default_view_tabs")){
                 defaultView="Tabs";
             }
+            // extract flags from data attribute flags
+            var flags=this.dataset.flags.split(",");
             
             // prettify Galleries tabs
             bbg_xiv.prettifyTabs(jQuery(gallery.parentNode).find("div.bbg_xiv-container"),true);
@@ -945,11 +955,11 @@
                 wp.api.loadPromise.done(function(){
                     var images=bbg_xiv.images[gallery.id]=new wp.api.collections.Media();
                     images.reset(JSON.parse(bbg_xiv[gallery.id+"-data"]));
-                    bbg_xiv.renderGallery(gallery,!galleryIconsMode?defaultView:"Gallery");
+                    bbg_xiv.renderGallery(gallery,!galleryIconsMode?defaultView:"Gallery",flags);
                     jQuery(window).resize();
                 });
             }else{
-                bbg_xiv.renderGallery(gallery,!galleryIconsMode?defaultView:"Gallery");
+                bbg_xiv.renderGallery(gallery,!galleryIconsMode?defaultView:"Gallery",flags);
             }
         });
 

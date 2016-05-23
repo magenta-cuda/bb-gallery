@@ -574,6 +574,10 @@ div.bbg_xiv-bootstrap div.carousel.slide {
       background-color: cyan;
       border: 1px solid gray;
       margin: -14px 0 0 -14px; }
+div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide {
+  position: relative;
+  width: 100%;
+  height: 70vh; }
 
 div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container nav.navbar, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container nav.navbar {
   background-color: #ddd;
