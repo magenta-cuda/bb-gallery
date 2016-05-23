@@ -91,19 +91,19 @@ class BBG_XIV_Gallery {
             'Each image below represents a gallery. Please click on an image to load its gallery.',
                                                                                                  'bb_gallery' );
 
-        if ( is_array( $attr) && !empty( $attr[ 'mode' ] ) && $attr[ 'mode' ] === "galleries" ) {
-            // this is a proprietary mode to display altgallery entries as a gallery of representative images
-            $gallery_icons_mode = TRUE;
-        }
-
-        if ( is_array( $attr) && !empty( $attr[ 'view' ] ) ) {
-            // this sets the initial view of a gallery - gallery, carousel or tabs
-            $default_view = $attr[ 'view' ];
-        }
-
-        if ( is_array( $attr) && !empty( $attr[ 'flags' ] ) ) {
-            // flag to set carousel mode
-            $flags = $attr[ 'flags' ];
+        if ( is_array( $attr) ) {
+            if ( !empty( $attr[ 'mode' ] ) && $attr[ 'mode' ] === "galleries" ) {
+                # this is a proprietary mode to display altgallery entries as a gallery of representative images
+                $gallery_icons_mode = TRUE;
+            }
+            if ( !empty( $attr[ 'view' ] ) ) {
+                # this sets the initial view of a gallery - gallery, carousel or tabs
+                $default_view = $attr[ 'view' ];
+            }
+            if ( !empty( $attr[ 'flags' ] ) ) {
+                # flag to set embedded carousel mode
+                $flags = $attr[ 'flags' ];
+            }
         }
 
         $galleries = [ ];
@@ -467,6 +467,7 @@ EOD;
         }
         $class_gallery_icons_mode = empty( $gallery_icons_mode ) ? '' : ' bbg_xiv-gallery_icons_mode';
         $class_default_view       = empty( $default_view )       ? '' : ' bbg_xiv-default_view_' . $default_view;
+        $flags                    = empty( $flags )              ? '' : $flags;
         $output .= <<<EOD
     <!-- Search or Gallery Headings -->
     <div id="$selector-heading" class="bbg_xiv-search_header">
