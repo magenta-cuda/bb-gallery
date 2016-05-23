@@ -96,6 +96,11 @@ class BBG_XIV_Gallery {
             $gallery_icons_mode = TRUE;
         }
 
+        if ( is_array( $attr) && !empty( $attr[ 'view' ] ) ) {
+            // this sets the initial view of a gallery - gallery, carousel, tabs or dense
+            $default_view = $attr[ 'view' ];
+        }
+
         $galleries = [ ];
         if ( $content ) {
             # Unfortunately (and also I think incorrectly) the 'the_content' filter wptexturize() from formatting.php will process the parameters of shortcodes
@@ -456,6 +461,7 @@ EOD;
 EOD;
         }
         $class_gallery_icons_mode = empty( $gallery_icons_mode ) ? '' : ' bbg_xiv-gallery_icons_mode';
+        $class_default_view       = empty( $default_view )       ? '' : ' bbg_xiv-default_view_' . $default_view;
         $output .= <<<EOD
     <!-- Search or Gallery Headings -->
     <div id="$selector-heading" class="bbg_xiv-search_header">
@@ -467,7 +473,7 @@ EOD;
     <div id="$selector-alt_gallery_heading" class="bbg_xiv-alt_gallery_header">
         <span class="bbg_xiv-alt_gallery_heading"></span>
     </div>
-    <div id="$selector" class="gallery galleryid-{$id} gallery-size-{$size_class} bbg_xiv-gallery_envelope{$class_gallery_icons_mode}">
+    <div id="$selector" class="gallery galleryid-{$id} gallery-size-{$size_class} bbg_xiv-gallery_envelope{$class_gallery_icons_mode}{$class_default_view}">
         <div class="ui-loader"><span class="ui-icon-loading"></span></div>
    </div>
     <div class="bbg_xiv-configure_outer">
