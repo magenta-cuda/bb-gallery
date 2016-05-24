@@ -318,10 +318,10 @@
         return images;
     };
     
-    bbg_xiv.renderGallery=function(gallery,view,flags){
-        if(!flags){
-            flags=[];
-        }
+    bbg_xiv.renderGallery=function(gallery,view){
+        // extract flags from data attribute flags
+        var flags=gallery.dataset.flags?gallery.dataset.flags.split(","):[];
+
         var jqGallery=jQuery(gallery);
         var images=bbg_xiv.images[gallery.id];
         if(!images||!images.constructed){
@@ -490,6 +490,7 @@
             });
             jqGallery.find("a.bbg_xiv-carousel_close").click(function(e){
                 // restore "Gallery View"
+                jqGallery.removeClass("bbg_xiv-embedded_carousel");
                 bbg_xiv.resetGallery(jQuery(this).parents("div.bbg_xiv-gallery"));
                 jQuery("html").css("overflow-y",overflow);
                 e.preventDefault();      
@@ -945,8 +946,6 @@
             }else if(jqThis.hasClass("bbg_xiv-default_view_tabs")){
                 defaultView="Tabs";
             }
-            // extract flags from data attribute flags
-            var flags=this.dataset.flags.split(",");
             
             // prettify Galleries tabs
             bbg_xiv.prettifyTabs(jQuery(gallery.parentNode).find("div.bbg_xiv-container"),true);
@@ -955,11 +954,11 @@
                 wp.api.loadPromise.done(function(){
                     var images=bbg_xiv.images[gallery.id]=new wp.api.collections.Media();
                     images.reset(JSON.parse(bbg_xiv[gallery.id+"-data"]));
-                    bbg_xiv.renderGallery(gallery,!galleryIconsMode?defaultView:"Gallery",flags);
+                    bbg_xiv.renderGallery(gallery,!galleryIconsMode?defaultView:"Gallery");
                     jQuery(window).resize();
                 });
             }else{
-                bbg_xiv.renderGallery(gallery,!galleryIconsMode?defaultView:"Gallery",flags);
+                bbg_xiv.renderGallery(gallery,!galleryIconsMode?defaultView:"Gallery");
             }
         });
 
