@@ -842,6 +842,8 @@ div.bbg_xiv-bootstrap{
       position:relative;
       width:100%;
       height:70vh;
+      border:2px solid gray;
+      border-radius:5px;
       .carousel-indicators div.ui-slider{
         margin:0;
       }
@@ -1003,6 +1005,8 @@ div.bbg_xiv-bootstrap{
   div.bbg_xiv-template_tabs_container,div.bbg_xiv-gallery_tabs_container{
     nav.navbar{
       padding:0;
+      border:2px solid gray;
+      border-radius:5px;
     }
   }
 }
