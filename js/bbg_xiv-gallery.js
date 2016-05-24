@@ -318,9 +318,14 @@
         return images;
     };
     
-    bbg_xiv.renderGallery=function(gallery,view){
+    bbg_xiv.renderGallery=function(gallery,view,flags){
+        if(!flags){
+            flags=[];
+        }
         // extract flags from data attribute flags
-        var flags=gallery.dataset.flags?gallery.dataset.flags.split(","):[];
+        if(gallery.dataset.flags){
+            flags=flags.concat(gallery.dataset.flags.split(","));
+        }
 
         var jqGallery=jQuery(gallery);
         var images=bbg_xiv.images[gallery.id];
@@ -954,11 +959,11 @@
                 wp.api.loadPromise.done(function(){
                     var images=bbg_xiv.images[gallery.id]=new wp.api.collections.Media();
                     images.reset(JSON.parse(bbg_xiv[gallery.id+"-data"]));
-                    bbg_xiv.renderGallery(gallery,!galleryIconsMode?defaultView:"Gallery");
+                    bbg_xiv.renderGallery(gallery,!galleryIconsMode?defaultView:"Gallery",["initial"]);
                     jQuery(window).resize();
                 });
             }else{
-                bbg_xiv.renderGallery(gallery,!galleryIconsMode?defaultView:"Gallery");
+                bbg_xiv.renderGallery(gallery,!galleryIconsMode?defaultView:"Gallery",["initial"]);
             }
         });
 

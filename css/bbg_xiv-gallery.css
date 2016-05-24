@@ -541,7 +541,7 @@ div.bbg_xiv-bootstrap div.carousel.slide {
         padding: 1%; }
         @supports (object-fit: contain) {
           div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > img, div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > a > img, div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > a > picture > img {
-            width: 100%;
+            width: 85%;
             object-fit: contain; } }
       div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > figcaption {
         height: 10%;
@@ -578,6 +578,8 @@ div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide {
   position: relative;
   width: 100%;
   height: 70vh; }
+  div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide .carousel-indicators div.ui-slider {
+    margin: 0; }
 
 div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container nav.navbar, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container nav.navbar {
   background-color: #ddd;
