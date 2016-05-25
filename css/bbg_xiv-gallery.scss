@@ -841,10 +841,11 @@ div.bbg_xiv-bootstrap{
     div.carousel.slide{
       position:relative;
       width:100%;
-      height:70vh;
+      height:80vh;
       border:2px solid gray;
       border-radius:5px;
       .carousel-inner>.item>figcaption{
+        padding:5px 0 0 0;
         font-size:2vh;
       }
       .carousel-indicators div.ui-slider{
