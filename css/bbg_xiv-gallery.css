@@ -580,6 +580,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide {
   position: relative;
   width: 100%;
   height: 80vh;
+  max-height: 100vw;
   border: 2px solid gray;
   border-radius: 5px; }
   div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide .carousel-inner > .item > figcaption {
@@ -634,7 +635,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse, d
       div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse ul.nav-tabs li.active a, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-collapse ul.nav-tabs li.active a {
         background-color: cyan; }
       div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse ul.nav-tabs li.bbg_xiv-tabs_title, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-collapse ul.nav-tabs li.bbg_xiv-tabs_title {
-        width: 7em;
+        width: 8em;
         text-align: center;
         background-color: #aaa;
         border: 0; }
