@@ -574,6 +574,8 @@ div.bbg_xiv-bootstrap div.carousel.slide {
       background-color: cyan;
       border: 1px solid gray;
       margin: -14px 0 0 -14px; }
+    div.bbg_xiv-bootstrap div.carousel.slide .carousel-indicators div.ui-field-contain {
+      border: 0 solid transparent; }
 div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide {
   position: relative;
   width: 100%;
