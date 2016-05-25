@@ -844,6 +844,9 @@ div.bbg_xiv-bootstrap{
       height:70vh;
       border:2px solid gray;
       border-radius:5px;
+      .carousel-inner>.item>figcaption{
+        font-size:2vh;
+      }
       .carousel-indicators div.ui-slider{
         margin:0;
       }

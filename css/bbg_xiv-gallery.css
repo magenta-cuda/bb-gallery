@@ -580,6 +580,8 @@ div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide {
   height: 70vh;
   border: 2px solid gray;
   border-radius: 5px; }
+  div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide .carousel-inner > .item > figcaption {
+    font-size: 2vh; }
   div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide .carousel-indicators div.ui-slider {
     margin: 0; }
 
