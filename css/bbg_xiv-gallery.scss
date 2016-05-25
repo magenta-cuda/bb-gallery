@@ -844,6 +844,7 @@ div.bbg_xiv-bootstrap{
   div.bbg_xiv-embedded_carousel{
     div.carousel.slide{
       position:relative;
+      z-index:auto;
       width:100%;
       height:80vh;
       max-height:100vw;
