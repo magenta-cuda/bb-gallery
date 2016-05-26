@@ -941,17 +941,21 @@
         jQuery("div.bbg_xiv-gallery_envelope").each(function(){
             var gallery=this;
             var jqThis=jQuery(this);
-            var galleryIconsMode=jqThis.hasClass("bbg_xiv-gallery_icons_mode");
-            // use class to set default view if it exists otherwise use global value
-            var defaultView=bbg_xiv.bbg_xiv_default_view?bbg_xiv.bbg_xiv_default_view:"Gallery";
-            if(jqThis.hasClass("bbg_xiv-gallery_default_view_gallery")){
-                defaultView="Gallery";
-            }else if(jqThis.hasClass("bbg_xiv-default_view_carousel")){
-                defaultView="Carousel";
-            }else if(jqThis.hasClass("bbg_xiv-default_view_tabs")){
-                defaultView="Tabs";
+            if(jqThis.hasClass("bbg_xiv-gallery_icons_mode")){
+                // for gallery of galleries always use the gallery view
+                var defaultView="Gallery";
+            }else{
+                // use class to set default view if it exists otherwise use the global value
+                var defaultView=bbg_xiv.bbg_xiv_default_view?bbg_xiv.bbg_xiv_default_view:"Gallery";
+                if(jqThis.hasClass("bbg_xiv-gallery_default_view_gallery")){
+                    defaultView="Gallery";
+                }else if(jqThis.hasClass("bbg_xiv-default_view_carousel")){
+                    defaultView="Carousel";
+                }else if(jqThis.hasClass("bbg_xiv-default_view_tabs")){
+                    defaultView="Tabs";
+                }
             }
-            
+
             // prettify Galleries tabs
             bbg_xiv.prettifyTabs(jQuery(gallery.parentNode).find("div.bbg_xiv-container"),true);
             if(bbg_xiv.bbg_xiv_wp_rest_api){
@@ -959,11 +963,11 @@
                 wp.api.loadPromise.done(function(){
                     var images=bbg_xiv.images[gallery.id]=new wp.api.collections.Media();
                     images.reset(JSON.parse(bbg_xiv[gallery.id+"-data"]));
-                    bbg_xiv.renderGallery(gallery,!galleryIconsMode?defaultView:"Gallery",["initial"]);
+                    bbg_xiv.renderGallery(gallery,defaultView,["initial"]);
                     jQuery(window).resize();
                 });
             }else{
-                bbg_xiv.renderGallery(gallery,!galleryIconsMode?defaultView:"Gallery",["initial"]);
+                bbg_xiv.renderGallery(gallery,defaultView,["initial"]);
             }
         });
 
