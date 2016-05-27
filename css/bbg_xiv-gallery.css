@@ -545,7 +545,8 @@ div.bbg_xiv-bootstrap div.carousel.slide {
             object-fit: contain; } }
         @media (max-aspect-ratio: 1 / 1) {
           div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > img, div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > a > img, div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > a > picture > img {
-            height: 70%; } }
+            height: 70%;
+            top: 20%; } }
       div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > figcaption {
         height: 10%;
         position: absolute;
