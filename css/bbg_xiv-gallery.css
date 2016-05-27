@@ -530,6 +530,11 @@ div.bbg_xiv-bootstrap div.carousel.slide {
       width: 100%;
       height: 100%;
       position: relative; }
+      @supports not (object-fit: contain) {
+        div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item {
+          left: 7.5%;
+          width: 85%;
+          overflow: hidden; } }
       div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > img, div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > a > img, div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > a > picture > img {
         height: 80%;
         width: auto;

@@ -771,6 +771,12 @@ div.bbg_xiv-bootstrap{
         height: 100%;
         position: relative;
 
+        @supports not ( object-fit: contain ) {
+          left: 7.5%;
+          width: 85%;
+          overflow: hidden;
+        }
+
         > {
           img, a > img, a > picture > img {
             height: 80%;
