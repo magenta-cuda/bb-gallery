@@ -543,6 +543,9 @@ div.bbg_xiv-bootstrap div.carousel.slide {
           div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > img, div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > a > img, div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > a > picture > img {
             width: 85%;
             object-fit: contain; } }
+        @media (max-aspect-ratio: 1 / 1) {
+          div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > img, div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > a > img, div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > a > picture > img {
+            height: 70%; } }
       div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > figcaption {
         height: 10%;
         position: absolute;
@@ -554,6 +557,9 @@ div.bbg_xiv-bootstrap div.carousel.slide {
         font-size: 3vh;
         line-height: 1.3;
         overflow: hidden; }
+        @media (max-aspect-ratio: 1 / 1) {
+          div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > figcaption {
+            height: 20%; } }
   div.bbg_xiv-bootstrap div.carousel.slide .carousel-indicators {
     bottom: 2%;
     width: 80%;

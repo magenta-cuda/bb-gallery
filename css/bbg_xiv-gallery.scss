@@ -785,6 +785,9 @@ div.bbg_xiv-bootstrap{
               width: 85%;
               object-fit: contain;
             }
+            @media(max-aspect-ratio:1/1){
+              height:70%;
+            }
           }
 
           figcaption {
@@ -798,6 +801,9 @@ div.bbg_xiv-bootstrap{
             font-size: 3vh;
             line-height:1.3;
             overflow:hidden;
+            @media(max-aspect-ratio:1/1){
+              height:20%;
+            }
           }
         }
       }
