@@ -118,6 +118,17 @@ class BBG_XIV_Gallery {
             $flags = array_merge( $default_flags, $flags );
             $flags = array_unique( $flags );
         }
+        error_log( '$flags=' . print_r( $flags, true ) );
+        # handle cancel flags
+        foreach( [ 'embedded-carousel' ] as $flag ) {
+            if ( ( $i = array_search( 'no-' . $flag, $flags ) ) !== FALSE ) {
+                unset( $flags[ $i ] );
+                if ( ( $j = array_search( $flag, $flags ) ) !== FALSE ) {
+                    unset( $flags[ $j ] );
+                }
+            }
+        }
+        error_log( '$flags=' . print_r( $flags, true ) );
         $flags = implode( ',', $flags );
 
         $galleries = [ ];
