@@ -90,6 +90,10 @@ class BBG_XIV_Gallery {
         $bbg_xiv_lang[ 'galleryOfGalleriesTitle' ]                   = __(
             'Each image below represents a gallery. Please click on an image to load its gallery.',
                                                                                                  'bb_gallery' );
+        $default_flags = [ ];
+        if ( get_option( 'bbg_xiv_use_embedded_carousel', FALSE ) ) {
+            $default_flags[ ] = 'embedded-carousel';
+        }
 
         if ( is_array( $attr) ) {
             if ( !empty( $attr[ 'mode' ] ) && $attr[ 'mode' ] === "galleries" ) {
@@ -105,6 +109,16 @@ class BBG_XIV_Gallery {
                 $flags = $attr[ 'flags' ];
             }
         }
+
+        # merge the default flags and the flags from the shortcode
+        if ( empty( $flags ) ) {
+            $flags = $default_flags;
+        } else {
+            $flags = explode( ',', $flags );
+            $flags = array_merge( $default_flags, $flags );
+            $flags = array_unique( $flags );
+        }
+        $flags = implode( ',', $flags );
 
         $galleries = [ ];
         if ( $content ) {
@@ -713,9 +727,16 @@ EOD
                     . '<span class="bbg_xiv-radio_text">Tabs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>';
                 echo __( 'This is the initial view of the gallery.', 'bb_gallery' );
             }, 'media',	'bbg_xiv_setting_section' );
+            add_settings_field( 'bbg_xiv_use_embedded_carousel', __( 'Use Embedded Carousels', 'bb_gallery' ), function( ) {
+                echo '<input name="bbg_xiv_use_embedded_carousel" id="bbg_xiv_use_embedded_carousel" type="checkbox" value="1" class="code" '
+                    . checked( get_option( 'bbg_xiv_use_embedded_carousel', FALSE ), 1, FALSE ) . ' /> '
+                    . '<a href="https://bbfgallery.wordpress.com/#carousel" target="_blank">' . __( 'Embed carousels in their post content', 'bb_gallery' ) . '</a>'
+                    . __( ' (instead of using the entire viewport).', 'bb_gallery' );
+            }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_use_gallery_tabs', __( 'Use Gallery Tabs', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_use_gallery_tabs" id="bbg_xiv_use_gallery_tabs" type="checkbox" value="1" class="code" '
-                    . checked( get_option( 'bbg_xiv_use_gallery_tabs', TRUE ), 1, FALSE ) . ' /> ' . __( 'Show the alternate galleries as tabs.', 'bb_gallery' );
+                    . checked( get_option( 'bbg_xiv_use_gallery_tabs', TRUE ), 1, FALSE ) . ' /> '
+                    . '<a href="https://bbfgallery.wordpress.com/#alt_galleries" target="_blank">' . __( 'Show the alternate galleries as tabs.', 'bb_gallery' ) . '</a>';
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_wp_rest', __( 'Use the WP REST API', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_wp_rest" id="bbg_xiv_wp_rest" type="checkbox" value="1" class="code" '
@@ -734,6 +755,7 @@ EOD
             register_setting( 'media', 'bbg_xiv_flex_number_of_dense_view_columns' );
             register_setting( 'media', 'bbg_xiv_flex_min_width_for_dense_view' );
             register_setting( 'media', 'bbg_xiv_default_view' );
+            register_setting( 'media', 'bbg_xiv_use_embedded_carousel' );
             register_setting( 'media', 'bbg_xiv_use_gallery_tabs' );
             register_setting( 'media', 'bbg_xiv_wp_rest' );
             register_setting( 'media', 'bbg_xiv_table' );
