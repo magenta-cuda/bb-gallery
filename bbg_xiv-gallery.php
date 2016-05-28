@@ -4,7 +4,7 @@
 Plugin Name: BB Gallery
 Plugin URI: https://bbfgallery.wordpress.com/
 Description: Gallery using Backbone.js, Bootstrap 3 and CSS3 Flexbox
-Version: 1.7.1.1
+Version: 1.7.1.2
 Author: Magenta Cuda
 Author URI: https://profiles.wordpress.org/magenta-cuda/
 License: GPL2
@@ -118,7 +118,6 @@ class BBG_XIV_Gallery {
             $flags = array_merge( $default_flags, $flags );
             $flags = array_unique( $flags );
         }
-        error_log( '$flags=' . print_r( $flags, true ) );
         # handle cancel flags
         foreach( [ 'embedded-carousel' ] as $flag ) {
             if ( ( $i = array_search( 'no-' . $flag, $flags ) ) !== FALSE ) {
@@ -128,7 +127,6 @@ class BBG_XIV_Gallery {
                 }
             }
         }
-        error_log( '$flags=' . print_r( $flags, true ) );
         $flags = implode( ',', $flags );
 
         $galleries = [ ];
