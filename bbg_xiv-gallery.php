@@ -736,18 +736,22 @@ EOD
                 echo '<input name="bbg_xiv_default_view" id="bbg_xiv_default_view_tabs"     type="radio" value="Tabs" '
                     . ( get_option( 'bbg_xiv_default_view', 'Gallery' ) === 'Tabs'     ? 'checked />' : '/>' )
                     . '<span class="bbg_xiv-radio_text">Tabs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>';
-                echo __( 'This is the initial view of the gallery.', 'bb_gallery' );
+                echo __( 'This is the initial view of the gallery. See also the ', 'bb_gallery' )
+                    . '<a href="https://bbfgallery.wordpress.com/#parameters" target="_blank">view ' . __( ' shortcode option.', 'bb_gallery' ) . '</a>';
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_use_embedded_carousel', __( 'Use Embedded Carousels', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_use_embedded_carousel" id="bbg_xiv_use_embedded_carousel" type="checkbox" value="1" class="code" '
                     . checked( get_option( 'bbg_xiv_use_embedded_carousel', FALSE ), 1, FALSE ) . ' /> '
                     . '<a href="https://bbfgallery.wordpress.com/#carousel" target="_blank">' . __( 'Embed carousels in their post content', 'bb_gallery' ) . '</a>'
-                    . __( ' (instead of using the entire viewport).', 'bb_gallery' );
+                    . __( ' (instead of using the entire viewport). See also the ', 'bb_gallery' )
+                    . '<a href="https://bbfgallery.wordpress.com/#parameters" target="_blank">flags ' . __( ' shortcode option.', 'bb_gallery' ) . '</a>';
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_use_gallery_tabs', __( 'Use Gallery Tabs', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_use_gallery_tabs" id="bbg_xiv_use_gallery_tabs" type="checkbox" value="1" class="code" '
                     . checked( get_option( 'bbg_xiv_use_gallery_tabs', TRUE ), 1, FALSE ) . ' /> '
-                    . '<a href="https://bbfgallery.wordpress.com/#alt_galleries" target="_blank">' . __( 'Show the alternate galleries as tabs.', 'bb_gallery' ) . '</a>';
+                    . '<a href="https://bbfgallery.wordpress.com/#alt_galleries" target="_blank">' . __( 'Show the alternate galleries as tabs.', 'bb_gallery' ) . '</a>'
+                    . __( ' See also the ', 'bb_gallery' )
+                    . '<a href="https://bbfgallery.wordpress.com/#parameters" target="_blank">mode ' . __( ' shortcode option.', 'bb_gallery' ) . '</a>';
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_wp_rest', __( 'Use the WP REST API', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_wp_rest" id="bbg_xiv_wp_rest" type="checkbox" value="1" class="code" '
