@@ -947,7 +947,7 @@
             }else{
                 // use class to set default view if it exists otherwise use the global value
                 var defaultView=bbg_xiv.bbg_xiv_default_view?bbg_xiv.bbg_xiv_default_view:"Gallery";
-                if(jqThis.hasClass("bbg_xiv-gallery_default_view_gallery")){
+                if(jqThis.hasClass("bbg_xiv-default_view_gallery")){
                     defaultView="Gallery";
                 }else if(jqThis.hasClass("bbg_xiv-default_view_carousel")){
                     defaultView="Carousel";
