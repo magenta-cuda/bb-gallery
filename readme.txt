@@ -3,7 +3,7 @@ Contributors: Magenta Cuda
 Tags: gallery, shortcode, lightbox, slideshow, responsive, plug-compatible, replacement
 Requires at least: 4.4
 Tested up to: 4.5
-Stable tag: 1.7.1.1
+Stable tag: 1.7.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,12 @@ https://bbfgallery.wordpress.com/
 11. Admin Settings
 
 == Changelog ==
+
+= 1.7.1.2 =
+
+* option to embed carousel inside post content
+* option to individually specify initial view of gallery
+* css tweaks to prettify carousel
 
 = 1.7.1.1 =
 
@@ -132,6 +138,12 @@ https://bbfgallery.wordpress.com/
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.7.1.2 =
+
+* option to embed carousel inside post content
+* option to individually specify initial view of gallery
+* css tweaks to prettify carousel
 
 = 1.7.1.1 =
 
