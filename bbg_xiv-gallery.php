@@ -79,6 +79,7 @@ class BBG_XIV_Gallery {
         $bbg_xiv_data[ 'bbg_xiv_carousel_interval' ]                 = get_option( 'bbg_xiv_carousel_interval', 2500 );
         $bbg_xiv_data[ 'bbg_xiv_disable_flexbox' ]                   = get_option( 'bbg_xiv_disable_flexbox', FALSE );
         $bbg_xiv_data[ 'bbg_xiv_default_view' ]                      = get_option( 'bbg_xiv_default_view', 'Gallery' );
+        $bbg_xiv_data[ 'bbg_xiv_use_tiles' ]                         = get_option( 'bbg_xiv_use_tiles', FALSE );
         $bbg_xiv_data[ 'bbg_xiv_wp_rest_api' ]                       = self::$wp_rest_api_available && self::$use_wp_rest_api_if_available;
         # translations for JavaScript side
         $bbg_xiv_lang[ 'Nothing Found' ]                             = __( 'Nothing Found',      'bb_gallery' );
@@ -678,7 +679,7 @@ EOD
             wp_enqueue_script( 'backbone' );
             wp_enqueue_script( 'modernizr',       plugins_url( '/js/modernizr.js' ,       __FILE__ ) );
             wp_enqueue_script( 'jquery-mobile',   plugins_url( '/js/jquery-mobile.js' ,   __FILE__ ), [ 'jquery' ] );
-            wp_enqueue_script( 'bootstrap',       plugins_url( '/js/bootstrap.js' ,       __FILE__ ), [ 'jquery' ],    FALSE, TRUE );
+            wp_enqueue_script( 'bootstrap',       plugins_url( '/js/bootstrap.js' ,       __FILE__ ), [ 'jquery' ], FALSE, TRUE );
             $deps = [ 'bootstrap' ];
             if ( self::$wp_rest_api_available && self::$use_wp_rest_api_if_available ) {
                 $deps[ ] = 'wp-api';
@@ -737,6 +738,13 @@ EOD
                 echo __( 'This is the initial view of the gallery. See also the ', 'bb_gallery' )
                     . '<a href="https://bbfgallery.wordpress.com/#parameters" target="_blank">view ' . __( ' shortcode option.', 'bb_gallery' ) . '</a>';
             }, 'media',	'bbg_xiv_setting_section' );
+            add_settings_field( 'bbg_xiv_use_tiles', __( 'Use Tiles', 'bb_gallery' ), function( ) {
+                echo '<input name="bbg_xiv_use_tiles" id="bbg_xiv_use_tiles" type="checkbox" value="1" class="code" '
+                    . checked( get_option( 'bbg_xiv_use_tiles', FALSE ), 1, FALSE ) . ' /> '
+                    . '<a href="https://bbfgallery.wordpress.com/#tiles" target="_blank">' . __( 'The gallery uses butt joined image tiles.', 'bb_gallery' ) . '</a> '
+                    . __( 'See also the ', 'bb_gallery' )
+                    . '<a href="https://bbfgallery.wordpress.com/#tiles" target="_blank">flags ' . __( ' shortcode option.', 'bb_gallery' ) . '</a>';
+            }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_use_embedded_carousel', __( 'Use Embedded Carousels', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_use_embedded_carousel" id="bbg_xiv_use_embedded_carousel" type="checkbox" value="1" class="code" '
                     . checked( get_option( 'bbg_xiv_use_embedded_carousel', FALSE ), 1, FALSE ) . ' /> '
@@ -768,6 +776,7 @@ EOD
             register_setting( 'media', 'bbg_xiv_flex_number_of_dense_view_columns' );
             register_setting( 'media', 'bbg_xiv_flex_min_width_for_dense_view' );
             register_setting( 'media', 'bbg_xiv_default_view' );
+            register_setting( 'media', 'bbg_xiv_use_tiles' );
             register_setting( 'media', 'bbg_xiv_use_embedded_carousel' );
             register_setting( 'media', 'bbg_xiv_use_gallery_tabs' );
             register_setting( 'media', 'bbg_xiv_wp_rest' );

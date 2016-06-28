@@ -115,7 +115,13 @@
             container.find("div.bbg_xiv-flex_container div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn").css({color:"gray",borderColor:"gray"});
         }
     }
- 
+
+    bbg_xiv.renderTiles=function(container,collection){
+        // Tiles have the same HTML elements as Flex but we will use CSS specificity to override the Flex container CSS
+        container.addClass("bbg_xiv-tiles_container");
+        bbg_xiv.renderFlex(container,collection);
+    }
+
     bbg_xiv.renderCarousel = function( container, collection, id ) {
         var imageView=new bbg_xiv.ImageView();
         imageView.template=_.template(jQuery("script#bbg_xiv-template_carousel_item").html(),null,bbg_xiv.templateOptions);
@@ -417,7 +423,9 @@
         }
         switch(view){
         case "Gallery":
-            if(Modernizr.flexbox&&Modernizr.flexwrap&&!window.bbg_xiv['bbg_xiv_disable_flexbox']){
+            if(window.bbg_xiv['bbg_xiv_use_tiles']){
+                bbg_xiv.renderTiles(jqGallery,images);
+            } else if(Modernizr.flexbox&&Modernizr.flexwrap&&!window.bbg_xiv['bbg_xiv_disable_flexbox']){
                 bbg_xiv.renderFlex(jqGallery,images);
                 constructOverlay();
             }else{
