@@ -423,7 +423,7 @@
         }
         switch(view){
         case "Gallery":
-            if(window.bbg_xiv.bbg_xiv_use_tiles){
+            if(flags.indexOf("tiles")!==-1){
                 bbg_xiv.renderTiles(jqGallery,images);
             } else if(Modernizr.flexbox&&Modernizr.flexwrap&&!window.bbg_xiv['bbg_xiv_disable_flexbox']){
                 bbg_xiv.renderFlex(jqGallery,images);
@@ -459,8 +459,7 @@
             break;
         case "Carousel":
             var overflow=jQuery("html").css("overflow-y");
-            var embeddedCarousel=flags.indexOf("embedded-carousel")!==-1;
-            if(embeddedCarousel){
+            if(flags.indexOf("embedded-carousel")!==-1){
                 jqGallery.addClass("bbg_xiv-embedded_carousel");
             }else{
                 jQuery("html").css("overflow-y","hidden");
@@ -909,7 +908,7 @@
         jQuery("div.bbg_xiv-flex_container, div.bbg_xiv-gallery_container").each(function(){
             var jqThis=jQuery(this);
             var width=jqThis.width();
-            if(window.bbg_xiv.bbg_xiv_use_tiles){
+            if(jqThis.parents("div.bbg_xiv-gallery_envelope").hasClass("bbg_xiv-tiles_container")){
                 var px=Math.floor(width/Math.floor(width/window.bbg_xiv.bbg_xiv_flex_min_width));
                 jQuery("div.bbg_xiv-flex_item").css({width:px,height:px});
             }else{

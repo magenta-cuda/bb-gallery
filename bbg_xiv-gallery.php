@@ -79,7 +79,6 @@ class BBG_XIV_Gallery {
         $bbg_xiv_data[ 'bbg_xiv_carousel_interval' ]                 = get_option( 'bbg_xiv_carousel_interval', 2500 );
         $bbg_xiv_data[ 'bbg_xiv_disable_flexbox' ]                   = get_option( 'bbg_xiv_disable_flexbox', FALSE );
         $bbg_xiv_data[ 'bbg_xiv_default_view' ]                      = get_option( 'bbg_xiv_default_view', 'Gallery' );
-        $bbg_xiv_data[ 'bbg_xiv_use_tiles' ]                         = get_option( 'bbg_xiv_use_tiles', FALSE );
         $bbg_xiv_data[ 'bbg_xiv_wp_rest_api' ]                       = self::$wp_rest_api_available && self::$use_wp_rest_api_if_available;
         # translations for JavaScript side
         $bbg_xiv_lang[ 'Nothing Found' ]                             = __( 'Nothing Found',      'bb_gallery' );
@@ -92,6 +91,9 @@ class BBG_XIV_Gallery {
             'Each image below represents a gallery. Please click on an image to load its gallery.',
                                                                                                  'bb_gallery' );
         $default_flags = [ ];
+        if ( get_option( 'bbg_xiv_use_tiles', FALSE ) ) {
+            $default_flags[ ] = 'tiles';
+        }
         if ( get_option( 'bbg_xiv_use_embedded_carousel', FALSE ) ) {
             $default_flags[ ] = 'embedded-carousel';
         }
