@@ -474,7 +474,7 @@ div.bbg_xiv-tiles_container div.bbg_xiv-flex_container {
         transform: translate(-50%, -50%);
         width: auto;
         height: 100%; }
-      div.bbg_xiv-tiles_container div.bbg_xiv-flex_container div.bbg_xiv-flex_item figure img.portrait {
+      div.bbg_xiv-tiles_container div.bbg_xiv-flex_container div.bbg_xiv-flex_item figure img.bbg_xiv-portrait {
         width: 100%;
         height: auto; }
       @supports (object-fit: cover) {

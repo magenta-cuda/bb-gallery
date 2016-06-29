@@ -117,9 +117,17 @@
     }
 
     bbg_xiv.renderTiles=function(container,collection){
-        // Tiles have the same HTML elements as Flex but we will use CSS specificity to override the Flex container CSS
+        // gallery tiles have exactly the same HTML elements as the gallery Flex items but we will use CSS specificity to override the Flex container CSS
         container.addClass("bbg_xiv-tiles_container");
         bbg_xiv.renderFlex(container,collection);
+        if(!Modernizr.objectfit){
+            // IE and Edge do not support objectfit so we set a class to differentiate between landscape and portrait mode which will let our CSS rules simulate object-fit:cover
+            container.find("div.bbg_xiv-flex_item img").load(function(){
+                if(this.naturalWidth<this.naturalHeight){
+                    jQuery(this).addClass("bbg_xiv-portrait");
+                }
+            });
+        }
     }
 
     bbg_xiv.renderCarousel = function( container, collection, id ) {
