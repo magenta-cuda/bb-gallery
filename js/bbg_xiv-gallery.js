@@ -425,6 +425,7 @@
         case "Gallery":
             if(flags.indexOf("tiles")!==-1){
                 bbg_xiv.renderTiles(jqGallery,images);
+                constructOverlay();
             } else if(Modernizr.flexbox&&Modernizr.flexwrap&&!window.bbg_xiv['bbg_xiv_disable_flexbox']){
                 bbg_xiv.renderFlex(jqGallery,images);
                 constructOverlay();
