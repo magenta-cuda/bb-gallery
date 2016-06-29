@@ -660,6 +660,47 @@ div.bbg_xiv-flex_container{
   }
 }
 
+div.bbg_xiv-tiles_container{
+  div.bbg_xiv-flex_container{
+    display:block;
+    div.bbg_xiv-flex_item{
+      position:relative;
+      float:left;
+      overflow:hidden;
+      figure{
+        width:100%;
+        height:100%;
+        figcaption{
+          display:none;
+        }
+        img{
+          position:absolute;
+          left:50%;
+          top:50%;
+          transform:translate(-50%,-50%);
+          width:auto;
+          height:100%;
+        }
+        img.portrait{
+          width:100%;
+          height:auto;
+        }
+        @supports (object-fit:cover){
+          img{
+            position:static;
+            left:auto;
+            top:auto;
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            transform:none;
+          }
+        }
+      }
+    }
+  }
+}
+
 div.bbg_xiv-bootstrap{
   div.carousel.slide{
     position:fixed;

@@ -453,6 +453,37 @@ div.bbg_xiv-flex_container.bbg_xiv-flex_width_9_0909 div.bbg_xiv-flex_item {
 div.bbg_xiv-flex_container.bbg_xiv-flex_width_8_3333 div.bbg_xiv-flex_item {
   width: 8.3333%; }
 
+div.bbg_xiv-tiles_container div.bbg_xiv-flex_container {
+  display: block; }
+  div.bbg_xiv-tiles_container div.bbg_xiv-flex_container div.bbg_xiv-flex_item {
+    position: relative;
+    float: left;
+    overflow: hidden; }
+    div.bbg_xiv-tiles_container div.bbg_xiv-flex_container div.bbg_xiv-flex_item figure {
+      width: 100%;
+      height: 100%; }
+      div.bbg_xiv-tiles_container div.bbg_xiv-flex_container div.bbg_xiv-flex_item figure figcaption {
+        display: none; }
+      div.bbg_xiv-tiles_container div.bbg_xiv-flex_container div.bbg_xiv-flex_item figure img {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: auto;
+        height: 100%; }
+      div.bbg_xiv-tiles_container div.bbg_xiv-flex_container div.bbg_xiv-flex_item figure img.portrait {
+        width: 100%;
+        height: auto; }
+      @supports (object-fit: cover) {
+        div.bbg_xiv-tiles_container div.bbg_xiv-flex_container div.bbg_xiv-flex_item figure img {
+          position: static;
+          left: auto;
+          top: auto;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transform: none; } }
+
 div.bbg_xiv-bootstrap div.carousel.slide {
   position: fixed;
   left: 0px;

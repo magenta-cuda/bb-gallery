@@ -423,7 +423,7 @@
         }
         switch(view){
         case "Gallery":
-            if(window.bbg_xiv['bbg_xiv_use_tiles']){
+            if(window.bbg_xiv.bbg_xiv_use_tiles){
                 bbg_xiv.renderTiles(jqGallery,images);
             } else if(Modernizr.flexbox&&Modernizr.flexwrap&&!window.bbg_xiv['bbg_xiv_disable_flexbox']){
                 bbg_xiv.renderFlex(jqGallery,images);
@@ -823,7 +823,7 @@
     };
 
     bbg_xiv.calcBreakpoints=function(){
-        var minFlexWidth=window.bbg_xiv['bbg_xiv_flex_min_width'];
+        var minFlexWidth=window.bbg_xiv.bbg_xiv_flex_min_width;
         bbg_xiv.breakpoints=[
             {width:2*minFlexWidth,cssClass:"100"},
             {width:3*minFlexWidth,cssClass:"50"},
@@ -909,23 +909,28 @@
         jQuery("div.bbg_xiv-flex_container, div.bbg_xiv-gallery_container").each(function(){
             var jqThis=jQuery(this);
             var width=jqThis.width();
-            breakpoints.forEach(function(breakpoint){
-              jqThis.removeClass("bbg_xiv-flex_width_"+breakpoint.cssClass);
-            });
-            var minFlexWidthForCaption=window.bbg_xiv.bbg_xiv_flex_min_width_for_caption;
-            for(var i=0;i<breakpoints.length;i++){
-                if(width<breakpoints[i].width){
-                    var cssClass=breakpoints[i].cssClass;
-                    jqThis.addClass("bbg_xiv-flex_width_"+cssClass);
-                    var pxWidth=parseFloat(cssClass.replace("_","."))/100.0*width;
-                    if(pxWidth<minFlexWidthForCaption){
-                        jqThis.addClass("bbg_xiv-flex_no_caption");
-                    }else{
-                        jqThis.removeClass("bbg_xiv-flex_no_caption");
+            if(window.bbg_xiv.bbg_xiv_use_tiles){
+                var px=Math.floor(width/Math.floor(width/window.bbg_xiv.bbg_xiv_flex_min_width));
+                jQuery("div.bbg_xiv-flex_item").css({width:px,height:px});
+            }else{
+                breakpoints.forEach(function(breakpoint){
+                  jqThis.removeClass("bbg_xiv-flex_width_"+breakpoint.cssClass);
+                });
+                var minFlexWidthForCaption=window.bbg_xiv.bbg_xiv_flex_min_width_for_caption;
+                for(var i=0;i<breakpoints.length;i++){
+                    if(width<breakpoints[i].width){
+                        var cssClass=breakpoints[i].cssClass;
+                        jqThis.addClass("bbg_xiv-flex_width_"+cssClass);
+                        var pxWidth=parseFloat(cssClass.replace("_","."))/100.0*width;
+                        if(pxWidth<minFlexWidthForCaption){
+                            jqThis.addClass("bbg_xiv-flex_no_caption");
+                        }else{
+                            jqThis.removeClass("bbg_xiv-flex_no_caption");
+                        }
+                        break;
                     }
-                    break;
                 }
-            };
+            }
         });
         if(bbg_xiv.interface==="mouse"&&jQuery(window).width()>=bbg_xiv.bbg_xiv_flex_min_width_for_dense_view){
             jQuery(".bbg_xiv-configure_inner .bbg_xiv-mouse_only_option").show();
