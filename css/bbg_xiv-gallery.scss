@@ -660,12 +660,16 @@ div.bbg_xiv-flex_container{
   }
 }
 
+/* The butt joined square image tiles gallery use the same HTML elements as the Flex gallery but has its own CSS */
+
 div.bbg_xiv-tiles_container{
   div.bbg_xiv-flex_container{
     display:block;
     div.bbg_xiv-flex_item{
       position:relative;
       float:left;
+      padding:0;
+      margin:0;
       overflow:hidden;
       figure{
         width:100%;

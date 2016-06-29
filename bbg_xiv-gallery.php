@@ -741,7 +741,7 @@ EOD
             add_settings_field( 'bbg_xiv_use_tiles', __( 'Use Tiles', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_use_tiles" id="bbg_xiv_use_tiles" type="checkbox" value="1" class="code" '
                     . checked( get_option( 'bbg_xiv_use_tiles', FALSE ), 1, FALSE ) . ' /> '
-                    . '<a href="https://bbfgallery.wordpress.com/#tiles" target="_blank">' . __( 'The gallery uses butt joined image tiles.', 'bb_gallery' ) . '</a> '
+                    . '<a href="https://bbfgallery.wordpress.com/#tiles" target="_blank">' . __( 'The gallery uses butt joined square image tiles.', 'bb_gallery' ) . '</a> '
                     . __( 'See also the ', 'bb_gallery' )
                     . '<a href="https://bbfgallery.wordpress.com/#tiles" target="_blank">flags ' . __( ' shortcode option.', 'bb_gallery' ) . '</a>';
             }, 'media',	'bbg_xiv_setting_section' );

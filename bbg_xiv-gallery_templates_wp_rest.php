@@ -103,7 +103,7 @@
       <span class="glyphicon glyphicon-fast-backward"></span>
       <span class="sr-only">First</span>
     </a>
-      <a class="bbg_xiv-carousel_play carousel-control" href="#">
+    <a class="bbg_xiv-carousel_play carousel-control" href="#">
       <span class="glyphicon glyphicon-pause"></span>
       <span class="sr-only">Pause</span>
     </a>
