@@ -909,9 +909,11 @@
             var jqThis=jQuery(this);
             var width=jqThis.width();
             if(jqThis.parents("div.bbg_xiv-gallery_envelope").hasClass("bbg_xiv-tiles_container")){
-                var px=Math.floor(width/Math.floor(width/window.bbg_xiv.bbg_xiv_flex_min_width));
+                // set tile width and height in pixels so that tiles cover the div exactly
+                var px=Math.floor(width/Math.floor(width/window.bbg_xiv.bbg_xiv_flex_min_width))-1;
                 jQuery("div.bbg_xiv-flex_item").css({width:px,height:px});
             }else{
+                // find the smallest percentage width that satisfies the minimum image width
                 breakpoints.forEach(function(breakpoint){
                   jqThis.removeClass("bbg_xiv-flex_width_"+breakpoint.cssClass);
                 });
