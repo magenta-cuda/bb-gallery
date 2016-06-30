@@ -916,19 +916,22 @@
     
     jQuery(window).resize(function(){
         var breakpoints=bbg_xiv.breakpoints;
-        jQuery("div.bbg_xiv-flex_container, div.bbg_xiv-gallery_container").each(function(){
+        jQuery("div.bbg_xiv-flex_container,div.bbg_xiv-gallery_container").each(function(){
             var jqThis=jQuery(this);
             var width=jqThis.width();
+            var minFlexWidthForCaption=window.bbg_xiv.bbg_xiv_flex_min_width_for_caption;
             if(jqThis.parents("div.bbg_xiv-gallery_envelope").hasClass("bbg_xiv-tiles_container")){
-                // set tile width and height in pixels so that tiles cover the div exactly
-                var px=Math.floor(width/Math.floor(width/window.bbg_xiv.bbg_xiv_flex_min_width))-1;
-                jQuery("div.bbg_xiv-flex_item").css({width:px,height:px});
+                // set tile width and height in pixels so that tiles cover the div exactly and completely
+                var pxWidth=Math.floor(width/Math.floor(width/window.bbg_xiv.bbg_xiv_flex_min_width))-1;
+                jqThis.find("div.bbg_xiv-flex_item").css({width:pxWidth,height:pxWidth});
+                if(pxWidth<minFlexWidthForCaption){
+                    jqThis.find("div.bbg_xiv-flex_item figcaption").hide();
+                }
             }else{
                 // find the smallest percentage width that satisfies the minimum image width
                 breakpoints.forEach(function(breakpoint){
                   jqThis.removeClass("bbg_xiv-flex_width_"+breakpoint.cssClass);
                 });
-                var minFlexWidthForCaption=window.bbg_xiv.bbg_xiv_flex_min_width_for_caption;
                 for(var i=0;i<breakpoints.length;i++){
                     if(width<breakpoints[i].width){
                         var cssClass=breakpoints[i].cssClass;
@@ -1322,7 +1325,7 @@
             e.preventDefault();
         });
         jQuery("button.bbg_xiv-titles").click(function(e){
-            jQuery("div.bbg_xiv-tiles_container div.bbg_xiv-flex_item figcaption").toggle(1000);
+            jQuery(this).parents("div.bbg_xiv-bootstrap.bbg_xiv-gallery").find("div.bbg_xiv-tiles_container div.bbg_xiv-flex_item figcaption").toggle(1000);
         });
         // wireup the handler for setting options
         jQuery("button.bbg_xiv-configure").click(function(e){
