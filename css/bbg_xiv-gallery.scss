@@ -672,10 +672,25 @@ div.bbg_xiv-tiles_container{
       margin:0;
       overflow:hidden;
       figure{
+        position:relative;
         width:100%;
         height:100%;
         figcaption{
-          display:none;
+          display:block;
+          position:absolute;
+          left:0;
+          top:0;
+          z-index:10;
+          width:100%;
+          height:4vh;
+          font-size:2vh;
+          font-weight:bold;
+          color:black;
+          text-align:center;
+          /*text-shadow:1px 1px 0px red;*/
+          background-color:cyan;
+          /*opacity:0.5;*/
+          overflow:hidden;
         }
         img{
           position:absolute;
