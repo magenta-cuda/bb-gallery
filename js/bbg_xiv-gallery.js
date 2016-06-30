@@ -1319,6 +1319,9 @@
                 .find("nav.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.bbg_xiv-view_menu li > a[data-view='gallery_home']").click();
             e.preventDefault();
         });
+        jQuery("button.bbg_xiv-titles").click(function(e){
+            jQuery("div.bbg_xiv-tiles_container div.bbg_xiv-flex_item figcaption").toggle(1000);
+        });
         // wireup the handler for setting options
         jQuery("button.bbg_xiv-configure").click(function(e){
             divConfigure.find("input#bbg_xiv-carousel_delay").val(bbg_xiv.bbg_xiv_carousel_interval);
