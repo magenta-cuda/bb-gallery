@@ -502,6 +502,8 @@ div.bbg_xiv-tiles_container div.bbg_xiv-flex_container {
           height: 100%;
           object-fit: cover;
           transform: none; } }
+    div.bbg_xiv-tiles_container div.bbg_xiv-flex_container div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn:hover {
+      color: cyan; }
 
 div.bbg_xiv-bootstrap div.carousel.slide {
   position: fixed;
