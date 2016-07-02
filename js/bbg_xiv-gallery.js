@@ -458,7 +458,8 @@
                     divAltGalleryHeading.find("span.bbg_xiv-alt_gallery_heading").text(bbg_xiv.galleryOfGalleriesTitle);
                     // click handler for gallery icon images
                     jqGallery.find("a.bbg_xiv-gallery_icon").click(function(e){
-                        jqGallery.parent().find("nav.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.bbg_xiv-view_menu li > a[data-view='gallery_"+this.dataset.galleryIndex+"']").click();
+                        jqGallery.parent().find("nav.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.bbg_xiv-view_menu li.bbg_xiv-alt_gallery > a[data-view='gallery_"
+                            +this.dataset.galleryIndex+"']").click();
                         e.preventDefault();
                     });
                 }
@@ -619,8 +620,12 @@
             // intercept clicks when images belong to gallery of galleries
             if(jqGallery.hasClass("bbg_xiv-gallery_icons_mode")){
                 jqGallery.find("div.bbg_xiv-template_tabs_container div.tab-content figure.tab-pane a").click(function(e){
-                    jqGallery.parent().find("nav.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.bbg_xiv-view_menu li > a[data-view='gallery_"+this.dataset.galleryIndex+"']").click();
-                    e.preventDefault();
+                    var galleries=jqGallery.parent().find("nav.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.bbg_xiv-view_menu li.bbg_xiv-alt_gallery");
+                    // only intercept clicks on the home gallery
+                    if(galleries.filter(".bbg_xiv-alt_gallery_home").hasClass("active")){
+                        galleries.find("a[data-view='gallery_"+this.dataset.galleryIndex+"']").click();
+                        e.preventDefault();
+                    }
                 });
             }
             // make the "Tabs" brand clickable for mobile devices and send click to the toggle button
