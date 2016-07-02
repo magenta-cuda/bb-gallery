@@ -415,8 +415,8 @@ EOD;
                     <ul role="menu" class="dropdown-menu bbg_xiv-view_menu">
                         <li class="dropdown-header">{$translations['VIEWS']}</li>
                         <li class="bbg_xiv-view bbg_xiv-view_gallery active"><a data-view="Gallery" href="#">$translations[Gallery]</a></li>
-                        <li class="bbg_xiv-view bbg_xiv-hide_for_gallery_icons"><a data-view="Carousel" href="#">$translations[Carousel]</a></li>
-                        <li class="bbg_xiv-view"><a data-view="Tabs" href="#">$translations[Tabs]</a></li>
+                        <li class="bbg_xiv-view bbg_xiv-view_carousel bbg_xiv-hide_for_gallery_icons"><a data-view="Carousel" href="#">$translations[Carousel]</a></li>
+                        <li class="bbg_xiv-view bbg_xiv-view_tabs"><a data-view="Tabs" href="#">$translations[Tabs]</a></li>
                         <li class="bbg_xiv-view bbg_xiv-hide_for_gallery_icons bbg_xiv-large_viewport_only"><a data-view="Dense" href="#">$translations[Dense]</a></li>
                         <!-- TODO: Add entry for new views here. -->
                         $table_nav_item

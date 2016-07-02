@@ -982,6 +982,8 @@
                 }else if(jqThis.hasClass("bbg_xiv-default_view_tabs")){
                     defaultView="Tabs";
                 }
+                jqThis.parents("div.bbg_xiv-bootstrap.bbg_xiv-gallery").find("nav.bbg_xiv-gallery_navbar ul.nav li.bbg_xiv-select_view ul.bbg_xiv-view_menu li.bbg_xiv-view")
+                    .removeClass("active").filter(".bbg_xiv-view_"+defaultView.toLowerCase()).addClass("active");
             }
 
             // prettify Galleries tabs
