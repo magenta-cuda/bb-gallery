@@ -522,6 +522,10 @@ div.bbg_xiv-flex_container{
                 color:gray;
                 border-color:gray;
             }
+            &.bbg_xiv-touch{
+                color:gray;
+                border-color:gray;
+            }
         }
     }
     @include full_viewport_image_overlay();
@@ -540,6 +544,10 @@ div.bbg_xiv-flex_container.bbg_xiv-flex_no_caption,div.bbg_xiv-gallery_container
         }
         div.bbg_xiv-dense_full_btn{
             &:hover{
+                color:$icon-color;
+                border-color:$icon-color;
+            }
+            &.bbg_xiv-touch{
                 color:$icon-color;
                 border-color:$icon-color;
             }
@@ -717,8 +725,15 @@ div.bbg_xiv-tiles_container{
           }
         }
       }
-      div.bbg_xiv-dense_full_btn:hover{
-        color:cyan;
+      div.bbg_xiv-dense_full_btn{
+          &:hover{
+              color:$icon-color;
+              border-color:$icon-color;
+          }
+          &.bbg_xiv-touch{
+              color:$icon-color;
+              border-color:$icon-color;
+          }
       }
     }
   }

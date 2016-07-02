@@ -112,7 +112,7 @@
         container.empty();
         container.append(galleryView.render().$el.find("div.bbg_xiv-flex_container"));
         if(bbg_xiv.interface==="touch"){
-            container.find("div.bbg_xiv-flex_container div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn").css({color:"gray",borderColor:"gray"});
+            container.find("div.bbg_xiv-flex_container div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn").addClass("bbg_xiv-touch");
         }
     }
 

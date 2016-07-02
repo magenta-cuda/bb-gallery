@@ -300,6 +300,9 @@ div.bbg_xiv-flex_container {
       div.bbg_xiv-flex_container div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn:hover {
         color: gray;
         border-color: gray; }
+      div.bbg_xiv-flex_container div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn.bbg_xiv-touch {
+        color: gray;
+        border-color: gray; }
   div.bbg_xiv-flex_container div.bbg_xiv-dense_outer {
     position: fixed;
     top: 0px;
@@ -388,6 +391,9 @@ div.bbg_xiv-flex_container.bbg_xiv-flex_no_caption div.bbg_xiv-flex_item figure 
   border-top-left-radius: 6px;
   border-top-right-radius: 6px; }
 div.bbg_xiv-flex_container.bbg_xiv-flex_no_caption div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn:hover, div.bbg_xiv-gallery_container.bbg_xiv-flex_no_caption div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn:hover {
+  color: cyan;
+  border-color: cyan; }
+div.bbg_xiv-flex_container.bbg_xiv-flex_no_caption div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn.bbg_xiv-touch, div.bbg_xiv-gallery_container.bbg_xiv-flex_no_caption div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn.bbg_xiv-touch {
   color: cyan;
   border-color: cyan; }
 
@@ -503,7 +509,11 @@ div.bbg_xiv-tiles_container div.bbg_xiv-flex_container {
           object-fit: cover;
           transform: none; } }
     div.bbg_xiv-tiles_container div.bbg_xiv-flex_container div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn:hover {
-      color: cyan; }
+      color: cyan;
+      border-color: cyan; }
+    div.bbg_xiv-tiles_container div.bbg_xiv-flex_container div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn.bbg_xiv-touch {
+      color: cyan;
+      border-color: cyan; }
 
 div.bbg_xiv-bootstrap div.carousel.slide {
   position: fixed;
