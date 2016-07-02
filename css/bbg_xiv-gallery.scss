@@ -208,7 +208,7 @@ div.bbg_xiv-bootstrap{
         }
       }
 
-      button.bbg_xiv-home,button.bbg_xiv-configure,button.bbg_xiv-help{
+      button.bbg_xiv-titles,button.bbg_xiv-home,button.bbg_xiv-configure,button.bbg_xiv-help{
         clear:both;
         span.bbg_xiv-navbar_button_text{
           display:inline;
@@ -1017,6 +1017,9 @@ div.bbg_xiv-bootstrap{
               color:black;
               font-size:14px;
               font-weight:bold;
+              &:hover{
+                background-color:#aaa;
+              }
             }
           }
         }
