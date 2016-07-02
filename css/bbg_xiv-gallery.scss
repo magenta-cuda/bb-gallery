@@ -707,11 +707,13 @@ div.bbg_xiv-tiles_container{
           top:50%;
           transform:translate(-50%,-50%);
           width:auto;
+          max-width:none;
           height:100%;
         }
         img.bbg_xiv-portrait{
           width:100%;
           height:auto;
+          max-height:none;
         }
         @supports (object-fit:cover){
           img{

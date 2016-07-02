@@ -495,10 +495,12 @@ div.bbg_xiv-tiles_container div.bbg_xiv-flex_container {
         top: 50%;
         transform: translate(-50%, -50%);
         width: auto;
+        max-width: none;
         height: 100%; }
       div.bbg_xiv-tiles_container div.bbg_xiv-flex_container div.bbg_xiv-flex_item figure img.bbg_xiv-portrait {
         width: 100%;
-        height: auto; }
+        height: auto;
+        max-height: none; }
       @supports (object-fit: cover) {
         div.bbg_xiv-tiles_container div.bbg_xiv-flex_container div.bbg_xiv-flex_item figure img {
           position: static;
