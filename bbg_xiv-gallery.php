@@ -751,7 +751,7 @@ EOD
                     . checked( get_option( 'bbg_xiv_use_tiles', FALSE ), 1, FALSE ) . ' /> '
                     . '<a href="https://bbfgallery.wordpress.com/#tiles" target="_blank">' . __( 'The gallery uses butt joined square image tiles.', 'bb_gallery' ) . '</a> '
                     . __( 'See also the ', 'bb_gallery' )
-                    . '<a href="https://bbfgallery.wordpress.com/#tiles" target="_blank">flags ' . __( ' shortcode option.', 'bb_gallery' ) . '</a>';
+                    . '<a href="https://bbfgallery.wordpress.com/#parameters" target="_blank">flags ' . __( ' shortcode option.', 'bb_gallery' ) . '</a>';
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_use_embedded_carousel', __( 'Use Embedded Carousels', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_use_embedded_carousel" id="bbg_xiv_use_embedded_carousel" type="checkbox" value="1" class="code" '
