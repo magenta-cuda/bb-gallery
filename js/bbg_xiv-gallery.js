@@ -616,6 +616,13 @@
                     }
                 },500);
             });
+            // intercept clicks when images belong to gallery of galleries
+            if(jqGallery.hasClass("bbg_xiv-gallery_icons_mode")){
+                jqGallery.find("div.bbg_xiv-template_tabs_container div.tab-content figure.tab-pane a").click(function(e){
+                    jqGallery.parent().find("nav.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.bbg_xiv-view_menu li > a[data-view='gallery_"+this.dataset.galleryIndex+"']").click();
+                    e.preventDefault();
+                });
+            }
             // make the "Tabs" brand clickable for mobile devices and send click to the toggle button
             jqGallery.find("a.bbg_xiv-tabs_brand").click(function(e){
                 var toggle=jQuery(this).siblings("button.navbar-toggle");
