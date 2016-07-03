@@ -39,28 +39,29 @@ No. If the WP REST API plugin is not installed this plugin will use its own prop
 https://bbfgallery.wordpress.com/
 
 == Screenshots ==
-1. Multiple Views of a Gallery
-2. Gallery View
-3. Carousel View
-4. Tabs View
-5. Dense View
-6. Dynamically Loading Galleries
-7. Dynamically Generating Galleries from Search Criteria
-8. Overlay of a Selected Image
-9. Mobile Portrait View
-10. User Options Pane
-11. Admin Settings
+1. [Multiple Views of a Gallery](https://bbfgallery.wordpress.com/#navbar)
+2. [Gallery View](https://bbfgallery.wordpress.com/#gallery)
+3. [Tiles View](https://bbfgallery.wordpress.com/#tiles)
+4. [Carousel View](https://bbfgallery.wordpress.com/#carousel)
+5. [Tabs View](https://bbfgallery.wordpress.com/#tabs)
+6. [Dense View](https://bbfgallery.wordpress.com/#dense)
+7. [Dynamically Loading Galleries](https://bbfgallery.wordpress.com/#alt_galleries)
+8. Dynamically Generating Galleries from Search Criteria
+9. [Overlay of a Selected Image](https://bbfgallery.wordpress.com/#overlay)
+10. Mobile Portrait View
+11. [User Options Pane](https://bbfgallery.wordpress.com/#options)
+12. [Admin Settings](https://bbfgallery.wordpress.com/#installation)
 
 == Changelog ==
 
 = 1.7.3 =
 
-* added tiles view - show images as butt joined square image tiles
+* added tiles view - show images as [butt joined square image tiles](https://bbfgallery.wordpress.com/#tiles)
 * css tweaks and bug fixes
 
 = 1.7.1.2 =
 
-* option to embed carousel inside post content
+* option to [embed carousel inside post content](https://bbfgallery.wordpress.com/#carousel)
 * option to individually specify initial view of gallery
 * css tweaks to prettify carousel
 
