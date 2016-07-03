@@ -516,6 +516,8 @@ div.bbg_xiv-tiles_container div.bbg_xiv-flex_container {
     div.bbg_xiv-tiles_container div.bbg_xiv-flex_container div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn.bbg_xiv-touch {
       color: cyan;
       border-color: cyan; }
+  div.bbg_xiv-tiles_container div.bbg_xiv-flex_container div.bbg_xiv-flex_footer {
+    clear: both; }
 
 div.bbg_xiv-bootstrap div.carousel.slide {
   position: fixed;

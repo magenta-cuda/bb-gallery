@@ -31,6 +31,7 @@
 <script type="text/html" id="bbg_xiv-template_flex_container">
 <div class="bbg_xiv-container bbg_xiv-flex_container" data-bbg_xiv-gallery-id="{{{ data.id }}}">
     {{{ data.items }}}
+    <div class="bbg_xiv-flex_footer"></div>
     <!-- Full Browser Viewport View of an Image -->
     <div class="bbg_xiv-dense_outer">
     </div>
