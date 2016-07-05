@@ -119,6 +119,14 @@
     bbg_xiv.renderTiles=function(container,collection,flags){
         // gallery tiles have exactly the same HTML elements as the gallery Flex items but we will use CSS specificity to override the Flex container CSS
         container.addClass("bbg_xiv-tiles_container");
+        // in the default mode of the square tiles the images cover the square tiles i.e., object-fit: cover;
+        if(flags.indexOf("contain")!==-1){
+            // the images in the square tiles are contained in the square tiles i.e., object-fit: contain;
+            container.addClass("bbg_xiv-contain");
+        }else if(flags.indexOf("fill")!==-1){
+            // object-fit: fill;
+            container.addClass("bbg_xiv-fill");
+        }
         bbg_xiv.renderFlex(container,collection);
         if(!Modernizr.objectfit){
             // IE and Edge do not support objectfit so we set a class to differentiate between landscape and portrait mode which will let our CSS rules simulate object-fit:cover
