@@ -686,10 +686,10 @@ div.bbg_xiv-tiles_container{
         figcaption{
           display:block;
           position:absolute;
-          left:0;
-          bottom:0;
+          left:5%;
+          bottom:1vh;
           z-index:10;
-          width:100%;
+          width:90%;
           height:4vh;
           font-size:2vh;
           font-weight:bold;
@@ -697,7 +697,7 @@ div.bbg_xiv-tiles_container{
           text-align:center;
           /*text-shadow:1px 1px 0px red;*/
           background-color:white;
-          border-radius:0;
+          border-radius:5px;
           opacity:0.6;
           overflow:hidden;
         }
@@ -747,6 +747,7 @@ div.bbg_xiv-tiles_container.bbg_xiv-contain{
   div.bbg_xiv-flex_container{
     div.bbg_xiv-flex_item{
       figure{
+        background-color:#333;
         img{
           width:100%;
           height:auto;
