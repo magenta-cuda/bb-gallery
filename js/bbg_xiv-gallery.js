@@ -116,7 +116,7 @@
         }
     }
 
-    bbg_xiv.renderTiles=function(container,collection){
+    bbg_xiv.renderTiles=function(container,collection,flags){
         // gallery tiles have exactly the same HTML elements as the gallery Flex items but we will use CSS specificity to override the Flex container CSS
         container.addClass("bbg_xiv-tiles_container");
         bbg_xiv.renderFlex(container,collection);
@@ -433,7 +433,7 @@
         switch(view){
         case "Gallery":
             if(flags.indexOf("tiles")!==-1){
-                bbg_xiv.renderTiles(jqGallery,images);
+                bbg_xiv.renderTiles(jqGallery,images,flags);
                 constructOverlay();
                 titlesButton.show();
             } else if(Modernizr.flexbox&&Modernizr.flexwrap&&!window.bbg_xiv['bbg_xiv_disable_flexbox']){

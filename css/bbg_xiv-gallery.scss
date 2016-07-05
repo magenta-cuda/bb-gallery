@@ -706,14 +706,14 @@ div.bbg_xiv-tiles_container{
           left:50%;
           top:50%;
           transform:translate(-50%,-50%);
+          height:100%;
           width:auto;
           max-width:none;
-          height:100%;
-        }
-        img.bbg_xiv-portrait{
-          width:100%;
-          height:auto;
-          max-height:none;
+          &.bbg_xiv-portrait{
+            width:100%;
+            height:auto;
+            max-height:none;
+          }
         }
         @supports (object-fit:cover){
           img{
@@ -740,6 +740,35 @@ div.bbg_xiv-tiles_container{
     }
     div.bbg_xiv-flex_footer{
         clear:both;
+    }
+  }
+}
+div.bbg_xiv-tiles_container.bbg_xiv-contain{
+  div.bbg_xiv-flex_container{
+    div.bbg_xiv-flex_item{
+      figure{
+        img{
+          width:100%;
+          height:auto;
+          max-height:none;
+        }
+        &.bbg_xiv-portrait{
+          height:100%;
+          width:auto;
+          max-width:none;
+        }
+        @supports (object-fit:contain){
+          img{
+            position:static;
+            left:auto;
+            top:auto;
+            width:100%;
+            height:100%;
+            object-fit:contain;
+            transform:none;
+          }
+        }
+      }
     }
   }
 }
