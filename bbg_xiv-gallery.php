@@ -91,14 +91,18 @@ class BBG_XIV_Gallery {
             'Each image below represents a gallery. Please click on an image to load its gallery.',
                                                                                                  'bb_gallery' );
         $default_flags = [ ];
-        if ( get_option( 'bbg_xiv_use_tiles', 'Cover' ) === 'Cover' ) {
+        switch ( get_option( 'bbg_xiv_use_tiles', 'Cover' ) ) {
+        case 'Cover':
             $default_flags[ ] = 'tiles';
-        } else if ( get_option( 'bbg_xiv_use_tiles', 'Cover' ) === 'Contain' ) {
+            break;
+        case 'Contain':
             $default_flags[ ] = 'tiles';
             $default_flags[ ] = 'contain';
-        } else if ( get_option( 'bbg_xiv_use_tiles', 'Cover' ) === 'Fill' ) {
+            break;
+        case 'Fill':
             $default_flags[ ] = 'tiles';
             $default_flags[ ] = 'fill';
+            break;
         }
         if ( get_option( 'bbg_xiv_use_embedded_carousel', TRUE ) ) {
             $default_flags[ ] = 'embedded-carousel';
@@ -706,6 +710,9 @@ EOD
                 echo '<p><a href="https://bbfgallery.wordpress.com/" target="_blank">BB Gallery</a>'
                     . __( ' is a plug-compatible replacement for the built-in WordPress gallery shortcode.', 'bb_gallery' ) . '</p>';
             }, 'media' );
+            add_settings_field( 'bbg_xiv_version', __( 'Version', 'bb_gallery' ), function( ) {
+                echo '<input name="bbg_xiv_version" id="bbg_xiv_version" type="hidden" value="1.7.3.1" /> 1.7.3.1';
+            }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_shortcode', __( 'Enable BB Gallery', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_shortcode" id="bbg_xiv_shortcode" type="checkbox" value="1" class="code" '
                     . checked( get_option( 'bbg_xiv_shortcode', 1 ), 1, FALSE ) . ' /> ' . __( 'This will replace the built-in WordPress gallery shortcode.', 'bb_gallery' );
@@ -753,17 +760,14 @@ EOD
                     . '<a href="https://bbfgallery.wordpress.com/#parameters" target="_blank">view ' . __( ' shortcode option.', 'bb_gallery' ) . '</a>';
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_use_tiles', __( 'Use Tiles', 'bb_gallery' ), function( ) {
-                echo '<input name="bbg_xiv_use_tiles" id="bbg_xiv_use_tiles_disabled" type="radio" value="Disabled" '
-                    . ( get_option( 'bbg_xiv_use_tiles', 'Cover' ) === 'Disabled' ? 'checked />' : '/>' )
+                $use_tiles = get_option( 'bbg_xiv_use_tiles', 'Cover' );
+                echo '<input name="bbg_xiv_use_tiles" id="bbg_xiv_use_tiles_disabled" type="radio" value="Disabled" ' . ( $use_tiles === 'Disabled' ? 'checked />' : '/>' )
                     . '<span class="bbg_xiv-radio_text">Disabled&nbsp;&nbsp;&nbsp;&nbsp;</span>';
-                echo '<input name="bbg_xiv_use_tiles" id="bbg_xiv_use_tiles_cover"    type="radio" value="Cover" '
-                    . ( get_option( 'bbg_xiv_use_tiles', 'Cover' ) === 'Cover'    ? 'checked />' : '/>' )
+                echo '<input name="bbg_xiv_use_tiles" id="bbg_xiv_use_tiles_cover"    type="radio" value="Cover" '    . ( $use_tiles === 'Cover'    ? 'checked />' : '/>' )
                     . '<span class="bbg_xiv-radio_text">Cover&nbsp;&nbsp;&nbsp;&nbsp;</span>';
-                echo '<input name="bbg_xiv_use_tiles" id="bbg_xiv_use_tiles_contain"  type="radio" value="Contain" '
-                    . ( get_option( 'bbg_xiv_use_tiles', 'Cover' ) === 'Contain'  ? 'checked />' : '/>' )
+                echo '<input name="bbg_xiv_use_tiles" id="bbg_xiv_use_tiles_contain"  type="radio" value="Contain" '  . ( $use_tiles === 'Contain'  ? 'checked />' : '/>' )
                     . '<span class="bbg_xiv-radio_text">Contain&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>';
-                echo '<input name="bbg_xiv_use_tiles" id="bbg_xiv_use_tiles_fill"  type="radio" value="Fill" '
-                    . ( get_option( 'bbg_xiv_use_tiles', 'Cover' ) === 'Fill'  ? 'checked />' : '/>' )
+                echo '<input name="bbg_xiv_use_tiles" id="bbg_xiv_use_tiles_fill"  type="radio" value="Fill" '        . ( $use_tiles === 'Fill'     ? 'checked />' : '/>' )
                     . '<span class="bbg_xiv-radio_text">Fill&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>';
                 echo '<a href="https://bbfgallery.wordpress.com/#tiles" target="_blank">' . __( 'The gallery uses butt joined square image tiles.', 'bb_gallery' ) . '</a> '
                     . __( 'See also the ', 'bb_gallery' )
@@ -792,6 +796,7 @@ EOD
                 echo '<input name="bbg_xiv_table" id="bbg_xiv_table" type="checkbox" value="1" class="code" '
                     . checked( get_option( 'bbg_xiv_table' ), 1, FALSE ) . ' /> ' . __( 'The "Table View" is primarily intended for developers.', 'bb_gallery' );
             }, 'media',	'bbg_xiv_setting_section' );
+            register_setting( 'media', 'bbg_xiv_version' );
             register_setting( 'media', 'bbg_xiv_shortcode' );
             register_setting( 'media', 'bbg_xiv_flex_min_width' );
             register_setting( 'media', 'bbg_xiv_flex_min_width_for_caption' );
@@ -839,10 +844,10 @@ EOD
 <div class="notice notice-info is-dismissible">
 BB gallery: The default gallery view now uses square tiles. To restore the gallery view to using the CSS Flexbox set the &quot;Use Tiles&quot; option to &quot;disabled&quot;.
 The default carousel view now is embedded. To restore the carousel view to the full viewport disable the &quot;Use Embedded Carousels&quot; option.
-See <a href="<?php echo admin_url( 'options-media.php' ); ?>">Settings > Media</a>.
+Visit <a href="<?php echo admin_url( 'options-media.php' ); ?>">Settings > Media</a> to accept or override these defaults.
 </div>
 <?php
-                update_option( 'bbg_xiv_version', '1.7.3.1' );
+                #update_option( 'bbg_xiv_version', '1.7.3.1' );
             }
         } );
 
