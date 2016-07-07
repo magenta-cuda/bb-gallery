@@ -707,7 +707,7 @@ EOD
  
         add_action( 'admin_init', function( ) {
             add_settings_section( 'bbg_xiv_setting_section', 'BB Gallery', function( ) {
-                echo '<p><a href="https://bbfgallery.wordpress.com/" target="_blank">BB Gallery</a>'
+                echo '<p id="bbg_xiv-conf_section"><a href="https://bbfgallery.wordpress.com/" target="_blank">BB Gallery</a>'
                     . __( ' is a plug-compatible replacement for the built-in WordPress gallery shortcode.', 'bb_gallery' ) . '</p>';
             }, 'media' );
             add_settings_field( 'bbg_xiv_version', __( 'Version', 'bb_gallery' ), function( ) {
@@ -839,12 +839,19 @@ EOD
         } );
 
         add_action( 'admin_notices', function( ) {
+            global $hook_suffix;
             if ( get_option( 'bbg_xiv_version', '' ) !== '1.7.3.1' ) {
+                if ( $hook_suffix === 'options-media.php' ) {
+                    $post_script = 'Go to <a href="#bbg_xiv-conf_section">section BB Gallery</a>.';
+                } else {
+                    $post_script = 'Visit <a href="' . admin_url( 'options-media.php' ) . '">Settings > Media</a> to accept or override these defaults.';
+                }
+                error_log( '$hook_suffix=' . $hook_suffix );
 ?>
 <div class="notice notice-info is-dismissible">
 BB gallery: The default gallery view now uses square tiles. To restore the gallery view to using the CSS Flexbox set the &quot;Use Tiles&quot; option to &quot;disabled&quot;.
 The default carousel view now is embedded. To restore the carousel view to the full viewport disable the &quot;Use Embedded Carousels&quot; option.
-Visit <a href="<?php echo admin_url( 'options-media.php' ); ?>">Settings > Media</a> to accept or override these defaults.
+<?php echo $post_script; ?>
 </div>
 <?php
                 #update_option( 'bbg_xiv_version', '1.7.3.1' );
