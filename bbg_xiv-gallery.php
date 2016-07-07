@@ -708,7 +708,12 @@ EOD
         add_action( 'admin_init', function( ) {
             add_settings_section( 'bbg_xiv_setting_section', 'BB Gallery', function( ) {
                 echo '<p id="bbg_xiv-conf_section"><a href="https://bbfgallery.wordpress.com/" target="_blank">BB Gallery</a>'
-                    . __( ' is a plug-compatible replacement for the built-in WordPress gallery shortcode.', 'bb_gallery' ) . '</p>';
+                    . __( ' is a plug-compatible replacement for the built-in WordPress gallery shortcode.', 'bb_gallery' );
+                if ( get_option( 'bbg_xiv_version', '' ) === '' ) {
+                    echo ' ' . __( 'These initial values for the following options should work reasonably well.', 'bb_gallery' )
+                        . ' ' . __( 'You can change them later when you are more familiar with this product.', 'bb_gallery' );
+                }
+                echo '</p>';
             }, 'media' );
             add_settings_field( 'bbg_xiv_version', __( 'Version', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_version" id="bbg_xiv_version" type="hidden" value="1.7.3.1" /> 1.7.3.1';
