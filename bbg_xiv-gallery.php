@@ -4,7 +4,7 @@
 Plugin Name: BB Gallery
 Plugin URI: https://bbfgallery.wordpress.com/
 Description: Gallery using Backbone.js, Bootstrap 3 and CSS3 Flexbox
-Version: 1.7.3
+Version: 1.7.3.1
 Author: Magenta Cuda
 Author URI: https://profiles.wordpress.org/magenta-cuda/
 License: GPL2
@@ -91,16 +91,16 @@ class BBG_XIV_Gallery {
             'Each image below represents a gallery. Please click on an image to load its gallery.',
                                                                                                  'bb_gallery' );
         $default_flags = [ ];
-        if ( get_option( 'bbg_xiv_use_tiles', 'Disabled' ) === 'Cover' ) {
+        if ( get_option( 'bbg_xiv_use_tiles', 'Cover' ) === 'Cover' ) {
             $default_flags[ ] = 'tiles';
-        } else if ( get_option( 'bbg_xiv_use_tiles', 'Disabled' ) === 'Contain' ) {
+        } else if ( get_option( 'bbg_xiv_use_tiles', 'Cover' ) === 'Contain' ) {
             $default_flags[ ] = 'tiles';
             $default_flags[ ] = 'contain';
-        } else if ( get_option( 'bbg_xiv_use_tiles', 'Disabled' ) === 'Fill' ) {
+        } else if ( get_option( 'bbg_xiv_use_tiles', 'Cover' ) === 'Fill' ) {
             $default_flags[ ] = 'tiles';
             $default_flags[ ] = 'fill';
         }
-        if ( get_option( 'bbg_xiv_use_embedded_carousel', FALSE ) ) {
+        if ( get_option( 'bbg_xiv_use_embedded_carousel', TRUE ) ) {
             $default_flags[ ] = 'embedded-carousel';
         }
 
@@ -674,7 +674,7 @@ EOD;
         } );
 
         add_action( 'init', function( ) {
-            self::$wp_rest_api_available        = class_exists( 'WP_REST_Controller' );
+            self::$wp_rest_api_available        = class_exists( 'WP_REST_Attachments_Controller' );
             self::$use_wp_rest_api_if_available = get_option( 'bbg_xiv_wp_rest', TRUE );
         } );
 
@@ -754,16 +754,16 @@ EOD
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_use_tiles', __( 'Use Tiles', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_use_tiles" id="bbg_xiv_use_tiles_disabled" type="radio" value="Disabled" '
-                    . ( get_option( 'bbg_xiv_use_tiles', 'Disabled' ) === 'Disabled' ? 'checked />' : '/>' )
+                    . ( get_option( 'bbg_xiv_use_tiles', 'Cover' ) === 'Disabled' ? 'checked />' : '/>' )
                     . '<span class="bbg_xiv-radio_text">Disabled&nbsp;&nbsp;&nbsp;&nbsp;</span>';
                 echo '<input name="bbg_xiv_use_tiles" id="bbg_xiv_use_tiles_cover"    type="radio" value="Cover" '
-                    . ( get_option( 'bbg_xiv_use_tiles', 'Disabled' ) === 'Cover'    ? 'checked />' : '/>' )
+                    . ( get_option( 'bbg_xiv_use_tiles', 'Cover' ) === 'Cover'    ? 'checked />' : '/>' )
                     . '<span class="bbg_xiv-radio_text">Cover&nbsp;&nbsp;&nbsp;&nbsp;</span>';
                 echo '<input name="bbg_xiv_use_tiles" id="bbg_xiv_use_tiles_contain"  type="radio" value="Contain" '
-                    . ( get_option( 'bbg_xiv_use_tiles', 'Disabled' ) === 'Contain'  ? 'checked />' : '/>' )
+                    . ( get_option( 'bbg_xiv_use_tiles', 'Cover' ) === 'Contain'  ? 'checked />' : '/>' )
                     . '<span class="bbg_xiv-radio_text">Contain&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>';
                 echo '<input name="bbg_xiv_use_tiles" id="bbg_xiv_use_tiles_fill"  type="radio" value="Fill" '
-                    . ( get_option( 'bbg_xiv_use_tiles', 'Disabled' ) === 'Fill'  ? 'checked />' : '/>' )
+                    . ( get_option( 'bbg_xiv_use_tiles', 'Cover' ) === 'Fill'  ? 'checked />' : '/>' )
                     . '<span class="bbg_xiv-radio_text">Fill&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>';
                 echo '<a href="https://bbfgallery.wordpress.com/#tiles" target="_blank">' . __( 'The gallery uses butt joined square image tiles.', 'bb_gallery' ) . '</a> '
                     . __( 'See also the ', 'bb_gallery' )
@@ -771,7 +771,7 @@ EOD
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_use_embedded_carousel', __( 'Use Embedded Carousels', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_use_embedded_carousel" id="bbg_xiv_use_embedded_carousel" type="checkbox" value="1" class="code" '
-                    . checked( get_option( 'bbg_xiv_use_embedded_carousel', FALSE ), 1, FALSE ) . ' /> '
+                    . checked( get_option( 'bbg_xiv_use_embedded_carousel', TRUE ), 1, FALSE ) . ' /> '
                     . '<a href="https://bbfgallery.wordpress.com/#carousel" target="_blank">' . __( 'Embed carousels in their post content', 'bb_gallery' ) . '</a>'
                     . __( ' (instead of using the entire viewport). See also the ', 'bb_gallery' )
                     . '<a href="https://bbfgallery.wordpress.com/#parameters" target="_blank">flags ' . __( ' shortcode option.', 'bb_gallery' ) . '</a>';
@@ -831,6 +831,19 @@ EOD
                 }
                 return (array) $links;
             }, 10, 2 );
+        } );
+
+        add_action( 'admin_notices', function( ) {
+            if ( get_option( 'bbg_xiv_version', '' ) !== '1.7.3.1' ) {
+?>
+<div class="notice notice-info is-dismissible">
+BB gallery: The default gallery view now uses square tiles. To restore the gallery view to using the CSS Flexbox set the &quot;Use Tiles&quot; option to &quot;disabled&quot;.
+The default carousel view now is embedded. To restore the carousel view to the full viewport disable the &quot;Use Embedded Carousels&quot; option.
+See <a href="<?php echo admin_url( 'options-media.php' ); ?>">Settings > Media</a>.
+</div>
+<?php
+                update_option( 'bbg_xiv_version', '1.7.3.1' );
+            }
         } );
 
         if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
