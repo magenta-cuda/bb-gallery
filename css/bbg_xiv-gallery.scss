@@ -756,6 +756,7 @@ div.bbg_xiv-tiles_container.bbg_xiv-contain{
           width:100%;
           height:auto;
           max-height:none;
+          transition:top 1s, transform 1s;
           &.bbg_xiv-vertical_center{
             top:50%;
             transform:translate(-50%,-50%);
@@ -792,6 +793,7 @@ div.bbg_xiv-tiles_container.bbg_xiv-contain{
     }
   }
 }
+
 div.bbg_xiv-tiles_container.bbg_xiv-fill{
   div.bbg_xiv-flex_container{
     div.bbg_xiv-flex_item{

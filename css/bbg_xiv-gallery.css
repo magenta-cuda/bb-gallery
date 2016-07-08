@@ -528,7 +528,8 @@ div.bbg_xiv-tiles_container.bbg_xiv-contain div.bbg_xiv-flex_container div.bbg_x
     transform: translate(-50%, 0);
     width: 100%;
     height: auto;
-    max-height: none; }
+    max-height: none;
+    transition: top 1s, transform 1s; }
     div.bbg_xiv-tiles_container.bbg_xiv-contain div.bbg_xiv-flex_container div.bbg_xiv-flex_item figure img.bbg_xiv-vertical_center {
       top: 50%;
       transform: translate(-50%, -50%); }
