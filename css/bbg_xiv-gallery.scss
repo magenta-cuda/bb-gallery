@@ -756,6 +756,10 @@ div.bbg_xiv-tiles_container.bbg_xiv-contain{
           width:100%;
           height:auto;
           max-height:none;
+          &.bbg_xiv-vertical_center{
+            top:50%;
+            transform:translate(-50%,-50%);
+          }
           &.bbg_xiv-portrait{
             height:100%;
             width:auto;
@@ -778,6 +782,10 @@ div.bbg_xiv-tiles_container.bbg_xiv-contain{
             top:0;
             object-fit:unset;
             transform:translate(-50%,0);
+            &.bbg_xiv-vertical_center{
+              top:50%;
+              transform:translate(-50%,-50%);
+            }
           }
         }
       }

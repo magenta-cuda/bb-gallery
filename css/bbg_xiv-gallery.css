@@ -529,6 +529,9 @@ div.bbg_xiv-tiles_container.bbg_xiv-contain div.bbg_xiv-flex_container div.bbg_x
     width: 100%;
     height: auto;
     max-height: none; }
+    div.bbg_xiv-tiles_container.bbg_xiv-contain div.bbg_xiv-flex_container div.bbg_xiv-flex_item figure img.bbg_xiv-vertical_center {
+      top: 50%;
+      transform: translate(-50%, -50%); }
     div.bbg_xiv-tiles_container.bbg_xiv-contain div.bbg_xiv-flex_container div.bbg_xiv-flex_item figure img.bbg_xiv-portrait {
       height: 100%;
       width: auto;
@@ -548,7 +551,10 @@ div.bbg_xiv-tiles_container.bbg_xiv-contain div.bbg_xiv-flex_container div.bbg_x
       left: 50%;
       top: 0;
       object-fit: unset;
-      transform: translate(-50%, 0); } }
+      transform: translate(-50%, 0); }
+      div.bbg_xiv-tiles_container.bbg_xiv-contain div.bbg_xiv-flex_container div.bbg_xiv-flex_item figure img.bbg_xiv-vertical_center {
+        top: 50%;
+        transform: translate(-50%, -50%); } }
 
 div.bbg_xiv-tiles_container.bbg_xiv-fill div.bbg_xiv-flex_container div.bbg_xiv-flex_item figure img {
   width: 100%;

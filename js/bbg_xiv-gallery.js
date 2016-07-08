@@ -1347,7 +1347,22 @@
             e.preventDefault();
         });
         jQuery("button.bbg_xiv-titles").click(function(e){
-            jQuery(this).parents("div.bbg_xiv-bootstrap.bbg_xiv-gallery").find("div.bbg_xiv-tiles_container div.bbg_xiv-flex_item figcaption").toggle(1000);
+            var container=jQuery(this).parents("div.bbg_xiv-bootstrap.bbg_xiv-gallery").find("div.bbg_xiv-tiles_container");
+            if(container.length){
+                var figure=container.find("div.bbg_xiv-flex_item figure");
+                if(container.hasClass("bbg_xiv-contain")){
+                    // in tiles contain mode center image if title not displayed
+                    figure.find("figcaption").toggle(1000,function(){
+                        if(jQuery(this).is(":visible")){
+                            figure.find("img").removeClass("bbg_xiv-vertical_center");
+                        }else{
+                            figure.find("img").addClass("bbg_xiv-vertical_center");
+                        }
+                    });
+                }else{
+                    figure.find("figcaption").toggle(1000);
+                }
+            }
         });
         // wireup the handler for setting options
         jQuery("button.bbg_xiv-configure").click(function(e){
