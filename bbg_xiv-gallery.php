@@ -774,7 +774,7 @@ EOD
                     . '<span class="bbg_xiv-radio_text">Contain&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>';
                 echo '<input name="bbg_xiv_use_tiles" id="bbg_xiv_use_tiles_fill"  type="radio" value="Fill" '        . ( $use_tiles === 'Fill'     ? 'checked />' : '/>' )
                     . '<span class="bbg_xiv-radio_text">Fill&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>';
-                echo '<a href="https://bbfgallery.wordpress.com/#tiles" target="_blank">' . __( 'The gallery uses butt joined square image tiles.', 'bb_gallery' ) . '</a> '
+                echo '<a href="https://bbfgallery.wordpress.com/#gallery" target="_blank">' . __( 'The gallery uses butt joined square image tiles.', 'bb_gallery' ) . '</a> '
                     . __( 'See also the ', 'bb_gallery' )
                     . '<a href="https://bbfgallery.wordpress.com/#parameters" target="_blank">flags ' . __( ' shortcode option.', 'bb_gallery' ) . '</a>';
             }, 'media',	'bbg_xiv_setting_section' );
