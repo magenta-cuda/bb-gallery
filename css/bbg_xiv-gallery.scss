@@ -749,17 +749,22 @@ div.bbg_xiv-tiles_container.bbg_xiv-contain{
       figure{
         background-color:#333;
         img{
+          position:absolute;
+          left:50%;
+          top:0;
+          transform:translate(-50%,0);
           width:100%;
           height:auto;
           max-height:none;
-        }
-        &.bbg_xiv-portrait{
-          height:100%;
-          width:auto;
-          max-width:none;
+          &.bbg_xiv-portrait{
+            height:100%;
+            width:auto;
+            max-width:none;
+          }
         }
         @supports (object-fit:contain){
           img{
+/*
             position:static;
             left:auto;
             top:auto;
@@ -767,6 +772,12 @@ div.bbg_xiv-tiles_container.bbg_xiv-contain{
             height:100%;
             object-fit:contain;
             transform:none;
+*/
+            position:absolute;
+            left:50%;
+            top:0;
+            object-fit:unset;
+            transform:translate(-50%,0);
           }
         }
       }
@@ -780,10 +791,10 @@ div.bbg_xiv-tiles_container.bbg_xiv-fill{
         img{
           width:100%;
           height:100%;
-        }
-        &.bbg_xiv-portrait{
-          width:100%;
-          height:100%;
+          &.bbg_xiv-portrait{
+            width:100%;
+            height:100%;
+          }
         }
         @supports (object-fit:fill){
           img{

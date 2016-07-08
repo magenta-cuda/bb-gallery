@@ -522,29 +522,40 @@ div.bbg_xiv-tiles_container div.bbg_xiv-flex_container {
 div.bbg_xiv-tiles_container.bbg_xiv-contain div.bbg_xiv-flex_container div.bbg_xiv-flex_item figure {
   background-color: #333; }
   div.bbg_xiv-tiles_container.bbg_xiv-contain div.bbg_xiv-flex_container div.bbg_xiv-flex_item figure img {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, 0);
     width: 100%;
     height: auto;
     max-height: none; }
-  div.bbg_xiv-tiles_container.bbg_xiv-contain div.bbg_xiv-flex_container div.bbg_xiv-flex_item figure.bbg_xiv-portrait {
-    height: 100%;
-    width: auto;
-    max-width: none; }
+    div.bbg_xiv-tiles_container.bbg_xiv-contain div.bbg_xiv-flex_container div.bbg_xiv-flex_item figure img.bbg_xiv-portrait {
+      height: 100%;
+      width: auto;
+      max-width: none; }
   @supports (object-fit: contain) {
     div.bbg_xiv-tiles_container.bbg_xiv-contain div.bbg_xiv-flex_container div.bbg_xiv-flex_item figure img {
-      position: static;
-      left: auto;
-      top: auto;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      transform: none; } }
+      /*
+                  position:static;
+                  left:auto;
+                  top:auto;
+                  width:100%;
+                  height:100%;
+                  object-fit:contain;
+                  transform:none;
+      */
+      position: absolute;
+      left: 50%;
+      top: 0;
+      object-fit: unset;
+      transform: translate(-50%, 0); } }
 
 div.bbg_xiv-tiles_container.bbg_xiv-fill div.bbg_xiv-flex_container div.bbg_xiv-flex_item figure img {
   width: 100%;
   height: 100%; }
-div.bbg_xiv-tiles_container.bbg_xiv-fill div.bbg_xiv-flex_container div.bbg_xiv-flex_item figure.bbg_xiv-portrait {
-  width: 100%;
-  height: 100%; }
+  div.bbg_xiv-tiles_container.bbg_xiv-fill div.bbg_xiv-flex_container div.bbg_xiv-flex_item figure img.bbg_xiv-portrait {
+    width: 100%;
+    height: 100%; }
 @supports (object-fit: fill) {
   div.bbg_xiv-tiles_container.bbg_xiv-fill div.bbg_xiv-flex_container div.bbg_xiv-flex_item figure img {
     position: static;

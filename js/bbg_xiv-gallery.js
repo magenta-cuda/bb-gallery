@@ -128,7 +128,7 @@
             container.addClass("bbg_xiv-fill");
         }
         bbg_xiv.renderFlex(container,collection);
-        if(!Modernizr.objectfit){
+        if(!Modernizr.objectfit||flags.indexOf("contain")!==-1){
             // IE and Edge do not support objectfit so we set a class to differentiate between landscape and portrait mode which will let our CSS rules simulate object-fit:cover
             container.find("div.bbg_xiv-flex_item img").load(function(){
                 if(this.naturalWidth<this.naturalHeight){
