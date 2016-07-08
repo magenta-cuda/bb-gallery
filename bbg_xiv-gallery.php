@@ -851,7 +851,6 @@ EOD
                 } else {
                     $post_script = 'Visit <a href="' . admin_url( 'options-media.php' ) . '">Settings > Media</a> to accept or override these defaults.';
                 }
-                error_log( '$hook_suffix=' . $hook_suffix );
 ?>
 <div class="notice notice-info is-dismissible">
 BB gallery: The default gallery view now uses square tiles. To restore the gallery view to using the CSS Flexbox set the &quot;Use Tiles&quot; option to &quot;disabled&quot;.
