@@ -3,7 +3,7 @@ Contributors: Magenta Cuda
 Tags: gallery, shortcode, lightbox, slideshow, responsive, plug-compatible, replacement
 Requires at least: 4.4
 Tested up to: 4.5
-Stable tag: 1.7.3
+Stable tag: 1.7.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,7 @@ This is a responsive, mobile-friendly plug-compatible replacement for the built-
 It is implemented using a [Backbone.js](http://backbonejs.org/) Model-View-Presenter (MVP) populated via the [WordPress REST API](http://v2.wp-api.org/).
 It is styled by a [Twitter Bootstrap 3](http://getbootstrap.com/) stylesheet and has touch optimizations from [jQuery Mobile](https://jquerymobile.com/).
 Using a MVP allows you to [switch instantaneously](https://bbfgallery.wordpress.com/#navbar) (i.e. without doing a HTTP request) between multiple views of a gallery.
-The default implementation supports a gallery view, carousel (slideshow) view, tabs view and a dense view of the gallery.
+The default implementation supports a [gallery view](https://bbfgallery.wordpress.com/#gallery), a [carousel view](https://bbfgallery.wordpress.com/#carousel), a [tabs view](https://bbfgallery.wordpress.com/#tabs) and a [dense view](https://bbfgallery.wordpress.com/#dense) of the gallery.
 Using the WP REST API allows you to [dynamically load](https://bbfgallery.wordpress.com/#alt_galleries) (i.e. without reloading the entire page) new galleries.
 The view is styled by a Twitter Bootstrap 3 stylesheet so it is automatically responsive.
 If the browser supports the CSS3 Flexbox the gallery view is implemented using a flexbox.
@@ -41,7 +41,7 @@ https://bbfgallery.wordpress.com/
 == Screenshots ==
 1. [Multiple Views of a Gallery](https://bbfgallery.wordpress.com/#navbar)
 2. [Gallery View](https://bbfgallery.wordpress.com/#gallery)
-3. [Tiles View](https://bbfgallery.wordpress.com/#tiles)
+3. [Alternate Flexbox Gallery View](https://bbfgallery.wordpress.com/#gallery-flexbox)
 4. [Carousel View](https://bbfgallery.wordpress.com/#carousel)
 5. [Tabs View](https://bbfgallery.wordpress.com/#tabs)
 6. [Dense View](https://bbfgallery.wordpress.com/#dense)
@@ -54,9 +54,14 @@ https://bbfgallery.wordpress.com/
 
 == Changelog ==
 
+= 1.7.3.1 =
+
+* add object-fit contain and fill modes to tiles view
+* css tweaks and bug fixes
+
 = 1.7.3 =
 
-* added tiles view - show images as [butt joined square image tiles](https://bbfgallery.wordpress.com/#tiles)
+* added tiles view - show images as [butt joined square image tiles](https://bbfgallery.wordpress.com/#gallery)
 * css tweaks and bug fixes
 
 = 1.7.1.2 =
@@ -144,6 +149,11 @@ https://bbfgallery.wordpress.com/
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.7.3.1 =
+
+* add object-fit contain and fill modes to tiles view
+* css tweaks and bug fixes
 
 = 1.7.3 =
 
