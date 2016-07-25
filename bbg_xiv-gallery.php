@@ -683,6 +683,11 @@ EOD;
         } );
 
         add_action( 'wp_enqueue_scripts', function( ) {
+            $post = get_post( );
+            if ( !preg_match( '/\[gallery\s|\[bb_gallery\s/', $post->post_content ) ) {
+                # only emit bb_gallery's styles and scripts if the post content has the bb_gallery shortcode
+                return;
+            }
             wp_enqueue_style( 'bootstrap',               plugins_url( '/css/bootstrap.css' ,               __FILE__ ) );
             wp_enqueue_style( 'jquery-mobile-structure', plugins_url( '/css/jquery-mobile-structure.css' , __FILE__ ) );
             wp_enqueue_style( 'jquery-mobile-theme',     plugins_url( '/css/jquery-mobile-theme.css' ,     __FILE__ ) );
