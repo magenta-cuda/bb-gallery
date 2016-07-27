@@ -683,8 +683,7 @@ EOD;
         } );
 
         add_action( 'wp_enqueue_scripts', function( ) {
-            $post = get_post( );
-            if ( !preg_match( '/\[gallery\s|\[bb_gallery\s/', $post->post_content ) ) {
+            if ( !preg_match( '/\[gallery\s|\[bb_gallery\s/', get_post( )->post_content ) ) {
                 # only emit bb_gallery's styles and scripts if the post content has the bb_gallery shortcode
                 return;
             }
@@ -694,9 +693,9 @@ EOD;
             wp_enqueue_style( 'bbg_xiv-gallery',         plugins_url( '/css/bbg_xiv-gallery.css' ,         __FILE__ ), [ 'bootstrap' ] );
             $width = ( 100 / (integer) get_option( 'bbg_xiv_flex_number_of_dense_view_columns', 10 ) ) . '%';
             wp_add_inline_style( 'bbg_xiv-gallery', <<<EOD
-        div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_images div.bbg_xiv-dense_flex_images div.bbg_xiv-dense_flex_item{
-          width:$width;
-        }
+div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_images div.bbg_xiv-dense_flex_images div.bbg_xiv-dense_flex_item{
+    width:$width;
+}
 EOD
             );
             wp_enqueue_script( 'backbone' );
@@ -800,7 +799,8 @@ EOD
             add_settings_field( 'bbg_xiv_wp_rest', __( 'Use the WP REST API', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_wp_rest" id="bbg_xiv_wp_rest" type="checkbox" value="1" class="code" '
                     . checked( get_option( 'bbg_xiv_wp_rest', TRUE ), 1, FALSE ) . ' /> ' . __( 'Use the WordPress REST API if available, i.e. the ', 'bb_gallery' )
-                    . '<a href="https://wordpress.org/plugins/rest-api/" target="blank">WordPress REST API plugin</a>' . __( ' is installed.', 'bb_gallery' );
+                    . '<a href="https://wordpress.org/plugins/rest-api/" target="blank">WordPress REST API plugin</a>' . __( ' is installed.', 'bb_gallery' )
+                    . ' ' . __( 'Beware this requires pretty permalinks.', 'bb_gallery' );
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_table', __( 'Enable Table View', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_table" id="bbg_xiv_table" type="checkbox" value="1" class="code" '
