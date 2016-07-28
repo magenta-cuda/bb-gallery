@@ -857,13 +857,27 @@ EOD
                     $post_script = 'Visit <a href="' . admin_url( 'options-media.php' ) . '">Settings > Media</a> to accept or override these defaults.';
                 }
 ?>
-<div class="notice notice-info is-dismissible">
+<div class="notice notice-info is-dismissible"><p>
 BB gallery: The default gallery view now uses square tiles. To restore the gallery view to using the CSS Flexbox set the &quot;Use Tiles&quot; option to &quot;disabled&quot;.
 The default carousel view now is embedded. To restore the carousel view to the full viewport disable the &quot;Use Embedded Carousels&quot; option.
 <?php echo $post_script; ?>
-</div>
+</p></div>
 <?php
                 #update_option( 'bbg_xiv_version', '1.7.3.1' );
+            }
+        } );
+
+        add_action( 'admin_notices', function( ) {
+            global $hook_suffix;
+            if ( get_option( 'bbg_xiv_wp_rest' ) && !get_option( 'permalink_structure' ) ) {
+?>
+<div class="notice notice-error is-dismissible"><p>
+The WP REST API requires pretty permalinks.
+<?php if ( $hook_suffix !== 'options-permalink.php' ) { ?>
+Please visit <a href="<?php echo admin_url( 'options-permalink.php' ); ?>" target="_blank">Dashboard > Settings > Permalinks</a> to fix this.
+<?php } ?>
+</p></div>
+<?php
             }
         } );
 
