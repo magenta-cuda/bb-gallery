@@ -4,7 +4,7 @@
 Plugin Name: BB Gallery
 Plugin URI: https://bbfgallery.wordpress.com/
 Description: Gallery using Backbone.js, Bootstrap 3 and CSS3 Flexbox
-Version: 1.7.3.1
+Version: 1.7.3.2
 Author: Magenta Cuda
 Author URI: https://profiles.wordpress.org/magenta-cuda/
 License: GPL2
@@ -799,8 +799,9 @@ EOD
             add_settings_field( 'bbg_xiv_wp_rest', __( 'Use the WP REST API', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_wp_rest" id="bbg_xiv_wp_rest" type="checkbox" value="1" class="code" '
                     . checked( get_option( 'bbg_xiv_wp_rest', TRUE ), 1, FALSE ) . ' /> ' . __( 'Use the WordPress REST API if available, i.e. the ', 'bb_gallery' )
-                    . '<a href="https://wordpress.org/plugins/rest-api/" target="blank">WordPress REST API plugin</a>' . __( ' is installed.', 'bb_gallery' )
-                    . ' ' . __( 'Beware this requires pretty permalinks.', 'bb_gallery' );
+                    . '<a href="https://wordpress.org/plugins/rest-api/" target="_blank">WordPress REST API plugin</a>' . __( ' is installed.', 'bb_gallery' )
+                    . ' ' . __( 'Beware this requires', 'bb_gallery' ) . ' <a href="' . admin_url( 'options-permalink.php' ) . '" target="_blank">' 
+                    . __( 'pretty permalinks', 'bb_gallery' ) . '</a>.';
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_table', __( 'Enable Table View', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_table" id="bbg_xiv_table" type="checkbox" value="1" class="code" '
