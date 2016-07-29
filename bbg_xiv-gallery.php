@@ -720,7 +720,7 @@ EOD
                 echo '</p>';
             }, 'media' );
             add_settings_field( 'bbg_xiv_version', __( 'Version', 'bb_gallery' ), function( ) {
-                echo '<input name="bbg_xiv_version" id="bbg_xiv_version" type="hidden" value="1.7.3.1" /> 1.7.3.1';
+                echo '<input name="bbg_xiv_version" id="bbg_xiv_version" type="hidden" value="1.7.3.2" /> 1.7.3.2';
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_shortcode', __( 'Enable BB Gallery', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_shortcode" id="bbg_xiv_shortcode" type="checkbox" value="1" class="code" '
@@ -851,7 +851,8 @@ EOD
 
         add_action( 'admin_notices', function( ) {
             global $hook_suffix;
-            if ( get_option( 'bbg_xiv_version', '' ) !== '1.7.3.1' ) {
+            $version = get_option( 'bbg_xiv_version', '' );
+            if ( $version !== '1.7.3.1' && $version !== '1.7.3.2' ) {
                 if ( $hook_suffix === 'options-media.php' ) {
                     $post_script = 'Go to <a href="#bbg_xiv-conf_section">section BB Gallery</a>.';
                 } else {
@@ -864,7 +865,6 @@ The default carousel view now is embedded. To restore the carousel view to the f
 <?php echo $post_script; ?>
 </p></div>
 <?php
-                #update_option( 'bbg_xiv_version', '1.7.3.1' );
             }
         } );
 
