@@ -2,7 +2,7 @@
 Contributors: Magenta Cuda
 Tags: gallery, shortcode, lightbox, slideshow, responsive, plug-compatible, replacement
 Requires at least: 4.4
-Tested up to: 4.6
+Tested up to: 4.5
 Stable tag: 1.7.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -57,7 +57,7 @@ https://bbfgallery.wordpress.com/
 = 1.7.3.2 =
 
 * bug fixes
-* compatibility with WordPress 4.6
+* compatibility with WordPress 4.6 RC1
 
 = 1.7.3.1 =
 
@@ -158,7 +158,7 @@ https://bbfgallery.wordpress.com/
 = 1.7.3.2 =
 
 * bug fixes
-* compatibility with WordPress 4.6
+* compatibility with WordPress 4.6 RC1
 
 = 1.7.3.1 =
 
