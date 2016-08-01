@@ -868,9 +868,10 @@ The default carousel view now is embedded. To restore the carousel view to the f
             } );
         }
 
-        if ( get_option( 'bbg_xiv_wp_rest' ) && class_exists( 'WP_REST_Attachments_Controller' ) && !get_option( 'permalink_structure' ) ) {
-            add_action( 'admin_notices', function( ) {
-                global $hook_suffix;
+        add_action( 'plugins_loaded', function( ) {
+            if ( get_option( 'bbg_xiv_wp_rest' ) && class_exists( 'WP_REST_Attachments_Controller' ) && !get_option( 'permalink_structure' ) ) {
+                add_action( 'admin_notices', function( ) {
+                    global $hook_suffix;
 ?>
 <div class="notice notice-error is-dismissible"><p>
 The WP REST API requires pretty permalinks.
@@ -879,8 +880,9 @@ Please visit <a href="<?php echo admin_url( 'options-permalink.php' ); ?>" targe
 <?php } ?>
 </p></div>
 <?php
-            } );
-        }
+                } );
+            }
+        } );
 
         if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
             # AJAX search handlers
