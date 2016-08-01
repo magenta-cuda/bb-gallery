@@ -849,10 +849,10 @@ EOD
             }, 10, 2 );
         } );
 
-        add_action( 'admin_notices', function( ) {
-            global $hook_suffix;
-            $version = get_option( 'bbg_xiv_version', '' );
-            if ( $version !== '1.7.3.1' && $version !== '1.7.3.2' ) {
+        $version = get_option( 'bbg_xiv_version', '' );
+        if ( $version !== '1.7.3.1' && $version !== '1.7.3.2' ) {
+            add_action( 'admin_notices', function( ) {
+                global $hook_suffix;
                 if ( $hook_suffix === 'options-media.php' ) {
                     $post_script = 'Go to <a href="#bbg_xiv-conf_section">section BB Gallery</a>.';
                 } else {
@@ -865,12 +865,12 @@ The default carousel view now is embedded. To restore the carousel view to the f
 <?php echo $post_script; ?>
 </p></div>
 <?php
-            }
-        } );
+            } );
+        }
 
-        add_action( 'admin_notices', function( ) {
-            global $hook_suffix;
-            if ( get_option( 'bbg_xiv_wp_rest' ) && !get_option( 'permalink_structure' ) ) {
+        if ( get_option( 'bbg_xiv_wp_rest' ) && class_exists( 'WP_REST_Attachments_Controller' ) && !get_option( 'permalink_structure' ) ) {
+            add_action( 'admin_notices', function( ) {
+                global $hook_suffix;
 ?>
 <div class="notice notice-error is-dismissible"><p>
 The WP REST API requires pretty permalinks.
@@ -879,8 +879,8 @@ Please visit <a href="<?php echo admin_url( 'options-permalink.php' ); ?>" targe
 <?php } ?>
 </p></div>
 <?php
-            }
-        } );
+            } );
+        }
 
         if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
             # AJAX search handlers
