@@ -15,7 +15,7 @@ $option_names = [
     'bbg_xiv_shortcode',
     'bbg_xiv_table',
     'bbg_xiv_use_embedded_carousel',
-    'bbg_xiv_use_gallery_tabs'
+    'bbg_xiv_use_gallery_tabs',
     'bbg_xiv_use_tiles',
     'bbg_xiv_version',
     'bbg_xiv_wp_rest',

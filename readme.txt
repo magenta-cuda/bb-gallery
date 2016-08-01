@@ -23,8 +23,10 @@ The homepage for this plug-in is [https://bbfgallery.wordpress.com/](https://bbf
 
 == Installation ==
 1. Upload the folder "bb-gallery" to the "/wp-content/plugins/" directory.
-2. Activate the plugin through the "Plugins" menu in WordPress.
-3. Enable the BB Gallery option on the "Settings > Media" page.
+2. Activate the plugin using the "Dashboard > Plugins > Installed Plugins" page.
+3. Check the "Enable BB Gallery" option on the "Dashboard > Settings > Media" page. The defaults for all other options should work reasonably well. Save the settings.
+4. Visit any page which has a gallery shortcode.
+5. If you are not happy simply uninstall the plugin. Your website will not be changed in anyway.
 
 == Frequently Asked Questions ==
 = Why is the page loading slowly? =
