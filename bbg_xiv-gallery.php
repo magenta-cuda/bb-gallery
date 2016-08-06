@@ -4,7 +4,7 @@
 Plugin Name: BB Gallery
 Plugin URI: https://bbfgallery.wordpress.com/
 Description: Gallery using Backbone.js, Bootstrap 3 and CSS3 Flexbox
-Version: 1.7.3.3
+Version: 1.7.3.4
 Author: Magenta Cuda
 Author URI: https://profiles.wordpress.org/magenta-cuda/
 License: GPL2
@@ -56,11 +56,13 @@ class BBG_XIV_Gallery {
             #TODO: set underlying SQL LIMIT to 1
         }
 
+        ob_start( );
         if ( self::$wp_rest_api_available && self::$use_wp_rest_api_if_available ) {
             require_once(  dirname( __FILE__ ) . '/bbg_xiv-gallery_templates_wp_rest.php' );
         } else {
             require_once(  dirname( __FILE__ ) . '/bbg_xiv-gallery_templates.php' );
         }
+        $templates = ob_get_clean( );
 
         $post = get_post();
 
@@ -406,7 +408,8 @@ EOD;
         ob_start( );
         wp_nonce_field( self::$nonce_action );
         $nonce_field = ob_get_clean( );
-        $output = <<<EOD
+        $output = $templates;
+        $output .= <<<EOD
 <div class="bbg_xiv-bootstrap bbg_xiv-gallery">
     <nav role="navigation" class="navbar navbar-inverse bbg_xiv-gallery_navbar">
         <div class="navbar-header">
