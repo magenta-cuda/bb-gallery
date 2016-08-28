@@ -258,7 +258,11 @@ class BBG_XIV_Gallery {
                 'status'         => 'publish',
                 'search'         => ''
             ];
-            if ( ! empty( $atts[ 'include' ] ) ) {
+            if ( ! empty( $atts['bb_tags'] ) ) {
+                // Translate the terms of the proprietary 'bb_tags' attribute to ids
+                $bb_tags = array_map( 'trim', explode( ',', $atts['bb_tags'] ) );
+                $attributes[ 'bb-tags'  ] = get_terms( [ 'taxonomy' => 'bb_tags', 'slug' => $bb_tags, 'name' => $bb_tags, 'fields' => 'ids' ] );
+            } else if ( ! empty( $atts[ 'include' ] ) ) {
                 $attributes[ 'include'  ] = explode( ',', $atts[ 'include' ] );
                 $attributes[ 'per_page' ] = count( $attributes[ 'include' ] );
             } elseif ( !empty( $atts[ 'exclude' ] ) ) {
@@ -307,7 +311,6 @@ class BBG_XIV_Gallery {
 
             $bbg_xiv_data[ "$selector-data" ] = json_encode( $attachments );
         } else {
-            error_log( 'BBG_XIV_Gallery::bb_gallery_shortcode():$atts["bb_tags"]=' . print_r( $atts['bb_tags'], true ) );
             // initialize the Backbone.js collection using data for my proprietary model
             // Handle the proprietary 'bb_tags' attribute - this specifies a gallery by a taxonomy expression
             if ( ! empty( $atts['bb_tags'] ) ) {
@@ -317,7 +320,6 @@ class BBG_XIV_Gallery {
               $tax_query['relation'] = 'OR'; 
               $tax_query[ ] = array( 'taxonomy' => 'bb_tags', 'field' => 'slug', 'terms' => $bb_tags );
               $tax_query[ ] = array( 'taxonomy' => 'bb_tags', 'field' => 'name', 'terms' => $bb_tags );
-              error_log( 'BBG_XIV_Gallery::bb_gallery_shortcode():$tax_query=' . print_r( $tax_query, true ) );
               $_attachments = get_posts( array( 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'],
                                                 'tax_query' => $tax_query ) );
               $attachments = array();
@@ -631,7 +633,6 @@ EOD;
     }
 
     public static function bbg_xiv_do_attachments( $attachments ) {
-        error_log( 'BBG_XIV_Gallery::bbg_xiv_do_attachments():$attachments=' . print_r( $attachments, true ) );
         foreach ( $attachments as $id => &$attachment ) {
             $attachment->url = wp_get_attachment_url( $id );
             $meta = wp_get_attachment_metadata( $id );
