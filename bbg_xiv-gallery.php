@@ -707,7 +707,10 @@ EOD;
                 'update_count_callback' => '_update_post_term_count',
                 'query_var'             => TRUE,
                 'rewrite'               => [ 'slug' => 'bb_tags' ],
-                'hierarchical' => FALSE,
+                'hierarchical'          => FALSE,
+                'show_in_rest'          => TRUE,
+                'rest_base'             => 'bb-tags',
+                'rest_controller_class' => 'WP_REST_Terms_Controller'
             ] );
         } );
 
