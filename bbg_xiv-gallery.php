@@ -704,7 +704,9 @@ EOD
             wp_enqueue_script( 'backbone' );
             wp_enqueue_script( 'modernizr',       plugins_url( '/js/modernizr.js' ,       __FILE__ ) );
             wp_enqueue_script( 'jquery-mobile',   plugins_url( '/js/jquery-mobile.js' ,   __FILE__ ), [ 'jquery' ] );
-            wp_enqueue_script( 'bootstrap',       plugins_url( '/js/bootstrap.js' ,       __FILE__ ), [ 'jquery' ], FALSE, TRUE );
+            if ( !get_option( 'bbg_xiv_do_not_load_bootstrap', FALSE ) ) {
+                wp_enqueue_script( 'bootstrap',   plugins_url( '/js/bootstrap.js' ,       __FILE__ ), [ 'jquery' ], FALSE, TRUE );
+            }
             $deps = [ 'bootstrap' ];
             if ( self::$wp_rest_api_available && self::$use_wp_rest_api_if_available ) {
                 $deps[ ] = 'wp-api';
@@ -806,6 +808,12 @@ EOD
                     . ' ' . __( 'Beware this requires', 'bb_gallery' ) . ' <a href="' . admin_url( 'options-permalink.php' ) . '" target="_blank">' 
                     . __( 'pretty permalinks', 'bb_gallery' ) . '</a>.';
             }, 'media',	'bbg_xiv_setting_section' );
+            add_settings_field( 'bbg_xiv_do_not_load_bootstrap', __( 'Do not load Bootstrap', 'bb_gallery' ), function( ) {
+                echo '<input name="bbg_xiv_do_not_load_bootstrap" id="bbg_xiv_do_not_load_bootstrap" type="checkbox" value="1" class="code" '
+                    . checked( get_option( 'bbg_xiv_do_not_load_bootstrap', FALSE ), 1, FALSE ) . ' /> '
+                    . '<a href="https://wordpress.org/plugins/bootstrap_conflict/" target="_blank">'
+                    . __( 'Enable if your theme or another plugin also loads bootstrap', 'bb_gallery' ) . '</a>.';
+            }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_table', __( 'Enable Table View', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_table" id="bbg_xiv_table" type="checkbox" value="1" class="code" '
                     . checked( get_option( 'bbg_xiv_table' ), 1, FALSE ) . ' /> ' . __( 'The "Table View" is primarily intended for developers.', 'bb_gallery' );
@@ -823,6 +831,7 @@ EOD
             register_setting( 'media', 'bbg_xiv_use_embedded_carousel' );
             register_setting( 'media', 'bbg_xiv_use_gallery_tabs' );
             register_setting( 'media', 'bbg_xiv_wp_rest' );
+            register_setting( 'media', 'bbg_xiv_do_not_load_bootstrap' );
             register_setting( 'media', 'bbg_xiv_table' );
 
             add_settings_section( 'bbg_xiv_menu_section', 'BB Gallery Menu Settings', function( ) {
