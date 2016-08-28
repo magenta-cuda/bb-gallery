@@ -218,7 +218,8 @@ class BBG_XIV_Gallery {
           'size'       => 'thumbnail',
           'include'    => '',
           'exclude'    => '',
-          'link'       => ''
+          'link'       => '',
+          'bb_tags'    => ''
         ), $attr, 'gallery' );
 
         $id = intval( $atts['id'] );
@@ -306,10 +307,17 @@ class BBG_XIV_Gallery {
 
             $bbg_xiv_data[ "$selector-data" ] = json_encode( $attachments );
         } else {
+            error_log( 'BBG_XIV_Gallery::bb_gallery_shortcode():$atts["bb_tags"]=' . print_r( $atts['bb_tags'], true ) );
             // initialize the Backbone.js collection using data for my proprietary model
-            if ( ! empty( $atts['include'] ) ) {
+            if ( ! empty( $atts['bb_tags'] ) ) {
+              $_attachments = get_posts( array( 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'],
+                                                'tax_query' => array( array( 'taxonomy' => 'bb_tags', 'field' => 'slug', 'terms' => $atts['bb_tags'] ) ) ) );
+              $attachments = array();
+              foreach ( $_attachments as $key => $val ) {
+                $attachments[$val->ID] = $_attachments[$key];
+              }
+            } elseif ( ! empty( $atts['include'] ) ) {
               $_attachments = get_posts( array( 'include' => $atts['include'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
-
               $attachments = array();
               foreach ( $_attachments as $key => $val ) {
                 $attachments[$val->ID] = $_attachments[$key];
@@ -615,6 +623,7 @@ EOD;
     }
 
     public static function bbg_xiv_do_attachments( $attachments ) {
+        error_log( 'BBG_XIV_Gallery::bbg_xiv_do_attachments():$attachments=' . print_r( $attachments, true ) );
         foreach ( $attachments as $id => &$attachment ) {
             $attachment->url = wp_get_attachment_url( $id );
             $meta = wp_get_attachment_metadata( $id );
@@ -683,6 +692,15 @@ EOD;
         add_action( 'init', function( ) {
             self::$wp_rest_api_available        = class_exists( 'WP_REST_Attachments_Controller' );
             self::$use_wp_rest_api_if_available = get_option( 'bbg_xiv_wp_rest', TRUE );
+            register_taxonomy( 'bb_tags', 'attachment', [
+                'label'                 => __( 'BB Tags' ),
+                'show_ui'               => TRUE,
+                'show_admin_column'     => TRUE,
+                'update_count_callback' => '_update_post_term_count',
+                'query_var'             => TRUE,
+                'rewrite'               => [ 'slug' => 'bb_tags' ],
+                'hierarchical' => FALSE,
+            ] );
         } );
 
         add_action( 'wp_enqueue_scripts', function( ) {
