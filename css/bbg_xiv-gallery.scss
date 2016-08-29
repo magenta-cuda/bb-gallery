@@ -1097,7 +1097,11 @@ div.bbg_xiv-bootstrap{
         margin:0;
 
         li{
-          margin:0 0 2px 0;
+          margin:5px 0 0 0;
+
+          >a{
+              border-radius:11px;
+          }
 
           &.active a{
             background-color:$tabs-highlight-color;
@@ -1108,6 +1112,8 @@ div.bbg_xiv-bootstrap{
             text-align:center;
             background-color:#aaa;
             border:0;
+            padding:5px 2px 4px 2px;
+            margin:0;
             @media(max-width:767px){
               display:none;
             }
@@ -1196,6 +1202,9 @@ div.bbg_xiv-bootstrap{
       border:2px solid gray;
       border-radius:5px;
     }
+  }
+  div.bbg_xiv-gallery_tabs_container{
+    margin-top:-20px;
   }
 }
 
