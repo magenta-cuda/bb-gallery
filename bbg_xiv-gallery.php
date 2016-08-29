@@ -321,7 +321,7 @@ class BBG_XIV_Gallery {
               $tax_query[ ] = array( 'taxonomy' => 'bb_tags', 'field' => 'slug', 'terms' => $bb_tags );
               $tax_query[ ] = array( 'taxonomy' => 'bb_tags', 'field' => 'name', 'terms' => $bb_tags );
               $_attachments = get_posts( array( 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'],
-                                                'tax_query' => $tax_query ) );
+                                                'tax_query' => $tax_query, 'posts_per_page' => -1 ) );
               $attachments = array();
               foreach ( $_attachments as $key => $val ) {
                 $attachments[$val->ID] = $_attachments[$key];
@@ -713,6 +713,16 @@ EOD;
                 'rest_base'             => 'bb-tags',
                 'rest_controller_class' => 'WP_REST_Terms_Controller'
             ] );
+
+            if ( self::$wp_rest_api_available && self::$use_wp_rest_api_if_available ) {
+                add_filter( 'request', function( $query_vars ) {
+                    # TODO: patch taxonomy terms here
+                    error_log( 'FILTER::request():$query_vars=' . print_r( $query_vars, true ) );
+                    if ( !empty( $query_vars[ 'bb-tags' ] ) ) {
+                    }
+                    return $query_vars;
+                } );
+            }
         } );
 
         add_action( 'wp_enqueue_scripts', function( ) {
@@ -743,7 +753,7 @@ EOD
             }
             wp_enqueue_script( 'bbg_xiv-gallery', plugins_url( '/js/bbg_xiv-gallery.js' , __FILE__ ), $deps, FALSE, TRUE );
         } );
- 
+
         add_action( 'admin_init', function( ) {
             add_settings_section( 'bbg_xiv_setting_section', 'BB Gallery', function( ) {
                 echo '<p id="bbg_xiv-conf_section"><a href="https://bbfgallery.wordpress.com/" target="_blank">BB Gallery</a>'
@@ -966,10 +976,33 @@ EOD
                       'size'       => 'thumbnail',
                       'include'    => '',
                       'exclude'    => '',
-                      'link'       => ''
+                      'link'       => '',
+                      'bb_tags'    => ''
                     ], $attr, 'gallery' );
+                    error_log( '$attr=' . print_r( $attr, true ) );
                     $id = intval( $atts['id'] );
-                    if ( ! empty( $atts[ 'include' ] ) ) {
+                    if ( ! empty( $atts[ 'bb_tags' ] ) ) {
+                        $bb_tags = explode( ',', $atts[ 'bb_tags' ] );
+                        $tax_query = [ ];
+                        // search by both slug and name
+                        $tax_query[ 'relation' ] = 'OR'; 
+                        $tax_query[ ] = [ 'taxonomy' => 'bb_tags', 'field' => 'slug', 'terms' => $bb_tags ];
+                        $tax_query[ ] = [ 'taxonomy' => 'bb_tags', 'field' => 'name', 'terms' => $bb_tags ];
+                        $_attachments = get_posts( [
+                            'post_status'    => 'inherit',
+                            'post_type'      => 'attachment',
+                            'post_mime_type' => 'image',
+                            'order'          => $atts[ 'order' ],
+                            'orderby'        => $atts[ 'orderby' ],
+                            'tax_query'      => $tax_query,
+                            'posts_per_page' => -1
+                        ] );
+
+                        $attachments = [ ];
+                        foreach ( $_attachments as $key => $val ) {
+                            $attachments[ $val->ID ] = $_attachments[$key];
+                        }
+                    } else if ( ! empty( $atts[ 'include' ] ) ) {
                         $_attachments = get_posts( [
                             'include'        => $atts[ 'include' ],
                             'post_status'    => 'inherit',
