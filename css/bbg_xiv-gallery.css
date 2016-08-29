@@ -747,7 +747,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse, d
   padding-left: 0;
   padding-right: 0; }
   div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse.bbg_xiv-closed, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-collapse.bbg_xiv-closed {
-    max-height: 10vh !important;
+    max-height: 11vh !important;
     overflow: auto !important; }
     @media (max-width: 767px) {
       div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse.bbg_xiv-closed, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-collapse.bbg_xiv-closed {

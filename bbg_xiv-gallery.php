@@ -715,13 +715,16 @@ EOD;
             ] );
 
             if ( self::$wp_rest_api_available && self::$use_wp_rest_api_if_available ) {
-                add_filter( 'request', function( $query_vars ) {
-                    # TODO: patch taxonomy terms here
-                    error_log( 'FILTER::request():$query_vars=' . print_r( $query_vars, true ) );
-                    if ( !empty( $query_vars[ 'bb-tags' ] ) ) {
+                add_filter( 'rest_pre_dispatch', function( $null, $server, $request ) {
+                    # translate taxonomy slugs and names to ids since WP REST API doesn't accept slugs or names
+                    if ( !empty( $request[ 'bb-tags' ] ) ) {
+                        $bb_tags = array_map( 'trim', explode( ',', $request[ 'bb-tags' ] ) );
+                        if ( !is_numeric( $bb_tags[ 0 ] ) ) {
+                            $request[ 'bb-tags' ] = implode( ',', get_terms( [ 'taxonomy' => 'bb_tags', 'slug' => $bb_tags, 'name' => $bb_tags, 'fields' => 'ids' ] ) );
+                        }
                     }
-                    return $query_vars;
-                } );
+                    return NULL;
+                }, 10, 3 );
             }
         } );
 
@@ -979,7 +982,6 @@ EOD
                       'link'       => '',
                       'bb_tags'    => ''
                     ], $attr, 'gallery' );
-                    error_log( '$attr=' . print_r( $attr, true ) );
                     $id = intval( $atts['id'] );
                     if ( ! empty( $atts[ 'bb_tags' ] ) ) {
                         $bb_tags = explode( ',', $atts[ 'bb_tags' ] );
