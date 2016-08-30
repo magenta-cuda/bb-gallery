@@ -1082,7 +1082,8 @@
                     // translation maps for gallery shortcode parameter names and values to WP REST API option names and values
                     var nameMap={
                         id:"parent",
-                        ids:"include"
+                        ids:"include",
+                        bb_tags:"bb-tags"
                     };
                     // really should have a value map per parameter name but fortunately there are no overlaps
                     var valueMap={
