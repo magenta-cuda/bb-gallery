@@ -830,26 +830,42 @@
             };
         }
     };
+
+    try{
+        window.localStorage.setItem("test","test");
+        window.localStorage.removeItem("test");
+        bbg_xiv.localStorageAvailable=true;
+    }catch(e){
+        bbg_xiv.localStorageAvailable=false;
+    }
     
     bbg_xiv.setCookie=function(name,value,expires){
-        var d=new Date();
-        d.setTime(d.getTime()+(expires*24*60*60*1000));
-        document.cookie=name+"="+value+"; expires="+d.toUTCString()+"; path=/";
+        if(bbg_xiv.localStorageAvailable){
+            localStorage.setItem(name,value);
+        }else{
+            var d=new Date();
+            d.setTime(d.getTime()+(expires*24*60*60*1000));
+            document.cookie=name+"="+value+"; expires="+d.toUTCString()+"; path=/";
+        }
     };
 
     bbg_xiv.getCookie=function(name){
-        var cookie=document.cookie;
-        cookie+=";"
-        var start=cookie.indexOf(name+"=");
-        if(start===-1){
-            return null;
+        if(bbg_xiv.localStorageAvailable){
+            return localStorage.getItem(name);
+        }else{
+            var cookie=document.cookie;
+            cookie+=";"
+            var start=cookie.indexOf(name+"=");
+            if(start===-1){
+                return null;
+            }
+            start+=name.length+1;
+            var end=cookie.indexOf(";",start);
+            if(end===-1){
+                return null;
+            }
+            return cookie.substring(start,end);
         }
-        start+=name.length+1;
-        var end=cookie.indexOf(";",start);
-        if(end===-1){
-            return null;
-        }
-        return cookie.substring(start,end);
     };
 
     bbg_xiv.calcBreakpoints=function(){
