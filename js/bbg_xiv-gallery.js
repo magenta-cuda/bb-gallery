@@ -321,6 +321,7 @@
                 var sizes=attributes.sizes;
                 sizes.full={url:attributes.url,width:attributes.width,height:attributes.height};
             }
+            var srcset="";
             Object.keys(sizes).forEach(function(size){
                 var image=sizes[size];
                 widths.forEach(function(width,i){
@@ -330,11 +331,13 @@
                         urls[i]=bbg_xiv.bbg_xiv_wp_rest_api?image.source_url:image.url;
                     }
                 });
+                srcset+=(srcset?", ":"")+(bbg_xiv.bbg_xiv_wp_rest_api?image.source_url:image.url)+" "+image.width+"w";
             });
             model.attributes.bbg_xiv_thumbnail_url=urls[0];
             model.attributes.bbg_xiv_small_url=urls[1];
             model.attributes.bbg_xiv_medium_url=urls[2];
             model.attributes.bbg_xiv_large_url=urls[3];
+            model.attributes.bbg_xiv_srcset=srcset;
         });
         images.constructed=true;
         return images;
