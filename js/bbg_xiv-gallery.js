@@ -174,6 +174,7 @@
         var tabsHtml="";
         var imagesHtml="";
         collection.forEach(function(model,index){
+            model.attributes.browser=bbg_xiv.browser;
             model.attributes.index=index;
             model.attributes.bbg_xiv_container_width=containerWidth;
             imageView.model=tabView.model=model;
@@ -922,12 +923,18 @@
             bbg_xiv.bbg_xiv_bandwidth="auto";
             bbg_xiv.bbg_xiv_interface="auto";
         }
+        var userAgent=navigator.userAgent;
+        if(userAgent.indexOf("Firefox")!==-1){
+            bbg_xiv.browser="Firefox";
+        }else{
+            bbg_xiv.browser="";
+        }
         // compute bandwidth if bandwidth is set to auto - currently since this is not done reliably the user should set the bandwidth option manually
         if(bbg_xiv.bbg_xiv_bandwidth==="auto"){
             if(Modernizr.lowbandwidth){
                 // this uses navigator.connection which is only supported by Android
                 bbg_xiv.bandwidth="very low";
-            }else if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+            }else if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent)){
                 // determining bandwidth by device type is not reliable!
                 bbg_xiv.bandwidth="very low";
             }else{
