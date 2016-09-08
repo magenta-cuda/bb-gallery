@@ -89,7 +89,7 @@
         galleryView.template=_.template(jQuery("script#bbg_xiv-template_gallery_container").html(),null,bbg_xiv.templateOptions);
         container.empty();
         container.append(galleryView.render().$el.find("div.container"));
-    }
+    };
 
     bbg_xiv.renderFlex=function(container,collection){
         var imageView=new bbg_xiv.ImageView();
@@ -114,7 +114,7 @@
         if(bbg_xiv.interface==="touch"){
             container.find("div.bbg_xiv-flex_container div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn").addClass("bbg_xiv-touch");
         }
-    }
+    };
 
     bbg_xiv.renderTiles=function(container,collection,flags){
         // gallery tiles have exactly the same HTML elements as the gallery Flex items but we will use CSS specificity to override the Flex container CSS
@@ -136,9 +136,9 @@
                 }
             });
         }
-    }
+    };
 
-    bbg_xiv.renderCarousel = function( container, collection, id ) {
+    bbg_xiv.renderCarousel=function(container,collection,id){
         var imageView=new bbg_xiv.ImageView();
         imageView.template=_.template(jQuery("script#bbg_xiv-template_carousel_item").html(),null,bbg_xiv.templateOptions);
         var bulletsHtml="";
@@ -163,9 +163,10 @@
         galleryView.template=_.template(jQuery("script#bbg_xiv-template_carousel_container").html(),null,bbg_xiv.templateOptions);
         container.empty();
         container.append(galleryView.render().$el.find( "div.carousel.slide"));
-    }
+    };
 
     bbg_xiv.renderTabs=function(container,collection,id){
+        var containerWidth=container.width();
         var tabView=new bbg_xiv.ImageView();
         tabView.template=_.template(jQuery("script#bbg_xiv-template_tabs_tab").html(),null,bbg_xiv.templateOptions);
         var imageView=new bbg_xiv.ImageView();
@@ -174,6 +175,7 @@
         var imagesHtml="";
         collection.forEach(function(model,index){
             model.attributes.index=index;
+            model.attributes.bbg_xiv_container_width=containerWidth;
             imageView.model=tabView.model=model;
             tabsHtml+=tabView.render(true);
             imagesHtml+=imageView.render(true);
@@ -190,7 +192,7 @@
         galleryView.template=_.template(jQuery("script#bbg_xiv-template_tabs_container").html(),null,bbg_xiv.templateOptions);
         container.empty();
         container.append(galleryView.render().$el.find("div.bbg_xiv-template_tabs_container"));
-    }
+    };
 
     bbg_xiv.renderDense=function(container,collection,id,mode){
         var titleView=new bbg_xiv.ImageView();
@@ -220,7 +222,7 @@
         galleryView.template=_.template(jQuery("script#bbg_xiv-template_dense_container").html(),null,bbg_xiv.templateOptions);
         container.empty();
         container.append(galleryView.render().$el.find("div.bbg_xiv-dense_container"));
-    }
+    };
     
     // renderGeneric() may work unmodified with your template.
     // Otherwise you can use it as a base for a render function specific to your template.
