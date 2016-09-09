@@ -185,9 +185,11 @@
     <img class="bbg_xiv-tabs_img img-rounded" src="{{{ data.source_url }}}" srcset="{{{ data.bbg_xiv_srcset }}}" sizes="{{{ data.bbg_xiv_container_width }}}px"<# if ( data.browser === "Firefox" ) { #> style="display:none;"<# } #>>
     <!-- Firefox doesn't render <img srcset="..." style="object-fit:..."> correctly so ... -->
     <picture<# if ( data.browser !== "Firefox" ) { #> style="display:none;"<# } #>>
-      <source media="(min-width:1200px)" srcset="<# print(bbg_xiv.getImageUrl(data).src); #>">
-      <source media="(min-width:992px)" srcset="<# print(bbg_xiv.getImageUrl(data).medium); #>">
-      <source media="(max-width:991px)" srcset="<# print(bbg_xiv.getImageUrl(data).small); #>">
+      <source media="(min-width:<?php echo $full_width; ?>px)" srcset="<# print(bbg_xiv.getImageUrl(data).src); #>">
+      <source media="(min-width:<?php echo $large_width; ?>px)" srcset="<# print(bbg_xiv.getImageUrl(data).large); #>">
+      <source media="(min-width:<?php echo $medium_large_width; ?>px)" srcset="<# print(bbg_xiv.getImageUrl(data).medium_large); #>">
+      <source media="(min-width:<?php echo $medium_width; ?>px)" srcset="<# print(bbg_xiv.getImageUrl(data).medium); #>">
+      <source media="(max-width:<?php echo $thumbnail_width; ?>px)" srcset="<# print(bbg_xiv.getImageUrl(data).thumbnail); #>">
       <img class="bbg_xiv-tabs_img img-rounded" src="<# print(bbg_xiv.getImageUrl(data).src); #>">
     </picture>
   </a>
