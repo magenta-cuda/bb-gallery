@@ -283,6 +283,7 @@ class BBG_XIV_Gallery {
             #$request->set_url_params( $args );
             #$request->set_attributes( $handler );
             #$request->set_default_params( $defaults );
+            self::add_additional_rest_fields( );
             $controller = new WP_REST_Attachments_Controller( "attachment" );
             $attachments = $controller->get_items( $request )->data;
 
@@ -677,6 +678,35 @@ EOD;
         }
     }
 
+    public static function add_additional_rest_fields( ) {
+        register_rest_field( 'attachment', 'bbg_srcset', [
+            'get_callback' => [ 'BBG_XIV_Gallery', 'get_additional_rest_field' ],
+            'update_callback' => null,
+            'schema' => [
+                'description' => 'srcset',
+                'type'        => 'string',
+                'context'     => [ 'view' ],
+                'arg_options' => [
+                    'sanitize_callback' => [ 'BBG_XIV_Gallery', 'sanitize_additional_rest_field' ],
+                ]
+            ]
+        ] );
+        foreach( [ 'thumbnail', 'medium', 'medium_large', 'large', 'full' ] as $size ) {
+            register_rest_field( 'attachment', 'bbg_' . $size . '_src', [
+                'get_callback' => [ 'BBG_XIV_Gallery', 'get_additional_rest_field' ],
+                'update_callback' => null,
+                'schema' => [
+                    'description' => 'URL of ' . $size,
+                    'type'        => 'string',
+                    'context'     => [ 'view' ],
+                    'arg_options' => [
+                        'sanitize_callback' => [ 'BBG_XIV_Gallery', 'sanitize_additional_rest_field' ],
+                    ]
+                ]
+            ] );
+        }
+    }
+
     public static function get_additional_rest_field( $object, $field_name, $request, $object_type ) {
         global $post;
         error_log( 'get_additional_rest_field():$object=' . print_r( $object, true ) );
@@ -688,7 +718,7 @@ EOD;
         }
         foreach( [ 'thumbnail', 'medium', 'medium_large', 'large', 'full' ] as $size ) {
             if ( $field_name === 'bbg_' . $size . '_src' ) {
-                return wp_get_attachment_image_src( $post->ID, $size )[0];
+                return wp_get_attachment_image_src( $post->ID, $size );
             }
         }
         return '';
@@ -745,34 +775,7 @@ EOD;
             }
         } );
 
-        add_action( 'rest_api_init', function( ) {
-            register_rest_field( 'attachment', 'bbg_srcset', [
-                'get_callback' => [ 'BBG_XIV_Gallery', 'get_additional_rest_field' ],
-                'update_callback' => null,
-                'schema' => [
-                    'description' => 'srcset',
-                    'type'        => 'string',
-                    'context'     => [ 'view' ],
-                    'arg_options' => [
-                        'sanitize_callback' => [ 'BBG_XIV_Gallery', 'sanitize_additional_rest_field' ],
-                    ]
-                ]
-            ] );
-            foreach( [ 'thumbnail', 'medium', 'medium_large', 'large', 'full' ] as $size ) {
-                register_rest_field( 'attachment', 'bbg_' . $size . '_src', [
-                    'get_callback' => [ 'BBG_XIV_Gallery', 'get_additional_rest_field' ],
-                    'update_callback' => null,
-                    'schema' => [
-                        'description' => 'URL of ' . $size,
-                        'type'        => 'string',
-                        'context'     => [ 'view' ],
-                        'arg_options' => [
-                            'sanitize_callback' => [ 'BBG_XIV_Gallery', 'sanitize_additional_rest_field' ],
-                        ]
-                    ]
-                ] );
-            }
-        } );
+        add_action( 'rest_api_init', [ 'BBG_XIV_Gallery', 'add_additional_rest_fields' ] );
 
         add_action( 'wp_enqueue_scripts', function( ) {
             if ( !preg_match( '/\[gallery(\s|\])|\[bb_gallery(\s|\])/', get_post( )->post_content ) ) {
