@@ -56,6 +56,26 @@ class BBG_XIV_Gallery {
             #TODO: set underlying SQL LIMIT to 1
         }
 
+        foreach( [ 'thumbnail', 'medium', 'medium_large', 'large', 'full' ] as $size ) {
+            $label = "{$size}_width";
+            $width = intval( get_option( "{$size}_size_w" ) );
+            if ( !$width && $size === 'medium_large' ) {
+                $width = 768;
+            }
+            $width = intval( 1.125 * $width );
+            if ( $size === 'thumbnail' ) {
+                $$label = $width;
+            } else {
+                $$label = $prev_width + 1;
+            }
+            $prev_width = $width;
+        }
+        error_log( '$thumbnail_width='  . $thumbnail_width );
+        error_log( '$medium_width='  . $medium_width );
+        error_log( '$medium_large_width='  . $medium_large_width );
+        error_log( '$large_width='  . $large_width );
+        error_log( '$full_width='  . $full_width );
+
         ob_start( );
         if ( self::$wp_rest_api_available && self::$use_wp_rest_api_if_available ) {
             require_once(  dirname( __FILE__ ) . '/bbg_xiv-gallery_templates_wp_rest.php' );
