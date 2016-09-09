@@ -683,7 +683,15 @@ EOD;
         error_log( 'get_additional_rest_field():$field_name=' . $field_name );
         error_log( 'get_additional_rest_field():$object_type=' . print_r( $object_type, true ) );
         error_log( 'get_additional_rest_field():$post=' . print_r( $post, true ) );
-        return wp_get_attachment_image_srcset( $post->ID );
+        if ( $field_name === 'bbg_srcset' ) {
+            return wp_get_attachment_image_srcset( $post->ID );
+        }
+        foreach( [ 'thumbnail', 'medium', 'medium_large', 'large', 'full' ] as $size ) {
+            if ( $field_name === 'bbg_' . $size . '_src' ) {
+                return wp_get_attachment_image_src( $post->ID, $size )[0];
+            }
+        }
+        return '';
     }
     
     public static function init( ) {
@@ -738,7 +746,7 @@ EOD;
         } );
 
         add_action( 'rest_api_init', function( ) {
-            register_rest_field( 'attachment', 'srcset', [
+            register_rest_field( 'attachment', 'bbg_srcset', [
                 'get_callback' => [ 'BBG_XIV_Gallery', 'get_additional_rest_field' ],
                 'update_callback' => null,
                 'schema' => [
@@ -750,6 +758,20 @@ EOD;
                     ]
                 ]
             ] );
+            foreach( [ 'thumbnail', 'medium', 'medium_large', 'large', 'full' ] as $size ) {
+                register_rest_field( 'attachment', 'bbg_' . $size . '_src', [
+                    'get_callback' => [ 'BBG_XIV_Gallery', 'get_additional_rest_field' ],
+                    'update_callback' => null,
+                    'schema' => [
+                        'description' => 'URL of ' . $size,
+                        'type'        => 'string',
+                        'context'     => [ 'view' ],
+                        'arg_options' => [
+                            'sanitize_callback' => [ 'BBG_XIV_Gallery', 'sanitize_additional_rest_field' ],
+                        ]
+                    ]
+                ] );
+            }
         } );
 
         add_action( 'wp_enqueue_scripts', function( ) {
