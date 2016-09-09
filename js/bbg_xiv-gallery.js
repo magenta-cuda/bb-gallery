@@ -819,20 +819,22 @@
         switch(bbg_xiv.bandwidth){
         case "normal":
             return {
-                src      :bbg_xiv.bbg_xiv_wp_rest_api?data.source_url:data.url,
-                thumbnail:data.bbg_xiv_thumbnail_url,
-                small    :data.bbg_xiv_small_url,
-                medium   :data.bbg_xiv_medium_url,
-                large    :data.bbg_xiv_large_url
+                src          : bbg_xiv.bbg_xiv_wp_rest_api ? data.source_url              : data.url,
+                thumbnail    : bbg_xiv.bbg_xiv_wp_rest_api ? data.bbg_thumbnail_src[0]    : data.bbg_xiv_thumbnail_url,
+                small        : bbg_xiv.bbg_xiv_wp_rest_api ? data.bbg_medium_src[0]       : data.bbg_xiv_small_url,
+                medium       : bbg_xiv.bbg_xiv_wp_rest_api ? data.bbg_medium_src[0]       : data.bbg_xiv_medium_url,
+                medium_large : bbg_xiv.bbg_xiv_wp_rest_api ? data.bbg_medium_large_src[0] : data.bbg_xiv_large_url,
+                large        : bbg_xiv.bbg_xiv_wp_rest_api ? data.bbg_large_src[0]        : data.bbg_xiv_large_url
             };
         case "low":
         case "very low":
             return {
-                src      :data.bbg_xiv_small_url,
-                thumbnail:data.bbg_xiv_thumbnail_url,
-                small    :data.bbg_xiv_small_url,
-                medium   :data.bbg_xiv_small_url,
-                large    :data.bbg_xiv_small_url
+                src          : bbg_xiv.bbg_xiv_wp_rest_api ? data.bbg_medium_src[0]       : data.bbg_xiv_small_url,
+                thumbnail    : bbg_xiv.bbg_xiv_wp_rest_api ? data.bbg_thumbnail_src[0]    : data.bbg_xiv_thumbnail_url,
+                small        : bbg_xiv.bbg_xiv_wp_rest_api ? data.bbg_medium_src[0]       : data.bbg_xiv_small_url,
+                medium       : bbg_xiv.bbg_xiv_wp_rest_api ? data.bbg_medium_src[0]       : data.bbg_xiv_small_url,
+                medium_large : bbg_xiv.bbg_xiv_wp_rest_api ? data.bbg_medium_src[0]       : data.bbg_xiv_small_url,
+                large        : bbg_xiv.bbg_xiv_wp_rest_api ? data.bbg_medium_src[0]       : data.bbg_xiv_small_url
             };
         }
     };
