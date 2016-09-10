@@ -293,6 +293,9 @@ class BBG_XIV_Gallery {
                 $attributes[ 'parent'   ] = [ $id ];
                 $attributes[ 'per_page' ] = 1024;
             }
+            if ( !empty( $get_first ) ) {
+                $attributes[ 'per_page' ] = 1;
+            }
             $request = new WP_REST_Request( 'GET', '/wp/v2/media' );
             $request->set_query_params( $attributes );
             # TODO: $request may need to set some of the params below
@@ -332,6 +335,7 @@ class BBG_XIV_Gallery {
 
             $bbg_xiv_data[ "$selector-data" ] = json_encode( $attachments );
         } else {
+            error_log( '$atts=' . print_r( $atts, true ) );
             // initialize the Backbone.js collection using data for my proprietary model
             // Handle the proprietary 'bb_tags' attribute - this specifies a gallery by a taxonomy expression
             if ( ! empty( $atts['bb_tags'] ) ) {
@@ -342,21 +346,25 @@ class BBG_XIV_Gallery {
               $tax_query[ ] = array( 'taxonomy' => 'bb_tags', 'field' => 'slug', 'terms' => $bb_tags );
               $tax_query[ ] = array( 'taxonomy' => 'bb_tags', 'field' => 'name', 'terms' => $bb_tags );
               $_attachments = get_posts( array( 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'],
-                                                'tax_query' => $tax_query, 'posts_per_page' => -1 ) );
+                                                'tax_query' => $tax_query, 'posts_per_page' => ( empty( $get_first ) ? -1 : 1 ), 'offset' => 0 ) );
               $attachments = array();
               foreach ( $_attachments as $key => $val ) {
                 $attachments[$val->ID] = $_attachments[$key];
               }
             } elseif ( ! empty( $atts['include'] ) ) {
-              $_attachments = get_posts( array( 'include' => $atts['include'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
+              $_attachments = get_posts( array( 'include' => ( empty( $get_first ) ? $atts['include'] : array( explode( ',', $atts['include'] )[0] ) ), 'post_status' => 'inherit',
+                                                'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
               $attachments = array();
               foreach ( $_attachments as $key => $val ) {
                 $attachments[$val->ID] = $_attachments[$key];
               }
             } elseif ( ! empty( $atts['exclude'] ) ) {
-              $attachments = get_children( array( 'post_parent' => $id, 'exclude' => $atts['exclude'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
+              $attachments = get_children( array( 'post_parent' => $id, 'exclude' => $atts['exclude'], 'post_status' => 'inherit', 'post_type' => 'attachment',
+                                                  'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'], 
+                                                  'numberposts' => ( empty( $get_first ) ? -1 : 1 ) ) );
             } else {
-              $attachments = get_children( array( 'post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
+              $attachments = get_children( array( 'post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image',
+                                                  'order' => $atts['order'], 'orderby' => $atts['orderby'],  'numberposts' => ( empty( $get_first ) ? -1 : 1 ) ) );
             }
 
             if ( !empty( $get_first ) ) {
