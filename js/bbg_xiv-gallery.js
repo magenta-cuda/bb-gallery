@@ -145,6 +145,7 @@
         var bulletsHtml="";
         var imagesHtml="";
         collection.forEach(function(model,index){
+            model.attributes.browser=bbg_xiv.browser;
             model.attributes.index=index;
             model.attributes.bbg_xiv_container_width=containerWidth;
             imageView.model=model;
@@ -821,22 +822,22 @@
         switch(bbg_xiv.bandwidth){
         case "normal":
             return {
-                src          : bbg_xiv.bbg_xiv_wp_rest_api ? data.source_url              : data.url,
-                thumbnail    : bbg_xiv.bbg_xiv_wp_rest_api ? data.bbg_thumbnail_src[0]    : data.bbg_xiv_thumbnail_url,
-                small        : bbg_xiv.bbg_xiv_wp_rest_api ? data.bbg_medium_src[0]       : data.bbg_xiv_small_url,
-                medium       : bbg_xiv.bbg_xiv_wp_rest_api ? data.bbg_medium_src[0]       : data.bbg_xiv_medium_url,
-                medium_large : bbg_xiv.bbg_xiv_wp_rest_api ? data.bbg_medium_large_src[0] : data.bbg_xiv_large_url,
-                large        : bbg_xiv.bbg_xiv_wp_rest_api ? data.bbg_large_src[0]        : data.bbg_xiv_large_url
+                src          : bbg_xiv.bbg_xiv_wp_rest_api ? data.source_url : data.url,
+                thumbnail    : data.bbg_thumbnail_src[0],
+                small        : data.bbg_medium_src[0],
+                medium       : data.bbg_medium_src[0],
+                medium_large : data.bbg_medium_large_src[0],
+                large        : data.bbg_large_src[0]
             };
         case "low":
         case "very low":
             return {
-                src          : bbg_xiv.bbg_xiv_wp_rest_api ? data.bbg_medium_src[0]       : data.bbg_xiv_small_url,
-                thumbnail    : bbg_xiv.bbg_xiv_wp_rest_api ? data.bbg_thumbnail_src[0]    : data.bbg_xiv_thumbnail_url,
-                small        : bbg_xiv.bbg_xiv_wp_rest_api ? data.bbg_medium_src[0]       : data.bbg_xiv_small_url,
-                medium       : bbg_xiv.bbg_xiv_wp_rest_api ? data.bbg_medium_src[0]       : data.bbg_xiv_small_url,
-                medium_large : bbg_xiv.bbg_xiv_wp_rest_api ? data.bbg_medium_src[0]       : data.bbg_xiv_small_url,
-                large        : bbg_xiv.bbg_xiv_wp_rest_api ? data.bbg_medium_src[0]       : data.bbg_xiv_small_url
+                src          : data.bbg_medium_src[0],
+                thumbnail    : data.bbg_thumbnail_src[0],
+                small        : data.bbg_medium_src[0],
+                medium       : data.bbg_medium_src[0],
+                medium_large : data.bbg_medium_src[0],
+                large        : data.bbg_medium_src[0]
             };
         }
     };
