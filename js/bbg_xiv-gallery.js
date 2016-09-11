@@ -378,9 +378,6 @@
                 },2000);
             });
             var fullImg=inner.find("img");
-            var fullLarge=inner.find("source[media='(min-width:1200px)']")[0];
-            var fullMedium=inner.find("source[media='(min-width:992px)']")[0];
-            var fullSmall=inner.find("source[media='(max-width:991px)']")[0];
             var fullTitle=inner.find("h1.bbg_xiv-dense_title");
             var fullTitleColor=fullTitle.css("color");
             var fullTitleShadow=fullTitle.css("text-shadow");
@@ -415,22 +412,12 @@
                     var img=jQuery(this).parents("div.bbg_xiv-flex_item").find("img")[0];
                 }
                 fullImg[0].src=img.src;
-                fullLarge.srcset=img.src;
-                fullMedium.srcset=img.src;
-                fullSmall.srcset=img.src;
-                // try and replace img src with better match 
+                // try and replace img src with srcset 
                 try{
-                    var imageId=img.dataset.bbg_xivImageId;
-                    if(imageId){
-                        var galleryId=jQuery(img).parents("div[data-bbg_xiv-gallery-id]")[0].dataset.bbg_xivGalleryId;
-                        if(galleryId){
-                            var urls=bbg_xiv.getImageUrl(bbg_xiv.images[galleryId].get(imageId).attributes);
-                            fullImg[0].src=urls.src;
-                            fullLarge.srcset=urls.src;
-                            fullMedium.srcset=urls.medium;
-                            fullSmall.srcset=urls.small;
-                        }
-                    }
+                    var galleryId=jQuery(img).parents("div[data-bbg_xiv-gallery-id]")[0].dataset.bbg_xivGalleryId;
+                    var data=bbg_xiv.images[galleryId].get(img.dataset.bbg_xivImageId).attributes;
+                    fullImg[0].src=bbg_xiv.bbg_xiv_wp_rest_api?data.source_url:data.url;
+                    fullImg[0].srcset=data.bbg_srcset;
                 }catch(e){
                 }
                 fullTitle[0].textContent=img.alt;
@@ -822,7 +809,7 @@
         switch(bbg_xiv.bandwidth){
         case "normal":
             return {
-                src          : bbg_xiv.bbg_xiv_wp_rest_api ? data.source_url : data.url,
+                src          : bbg_xiv.bbg_xiv_wp_rest_api?data.source_url:data.url,
                 thumbnail    : data.bbg_thumbnail_src[0],
                 small        : data.bbg_medium_src[0],
                 medium       : data.bbg_medium_src[0],
