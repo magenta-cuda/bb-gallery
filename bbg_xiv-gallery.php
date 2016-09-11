@@ -352,7 +352,7 @@ class BBG_XIV_Gallery {
                 $attachments[$val->ID] = $_attachments[$key];
               }
             } elseif ( ! empty( $atts['include'] ) ) {
-              $_attachments = get_posts( array( 'include' => ( empty( $get_first ) ? $atts['include'] : array( explode( ',', $atts['include'] )[0] ) ), 'post_status' => 'inherit',
+              $_attachments = get_posts( array( 'include' => ( empty( $get_first ) ? $atts['include'] : (string) (explode( ',', $atts['include'] )[0]) ), 'post_status' => 'inherit',
                                                 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
               $attachments = array();
               foreach ( $_attachments as $key => $val ) {
@@ -689,6 +689,11 @@ EOD;
             }
             $attachment->image_alt = get_post_meta( $id, '_wp_attachment_image_alt', TRUE );
             $attachment->post_content = apply_filters( 'the_content', $attachment->post_content );
+            # fields for compatibility with my REST API
+            $attachment->bbg_srcset = wp_get_attachment_image_srcset( $id );
+            foreach( [ 'thumbnail', 'medium', 'medium_large', 'large', 'full' ] as $size ) {
+                $attachment->{'bbg_' . $size . '_src'} = wp_get_attachment_image_src( $id, $size );
+            }
             # TODO: For the "Table" view you may want to unset some fields.
             unset( $attachment->post_password );
             unset( $attachment->ping_status );
@@ -704,6 +709,7 @@ EOD;
             unset( $attachment->post_status );
             unset( $attachment->post_type );
         }
+        error_log( 'bbg_xiv_do_attachments():attachments=' . print_r( $attachments, true ) );
     }
 
     public static function add_additional_rest_fields( ) {
