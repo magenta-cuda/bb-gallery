@@ -139,12 +139,14 @@
     };
 
     bbg_xiv.renderCarousel=function(container,collection,id){
+        var containerWidth=container.width();
         var imageView=new bbg_xiv.ImageView();
         imageView.template=_.template(jQuery("script#bbg_xiv-template_carousel_item").html(),null,bbg_xiv.templateOptions);
         var bulletsHtml="";
         var imagesHtml="";
         collection.forEach(function(model,index){
             model.attributes.index=index;
+            model.attributes.bbg_xiv_container_width=containerWidth;
             imageView.model=model;
             var active=index ===0?' class="active"':'';
             bulletsHtml+='<li data-target="#'+id+'" data-slide-to="'+index+'"'+active+'></li>';

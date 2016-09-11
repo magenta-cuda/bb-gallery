@@ -133,10 +133,14 @@
 <script type="text/html" id="bbg_xiv-template_carousel_item">
 <figure class="item bbg_xiv-item<# if ( data.index === 0 ) { #> active<# } #>" data-index="{{{ data.index }}}">
   <a href="{{{ data.link }}}" target="_blank">
-    <picture>
-      <source media="(min-width:1200px)" srcset="<# print(bbg_xiv.getImageUrl(data).src); #>">
-      <source media="(min-width:992px)" srcset="<# print(bbg_xiv.getImageUrl(data).medium); #>">
-      <source media="(max-width:991px)" srcset="<# print(bbg_xiv.getImageUrl(data).small); #>">
+    <img src="{{{ data.source_url }}}" srcset="{{{ data.bbg_xiv_srcset }}}" sizes="{{{ data.bbg_xiv_container_width }}}px"<# if ( data.browser === "Firefox" ) { #> style="display:none;"<# } #>>
+    <!-- Firefox doesn't render <img srcset="..." style="object-fit:..."> correctly so ... -->
+    <picture<# if ( data.browser !== "Firefox" ) { #> style="display:none;"<# } #>>
+      <source media="(min-width:<?php echo $full_width; ?>px)" srcset="<# print(bbg_xiv.getImageUrl(data).src); #>">
+      <source media="(min-width:<?php echo $large_width; ?>px)" srcset="<# print(bbg_xiv.getImageUrl(data).large); #>">
+      <source media="(min-width:<?php echo $medium_large_width; ?>px)" srcset="<# print(bbg_xiv.getImageUrl(data).medium_large); #>">
+      <source media="(min-width:<?php echo $medium_width; ?>px)" srcset="<# print(bbg_xiv.getImageUrl(data).medium); #>">
+      <source media="(max-width:<?php echo $thumbnail_width; ?>px)" srcset="<# print(bbg_xiv.getImageUrl(data).thumbnail); #>">
       <img src="<# print(bbg_xiv.getImageUrl(data).src); #>">
     </picture>
   </a>
