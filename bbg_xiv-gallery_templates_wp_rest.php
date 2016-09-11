@@ -38,12 +38,7 @@
     <div class="bbg_xiv-dense_inner">
       <button class="bbg_xiv-dense_close"><span class="glyphicon glyphicon-remove"></span></button>
       <h1 class="bbg_xiv-dense_title"></h1>
-      <picture>
-        <source media="(min-width:1200px)">
-        <source media="(min-width:992px)">
-        <source media="(max-width:991px)">
-        <img class="img-rounded bbg_xiv-img_overlay">
-      </picture>
+      <img class="img-rounded bbg_xiv-img_overlay" sizes="100vw">
       <h1 class="bbg_xiv-dense_caption"></h1>
     </div>
 </div>
@@ -229,12 +224,7 @@
   <div class="bbg_xiv-dense_inner">
     <button class="bbg_xiv-dense_close"><span class="glyphicon glyphicon-remove"></span></button>
     <h1 class="bbg_xiv-dense_title"></h1>
-    <picture>
-      <source media="(min-width:1200px)">
-      <source media="(min-width:992px)">
-      <source media="(max-width:991px)">
-      <img class="img-rounded bbg_xiv-img_overlay">
-    </picture>
+    <img class="img-rounded bbg_xiv-img_overlay" sizes="100vw">
     <h1 class="bbg_xiv-dense_caption"></h1>
   </div>
 </div>

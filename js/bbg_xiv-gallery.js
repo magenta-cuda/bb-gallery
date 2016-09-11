@@ -411,14 +411,13 @@
                 }else if(jqThis.hasClass("bbg_xiv-flex_from_image")){
                     var img=jQuery(this).parents("div.bbg_xiv-flex_item").find("img")[0];
                 }
-                fullImg[0].src=img.src;
-                // try and replace img src with srcset 
                 try{
                     var galleryId=jQuery(img).parents("div[data-bbg_xiv-gallery-id]")[0].dataset.bbg_xivGalleryId;
                     var data=bbg_xiv.images[galleryId].get(img.dataset.bbg_xivImageId).attributes;
-                    fullImg[0].src=bbg_xiv.bbg_xiv_wp_rest_api?data.source_url:data.url;
+                    fullImg[0].src=bbg_xiv.getImageUrl(data).src;
                     fullImg[0].srcset=data.bbg_srcset;
                 }catch(e){
+                    fullImg[0].src=img.src;
                 }
                 fullTitle[0].textContent=img.alt;
                 fullCaption[0].textContent=img.title;
