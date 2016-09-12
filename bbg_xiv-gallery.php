@@ -413,6 +413,7 @@ EOD;
             'View'                                        => __( 'View',                                        'bb_gallery' ),
             'Gallery'                                     => __( 'Gallery',                                     'bb_gallery' ),
             'Carousel'                                    => __( 'Carousel',                                    'bb_gallery' ),
+            'Justified'                                   => __( 'Justified',                                   'bb_gallery' ),
             'Tabs'                                        => __( 'Tabs',                                        'bb_gallery' ),
             'Dense'                                       => __( 'Dense',                                       'bb_gallery' ),
             'VIEWS'                                       => __( 'VIEWS',                                       'bb_gallery' ),
@@ -476,6 +477,7 @@ EOD;
                         <li class="dropdown-header">{$translations['VIEWS']}</li>
                         <li class="bbg_xiv-view bbg_xiv-view_gallery active"><a data-view="Gallery" href="#">$translations[Gallery]</a></li>
                         <li class="bbg_xiv-view bbg_xiv-view_carousel bbg_xiv-hide_for_gallery_icons"><a data-view="Carousel" href="#">$translations[Carousel]</a></li>
+                        <li class="bbg_xiv-view bbg_xiv-view_justified bbg_xiv-hide_for_gallery_icons"><a data-view="Justified" href="#">$translations[Justified]</a></li>
                         <li class="bbg_xiv-view bbg_xiv-view_tabs"><a data-view="Tabs" href="#">$translations[Tabs]</a></li>
                         <li class="bbg_xiv-view bbg_xiv-hide_for_gallery_icons bbg_xiv-large_viewport_only"><a data-view="Dense" href="#">$translations[Dense]</a></li>
                         <!-- TODO: Add entry for new views here. -->
@@ -816,10 +818,11 @@ EOD;
                 # only emit bb_gallery's styles and scripts if the post content has the bb_gallery shortcode
                 return;
             }
-            wp_enqueue_style( 'bootstrap',               plugins_url( '/css/bootstrap.css' ,               __FILE__ ) );
-            wp_enqueue_style( 'jquery-mobile-structure', plugins_url( '/css/jquery-mobile-structure.css' , __FILE__ ) );
-            wp_enqueue_style( 'jquery-mobile-theme',     plugins_url( '/css/jquery-mobile-theme.css' ,     __FILE__ ) );
-            wp_enqueue_style( 'bbg_xiv-gallery',         plugins_url( '/css/bbg_xiv-gallery.css' ,         __FILE__ ), [ 'bootstrap' ] );
+            wp_enqueue_style( 'bootstrap',               plugins_url( '/css/bootstrap.css',               __FILE__ ) );
+            wp_enqueue_style( 'jquery-mobile-structure', plugins_url( '/css/jquery-mobile-structure.css', __FILE__ ) );
+            wp_enqueue_style( 'jquery-mobile-theme',     plugins_url( '/css/jquery-mobile-theme.css',     __FILE__ ) );
+            wp_enqueue_style( 'justified-gallery',       plugins_url( '/css/justifiedGallery.css',        __FILE__ ) );
+            wp_enqueue_style( 'bbg_xiv-gallery',         plugins_url( '/css/bbg_xiv-gallery.css',         __FILE__ ), [ 'bootstrap' ] );
             $width = ( 100 / (integer) get_option( 'bbg_xiv_flex_number_of_dense_view_columns', 10 ) ) . '%';
             wp_add_inline_style( 'bbg_xiv-gallery', <<<EOD
 div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_images div.bbg_xiv-dense_flex_images div.bbg_xiv-dense_flex_item{
@@ -828,16 +831,17 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_images div.b
 EOD
             );
             wp_enqueue_script( 'backbone' );
-            wp_enqueue_script( 'modernizr',       plugins_url( '/js/modernizr.js' ,       __FILE__ ) );
-            wp_enqueue_script( 'jquery-mobile',   plugins_url( '/js/jquery-mobile.js' ,   __FILE__ ), [ 'jquery' ] );
+            wp_enqueue_script( 'modernizr',         plugins_url( '/js/modernizr.js',              __FILE__ ) );
+            wp_enqueue_script( 'justified-gallery', plugins_url( 'js/jquery.justifiedGallery.js', __FILE__ ), [ 'jquery' ] );
+            wp_enqueue_script( 'jquery-mobile',     plugins_url( '/js/jquery-mobile.js',          __FILE__ ), [ 'jquery' ] );
             if ( !get_option( 'bbg_xiv_do_not_load_bootstrap', FALSE ) ) {
-                wp_enqueue_script( 'bootstrap',   plugins_url( '/js/bootstrap.js' ,       __FILE__ ), [ 'jquery' ], FALSE, TRUE );
+                wp_enqueue_script( 'bootstrap',     plugins_url( '/js/bootstrap.js' ,             __FILE__ ), [ 'jquery' ], FALSE, TRUE );
             }
-            $deps = [ 'bootstrap' ];
+            $deps = [ 'bootstrap', 'justified-gallery' ];
             if ( self::$wp_rest_api_available && self::$use_wp_rest_api_if_available ) {
                 $deps[ ] = 'wp-api';
             }
-            wp_enqueue_script( 'bbg_xiv-gallery', plugins_url( '/js/bbg_xiv-gallery.js' , __FILE__ ), $deps, FALSE, TRUE );
+            wp_enqueue_script( 'bbg_xiv-gallery',   plugins_url( '/js/bbg_xiv-gallery.js' ,       __FILE__ ), $deps,        FALSE, TRUE );
         } );
 
         add_action( 'admin_init', function( ) {
