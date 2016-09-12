@@ -249,9 +249,20 @@
         container.empty();
         var justifiedContainer=galleryView.render().$el.find("div.bbg_xiv-justified_container");
         container.append(justifiedContainer);
-        justifiedContainer.justifiedGallery();
-        setTimeout(function(){
-            justifiedContainer.find("img").css("margin","0");   // Why are there negative margins on the img
+        justifiedContainer.justifiedGallery({margins:5,rowHeight:128});
+        var count=0;
+        setTimeout(function bbg_xivPostJustified(){
+            var timeoutSet=false;
+            justifiedContainer.find("img").each(function(){
+                var img=jQuery(this);
+                // TODO: Why are there negative margins on the img - anyway remove them
+                if(!timeoutSet&&count<4&&img.css("margin-left")!=="0px"){
+                    timeoutSet=true;
+                    ++count;
+                    setTimeout(bbg_xivPostJustified,1000);
+                }
+                img.css("margin","0");
+            });
         },1000);
         //if(bbg_xiv.interface==="touch"){
         //    container.find("div.bbg_xiv-flex_container div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn").addClass("bbg_xiv-touch");
