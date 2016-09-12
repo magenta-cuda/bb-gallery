@@ -247,7 +247,12 @@
         });
         galleryView.template=_.template(jQuery("script#bbg_xiv-template_justified_container").html(),null,bbg_xiv.templateOptions);
         container.empty();
-        container.append(galleryView.render().$el.find("div.bbg_xiv-justified_container"));
+        var justifiedContainer=galleryView.render().$el.find("div.bbg_xiv-justified_container");
+        container.append(justifiedContainer);
+        justifiedContainer.justifiedGallery();
+        setTimeout(function(){
+            justifiedContainer.find("img").css("margin","0");   // Why are there negative margins on the img
+        },1000);
         //if(bbg_xiv.interface==="touch"){
         //    container.find("div.bbg_xiv-flex_container div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn").addClass("bbg_xiv-touch");
         //}
