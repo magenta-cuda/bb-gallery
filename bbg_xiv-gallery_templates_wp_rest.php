@@ -273,7 +273,7 @@
         <a href="{{{ data.url }}}">
             <img alt="{{{ data.image_alt }}}" src="{{{ data.bbg_medium_src[0] }}}"/>
         </a>	
-        <div class="caption"><a href="{{{ data.link }}}">{{{ data.post_excerpt }}}</a></div>
+        <div class="caption"><a href="{{{ data.link }}}" target="_blank">{{{ data.caption }}}</a></div>
     </div>
 </script>
 
