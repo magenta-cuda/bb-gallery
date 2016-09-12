@@ -228,6 +228,31 @@
         container.append(galleryView.render().$el.find("div.bbg_xiv-dense_container"));
     };
     
+    bbg_xiv.renderJustified=function(container,collection){
+        var imageView=new bbg_xiv.ImageView();
+        // attach template to imageView not ImageView.prototype since template is specific to imageView
+        imageView.template=_.template( jQuery("script#bbg_xiv-template_justified_item").html(),null,bbg_xiv.templateOptions);
+        var imagesHtml="";
+        collection.forEach(function(model,index){
+            imageView.model=model;
+            imagesHtml+=imageView.render(true);
+        });
+        var galleryView=new bbg_xiv.GalleryView({
+            model:{
+                attributes:{
+                    id:collection.id,
+                    items:imagesHtml
+                }
+            }
+        });
+        galleryView.template=_.template(jQuery("script#bbg_xiv-template_justified_container").html(),null,bbg_xiv.templateOptions);
+        container.empty();
+        container.append(galleryView.render().$el.find("div.bbg_xiv-justified_container"));
+        //if(bbg_xiv.interface==="touch"){
+        //    container.find("div.bbg_xiv-flex_container div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn").addClass("bbg_xiv-touch");
+        //}
+    };
+
     // renderGeneric() may work unmodified with your template.
     // Otherwise you can use it as a base for a render function specific to your template.
     // See renderGallery(), renderCarousel() or renderTabs() - all of which need some special HTML to work correctly.
@@ -471,6 +496,9 @@
                     divAltGalleryHeading.show();
                 }
             }
+            break;
+        case "Justified":
+            bbg_xiv.renderJustified(jqGallery,images);
             break;
         case "Carousel":
             var overflow=jQuery("html").css("overflow-y");
@@ -1050,13 +1078,15 @@
             var liSelectView=li.parents("li.bbg_xiv-select_view");
             var container=jqThis.parents("div.bbg_xiv-bootstrap.bbg_xiv-gallery");
             var divGallery=container.find("div.bbg_xiv-gallery_envelope")[0];
-            if(["Gallery","Carousel","Tabs","Dense"].indexOf(view)>=0){
+            if(["Gallery","Carousel","Justified","Tabs","Dense"].indexOf(view)>=0){
+                // view selected
                 select.find("li.bbg_xiv-view").removeClass("active");
                 li.addClass("active");
                 liSelectView.find("a.bbg_xiv-selected_view span").text(this.textContent);
                 var gallery=jqThis.parents("div.bbg_xiv-gallery");
                 bbg_xiv.renderGallery(divGallery,view);
             }else{
+                // gallery selected
                 // delete search state if it exists
                 if(bbg_xiv.search[divGallery.id]){
                     delete bbg_xiv.search[divGallery.id];

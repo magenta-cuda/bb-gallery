@@ -262,6 +262,21 @@
 </div>
 </script>
 
+<!-- Justified Gallery Container Template -->
+<script type="text/html" id="bbg_xiv-template_justified_container">
+<div class="bbg_xiv-container bbg_xiv-justified_container" data-bbg_xiv-gallery-id="{{{ data.id }}}">
+    {{{ data.items }}}
+</script>
+<!-- Justified Gallery Item Template -->
+<script type="text/html" id="bbg_xiv-template_justified_item">
+    <div>
+        <a href="{{{ data.url }}}">
+            <img alt="{{{ data.image_alt }}}" src="{{{ data.bbg_medium_src[0] }}}"/>
+        </a>	
+        <div class="caption"><a href="{{{ data.link }}}">{{{ data.post_excerpt }}}</a></div>
+    </div>
+</script>
+
 <!-- Table Container Template -->
 <script type="text/html" id="bbg_xiv-template_table_container">
 <div class="bbg_xiv-table">
