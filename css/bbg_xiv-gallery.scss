@@ -831,7 +831,9 @@ div.bbg_xiv-bootstrap{
       background-color:transparent;
     }
   }
-}
+ 
+  @include full_viewport_image_overlay();
+ }
 
 div.bbg_xiv-bootstrap{
   div.carousel.slide{

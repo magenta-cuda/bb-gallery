@@ -279,9 +279,9 @@
 </script>
 <!-- Justified Gallery Item Template -->
 <script type="text/html" id="bbg_xiv-template_justified_item">
-    <div>
+    <div class="bbg_xiv-justified_item">
         <a href="{{{ data.url }}}">
-            <img alt="{{{ data.image_alt }}}" src="{{{ data.bbg_medium_src[0] }}}"/>
+            <img alt="{{{ data.image_alt }}}" src="{{{ data.bbg_medium_src[0] }}}" data-bbg_xiv-image-id="{{{ data.ID }}}" />
         </a>	
         <div class="caption">
             <a href="{{{ data.link }}}" target="_blank">{{{ bbg_xiv.getCaption(data) }}}</a>

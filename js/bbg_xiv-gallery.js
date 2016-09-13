@@ -451,6 +451,8 @@
                     var img=jQuery("div#"+this.parentNode.id.replace("title","image")).find("img")[0];
                 }else if(jqThis.hasClass("bbg_xiv-flex_from_image")){
                     var img=jQuery(this).parents("div.bbg_xiv-flex_item").find("img")[0];
+                }else if(jqThis.hasClass("bbg_xiv-dense_from_justified")){
+                    var img=jQuery(this).parents("div.bbg_xiv-justified_item").find("img")[0];
                 }
                 try{
                     var galleryId=jQuery(img).parents("div[data-bbg_xiv-gallery-id]")[0].dataset.bbg_xivGalleryId;
@@ -515,6 +517,7 @@
             break;
         case "Justified":
             bbg_xiv.renderJustified(jqGallery,images);
+            constructOverlay();
             break;
         case "Carousel":
             var overflow=jQuery("html").css("overflow-y");

@@ -266,22 +266,22 @@
 <script type="text/html" id="bbg_xiv-template_justified_container">
 <div class="bbg_xiv-container bbg_xiv-justified_container" data-bbg_xiv-gallery-id="{{{ data.id }}}">
     {{{ data.items }}}
-</div>
-<!-- Full Browser Viewport View of an Image -->
-<div class="bbg_xiv-dense_outer">
-</div>
-<div class="bbg_xiv-dense_inner">
-  <button class="bbg_xiv-dense_close"><span class="glyphicon glyphicon-remove"></span></button>
-  <h1 class="bbg_xiv-dense_title"></h1>
-  <img class="img-rounded bbg_xiv-img_overlay" sizes="100vw">
-  <h1 class="bbg_xiv-dense_caption"></h1>
+    <!-- Full Browser Viewport View of an Image -->
+    <div class="bbg_xiv-dense_outer">
+    </div>
+    <div class="bbg_xiv-dense_inner">
+        <button class="bbg_xiv-dense_close"><span class="glyphicon glyphicon-remove"></span></button>
+        <h1 class="bbg_xiv-dense_title"></h1>
+        <img class="img-rounded bbg_xiv-img_overlay" sizes="100vw">
+        <h1 class="bbg_xiv-dense_caption"></h1>
+    </div>
 </div>
 </script>
 <!-- Justified Gallery Item Template -->
 <script type="text/html" id="bbg_xiv-template_justified_item">
-    <div>
+    <div class="bbg_xiv-justified_item">
         <a href="{{{ data.url }}}">
-            <img alt="{{{ data.image_alt }}}" src="{{{ data.bbg_medium_src[0] }}}"/>
+            <img alt="{{{ data.image_alt }}}" src="{{{ data.bbg_medium_src[0] }}}" data-bbg_xiv-image-id="{{{ data.id }}}" />
         </a>	
         <div class="caption">
             <a href="{{{ data.link }}}" target="_blank">{{{ bbg_xiv.getCaption(data) }}}</a>
