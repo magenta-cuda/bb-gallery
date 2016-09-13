@@ -265,7 +265,9 @@
 <!-- Justified Gallery Container Template -->
 <script type="text/html" id="bbg_xiv-template_justified_container">
 <div class="bbg_xiv-container bbg_xiv-justified_container" data-bbg_xiv-gallery-id="{{{ data.id }}}">
-    {{{ data.items }}}
+    <div class="bbg_xiv-justified_gallery">
+        {{{ data.items }}}
+    </div>
     <!-- Full Browser Viewport View of an Image -->
     <div class="bbg_xiv-dense_outer">
     </div>
