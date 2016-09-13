@@ -872,6 +872,12 @@
         }
     };
 
+    // getting attributes indirectly through functions will make it possible for one template to be used for both the REST mode and the old proprietary mode
+
+    bbg_xiv.getCaption=function(data){
+        return bbg_xiv.bbg_xiv_wp_rest_api?data.caption:data.post_excerpt;
+    };
+
     try{
         window.localStorage.setItem("test","test");
         window.localStorage.removeItem("test");
