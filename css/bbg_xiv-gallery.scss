@@ -823,6 +823,17 @@ div.bbg_xiv-tiles_container.bbg_xiv-fill{
 }
 
 div.bbg_xiv-bootstrap{
+  div.bbg_xiv-justified_container{
+    div.caption button.bbg_xiv-dense_from_justified{
+      float:right;
+      padding:0;
+      color:$icon-color;
+      background-color:transparent;
+    }
+  }
+}
+
+div.bbg_xiv-bootstrap{
   div.carousel.slide{
     position:fixed;
     left:0px;
