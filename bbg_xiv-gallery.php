@@ -894,6 +894,9 @@ EOD
                 echo '<input name="bbg_xiv_default_view" id="bbg_xiv_default_view_gallery"  type="radio" value="Gallery" '
                     . ( get_option( 'bbg_xiv_default_view', 'Gallery' ) === 'Gallery'  ? 'checked />' : '/>' )
                     . '<span class="bbg_xiv-radio_text">Gallery&nbsp;&nbsp;&nbsp;&nbsp;</span>';
+                echo '<input name="bbg_xiv_default_view" id="bbg_xiv_default_view_justified" type="radio" value="Justified" '
+                    . ( get_option( 'bbg_xiv_default_view', 'Gallery' ) === 'Justified' ? 'checked />' : '/>' )
+                    . '<span class="bbg_xiv-radio_text">Justified&nbsp;&nbsp;&nbsp;&nbsp;</span>';
                 echo '<input name="bbg_xiv_default_view" id="bbg_xiv_default_view_carousel" type="radio" value="Carousel" '
                     . ( get_option( 'bbg_xiv_default_view', 'Gallery' ) === 'Carousel' ? 'checked />' : '/>' )
                     . '<span class="bbg_xiv-radio_text">Carousel&nbsp;&nbsp;&nbsp;&nbsp;</span>';

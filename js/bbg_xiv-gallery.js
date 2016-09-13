@@ -1060,6 +1060,8 @@
                 var defaultView=bbg_xiv.bbg_xiv_default_view?bbg_xiv.bbg_xiv_default_view:"Gallery";
                 if(jqThis.hasClass("bbg_xiv-default_view_gallery")){
                     defaultView="Gallery";
+                }else if(jqThis.hasClass("bbg_xiv-default_view_justified")){
+                    defaultView="Justified";
                 }else if(jqThis.hasClass("bbg_xiv-default_view_carousel")){
                     defaultView="Carousel";
                 }else if(jqThis.hasClass("bbg_xiv-default_view_tabs")){
