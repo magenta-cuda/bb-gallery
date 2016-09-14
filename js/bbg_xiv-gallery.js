@@ -358,39 +358,6 @@
             }
         }
         images.id=gallery.id;
-        // find closest match for thumbnail, small, medium and large
-        var widths=[Math.log(bbg_xiv.bbg_xiv_flex_min_width),Math.log(768),Math.log(992),Math.log(1200)];
-        images.models.forEach(function(model){
-            var diffs=[Number.MAX_VALUE,Number.MAX_VALUE,Number.MAX_VALUE,Number.MAX_VALUE];
-            var urls=[];
-            var attributes=model.attributes;
-            if(bbg_xiv.bbg_xiv_wp_rest_api){
-                var sizes=attributes.media_details.sizes;
-            }else{
-                if(!attributes.sizes){
-                    attributes.sizes={};
-                }
-                var sizes=attributes.sizes;
-                sizes.full={url:attributes.url,width:attributes.width,height:attributes.height};
-            }
-            var srcset="";
-            Object.keys(sizes).forEach(function(size){
-                var image=sizes[size];
-                widths.forEach(function(width,i){
-                    var diff=Math.abs(Math.log(image.width)-width);
-                    if(diff<diffs[i]){
-                        diffs[i]=diff;
-                        urls[i]=bbg_xiv.bbg_xiv_wp_rest_api?image.source_url:image.url;
-                    }
-                });
-                srcset+=(srcset?", ":"")+(bbg_xiv.bbg_xiv_wp_rest_api?image.source_url:image.url)+" "+image.width+"w";
-            });
-            model.attributes.bbg_xiv_thumbnail_url=urls[0];
-            model.attributes.bbg_xiv_small_url=urls[1];
-            model.attributes.bbg_xiv_medium_url=urls[2];
-            model.attributes.bbg_xiv_large_url=urls[3];
-            model.attributes.bbg_xiv_srcset=srcset;
-        });
         images.constructed=true;
         return images;
     };
