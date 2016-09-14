@@ -463,6 +463,7 @@
                     fullImg[0].src=bbg_xiv.getImageUrl(data).src;
                     fullImg[0].srcset=data.bbg_srcset;
                 }catch(e){
+                    console.log('##### broken 1');
                     fullImg[0].src=img.src;
                 }
                 fullTitle[0].textContent=img.alt;
@@ -880,8 +881,16 @@
 
     // getting attributes indirectly through functions will make it possible for one template to be used for both the REST mode and the old proprietary mode
 
+    bbg_xiv.getTitle=function(data){
+        return bbg_xiv.bbg_xiv_wp_rest_api?data.title.rendered:data.post_title;
+    };
+
     bbg_xiv.getCaption=function(data){
         return bbg_xiv.bbg_xiv_wp_rest_api?data.caption:data.post_excerpt;
+    };
+
+    bbg_xiv.getAlt=function(data){
+        return bbg_xiv.bbg_xiv_wp_rest_api?data.alt_text:data.image_alt;
     };
 
     try{

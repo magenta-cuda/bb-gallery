@@ -49,7 +49,8 @@
         <figure>
             <figcaption>{{{ data.title.rendered }}}</figcaption>
             <a href="{{{ data.link }}}" target="_blank"<# if ( typeof data.gallery_index !== "undefined" ) { #> class="bbg_xiv-gallery_icon" data-gallery-index="{{{ data.gallery_index }}}"<# } #>>
-                <img src="<# print(bbg_xiv.getThumbnailUrl(data).src); #>" srcset="{{{ data.bbg_srcset }}}" sizes="{{{ data.bbg_xiv_container_width }}}px">
+                <img src="<# print(bbg_xiv.getThumbnailUrl(data).src); #>" srcset="{{{ data.bbg_srcset }}}" sizes="{{{ data.bbg_xiv_container_width }}}px"
+                    alt="<# print(bbg_xiv.getAlt(data)); #>" title="<# print(bbg_xiv.getTitle(data)); #>" data-bbg_xiv-image-id="{{{ data.id }}}">
             </a>
         </figure>
         <a href="{{{ data.link }}}" target="_blank"<# if ( typeof data.gallery_index !== "undefined" ) { #> class="bbg_xiv-gallery_icon" data-gallery-index="{{{ data.gallery_index }}}"<# } #>>
@@ -260,7 +261,7 @@
 <script type="text/html" id="bbg_xiv-template_justified_item">
     <div class="bbg_xiv-justified_item">
         <a href="{{{ data.url }}}">
-            <img alt="{{{ data.image_alt }}}" src="{{{ data.bbg_medium_src[0] }}}" data-bbg_xiv-image-id="{{{ data.id }}}" />
+            <img src="{{{ data.bbg_medium_src[0] }}}" alt="<# print(bbg_xiv.getAlt(data)); #>" title="<# print(bbg_xiv.getTitle(data)); #>" data-bbg_xiv-image-id="{{{ data.id }}}" />
         </a>	
         <div class="caption">
             <a href="{{{ data.link }}}" target="_blank"><# print(bbg_xiv.getCaption(data)); #></a>
