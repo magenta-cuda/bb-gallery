@@ -49,12 +49,7 @@
         <figure>
             <figcaption>{{{ data.title.rendered }}}</figcaption>
             <a href="{{{ data.link }}}" target="_blank"<# if ( typeof data.gallery_index !== "undefined" ) { #> class="bbg_xiv-gallery_icon" data-gallery-index="{{{ data.gallery_index }}}"<# } #>>
-                <picture>
-                    <source media="(min-width:1200px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).src); #>">
-                    <source media="(min-width:992px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).medium); #>">
-                    <source media="(max-width:991px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).small); #>">
-                    <img src="<# print(bbg_xiv.getThumbnailUrl(data).src); #>" alt="{{{ data.title.rendered }}}" title="{{{ data.caption }}}" data-bbg_xiv-image-id="{{{ data.id }}}">
-                </picture>
+                <img src="<# print(bbg_xiv.getThumbnailUrl(data).src); #>" srcset="{{{ data.bbg_srcset }}}" sizes="{{{ data.bbg_xiv_container_width }}}px">
             </a>
         </figure>
         <a href="{{{ data.link }}}" target="_blank"<# if ( typeof data.gallery_index !== "undefined" ) { #> class="bbg_xiv-gallery_icon" data-gallery-index="{{{ data.gallery_index }}}"<# } #>>
@@ -128,16 +123,7 @@
 <script type="text/html" id="bbg_xiv-template_carousel_item">
 <figure class="item bbg_xiv-item<# if ( data.index === 0 ) { #> active<# } #>" data-index="{{{ data.index }}}">
   <a href="{{{ data.link }}}" target="_blank">
-    <img src="{{{ data.source_url }}}" srcset="{{{ data.bbg_xiv_srcset }}}" sizes="{{{ data.bbg_xiv_container_width }}}px"<# if ( data.browser === "Firefox" ) { #> style="display:none;"<# } #>>
-    <!-- Firefox doesn't render <img srcset="..." style="object-fit:..."> correctly so ... -->
-    <picture<# if ( data.browser !== "Firefox" ) { #> style="display:none;"<# } #>>
-      <source media="(min-width:<?php echo $full_width; ?>px)" srcset="<# print(bbg_xiv.getImageUrl(data).src); #>">
-      <source media="(min-width:<?php echo $large_width; ?>px)" srcset="<# print(bbg_xiv.getImageUrl(data).large); #>">
-      <source media="(min-width:<?php echo $medium_large_width; ?>px)" srcset="<# print(bbg_xiv.getImageUrl(data).medium_large); #>">
-      <source media="(min-width:<?php echo $medium_width; ?>px)" srcset="<# print(bbg_xiv.getImageUrl(data).medium); #>">
-      <source media="(max-width:<?php echo $thumbnail_width; ?>px)" srcset="<# print(bbg_xiv.getImageUrl(data).thumbnail); #>">
-      <img src="<# print(bbg_xiv.getImageUrl(data).src); #>">
-    </picture>
+    <img src="{{{ data.source_url }}}" srcset="{{{ data.bbg_srcset }}}" sizes="{{{ data.bbg_xiv_container_width }}}px">
   </a>
   <figcaption>{{{ data.title.rendered }}}<br>{{{ data.caption }}}</figcaption>
 </figure>
@@ -181,16 +167,7 @@
 <script type="text/html" id="bbg_xiv-template_tabs_item">
 <figure id="bbg_xiv-tab_pane{{{ data.index }}}" role="tabpanel" class="tab-pane fade<# if ( data.index === 0 ) { #> active in<# } #>">
   <a href="{{{ data.link }}}" target="_blank"<# if ( typeof data.gallery_index !== "undefined" ) { #> class="bbg_xiv-gallery_icon" data-gallery-index="{{{ data.gallery_index }}}"<# } #>>
-    <img class="bbg_xiv-tabs_img img-rounded" src="{{{ data.source_url }}}" srcset="{{{ data.bbg_xiv_srcset }}}" sizes="{{{ data.bbg_xiv_container_width }}}px"<# if ( data.browser === "Firefox" ) { #> style="display:none;"<# } #>>
-    <!-- Firefox doesn't render <img srcset="..." style="object-fit:..."> correctly so ... -->
-    <picture<# if ( data.browser !== "Firefox" ) { #> style="display:none;"<# } #>>
-      <source media="(min-width:<?php echo $full_width; ?>px)" srcset="<# print(bbg_xiv.getImageUrl(data).src); #>">
-      <source media="(min-width:<?php echo $large_width; ?>px)" srcset="<# print(bbg_xiv.getImageUrl(data).large); #>">
-      <source media="(min-width:<?php echo $medium_large_width; ?>px)" srcset="<# print(bbg_xiv.getImageUrl(data).medium_large); #>">
-      <source media="(min-width:<?php echo $medium_width; ?>px)" srcset="<# print(bbg_xiv.getImageUrl(data).medium); #>">
-      <source media="(max-width:<?php echo $thumbnail_width; ?>px)" srcset="<# print(bbg_xiv.getImageUrl(data).thumbnail); #>">
-      <img class="bbg_xiv-tabs_img img-rounded" src="<# print(bbg_xiv.getImageUrl(data).src); #>">
-    </picture>
+    <img class="bbg_xiv-tabs_img img-rounded" src="{{{ data.source_url }}}" srcset="{{{ data.bbg_srcset }}}" sizes="{{{ data.bbg_xiv_container_width }}}px">
   </a>
   <figcaption><# if ( data.post_content ) { #>{{{ data.post_content }}}<# } else { #>{{{ data.caption }}}<# } #></figcaption>
 </figure>
@@ -286,7 +263,7 @@
             <img alt="{{{ data.image_alt }}}" src="{{{ data.bbg_medium_src[0] }}}" data-bbg_xiv-image-id="{{{ data.id }}}" />
         </a>	
         <div class="caption">
-            <a href="{{{ data.link }}}" target="_blank">{{{ bbg_xiv.getCaption(data) }}}</a>
+            <a href="{{{ data.link }}}" target="_blank"><# print(bbg_xiv.getCaption(data)); #></a>
             <button class="bbg_xiv-dense_full_btn bbg_xiv-dense_from_justified btn"><span class="glyphicon glyphicon-fullscreen"></span></button>
         </div>
     </div>

@@ -92,11 +92,13 @@
     };
 
     bbg_xiv.renderFlex=function(container,collection){
+        var containerWidth=container.width();
         var imageView=new bbg_xiv.ImageView();
         // attach template to imageView not ImageView.prototype since template is specific to imageView
         imageView.template=_.template( jQuery("script#bbg_xiv-template_flex_item").html(),null,bbg_xiv.templateOptions);
         var imagesHtml="";
         collection.forEach(function(model,index){
+            model.attributes.bbg_xiv_container_width=containerWidth;
             imageView.model=model;
             imagesHtml+=imageView.render(true);
         });
