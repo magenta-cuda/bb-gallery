@@ -201,6 +201,7 @@
     };
 
     bbg_xiv.renderDense=function(container,collection,id,mode){
+        var containerWidth=container.width();
         var titleView=new bbg_xiv.ImageView();
         titleView.template=_.template(jQuery("script#bbg_xiv-template_dense_title").html(),null,bbg_xiv.templateOptions);
         var imageView=new bbg_xiv.ImageView();
@@ -210,6 +211,7 @@
         collection.forEach(function(model,index){
             model.attributes.mode=mode;
             model.attributes.index=index;
+            model.attributes.bbg_xiv_container_width=containerWidth;
             imageView.model=titleView.model=model;
             titlesHtml+=titleView.render(true);
             imagesHtml+=imageView.render(true);

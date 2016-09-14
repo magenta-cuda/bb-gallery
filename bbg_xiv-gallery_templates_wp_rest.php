@@ -224,12 +224,8 @@
 <!-- Dense Image Template -->
 <script type="text/html" id="bbg_xiv-template_dense_image">
 <div id="bbg_xiv-dense_image_{{{ data.index }}}" class="bbg_xiv-dense_flex_item" title="{{{ data.title.rendered }}}">
-  <picture>
-    <source media="(min-width:1200px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).src); #>">
-    <source media="(min-width:992px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).medium); #>">
-    <source media="(max-width:991px)" srcset="<# print(bbg_xiv.getThumbnailUrl(data).small); #>">
-    <img class="img-rounded" src="<# print(bbg_xiv.getThumbnailUrl(data).src); #>" alt="{{{ data.title.rendered }}}" title="{{{ data.caption }}}" data-bbg_xiv-image-id="{{{ data.id }}}">
-  </picture>
+  <img src="<# print(bbg_xiv.getThumbnailUrl(data).src); #>" srcset="{{{ data.bbg_srcset }}}" sizes="{{{ data.bbg_xiv_container_width }}}px"
+      alt="<# print(bbg_xiv.getAlt(data)); #>" title="<# print(bbg_xiv.getTitle(data)); #>" data-bbg_xiv-image-id="{{{ data.id }}}">
   <a href="{{{ data.link }}}" target="_blank">
     <div class="bbg_xiv-dense_full_btn">
       <button class="bbg_xiv-dense_full_btn bbg_xiv-dense_from_image btn">
