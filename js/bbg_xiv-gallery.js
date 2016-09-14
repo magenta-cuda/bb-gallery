@@ -895,6 +895,16 @@
         return bbg_xiv.bbg_xiv_wp_rest_api?data.alt_text:data.image_alt;
     };
 
+    bbg_xiv.getSizes=function(fullSize,icon,containerWidth){
+        if(fullSize==="viewport"){
+            return "100vw";
+        }else if(fullSize==="container"){
+            return containerWidth+"px";
+        }else{
+            return "50vw";
+        }
+    }
+
     try{
         window.localStorage.setItem("test","test");
         window.localStorage.removeItem("test");

@@ -202,7 +202,7 @@
   <div class="bbg_xiv-dense_inner">
     <button class="bbg_xiv-dense_close"><span class="glyphicon glyphicon-remove"></span></button>
     <h1 class="bbg_xiv-dense_title"></h1>
-    <img class="img-rounded bbg_xiv-img_overlay" sizes="100vw">
+    <img class="img-rounded bbg_xiv-img_overlay" sizes="<# print(bbg_xiv.getSizes('viewport',false,data.bbg_xiv_container_width)); #>">
     <h1 class="bbg_xiv-dense_caption"></h1>
   </div>
 </div>
@@ -224,7 +224,7 @@
 <!-- Dense Image Template -->
 <script type="text/html" id="bbg_xiv-template_dense_image">
 <div id="bbg_xiv-dense_image_{{{ data.index }}}" class="bbg_xiv-dense_flex_item" title="{{{ data.title.rendered }}}">
-  <img src="<# print(bbg_xiv.getThumbnailUrl(data).src); #>" srcset="{{{ data.bbg_srcset }}}" sizes="{{{ data.bbg_xiv_container_width }}}px"
+  <img src="<# print(bbg_xiv.getThumbnailUrl(data).src); #>" srcset="{{{ data.bbg_srcset }}}" sizes="<# print(bbg_xiv.getSizes('viewport',true,data.bbg_xiv_container_width)); #>"
       alt="<# print(bbg_xiv.getAlt(data)); #>" title="<# print(bbg_xiv.getTitle(data)); #>" data-bbg_xiv-image-id="{{{ data.id }}}">
   <a href="{{{ data.link }}}" target="_blank">
     <div class="bbg_xiv-dense_full_btn">
