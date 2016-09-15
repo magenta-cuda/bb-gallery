@@ -38,7 +38,7 @@
     <div class="bbg_xiv-dense_inner">
       <button class="bbg_xiv-dense_close"><span class="glyphicon glyphicon-remove"></span></button>
       <h1 class="bbg_xiv-dense_title"></h1>
-      <img class="img-rounded bbg_xiv-img_overlay" sizes="100vw">
+      <img class="img-rounded bbg_xiv-img_overlay" sizes="<# print(bbg_xiv.getSizes(data,'viewport',false)); #>">
       <h1 class="bbg_xiv-dense_caption"></h1>
     </div>
 </div>
@@ -47,15 +47,15 @@
 <script type="text/html" id="bbg_xiv-template_flex_item">
     <div class="bbg_xiv-flex_item">
         <figure>
-            <figcaption>{{{ data.title.rendered }}}</figcaption>
+            <figcaption><# print(bbg_xiv.getTitle(data)); #></figcaption>
             <a href="{{{ data.link }}}" target="_blank"<# if ( typeof data.gallery_index !== "undefined" ) { #> class="bbg_xiv-gallery_icon" data-gallery-index="{{{ data.gallery_index }}}"<# } #>>
-                <img src="<# print(bbg_xiv.getThumbnailUrl(data).src); #>" srcset="{{{ data.bbg_srcset }}}" sizes="{{{ data.bbg_xiv_container_width }}}px"
+                <img src="<# print(bbg_xiv.getSrc(data,'viewport',true)); #>" srcset="{{{ data.bbg_srcset }}}" sizes="<# print(bbg_xiv.getSizes(data,'viewport',true)); #>"
                     alt="<# print(bbg_xiv.getAlt(data)); #>" title="<# print(bbg_xiv.getTitle(data)); #>" data-bbg_xiv-image-id="{{{ data.id }}}">
             </a>
         </figure>
         <a href="{{{ data.link }}}" target="_blank"<# if ( typeof data.gallery_index !== "undefined" ) { #> class="bbg_xiv-gallery_icon" data-gallery-index="{{{ data.gallery_index }}}"<# } #>>
             <!-- overlay for full viewport button -->
-            <div class="bbg_xiv-dense_full_btn" title="{{{ data.caption }}}">
+            <div class="bbg_xiv-dense_full_btn" title="<# print(bbg_xiv.getCaption(data)); #>">
                 <button class="bbg_xiv-dense_full_btn bbg_xiv-flex_from_image btn">
                     <span class="glyphicon glyphicon-fullscreen"></span>
                 </button>
@@ -124,9 +124,9 @@
 <script type="text/html" id="bbg_xiv-template_carousel_item">
 <figure class="item bbg_xiv-item<# if ( data.index === 0 ) { #> active<# } #>" data-index="{{{ data.index }}}">
   <a href="{{{ data.link }}}" target="_blank">
-    <img src="{{{ data.source_url }}}" srcset="{{{ data.bbg_srcset }}}" sizes="{{{ data.bbg_xiv_container_width }}}px">
+    <img src="<# print(bbg_xiv.getSrc(data,'container',false)); #>" srcset="{{{ data.bbg_srcset }}}" sizes="<# print(bbg_xiv.getSizes(data,'container',false)); #>">
   </a>
-  <figcaption>{{{ data.title.rendered }}}<br>{{{ data.caption }}}</figcaption>
+  <figcaption><# print(bbg_xiv.getTitle(data)); #><br><# print(bbg_xiv.getCaption(data)); #></figcaption>
 </figure>
 </script>
 
