@@ -229,7 +229,7 @@
 <!-- Dense Image Template -->
 <script type="text/html" id="bbg_xiv-template_dense_image">
 <div id="bbg_xiv-dense_image_{{{ data.index }}}" class="bbg_xiv-dense_flex_item" title="{{{ data.title.rendered }}}">
-  <img src="<# print(bbg_xiv.getThumbnailUrl(data).src); #>" srcset="{{{ data.bbg_srcset }}}" sizes="<# print(bbg_xiv.getSizes(data,'viewport',true)); #>"
+  <img src="<# print(bbg_xiv.getSrc(data,'viewport',true)); #>" srcset="{{{ data.bbg_srcset }}}" sizes="<# print(bbg_xiv.getSizes(data,'viewport',true)); #>"
       alt="<# print(bbg_xiv.getAlt(data)); #>" title="<# print(bbg_xiv.getTitle(data)); #>" data-bbg_xiv-image-id="{{{ data.id }}}">
   <a href="{{{ data.link }}}" target="_blank">
     <div class="bbg_xiv-dense_full_btn">

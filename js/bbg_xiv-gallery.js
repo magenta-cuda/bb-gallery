@@ -800,36 +800,7 @@
         liSelectView.find("a.bbg_xiv-selected_view span").text(liFirst.text());
         jQuery(window).resize();
     };
-    
-    bbg_xiv.getThumbnailUrl=function(data){
-        switch(bbg_xiv.bandwidth){
-        case "normal":
-            return {
-                src      :bbg_xiv.bbg_xiv_wp_rest_api?data.source_url:data.url,
-                thumbnail:data.bbg_xiv_thumbnail_url,
-                small    :data.bbg_xiv_small_url,
-                medium   :data.bbg_xiv_medium_url,
-                large    :data.bbg_xiv_large_url
-            };
-        case "low":
-            return {
-                src      :data.bbg_xiv_small_url,
-                thumbnail:data.bbg_xiv_thumbnail_url,
-                small    :data.bbg_xiv_small_url,
-                medium   :data.bbg_xiv_small_url,
-                large    :data.bbg_xiv_small_url
-            };
-        case "very low":
-            return {
-                src      :data.bbg_xiv_thumbnail_url,
-                thumbnail:data.bbg_xiv_thumbnail_url,
-                small    :data.bbg_xiv_thumbnail_url,
-                medium   :data.bbg_xiv_thumbnail_url,
-                large    :data.bbg_xiv_thumbnail_url
-            }; 
-        }
-    };
-    
+     
     bbg_xiv.getImageUrl=function(data){
         switch(bbg_xiv.bandwidth){
         case "normal":
