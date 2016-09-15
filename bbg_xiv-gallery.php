@@ -814,7 +814,8 @@ EOD;
         add_action( 'rest_api_init', [ 'BBG_XIV_Gallery', 'add_additional_rest_fields' ] );
 
         add_action( 'wp_enqueue_scripts', function( ) {
-            if ( !preg_match( '/\[gallery(\s|\])|\[bb_gallery(\s|\])/', get_post( )->post_content ) ) {
+            $post = get_post( );
+            if ( $post && !preg_match( '/\[gallery(\s|\])|\[bb_gallery(\s|\])/', $post->post_content ) ) {
                 # only emit bb_gallery's styles and scripts if the post content has the bb_gallery shortcode
                 return;
             }
