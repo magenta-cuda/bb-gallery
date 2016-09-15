@@ -161,7 +161,7 @@
 <!-- Tabs Tab Template -->
 <script type="text/html" id="bbg_xiv-template_tabs_tab">
 <li<# if ( data.index === 0 ) { #> class=" active"<# } #>>
-  <a href="#bbg_xiv-tab_pane{{{ data.index }}}" data-toggle="tab">{{{ data.title.rendered }}}</a>
+  <a href="#bbg_xiv-tab_pane{{{ data.index }}}" data-toggle="tab"><# print(bbg_xiv.getTitle(data)); #></a>
 </li>
 </script>
 <!-- Tabs Item Template -->
@@ -212,10 +212,10 @@
 <script type="text/html" id="bbg_xiv-template_dense_title">
 <li id="bbg_xiv-dense_title_{{{ data.index }}}">
   <a href="{{{ data.link }}}" target="_blank">
-    <span class="bbg_xiv-dense_li_title" title="{{{ data.caption }}}"<# if ( data.mode !== "title" ) { #> style="display:none;"<# } #>>
-      {{{ data.title.rendered }}}</span>
-    <span class="bbg_xiv-dense_li_caption" title="{{{ data.title.rendered }}}"<# if ( data.mode !== "caption" ) { #> style="display:none;"<# } #>>
-      <# if ( data.caption ) { #>{{{ data.caption }}}</span><# } else { #>.....<# } #>
+    <span class="bbg_xiv-dense_li_title" title="<# print(bbg_xiv.getCaption(data)); #>"<# if ( data.mode !== "title" ) { #> style="display:none;"<# } #>>
+      <# print(bbg_xiv.getTitle(data)); #></span>
+    <span class="bbg_xiv-dense_li_caption" title="<# print(bbg_xiv.getTitle(data)); #>"<# if ( data.mode !== "caption" ) { #> style="display:none;"<# } #>>
+      <# print(bbg_xiv.getCaption(data)); #></span>
   </a>
   <button class="bbg_xiv-dense_full_btn bbg_xiv-dense_from_title btn">
     <span class="glyphicon glyphicon-fullscreen"></span>
@@ -249,7 +249,7 @@
     <div class="bbg_xiv-dense_inner">
         <button class="bbg_xiv-dense_close"><span class="glyphicon glyphicon-remove"></span></button>
         <h1 class="bbg_xiv-dense_title"></h1>
-        <img class="img-rounded bbg_xiv-img_overlay" sizes="100vw">
+        <img class="img-rounded bbg_xiv-img_overlay" sizes="<# print(bbg_xiv.getSizes(data,'viewport',false)); #>">
         <h1 class="bbg_xiv-dense_caption"></h1>
     </div>
 </div>
