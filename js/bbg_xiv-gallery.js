@@ -730,9 +730,15 @@
                     if(this.value==="title"){
                         div.find("span.bbg_xiv-dense_li_caption").hide();
                         div.find("span.bbg_xiv-dense_li_title").show();
+                        div.find("span.bbg_xiv-dense_li_alt").hide();
                     }else if(this.value==="caption"){
                         div.find("span.bbg_xiv-dense_li_title").hide();
                         div.find("span.bbg_xiv-dense_li_caption").show();
+                        div.find("span.bbg_xiv-dense_li_alt").hide();
+                    }else if(this.value==="alt"){
+                        div.find("span.bbg_xiv-dense_li_title").hide();
+                        div.find("span.bbg_xiv-dense_li_caption").hide();
+                        div.find("span.bbg_xiv-dense_li_alt").show();
                     }
                 }
             });

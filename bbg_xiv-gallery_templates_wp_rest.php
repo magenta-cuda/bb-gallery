@@ -184,7 +184,9 @@
     <input type="radio" name="bbg_xiv-dense_li_mode" class="bbg_xiv-dense_li_mode" value="title"
       <# if ( data.mode === "title" ) { #>checked<# } #>>&nbsp;Title&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="radio" name="bbg_xiv-dense_li_mode" class="bbg_xiv-dense_li_mode" value="caption"
-      <# if ( data.mode === "caption" ) { #>checked<# } #>>&nbsp;Caption
+      <# if ( data.mode === "caption" ) { #>checked<# } #>>&nbsp;Caption&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="radio" name="bbg_xiv-dense_li_mode" class="bbg_xiv-dense_li_mode" value="alt"
+      <# if ( data.mode === "alt" ) { #>checked<# } #>>&nbsp;Alt
   </div>
   <button type="button" class="bbg_xiv-dense_close_btn btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
   <div class="bbg_xiv-dense_titles">
@@ -216,6 +218,8 @@
       <# print(bbg_xiv.getTitle(data)); #></span>
     <span class="bbg_xiv-dense_li_caption" title="<# print(bbg_xiv.getTitle(data)); #>"<# if ( data.mode !== "caption" ) { #> style="display:none;"<# } #>>
       <# print(bbg_xiv.getCaption(data)); #></span>
+    <span class="bbg_xiv-dense_li_alt" title="<# print(bbg_xiv.getTitle(data)); #>"<# if ( data.mode !== "alt" ) { #> style="display:none;"<# } #>>
+      <# print(bbg_xiv.getAlt(data)); #></span>
   </a>
   <button class="bbg_xiv-dense_full_btn bbg_xiv-dense_from_title btn">
     <span class="glyphicon glyphicon-fullscreen"></span>
