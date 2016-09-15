@@ -168,7 +168,8 @@
 <script type="text/html" id="bbg_xiv-template_tabs_item">
 <figure id="bbg_xiv-tab_pane{{{ data.index }}}" role="tabpanel" class="tab-pane fade<# if ( data.index === 0 ) { #> active in<# } #>">
   <a href="{{{ data.link }}}" target="_blank"<# if ( typeof data.gallery_index !== "undefined" ) { #> class="bbg_xiv-gallery_icon" data-gallery-index="{{{ data.gallery_index }}}"<# } #>>
-    <img class="bbg_xiv-tabs_img img-rounded" src="{{{ data.source_url }}}" srcset="{{{ data.bbg_srcset }}}" sizes="{{{ data.bbg_xiv_container_width }}}px">
+    <img class="bbg_xiv-tabs_img img-rounded" src="<# print(bbg_xiv.getSrc(data,'container',false)); #>"
+        srcset="{{{ data.bbg_srcset }}}" sizes="<# print(bbg_xiv.getSizes(data,'container',false)); #>">
   </a>
   <figcaption><# if ( data.post_content ) { #>{{{ data.post_content }}}<# } else { #>{{{ data.caption }}}<# } #></figcaption>
 </figure>
@@ -202,7 +203,7 @@
   <div class="bbg_xiv-dense_inner">
     <button class="bbg_xiv-dense_close"><span class="glyphicon glyphicon-remove"></span></button>
     <h1 class="bbg_xiv-dense_title"></h1>
-    <img class="img-rounded bbg_xiv-img_overlay" sizes="<# print(bbg_xiv.getSizes('viewport',false,data.bbg_xiv_container_width)); #>">
+    <img class="img-rounded bbg_xiv-img_overlay" sizes="<# print(bbg_xiv.getSizes(data,'viewport',false)); #>">
     <h1 class="bbg_xiv-dense_caption"></h1>
   </div>
 </div>
@@ -224,7 +225,7 @@
 <!-- Dense Image Template -->
 <script type="text/html" id="bbg_xiv-template_dense_image">
 <div id="bbg_xiv-dense_image_{{{ data.index }}}" class="bbg_xiv-dense_flex_item" title="{{{ data.title.rendered }}}">
-  <img src="<# print(bbg_xiv.getThumbnailUrl(data).src); #>" srcset="{{{ data.bbg_srcset }}}" sizes="<# print(bbg_xiv.getSizes('viewport',true,data.bbg_xiv_container_width)); #>"
+  <img src="<# print(bbg_xiv.getThumbnailUrl(data).src); #>" srcset="{{{ data.bbg_srcset }}}" sizes="<# print(bbg_xiv.getSizes(data,'viewport',true)); #>"
       alt="<# print(bbg_xiv.getAlt(data)); #>" title="<# print(bbg_xiv.getTitle(data)); #>" data-bbg_xiv-image-id="{{{ data.id }}}">
   <a href="{{{ data.link }}}" target="_blank">
     <div class="bbg_xiv-dense_full_btn">

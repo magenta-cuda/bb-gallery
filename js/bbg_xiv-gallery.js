@@ -850,6 +850,13 @@
 
     // getting attributes indirectly through functions will make it possible for one template to be used for both the REST mode and the old proprietary mode
 
+    // the fullSize parameter is the size of the non-iconic view of the image and should either "viewport" or "container"
+    // the icon parameter is a boolean indicating that the src is for a thumbnail
+
+    bbg_xiv.getSrc=function(data,fullSize,icon){
+        return bbg_xiv.bbg_xiv_wp_rest_api?data.source_url:data.url;
+    }
+
     bbg_xiv.getTitle=function(data){
         return bbg_xiv.bbg_xiv_wp_rest_api?data.title.rendered:data.post_title;
     };
@@ -862,11 +869,11 @@
         return bbg_xiv.bbg_xiv_wp_rest_api?data.alt_text:data.image_alt;
     };
 
-    bbg_xiv.getSizes=function(fullSize,icon,containerWidth){
+    bbg_xiv.getSizes=function(data,fullSize,icon){
         if(fullSize==="viewport"){
             return "100vw";
         }else if(fullSize==="container"){
-            return containerWidth+"px";
+            return data.bbg_xiv_container_width+"px";
         }else{
             return "50vw";
         }
