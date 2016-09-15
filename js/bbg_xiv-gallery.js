@@ -430,7 +430,11 @@
                     var galleryId=jQuery(img).parents("div[data-bbg_xiv-gallery-id]")[0].dataset.bbg_xivGalleryId;
                     var data=bbg_xiv.images[galleryId].get(img.dataset.bbg_xivImageId).attributes;
                     fullImg[0].src=bbg_xiv.getSrc(data,"viewport",false);
-                    fullImg[0].srcset=data.bbg_srcset;
+                    if(data.bbg_srcset){
+                        fullImg[0].srcset=data.bbg_srcset;
+                    }else{
+                        fullImg[0].removeAttribute("sizes");
+                    }
                 }catch(e){
                     console.log('##### broken 1');
                     fullImg[0].src=img.src;
@@ -836,7 +840,10 @@
     };
 
     bbg_xiv.getSizes=function(data,fullSize,icon){
-        if(fullSize==="viewport"){
+        if(!data.bbg_srcset){
+            // really should removeAttribute but this should work
+            return null;
+        }else if(fullSize==="viewport"){
             return "100vw";
         }else if(fullSize==="container"){
             return data.bbg_xiv_container_width+"px";
