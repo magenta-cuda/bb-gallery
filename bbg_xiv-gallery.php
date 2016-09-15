@@ -745,10 +745,10 @@ EOD;
 
     public static function get_additional_rest_field( $object, $field_name, $request, $object_type ) {
         global $post;
-        error_log( 'get_additional_rest_field():$object=' . print_r( $object, true ) );
-        error_log( 'get_additional_rest_field():$field_name=' . $field_name );
-        error_log( 'get_additional_rest_field():$object_type=' . print_r( $object_type, true ) );
-        error_log( 'get_additional_rest_field():$post=' . print_r( $post, true ) );
+        #error_log( 'get_additional_rest_field():$object=' . print_r( $object, true ) );
+        #error_log( 'get_additional_rest_field():$field_name=' . $field_name );
+        #error_log( 'get_additional_rest_field():$object_type=' . print_r( $object_type, true ) );
+        #error_log( 'get_additional_rest_field():$post=' . print_r( $post, true ) );
         if ( $field_name === 'bbg_srcset' ) {
             return wp_get_attachment_image_srcset( $post->ID );
         }
