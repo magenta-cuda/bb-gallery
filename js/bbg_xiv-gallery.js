@@ -429,7 +429,7 @@
                 try{
                     var galleryId=jQuery(img).parents("div[data-bbg_xiv-gallery-id]")[0].dataset.bbg_xivGalleryId;
                     var data=bbg_xiv.images[galleryId].get(img.dataset.bbg_xivImageId).attributes;
-                    fullImg[0].src=bbg_xiv.getImageUrl(data).src;
+                    fullImg[0].src=bbg_xiv.getSrc(data,"viewport",false);
                     fullImg[0].srcset=data.bbg_srcset;
                 }catch(e){
                     console.log('##### broken 1');
@@ -801,37 +801,18 @@
         jQuery(window).resize();
     };
      
-    bbg_xiv.getImageUrl=function(data){
-        switch(bbg_xiv.bandwidth){
-        case "normal":
-            return {
-                src          : bbg_xiv.bbg_xiv_wp_rest_api?data.source_url:data.url,
-                thumbnail    : data.bbg_thumbnail_src[0],
-                small        : data.bbg_medium_src[0],
-                medium       : data.bbg_medium_src[0],
-                medium_large : data.bbg_medium_large_src[0],
-                large        : data.bbg_large_src[0]
-            };
-        case "low":
-        case "very low":
-            return {
-                src          : data.bbg_medium_src[0],
-                thumbnail    : data.bbg_thumbnail_src[0],
-                small        : data.bbg_medium_src[0],
-                medium       : data.bbg_medium_src[0],
-                medium_large : data.bbg_medium_src[0],
-                large        : data.bbg_medium_src[0]
-            };
-        }
-    };
-
     // getting attributes indirectly through functions will make it possible for one template to be used for both the REST mode and the old proprietary mode
 
     // the fullSize parameter is the size of the non-iconic view of the image and should either "viewport" or "container"
     // the icon parameter is a boolean indicating that the src is for a thumbnail
 
     bbg_xiv.getSrc=function(data,fullSize,icon){
-        return bbg_xiv.bbg_xiv_wp_rest_api?data.source_url:data.url;
+        switch(bbg_xiv.bandwidth){
+        case "normal":
+        case "low":
+        case "very low":
+            return bbg_xiv.bbg_xiv_wp_rest_api?data.source_url:data.url;
+        }
     }
 
     bbg_xiv.getTitle=function(data){
