@@ -431,7 +431,7 @@
                     var data=bbg_xiv.images[galleryId].get(img.dataset.bbg_xivImageId).attributes;
                     fullImg[0].src=bbg_xiv.getSrc(data,"viewport",false);
                     if(data.bbg_srcset){
-                        fullImg[0].srcset=data.bbg_srcset;
+                        fullImg[0].srcset=bbg_xiv.getSrcset(data);
                     }else{
                         fullImg[0].removeAttribute("sizes");
                     }
@@ -838,7 +838,11 @@
                 }
             }
         }
-    }
+    };
+
+    bbg_xiv.getSrcset=function(data){
+        return data.bbg_srcset;
+    };
 
     bbg_xiv.getTitle=function(data){
         return bbg_xiv.bbg_xiv_wp_rest_api?data.title.rendered:data.post_title;

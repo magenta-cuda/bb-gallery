@@ -38,7 +38,7 @@
     <div class="bbg_xiv-dense_inner">
       <button class="bbg_xiv-dense_close"><span class="glyphicon glyphicon-remove"></span></button>
       <h1 class="bbg_xiv-dense_title"></h1>
-      <img class="img-rounded bbg_xiv-img_overlay" sizes="<# print(bbg_xiv.getSizes(data,'viewport',false)); #>">
+      <img class="img-rounded bbg_xiv-img_overlay" sizes="100vw">
       <h1 class="bbg_xiv-dense_caption"></h1>
     </div>
 </div>
@@ -49,7 +49,7 @@
         <figure>
             <figcaption><# print(bbg_xiv.getTitle(data)); #></figcaption>
             <a href="{{{ data.link }}}" target="_blank"<# if ( typeof data.gallery_index !== "undefined" ) { #> class="bbg_xiv-gallery_icon" data-gallery-index="{{{ data.gallery_index }}}"<# } #>>
-                <img src="<# print(bbg_xiv.getSrc(data,'viewport',true)); #>" srcset="{{{ data.bbg_srcset }}}" sizes="<# print(bbg_xiv.getSizes(data,'viewport',true)); #>"
+                <img src="<# print(bbg_xiv.getSrc(data,'viewport',true)); #>" srcset="<# print(bbg_xiv.getSrcset(data)); #>" sizes="<# print(bbg_xiv.getSizes(data,'viewport',true)); #>"
                     alt="<# print(bbg_xiv.getAlt(data)); #>" title="<# print(bbg_xiv.getTitle(data)); #>" data-bbg_xiv-image-id="{{{ data.id }}}">
             </a>
         </figure>
@@ -124,7 +124,7 @@
 <script type="text/html" id="bbg_xiv-template_carousel_item">
 <figure class="item bbg_xiv-item<# if ( data.index === 0 ) { #> active<# } #>" data-index="{{{ data.index }}}">
   <a href="{{{ data.link }}}" target="_blank">
-    <img src="<# print(bbg_xiv.getSrc(data,'container',false)); #>" srcset="{{{ data.bbg_srcset }}}" sizes="<# print(bbg_xiv.getSizes(data,'container',false)); #>">
+    <img src="<# print(bbg_xiv.getSrc(data,'container',false)); #>" srcset="<# print(bbg_xiv.getSrcset(data)); #>" sizes="<# print(bbg_xiv.getSizes(data,'container',false)); #>">
   </a>
   <figcaption><# print(bbg_xiv.getTitle(data)); #><br><# print(bbg_xiv.getCaption(data)); #></figcaption>
 </figure>
@@ -169,7 +169,7 @@
 <figure id="bbg_xiv-tab_pane{{{ data.index }}}" role="tabpanel" class="tab-pane fade<# if ( data.index === 0 ) { #> active in<# } #>">
   <a href="{{{ data.link }}}" target="_blank"<# if ( typeof data.gallery_index !== "undefined" ) { #> class="bbg_xiv-gallery_icon" data-gallery-index="{{{ data.gallery_index }}}"<# } #>>
     <img class="bbg_xiv-tabs_img img-rounded" src="<# print(bbg_xiv.getSrc(data,'container',false)); #>"
-        srcset="{{{ data.bbg_srcset }}}" sizes="<# print(bbg_xiv.getSizes(data,'container',false)); #>">
+        srcset="<# print(bbg_xiv.getSrcset(data)); #>" sizes="<# print(bbg_xiv.getSizes(data,'container',false)); #>">
   </a>
   <figcaption><# if ( data.post_content ) { #>{{{ data.post_content }}}<# } else { #>{{{ data.caption }}}<# } #></figcaption>
 </figure>
@@ -205,7 +205,7 @@
   <div class="bbg_xiv-dense_inner">
     <button class="bbg_xiv-dense_close"><span class="glyphicon glyphicon-remove"></span></button>
     <h1 class="bbg_xiv-dense_title"></h1>
-    <img class="img-rounded bbg_xiv-img_overlay" sizes="<# print(bbg_xiv.getSizes(data,'viewport',false)); #>">
+    <img class="img-rounded bbg_xiv-img_overlay" sizes="100vw">
     <h1 class="bbg_xiv-dense_caption"></h1>
   </div>
 </div>
@@ -229,7 +229,7 @@
 <!-- Dense Image Template -->
 <script type="text/html" id="bbg_xiv-template_dense_image">
 <div id="bbg_xiv-dense_image_{{{ data.index }}}" class="bbg_xiv-dense_flex_item" title="{{{ data.title.rendered }}}">
-  <img src="<# print(bbg_xiv.getSrc(data,'viewport',true)); #>" srcset="{{{ data.bbg_srcset }}}" sizes="<# print(bbg_xiv.getSizes(data,'viewport',true)); #>"
+  <img src="<# print(bbg_xiv.getSrc(data,'viewport',true)); #>" srcset="<# print(bbg_xiv.getSrcset(data)); #>" sizes="<# print(bbg_xiv.getSizes(data,'viewport',true)); #>"
       alt="<# print(bbg_xiv.getAlt(data)); #>" title="<# print(bbg_xiv.getTitle(data)); #>" data-bbg_xiv-image-id="{{{ data.id }}}">
   <a href="{{{ data.link }}}" target="_blank">
     <div class="bbg_xiv-dense_full_btn">
@@ -253,7 +253,7 @@
     <div class="bbg_xiv-dense_inner">
         <button class="bbg_xiv-dense_close"><span class="glyphicon glyphicon-remove"></span></button>
         <h1 class="bbg_xiv-dense_title"></h1>
-        <img class="img-rounded bbg_xiv-img_overlay" sizes="<# print(bbg_xiv.getSizes(data,'viewport',false)); #>">
+        <img class="img-rounded bbg_xiv-img_overlay" sizes="100vw">
         <h1 class="bbg_xiv-dense_caption"></h1>
     </div>
 </div>

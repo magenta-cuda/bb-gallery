@@ -687,7 +687,7 @@ EOD;
             $attachment->image_alt = get_post_meta( $id, '_wp_attachment_image_alt', TRUE );
             $attachment->post_content = apply_filters( 'the_content', $attachment->post_content );
             # fields for compatibility with my REST API
-            $srcset = wp_get_attachment_image_srcset( $id );
+            $srcset = wp_get_attachment_image_srcset( $id, 'large' );
             $attachment->bbg_srcset = $srcset ? $srcset : '';
             foreach( [ 'thumbnail', 'medium', 'medium_large', 'large', 'full' ] as $size ) {
                 $attachment->{'bbg_' . $size . '_src'} = wp_get_attachment_image_src( $id, $size );
@@ -750,7 +750,7 @@ EOD;
         #error_log( 'get_additional_rest_field():$object_type=' . print_r( $object_type, true ) );
         #error_log( 'get_additional_rest_field():$post=' . print_r( $post, true ) );
         if ( $field_name === 'bbg_srcset' ) {
-            $srcset = wp_get_attachment_image_srcset( $post->ID );
+            $srcset = wp_get_attachment_image_srcset( $post->ID, 'large' );
             return $srcset ? $srcset : '';
         }
         # if 'medium_large' does not exists wp_get_attachment_image_src() returns 'full' which doesn't make sense so ...
