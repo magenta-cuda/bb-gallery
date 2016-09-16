@@ -810,12 +810,33 @@
     // the fullSize parameter is the size of the non-iconic view of the image and should either "viewport" or "container"
     // the icon parameter is a boolean indicating that the src is for a thumbnail
 
+    // getSrc() sets the src attribute of <img> HTML elements which will be ignored on modern browsers that support the srcset attribute
+    // i.e. the source selection logic of getSrc() will only be used on older browsers
+
     bbg_xiv.getSrc=function(data,fullSize,icon){
         switch(bbg_xiv.bandwidth){
         case "normal":
-        case "low":
-        case "very low":
             return bbg_xiv.bbg_xiv_wp_rest_api?data.source_url:data.url;
+        case "low":
+            if(icon){
+                return data.bbg_thumbnail_src[0];
+            }else{
+                if(fullSize==="viewport"){
+                    return data.bbg_large_src[0];
+                }else{
+                    return data.bbg_medium_large_src[0];
+                }
+            }
+        case "very low":
+            if(icon){
+                return data.bbg_thumbnail_src[0];
+            }else{
+                if(fullSize==="viewport"){
+                    return data.bbg_medium_large_src[0];
+                }else{
+                    return data.bbg_medium_src[0];
+                }
+            }
         }
     }
 

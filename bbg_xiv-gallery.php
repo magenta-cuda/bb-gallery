@@ -70,11 +70,6 @@ class BBG_XIV_Gallery {
             }
             $prev_width = $width;
         }
-        error_log( '$thumbnail_width='  . $thumbnail_width );
-        error_log( '$medium_width='  . $medium_width );
-        error_log( '$medium_large_width='  . $medium_large_width );
-        error_log( '$large_width='  . $large_width );
-        error_log( '$full_width='  . $full_width );
 
         ob_start( );
         if ( self::$wp_rest_api_available && self::$use_wp_rest_api_if_available ) {

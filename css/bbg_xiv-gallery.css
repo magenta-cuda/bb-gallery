@@ -742,7 +742,7 @@ div.bbg_xiv-bootstrap div.carousel.slide {
           left: 7.5%;
           width: 85%;
           overflow: hidden; } }
-      div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > img, div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > a > img, div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > a > picture > img {
+      div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > img, div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > a > img {
         height: 80%;
         width: auto;
         max-width: none;
@@ -752,11 +752,11 @@ div.bbg_xiv-bootstrap div.carousel.slide {
         transform: translate(-50%, 0px);
         padding: 1%; }
         @supports (object-fit: contain) {
-          div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > img, div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > a > img, div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > a > picture > img {
+          div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > img, div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > a > img {
             width: 85%;
             object-fit: contain; } }
         @media (max-aspect-ratio: 1 / 1) {
-          div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > img, div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > a > img, div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > a > picture > img {
+          div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > img, div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > a > img {
             height: 70%;
             top: 20%; } }
       div.bbg_xiv-bootstrap div.carousel.slide .carousel-inner > .item > figcaption {
