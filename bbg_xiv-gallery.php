@@ -692,6 +692,10 @@ EOD;
             foreach( [ 'thumbnail', 'medium', 'medium_large', 'large', 'full' ] as $size ) {
                 $attachment->{'bbg_' . $size . '_src'} = wp_get_attachment_image_src( $id, $size );
             }
+            # if 'medium_large' does not exists wp_get_attachment_image_src() returns 'full' which doesn't make sense so ...
+            if ( $attachment->bbg_medium_large_src[1] > $attachment->bbg_large_src[1] ) {
+                $attachment->bbg_medium_large_src = $attachment->bbg_large_src;
+            }
             # TODO: For the "Table" view you may want to unset some fields.
             unset( $attachment->post_password );
             unset( $attachment->ping_status );
@@ -749,7 +753,16 @@ EOD;
             $srcset = wp_get_attachment_image_srcset( $post->ID );
             return $srcset ? $srcset : '';
         }
-        foreach( [ 'thumbnail', 'medium', 'medium_large', 'large', 'full' ] as $size ) {
+        # if 'medium_large' does not exists wp_get_attachment_image_src() returns 'full' which doesn't make sense so ...
+        if ( $field_name === 'bbg_medium_large_src' ) {
+            $medium_large = wp_get_attachment_image_src( $post->ID, 'medium_large' );
+            $large = wp_get_attachment_image_src( $post->ID, 'large' );
+            if ( $medium_large[1] > $large[1] ) {
+                return $large;
+            }
+            return $medium_large;
+        }
+        foreach( [ 'thumbnail', 'medium', 'large', 'full' ] as $size ) {
             if ( $field_name === 'bbg_' . $size . '_src' ) {
                 return wp_get_attachment_image_src( $post->ID, $size );
             }
