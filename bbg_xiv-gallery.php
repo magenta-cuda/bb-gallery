@@ -659,6 +659,7 @@ EOD;
     }
 
     public static function bbg_xiv_do_attachments( $attachments ) {
+        global $content_width;
         foreach ( $attachments as $id => &$attachment ) {
             $attachment->url = wp_get_attachment_url( $id );
             $meta = wp_get_attachment_metadata( $id );
@@ -689,9 +690,12 @@ EOD;
             # fields for compatibility with my REST API
             $srcset = wp_get_attachment_image_srcset( $id, 'large' );
             $attachment->bbg_srcset = $srcset ? $srcset : '';
+            $orig_content_width = $content_width;
+            $content_width = 0;
             foreach( [ 'thumbnail', 'medium', 'medium_large', 'large', 'full' ] as $size ) {
                 $attachment->{'bbg_' . $size . '_src'} = wp_get_attachment_image_src( $id, $size );
             }
+            $content_width = $orig_content_width;
             # if 'medium_large' does not exists wp_get_attachment_image_src() returns 'full' which doesn't make sense so ...
             if ( $attachment->bbg_medium_large_src[1] > $attachment->bbg_large_src[1] ) {
                 $attachment->bbg_medium_large_src = $attachment->bbg_large_src;
@@ -744,7 +748,7 @@ EOD;
     }
 
     public static function get_additional_rest_field( $object, $field_name, $request, $object_type ) {
-        global $post;
+        global $post, $content_width;
         #error_log( 'get_additional_rest_field():$object=' . print_r( $object, true ) );
         #error_log( 'get_additional_rest_field():$field_name=' . $field_name );
         #error_log( 'get_additional_rest_field():$object_type=' . print_r( $object_type, true ) );
@@ -755,8 +759,12 @@ EOD;
         }
         # if 'medium_large' does not exists wp_get_attachment_image_src() returns 'full' which doesn't make sense so ...
         if ( $field_name === 'bbg_medium_large_src' ) {
+            $orig_content_width = $content_width;
+            $content_width = 0;
             $medium_large = wp_get_attachment_image_src( $post->ID, 'medium_large' );
             $large = wp_get_attachment_image_src( $post->ID, 'large' );
+            $content_width = $orig_content_width;
+            error_log( 'get_additional_rest_field():$large=' . print_r( $large, true ) );
             if ( $medium_large[1] > $large[1] ) {
                 return $large;
             }
@@ -764,7 +772,11 @@ EOD;
         }
         foreach( [ 'thumbnail', 'medium', 'large', 'full' ] as $size ) {
             if ( $field_name === 'bbg_' . $size . '_src' ) {
-                return wp_get_attachment_image_src( $post->ID, $size );
+                $orig_content_width = $content_width;
+                $content_width = 0;
+                $src = wp_get_attachment_image_src( $post->ID, $size );
+                $content_width = $orig_content_width;
+                return $src;
             }
         }
         return '';
