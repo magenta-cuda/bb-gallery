@@ -865,6 +865,12 @@
     };
 
     bbg_xiv.getSizes=function(data,fullSize,icon){
+        if(!data){
+            if(fullSize==="viewport"&&!icon){
+                return "100vw";
+            }
+            return "50vw";
+        }         
         if(!data.bbg_srcset){
             // really should removeAttribute but this should work
             return null;
