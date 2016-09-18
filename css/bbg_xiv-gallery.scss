@@ -1118,10 +1118,14 @@ div.bbg_xiv-bootstrap{
         margin:0;
 
         li{
+          padding:0;
           margin:5px 0 0 0;
 
           >a{
+              padding:0 7px;
+              border:1px solid gray;
               border-radius:11px;
+              box-shadow:none;
           }
 
           &.active a{
@@ -1133,15 +1137,17 @@ div.bbg_xiv-bootstrap{
             text-align:center;
             background-color:#aaa;
             border:0;
-            padding:5px 2px 4px 2px;
+            padding:6px 2px 0px 2px;
             margin:0;
             @media(max-width:767px){
               display:none;
             }
             a{
               color:black;
-              font-size:14px;
               font-weight:bold;
+              padding:2px 0 4px 0;
+              border:0;
+              background-color:#aaa;
               &:hover{
                 background-color:#aaa;
               }
@@ -1173,7 +1179,7 @@ div.bbg_xiv-bootstrap{
             font-weight:bold;
             font-size:14px;
             padding:2px 5px;
-            border:1px solid transparent;
+            border:1px solid gray;
           }
         }
       }

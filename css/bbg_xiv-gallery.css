@@ -858,9 +858,13 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse, d
     border-bottom: 0 solid transparent;
     margin: 0; }
     div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse ul.nav-tabs li, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-collapse ul.nav-tabs li {
+      padding: 0;
       margin: 5px 0 0 0; }
       div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse ul.nav-tabs li > a, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-collapse ul.nav-tabs li > a {
-        border-radius: 11px; }
+        padding: 0 7px;
+        border: 1px solid gray;
+        border-radius: 11px;
+        box-shadow: none; }
       div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse ul.nav-tabs li.active a, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-collapse ul.nav-tabs li.active a {
         background-color: cyan; }
       div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse ul.nav-tabs li.bbg_xiv-tabs_title, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-collapse ul.nav-tabs li.bbg_xiv-tabs_title {
@@ -868,15 +872,17 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse, d
         text-align: center;
         background-color: #aaa;
         border: 0;
-        padding: 5px 2px 4px 2px;
+        padding: 6px 2px 0px 2px;
         margin: 0; }
         @media (max-width: 767px) {
           div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse ul.nav-tabs li.bbg_xiv-tabs_title, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-collapse ul.nav-tabs li.bbg_xiv-tabs_title {
             display: none; } }
         div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse ul.nav-tabs li.bbg_xiv-tabs_title a, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-collapse ul.nav-tabs li.bbg_xiv-tabs_title a {
           color: black;
-          font-size: 14px;
-          font-weight: bold; }
+          font-weight: bold;
+          padding: 2px 0 4px 0;
+          border: 0;
+          background-color: #aaa; }
           div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-collapse ul.nav-tabs li.bbg_xiv-tabs_title a:hover, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-collapse ul.nav-tabs li.bbg_xiv-tabs_title a:hover {
             background-color: #aaa; }
 div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container span.glyphicon-collapse-down, div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container span.glyphicon-collapse-up, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container span.glyphicon-collapse-down, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container span.glyphicon-collapse-up {
@@ -900,7 +906,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container nav.navbar, div.bbg_xi
         font-weight: bold;
         font-size: 14px;
         padding: 2px 5px;
-        border: 1px solid transparent; }
+        border: 1px solid gray; }
 div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.tab-content {
   width: 100%; }
   div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.tab-content figure {
