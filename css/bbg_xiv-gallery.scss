@@ -55,8 +55,10 @@ $tabs-highlight-color:cyan;
   color:$icon-color;
   background-color:transparent;
   padding:3px;
-  border:1px solid $icon-color;
-  border-radius:3px;
+  border-radius:5px;
+  &:hover{
+    background-color:red;
+  }
 }
 
 @mixin full_viewport_image_overlay(){
@@ -1054,6 +1056,12 @@ div.bbg_xiv-bootstrap{
     nav.navbar{
       background-color:#ddd;
       border-color:#888;
+      ul.nav-tabs{
+        padding-bottom:7px;
+        li:not(.bbg_xiv-tabs_title){
+          margin-left:10px;
+        }
+      }
     }
     div.navbar-header{
       color:white;

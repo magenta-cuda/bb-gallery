@@ -123,8 +123,9 @@ div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner {
     color: cyan;
     background-color: transparent;
     padding: 3px;
-    border: 1px solid cyan;
-    border-radius: 3px; }
+    border-radius: 5px; }
+    div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner button.bbg_xiv-configure_close:hover {
+      background-color: red; }
   div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner span.bbg_xiv-radio_input {
     display: block;
     width: 25%;
@@ -382,8 +383,9 @@ div.bbg_xiv-flex_container {
       color: cyan;
       background-color: transparent;
       padding: 3px;
-      border: 1px solid cyan;
-      border-radius: 3px; }
+      border-radius: 5px; }
+      div.bbg_xiv-flex_container div.bbg_xiv-dense_inner button.bbg_xiv-dense_close:hover {
+        background-color: red; }
 
 div.bbg_xiv-flex_container.bbg_xiv-flex_no_caption div.bbg_xiv-flex_item figure figcaption, div.bbg_xiv-gallery_container.bbg_xiv-flex_no_caption div.bbg_xiv-flex_item figure figcaption {
   display: none; }
@@ -657,8 +659,9 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner {
     color: cyan;
     background-color: transparent;
     padding: 3px;
-    border: 1px solid cyan;
-    border-radius: 3px; }
+    border-radius: 5px; }
+    div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner button.bbg_xiv-dense_close:hover {
+      background-color: red; }
 
 div.bbg_xiv-bootstrap div.carousel.slide {
   position: fixed;
@@ -812,6 +815,10 @@ div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide {
 div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container nav.navbar, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container nav.navbar {
   background-color: #ddd;
   border-color: #888; }
+  div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container nav.navbar ul.nav-tabs, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container nav.navbar ul.nav-tabs {
+    padding-bottom: 7px; }
+    div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container nav.navbar ul.nav-tabs li:not(.bbg_xiv-tabs_title), div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container nav.navbar ul.nav-tabs li:not(.bbg_xiv-tabs_title) {
+      margin-left: 10px; }
 div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.navbar-header, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.navbar-header {
   color: white;
   background-color: #222; }
@@ -1110,8 +1117,9 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
       color: cyan;
       background-color: transparent;
       padding: 3px;
-      border: 1px solid cyan;
-      border-radius: 3px; }
+      border-radius: 5px; }
+      div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner button.bbg_xiv-dense_close:hover {
+        background-color: red; }
 
 div.bbg_xiv-bootstrap div.bbg_xiv-table {
   height: 80vh;
