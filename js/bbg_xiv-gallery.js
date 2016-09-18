@@ -268,10 +268,12 @@
                 }
                 img.css("margin","0");
             });
-        },2000);
-        //if(bbg_xiv.interface==="touch"){
-        //    container.find("div.bbg_xiv-flex_container div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn").addClass("bbg_xiv-touch");
-        //}
+        },1000);
+        if(bbg_xiv.interface==="touch"){
+            justifiedContainer.find("div.bbg_xiv-justified_item > a").click(function(e){
+                e.preventDefault();
+            });
+        }
     };
 
     // renderGeneric() may work unmodified with your template.
