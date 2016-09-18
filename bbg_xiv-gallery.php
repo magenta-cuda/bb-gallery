@@ -4,7 +4,7 @@
 Plugin Name: BB Gallery
 Plugin URI: https://bbfgallery.wordpress.com/
 Description: Gallery using Backbone.js, Bootstrap 3 and CSS3 Flexbox
-Version: 1.7.3.4
+Version: 1.8
 Author: Magenta Cuda
 Author URI: https://profiles.wordpress.org/magenta-cuda/
 License: GPL2
@@ -771,7 +771,6 @@ EOD;
             # override the theme's content_width since our overlays are in the browser's viewport not the theme's content window
             $orig_content_width = $content_width;
             $content_width = 0;
-            error_log( '$srcset=' . $srcset );
             foreach( [ 'thumbnail', 'medium', 'medium_large', 'large', 'full' ] as $size ) {
                 if ( $image = wp_get_attachment_image_src( $post->ID, $size ) ) {
                     if ( preg_match( "#\s{$image[1]}w(,|\$)#", $srcset ) === 0 ) {
@@ -780,7 +779,6 @@ EOD;
                 }
             }
             $content_width = $orig_content_width;
-            error_log( '$srcset=' . $srcset );
             return $srcset ? $srcset : '';
         }
         # if 'medium_large' does not exists wp_get_attachment_image_src() returns 'full' which doesn't make sense so ...
@@ -790,7 +788,6 @@ EOD;
             $medium_large = wp_get_attachment_image_src( $post->ID, 'medium_large' );
             $large = wp_get_attachment_image_src( $post->ID, 'large' );
             $content_width = $orig_content_width;
-            error_log( 'get_additional_rest_field():$large=' . print_r( $large, true ) );
             if ( $medium_large[1] > $large[1] ) {
                 return $large;
             }

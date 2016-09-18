@@ -841,6 +841,10 @@
     };
 
     bbg_xiv.getSrcset=function(data){
+        if(bbg_xiv.bbg_xiv_bandwidth!=='auto'){
+            // really should removeAttribute but this should work
+            return "";
+        }
         return data.bbg_srcset;
     };
 
@@ -865,6 +869,10 @@
     };
 
     bbg_xiv.getSizes=function(data,fullSize,icon){
+        if(bbg_xiv.bbg_xiv_bandwidth!=='auto'){
+            // really should removeAttribute but this should work
+            return "";
+        }
         if(!data){
             if(fullSize==="viewport"&&!icon){
                 return "100vw";
@@ -873,7 +881,7 @@
         }         
         if(!data.bbg_srcset){
             // really should removeAttribute but this should work
-            return null;
+            return "";
         }else if(fullSize==="viewport"){
             return "100vw";
         }else if(fullSize==="container"){
