@@ -593,6 +593,18 @@
                 jQuery(this).find("div.bbg_xiv-jquery_mobile input[type='number']").val(parseInt(e.relatedTarget.dataset.index,10)+1).change();
                 slideChange=false;
             });
+            if(flags.indexOf("embedded-carousel")!==-1){
+                window.setTimeout(function(){
+                    // the timeout is necessary to give browser time to render the image before the scrolling is done
+                    if(window.matchMedia("(max-aspect-ratio:1/1)").matches){
+                        // portrait mode
+                        jQuery(window).scrollTop(jqGallery.find("div.carousel").offset().top-jQuery(window).height()/6);
+                    }else{
+                        // landscape mode
+                        jQuery(window).scrollTop(jqGallery.find("div.carousel").offset().top-60);
+                    }
+                },500);
+            }
             jQuery("#"+carouselId).carousel({interval:bbg_xiv.bbg_xiv_carousel_interval,pause:false});
             break;
         case "Tabs":
