@@ -19,9 +19,10 @@
 <script type="text/html" id="bbg_xiv-template_gallery_item">
         <div class="bbg_xiv-flex_item col-sm-6 col-md-4 col-lg-3">
             <figure class="img-rounded bbg_xiv-gallery_item">
-                <figcaption>{{{ data.title.rendered }}}</figcaption>
+                <figcaption><# print(bbg_xiv.getTitle(data)); #></figcaption>
                 <a href="{{{ data.link }}}" target="_blank"<# if ( typeof data.gallery_index !== "undefined" ) { #> class="bbg_xiv-gallery_icon" data-gallery-index="{{{ data.gallery_index }}}"<# } #>>
-                    <img src="<# print(bbg_xiv.getImageUrl(data).src); #>" alt="{{{ data.title.rendered }}}" title="{{{ data.caption }}}">
+                    <img src="<# print(bbg_xiv.getSrc(data,'viewport',true)); #>" srcset="<# print(bbg_xiv.getSrcset(data)); #>" sizes="<# print(bbg_xiv.getSizes(data,'viewport',true)); #>"
+                        alt="<# print(bbg_xiv.getAlt(data)); #>" title="<# print(bbg_xiv.getTitle(data)); #>" data-bbg_xiv-image-id="{{{ data.id }}}">
                 </a>
             </figure>
         </div>
