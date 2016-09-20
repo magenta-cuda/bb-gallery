@@ -53,6 +53,7 @@ https://bbfgallery.wordpress.com/
 10. Mobile Portrait View
 11. [User Options Pane](https://bbfgallery.wordpress.com/#options)
 12. [Admin Settings](https://bbfgallery.wordpress.com/#installation)
+13. [Miro's Justified Gallery](http://miromannino.github.io/Justified-Gallery/)
 
 == Changelog ==
 
