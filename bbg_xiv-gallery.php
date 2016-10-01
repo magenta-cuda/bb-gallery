@@ -30,7 +30,7 @@ License: GPL2
 
 # This is a plug compatible replacement for the built-in WordPress gallery shortcode.
 # It uses user definable Backbone.js templates styled with a Twitter Bootstrap stylesheets.
-# The user definable templates are in the file ".../js/bbg_xiv-gallery_templates.php".
+# The user definable templates are in the file ".../js/bbg_xiv-gallery_templates_wp_rest.php".
 
 class BBG_XIV_Gallery {
 
@@ -72,11 +72,7 @@ class BBG_XIV_Gallery {
         }
 
         ob_start( );
-        if ( self::$wp_rest_api_available && self::$use_wp_rest_api_if_available ) {
-            require_once(  dirname( __FILE__ ) . '/bbg_xiv-gallery_templates_wp_rest.php' );
-        } else {
-            require_once(  dirname( __FILE__ ) . '/bbg_xiv-gallery_templates.php' );
-        }
+        require_once(  dirname( __FILE__ ) . '/bbg_xiv-gallery_templates_wp_rest.php' );
         $templates = ob_get_clean( );
 
         $post = get_post();
@@ -330,7 +326,6 @@ class BBG_XIV_Gallery {
 
             $bbg_xiv_data[ "$selector-data" ] = json_encode( $attachments );
         } else {
-            error_log( '$atts=' . print_r( $atts, true ) );
             // initialize the Backbone.js collection using data for my proprietary model
             // Handle the proprietary 'bb_tags' attribute - this specifies a gallery by a taxonomy expression
             if ( ! empty( $atts['bb_tags'] ) ) {
@@ -661,6 +656,7 @@ EOD;
     public static function bbg_xiv_do_attachments( $attachments ) {
         global $content_width;
         foreach ( $attachments as $id => &$attachment ) {
+            $attachment->id  = $attachment->ID;
             $attachment->url = wp_get_attachment_url( $id );
             $meta = wp_get_attachment_metadata( $id );
             $attachment->width  = $meta[ 'width'  ];
@@ -692,7 +688,6 @@ EOD;
             # override the theme's content_width since our overlays are in the browser's viewport not the theme's content window
             $orig_content_width = $content_width;
             $content_width = 0;
-            error_log( '$srcset=' . $srcset );
             foreach( [ 'thumbnail', 'medium', 'medium_large', 'large', 'full' ] as $size ) {
                 if ( $image = wp_get_attachment_image_src( $id, $size ) ) {
                     if ( preg_match( "#\s{$image[1]}w(,|\$)#", $srcset ) === 0 ) {
@@ -701,7 +696,6 @@ EOD;
                 }
             }
             $content_width = $orig_content_width;
-            error_log( '$srcset=' . $srcset );
             $attachment->bbg_srcset = $srcset ? $srcset : '';
             $orig_content_width = $content_width;
             $content_width = 0;
@@ -728,7 +722,6 @@ EOD;
             unset( $attachment->post_status );
             unset( $attachment->post_type );
         }
-        error_log( 'bbg_xiv_do_attachments():attachments=' . print_r( $attachments, true ) );
     }
 
     public static function add_additional_rest_fields( ) {
@@ -882,8 +875,10 @@ EOD
             wp_enqueue_script( 'jquery-mobile',     plugins_url( '/js/jquery-mobile.js',          __FILE__ ), [ 'jquery' ] );
             if ( !get_option( 'bbg_xiv_do_not_load_bootstrap', FALSE ) ) {
                 wp_enqueue_script( 'bootstrap',     plugins_url( '/js/bootstrap.js' ,             __FILE__ ), [ 'jquery' ], FALSE, TRUE );
+                $deps = [ 'bootstrap', 'justified-gallery' ];
+            } else {
+                $deps = [ 'justified-gallery' ];
             }
-            $deps = [ 'bootstrap', 'justified-gallery' ];
             if ( self::$wp_rest_api_available && self::$use_wp_rest_api_if_available ) {
                 $deps[ ] = 'wp-api';
             }
