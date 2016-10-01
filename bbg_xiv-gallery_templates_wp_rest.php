@@ -263,10 +263,10 @@
 <script type="text/html" id="bbg_xiv-template_justified_item">
     <div class="bbg_xiv-justified_item">
         <a href="{{{ data.link }}}" target="_blank">
-            <img src="{{{ data.bbg_medium_src[0] }}}" alt="<# print(bbg_xiv.getAlt(data)); #>" title="<# print(bbg_xiv.getTitle(data)); #>" data-bbg_xiv-image-id="{{{ data.id }}}" />
+            <img src="{{{ data.bbg_medium_src[0] }}}" alt="<# print(bbg_xiv.getAlt(data)); #>" title="<# print(bbg_xiv.getCaption(data)); #>" data-bbg_xiv-image-id="{{{ data.id }}}" />
         </a>	
         <div class="caption">
-            <a href="{{{ data.link }}}" target="_blank"><# print(bbg_xiv.getCaption(data)); #></a>
+            <a href="{{{ data.link }}}" target="_blank"><# print(bbg_xiv.getTitle(data)); #></a>
             <button class="bbg_xiv-dense_full_btn bbg_xiv-dense_from_justified btn"><span class="glyphicon glyphicon-fullscreen"></span></button>
         </div>
     </div>
