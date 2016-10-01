@@ -11,6 +11,7 @@ Responsive plug-compatible replacement for the built-in WordPress gallery shortc
 
 == Description ==
 This is a responsive, mobile-friendly plug-compatible replacement for the built-in WordPress gallery shortcode.
+You can view a working sample web page using this plugin at [my portfolio website](http://magentacuda.com/).
 It is implemented using a [Backbone.js](http://backbonejs.org/) Model-View-Presenter (MVP) populated via the [WordPress REST API](http://v2.wp-api.org/).
 It is styled by a [Twitter Bootstrap 3](http://getbootstrap.com/) stylesheet and has touch optimizations from [jQuery Mobile](https://jquerymobile.com/).
 Using a MVP allows you to [switch instantaneously](https://bbfgallery.wordpress.com/#navbar) (i.e. without doing a HTTP request) between multiple views of a gallery.
