@@ -659,8 +659,8 @@ EOD;
             $attachment->id  = $attachment->ID;
             $attachment->url = wp_get_attachment_url( $id );
             $meta = wp_get_attachment_metadata( $id );
-            $attachment->width  = $meta[ 'width'  ];
-            $attachment->height = $meta[ 'height' ];
+            $attachment->width  = !empty( $meta[ 'width'  ] ) ? $meta[ 'width'  ] : 0;
+            $attachment->height = !empty( $meta[ 'height' ] ) ? $meta[ 'height' ] : 0;
             if ( isset( $meta[ 'sizes' ] ) ) {
                 foreach ( $meta[ 'sizes' ] as $size => &$size_attrs ) {
                     $size_attrs[ 'url' ] = wp_get_attachment_image_src( $id, $size )[0];
