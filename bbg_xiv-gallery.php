@@ -985,7 +985,7 @@ EOD
             add_settings_field( 'bbg_xiv_do_not_load_bootstrap', __( 'Do not load Bootstrap', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_do_not_load_bootstrap" id="bbg_xiv_do_not_load_bootstrap" type="checkbox" value="1" class="code" '
                     . checked( get_option( 'bbg_xiv_do_not_load_bootstrap', FALSE ), 1, FALSE ) . ' /> '
-                    . '<a href="https://wordpress.org/plugins/bootstrap_conflict/" target="_blank">'
+                    . '<a href="https://wordpress.org/support/topic/clicking-on-the-view-nav-item-does-not-show-the-dropdown-menu/" target="_blank">'
                     . __( 'Enable if your theme or another plugin also loads bootstrap', 'bb_gallery' ) . '</a>.';
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_table', __( 'Enable Table View', 'bb_gallery' ), function( ) {
