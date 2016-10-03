@@ -60,7 +60,7 @@ https://bbfgallery.wordpress.com/
 
 = 1.8 =
 
-* replaced <picture> with <img srcset> for better support of Retina displays
+* replaced &lt;picture&gt; with &lt;img srcset&gt; for better support of Retina displays
 * added support for [Miro's Justified Gallery](http://miromannino.github.io/Justified-Gallery/)
 * bug fixes and css tweaks
 
@@ -175,7 +175,7 @@ https://bbfgallery.wordpress.com/
 
 = 1.8 =
 
-* replaced <picture> with <img srcset> for better support of Retina displays
+* replaced &lt;picture&gt; with &lt;img srcset&gt; for better support of Retina displays
 * added support for [Miro's Justified Gallery](http://miromannino.github.io/Justified-Gallery/)
 * bug fixes and css tweaks
 
