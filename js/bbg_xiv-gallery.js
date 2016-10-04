@@ -138,6 +138,29 @@
                 }
             });
         }
+        // flip display state of caption on hover
+        container.find("div.bbg_xiv-dense_full_btn").hover(
+            function(e){
+                jQuery(this).parents("div.bbg_xiv-flex_item").find("figure figcaption").each(function(){
+                    var caption=jQuery(this);
+                    if(caption.is(":visible")){
+                        caption.hide();
+                    }else{
+                        caption.show();
+                    }
+                });
+            },
+            function(e){
+                jQuery(this).parents("div.bbg_xiv-flex_item").find("figure figcaption").each(function(){
+                    var caption=jQuery(this);
+                    if(caption.is(":visible")){
+                        caption.hide();
+                    }else{
+                        caption.show();
+                    }
+                });
+            }
+        );
     };
 
     bbg_xiv.renderCarousel=function(container,collection,id){
