@@ -725,6 +725,9 @@ EOD;
     }
 
     public static function add_additional_rest_fields( ) {
+        if ( !self::$wp_rest_api_available || !self::$use_wp_rest_api_if_available ) {
+            return;
+        }
         register_rest_field( 'attachment', 'bbg_srcset', [
             'get_callback' => [ 'BBG_XIV_Gallery', 'get_additional_rest_field' ],
             'update_callback' => null,
