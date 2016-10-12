@@ -754,10 +754,22 @@ EOD;
                 ]
             ] );
         }
+        register_rest_field( 'attachment', 'bbg_post_content', [
+            'get_callback' => [ 'BBG_XIV_Gallery', 'get_additional_rest_field' ],
+            'update_callback' => null,
+            'schema' => [
+                'description' => 'post_content',
+                'type'        => 'string',
+                'context'     => [ 'view' ],
+                'arg_options' => [
+                    'sanitize_callback' => [ 'BBG_XIV_Gallery', 'sanitize_additional_rest_field' ],
+                ]
+            ]
+        ] );
     }
 
     public static function get_additional_rest_field( $object, $field_name, $request, $object_type ) {
-        global $post, $content_width;
+        global $post, $content_width, $wpdb;
         #error_log( 'get_additional_rest_field():$object=' . print_r( $object, true ) );
         #error_log( 'get_additional_rest_field():$field_name=' . $field_name );
         #error_log( 'get_additional_rest_field():$object_type=' . print_r( $object_type, true ) );
@@ -798,6 +810,10 @@ EOD;
             }
         }
         $content_width = $orig_content_width;
+        if ( $field_name === 'bbg_post_content' ) {
+            $post_content = $wpdb->get_col( "SELECT post_content FROM $wpdb->posts WHERE ID = {$post->ID}" )[ 0 ];
+            return $post_content;
+        }
         return '';
     }
     
