@@ -292,6 +292,7 @@
                 e.preventDefault();
             });
         }
+        container.data("captionVisible",true);
     };
 
     // renderGeneric() may work unmodified with your template.
@@ -515,6 +516,7 @@
         case "Justified":
             bbg_xiv.renderJustified(jqGallery,images);
             constructOverlay();
+            titlesButton.show();
             break;
         case "Carousel":
             var overflow=jQuery("html").css("overflow-y");
@@ -1474,7 +1476,7 @@
             e.preventDefault();
         });
         jQuery("button.bbg_xiv-titles").click(function(e){
-            var container=jQuery(this).parents("div.bbg_xiv-bootstrap.bbg_xiv-gallery").find("div.bbg_xiv-tiles_container");
+            var container=jQuery(this).parents("div.bbg_xiv-bootstrap.bbg_xiv-gallery").find("div.bbg_xiv-flex_container");
             if(container.length){
                 var figure=container.find("div.bbg_xiv-flex_item figure");
                 var caption=figure.find("figcaption");
@@ -1492,6 +1494,18 @@
                     }else{
                         figure.find("img").addClass("bbg_xiv-vertical_center");
                     }
+                }
+                return;
+            }
+            container=jQuery(this).parents("div.bbg_xiv-bootstrap.bbg_xiv-gallery").find("div.bbg_xiv-justified_container");
+            if(container.length){
+                var caption=container.find("div.caption");
+                if(container.data("captionVisible")){
+                    caption.css({display:"none",opacity:"0.0"});
+                    container.data("captionVisible",false);
+                }else{
+                    caption.css({display:"block",opacity:"0.7"});
+                    container.data("captionVisible",true);
                 }
             }
         });
