@@ -172,7 +172,7 @@
     <img class="bbg_xiv-tabs_img img-rounded" src="<# print(bbg_xiv.getSrc(data,'container',false)); #>"
         srcset="<# print(bbg_xiv.getSrcset(data)); #>" sizes="<# print(bbg_xiv.getSizes(data,'container',false)); #>">
   </a>
-  <figcaption><# if ( data.post_content ) { #>{{{ data.post_content }}}<# } else { #><# print(bbg_xiv.getCaption(data)); #><# } #></figcaption>
+  <figcaption><# print(bbg_xiv.getPostContent(data)); #></figcaption>
 </figure>
 </script>
 

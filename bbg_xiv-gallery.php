@@ -682,7 +682,7 @@ EOD;
               $attachment->link = get_attachment_link( $id );
             }
             $attachment->image_alt = get_post_meta( $id, '_wp_attachment_image_alt', TRUE );
-            $attachment->post_content = apply_filters( 'the_content', $attachment->post_content );
+            #$attachment->post_content = apply_filters( 'the_content', $attachment->post_content );
             # fields for compatibility with my REST API
             $srcset = wp_get_attachment_image_srcset( $id, 'large' );
             # override the theme's content_width since our overlays are in the browser's viewport not the theme's content window

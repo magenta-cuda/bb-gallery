@@ -900,6 +900,14 @@
         return alt;
     };
 
+    bbg_xiv.getPostContent=function(data){
+        var postContent=bbg_xiv.bbg_xiv_wp_rest_api?data.bbg_post_content:data.post_content;
+        if(postContent){
+            return postContent;
+        }
+        return bbg_xiv.getCaption(data);
+    };
+    
     bbg_xiv.getSizes=function(data,fullSize,icon){
         if(bbg_xiv.bbg_xiv_bandwidth!=='auto'){
             // really should removeAttribute but this should work
