@@ -908,7 +908,12 @@ div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container nav.navbar, div.bbg_xi
         padding: 2px 5px;
         border: 1px solid gray; }
 div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.tab-content {
-  width: 100%; }
+  width: 100%;
+  margin-top: -20px;
+  padding: 20px 40px;
+  border: 2px solid gray;
+  border-radius: 5px;
+  background-color: white; }
   div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.tab-content figure {
     position: relative;
     width: 100%;
