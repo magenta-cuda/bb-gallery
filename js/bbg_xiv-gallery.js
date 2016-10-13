@@ -138,7 +138,7 @@
                 }
             });
         }
-        container.data("captionVisible",true);
+        container.find("div.bbg_xiv-flex_container").data("captionVisible",true);
         // flip display state of caption on hover
         container.find("div.bbg_xiv-dense_full_btn").hover(
             function(e){
@@ -292,7 +292,26 @@
                 e.preventDefault();
             });
         }
-        container.data("captionVisible",true);
+        var justifiedContainer=container.find("div.bbg_xiv-justified_container").data("captionVisible",false);
+        // if CC has been set to visible then override Justified Gallery's hover handlers
+        justifiedContainer.find("div.bbg_xiv-justified_gallery div.bbg_xiv-justified_item").each(function(){
+          var img=this.querySelector("img");
+          var caption=this.querySelector("div.caption");
+          img.addEventListener("mouseover",function(e){
+              if(justifiedContainer.data("captionVisible")){
+                  caption.style.display="block";
+                  caption.style.opacity="0.7";
+                  e.stopImmediatePropagation();
+              }
+          });
+          img.addEventListener("mouseout",function(e){
+              if(justifiedContainer.data("captionVisible")){
+                  caption.style.display="block";
+                  caption.style.opacity="0.7";
+                  e.stopImmediatePropagation();
+              }
+          });
+        });
     };
 
     // renderGeneric() may work unmodified with your template.
