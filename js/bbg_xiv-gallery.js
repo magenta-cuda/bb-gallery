@@ -505,7 +505,9 @@
             }else{
                 bbg_xiv.renderBootstrapGallery(jqGallery,images);
             }
-            jQuery(window).resize();
+            window.setTimeout(function(){
+                jQuery(window).resize();
+            },100);
             if(bbg_xiv.search[gallery.id]){
                 // displaying search results so hide gallery headings
                 jQuery("div#"+gallery.id+"-alt_gallery_heading").hide();
@@ -1082,6 +1084,7 @@
         jQuery("div.bbg_xiv-flex_container,div.bbg_xiv-gallery_container").each(function(){
             var jqThis=jQuery(this);
             var width=jqThis.width();
+            console.log('width=',width);
             var minFlexWidthForCaption=window.bbg_xiv.bbg_xiv_flex_min_width_for_caption;
             if(jqThis.parents("div.bbg_xiv-gallery_envelope").hasClass("bbg_xiv-tiles_container")){
                 // set tile width and height in pixels so that tiles cover the div exactly and completely
