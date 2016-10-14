@@ -961,7 +961,7 @@
             // really should removeAttribute but this should work
             return "";
         }else if(fullSize==="viewport"){
-            return "100vw";
+            return "90vw";
         }else if(fullSize==="container"){
             return data.bbg_xiv_container_width+"px";
         }else{
