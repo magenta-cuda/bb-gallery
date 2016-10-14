@@ -156,6 +156,18 @@
                 }
             }
         );
+        if(bbg_xiv.interface==="touch"){
+            container.find("div.bbg_xiv-flex_item a").click(function(e){
+                if(!flexContainer.data("captionVisible")){
+                    var caption=jQuery(this.parentNode).find("figure figcaption");
+                    if(!caption.data("visible")){
+                        container.find("div.bbg_xiv-flex_item figure figcaption").data("visible",false);
+                        caption.data("visible",true);
+                        e.preventDefault();
+                    }
+                }
+            });
+        }
     };
 
     bbg_xiv.renderCarousel=function(container,collection,id){
@@ -1523,14 +1535,16 @@
             }
             container=jQuery(this).parents("div.bbg_xiv-bootstrap.bbg_xiv-gallery").find("div.bbg_xiv-justified_container");
             if(container.length){
-                var caption=container.find("div.caption");
-                if(container.data("captionVisible")){
-                    caption.css({display:"none",opacity:"0.0"});
-                    container.data("captionVisible",false);
-                }else{
-                    caption.css({display:"block",opacity:"0.7"});
-                    container.data("captionVisible",true);
-                }
+                window.setTimeout(function(){
+                    var caption=container.find("div.caption");
+                    if(container.data("captionVisible")){
+                        caption.css({display:"none",opacity:"0.0"});
+                        container.data("captionVisible",false);
+                    }else{
+                        caption.css({display:"block",opacity:"0.7"});
+                        container.data("captionVisible",true);
+                    }
+                },1000);
             }
         });
         // wireup the handler for setting options
