@@ -138,18 +138,18 @@
                 }
             });
         }
-        container.find("div.bbg_xiv-flex_container").data("captionVisible",true);
+        var flexContainer=container.find("div.bbg_xiv-flex_container").data("captionVisible",true);
         // flip display state of caption on hover
         container.find("div.bbg_xiv-dense_full_btn").hover(
             function(e){
-                if(!container.data("captionVisible")){
+                if(!flexContainer.data("captionVisible")){
                     jQuery(this).parents("div.bbg_xiv-flex_item").find("figure figcaption").each(function(){
                         jQuery(this).show();
                     });
                 }
             },
             function(e){
-                if(!container.data("captionVisible")){
+                if(!flexContainer.data("captionVisible")){
                     jQuery(this).parents("div.bbg_xiv-flex_item").find("figure figcaption").each(function(){
                         jQuery(this).hide();
                     });
@@ -297,19 +297,22 @@
         justifiedContainer.find("div.bbg_xiv-justified_gallery div.bbg_xiv-justified_item").each(function(){
           var img=this.querySelector("img");
           var caption=this.querySelector("div.caption");
-          img.addEventListener("mouseover",function(e){
-              if(justifiedContainer.data("captionVisible")){
-                  caption.style.display="block";
-                  caption.style.opacity="0.7";
-                  e.stopImmediatePropagation();
-              }
-          });
-          img.addEventListener("mouseout",function(e){
-              if(justifiedContainer.data("captionVisible")){
-                  caption.style.display="block";
-                  caption.style.opacity="0.7";
-                  e.stopImmediatePropagation();
-              }
+          [img,caption].forEach(function(item){
+              // these handlers need work if executed before or after the Justified Gallery's handlers
+              item.addEventListener("mouseover",function(e){
+                  if(justifiedContainer.data("captionVisible")){
+                      caption.style.display="block";
+                      caption.style.opacity="0.7";
+                      e.stopImmediatePropagation();
+                  }
+              });
+              item.addEventListener("mouseout",function(e){
+                  if(justifiedContainer.data("captionVisible")){
+                      caption.style.display="block";
+                      caption.style.opacity="0.7";
+                      e.stopImmediatePropagation();
+                  }
+              });
           });
         });
     };
@@ -1084,7 +1087,6 @@
         jQuery("div.bbg_xiv-flex_container,div.bbg_xiv-gallery_container").each(function(){
             var jqThis=jQuery(this);
             var width=jqThis.width();
-            console.log('width=',width);
             var minFlexWidthForCaption=window.bbg_xiv.bbg_xiv_flex_min_width_for_caption;
             if(jqThis.parents("div.bbg_xiv-gallery_envelope").hasClass("bbg_xiv-tiles_container")){
                 // set tile width and height in pixels so that tiles cover the div exactly and completely
