@@ -4,7 +4,7 @@
 Plugin Name: BB Gallery
 Plugin URI: https://bbfgallery.wordpress.com/
 Description: Gallery using Backbone.js, Bootstrap 3 and CSS3 Flexbox
-Version: 1.8.1
+Version: 1.8.1.1
 Author: Magenta Cuda
 Author URI: https://profiles.wordpress.org/magenta-cuda/
 License: GPL2
@@ -597,7 +597,7 @@ EOD;
           </div>
         </div>
         <div class="form-group">
-          <label for="bbg_xiv-bandwidth" class="control-label col-sm-3 col-md-offset-2 col-md-2">$translations[Bandwidth]</label>
+          <label for="bbg_xiv-bandwidth_auto" class="control-label col-sm-3 col-md-offset-2 col-md-2">$translations[Bandwidth]</label>
           <div class="col-sm-9 col-md-6">
             <span class="bbg_xiv-radio_input">
                 <input type="radio" class="form-control" name="bbg_xiv-bandwidth" value="auto" id="bbg_xiv-bandwidth_auto" checked>
@@ -618,7 +618,7 @@ EOD;
           </div>
         </div>
         <div class="form-group">
-          <label for="bbg_xiv-interface" class="control-label col-sm-3 col-md-offset-2 col-md-2">$translations[Interface]</label>
+          <label for="bbg_xiv-interface_auto" class="control-label col-sm-3 col-md-offset-2 col-md-2">$translations[Interface]</label>
           <div class="col-sm-9 col-md-6">
             <span class="bbg_xiv-radio_input">
                 <input type="radio" class="form-control" name="bbg_xiv-interface" value="auto" id="bbg_xiv-interface_auto" checked>

@@ -3,7 +3,7 @@ Contributors: Magenta Cuda
 Tags: gallery, shortcode, lightbox, slideshow, responsive, plug-compatible, replacement
 Requires at least: 4.4
 Tested up to: 4.6
-Stable tag: 1.8.1
+Stable tag: 1.8.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -57,6 +57,10 @@ https://bbfgallery.wordpress.com/
 13. [Miro's Justified Gallery](http://miromannino.github.io/Justified-Gallery/)
 
 == Changelog ==
+
+= 1.8.1.1 =
+
+* fix HTML validation errors
 
 = 1.8.1 =
 
@@ -176,6 +180,10 @@ https://bbfgallery.wordpress.com/
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.8.1.1 =
+
+* fix HTML validation errors
 
 = 1.8.1 =
 
