@@ -1070,7 +1070,7 @@
                 // determining bandwidth by device type is not reliable!
                 bbg_xiv.bandwidth="very low";
             }else{
-                bbg_xiv.bandwidth="normal";
+                bbg_xiv.bandwidth="low";
             }
         }else{
             bbg_xiv.bandwidth=bbg_xiv.bbg_xiv_bandwidth;
