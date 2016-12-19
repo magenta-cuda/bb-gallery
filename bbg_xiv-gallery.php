@@ -266,7 +266,7 @@ class BBG_XIV_Gallery {
                 'slug'           => '',
                 'parent'         => '',
                 'parent_exclude' => '',
-                'status'         => 'publish',
+                'status'         => 'any',
                 'search'         => ''
             ];
             if ( ! empty( $atts['bb_tags'] ) ) {
@@ -300,12 +300,10 @@ class BBG_XIV_Gallery {
             self::add_additional_rest_fields( );
             $controller = new WP_REST_Attachments_Controller( "attachment" );
             $attachments = $controller->get_items( $request )->data;
-
             if ( !empty( $get_first ) ) {
                 ob_end_clean( );
                 return reset( $attachments );
             }
-
             if ( !empty( $gallery_icons_mode ) ) {
                 # replace title and caption for image with title and caption for gallery and also remember the gallery index
                 foreach ( $galleries as $i => $gallery ) {
@@ -820,7 +818,7 @@ EOD;
     public static function init( ) {
         add_action( 'admin_enqueue_scripts', function( $hook ) {
             if ( $hook === 'options-media.php' ) {
-                wp_enqueue_script( "bbg_xiv-admin", plugins_url( '/js/bbg_xiv-admin.js', __FILE__ ) );
+                wp_enqueue_script( "bbg_xiv-admin", plugins_url( 'js/bbg_xiv-admin.js', __FILE__ ) );
             }
         } );
 
@@ -876,11 +874,11 @@ EOD;
                 # only emit bb_gallery's styles and scripts if the post content has the bb_gallery shortcode
                 return;
             }
-            wp_enqueue_style( 'bootstrap',               plugins_url( '/css/bootstrap.css',               __FILE__ ) );
-            wp_enqueue_style( 'jquery-mobile-structure', plugins_url( '/css/jquery-mobile-structure.css', __FILE__ ) );
-            wp_enqueue_style( 'jquery-mobile-theme',     plugins_url( '/css/jquery-mobile-theme.css',     __FILE__ ) );
-            wp_enqueue_style( 'justified-gallery',       plugins_url( '/css/justifiedGallery.css',        __FILE__ ) );
-            wp_enqueue_style( 'bbg_xiv-gallery',         plugins_url( '/css/bbg_xiv-gallery.css',         __FILE__ ), [ 'bootstrap' ] );
+            wp_enqueue_style( 'bootstrap',               plugins_url( 'css/bootstrap.css',               __FILE__ ) );
+            wp_enqueue_style( 'jquery-mobile-structure', plugins_url( 'css/jquery-mobile-structure.css', __FILE__ ) );
+            wp_enqueue_style( 'jquery-mobile-theme',     plugins_url( 'css/jquery-mobile-theme.css',     __FILE__ ) );
+            wp_enqueue_style( 'justified-gallery',       plugins_url( 'css/justifiedGallery.css',        __FILE__ ) );
+            wp_enqueue_style( 'bbg_xiv-gallery',         plugins_url( 'css/bbg_xiv-gallery.css',         __FILE__ ), [ 'bootstrap' ] );
             $width = ( 100 / (integer) get_option( 'bbg_xiv_flex_number_of_dense_view_columns', 10 ) ) . '%';
             wp_add_inline_style( 'bbg_xiv-gallery', <<<EOD
 div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_images div.bbg_xiv-dense_flex_images div.bbg_xiv-dense_flex_item{
@@ -889,11 +887,11 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_images div.b
 EOD
             );
             wp_enqueue_script( 'backbone' );
-            wp_enqueue_script( 'modernizr',         plugins_url( '/js/modernizr.js',              __FILE__ ) );
+            wp_enqueue_script( 'modernizr',         plugins_url( 'js/modernizr.js',               __FILE__ ) );
             wp_enqueue_script( 'justified-gallery', plugins_url( 'js/jquery.justifiedGallery.js', __FILE__ ), [ 'jquery' ] );
-            wp_enqueue_script( 'jquery-mobile',     plugins_url( '/js/jquery-mobile.js',          __FILE__ ), [ 'jquery' ] );
+            wp_enqueue_script( 'jquery-mobile',     plugins_url( 'js/jquery-mobile.js',           __FILE__ ), [ 'jquery' ] );
             if ( !get_option( 'bbg_xiv_do_not_load_bootstrap', FALSE ) ) {
-                wp_enqueue_script( 'bootstrap',     plugins_url( '/js/bootstrap.js' ,             __FILE__ ), [ 'jquery' ], FALSE, TRUE );
+                wp_enqueue_script( 'bootstrap',     plugins_url( 'js/bootstrap.js' ,              __FILE__ ), [ 'jquery' ], FALSE, TRUE );
                 $deps = [ 'bootstrap', 'justified-gallery' ];
             } else {
                 $deps = [ 'justified-gallery' ];
@@ -901,7 +899,7 @@ EOD
             if ( self::$wp_rest_api_available && self::$use_wp_rest_api_if_available ) {
                 $deps[ ] = 'wp-api';
             }
-            wp_enqueue_script( 'bbg_xiv-gallery',   plugins_url( '/js/bbg_xiv-gallery.js' ,       __FILE__ ), $deps,        FALSE, TRUE );
+            wp_enqueue_script( 'bbg_xiv-gallery',   plugins_url( 'js/bbg_xiv-gallery.js' ,        __FILE__ ), $deps,        FALSE, TRUE );
         } );
 
         add_action( 'admin_init', function( ) {
