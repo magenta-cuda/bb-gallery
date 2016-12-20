@@ -923,7 +923,7 @@
     };
 
     bbg_xiv.getCaption=function(data,noAlt){
-        var caption=bbg_xiv.bbg_xiv_wp_rest_api?data.caption:data.post_excerpt;
+        var caption=bbg_xiv.bbg_xiv_wp_rest_api?jQuery(data.caption.rendered).text():data.post_excerpt;
         if(!caption&&!noAlt){
             caption=bbg_xiv.getAlt(data,true);
         }
