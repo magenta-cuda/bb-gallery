@@ -630,7 +630,7 @@ EOD;
                 <input type="radio" class="form-control" name="bbg_xiv-interface" value="touch" id="bbg_xiv-interface_touch">
                 <span class="bbg_xiv-radio_text">$translations[Touch]</span>
             </span>
-            <span class="bbg_xiv-radio_input">
+            <span class="bbg_xiv-radio_input bbg_xiv-null">
                 <input type="radio" class="form-control" name="bbg_xiv-interface" value="null" id="bbg_xiv-interface_null" disabled>
                 <span class="bbg_xiv-radio_text"></span>
             </span>

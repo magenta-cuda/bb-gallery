@@ -137,6 +137,11 @@ div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner {
       div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner span.bbg_xiv-radio_input {
         width: 100%;
         float: none; } }
+    div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner span.bbg_xiv-radio_input.bbg_xiv-null {
+      visibility: hidden; }
+      @media (max-width: 767px) {
+        div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner span.bbg_xiv-radio_input.bbg_xiv-null {
+          display: none; } }
     div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner span.bbg_xiv-radio_input span.bbg_xiv-radio_text {
       font-size: 14px;
       vertical-align: middle; }
@@ -147,11 +152,12 @@ div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner {
       vertical-align: middle; }
   div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner button.bbg_xiv-options_btn {
     float: right;
-    margin: 0px 5px;
+    margin: 0 5px;
     width: 15%; }
     @media (max-width: 767px) {
       div.bbg_xiv-bootstrap div.bbg_xiv-configure_inner button.bbg_xiv-options_btn {
-        width: 20%; } }
+        margin: 0;
+        width: 33%; } }
 
 #content nav.navbar.bbg_xiv-gallery_navbar {
   overflow: visible;

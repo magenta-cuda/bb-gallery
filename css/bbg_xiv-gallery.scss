@@ -283,7 +283,14 @@ div.bbg_xiv-bootstrap{
         width:100%;
         float:none;
       }
-      
+
+      &.bbg_xiv-null{
+          visibility:hidden;
+          @media(max-width:767px){
+              display:none;
+          }
+      }
+
       span.bbg_xiv-radio_text{
         font-size:14px;
         vertical-align:middle;
@@ -299,10 +306,11 @@ div.bbg_xiv-bootstrap{
     
     button.bbg_xiv-options_btn{
       float:right;
-      margin:0px 5px;
+      margin:0 5px;
       width:15%;
       @media(max-width:767px){
-        width:20%;
+        margin:0;
+        width:33%;
       }
     }
   }
