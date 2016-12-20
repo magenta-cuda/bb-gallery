@@ -994,9 +994,9 @@ EOD
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_wp_rest', __( 'Use the WP REST API', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_wp_rest" id="bbg_xiv_wp_rest" type="checkbox" value="1" class="code" '
-                    . checked( get_option( 'bbg_xiv_wp_rest', TRUE ), 1, FALSE ) . ' /> ' . __( 'Use the WordPress REST API if available, i.e. the ', 'bb_gallery' )
-                    . '<a href="https://wordpress.org/plugins/rest-api/" target="_blank">WordPress REST API plugin</a>' . __( ' is installed.', 'bb_gallery' )
-                    . ' ' . __( 'Beware this requires', 'bb_gallery' ) . ' <a href="' . admin_url( 'options-permalink.php' ) . '" target="_blank">' 
+                    . checked( get_option( 'bbg_xiv_wp_rest', TRUE ), 1, FALSE ) . ' /> ' . __( 'Use the ', 'bb_gallery' )
+                    . '<a href="https://developer.wordpress.org/rest-api/" target="_blank">WordPress REST API</a>'
+                    . __( '. Beware this requires', 'bb_gallery' ) . ' <a href="' . admin_url( 'options-permalink.php' ) . '" target="_blank">' 
                     . __( 'pretty permalinks', 'bb_gallery' ) . '</a>.';
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_do_not_load_bootstrap', __( 'Do not load Bootstrap', 'bb_gallery' ), function( ) {

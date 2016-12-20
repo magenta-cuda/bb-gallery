@@ -60,7 +60,9 @@ https://bbfgallery.wordpress.com/
 
 = 1.8.1.1 =
 
+* make compatible with the new WordPress REST API released with 4.7
 * fix HTML validation errors
+* some small enhancements, css tweaks and bug fixes
 
 = 1.8.1 =
 
@@ -183,7 +185,9 @@ https://bbfgallery.wordpress.com/
 
 = 1.8.1.1 =
 
+* make compatible with the new WordPress REST API released with 4.7
 * fix HTML validation errors
+* some small enhancements, css tweaks and bug fixes
 
 = 1.8.1 =
 
