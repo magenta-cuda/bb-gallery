@@ -16,16 +16,7 @@ div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar {
     margin-top: 0;
     margin-bottom: 0; }
     div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar form.bbg_xiv-search_form button.bbg_xiv-search {
-      color: white;
-      padding: 6px 8px;
-      margin-top: 9px;
-      margin-bottom: 9px;
-      font-size: 100%;
-      line-height: 1.0;
-      background-color: transparent;
-      border: 0 solid transparent; }
-      div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar form.bbg_xiv-search_form button.bbg_xiv-search:focus {
-        border: 0 solid transparent; }
+      /*@include navbar_icons();*/ }
   div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-titles, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-home, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-configure, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-help {
     display: block;
     color: white;
@@ -57,9 +48,11 @@ div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar {
         width: 90%;
         float: left; }
       div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar form.bbg_xiv-search_form button[type='submit'] {
-        width: 10%;
-        padding: 8px;
-        margin-top: 2px;
+        /*
+                  width:10%;
+                  padding:8px;
+                  margin-top:2px;
+        */
         margin-bottom: 0;
         float: left; }
     div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-titles, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-home, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-configure, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-help {

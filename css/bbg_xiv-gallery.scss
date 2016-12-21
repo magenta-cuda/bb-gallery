@@ -164,7 +164,7 @@ div.bbg_xiv-bootstrap{
       margin-top:0;
       margin-bottom:0;
       button.bbg_xiv-search{
-        @include navbar_icons();
+        /*@include navbar_icons();*/
       }
     }
 
@@ -202,9 +202,11 @@ div.bbg_xiv-bootstrap{
         }
 
         button[type='submit']{
+/*
           width:10%;
           padding:8px;
           margin-top:2px;
+*/
           margin-bottom:0;
           float:left;
         }

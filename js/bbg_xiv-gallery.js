@@ -919,7 +919,7 @@
     };
 
     bbg_xiv.getTitle=function(data){
-        return bbg_xiv.bbg_xiv_wp_rest_api?data.title.rendered:data.post_title;
+        return (bbg_xiv.bbg_xiv_wp_rest_api?data.title.rendered:data.post_title).trim();
     };
 
     bbg_xiv.getCaption=function(data,noAlt){
@@ -927,7 +927,7 @@
         if(!caption&&!noAlt){
             caption=bbg_xiv.getAlt(data,true);
         }
-        return caption;
+        return caption.trim();
     };
 
     bbg_xiv.getAlt=function(data,noCaption){
@@ -935,7 +935,7 @@
         if(!alt&&!noCaption){
             alt=bbg_xiv.getCaption(data,true);
         }
-        return alt;
+        return alt.trim();
     };
 
     bbg_xiv.getPostContent=function(data){

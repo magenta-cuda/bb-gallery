@@ -490,9 +490,13 @@ EOD;
             </ul>
             <form role="search" class="navbar-form navbar-left bbg_xiv-search_form">
                 <div class="form-group">
-                    <input type="text" placeholder="{$translations['Search Images on Site']}" class="form-control">
+                    <div class="input-group">
+                        <input type="text" placeholder="{$translations['Search Images on Site']}" class="form-control">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-default bbg_xiv-search" title="start search"><span class="glyphicon glyphicon-search"></span></button>
+                        </span>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-default bbg_xiv-search" title="start search"><span class="glyphicon glyphicon-search"></span></button>
                 $nonce_field
             </form>
             <button type="button" class="btn btn-info bbg_xiv-help" title="{$translations['get help']}">
