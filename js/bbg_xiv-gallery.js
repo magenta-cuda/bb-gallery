@@ -1217,6 +1217,7 @@
                 liSelectView.find("a.bbg_xiv-selected_view span").text(liGallery.text());
                 select.find("li.bbg_xiv-alt_gallery").removeClass("active");
                 li.addClass("active");
+                var defaultView=bbg_xiv.getDefaultView(jQuery(divGallery));
                 if(galleries.images[view]){
                     // images were previously loaded so just restore  the collection
                     bbg_xiv.images[divGallery.id]=galleries.images[view];
@@ -1224,7 +1225,7 @@
                     if(view!=="gallery_home"){
                         container.find("div#"+divGallery.id+"-alt_gallery_heading span.bbg_xiv-alt_gallery_heading").text(title);
                     }
-                    bbg_xiv.renderGallery(divGallery,"Gallery");
+                    bbg_xiv.renderGallery(divGallery,defaultView);
                     // update active in gallery tabs
                     container.find("div.bbg_xiv-gallery_tabs_container nav.navbar ul.nav-tabs li").removeClass("active").find("a[data-view='"+view+"']").parent().addClass("active");
                     e.preventDefault();
@@ -1287,7 +1288,7 @@
                         galleries.images[view]=bbg_xiv.constructImages(divGallery);
                         galleries.view=view;
                         container.find("div#"+divGallery.id+"-alt_gallery_heading span.bbg_xiv-alt_gallery_heading").text(title);
-                        bbg_xiv.renderGallery(divGallery,"Gallery");
+                        bbg_xiv.renderGallery(divGallery,defaultView);
                     }else{
                         jQuery(divGallery).empty().append('<h1 class="bbg_xiv-warning">'+bbg_xiv_lang["Nothing Found"]+'</h1>');
                     }
