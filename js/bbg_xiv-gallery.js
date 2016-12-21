@@ -523,31 +523,6 @@
             window.setTimeout(function(){
                 jQuery(window).resize();
             },100);
-            if(bbg_xiv.search[gallery.id]){
-                // displaying search results so hide gallery headings
-                jQuery("div#"+gallery.id+"-alt_gallery_heading").hide();
-                // and show search results heading
-                jQuery("div#"+gallery.id+"-heading").show();
-            }else if(bbg_xiv.galleries[gallery.id]){
-                // displaying a gallery so hide search results heading
-                jQuery("div#"+gallery.id+"-heading").hide();
-                var galleryOfGalleries=typeof bbg_xiv.images[gallery.id].models[0].attributes.gallery_index!=="undefined";
-                var divAltGalleryHeading=jQuery("div#"+gallery.id+"-alt_gallery_heading");
-                if(galleryOfGalleries){
-                    // show heads up for gallery of galleries
-                    divAltGalleryHeading.find("span.bbg_xiv-alt_gallery_heading").text(bbg_xiv.galleryOfGalleriesTitle);
-                    // click handler for gallery icon images
-                    jqGallery.find("a.bbg_xiv-gallery_icon").click(function(e){
-                        jqGallery.parent().find("nav.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.bbg_xiv-view_menu li.bbg_xiv-alt_gallery > a[data-view='gallery_"
-                            +this.dataset.galleryIndex+"']").click();
-                        e.preventDefault();
-                    });
-                }
-                if(bbg_xiv.galleries[gallery.id].view!=="gallery_home"||galleryOfGalleries){
-                    // and show title of alternate galleries or heads up for gallery of galleries; except hide title for home gallery; 
-                    divAltGalleryHeading.show();
-                }
-            }
             break;
         case "Justified":
             bbg_xiv.renderJustified(jqGallery,images);
@@ -830,6 +805,31 @@
             break;
         default:
             break;
+        }
+        if(bbg_xiv.search[gallery.id]){
+            // displaying search results so hide gallery headings
+            jQuery("div#"+gallery.id+"-alt_gallery_heading").hide();
+            // and show search results heading
+            jQuery("div#"+gallery.id+"-heading").show();
+        }else if(bbg_xiv.galleries[gallery.id]){
+            // displaying a gallery so hide search results heading
+            jQuery("div#"+gallery.id+"-heading").hide();
+            var galleryOfGalleries=typeof bbg_xiv.images[gallery.id].models[0].attributes.gallery_index!=="undefined";
+            var divAltGalleryHeading=jQuery("div#"+gallery.id+"-alt_gallery_heading");
+            if(galleryOfGalleries){
+                // show heads up for gallery of galleries
+                divAltGalleryHeading.find("span.bbg_xiv-alt_gallery_heading").text(bbg_xiv.galleryOfGalleriesTitle);
+                // click handler for gallery icon images
+                jqGallery.find("a.bbg_xiv-gallery_icon").click(function(e){
+                    jqGallery.parent().find("nav.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.bbg_xiv-view_menu li.bbg_xiv-alt_gallery > a[data-view='gallery_"
+                        +this.dataset.galleryIndex+"']").click();
+                    e.preventDefault();
+                });
+            }
+            if(bbg_xiv.galleries[gallery.id].view!=="gallery_home"||galleryOfGalleries){
+                // and show title of alternate galleries or heads up for gallery of galleries; except hide title for home gallery; 
+                divAltGalleryHeading.show();
+            }
         }
     };
     
