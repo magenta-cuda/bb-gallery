@@ -291,9 +291,11 @@
             justifiedContainer.find("img").each(function(){
                 var img=jQuery(this);
                 // TODO: Why are there negative margins on the img - anyway remove them
+                console.log('img.css("margin-left")=',img.css("margin-left"));
                 if(!timeoutSet&&count<4&&img.css("margin-left")!=="0px"){
                     timeoutSet=true;
                     ++count;
+                    console.log('count=',count);
                     setTimeout(bbg_xivPostJustified,1000);
                 }
                 img.css("margin","0");
@@ -869,7 +871,8 @@
     bbg_xiv.resetGallery=function(gallery){
         // restore "Gallery View"
         var divGallery=gallery.find("div.bbg_xiv-gallery_envelope")[0];
-        var defaultView=bbg_xiv.getDefaultView(jQuery(divGallery));
+        var galleryOfGalleries=typeof bbg_xiv.images[divGallery.id].models[0].attributes.gallery_index!=="undefined";
+        var defaultView=bbg_xiv.getDefaultView(jQuery(divGallery),galleryOfGalleries);
         bbg_xiv.renderGallery(divGallery,defaultView);
         var liSelectView=gallery.find("nav.bbg_xiv-gallery_navbar ul.nav li.bbg_xiv-select_view");
         var liFirst=liSelectView.find("ul.bbg_xiv-view_menu li.bbg_xiv-view").removeClass("active").filter(".bbg_xiv-view_"+defaultView.toLowerCase()).addClass("active");
@@ -1151,8 +1154,8 @@
         });
     });
 
-    bbg_xiv.getDefaultView=function(gallery){
-        if(gallery.hasClass("bbg_xiv-gallery_icons_mode")){
+    bbg_xiv.getDefaultView=function(gallery,galleryOfGalleries){
+        if(galleryOfGalleries||(galleryOfGalleries===null&&gallery.hasClass("bbg_xiv-gallery_icons_mode"))){
             // for gallery of galleries always use the gallery view
             var defaultView="Gallery";
         }else{
@@ -1176,7 +1179,7 @@
     jQuery(document).ready(function(){
         jQuery("div.bbg_xiv-gallery_envelope").each(function(){
             var gallery=this;
-            var defaultView=bbg_xiv.getDefaultView(jQuery(gallery));
+            var defaultView=bbg_xiv.getDefaultView(jQuery(gallery),null);
             // prettify Galleries tabs
             bbg_xiv.prettifyTabs(jQuery(gallery.parentNode).find("div.bbg_xiv-container"),true);
             if(bbg_xiv.bbg_xiv_wp_rest_api){
@@ -1218,7 +1221,8 @@
                 container.find("div#"+divGallery.id+"-alt_gallery_heading").hide();
                 var title=this.textContent;
                 var galleries=bbg_xiv.galleries[divGallery.id];
-                var defaultView=bbg_xiv.getDefaultView(jQuery(divGallery));
+                var galleryOfGalleries=(view!=="gallery_home")?false:null;
+                var defaultView=bbg_xiv.getDefaultView(jQuery(divGallery),galleryOfGalleries);
                 select.find("li.bbg_xiv-view").removeClass("active");
                 var liGallery=select.find("li.bbg_xiv-view_"+defaultView.toLowerCase()).addClass("active");
                 liSelectView.find("a.bbg_xiv-selected_view span").text(liGallery.text());
