@@ -298,7 +298,9 @@ div.bbg_xiv-bootstrap{
         vertical-align:middle;
       }
 
-      input.form-control[type="radio"][name="bbg_xiv-bandwidth"],input.form-control[type="radio"][name="bbg_xiv-interface"]{
+      input.form-control[type="radio"][name="bbg_xiv-default_view"],
+      input.form-control[type="radio"][name="bbg_xiv-bandwidth"],
+      input.form-control[type="radio"][name="bbg_xiv-interface"]{
         display:inline;
         width:auto;
         margin:0px;
