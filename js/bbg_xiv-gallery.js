@@ -577,7 +577,7 @@
             jqGallery.find("a.bbg_xiv-carousel_close").click(function(e){
                 // restore "Gallery View"
                 jqGallery.removeClass("bbg_xiv-embedded_carousel");
-                bbg_xiv.resetGallery(jQuery(this).parents("div.bbg_xiv-gallery"));
+                bbg_xiv.resetGallery(jQuery(this).parents("div.bbg_xiv-gallery"),"Carousel");
                 jQuery("html").css("overflow-y",overflow);
                 e.preventDefault();      
             });
@@ -868,11 +868,14 @@
         }
     };
 
-    bbg_xiv.resetGallery=function(gallery){
+    bbg_xiv.resetGallery=function(gallery,currentView){
         // restore "Gallery View"
         var divGallery=gallery.find("div.bbg_xiv-gallery_envelope")[0];
         var galleryOfGalleries=typeof bbg_xiv.images[divGallery.id].models[0].attributes.gallery_index!=="undefined";
         var defaultView=bbg_xiv.getDefaultView(jQuery(divGallery),galleryOfGalleries);
+        if(currentView==="Carousel"&&defaultView==="Carousel"){
+            defaultView="Gallery";
+        }
         bbg_xiv.renderGallery(divGallery,defaultView);
         var liSelectView=gallery.find("nav.bbg_xiv-gallery_navbar ul.nav li.bbg_xiv-select_view");
         var liFirst=liSelectView.find("ul.bbg_xiv-view_menu li.bbg_xiv-view").removeClass("active").filter(".bbg_xiv-view_"+defaultView.toLowerCase()).addClass("active");
