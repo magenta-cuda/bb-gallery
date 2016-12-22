@@ -603,19 +603,19 @@ EOD;
           <label for="bbg_xiv-default_view_gallery" class="control-label col-sm-3 col-md-offset-2 col-md-2">{$translations['Initial View']}</label>
           <div class="col-sm-9 col-md-6">
             <span class="bbg_xiv-radio_input">
-                <input type="radio" class="form-control" name="bbg_xiv-default_view" value="gallery" id="bbg_xiv-default_view_gallery" checked>
+                <input type="radio" class="form-control" name="bbg_xiv-default_view" value="Gallery" id="bbg_xiv-default_view_gallery" checked>
                 <span class="bbg_xiv-radio_text">$translations[Gallery]</span>
             </span>
             <span class="bbg_xiv-radio_input">
-                <input type="radio" class="form-control" name="bbg_xiv-default_view" value="justified" id="bbg_xiv-default_view_justified">
+                <input type="radio" class="form-control" name="bbg_xiv-default_view" value="Justified" id="bbg_xiv-default_view_justified">
                 <span class="bbg_xiv-radio_text">$translations[Justified]</span>
             </span>
             <span class="bbg_xiv-radio_input">
-                <input type="radio" class="form-control" name="bbg_xiv-default_view" value="carousel" id="bbg_xiv-default_view_carousel">
+                <input type="radio" class="form-control" name="bbg_xiv-default_view" value="Carousel" id="bbg_xiv-default_view_carousel">
                 <span class="bbg_xiv-radio_text">$translations[Carousel]</span>
             </span>
             <span class="bbg_xiv-radio_input">
-                <input type="radio" class="form-control" name="bbg_xiv-default_view" value="tabs" id="bbg_xiv-default_view_tabs">
+                <input type="radio" class="form-control" name="bbg_xiv-default_view" value="Tabs" id="bbg_xiv-default_view_tabs">
                 <span class="bbg_xiv-radio_text">$translations[Tabs]</span>
             </span>
           </div>
