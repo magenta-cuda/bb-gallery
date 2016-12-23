@@ -1081,6 +1081,7 @@
                 bbg_xiv.bbg_xiv_interface=options.bbg_xiv_interface;
             }
         }else{
+            bbg_xiv.usingServerDefaultView=true;
             bbg_xiv.bbg_xiv_bandwidth="auto";
             bbg_xiv.bbg_xiv_interface="auto";
         }
@@ -1181,14 +1182,16 @@
         }else{
             // use class to set default view if it exists otherwise use the global value
             var defaultView=bbg_xiv.bbg_xiv_default_view?bbg_xiv.bbg_xiv_default_view:"Gallery";
-            if(gallery.hasClass("bbg_xiv-default_view_gallery")){
-                defaultView="Gallery";
-            }else if(gallery.hasClass("bbg_xiv-default_view_justified")){
-                defaultView="Justified";
-            }else if(gallery.hasClass("bbg_xiv-default_view_carousel")){
-                defaultView="Carousel";
-            }else if(gallery.hasClass("bbg_xiv-default_view_tabs")){
-                defaultView="Tabs";
+            if(bbg_xiv.usingServerDefaultView){
+                if(gallery.hasClass("bbg_xiv-default_view_gallery")){
+                    defaultView="Gallery";
+                }else if(gallery.hasClass("bbg_xiv-default_view_justified")){
+                    defaultView="Justified";
+                }else if(gallery.hasClass("bbg_xiv-default_view_carousel")){
+                    defaultView="Carousel";
+                }else if(gallery.hasClass("bbg_xiv-default_view_tabs")){
+                    defaultView="Tabs";
+                }
             }
             gallery.parents("div.bbg_xiv-bootstrap.bbg_xiv-gallery").find("nav.bbg_xiv-gallery_navbar ul.nav li.bbg_xiv-select_view ul.bbg_xiv-view_menu li.bbg_xiv-view")
                 .removeClass("active").filter(".bbg_xiv-view_"+defaultView.toLowerCase()).addClass("active");
@@ -1637,6 +1640,8 @@
             if(defaultView){
                 bbg_xiv.bbg_xiv_default_view=defaultView;
                 bbg_xiv.usingServerDefaultView=false;
+            }else{
+                bbg_xiv.usingServerDefaultView=true;
             }
             bbg_xiv.bbg_xiv_bandwidth=divConfigure.find("input[name='bbg_xiv-bandwidth']:checked").val();
             bbg_xiv.bbg_xiv_interface=divConfigure.find("input[name='bbg_xiv-interface']:checked").val();
