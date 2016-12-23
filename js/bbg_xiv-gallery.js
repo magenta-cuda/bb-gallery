@@ -285,6 +285,7 @@
         container.append(justifiedContainer);
         justifiedContainer=justifiedContainer.find("div.bbg_xiv-justified_gallery");
         justifiedContainer.justifiedGallery({margins:5,rowHeight:128,lastRow:"nojustify"});
+        var hit=false;
         var count=0;
         setTimeout(function bbg_xivPostJustified(){
             var timeoutSet=false;
@@ -294,16 +295,21 @@
                     var img=jQuery(this);
                     // TODO: Why are there negative margins on the img - anyway remove them
                     console.log('img.css("margin-left")=',img.css("margin-left"));
-                    if(!timeoutSet&&count<8&&img.css("margin-left")!=="0px"){
-                        timeoutSet=true;
-                        ++count;
-                        console.log('count=',count);
-                        setTimeout(bbg_xivPostJustified,1000);
+                    if(img.css("margin-left")!=="0px"){
+                        hit=true;
+                        if(!timeoutSet&&count<8){
+                            timeoutSet=true;
+                            ++count;
+                            console.log('[1]count=',count);
+                            setTimeout(bbg_xivPostJustified,1000);
+                        }
                     }
                     img.css("margin","0");
                 });
-            }else{
-                console.log('count=',count);
+            }
+            if(!hit){
+                ++count;
+                console.log('[2]count=',count);
                 setTimeout(bbg_xivPostJustified,1000);
             }
         },1000);
