@@ -986,9 +986,9 @@ EOD
                     . '<span class="bbg_xiv-radio_text">Carousel&nbsp;&nbsp;&nbsp;&nbsp;</span>';
                 echo '<input name="bbg_xiv_default_view" id="bbg_xiv_default_view_tabs"     type="radio" value="Tabs" '
                     . ( get_option( 'bbg_xiv_default_view', 'Gallery' ) === 'Tabs'     ? 'checked />' : '/>' )
-                    . '<span class="bbg_xiv-radio_text">Tabs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>';
-                echo __( 'This is the initial view of the gallery. See also the ', 'bb_gallery' )
-                    . '<a href="https://bbfgallery.wordpress.com/#parameters" target="_blank">view ' . __( ' shortcode option.', 'bb_gallery' ) . '</a>';
+                    . '<span class="bbg_xiv-radio_text">Tabs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><p>';
+                echo __( 'This is the initial view of the gallery. The browser user can override this setting. See also the ', 'bb_gallery' )
+                    . '<a href="https://bbfgallery.wordpress.com/#parameters" target="_blank">view ' . __( ' shortcode option.', 'bb_gallery' ) . '</a></p>';
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_use_tiles', __( 'Use Tiles', 'bb_gallery' ), function( ) {
                 $use_tiles = get_option( 'bbg_xiv_use_tiles', 'Cover' );
@@ -999,10 +999,10 @@ EOD
                 echo '<input name="bbg_xiv_use_tiles" id="bbg_xiv_use_tiles_contain"  type="radio" value="Contain" '  . ( $use_tiles === 'Contain'  ? 'checked />' : '/>' )
                     . '<span class="bbg_xiv-radio_text">Contain&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>';
                 echo '<input name="bbg_xiv_use_tiles" id="bbg_xiv_use_tiles_fill"  type="radio" value="Fill" '        . ( $use_tiles === 'Fill'     ? 'checked />' : '/>' )
-                    . '<span class="bbg_xiv-radio_text">Fill&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>';
+                    . '<span class="bbg_xiv-radio_text">Fill&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><p>';
                 echo '<a href="https://bbfgallery.wordpress.com/#gallery" target="_blank">' . __( 'The gallery uses butt joined square image tiles.', 'bb_gallery' ) . '</a> '
                     . __( 'See also the ', 'bb_gallery' )
-                    . '<a href="https://bbfgallery.wordpress.com/#parameters" target="_blank">flags ' . __( ' shortcode option.', 'bb_gallery' ) . '</a>';
+                    . '<a href="https://bbfgallery.wordpress.com/#parameters" target="_blank">flags ' . __( ' shortcode option.', 'bb_gallery' ) . '</a></p>';
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_use_embedded_carousel', __( 'Use Embedded Carousels', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_use_embedded_carousel" id="bbg_xiv_use_embedded_carousel" type="checkbox" value="1" class="code" '
