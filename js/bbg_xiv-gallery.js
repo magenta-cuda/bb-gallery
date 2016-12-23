@@ -808,6 +808,7 @@
         default:
             break;
         }
+        var menuItems=jQuery(gallery.parentNode).find("nav.bbg_xiv-gallery_navbar ul.nav ul.bbg_xiv-view_menu li").show();
         if(bbg_xiv.search[gallery.id]){
             // displaying search results so hide gallery headings
             jQuery("div#"+gallery.id+"-alt_gallery_heading").hide();
@@ -827,6 +828,8 @@
                         +this.dataset.galleryIndex+"']").click();
                     e.preventDefault();
                 });
+                // hide inappropriate menu items for gallery of galleries
+                menuItems.filter(".bbg_xiv-hide_for_gallery_icons").hide();
             }
             if(bbg_xiv.galleries[gallery.id].view!=="gallery_home"||galleryOfGalleries){
                 // and show title of alternate galleries or heads up for gallery of galleries; except hide title for home gallery; 
