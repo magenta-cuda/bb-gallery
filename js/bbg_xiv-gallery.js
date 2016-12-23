@@ -288,18 +288,24 @@
         var count=0;
         setTimeout(function bbg_xivPostJustified(){
             var timeoutSet=false;
-            justifiedContainer.find("img").each(function(){
-                var img=jQuery(this);
-                // TODO: Why are there negative margins on the img - anyway remove them
-                console.log('img.css("margin-left")=',img.css("margin-left"));
-                if(!timeoutSet&&count<4&&img.css("margin-left")!=="0px"){
-                    timeoutSet=true;
-                    ++count;
-                    console.log('count=',count);
-                    setTimeout(bbg_xivPostJustified,1000);
-                }
-                img.css("margin","0");
-            });
+            var imgs=justifiedContainer.find("img");
+            if(imgs.length){
+                imgs.each(function(){
+                    var img=jQuery(this);
+                    // TODO: Why are there negative margins on the img - anyway remove them
+                    console.log('img.css("margin-left")=',img.css("margin-left"));
+                    if(!timeoutSet&&count<8&&img.css("margin-left")!=="0px"){
+                        timeoutSet=true;
+                        ++count;
+                        console.log('count=',count);
+                        setTimeout(bbg_xivPostJustified,1000);
+                    }
+                    img.css("margin","0");
+                });
+            }else{
+                console.log('count=',count);
+                setTimeout(bbg_xivPostJustified,1000);
+            }
         },1000);
         if(bbg_xiv.interface==="touch"){
             justifiedContainer.find("div.bbg_xiv-justified_item > a").click(function(e){
