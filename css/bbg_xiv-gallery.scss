@@ -195,9 +195,11 @@ div.bbg_xiv-bootstrap{
     @media(max-width:767px){
       form.bbg_xiv-search_form{
         height:54px;
+        padding-top:9px;
+        padding-left:20px;
  
         div.form-group{
-          width:90%;
+          width:95%;
           float:left;
         }
 

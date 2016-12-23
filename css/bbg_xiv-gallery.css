@@ -43,9 +43,11 @@ div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar {
     border: 0 solid transparent; }
   @media (max-width: 767px) {
     div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar form.bbg_xiv-search_form {
-      height: 54px; }
+      height: 54px;
+      padding-top: 9px;
+      padding-left: 20px; }
       div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar form.bbg_xiv-search_form div.form-group {
-        width: 90%;
+        width: 95%;
         float: left; }
       div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar form.bbg_xiv-search_form button[type='submit'] {
         /*
