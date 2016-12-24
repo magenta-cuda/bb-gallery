@@ -578,9 +578,12 @@ div.bbg_xiv-tiles_container.bbg_xiv-fill div.bbg_xiv-flex_container div.bbg_xiv-
     object-fit: fill;
     transform: none; } }
 
+div.bbg_xiv-bootstrap div.bbg_xiv-justified_container div.caption a {
+  display: inline-block;
+  padding: 5px 0 0 7px; }
 div.bbg_xiv-bootstrap div.bbg_xiv-justified_container div.caption button.bbg_xiv-dense_from_justified {
   float: right;
-  padding: 0;
+  padding: 3px 10px;
   color: cyan;
   background-color: transparent; }
 div.bbg_xiv-bootstrap div.bbg_xiv-dense_outer {
