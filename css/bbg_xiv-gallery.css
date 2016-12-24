@@ -360,6 +360,7 @@ div.bbg_xiv-flex_container {
       left: 0px;
       width: 100%;
       z-index: 1000;
+      padding: 0;
       color: cyan;
       text-align: center;
       text-shadow: 2px 2px 0px black; }
@@ -639,6 +640,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner {
     left: 0px;
     width: 100%;
     z-index: 1000;
+    padding: 0;
     color: cyan;
     text-align: center;
     text-shadow: 2px 2px 0px black; }
@@ -1108,6 +1110,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
       left: 0px;
       width: 100%;
       z-index: 1000;
+      padding: 0;
       color: cyan;
       text-align: center;
       text-shadow: 2px 2px 0px black; }
