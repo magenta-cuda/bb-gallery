@@ -294,13 +294,11 @@
                 imgs.each(function(){
                     var img=jQuery(this);
                     // TODO: Why are there negative margins on the img - anyway remove them
-                    console.log('img.css("margin-left")=',img.css("margin-left"));
                     if(img.css("margin-left")!=="0px"){
                         hit=true;
                         if(!timeoutSet&&count<8){
                             timeoutSet=true;
                             ++count;
-                            console.log('[1]count=',count);
                             setTimeout(bbg_xivPostJustified,1000);
                         }
                     }
@@ -309,7 +307,6 @@
             }
             if(!hit){
                 ++count;
-                console.log('[2]count=',count);
                 setTimeout(bbg_xivPostJustified,1000);
             }
         },1000);
