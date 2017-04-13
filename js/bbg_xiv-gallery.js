@@ -316,7 +316,8 @@
                 e.preventDefault();
             });
         }
-        var justifiedContainer=container.find("div.bbg_xiv-justified_container").data("captionVisible",false);
+        var justifiedContainer = container.find( 'div.bbg_xiv-justified_container' );
+        var galleryContainer   = justifiedContainer.closest( 'div.bbg_xiv-gallery' ).removeClass( 'bbg_xiv-caption_visible' );
         // if CC has been set to visible then override Justified Gallery's hover handlers
         justifiedContainer.find("div.bbg_xiv-justified_gallery div.bbg_xiv-justified_item").each(function(){
           var img=this.querySelector("img");
@@ -324,14 +325,14 @@
           [img,caption].forEach(function(item){
               // these handlers need work if executed before or after the Justified Gallery's handlers
               item.addEventListener("mouseover",function(e){
-                  if(justifiedContainer.data("captionVisible")){
+                  if ( galleryContainer.hasClass( 'bbg_xiv-caption_visible' ) ) {
                       caption.style.display="block";
                       caption.style.opacity="0.7";
                       e.stopImmediatePropagation();
                   }
               });
               item.addEventListener("mouseout",function(e){
-                  if(justifiedContainer.data("captionVisible")){
+                  if ( galleryContainer.hasClass( 'bbg_xiv-caption_visible' ) ) {
                       caption.style.display="block";
                       caption.style.opacity="0.7";
                       e.stopImmediatePropagation();
@@ -1572,16 +1573,19 @@
                 }
                 return;
             }
-            container=jQuery(this).parents("div.bbg_xiv-bootstrap.bbg_xiv-gallery").find("div.bbg_xiv-justified_container");
+            container=galleryContainer.find( 'div.bbg_xiv-justified_container' );
             if(container.length){
+                if ( galleryContainer.hasClass( 'bbg_xiv-caption_visible' ) ) {
+                    galleryContainer.removeClass( 'bbg_xiv-caption_visible' );
+                } else {
+                    galleryContainer.addClass( 'bbg_xiv-caption_visible' );
+                }
                 window.setTimeout(function(){
                     var caption=container.find("div.caption");
-                    if(container.data("captionVisible")){
-                        caption.css({display:"none",opacity:"0.0"});
-                        container.data("captionVisible",false);
-                    }else{
-                        caption.css({display:"block",opacity:"0.7"});
-                        container.data("captionVisible",true);
+                    if ( galleryContainer.hasClass( 'bbg_xiv-caption_visible' ) ) {
+                        caption.css({ display: 'block', opacity: '0.7' });
+                    } else {
+                        caption.css({ display: 'none',  opacity: '0.0' });
                     }
                 },1000);
             }
