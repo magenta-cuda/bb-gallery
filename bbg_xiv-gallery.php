@@ -408,6 +408,7 @@ EOD;
             'VIEWS'                                       => __( 'VIEWS',                                       'bb_gallery' ),
             'GALLERIES'                                   => __( 'GALLERIES',                                   'bb_gallery' ),
             'Home'                                        => __( 'Home',                                        'bb_gallery' ),
+            'Fullscreen'                                  => __( 'Fullscreen',                                  'bb_gallery' ),
             'Titles'                                      => __( 'Titles',                                      'bb_gallery' ),
             'Search Images on Site'                       => __( 'Search Images on Site',                       'bb_gallery' ),
             'Options'                                     => __( 'Options',                                     'bb_gallery' ),
@@ -415,6 +416,7 @@ EOD;
             'get help'                                    => __( 'get help',                                    'bb_gallery' ),
             'configure bandwidth, carousel interval, ...' => __( 'configure bandwidth, carousel interval, ...', 'bb_gallery' ),
             'return to home gallery'                      => __( 'return to home gallery',                      'bb_gallery' ),
+            'toggle fullscreen'                           => __( 'toggle fullscreen',                           'bb_gallery' ),
             'show/hide image titles'                      => __( 'show/hide image titles',                      'bb_gallery' ),
             'Carousel Time Interval in ms'                => __( 'Carousel Time Interval in ms',                'bb_gallery' ),
             'Minimum Width for Gallery Images in px'      => __( 'Minimum Width for Gallery Images in px',      'bb_gallery' ),
@@ -511,6 +513,10 @@ EOD;
             <button type="button" class="btn btn-info bbg_xiv-home" title="{$translations['return to home gallery']}">
                 <span class="glyphicon glyphicon-home"></span>
                 <span class="bbg_xiv-navbar_button_text">{$translations['Home']}</span>
+            </button>
+            <button type="button" class="btn btn-info bbg_xiv-fullscreen" title="{$translations['toggle fullscreen']}">
+                <span class="glyphicon glyphicon-fullscreen"></span>
+                <span class="bbg_xiv-navbar_button_text">{$translations['Fullscreen']}</span>
             </button>
             <button type="button" class="btn btn-info bbg_xiv-titles" title="{$translations['show/hide image titles']}">
                 <span class="glyphicon glyphicon-subtitles"></span>

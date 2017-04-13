@@ -169,7 +169,7 @@ div.bbg_xiv-bootstrap{
       }
     }
 
-    button.bbg_xiv-titles,button.bbg_xiv-home,button.bbg_xiv-configure,button.bbg_xiv-help{
+    button.bbg_xiv-titles,button.bbg_xiv-fullscreen,button.bbg_xiv-home,button.bbg_xiv-configure,button.bbg_xiv-help{
       display:block;
       @include navbar_icons();
 
@@ -215,7 +215,7 @@ div.bbg_xiv-bootstrap{
         }
       }
 
-      button.bbg_xiv-titles,button.bbg_xiv-home,button.bbg_xiv-configure,button.bbg_xiv-help{
+      button.bbg_xiv-titles,button.bbg_xiv-fullscreen,button.bbg_xiv-home,button.bbg_xiv-configure,button.bbg_xiv-help{
         clear:both;
         span.bbg_xiv-navbar_button_text{
           display:inline;
@@ -1396,6 +1396,16 @@ div.bbg_xiv-bootstrap{
 
     @include full_viewport_image_overlay();
   }
+}
+
+div.bbg_xiv-bootstrap.bbg_xiv-fullscreen_gallery{
+    position:fixed;
+    left:0;
+    top:0;
+    width:100vw;
+    height:100vh;
+    z-index:100000;
+    background-color:white;
 }
 
 div.bbg_xiv-bootstrap{

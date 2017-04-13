@@ -1545,6 +1545,9 @@
                 .find("nav.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.bbg_xiv-view_menu li > a[data-view='gallery_home']").click();
             e.preventDefault();
         });
+        jQuery( 'button.bbg_xiv-fullscreen' ).click(function( e ) {
+            jQuery( this ).closest( 'div.bbg_xiv-gallery' ).toggleClass( 'bbg_xiv-fullscreen_gallery' );
+        });
         jQuery("button.bbg_xiv-titles").click(function(e){
             var container=jQuery(this).parents("div.bbg_xiv-bootstrap.bbg_xiv-gallery").find("div.bbg_xiv-flex_container");
             if(container.length){
