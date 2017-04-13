@@ -854,7 +854,7 @@ div.bbg_xiv-bootstrap{
       }
     }
   }
- 
+
   @include full_viewport_image_overlay();
  }
 
@@ -1406,6 +1406,15 @@ div.bbg_xiv-bootstrap.bbg_xiv-fullscreen_gallery{
     height:100vh;
     z-index:100000;
     background-color:white;
+    nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-fullscreen{
+        color:cyan;
+    }
+}
+
+div.bbg_xiv-bootstrap.bbg_xiv-caption_visible{
+    nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-titles{
+        color:cyan;
+    }
 }
 
 div.bbg_xiv-bootstrap{

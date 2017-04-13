@@ -1149,6 +1149,11 @@ div.bbg_xiv-bootstrap.bbg_xiv-fullscreen_gallery {
   height: 100vh;
   z-index: 100000;
   background-color: white; }
+  div.bbg_xiv-bootstrap.bbg_xiv-fullscreen_gallery nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-fullscreen {
+    color: cyan; }
+
+div.bbg_xiv-bootstrap.bbg_xiv-caption_visible nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-titles {
+  color: cyan; }
 
 div.bbg_xiv-bootstrap div.bbg_xiv-table {
   height: 80vh;

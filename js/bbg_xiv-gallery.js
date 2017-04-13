@@ -138,18 +138,19 @@
                 }
             });
         }
-        var flexContainer=container.find("div.bbg_xiv-flex_container").data("captionVisible",true);
+        var flexContainer    = container.find( 'div.bbg_xiv-flex_container');
+        var galleryContainer = flexContainer.closest( 'div.bbg_xiv-gallery' ).addClass( 'bbg_xiv-caption_visible' );
         // flip display state of caption on hover
         container.find("div.bbg_xiv-dense_full_btn").hover(
             function(e){
-                if(!flexContainer.data("captionVisible")){
+                if ( ! galleryContainer.hasClass( 'bbg_xiv-caption_visible' ) ) {
                     jQuery(this).parents("div.bbg_xiv-flex_item").find("figure figcaption").each(function(){
                         jQuery(this).show();
                     });
                 }
             },
             function(e){
-                if(!flexContainer.data("captionVisible")){
+                if ( ! galleryContainer.hasClass( 'bbg_xiv-caption_visible' ) ) {
                     jQuery(this).parents("div.bbg_xiv-flex_item").find("figure figcaption").each(function(){
                         jQuery(this).hide();
                     });
@@ -158,7 +159,7 @@
         );
         if(bbg_xiv.interface==="touch"){
             container.find("div.bbg_xiv-flex_item a").click(function(e){
-                if(!flexContainer.data("captionVisible")){
+                if ( ! galleryContainer.hasClass( 'bbg_xiv-caption_visible' ) ) {
                     var caption=jQuery(this.parentNode).find("figure figcaption");
                     if(!caption.data("visible")){
                         container.find("div.bbg_xiv-flex_item figure figcaption").data("visible",false);
@@ -1549,16 +1550,17 @@
             jQuery( this ).closest( 'div.bbg_xiv-gallery' ).toggleClass( 'bbg_xiv-fullscreen_gallery' );
         });
         jQuery("button.bbg_xiv-titles").click(function(e){
-            var container=jQuery(this).parents("div.bbg_xiv-bootstrap.bbg_xiv-gallery").find("div.bbg_xiv-flex_container");
+            var galleryContainer   = jQuery( this ).closest( 'div.bbg_xiv-bootstrap.bbg_xiv-gallery' );
+            var container          = galleryContainer.find( 'div.bbg_xiv-flex_container' );
             if(container.length){
                 var figure=container.find("div.bbg_xiv-flex_item figure");
                 var caption=figure.find("figcaption");
-                if(container.data("captionVisible")){
-                    caption.hide(1000);
-                    container.data("captionVisible",false);
-                }else{
-                    caption.show(1000);
-                    container.data("captionVisible",true);
+                if ( galleryContainer.hasClass( 'bbg_xiv-caption_visible' ) ) {
+                    caption.hide( 1000 );
+                    galleryContainer.removeClass( 'bbg_xiv-caption_visible' );
+                } else {
+                    caption.show( 1000 );
+                    galleryContainer.addClass( 'bbg_xiv-caption_visible' );
                 }
                 if(container.hasClass("bbg_xiv-contain")){
                     // in tiles contain mode center image if title not displayed
