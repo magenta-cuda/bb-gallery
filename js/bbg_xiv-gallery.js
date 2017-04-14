@@ -615,7 +615,7 @@
                 jQuery(this).find("div.bbg_xiv-jquery_mobile input[type='number']").val(parseInt(e.relatedTarget.dataset.index,10)+1).change();
                 slideChange=false;
             });
-            if(flags.indexOf("embedded-carousel")!==-1){
+            if ( flags.indexOf( 'embedded-carousel' ) !== -1 && ! jqGallery.closest( 'div.bbg_xiv-gallery' ).hasClass( 'bbg_xiv-fullscreen_gallery' ) ) {
                 window.setTimeout(function(){
                     // the timeout is necessary to give browser time to render the image before the scrolling is done
                     var $divCarousel = jqGallery.find( 'div.carousel' )
@@ -677,7 +677,13 @@
                         jQuery(window).scrollTop(jqGallery.find("div.tab-content").offset().top-jQuery(window).height()/3-20);
                     }else{
                         // landscape mode
-                        jQuery(window).scrollTop(jqGallery.find("div.tab-content").offset().top-80);
+                        var $gallery = jqGallery.closest( 'div.bbg_xiv-gallery' );
+                        var $content = jqGallery.find( 'div.tab-content' );
+                        if ( $gallery.hasClass( 'bbg_xiv-fullscreen_gallery' ) ) {
+                            $gallery.scrollTop( $content.position().top - 80 );
+                        } else {
+                            jQuery( window ).scrollTop( $content.offset().top - 80 );
+                        }
                     }
                 },500);
             });
