@@ -284,35 +284,13 @@
         container.empty();
         var justifiedContainer=galleryView.render().$el.find("div.bbg_xiv-justified_container");
         container.append(justifiedContainer);
-        justifiedContainer=justifiedContainer.find("div.bbg_xiv-justified_gallery");
-        justifiedContainer.justifiedGallery({margins:5,rowHeight:128,lastRow:"nojustify"});
-        var hit=false;
-        var count=0;
-        setTimeout(function bbg_xivPostJustified(){
-            var timeoutSet=false;
-            var imgs=justifiedContainer.find("img");
-            if(imgs.length){
-                imgs.each(function(){
-                    var img=jQuery(this);
-                    // TODO: Why are there negative margins on the img - anyway remove them
-                    if(img.css("margin-left")!=="0px"){
-                        hit=true;
-                        if(!timeoutSet&&count<8){
-                            timeoutSet=true;
-                            ++count;
-                            setTimeout(bbg_xivPostJustified,1000);
-                        }
-                    }
-                    img.css("margin","0");
-                });
-            }
-            if(!hit){
-                ++count;
-                setTimeout(bbg_xivPostJustified,1000);
-            }
-        },1000);
+        var $justifiedGallery = justifiedContainer.find( 'div.bbg_xiv-justified_gallery' );
+        $justifiedGallery.justifiedGallery({margins: 5, rowHeight: 128, lastRow: 'nojustify', refreshSensitivity: 0, refreshTime: 250 }).on( 'jg.complete jg.resize', function() {
+            // Why are there negative margins on the img - anyway remove them
+            $justifiedGallery.find( 'img' ).css( 'margin', '0' );
+        });
         if(bbg_xiv.interface==="touch"){
-            justifiedContainer.find("div.bbg_xiv-justified_item > a").click(function(e){
+            $justifiedGallery.find( 'div.bbg_xiv-justified_item > a' ).click(function( e ) {
                 e.preventDefault();
             });
         }
@@ -640,12 +618,13 @@
             if(flags.indexOf("embedded-carousel")!==-1){
                 window.setTimeout(function(){
                     // the timeout is necessary to give browser time to render the image before the scrolling is done
+                    var $divCarousel = jqGallery.find( 'div.carousel' )
                     if(window.matchMedia("(max-aspect-ratio:1/1)").matches){
                         // portrait mode
-                        jQuery(window).scrollTop(jqGallery.find("div.carousel").offset().top-jQuery(window).height()/6);
+                        jQuery(window).scrollTop( $divCarousel.offset().top - jQuery(window).height()/6 );
                     }else{
                         // landscape mode
-                        jQuery(window).scrollTop(jqGallery.find("div.carousel").offset().top-60);
+                        jQuery(window).scrollTop( $divCarousel.offset().top - $divCarousel.outerHeight()/8 );
                     }
                 },500);
             }
