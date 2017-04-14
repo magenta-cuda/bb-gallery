@@ -1527,7 +1527,15 @@
             e.preventDefault();
         });
         jQuery( 'button.bbg_xiv-fullscreen' ).click(function( e ) {
-            jQuery( this ).closest( 'div.bbg_xiv-gallery' ).toggleClass( 'bbg_xiv-fullscreen_gallery' );
+            var $gallery = jQuery( this ).closest( 'div.bbg_xiv-gallery' );
+            if ( $gallery.hasClass( 'bbg_xiv-fullscreen_gallery' ) ) {
+                $gallery.removeClass( 'bbg_xiv-fullscreen_gallery' );
+                jQuery( 'html' ).removeClass( 'bbg_xiv-fullscreen_gallery' );
+            } else {
+                $gallery.addClass( 'bbg_xiv-fullscreen_gallery' );
+                jQuery( 'html' ).addClass( 'bbg_xiv-fullscreen_gallery' );
+            }
+            jQuery( window ).resize();
         });
         jQuery("button.bbg_xiv-titles").click(function(e){
             var galleryContainer   = jQuery( this ).closest( 'div.bbg_xiv-bootstrap.bbg_xiv-gallery' );

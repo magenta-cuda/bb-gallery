@@ -1405,6 +1405,7 @@ div.bbg_xiv-bootstrap.bbg_xiv-fullscreen_gallery{
     width:100vw;
     height:100vh;
     z-index:100000;
+    padding:0 10px;
     background-color:white;
     nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-fullscreen{
         color:cyan;
@@ -1462,4 +1463,8 @@ div.ui-loader{
     vertical-align:middle;
     font-size:25px;
   }
+}
+
+html.bbg_xiv-fullscreen_gallery{
+    overflow-y:hidden;
 }
