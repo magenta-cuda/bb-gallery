@@ -680,7 +680,7 @@
                         var $gallery = jqGallery.closest( 'div.bbg_xiv-gallery' );
                         var $content = jqGallery.find( 'div.tab-content' );
                         if ( $gallery.hasClass( 'bbg_xiv-fullscreen_gallery' ) ) {
-                            $gallery.scrollTop( $content.position().top - 80 );
+                            $gallery.scrollTop( $gallery.scrollTop() + $content.position().top - 90 );
                         } else {
                             jQuery( window ).scrollTop( $content.offset().top - 80 );
                         }
