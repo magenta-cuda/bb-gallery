@@ -614,18 +614,30 @@
                 jQuery(this).find("div.bbg_xiv-jquery_mobile input[type='number']").val(parseInt(e.relatedTarget.dataset.index,10)+1).change();
                 slideChange=false;
             });
-            if ( flags.indexOf( 'embedded-carousel' ) !== -1 && ! jqGallery.closest( 'div.bbg_xiv-gallery' ).hasClass( 'bbg_xiv-fullscreen_gallery' ) ) {
-                window.setTimeout(function(){
+            if ( flags.indexOf( 'embedded-carousel' ) !== -1 ) {
+                window.setTimeout( function() {
                     // the timeout is necessary to give browser time to render the image before the scrolling is done
+                    var $gallery     = jqGallery.closest( 'div.bbg_xiv-gallery' );
                     var $divCarousel = jqGallery.find( 'div.carousel' )
-                    if(window.matchMedia("(max-aspect-ratio:1/1)").matches){
-                        // portrait mode
-                        jQuery(window).scrollTop( $divCarousel.offset().top - jQuery(window).height()/6 );
-                    }else{
-                        // landscape mode
-                        jQuery(window).scrollTop( $divCarousel.offset().top - $divCarousel.outerHeight()/8 );
+                    if ( $gallery.hasClass( 'bbg_xiv-fullscreen_gallery' ) ) {
+                        // full screen
+                        if ( window.matchMedia( '(max-aspect-ratio:1/1)' ).matches ) {
+                            // portrait mode
+                        } else {
+                            // landscape mode
+                            $gallery.scrollTop( $gallery[0].scrollHeight - $gallery.height() );
+                        }
+                    } else {
+                        // not full screen
+                        if(window.matchMedia("(max-aspect-ratio:1/1)").matches){
+                            // portrait mode
+                            jQuery(window).scrollTop( $divCarousel.offset().top - jQuery(window).height()/6 );
+                        }else{
+                            // landscape mode
+                            jQuery(window).scrollTop( $divCarousel.offset().top - $divCarousel.outerHeight()/8 );
+                        }
                     }
-                },500);
+                }, 500 );
             }
             jQuery("#"+carouselId).carousel({interval:bbg_xiv.bbg_xiv_carousel_interval,pause:false});
             break;

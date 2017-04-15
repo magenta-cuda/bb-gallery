@@ -21,9 +21,7 @@ This is a responsive, mobile-friendly, plug-compatible replacement for the built
 
 == Frequently Asked Questions ==
 = Why is the page loading slowly? =
-BB Gallery can preload full size images for better user interactivity.
-This does not work well for low bandwidth and/or slow cpus.
-You can set the bandwidth option to "low" to prevent preloading and force the use of low resolution images.
+BB Gallery can preload full size images for better user interactivity. This does not work well for low bandwidth and/or slow cpus. You can set the bandwidth option to "low" to prevent the preloading of full size images.
 
 = Is it necessary to install the WP REST API plugin? =
 No. If the WP REST API plugin is not installed this plugin will use its own proprietary AJAX API to populate the Backbone.js collections.
@@ -51,6 +49,8 @@ https://bbfgallery.wordpress.com/
 = 1.8.2 =
 
 * added support for a fullscreen view
+* change default to not preload full size images
+* bug fixes and css tweaks
 
 = 1.8.1.1 =
 
@@ -180,6 +180,8 @@ https://bbfgallery.wordpress.com/
 = 1.8.2 =
 
 * added support for a fullscreen view
+* change default to not preload full size images
+* bug fixes and css tweaks
 
 = 1.8.1.1 =
 
