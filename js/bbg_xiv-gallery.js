@@ -670,22 +670,27 @@
                         },250);
                     });
                 }
-                window.setTimeout(function(){
+                window.setTimeout(function() {
                     // the timeout is necessary to give browser time to render the image before the scrolling is done
-                    if(window.matchMedia("(max-aspect-ratio:1/1)").matches){
+                    var $gallery   = jqGallery.closest( 'div.bbg_xiv-gallery' );
+                    var fullscreen = $gallery.hasClass( 'bbg_xiv-fullscreen_gallery' );
+                    var $content   = jqGallery.find( 'div.tab-content' );
+                    if( window.matchMedia( '(max-aspect-ratio:1/1)' ).matches ) {
                         // portrait mode
-                        jQuery(window).scrollTop(jqGallery.find("div.tab-content").offset().top-jQuery(window).height()/3-20);
-                    }else{
+                        if ( fullscreen ) {
+                            $gallery.scrollTop( $gallery.scrollTop() + $content.position().top  - jQuery( window ).height()/3 - 20 );
+                        } else {
+                            jQuery( window ).scrollTop( $content.offset().top - jQuery( window ).height()/3 - 20 );
+                        }
+                    } else {
                         // landscape mode
-                        var $gallery = jqGallery.closest( 'div.bbg_xiv-gallery' );
-                        var $content = jqGallery.find( 'div.tab-content' );
-                        if ( $gallery.hasClass( 'bbg_xiv-fullscreen_gallery' ) ) {
+                        if ( fullscreen ) {
                             $gallery.scrollTop( $gallery.scrollTop() + $content.position().top - 90 );
                         } else {
                             jQuery( window ).scrollTop( $content.offset().top - 80 );
                         }
                     }
-                },500);
+                }, 500 );
             });
             // intercept clicks when images belong to gallery of galleries
             if(jqGallery.hasClass("bbg_xiv-gallery_icons_mode")){
