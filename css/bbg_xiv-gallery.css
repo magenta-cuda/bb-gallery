@@ -1,6 +1,7 @@
 /* Stylesheet for the Bootstrap views of the 'gallery' shortcode */
 /* The colors for the Dense View */
 div.bbg_xiv-bootstrap div.bbg_xiv-gallery_envelope {
+  padding-bottom: 50px;
   margin: 0; }
 div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar {
   overflow: visible; }

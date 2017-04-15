@@ -974,6 +974,8 @@
         if(!data.bbg_srcset){
             // really should removeAttribute but this should work
             return "";
+        } else if ( icon ) {
+            return '10vw';
         }else if(fullSize==="viewport"){
             return "90vw";
         }else if(fullSize==="container"){
