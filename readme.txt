@@ -10,17 +10,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Responsive plug-compatible replacement for the built-in WordPress gallery shortcode.
 
 == Description ==
-This is a responsive, mobile-friendly plug-compatible replacement for the built-in WordPress gallery shortcode.
-You can view a working sample web page using this plugin at [my portfolio website](http://magentacuda.com/).
-It is implemented using a [Backbone.js](http://backbonejs.org/) Model-View-Presenter (MVP) populated via the [WordPress REST API](http://v2.wp-api.org/).
-It is styled by a [Twitter Bootstrap 3](http://getbootstrap.com/) stylesheet and has touch optimizations from [jQuery Mobile](https://jquerymobile.com/).
-Using a MVP allows you to [switch instantaneously](https://bbfgallery.wordpress.com/#navbar) (i.e. without doing a HTTP request) between multiple views of a gallery.
-The default implementation supports a [gallery view](https://bbfgallery.wordpress.com/#gallery), [Miro's Justified Gallery](http://miromannino.github.io/Justified-Gallery/) view, a [carousel view](https://bbfgallery.wordpress.com/#carousel), a [tabs view](https://bbfgallery.wordpress.com/#tabs) and a [dense view](https://bbfgallery.wordpress.com/#dense) of the gallery.
-Using the WP REST API allows you to [dynamically load](https://bbfgallery.wordpress.com/#alt_galleries) (i.e. without reloading the entire page) new galleries.
-The view is styled by a Twitter Bootstrap 3 stylesheet so it is automatically responsive.
-If the browser supports the CSS3 Flexbox the gallery view is implemented using a flexbox.
-You can easily modify the Backbone templates to create your own customized views of the gallery.
-The homepage for this plug-in is [https://bbfgallery.wordpress.com/](https://bbfgallery.wordpress.com/).
+This is a responsive, mobile-friendly, plug-compatible replacement for the built-in WordPress gallery shortcode. You can view a working sample web page using this plugin at [my portfolio website](http://magentacuda.com/). It is implemented using a [Backbone.js](http://backbonejs.org/) Model-View-Presenter (MVP) populated via the [WordPress REST API](http://v2.wp-api.org/). It is styled by a [Twitter Bootstrap 3](http://getbootstrap.com/) stylesheet and has touch optimizations from [jQuery Mobile](https://jquerymobile.com/). Using a MVP allows you to [switch instantaneously](https://bbfgallery.wordpress.com/#navbar) (i.e. without doing a HTTP request) between multiple views of a gallery. The default implementation supports a [gallery view](https://bbfgallery.wordpress.com/#gallery), [Miro's Justified Gallery](http://miromannino.github.io/Justified-Gallery/) view, a [carousel view](https://bbfgallery.wordpress.com/#carousel), a [tabs view](https://bbfgallery.wordpress.com/#tabs) and a [dense view](https://bbfgallery.wordpress.com/#dense) of the gallery. Using the WP REST API allows you to [dynamically load](https://bbfgallery.wordpress.com/#alt_galleries) (i.e. without reloading the entire page) new galleries. The view is styled by a Twitter Bootstrap 3 stylesheet so it is automatically responsive. You can easily modify the Backbone templates to create your own customized views of the gallery. The homepage for this plug-in is [https://bbfgallery.wordpress.com/](https://bbfgallery.wordpress.com/).
 
 == Installation ==
 1. Upload the folder "bb-gallery" to the "/wp-content/plugins/" directory.
