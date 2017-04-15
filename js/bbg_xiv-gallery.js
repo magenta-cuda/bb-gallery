@@ -521,7 +521,6 @@
             titlesButton.show();
             break;
         case "Carousel":
-            var overflow=jQuery("html").css("overflow-y");
             if(flags.indexOf("embedded-carousel")!==-1){
                 jqGallery.addClass("bbg_xiv-embedded_carousel");
             }else{
@@ -567,7 +566,7 @@
                 // restore "Gallery View"
                 jqGallery.removeClass("bbg_xiv-embedded_carousel");
                 bbg_xiv.resetGallery(jQuery(this).parents("div.bbg_xiv-gallery"),"Carousel");
-                jQuery("html").css("overflow-y",overflow);
+                jQuery( 'html' ).css( 'overflow-y', '' );
                 e.preventDefault();      
             });
             var input=jqGallery.find("div.bbg_xiv-jquery_mobile input[type='range']");
@@ -722,7 +721,6 @@
             }
             break;
         case "Dense":
-            var overflow=jQuery("html").css("overflow-y");
             jQuery("html").css("overflow-y","hidden");
             bbg_xiv.renderDense(jqGallery,images,"bbg_xiv-dense_"+gallery.id,"title");
             jqGallery.find("div.bbg_xiv-dense_images div.bbg_xiv-dense_flex_images div.bbg_xiv-dense_flex_item")
@@ -797,7 +795,7 @@
             jqGallery.find("button.bbg_xiv-dense_close_btn").click(function(e){
                 // restore "Gallery View"
                 bbg_xiv.resetGallery(jQuery(this).parents("div.bbg_xiv-gallery"));
-                jQuery("html").css("overflow-y",overflow);
+                jQuery( 'html' ).css( 'overflow-y', '' );
                 e.preventDefault();      
             });
             constructOverlay();
