@@ -810,6 +810,10 @@
             break;
         }
         var menuItems=jQuery(gallery.parentNode).find("nav.bbg_xiv-gallery_navbar ul.nav ul.bbg_xiv-view_menu li").show();
+        if ( bbg_xiv.interface !== 'mouse' || jQuery( window ).width() < bbg_xiv.bbg_xiv_flex_min_width_for_dense_view ) {
+            // for touch and small screen devices hide the dense menu item
+            menuItems.filter( '.bbg_xiv-large_viewport_only' ).hide();
+        }
         if(bbg_xiv.search[gallery.id]){
             // displaying search results so hide gallery headings
             jQuery("div#"+gallery.id+"-alt_gallery_heading").hide();
@@ -1156,7 +1160,7 @@
             if(bbg_xiv.interface!=="mouse"||jQuery(window).width()<bbg_xiv.bbg_xiv_flex_min_width_for_dense_view){
                 // for touch and small screen devices hide the dense menu item
                 menuItems.filter(".bbg_xiv-large_viewport_only").hide();
-            }  
+            }
             if(typeof bbg_xiv.images[this.id].models[0].attributes.gallery_index!=="undefined"){
                 // for a gallery of gallery icons hide the carousel and the dense menu items
                 menuItems.filter(".bbg_xiv-hide_for_gallery_icons").hide();
