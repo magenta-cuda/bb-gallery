@@ -1216,10 +1216,12 @@
                     var images=bbg_xiv.images[gallery.id]=new wp.api.collections.Media();
                     images.reset(JSON.parse(bbg_xiv[gallery.id+"-data"]));
                     bbg_xiv.renderGallery(gallery,defaultView,["initial"]);
+                    jQuery( gallery ).closest( 'div.bbg_xiv-gallery' ).addClass( 'bbg_xiv-home_gallery' );
                     jQuery(window).resize();
                 });
             }else{
                 bbg_xiv.renderGallery(gallery,defaultView,["initial"]);
+                jQuery( gallery ).closest( 'div.bbg_xiv-gallery' ).addClass( 'bbg_xiv-home_gallery' );
             }
         });
 
@@ -1266,6 +1268,11 @@
                     bbg_xiv.renderGallery(divGallery,defaultView);
                     // update active in gallery tabs
                     container.find("div.bbg_xiv-gallery_tabs_container nav.navbar ul.nav-tabs li").removeClass("active").find("a[data-view='"+view+"']").parent().addClass("active");
+                    if ( view !== 'gallery_home' ) {
+                        jqThis.closest( 'div.bbg_xiv-gallery' ).removeClass( 'bbg_xiv-home_gallery' );
+                    } else {
+                        jqThis.closest( 'div.bbg_xiv-gallery' ).addClass( 'bbg_xiv-home_gallery' );
+                    }
                     e.preventDefault();
                     return;
                 }
@@ -1373,6 +1380,11 @@
                 // update active in gallery tabs
                 jqThis.parents("div.bbg_xiv-bootstrap.bbg_xiv-gallery").find("div.bbg_xiv-gallery_tabs_container nav.navbar ul.nav-tabs li").removeClass("active")
                     .find("a[data-view='"+view+"']").parent().addClass("active");
+                if ( view !== 'gallery_home' ) {
+                    jqThis.closest( 'div.bbg_xiv-gallery' ).removeClass( 'bbg_xiv-home_gallery' );
+                } else {
+                    jqThis.closest( 'div.bbg_xiv-gallery' ).addClass( 'bbg_xiv-home_gallery' );
+                }
             }
             e.preventDefault();
         });
@@ -1545,6 +1557,7 @@
                         handleResponse(!!r);
                     });
                 }
+                searchBtn.closest( 'div.bbg_xiv-gallery' ).removeClass( 'bbg_xiv-home_gallery' );
                 e.preventDefault();
             });
         });
