@@ -317,6 +317,14 @@
                   }
               });
           });
+          jQuery( img ).closest( 'a' ).click(function( e ) {
+              e.preventDefault();
+          });
+          jQuery( caption ).find( 'a' ).click(function( e ) {
+              if ( ! jQuery( this ).closest( 'div.caption' ).css( 'opacity' ) ) {
+                  e.preventDefault();
+              }
+          });
         });
     };
 
@@ -436,27 +444,24 @@
                     outer.hide();
                 },2000);
             });
-            var fullImg=inner.find("img");
-            var fullTitle=inner.find("h1.bbg_xiv-dense_title");
-            var fullTitleColor=fullTitle.css("color");
-            var fullTitleShadow=fullTitle.css("text-shadow");
-            var fullCaption=inner.find("h1.bbg_xiv-dense_caption");
-            var fullCaptionColor=fullCaption.css("color");
-            var fullCaptionShadow=fullCaption.css("text-shadow");
-            if(bbg_xiv.interface==="touch"){
-                // force hover effects on touchscreen
-                fullTitle.css({color:fullTitleColor,textShadow:fullTitleShadow});
-                fullCaption.css({color:fullCaptionColor,textShadow:fullCaptionShadow});
-            }else{
+            var fullImg     = inner.find( 'img' );
+            var fullTitle   = inner.find( 'h1.bbg_xiv-dense_title' );
+            var fullCaption = inner.find( 'h1.bbg_xiv-dense_caption' );
+            if( typeof bbg_xiv.titleColor === 'undefined' ) {
+                // save the initial values of title color and shadow as these will be changed
+                bbg_xiv.titleColor  = fullTitle.css( 'color' );
+                bbg_xiv.titleShadow = fullTitle.css( 'text-shadow' );
+            }
+            if ( bbg_xiv.interface === 'mouse' ) {
                 // only show title on mouseover
                 fullImg.hover(
-                    function(){
-                        fullTitle.css({color:fullTitleColor,textShadow:fullTitleShadow});
-                        fullCaption.css({color:fullCaptionColor,textShadow:fullCaptionShadow});
+                    function() {
+                        fullTitle.css({   color: bbg_xiv.titleColor, textShadow: bbg_xiv.titleShadow});
+                        fullCaption.css({ color: bbg_xiv.titleColor, textShadow: bbg_xiv.titleShadow});
                     },
-                    function(){
-                        fullTitle.css({color:"transparent",textShadow:"none"});
-                        fullCaption.css({color:"transparent",textShadow:"none"});
+                    function() {
+                        fullTitle.css({   color: 'transparent', textShadow: 'none' });
+                        fullCaption.css({ color: 'transparent', textShadow: 'none' });
                     }
                 );
             }
@@ -490,6 +495,11 @@
                 // show and fade in overlay
                 outer.show();
                 inner.show();
+                if ( bbg_xiv.interface === 'touch' ) {
+                    // force hover effects on touchscreen
+                    fullTitle.css({   color: bbg_xiv.titleColor, textShadow: bbg_xiv.titleShadow});
+                    fullCaption.css({ color: bbg_xiv.titleColor, textShadow: bbg_xiv.titleShadow});
+                }
                 window.setTimeout(function(){
                     inner.css("opacity","1.0");
                     outer.css("opacity","0.93");
@@ -1771,19 +1781,13 @@
             }
             // hide/show title and caption of overlay on swipe
             var inner=jQuery("div.bbg_xiv-dense_inner");
-            inner.find(".bbg_xiv-dense_title,.bbg_xiv-dense_caption").each(function(){
-                var jqThis=jQuery(this);
-                var color=jqThis.css("color");
-                if(color!=="transparent"&&color!=="rgba(0, 0, 0, 0)"){   // TODO: find safer test for transparent
-                    if(typeof bbg_xiv.titleColor==="undefined"){
-                        bbg_xiv.titleColor=color;
-                        bbg_xiv.titleShadow=jqThis.css("text-shadow");
-                    }
-                    jqThis.css("color","transparent");
-                    jqThis.css("text-shadow","none");
+            inner.find( '.bbg_xiv-dense_title, .bbg_xiv-dense_caption' ).each(function() {
+                var $this = jQuery( this );
+                var color = $this.css( 'color' );
+                if ( color !== 'transparent' && color !== 'rgba(0, 0, 0, 0)' ) {   // TODO: find safer test for transparent
+                    $this.css({ color: 'transparent',      textShadow: 'none'             });
                 }else{
-                    jqThis.css("color",bbg_xiv.titleColor);
-                    jqThis.css("text-shadow",bbg_xiv.titleShadow);
+                    $this.css({ color: bbg_xiv.titleColor, textShadow: bbg_xiv.titleShadow});
                 }
             });
         });
