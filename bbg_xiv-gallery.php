@@ -421,7 +421,7 @@ EOD;
             'show/hide image titles'                      => __( 'show/hide image titles',                      'bb_gallery' ),
             'Carousel Time Interval in ms'                => __( 'Carousel Time Interval in ms',                'bb_gallery' ),
             'Minimum Width for Gallery Images in px'      => __( 'Minimum Width for Gallery Images in px',      'bb_gallery' ),
-            'Preferred Row Height for Justified in px'    => __( 'Preferred Row Height for Justified in px',    'bb_gallery' ),
+            'Preferred Row Height for Justified Images in px' => __( 'Preferred Row Height for Justified Images in px', 'bb_gallery' ),
             'Maximum Number of Images Returned by Search' => __( 'Maximum Number of Images Returned by Search', 'bb_gallery' ),
             'Number of Columns in the Dense View'         => __( 'Number of Columns in the Dense View',         'bb_gallery' ),
             'Bandwidth'                                   => __( 'Bandwidth',                                   'bb_gallery' ),
@@ -596,7 +596,7 @@ EOD;
           </div>
         </div>
         <div class="form-group">
-          <label for="bbg_xiv-miro_row_height" class="control-label col-sm-9 col-md-offset-2 col-md-6">{$translations['Preferred Row Height for Justified in px']}</label>
+          <label for="bbg_xiv-miro_row_height" class="control-label col-sm-9 col-md-offset-2 col-md-6">{$translations['Preferred Row Height for Justified Images in px']}</label>
           <div class="col-sm-3 col-md-2">
             <input type="number" class="form-control" id="bbg_xiv-miro_row_height" min="32" max="1024">
           </div>
