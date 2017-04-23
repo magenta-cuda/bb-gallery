@@ -85,6 +85,7 @@ class BBG_XIV_Gallery {
         ];
         $bbg_xiv_data[ 'ajaxurl' ]                                   = admin_url( 'admin-ajax.php' );
         $bbg_xiv_data[ 'bbg_xiv_flex_min_width' ]                    = get_option( 'bbg_xiv_flex_min_width', 128 );
+        $bbg_xiv_data[ 'bbg_xiv_miro_row_height' ]                   = get_option( 'bbg_xiv_miro_row_height', 128 );
         $bbg_xiv_data[ 'bbg_xiv_flex_min_width_for_caption' ]        = get_option( 'bbg_xiv_flex_min_width_for_caption', 96 );
         $bbg_xiv_data[ 'bbg_xiv_max_search_results' ]                = get_option( 'bbg_xiv_max_search_results', 250 );
         $bbg_xiv_data[ 'bbg_xiv_flex_min_width_for_dense_view' ]     = get_option( 'bbg_xiv_flex_min_width_for_dense_view', 1280 );
@@ -420,6 +421,7 @@ EOD;
             'show/hide image titles'                      => __( 'show/hide image titles',                      'bb_gallery' ),
             'Carousel Time Interval in ms'                => __( 'Carousel Time Interval in ms',                'bb_gallery' ),
             'Minimum Width for Gallery Images in px'      => __( 'Minimum Width for Gallery Images in px',      'bb_gallery' ),
+            'Preferred Row Height for Justified in px'    => __( 'Preferred Row Height for Justified in px',    'bb_gallery' ),
             'Maximum Number of Images Returned by Search' => __( 'Maximum Number of Images Returned by Search', 'bb_gallery' ),
             'Number of Columns in the Dense View'         => __( 'Number of Columns in the Dense View',         'bb_gallery' ),
             'Bandwidth'                                   => __( 'Bandwidth',                                   'bb_gallery' ),
@@ -591,6 +593,12 @@ EOD;
           <label for="bbg_xiv-min_image_width" class="control-label col-sm-9 col-md-offset-2 col-md-6">{$translations['Minimum Width for Gallery Images in px']}</label>
           <div class="col-sm-3 col-md-2">
             <input type="number" class="form-control" id="bbg_xiv-min_image_width" min="32" max="1024">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="bbg_xiv-miro_row_height" class="control-label col-sm-9 col-md-offset-2 col-md-6">{$translations['Preferred Row Height for Justified in px']}</label>
+          <div class="col-sm-3 col-md-2">
+            <input type="number" class="form-control" id="bbg_xiv-miro_row_height" min="32" max="1024">
           </div>
         </div>
         <div class="form-group">
@@ -955,6 +963,10 @@ EOD
                 echo '<input name="bbg_xiv_flex_min_width" id="bbg_xiv_flex_min_width" type="number" value="' . get_option( 'bbg_xiv_flex_min_width', 128 )
                     . '" class="small-text" /> ' . __( 'The minimum image width in the "Gallery View" if the CSS3 Flexbox is used.', 'bb_gallery' );
             }, 'media',	'bbg_xiv_setting_section' );
+            add_settings_field( 'bbg_xiv_miro_row_height', __( 'Justified Preferred Row Height', 'bb_gallery' ), function() {
+                echo '<input name="bbg_xiv_miro_row_height" id="bbg_xiv_miro_row_height" type="number" value="' . get_option( 'bbg_xiv_miro_row_height', 128 )
+                    . '" class="small-text" /> ' . __( 'The minimum image width in the "Gallery View" if the CSS3 Flexbox is used.', 'bb_gallery' );
+            }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_flex_min_width_for_caption', __( 'Gallery Minimum Image Width for Caption', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_flex_min_width_for_caption" id="bbg_xiv_flex_min_width_for_caption" type="number" value="'
                     . get_option( 'bbg_xiv_flex_min_width_for_caption', 96 )
@@ -1044,6 +1056,7 @@ EOD
             register_setting( 'media', 'bbg_xiv_version' );
             register_setting( 'media', 'bbg_xiv_shortcode' );
             register_setting( 'media', 'bbg_xiv_flex_min_width' );
+            register_setting( 'media', 'bbg_xiv_miro_row_height' );
             register_setting( 'media', 'bbg_xiv_flex_min_width_for_caption' );
             register_setting( 'media', 'bbg_xiv_carousel_interval' );
             register_setting( 'media', 'bbg_xiv_max_search_results' );

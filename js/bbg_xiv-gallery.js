@@ -285,7 +285,8 @@
         var justifiedContainer=galleryView.render().$el.find("div.bbg_xiv-justified_container");
         container.append(justifiedContainer);
         var $justifiedGallery = justifiedContainer.find( 'div.bbg_xiv-justified_gallery' );
-        $justifiedGallery.justifiedGallery({margins: 5, rowHeight: 128, lastRow: 'nojustify', refreshSensitivity: 0, refreshTime: 250 }).on( 'jg.complete jg.resize', function() {
+        $justifiedGallery.justifiedGallery({margins: 5, rowHeight: bbg_xiv.bbg_xiv_miro_row_height, lastRow: 'nojustify', refreshSensitivity: 0, refreshTime: 250 })
+            .on( 'jg.complete jg.resize', function() {
             // Why are there negative margins on the img - anyway remove them
             $justifiedGallery.find( 'img' ).css( 'margin', '0' );
         });
@@ -1075,6 +1076,10 @@
             if(jQuery.isNumeric(flex_min_width)&&flex_min_width>=32&&flex_min_width<=1024){
                 bbg_xiv.bbg_xiv_flex_min_width=flex_min_width;
             }
+            var miro_row_height = options.bbg_xiv_miro_row_height;
+            if ( jQuery.isNumeric( miro_row_height ) && miro_row_height >= 32 && miro_row_height <= 512 ) {
+                bbg_xiv.bbg_xiv_miro_row_height = miro_row_height;
+            }
             var max_search_results=options.bbg_xiv_max_search_results;
             if(jQuery.isNumeric(max_search_results)&&max_search_results>=1&&max_search_results<1048576){
                 bbg_xiv.bbg_xiv_max_search_results=max_search_results;
@@ -1632,6 +1637,7 @@
         jQuery("button.bbg_xiv-configure").click(function(e){
             divConfigure.find("input#bbg_xiv-carousel_delay").val(bbg_xiv.bbg_xiv_carousel_interval);
             divConfigure.find("input#bbg_xiv-min_image_width").val(bbg_xiv.bbg_xiv_flex_min_width);
+            divConfigure.find( 'input#bbg_xiv-miro_row_height' ).val( bbg_xiv.bbg_xiv_miro_row_height );
             divConfigure.find("input#bbg_xiv-max_search_results").val(bbg_xiv.bbg_xiv_max_search_results);
             divConfigure.find("input#bbg_xiv-columns_in_dense_view").val(bbg_xiv.bbg_xiv_flex_number_of_dense_view_columns);
             divConfigure.find("input[name='bbg_xiv-default_view']").prop("checked",false);
@@ -1678,6 +1684,7 @@
             // save the options
             bbg_xiv.bbg_xiv_carousel_interval=divConfigure.find("input#bbg_xiv-carousel_delay").val();
             bbg_xiv.bbg_xiv_flex_min_width=divConfigure.find("input#bbg_xiv-min_image_width").val();
+            bbg_xiv.bbg_xiv_miro_row_height = divConfigure.find( 'input#bbg_xiv-miro_row_height' ).val();
             bbg_xiv.bbg_xiv_max_search_results=divConfigure.find("input#bbg_xiv-max_search_results").val();
             bbg_xiv.bbg_xiv_flex_number_of_dense_view_columns=divConfigure.find("input#bbg_xiv-columns_in_dense_view").val();
             var defaultView=divConfigure.find("input[name='bbg_xiv-default_view']:checked").val();
@@ -1692,6 +1699,7 @@
             var cookie={
                 bbg_xiv_carousel_interval:bbg_xiv.bbg_xiv_carousel_interval,
                 bbg_xiv_flex_min_width:bbg_xiv.bbg_xiv_flex_min_width,
+                bbg_xiv_miro_row_height: bbg_xiv.bbg_xiv_miro_row_height,
                 bbg_xiv_max_search_results:bbg_xiv.bbg_xiv_max_search_results,
                 bbg_xiv_flex_number_of_dense_view_columns:bbg_xiv.bbg_xiv_flex_number_of_dense_view_columns,
                 bbg_xiv_bandwidth:bbg_xiv.bbg_xiv_bandwidth,
