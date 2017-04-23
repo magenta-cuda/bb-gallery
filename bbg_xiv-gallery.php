@@ -965,7 +965,7 @@ EOD
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_miro_row_height', __( 'Justified Preferred Row Height', 'bb_gallery' ), function() {
                 echo '<input name="bbg_xiv_miro_row_height" id="bbg_xiv_miro_row_height" type="number" value="' . get_option( 'bbg_xiv_miro_row_height', 128 )
-                    . '" class="small-text" /> ' . __( 'The minimum image width in the "Gallery View" if the CSS3 Flexbox is used.', 'bb_gallery' );
+                    . '" class="small-text" /> ' . __( 'The preferred row height in the "Justified View".', 'bb_gallery' );
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_flex_min_width_for_caption', __( 'Gallery Minimum Image Width for Caption', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_flex_min_width_for_caption" id="bbg_xiv_flex_min_width_for_caption" type="number" value="'
