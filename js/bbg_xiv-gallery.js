@@ -1504,7 +1504,8 @@
                         // maintain a history of all images returned by this search
                         search.history.push({images:images,title:title});
                         search.index=search.history.length-1;
-                        bbg_xiv.renderGallery(divGallery,"Gallery");
+                        var defaultView = bbg_xiv.getDefaultView( jQuery( divGallery ), null );
+                        bbg_xiv.renderGallery( divGallery, defaultView );
                         heading.find("button.bbg_xiv-search_scroll_left").attr("disabled",search.index===0);
                     }else{
                         jQuery(divGallery).empty().append('<h1 class="bbg_xiv-warning">'+bbg_xiv_lang["Nothing Found"]+'</h1>');
