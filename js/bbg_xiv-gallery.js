@@ -440,9 +440,12 @@
                 // fade out and hide overlay
                 inner.css("opacity","0.0");
                 outer.css("opacity","0.0");
+                // workaround for a bug? in Chrome where navbar is not visible after an overlay is closed
+                var $navbar = jQuery( 'div.bbg_xiv-gallery nav.bbg_xiv-gallery_navbar' ).css( 'opacity', '0.99' );
                 window.setTimeout(function(){
                     inner.hide();
                     outer.hide();
+                    $navbar.css( 'opacity', '1.0' );
                 },2000);
             });
             var fullImg     = inner.find( 'img' );
