@@ -1767,7 +1767,9 @@
                 var history=search.history[search.index];
                 bbg_xiv.images[id]=history.images;
                 heading.find("span.bbg_xiv-search_heading_second").text(history.title);
-                bbg_xiv.renderGallery(gallery.find("div.bbg_xiv-gallery_envelope")[0],"Gallery");
+                var divGallery  = gallery.find( 'div.bbg_xiv-gallery_envelope' );
+                var defaultView = bbg_xiv.getDefaultView( divGallery, null );
+                bbg_xiv.renderGallery( divGallery[0], defaultView );
                 // reset navbar to "Gallery" view
                 var liSelectView=gallery.find("nav.bbg_xiv-gallery_navbar ul.nav li.bbg_xiv-select_view");
                 var liFirst=liSelectView.find("ul.bbg_xiv-view_menu li.bbg_xiv-view").removeClass("active").filter(".bbg_xiv-view_gallery").addClass("active");
