@@ -97,7 +97,7 @@
         // attach template to imageView not ImageView.prototype since template is specific to imageView
         imageView.template=_.template( jQuery("script#bbg_xiv-template_flex_item").html(),null,bbg_xiv.templateOptions);
         var imagesHtml="";
-        collection.forEach(function(model,index){
+        collection.forEach(function( model ) {
             model.attributes.bbg_xiv_container_width=containerWidth;
             imageView.model=model;
             imagesHtml+=imageView.render(true);
@@ -142,14 +142,14 @@
         var galleryContainer = flexContainer.closest( 'div.bbg_xiv-gallery' ).addClass( 'bbg_xiv-caption_visible' );
         // flip display state of caption on hover
         container.find("div.bbg_xiv-dense_full_btn").hover(
-            function(e){
+            function() {
                 if ( ! galleryContainer.hasClass( 'bbg_xiv-caption_visible' ) ) {
                     jQuery(this).parents("div.bbg_xiv-flex_item").find("figure figcaption").each(function(){
                         jQuery(this).show();
                     });
                 }
             },
-            function(e){
+            function() {
                 if ( ! galleryContainer.hasClass( 'bbg_xiv-caption_visible' ) ) {
                     jQuery(this).parents("div.bbg_xiv-flex_item").find("figure figcaption").each(function(){
                         jQuery(this).hide();
@@ -268,7 +268,7 @@
         // attach template to imageView not ImageView.prototype since template is specific to imageView
         imageView.template=_.template( jQuery("script#bbg_xiv-template_justified_item").html(),null,bbg_xiv.templateOptions);
         var imagesHtml="";
-        collection.forEach(function(model,index){
+        collection.forEach(function( model ) {
             imageView.model=model;
             imagesHtml+=imageView.render(true);
         });
@@ -338,10 +338,10 @@
         // attach template to imageView not ImageView.prototype since template is specific to imageView
         imageView.template=_.template( jQuery("script#bbg_xiv-template_"+template+"_item").html(),null,bbg_xiv.templateOptions);
         var imagesHtml="";
-        collection.forEach(function(model,index){
+        collection.forEach(function( model ) {
             imageView.model=model;
             imagesHtml+=imageView.render(true);
-        } );
+        });
         var galleryView=new bbg_xiv.GalleryView({
             model:{
                 attributes:{
@@ -436,8 +436,8 @@
         bbg_xiv.galleries[gallery.id]=bbg_xiv.galleries[gallery.id]||{images:{"gallery_home":images},view:"gallery_home"};
         function constructOverlay(){
             // gallery or dense view shows a full browser viewport view of an image when its fullscreen glyph is clicked
-            var outer=jqGallery.find("div.bbg_xiv-dense_outer");
-            var inner=jqGallery.find("div.bbg_xiv-dense_inner").click(function(e){
+            var outer = jqGallery.find( 'div.bbg_xiv-dense_outer' );
+            var inner = jqGallery.find( 'div.bbg_xiv-dense_inner' ).click(function() {
                 // fade out and hide overlay
                 inner.css("opacity","0.0");
                 outer.css("opacity","0.0");
@@ -565,7 +565,7 @@
                 }
                 e.preventDefault();      
             });
-            jqGallery.find("a.bbg_xiv-carousel_left,a.bbg_xiv-carousel_right").click(function(e){
+            jqGallery.find( 'a.bbg_xiv-carousel_left, a.bbg_xiv-carousel_right' ).click(function() {
                 pause(this);
             });
             // Carousel rewind handler
@@ -593,7 +593,7 @@
             // update Bootstrap carousel slide when jQuery mobile slider changes
             // jQuery Mobile should change the "type" from "range" to "number" but does not so force it.
             // TODO: Find out why jQuery Mobile is not doing this here - maybe I am doing something wrong.
-            input.attr("type","number").val("1").change(function(e){
+            input.attr( 'type', 'number' ).val( '1' ).change(function() {
                 if(slideChange){
                     // ignore change events triggered by a carousel slid event
                     return;
@@ -619,9 +619,9 @@
                     jQuery(this).blur();
                     e.preventDefault();
                 }
-            }).focus(function(e){
+            }).focus(function() {
                 pause(this);
-            }).on("slidestart",function(e){
+            }).on( 'slidestart', function() {
                 pause(this);
             });
             // update jQuery Mobile slider when Bootstrap carousel changes slide
@@ -661,7 +661,7 @@
         case "Tabs":
             bbg_xiv.renderTabs(jqGallery,images,"bbg_xiv-tabs_"+gallery.id);
             bbg_xiv.prettifyTabs(jqGallery,true);
-            jqGallery.find("nav.navbar ul.nav li a").click(function(e){
+            jqGallery.find( 'nav.navbar ul.nav li a' ).click(function() {
                 if(!Modernizr.objectfit){
                     // Microsoft Edge does not support CSS object-fit so do the object fit with JavaScript code
                     jQuery(this.href.substr(this.href.lastIndexOf("#"))+" img").each(function(){
@@ -757,7 +757,7 @@
             var normal=jQuery("div.bbg_xiv-dense_container button#bbg_xiv-normal_color").css("background-color");
             var highlight=jQuery("div.bbg_xiv-dense_container button#bbg_xiv-highlight_color").css("background-color");
             jqGallery.find("div.bbg_xiv-dense_titles ul li").hover(
-                function(e){
+                function() {
                     // highlight matching image
                     jQuery(this).css({"background-color":highlight});
                     var img=jQuery("div#"+this.id.replace("title","image")).css({"border-color":highlight});
@@ -774,13 +774,13 @@
                         div.scrollTop(scrollTop+(bottom-scrollHeight)+scrollHeight/2-height/2);
                     }
                 },
-                function(e){
+                function() {
                     jQuery(this).css({"background-color":normal});
                     jQuery("div#"+this.id.replace("title","image")).css({"border-color":normal});
                 }
             );
             jqGallery.find("div.bbg_xiv-dense_flex_item").hover(
-                function(e){
+                function() {
                     jQuery(this).css({"border-color":highlight});
                     // highlight matching title
                     var li=jQuery("li#"+this.id.replace("image","title")).css({"background-color":highlight});
@@ -797,12 +797,12 @@
                         div.scrollTop(scrollTop+(bottom-scrollHeight)+scrollHeight/2-height/2);
                     }
                 },
-                function(e){
+                function() {
                     jQuery(this).css({"border-color":normal});
                     jQuery("li#"+this.id.replace("image","title")).css({"background-color":normal});
                 }
             );
-            jqGallery.find("input.bbg_xiv-dense_li_mode").change(function(e){
+            jqGallery.find( 'input.bbg_xiv-dense_li_mode' ).change(function() {
                 // show titles or captions depending on the radio buttons 
                 if(this.checked){
                     var div=jQuery("div.bbg_xiv-dense_container div.bbg_xiv-dense_titles");
@@ -889,7 +889,7 @@
         if(initial){
             // Wireup the handlers - this must be done here as the elements in the tab view are dynamically created
             // Clicking the expand glpyh shows all the tabs.
-            jqGallery.find("span.glyphicon-collapse-down,span.glyphicon-collapse-up").click(function(e){
+            jqGallery.find( 'span.glyphicon-collapse-down, span.glyphicon-collapse-up' ).click(function() {
                 var jqThis=jQuery(this);
                 var navbar=jQuery(this.parentNode).find("div.navbar-collapse");
                 if(jqThis.hasClass("glyphicon-collapse-down")){
@@ -1279,7 +1279,6 @@
                 select.find("li.bbg_xiv-view").removeClass("active");
                 li.addClass("active");
                 liSelectView.find("a.bbg_xiv-selected_view span").text(this.textContent);
-                var gallery=jqThis.parents("div.bbg_xiv-gallery");
                 bbg_xiv.renderGallery(divGallery,view);
             }else{
                 // gallery selected
@@ -1374,9 +1373,9 @@
                     parameters.per_page=bbg_xiv.wpRestApiMaxPerPage;
                     images.fetch({
                         data:parameters,
-                        success:function(c,r,o){
+                        success: function() {
                         },
-                        error:function(c,r,o){
+                        error: function( c, r ) {
                             console.log("error:r=",r);
                             handleResponse(false);
                         }
@@ -1414,7 +1413,6 @@
         });
         // wireup Galleries tabs 
         jQuery("div.bbg_xiv-gallery_tabs_container nav.navbar ul.nav-tabs li a[data-view^='gallery_']").click(function(e){
-            var gallery=this.dataset.view;
             jQuery(this).parents("div.bbg_xiv-bootstrap.bbg_xiv-gallery")
                 .find("nav.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.bbg_xiv-view_menu li > a[data-view='"+this.dataset.view+"']").click();
             e.preventDefault();
@@ -1511,10 +1509,10 @@
                         heading.find("span.bbg_xiv-search_heading_first").text(bbg_xiv_lang["Search Results for"]+" \""+prevQuery+"\"");
                         var title;
                         if(window.bbg_xiv.bbg_xiv_wp_rest_api){
-                            title = bbg_xiv_lang.Page + ' ' + ( page - 1 ) + ' ' + bbg_xiv_lang.of +' ' + ( pages !== Number.MAX_SAFE_INTEGER ? pages : '?' );
+                            title = bbg_xiv_lang.Page + ' ' + ( page - 1 ) + ' ' + bbg_xiv_lang.of + ' ' + ( pages !== Number.MAX_SAFE_INTEGER ? pages : '?' );
                         }else{
                             title = bbg_xiv_lang.Images + ' ' + ( prevOffset + 1 ) + ' ' + bbg_xiv_lang.to + ' ' + ( prevOffset + images.models.length ) + ' ' + bbg_xiv_lang.of +
-                                ' ' +( count !== Number.MAX_SAFE_INTEGER ? count: '?' );
+                                ' ' + ( count !== Number.MAX_SAFE_INTEGER ? count: '?' );
                         }
                         heading.find("span.bbg_xiv-search_heading_second").text(title);
                         // maintain a history of all images returned by this search
@@ -1562,7 +1560,7 @@
                             count=images.state.totalObjects;
                             pages=images.state.totalPages;
                         },
-                        error:function(c,r,o){
+                        error: function( c, r ) {
                             console.log("error:r=",r);
                             handleResponse(false);
                         }
@@ -1593,7 +1591,7 @@
                 .find("nav.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.bbg_xiv-view_menu li > a[data-view='gallery_home']").click();
             e.preventDefault();
         });
-        jQuery( 'button.bbg_xiv-fullscreen' ).click(function( e ) {
+        jQuery( 'button.bbg_xiv-fullscreen' ).click(function() {
             var $gallery = jQuery( this ).closest( 'div.bbg_xiv-gallery' );
             if ( $gallery.hasClass( 'bbg_xiv-fullscreen_gallery' ) ) {
                 $gallery.removeClass( 'bbg_xiv-fullscreen_gallery' );
@@ -1604,7 +1602,7 @@
             }
             jQuery( window ).resize();
         });
-        jQuery("button.bbg_xiv-titles").click(function(e){
+        jQuery( 'button.bbg_xiv-titles' ).click(function() {
             var galleryContainer   = jQuery( this ).closest( 'div.bbg_xiv-bootstrap.bbg_xiv-gallery' );
             var container          = galleryContainer.find( 'div.bbg_xiv-flex_container' );
             if(container.length){
@@ -1667,7 +1665,7 @@
             e.preventDefault();
         });
         var divConfigure=jQuery(".bbg_xiv-configure_inner");
-        divConfigure.find("input[type='number']#bbg_xiv-max_search_results").change(function(e){
+        divConfigure.find( 'input[type="number"]#bbg_xiv-max_search_results' ).change(function() {
             // max seems to be broken so fix with javascript
             var jqThis=jQuery(this);
             var max     = parseInt( jqThis.val(), 10 );
@@ -1680,7 +1678,7 @@
                 jqThis.val(attrMax);
             }
         });
-        divConfigure.find("button.bbg_xiv-configure_close,button.bbg_xiv-cancel_options").click(function(e){
+        divConfigure.find( 'button.bbg_xiv-configure_close,button.bbg_xiv-cancel_options' ).click(function() {
             var gallery=jQuery(this).parents("div.bbg_xiv-gallery");
             var outer=gallery.find("div.bbg_xiv-configure_outer");
             outer.hide();
@@ -1738,7 +1736,7 @@
             e.preventDefault();
         });
         // wireup the handler for scrolling through search results
-        jQuery("div.bbg_xiv-search_header button.bbg_xiv-search_scroll_left,div.bbg_xiv-search_header button.bbg_xiv-search_scroll_right").click(function(e){
+        jQuery( 'div.bbg_xiv-search_header button.bbg_xiv-search_scroll_left,div.bbg_xiv-search_header button.bbg_xiv-search_scroll_right' ).click(function() {
             var jqThis = jQuery( this );
             var heading=jqThis.parents("div.bbg_xiv-search_header");
             var id=heading.attr("id").replace("-heading","");
@@ -1811,7 +1809,7 @@
                 }
             });
         });
-        jQuery(window).on("orientationchange",function(e){
+        jQuery( window ).on( 'orientationchange', function() {
             jQuery("div.bbg_xiv-gallery").each(function(){
                 bbg_xiv.resetGallery(jQuery(this));
             });
