@@ -113,7 +113,7 @@
         galleryView.template=_.template(jQuery("script#bbg_xiv-template_flex_container").html(),null,bbg_xiv.templateOptions);
         container.empty();
         container.append(galleryView.render().$el.find("div.bbg_xiv-flex_container"));
-        if(bbg_xiv.interface==="touch"){
+        if ( bbg_xiv.guiInterface === 'touch' ) {
             container.find("div.bbg_xiv-flex_container div.bbg_xiv-flex_item div.bbg_xiv-dense_full_btn").addClass("bbg_xiv-touch");
         }
     };
@@ -157,7 +157,7 @@
                 }
             }
         );
-        if(bbg_xiv.interface==="touch"){
+        if ( bbg_xiv.guiInterface === 'touch' ) {
             container.find("div.bbg_xiv-flex_item a").click(function(e){
                 if ( ! galleryContainer.hasClass( 'bbg_xiv-caption_visible' ) ) {
                     var caption=jQuery(this.parentNode).find("figure figcaption");
@@ -290,13 +290,13 @@
             // Why are there negative margins on the img - anyway remove them
             $justifiedGallery.find( 'img' ).css( 'margin', '0' );
         });
-        if(bbg_xiv.interface==="touch"){
+        if ( bbg_xiv.guiInterface === 'touch' ) {
             $justifiedGallery.find( 'div.bbg_xiv-justified_item > a' ).click(function( e ) {
                 e.preventDefault();
             });
         }
-        var justifiedContainer = container.find( 'div.bbg_xiv-justified_container' );
-        var galleryContainer   = justifiedContainer.closest( 'div.bbg_xiv-gallery' ).removeClass( 'bbg_xiv-caption_visible' );
+        justifiedContainer   = container.find( 'div.bbg_xiv-justified_container' );
+        var galleryContainer = justifiedContainer.closest( 'div.bbg_xiv-gallery' ).removeClass( 'bbg_xiv-caption_visible' );
         // if CC has been set to visible then override Justified Gallery's hover handlers
         justifiedContainer.find("div.bbg_xiv-justified_gallery div.bbg_xiv-justified_item").each(function(){
           var img=this.querySelector("img");
@@ -352,7 +352,7 @@
         galleryView.template=_.template(jQuery("script#bbg_xiv-template_"+template+"_container").html(),null,bbg_xiv.templateOptions);
         container.empty();
         container.append(galleryView.render().$el.find("bbg_xiv-container"));
-    }
+    };
 
     // debugging utilities
     
@@ -401,10 +401,11 @@
     };
     
     bbg_xiv.constructImages=function(gallery){
+        var images;
         if(window.bbg_xiv.bbg_xiv_wp_rest_api){
-            var images=bbg_xiv.images[gallery.id];
+            images = bbg_xiv.images[ gallery.id ];
         }else{
-            var images=bbg_xiv.images[gallery.id]=new bbg_xiv.Images();
+            images = bbg_xiv.images[ gallery.id ] = new bbg_xiv.Images();
             try{
                 images.reset(JSON.parse(window.bbg_xiv[gallery.id+"-data"]));
             }catch(e){
@@ -456,7 +457,7 @@
                 bbg_xiv.titleColor  = fullTitle.css( 'color' );
                 bbg_xiv.titleShadow = fullTitle.css( 'text-shadow' );
             }
-            if ( bbg_xiv.interface === 'mouse' ) {
+            if ( bbg_xiv.guiInterface === 'mouse' ) {
                 // only show title on mouseover
                 fullImg.hover(
                     function() {
@@ -471,26 +472,28 @@
             }
             jqGallery.find("button.bbg_xiv-dense_full_btn").click(function(e){
                 var jqThis=jQuery(this);
+                var img;
                 // the buttons are of four different types so the associated image is found differently depending on the type
                 if(jqThis.hasClass("bbg_xiv-dense_from_image")){
-                    var img=jQuery(this).parents("div.bbg_xiv-dense_flex_item").find("img")[0];
+                    img = jqThis.parents( 'div.bbg_xiv-dense_flex_item' ).find( 'img' )[0];
                 }else if(jqThis.hasClass("bbg_xiv-dense_from_title")){
-                    var img=jQuery("div#"+this.parentNode.id.replace("title","image")).find("img")[0];
+                    img = jQuery( 'div#' + this.parentNode.id.replace( 'title', 'image' ) ).find( 'img' )[0];
                 }else if(jqThis.hasClass("bbg_xiv-flex_from_image")){
-                    var img=jQuery(this).parents("div.bbg_xiv-flex_item").find("img")[0];
+                    img = jqThis.parents( 'div.bbg_xiv-flex_item' ).find( 'img' )[0];
                 }else if(jqThis.hasClass("bbg_xiv-dense_from_justified")){
-                    var img=jQuery(this).parents("div.bbg_xiv-justified_item").find("img")[0];
+                    img = jqThis.parents( 'div.bbg_xiv-justified_item' ).find( 'img' )[0];
                 }
-                try{
+                var data;
+                try {
                     var galleryId=jQuery(img).parents("div[data-bbg_xiv-gallery-id]")[0].dataset.bbg_xivGalleryId;
-                    var data=bbg_xiv.images[galleryId].get(img.dataset.bbg_xivImageId).attributes;
+                    data = bbg_xiv.images[ galleryId ].get( img.dataset.bbg_xivImageId ).attributes;
                     fullImg[0].src=bbg_xiv.getSrc(data,"viewport",false);
                     if(data.bbg_srcset){
                         fullImg[0].srcset=bbg_xiv.getSrcset(data);
                     }else{
                         fullImg[0].removeAttribute("sizes");
                     }
-                }catch(e){
+                } catch ( error ) {
                     console.log('##### broken 1');
                     fullImg[0].src=img.src;
                 }
@@ -499,7 +502,7 @@
                 // show and fade in overlay
                 outer.show();
                 inner.show();
-                if ( bbg_xiv.interface === 'touch' ) {
+                if ( bbg_xiv.guiInterface === 'touch' ) {
                     // force hover effects on touchscreen
                     fullTitle.css({   color: bbg_xiv.titleColor, textShadow: bbg_xiv.titleShadow});
                     fullCaption.css({ color: bbg_xiv.titleColor, textShadow: bbg_xiv.titleShadow});
@@ -519,7 +522,7 @@
                 bbg_xiv.renderTiles(jqGallery,images,flags);
                 constructOverlay();
                 titlesButton.show();
-            } else if(Modernizr.flexbox&&Modernizr.flexwrap&&!window.bbg_xiv['bbg_xiv_disable_flexbox']){
+            } else if ( Modernizr.flexbox && Modernizr.flexwrap && ! window.bbg_xiv.bbg_xiv_disable_flexbox ) {
                 bbg_xiv.renderFlex(jqGallery,images);
                 constructOverlay();
             }else{
@@ -567,7 +570,7 @@
             });
             // Carousel rewind handler
             jqGallery.find("a.bbg_xiv-carousel_first span.glyphicon,a.bbg_xiv-carousel_last span.glyphicon").click(function(e){
-                pause(this)
+                pause( this );
                 var carousel=jQuery(this).parents("div.carousel");
                 if(jQuery(this.parentNode).hasClass("bbg_xiv-carousel_first")){
                     carousel.carousel(0);
@@ -603,7 +606,7 @@
                     if(Date.now()-prevChangeTime>=500){
                         var i=input.val();
                         if(jQuery.isNumeric(i)){
-                            i=parseInt(i)-1;
+                            i = parseInt( i, 10 ) - 1;
                             if(i>=0&&i<images.length){
                                 carousel.carousel(i);
                                 pause(input);
@@ -625,14 +628,14 @@
             jqGallery.find("div.carousel").on("slide.bs.carousel slid.bs.carousel",function(e){
                 slideChange=true;
                 // update input element and trigger change event to force update of slider position
-                jQuery(this).find("div.bbg_xiv-jquery_mobile input[type='number']").val(parseInt(e.relatedTarget.dataset.index,10)+1).change();
+                jQuery( this ).find( 'div.bbg_xiv-jquery_mobile input[type="number"]' ).val( parseInt( e.relatedTarget.dataset.index, 10 ) + 1 ).change();
                 slideChange=false;
             });
             if ( flags.indexOf( 'embedded-carousel' ) !== -1 ) {
                 window.setTimeout( function() {
                     // the timeout is necessary to give browser time to render the image before the scrolling is done
                     var $gallery     = jqGallery.closest( 'div.bbg_xiv-gallery' );
-                    var $divCarousel = jqGallery.find( 'div.carousel' )
+                    var $divCarousel = jqGallery.find( 'div.carousel' );
                     if ( $gallery.hasClass( 'bbg_xiv-fullscreen_gallery' ) ) {
                         // full screen
                         if ( window.matchMedia( '(max-aspect-ratio:1/1)' ).matches ) {
@@ -736,9 +739,9 @@
                 }
                 e.preventDefault();
             });
-            if( bbg_xiv.interface==="touch"){
+            if ( bbg_xiv.guiInterface === 'touch' ) {
                 // For mobile devices if a scrollbar is needed then initially expand the tab navbar as the collapsed tab navbar is not user friendly on mobile devices
-                navbar.find("span.glyphicon-collapse-down").each(function(){
+                jQuery( 'div.bbg_xiv-gallery nav.bbg_xiv-gallery_navbar' ).find( 'span.glyphicon-collapse-down' ).each(function(){
                     var jqThis=jQuery(this);
                     if(jqThis.css("display")!=="none"){
                         jqThis.click();
@@ -762,7 +765,7 @@
                     var top=img.position().top;
                     var height=img.height();
                     var bottom=top+height;
-                    var div=img.parents("div.bbg_xiv-dense_images")
+                    var div = img.parents( 'div.bbg_xiv-dense_images' );
                     var scrollTop=div.scrollTop();
                     var scrollHeight=div.height();
                     if(top<0){
@@ -785,7 +788,7 @@
                     var top=li.position().top;
                     var height=li.height();
                     var bottom=top+height;
-                    var div=li.parents("div.bbg_xiv-dense_titles")
+                    var div = li.parents( 'div.bbg_xiv-dense_titles' );
                     var scrollTop=div.scrollTop();
                     var scrollHeight=div.height();
                     if(top<0){
@@ -834,7 +837,7 @@
             break;
         }
         var menuItems=jQuery(gallery.parentNode).find("nav.bbg_xiv-gallery_navbar ul.nav ul.bbg_xiv-view_menu li").show();
-        if ( bbg_xiv.interface !== 'mouse' || jQuery( window ).width() < bbg_xiv.bbg_xiv_flex_min_width_for_dense_view ) {
+        if ( bbg_xiv.guiInterface !== 'mouse' || jQuery( window ).width() < bbg_xiv.bbg_xiv_flex_min_width_for_dense_view ) {
             // for touch and small screen devices hide the dense menu item
             menuItems.filter( '.bbg_xiv-large_viewport_only' ).hide();
         }
@@ -853,8 +856,8 @@
                 divAltGalleryHeading.find("span.bbg_xiv-alt_gallery_heading").text(bbg_xiv.galleryOfGalleriesTitle);
                 // click handler for gallery icon images
                 jqGallery.find("a.bbg_xiv-gallery_icon").click(function(e){
-                    jqGallery.parent().find("nav.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.bbg_xiv-view_menu li.bbg_xiv-alt_gallery > a[data-view='gallery_"
-                        +this.dataset.galleryIndex+"']").click();
+                    jqGallery.parent().find( 'nav.bbg_xiv-gallery_navbar ul.nav li.dropdown ul.bbg_xiv-view_menu li.bbg_xiv-alt_gallery > a[data-view="gallery_' +
+                        this.dataset.galleryIndex+'"]').click();
                     e.preventDefault();
                 });
                 // hide inappropriate menu items for gallery of galleries
@@ -937,6 +940,7 @@
                     return data.bbg_medium_large_src[0];
                 }
             }
+            break;
         case "very low":
             if(icon){
                 return data.bbg_thumbnail_src[0];
@@ -1009,7 +1013,7 @@
         }else{
             return "50vw";
         }
-    }
+    };
 
     try{
         window.localStorage.setItem("test","test");
@@ -1034,7 +1038,7 @@
             return localStorage.getItem(name);
         }else{
             var cookie=document.cookie;
-            cookie+=";"
+            cookie += ";";
             var start=cookie.indexOf(name+"=");
             if(start===-1){
                 return null;
@@ -1062,7 +1066,7 @@
             {width:10*minFlexWidth,cssClass:"11_1111"},
             {width:11*minFlexWidth,cssClass:"10"},
             {width:12*minFlexWidth,cssClass:"9_0909"},
-            {width:1000000,class:"8_3333"}
+            { width: 1000000, cssClass: '8_3333' }
         ];
     };
 
@@ -1131,12 +1135,12 @@
         // compute interface if interface is auto
         if(bbg_xiv.bbg_xiv_interface==="auto"){
             if(Modernizr.touchevents){
-                bbg_xiv.interface="touch";
+                bbg_xiv.guiInterface = 'touch';
             }else{
-                bbg_xiv.interface="mouse";
+                bbg_xiv.guiInterface = 'mouse';
             }
         }else{
-            bbg_xiv.interface=bbg_xiv.bbg_xiv_interface;
+            bbg_xiv.guiInterface = bbg_xiv.bbg_xiv_interface;
         }
         if(bbg_xiv.bbg_xiv_wp_rest_api){
             // WP REST API requires that per_page be between 1 and 100 inclusive
@@ -1152,10 +1156,11 @@
         jQuery("div.bbg_xiv-flex_container,div.bbg_xiv-gallery_container").each(function(){
             var jqThis=jQuery(this);
             var width=jqThis.width();
+            var pxWidth;
             var minFlexWidthForCaption=window.bbg_xiv.bbg_xiv_flex_min_width_for_caption;
             if(jqThis.parents("div.bbg_xiv-gallery_envelope").hasClass("bbg_xiv-tiles_container")){
                 // set tile width and height in pixels so that tiles cover the div exactly and completely
-                var pxWidth=Math.floor(width/Math.floor(width/window.bbg_xiv.bbg_xiv_flex_min_width))-1;
+                pxWidth = Math.floor( width / Math.floor( width / window.bbg_xiv.bbg_xiv_flex_min_width ) ) - 1;
                 jqThis.find("div.bbg_xiv-flex_item").css({width:pxWidth,height:pxWidth});
                 if(pxWidth<minFlexWidthForCaption){
                     jqThis.find("div.bbg_xiv-flex_item figcaption").hide();
@@ -1169,7 +1174,7 @@
                     if(width<breakpoints[i].width){
                         var cssClass=breakpoints[i].cssClass;
                         jqThis.addClass("bbg_xiv-flex_width_"+cssClass);
-                        var pxWidth=parseFloat(cssClass.replace("_","."))/100.0*width;
+                        pxWidth = parseFloat( cssClass.replace( '_', '.' ) ) / 100.0 * width;
                         if(pxWidth<minFlexWidthForCaption){
                             jqThis.addClass("bbg_xiv-flex_no_caption");
                         }else{
@@ -1180,14 +1185,14 @@
                 }
             }
         });
-        if(bbg_xiv.interface==="mouse"&&jQuery(window).width()>=bbg_xiv.bbg_xiv_flex_min_width_for_dense_view){
+        if ( bbg_xiv.guiInterface === 'mouse' && jQuery( window ).width() >= bbg_xiv.bbg_xiv_flex_min_width_for_dense_view ) {
             jQuery(".bbg_xiv-configure_inner .bbg_xiv-mouse_only_option").show();
         }else{
             jQuery(".bbg_xiv-configure_inner .bbg_xiv-mouse_only_option").hide();
         }  
         jQuery("div.bbg_xiv-gallery_envelope").each(function(){
             var menuItems=jQuery(this.parentNode).find("nav.bbg_xiv-gallery_navbar ul.nav ul.bbg_xiv-view_menu li").show();
-            if(bbg_xiv.interface!=="mouse"||jQuery(window).width()<bbg_xiv.bbg_xiv_flex_min_width_for_dense_view){
+            if ( bbg_xiv.guiInterface !== 'mouse' || jQuery( window ).width() < bbg_xiv.bbg_xiv_flex_min_width_for_dense_view ) {
                 // for touch and small screen devices hide the dense menu item
                 menuItems.filter(".bbg_xiv-large_viewport_only").hide();
             }
@@ -1199,12 +1204,13 @@
     });
 
     bbg_xiv.getDefaultView=function(gallery,galleryOfGalleries){
+        var defaultView;
         if(galleryOfGalleries||(galleryOfGalleries===null&&gallery.hasClass("bbg_xiv-gallery_icons_mode"))){
             // for gallery of galleries always use the gallery view
-            var defaultView="Gallery";
+            defaultView = 'Gallery';
         }else{
             // use class to set default view if it exists otherwise use the global value
-            var defaultView=bbg_xiv.bbg_xiv_default_view?bbg_xiv.bbg_xiv_default_view:"Gallery";
+            defaultView = bbg_xiv.bbg_xiv_default_view ? bbg_xiv.bbg_xiv_default_view : 'Gallery';
             if(bbg_xiv.usingServerDefaultView){
                 if(gallery.hasClass("bbg_xiv-default_view_gallery")){
                     defaultView="Gallery";
@@ -1253,6 +1259,21 @@
             var liSelectView=li.parents("li.bbg_xiv-select_view");
             var container=jqThis.parents("div.bbg_xiv-bootstrap.bbg_xiv-gallery");
             var divGallery=container.find("div.bbg_xiv-gallery_envelope")[0];
+            function handleResponse( r ) {
+                if(jqueryLoading){
+                    jQuery.mobile.loading("hide");
+                    jQuery(divGallery).children().detach();
+                }
+                if(r){
+                    galleries.images[view]=bbg_xiv.constructImages(divGallery);
+                    galleries.view=view;
+                    container.find("div#"+divGallery.id+"-alt_gallery_heading span.bbg_xiv-alt_gallery_heading").text(title);
+                    bbg_xiv.renderGallery(divGallery,defaultView);
+                }else{
+                    jQuery(divGallery).empty().append('<h1 class="bbg_xiv-warning">'+bbg_xiv_lang["Nothing Found"]+'</h1>');
+                }
+                jQuery(divGallery.parentNode).find("nav.navbar form.bbg_xiv-search_form button").prop("disabled",false);
+            }
             if(["Gallery","Carousel","Justified","Tabs","Dense"].indexOf(view)>=0){
                 // view selected
                 select.find("li.bbg_xiv-view").removeClass("active");
@@ -1297,11 +1318,11 @@
                 // setup headings
                 jQuery("div#"+divGallery.id+"-heading").hide();
                 var jqueryLoading=true;
-                try{
+                try {
                     // There is a very rare failure of the following
                     jQuery(divGallery).empty().append(jQuery.mobile.loading("show",{text:"Loading... please wait.",textVisible:true,textonly:false}));
-                }catch(e){
-                    console.log(e);
+                } catch ( error ) {
+                    console.log( error );
                     //console.log("jQuery.mobile.loading._widget=",jQuery.mobile.loading._widget);
                     jQuery(divGallery).empty().append('<h1 class="bbg_xiv-info">Loading... please wait.</h1>');
                     jQuery.mobile.loading._widget=undefined;
@@ -1337,26 +1358,11 @@
                         parameters[specifier[1]]=specifier[2];
                     }
                 });
-                if(bbg_xiv.bbg_xiv_wp_rest_api&&ids&&!parameters["orderby"]){
+                if ( bbg_xiv.bbg_xiv_wp_rest_api && ids && ! parameters.orderby ) {
                     // for ids use the explicit order in ids
-                    parameters["orderby"]="include";
+                    parameters.orderby = 'include';
                 }
                 var form=jqThis.parents("div.navbar-collapse").first().find("form[role='search']");
-                function handleResponse(r){
-                    if(jqueryLoading){
-                        jQuery.mobile.loading("hide");
-                        jQuery(divGallery).children().detach();
-                    }
-                    if(r){
-                        galleries.images[view]=bbg_xiv.constructImages(divGallery);
-                        galleries.view=view;
-                        container.find("div#"+divGallery.id+"-alt_gallery_heading span.bbg_xiv-alt_gallery_heading").text(title);
-                        bbg_xiv.renderGallery(divGallery,defaultView);
-                    }else{
-                        jQuery(divGallery).empty().append('<h1 class="bbg_xiv-warning">'+bbg_xiv_lang["Nothing Found"]+'</h1>');
-                    }
-                    jQuery(divGallery.parentNode).find("nav.navbar form.bbg_xiv-search_form button").prop("disabled",false);
-                };
                 if(bbg_xiv.bbg_xiv_wp_rest_api){
                     // uses the WP REST API - requires the WP REST API plugin
                     var images=bbg_xiv.images[divGallery.id]=new wp.api.collections.Media();
@@ -1427,7 +1433,7 @@
             var count=Number.MAX_SAFE_INTEGER;
             var pages=Number.MAX_SAFE_INTEGER;
             jQuery(this).click(function(e){
-                var searchLimit=parseInt(bbg_xiv.bbg_xiv_max_search_results);
+                var searchLimit = parseInt( bbg_xiv.bbg_xiv_max_search_results, 10 );
                 if(bbg_xiv.bbg_xiv_wp_rest_api&&searchLimit>bbg_xiv.wpRestApiMaxPerPage){
                     searchLimit=bbg_xiv.wpRestApiMaxPerPage;
                 }
@@ -1439,6 +1445,7 @@
                 var form=searchBtn.parents("form[role='search']");
                 var input=form.find("input[type='text']");
                 var value=input.val();
+                var postData;
                 if(value){
                     // new search
                     query=value;
@@ -1448,14 +1455,14 @@
                     bbg_xiv.search[divGallery.id]={history:[],index:-1,done:false};
                     // get count
                     if(!window.bbg_xiv.bbg_xiv_wp_rest_api){
-                        var postData={
+                        postData = {
                             action:"bbg_xiv_search_media_count",
                             query:query,
                             _wpnonce:form.find("input[name='_wpnonce']").val(),
                             _wp_http_referer:form.find("input[name='_wp_http_referer']").val()
                         };
                         jQuery.post(bbg_xiv.ajaxurl,postData,function(r){
-                            count=parseInt(r);
+                            count = parseInt( r, 10 );
                         });
                     }
                 }else if(typeof query==="undefined"){
@@ -1465,11 +1472,11 @@
                 // setup headings
                 jQuery("div#"+divGallery.id+"-alt_gallery_heading").hide();
                 var jqueryLoading=true;
-                try{
+                try {
                     // There is a very rare failure of the following
                     jQuery(divGallery).empty().append(jQuery.mobile.loading("show",{text:"Loading... please wait.",textVisible:true,textonly:false}));
-                }catch(e){
-                    console.log(e);
+                } catch ( error) {
+                    console.log( error );
                     //console.log("jQuery.mobile.loading._widget=",jQuery.mobile.loading._widget);
                     jQuery(divGallery).empty().append('<h1 class="bbg_xiv-info">Loading... please wait.</h1>');
                     jQuery.mobile.loading._widget=undefined;
@@ -1502,11 +1509,12 @@
                         }
                         // search results uses a heading to show status
                         heading.find("span.bbg_xiv-search_heading_first").text(bbg_xiv_lang["Search Results for"]+" \""+prevQuery+"\"");
+                        var title;
                         if(window.bbg_xiv.bbg_xiv_wp_rest_api){
-                            var title=bbg_xiv_lang["Page"]+" "+(page-1)+" "+bbg_xiv_lang["of"]+" "+(pages!==Number.MAX_SAFE_INTEGER?pages:"?");
+                            title = bbg_xiv_lang.Page + ' ' + ( page - 1 ) + ' ' + bbg_xiv_lang.of +' ' + ( pages !== Number.MAX_SAFE_INTEGER ? pages : '?' );
                         }else{
-                            var title=bbg_xiv_lang["Images"]+" "+(prevOffset+1)+" "+bbg_xiv_lang["to"]+" "+(prevOffset+images.models.length)+" "+bbg_xiv_lang["of"]+" "
-                                +(count!==Number.MAX_SAFE_INTEGER?count:"?");
+                            title = bbg_xiv_lang.Images + ' ' + ( prevOffset + 1 ) + ' ' + bbg_xiv_lang.to + ' ' + ( prevOffset + images.models.length ) + ' ' + bbg_xiv_lang.of +
+                                ' ' +( count !== Number.MAX_SAFE_INTEGER ? count: '?' );
                         }
                         heading.find("span.bbg_xiv-search_heading_second").text(title);
                         // maintain a history of all images returned by this search
@@ -1522,7 +1530,7 @@
                     var liFirst=liSelectView.find("ul.bbg_xiv-view_menu li.bbg_xiv-view").removeClass("active").filter(".bbg_xiv-view_gallery").addClass("active");
                     liSelectView.find("a.bbg_xiv-selected_view span").text(liFirst.text());
                     searchBtn.prop("disabled",false);
-                };
+                }
                 if(window.bbg_xiv.bbg_xiv_wp_rest_api){
                     // uses the WP REST API - requires the WP REST API plugin
                     var images=bbg_xiv.images[divGallery.id]=new wp.api.collections.Media();
@@ -1543,7 +1551,7 @@
                             if(link){
                                 var matches=link.match(/(\?|&)page=(\d+)(&[^>]+>;|>;)\s+rel="next"/);
                                 if(matches&&matches.length===4&&jQuery.isNumeric(matches[2])){
-                                    page=parseInt(matches[2]);
+                                    page = parseInt( matches[2], 10 );
                                 }else{
                                     // no next page means search is complete
                                 }
@@ -1562,7 +1570,7 @@
                 }else{
                     // old proprietary non REST way to load the Backbone image collection - does not require the WP REST API plugin
                     // get the next part of the multi-part search result
-                    var postData={
+                    postData = {
                         action:"bbg_xiv_search_media",
                         query:query,
                         limit:searchLimit,
@@ -1611,7 +1619,7 @@
                 }
                 if(container.hasClass("bbg_xiv-contain")){
                     // in tiles contain mode center image if title not displayed
-                    if(visible){
+                    if ( galleryContainer.hasClass( 'bbg_xiv-caption_visible' ) ) {
                         figure.find("img").removeClass("bbg_xiv-vertical_center");
                     }else{
                         figure.find("img").addClass("bbg_xiv-vertical_center");
@@ -1662,8 +1670,8 @@
         divConfigure.find("input[type='number']#bbg_xiv-max_search_results").change(function(e){
             // max seems to be broken so fix with javascript
             var jqThis=jQuery(this);
-            var max=parseInt(jqThis.val());
-            var attrMax=parseInt(jqThis.attr("max"));
+            var max     = parseInt( jqThis.val(), 10 );
+            var attrMax = parseInt( jqThis.attr( 'max' ), 10 );
             if(bbg_xiv.bbg_xiv_wp_rest_api&&attrMax>bbg_xiv.wpRestApiMaxPerPage){
                 // WP REST API requires that per_page be between 1 and 100 inclusive
                 attrMax=bbg_xiv.wpRestApiMaxPerPage;
@@ -1731,7 +1739,7 @@
         });
         // wireup the handler for scrolling through search results
         jQuery("div.bbg_xiv-search_header button.bbg_xiv-search_scroll_left,div.bbg_xiv-search_header button.bbg_xiv-search_scroll_right").click(function(e){
-            jqThis=jQuery(this);
+            var jqThis = jQuery( this );
             var heading=jqThis.parents("div.bbg_xiv-search_header");
             var id=heading.attr("id").replace("-heading","");
             var gallery=heading.parents("div.bbg_xiv-gallery");
