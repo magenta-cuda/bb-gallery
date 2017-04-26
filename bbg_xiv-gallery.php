@@ -926,12 +926,13 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_images div.b
 }
 EOD
             );
+            $min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
             wp_enqueue_script( 'backbone' );
             wp_enqueue_script( 'modernizr',         plugins_url( 'js/modernizr.js',               __FILE__ ) );
             wp_enqueue_script( 'justified-gallery', plugins_url( 'js/jquery.justifiedGallery.js', __FILE__ ), [ 'jquery' ] );
             wp_enqueue_script( 'jquery-mobile',     plugins_url( 'js/jquery-mobile.js',           __FILE__ ), [ 'jquery' ] );
             if ( !get_option( 'bbg_xiv_do_not_load_bootstrap', FALSE ) ) {
-                wp_enqueue_script( 'bootstrap',     plugins_url( 'js/bootstrap.js' ,              __FILE__ ), [ 'jquery' ], FALSE, TRUE );
+                wp_enqueue_script( 'bootstrap',     plugins_url( "js/bootstrap{$min}.js",         __FILE__ ), [ 'jquery' ], FALSE, TRUE );
                 $deps = [ 'bootstrap', 'justified-gallery' ];
             } else {
                 $deps = [ 'justified-gallery' ];
@@ -939,7 +940,7 @@ EOD
             if ( self::$wp_rest_api_available && self::$use_wp_rest_api_if_available ) {
                 $deps[ ] = 'wp-api';
             }
-            wp_enqueue_script( 'bbg_xiv-gallery',   plugins_url( 'js/bbg_xiv-gallery.js' ,        __FILE__ ), $deps,        FALSE, TRUE );
+            wp_enqueue_script( 'bbg_xiv-gallery',   plugins_url( "js/bbg_xiv-gallery{$min}.js",   __FILE__ ), $deps,        FALSE, TRUE );
         } );
 
         add_action( 'admin_init', function( ) {
