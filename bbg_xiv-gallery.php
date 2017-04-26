@@ -930,7 +930,7 @@ EOD
             wp_enqueue_script( 'backbone' );
             wp_enqueue_script( 'modernizr',         plugins_url( 'js/modernizr.js',               __FILE__ ) );
             wp_enqueue_script( 'justified-gallery', plugins_url( 'js/jquery.justifiedGallery.js', __FILE__ ), [ 'jquery' ] );
-            wp_enqueue_script( 'jquery-mobile',     plugins_url( 'js/jquery-mobile.js',           __FILE__ ), [ 'jquery' ] );
+            wp_enqueue_script( 'jquery-mobile',     plugins_url( "js/jquery-mobile{$min}.js",     __FILE__ ), [ 'jquery' ] );
             if ( !get_option( 'bbg_xiv_do_not_load_bootstrap', FALSE ) ) {
                 wp_enqueue_script( 'bootstrap',     plugins_url( "js/bootstrap{$min}.js",         __FILE__ ), [ 'jquery' ], FALSE, TRUE );
                 $deps = [ 'bootstrap', 'justified-gallery' ];
@@ -954,7 +954,7 @@ EOD
                 echo '</p>';
             }, 'media' );
             add_settings_field( 'bbg_xiv_version', __( 'Version', 'bb_gallery' ), function( ) {
-                echo '<input name="bbg_xiv_version" id="bbg_xiv_version" type="hidden" value="1.8.1.1" /> 1.8.1.1';
+                echo '<input name="bbg_xiv_version" id="bbg_xiv_version" type="hidden" value="1.8.2.2" /> 1.8.2.2';
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_shortcode', __( 'Enable BB Gallery', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_shortcode" id="bbg_xiv_shortcode" type="checkbox" value="1" class="code" '
@@ -1100,7 +1100,7 @@ EOD
 
         $version = get_option( 'bbg_xiv_version', '' );
         if ( $version !== '1.7.3.1' && $version !== '1.7.3.2' && $version !== '1.7.3.3' && $version !== '1.7.3.4' && $version !== '1.8' && $version !== '1.8.1'
-            && $version !== '1.8.1.1' ) {
+            && $version !== '1.8.1.1' && $version !== '1.8.2' && $version !== '1.8.2.1' && $version !== '1.8.2.2' ) {
             add_action( 'admin_notices', function( ) {
                 global $hook_suffix;
                 if ( $hook_suffix === 'options-media.php' ) {
