@@ -21,9 +21,9 @@ div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar {
   div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-titles, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-fullscreen, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-home, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-configure, div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar button.bbg_xiv-help {
     display: block;
     color: white;
-    padding: 6px 8px;
-    margin-top: 9px;
-    margin-bottom: 9px;
+    padding: 4px 4px;
+    margin-top: 11px;
+    margin-bottom: 11px;
     font-size: 100%;
     line-height: 1.0;
     background-color: transparent;
