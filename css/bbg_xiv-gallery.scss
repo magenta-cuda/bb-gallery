@@ -148,14 +148,17 @@ div.bbg_xiv-bootstrap{
   nav.navbar.bbg_xiv-gallery_navbar{
     overflow:visible;
     
-    div.navbar-collapse ul.nav li.dropdown{
-      margin:0;
+    div.navbar-collapse{
+      padding-left:5px;
+      ul.nav li.dropdown{
+        margin:0;
 
-      a.dropdown-toggle.bbg_xiv-selected_view{
-        color:white;
-        text-transform:capitalize;
-        &:hover{
-          box-shadow:none;
+        a.dropdown-toggle.bbg_xiv-selected_view{
+          color:white;
+          text-transform:capitalize;
+          &:hover{
+            box-shadow:none;
+          }
         }
       }
     }
