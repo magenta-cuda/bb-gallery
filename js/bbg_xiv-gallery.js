@@ -715,7 +715,8 @@
                         if ( fullscreen ) {
                             $gallery.scrollTop( $gallery.scrollTop() + $content.position().top - 90 );
                         } else {
-                            jQuery( window ).scrollTop( $content.offset().top - 80 );
+                            var adminBarHeight = jQuery( 'body' ).hasClass( "admin-bar" ) ? jQuery( "div#wpadminbar" ).outerHeight() : 0;
+                            jQuery( window ).scrollTop( $content.offset().top - 80 - adminBarHeight );
                         }
                     }
                 }, 500 );
