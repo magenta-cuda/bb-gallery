@@ -11,7 +11,8 @@ div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar {
       margin: 0; }
       div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar div.navbar-collapse ul.nav li.dropdown a.dropdown-toggle.bbg_xiv-selected_view {
         color: white;
-        text-transform: capitalize; }
+        text-transform: capitalize;
+        box-shadow: none; }
         div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar div.navbar-collapse ul.nav li.dropdown a.dropdown-toggle.bbg_xiv-selected_view:hover {
           box-shadow: none; }
   div.bbg_xiv-bootstrap nav.navbar.bbg_xiv-gallery_navbar li > a {

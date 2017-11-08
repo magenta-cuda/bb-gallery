@@ -156,6 +156,7 @@ div.bbg_xiv-bootstrap{
         a.dropdown-toggle.bbg_xiv-selected_view{
           color:white;
           text-transform:capitalize;
+          box-shadow:none;
           &:hover{
             box-shadow:none;
           }
