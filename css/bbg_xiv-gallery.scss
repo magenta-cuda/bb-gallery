@@ -1256,6 +1256,42 @@ div.bbg_xiv-bootstrap{
   }
 }
 
+body.bbg_xiv-twentysixteen_with_border div.bbg_xiv-bootstrap{
+  div.bbg_xiv-template_tabs_container,div.bbg_xiv-gallery_tabs_container{
+    div.tab-content{
+      figure{
+        img.bbg_xiv-tabs_img{
+          height:calc(70vh - 21px);
+        }
+      }
+    }
+  }
+}
+
+body.bbg_xiv-twentysixteen_with_border.admin-bar div.bbg_xiv-bootstrap{
+  div.bbg_xiv-template_tabs_container,div.bbg_xiv-gallery_tabs_container{
+    div.tab-content{
+      figure{
+        img.bbg_xiv-tabs_img{
+          height:calc(70vh - 53px);
+        }
+      }
+    }
+  }
+}
+
+body.admin-bar div.bbg_xiv-bootstrap{
+  div.bbg_xiv-template_tabs_container,div.bbg_xiv-gallery_tabs_container{
+    div.tab-content{
+      figure{
+        img.bbg_xiv-tabs_img{
+          height:calc(70vh - 32px);
+        }
+      }
+    }
+  }
+}
+
 #content div.bbg_xiv-bootstrap{
   div.bbg_xiv-template_tabs_container,div.bbg_xiv-gallery_tabs_container{
     nav.navbar{
