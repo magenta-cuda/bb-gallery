@@ -715,8 +715,12 @@
                         if ( fullscreen ) {
                             $gallery.scrollTop( $gallery.scrollTop() + $content.position().top - 90 );
                         } else {
-                            var adminBarHeight = jQuery( 'body' ).hasClass( "admin-bar" ) ? jQuery( "div#wpadminbar" ).outerHeight() : 0;
-                            jQuery( window ).scrollTop( $content.offset().top - 80 - adminBarHeight );
+                            // If WordPress admin bar is showing on frontend page adjust for it.
+                            var adminBarHeight   = jQuery( 'body' ).hasClass( "admin-bar" ) ? jQuery( "div#wpadminbar" ).outerHeight() : 0;
+                            // Adjust for the black border in the WordPress TwentySixteen theme.
+                            var bodyBeforeStyle  = window.getComputedStyle( jQuery( 'body' )[0], ':before' );
+                            var bodyBeforeHeight = bodyBeforeStyle && bodyBeforeStyle.position === 'fixed' ? parseInt( bodyBeforeStyle.height, 10 ) : 0;
+                            jQuery( window ).scrollTop( $content.offset().top - 80 - adminBarHeight - bodyBeforeHeight );
                         }
                     }
                 }, 500 );
