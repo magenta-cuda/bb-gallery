@@ -827,10 +827,10 @@ div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide {
     margin: 0; }
 
 body.bbg_xiv-twentysixteen_with_border div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide {
-  height: calc(0.9 * (100vh - 42px)); }
+  height: calc(0.9 * (100vh - (2 * 21px)) ); }
 
 body.bbg_xiv-twentysixteen_with_border.admin-bar div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide {
-  height: calc(0.9 * (100vh - 74px)); }
+  height: calc(0.9 * (100vh - (32px + (2 * 21px)))); }
 
 body.admin-bar div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide {
   height: calc(0.9 * (100vh - 32px)); }
@@ -970,7 +970,7 @@ body.bbg_xiv-twentysixteen_with_border div.bbg_xiv-bootstrap div.bbg_xiv-templat
   height: calc(70vh - 21px); }
 
 body.bbg_xiv-twentysixteen_with_border.admin-bar div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure img.bbg_xiv-tabs_img, body.bbg_xiv-twentysixteen_with_border.admin-bar div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.tab-content figure img.bbg_xiv-tabs_img {
-  height: calc(70vh - 53px); }
+  height: calc(70vh - (32px + 21px)); }
 
 body.admin-bar div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure img.bbg_xiv-tabs_img, body.admin-bar div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.tab-content figure img.bbg_xiv-tabs_img {
   height: calc(70vh - 32px); }
