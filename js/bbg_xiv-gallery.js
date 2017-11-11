@@ -651,7 +651,16 @@
                             jQuery(window).scrollTop( $divCarousel.offset().top - jQuery(window).height()/6 );
                         }else{
                             // landscape mode
-                            jQuery(window).scrollTop( $divCarousel.offset().top - $divCarousel.outerHeight()/8 );
+                            // If WordPress admin bar is showing on frontend page adjust for it.
+                            var $body            = jQuery( 'body' );
+                            var adminBarHeight   = $body.hasClass( 'admin-bar' ) ? jQuery( 'div#wpadminbar' ).outerHeight() : 0;
+                            var bodyBeforeHeight = 0;
+                            if ( $body.hasClass( 'bbg_xiv-twentysixteen_with_border' ) ) {
+                                // Adjust for the black border in the WordPress TwentySixteen theme.
+                                var bodyBeforeStyle = window.getComputedStyle( $body[0], ':before' );
+                                bodyBeforeHeight    = bodyBeforeStyle && bodyBeforeStyle.position === 'fixed' ? parseInt( bodyBeforeStyle.height, 10 ) : 0;
+                            }
+                            jQuery( window ).scrollTop( $divCarousel.offset().top - $divCarousel.outerHeight() / 18 - adminBarHeight - bodyBeforeHeight );
                         }
                     }
                 }, 500 );
@@ -718,9 +727,12 @@
                             var $body            = jQuery( 'body' );
                             // If WordPress admin bar is showing on frontend page adjust for it.
                             var adminBarHeight   = $body.hasClass( "admin-bar" ) ? jQuery( "div#wpadminbar" ).outerHeight() : 0;
-                            // Adjust for the black border in the WordPress TwentySixteen theme.
-                            var bodyBeforeStyle  = window.getComputedStyle( $body[0], ':before' );
-                            var bodyBeforeHeight = bodyBeforeStyle && bodyBeforeStyle.position === 'fixed' ? parseInt( bodyBeforeStyle.height, 10 ) : 0;
+                            var bodyBeforeHeight = 0;
+                            if ( $body.hasClass( 'bbg_xiv-twentysixteen_with_border' ) ) {
+                                // Adjust for the black border in the WordPress TwentySixteen theme.
+                                var bodyBeforeStyle = window.getComputedStyle( $body[0], ':before' );
+                                bodyBeforeHeight    = bodyBeforeStyle && bodyBeforeStyle.position === 'fixed' ? parseInt( bodyBeforeStyle.height, 10 ) : 0;
+                            }
                             jQuery( window ).scrollTop( $content.offset().top - 80 - adminBarHeight - bodyBeforeHeight );
                         }
                     }
@@ -1829,8 +1841,11 @@
         // If TwentySixteen theme has border then add class to body element to indicate this.
         var $body            = jQuery( 'body' );
         var bodyBeforeStyle  = window.getComputedStyle( $body[0], ':before' );
-        if ( bodyBeforeStyle && bodyBeforeStyle.position === 'fixed' && parseInt( bodyBeforeStyle.height, 10 ) > 10 ) {
-            $body.addClass( 'bbg_xiv-twentysixteen_with_border' );
+        if ( bodyBeforeStyle && bodyBeforeStyle.position === 'fixed' && bodyBeforeStyle.zIndex > 0 ) {
+            var height = parseInt( bodyBeforeStyle.height, 10 );
+            if ( height > 8 && height < 64 ) {
+                $body.addClass( 'bbg_xiv-twentysixteen_with_border' );
+            }
         }
         
     });   // jQuery(document).ready(function(){
