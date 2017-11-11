@@ -1288,6 +1288,9 @@ body.bbg_xiv-twentysixteen_with_border div.bbg_xiv-bootstrap{
       figure{
         img.bbg_xiv-tabs_img{
           height:calc(70vh - #{$twentysixteen-border-height});
+          @media(max-aspect-ratio:1/1){
+            height:auto;
+          }
         }
       }
     }
@@ -1300,6 +1303,9 @@ body.bbg_xiv-twentysixteen_with_border.admin-bar div.bbg_xiv-bootstrap{
       figure{
         img.bbg_xiv-tabs_img{
           height:calc(70vh - (#{$admin-bar-height} + #{$twentysixteen-border-height}));
+          @media(max-aspect-ratio:1/1){
+            height:auto;
+          }
         }
       }
     }
@@ -1312,6 +1318,9 @@ body.admin-bar div.bbg_xiv-bootstrap{
       figure{
         img.bbg_xiv-tabs_img{
           height:calc(70vh - #{$admin-bar-height});
+          @media(max-aspect-ratio:1/1){
+            height:auto;
+          }
         }
       }
     }
