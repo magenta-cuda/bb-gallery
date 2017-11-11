@@ -1065,7 +1065,7 @@ div.bbg_xiv-bootstrap{
       position:relative;
       z-index:auto;
       width:100%;
-      height:80vh;
+      height:90vh;
       max-height:100vw;
       border:2px solid gray;
       border-radius:5px;
@@ -1076,6 +1076,30 @@ div.bbg_xiv-bootstrap{
       .carousel-indicators div.ui-slider{
         margin:0;
       }
+    }
+  }
+}
+
+body.bbg_xiv-twentysixteen_with_border div.bbg_xiv-bootstrap{
+  div.bbg_xiv-embedded_carousel{
+    div.carousel.slide{
+      height:calc(0.9 * (100vh - 21px));
+    }
+  }
+}
+
+body.bbg_xiv-twentysixteen_with_border.admin-bar div.bbg_xiv-bootstrap{
+  div.bbg_xiv-embedded_carousel{
+    div.carousel.slide{
+      height:calc(0.9 * (100vh - 53px));
+    }
+  }
+}
+
+body.admin-bar div.bbg_xiv-bootstrap{
+  div.bbg_xiv-embedded_carousel{
+    div.carousel.slide{
+      height:calc(0.9 * (100vh - 32px));
     }
   }
 }
