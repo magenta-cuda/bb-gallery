@@ -709,15 +709,16 @@
                 }
                 window.setTimeout(function() {
                     // the timeout is necessary to give browser time to render the image before the scrolling is done
+                    var $window    = jQuery( window );
                     var $gallery   = jqGallery.closest( 'div.bbg_xiv-gallery' );
                     var fullscreen = $gallery.hasClass( 'bbg_xiv-fullscreen_gallery' );
                     var $content   = jqGallery.find( 'div.tab-content' );
                     if( window.matchMedia( '(max-aspect-ratio:1/1)' ).matches ) {
                         // portrait mode
                         if ( fullscreen ) {
-                            $gallery.scrollTop( $gallery.scrollTop() + $content.position().top  - jQuery( window ).height()/3 - 20 );
+                            $gallery.scrollTop( $gallery.scrollTop() + $content.position().top  - $window.height() / 3 - 20 );
                         } else {
-                            jQuery( window ).scrollTop( $content.offset().top - jQuery( window ).height()/3 - 20 );
+                            $window.scrollTop( $content.offset().top - $window.height() / 3 - 20 );
                         }
                     } else {
                         // landscape mode
@@ -726,14 +727,15 @@
                         } else {
                             var $body            = jQuery( 'body' );
                             // If WordPress admin bar is showing on frontend page adjust for it.
-                            var adminBarHeight   = $body.hasClass( "admin-bar" ) ? jQuery( "div#wpadminbar" ).outerHeight() : 0;
+                            var adminBarHeight   = $body.hasClass( 'admin-bar' ) ? jQuery( 'div#wpadminbar' ).outerHeight() : 0;
                             var bodyBeforeHeight = 0;
                             if ( $body.hasClass( 'bbg_xiv-twentysixteen_with_border' ) ) {
                                 // Adjust for the black border in the WordPress TwentySixteen theme.
                                 var bodyBeforeStyle = window.getComputedStyle( $body[0], ':before' );
                                 bodyBeforeHeight    = bodyBeforeStyle && bodyBeforeStyle.position === 'fixed' ? parseInt( bodyBeforeStyle.height, 10 ) : 0;
                             }
-                            jQuery( window ).scrollTop( $content.offset().top - 80 - adminBarHeight - bodyBeforeHeight );
+                            var offset              = $window.height() >= 480 ? 80 : 40;
+                            $window.scrollTop( $content.offset().top - offset - adminBarHeight - bodyBeforeHeight );
                         }
                     }
                 }, 500 );
