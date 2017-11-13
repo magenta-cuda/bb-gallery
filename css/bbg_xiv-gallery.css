@@ -831,9 +831,15 @@ body.bbg_xiv-twentysixteen_with_border div.bbg_xiv-bootstrap div.bbg_xiv-embedde
 
 body.bbg_xiv-twentysixteen_with_border.admin-bar div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide {
   height: calc(0.9 * (100vh - (32px + (2 * 21px)))); }
+  @media screen and (max-width: 782px) {
+    body.bbg_xiv-twentysixteen_with_border.admin-bar div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide {
+      height: calc(0.9 * (100vh - (46px + (2 * 21px)))); } }
 
 body.admin-bar div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide {
   height: calc(0.9 * (100vh - 32px)); }
+  @media screen and (max-width: 782px) {
+    body.admin-bar div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide {
+      height: calc(0.9 * (100vh - 46px)); } }
 
 div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container nav.navbar, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container nav.navbar {
   background-color: #ddd;
@@ -974,12 +980,18 @@ body.bbg_xiv-twentysixteen_with_border div.bbg_xiv-bootstrap div.bbg_xiv-templat
 
 body.bbg_xiv-twentysixteen_with_border.admin-bar div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure img.bbg_xiv-tabs_img, body.bbg_xiv-twentysixteen_with_border.admin-bar div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.tab-content figure img.bbg_xiv-tabs_img {
   height: calc(70vh - (32px + 21px)); }
+  @media screen and (max-width: 782px) {
+    body.bbg_xiv-twentysixteen_with_border.admin-bar div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure img.bbg_xiv-tabs_img, body.bbg_xiv-twentysixteen_with_border.admin-bar div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.tab-content figure img.bbg_xiv-tabs_img {
+      height: calc(70vh - (46px + 21px)); } }
   @media (max-aspect-ratio: 1 / 1) {
     body.bbg_xiv-twentysixteen_with_border.admin-bar div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure img.bbg_xiv-tabs_img, body.bbg_xiv-twentysixteen_with_border.admin-bar div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.tab-content figure img.bbg_xiv-tabs_img {
       height: auto; } }
 
 body.admin-bar div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure img.bbg_xiv-tabs_img, body.admin-bar div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.tab-content figure img.bbg_xiv-tabs_img {
   height: calc(70vh - 32px); }
+  @media screen and (max-width: 782px) {
+    body.admin-bar div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure img.bbg_xiv-tabs_img, body.admin-bar div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.tab-content figure img.bbg_xiv-tabs_img {
+      height: calc(70vh - 46px); } }
   @media (max-aspect-ratio: 1 / 1) {
     body.admin-bar div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container div.tab-content figure img.bbg_xiv-tabs_img, body.admin-bar div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container div.tab-content figure img.bbg_xiv-tabs_img {
       height: auto; } }
