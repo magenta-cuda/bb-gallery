@@ -28,24 +28,25 @@ https://bbfgallery.wordpress.com/
 
 == Screenshots ==
 1. [Multiple Views of a Gallery](https://bbfgallery.wordpress.com/#navbar)
-2. [Gallery View](https://bbfgallery.wordpress.com/#gallery)
-3. [Alternate Flexbox Gallery View](https://bbfgallery.wordpress.com/#gallery-flexbox)
-4. [Carousel View](https://bbfgallery.wordpress.com/#carousel)
-5. [Tabs View](https://bbfgallery.wordpress.com/#tabs)
-6. [Dense View](https://bbfgallery.wordpress.com/#dense)
-7. [Dynamically Loading Galleries](https://bbfgallery.wordpress.com/#alt_galleries)
-8. Dynamically Generating Galleries from Search Criteria
-9. [Overlay of a Selected Image](https://bbfgallery.wordpress.com/#overlay)
-10. Mobile Portrait View
-11. [User Options Pane](https://bbfgallery.wordpress.com/#options)
-12. [Admin Settings](https://bbfgallery.wordpress.com/#installation)
-13. [Miro's Justified Gallery](http://miromannino.github.io/Justified-Gallery/)
+2. [Miro's Justified Gallery](http://miromannino.github.io/Justified-Gallery/)
+3. [Gallery View](https://bbfgallery.wordpress.com/#gallery)
+4. [Alternate Flexbox Gallery View](https://bbfgallery.wordpress.com/#gallery-flexbox)
+5. [Carousel View](https://bbfgallery.wordpress.com/#carousel)
+6. [Tabs View](https://bbfgallery.wordpress.com/#tabs)
+7. [Dense View](https://bbfgallery.wordpress.com/#dense)
+8. [Dynamically Loading Galleries](https://bbfgallery.wordpress.com/#alt_galleries)
+9. Dynamically Generating Galleries from Search Criteria
+10. [Overlay of a Selected Image](https://bbfgallery.wordpress.com/#overlay)
+11. Mobile Portrait View
+12. [User Options Pane](https://bbfgallery.wordpress.com/#options)
+13. [Admin Settings](https://bbfgallery.wordpress.com/#installation)
 
 == Changelog ==
 
 = 1.8.2.4 =
 
 * tweaks to support the 2017 theme
+* css tweaks for better fit and finish
 
 = 1.8.2.3 =
 
@@ -195,6 +196,7 @@ https://bbfgallery.wordpress.com/
 = 1.8.2.4 =
 
 * tweaks to support the 2017 theme
+* css tweaks for better fit and finish
 
 = 1.8.2.3 =
 
