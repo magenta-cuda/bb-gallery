@@ -653,7 +653,8 @@
                             // landscape mode
                             // If WordPress admin bar is showing on frontend page adjust for it.
                             var $body            = jQuery( 'body' );
-                            var adminBarHeight   = $body.hasClass( 'admin-bar' ) ? jQuery( 'div#wpadminbar' ).outerHeight() : 0;
+                            var $adminBar        = jQuery( 'div#wpadminbar' );
+                            var adminBarHeight   = $body.hasClass( 'admin-bar' ) && $adminBar.css( 'position' ) == 'fixed' ? $adminBar.outerHeight() : 0;
                             var bodyBeforeHeight = 0;
                             if ( $body.hasClass( 'bbg_xiv-twentysixteen_with_border' ) ) {
                                 // Adjust for the black border in the WordPress TwentySixteen theme.
@@ -726,8 +727,9 @@
                             $gallery.scrollTop( $gallery.scrollTop() + $content.position().top - 90 );
                         } else {
                             var $body            = jQuery( 'body' );
+                            var $adminBar        = jQuery( 'div#wpadminbar' );
                             // If WordPress admin bar is showing on frontend page adjust for it.
-                            var adminBarHeight   = $body.hasClass( 'admin-bar' ) ? jQuery( 'div#wpadminbar' ).outerHeight() : 0;
+                            var adminBarHeight   = $body.hasClass( 'admin-bar' ) && $adminBar.css( 'position' ) == 'fixed' ? $adminBar.outerHeight() : 0;
                             var bodyBeforeHeight = 0;
                             if ( $body.hasClass( 'bbg_xiv-twentysixteen_with_border' ) ) {
                                 // Adjust for the black border in the WordPress TwentySixteen theme.
