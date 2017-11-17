@@ -1851,6 +1851,9 @@
                 $body.addClass( 'bbg_xiv-twentysixteen_with_border' );
             }
         }
+        if ( $body.hasClass( 'admin-bar' ) && jQuery( 'div#wpadminbar' ).css( 'position' ) == 'fixed' ) {
+            $body.addClass( 'bbg_xiv-fixed_admin_bar' );
+        }
         
     });   // jQuery(document).ready(function(){
 
