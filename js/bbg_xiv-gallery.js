@@ -1834,6 +1834,12 @@
             });
         });
         jQuery( window ).on( 'orientationchange', function() {
+            var $body = jQuery( 'body' );
+            if ( $body.hasClass( 'admin-bar' ) && jQuery( 'div#wpadminbar' ).css( 'position' ) == 'fixed' ) {
+                $body.addClass( 'bbg_xiv-fixed_admin_bar' );
+            } else {
+                $body.removeClass( 'bbg_xiv-fixed_admin_bar' );
+            }
             jQuery("div.bbg_xiv-gallery").each(function(){
                 bbg_xiv.resetGallery(jQuery(this));
             });
