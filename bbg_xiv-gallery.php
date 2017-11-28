@@ -273,7 +273,7 @@ class BBG_XIV_Gallery {
             if ( ! empty( $atts['bb_tags'] ) ) {
                 // Translate the terms of the proprietary 'bb_tags' attribute to ids
                 $bb_tags = array_map( 'trim', explode( ',', $atts['bb_tags'] ) );
-                $attributes[ 'bb-tags'  ] = get_terms( [ 'taxonomy' => 'bb_tags', 'slug' => $bb_tags, 'name' => $bb_tags, 'fields' => 'ids' ] );
+                $attributes[ 'bb-tags'  ] = get_terms( [ 'taxonomy' => 'bb_tags', 'slug' => $bb_tags, 'name' => $bb_tags, 'fields' => 'ids', 'hide_empty' => false ] );
             } else if ( ! empty( $atts[ 'include' ] ) ) {
                 $attributes[ 'include'  ] = explode( ',', $atts[ 'include' ] );
                 $attributes[ 'per_page' ] = count( $attributes[ 'include' ] );
@@ -288,6 +288,7 @@ class BBG_XIV_Gallery {
             if ( !empty( $get_first ) ) {
                 $attributes[ 'per_page' ] = 1;
             }
+            error_log( 'BBG_XIV_Gallery::bb_gallery_shortcode():$attributes=' . print_r( $attributes, true ) );
             $request = new WP_REST_Request( 'GET', '/wp/v2/media' );
             $request->set_query_params( $attributes );
             # TODO: $request may need to set some of the params below
