@@ -273,7 +273,7 @@ class BBG_XIV_Gallery {
             if ( ! empty( $atts['bb_tags'] ) ) {
                 // Translate the terms of the proprietary 'bb_tags' attribute to ids
                 $bb_tags = array_map( 'trim', explode( ',', $atts['bb_tags'] ) );
-                $attributes[ 'bb-tags'  ] = get_terms( [ 'taxonomy' => 'bb_tags', 'slug' => $bb_tags, 'name' => $bb_tags, 'fields' => 'ids', 'hide_empty' => false ] );
+                $attributes[ 'bb-tags'  ] = get_terms( [ 'taxonomy' => 'bb_tags', 'slug' => $bb_tags, 'name' => $bb_tags, 'fields' => 'ids', 'hide_empty' => FALSE ] );
             } else if ( ! empty( $atts[ 'include' ] ) ) {
                 $attributes[ 'include'  ] = explode( ',', $atts[ 'include' ] );
                 $attributes[ 'per_page' ] = count( $attributes[ 'include' ] );
@@ -288,7 +288,6 @@ class BBG_XIV_Gallery {
             if ( !empty( $get_first ) ) {
                 $attributes[ 'per_page' ] = 1;
             }
-            error_log( 'BBG_XIV_Gallery::bb_gallery_shortcode():$attributes=' . print_r( $attributes, true ) );
             $request = new WP_REST_Request( 'GET', '/wp/v2/media' );
             $request->set_query_params( $attributes );
             # TODO: $request may need to set some of the params below
@@ -895,15 +894,36 @@ EOD;
 
             if ( self::$wp_rest_api_available && self::$use_wp_rest_api_if_available ) {
                 add_filter( 'rest_pre_dispatch', function( $null, $server, $request ) {
+                    error_log( 'FILTER::rest_pre_dispatch():$request=' . print_r( $request, true ) );
                     # translate taxonomy slugs and names to ids since WP REST API doesn't accept slugs or names
                     if ( !empty( $request[ 'bb-tags' ] ) ) {
                         $bb_tags = array_map( 'trim', explode( ',', $request[ 'bb-tags' ] ) );
                         if ( !is_numeric( $bb_tags[ 0 ] ) ) {
-                            $request[ 'bb-tags' ] = implode( ',', get_terms( [ 'taxonomy' => 'bb_tags', 'slug' => $bb_tags, 'name' => $bb_tags, 'fields' => 'ids' ] ) );
+                            $request[ 'bb-tags' ] = implode( ',', get_terms( [ 'taxonomy' => 'bb_tags', 'slug' => $bb_tags, 'name' => $bb_tags, 'fields' => 'ids',
+                                                                               'hide_empty' => FALSE ] ) );
                         }
                     }
                     return NULL;
                 }, 10, 3 );
+                add_filter( 'rest_attachment_query', function( $args, $request ) {
+                    error_log( 'FILTER::rest_attachment_query():$args=' . print_r( $args, true ) );
+                    error_log( 'FILTER::rest_attachment_query():$request=' . print_r( $request, true ) );
+                    if ( !empty( $args[ 's' ] ) ) {
+                        $terms = get_terms( [ 'taxonomy' => 'bb_tags', 'slug' => $args[ 's' ], 'name' => $args[ 's' ], 'fields' => 'ids', 'hide_empty' => FALSE ] );
+                        error_log( 'FILTER::rest_attachment_query():$terms=' . print_r( $terms, true ) );
+                        if ( $terms ) {
+                            unset( $args[ 's' ] );
+                            $args['tax_query'][] = [
+                                                       'taxonomy'         => 'bb_tags',
+                                                       'field'            => 'term_id',
+                                                       'terms'            => $terms,
+                                                       'include_children' => FALSE,
+                                                   ];
+                       }
+                    }
+                    error_log( 'FILTER::rest_attachment_query():$args=' . print_r( $args, true ) );
+                    return $args;
+                }, 10, 2 );
             }
         } );
 
