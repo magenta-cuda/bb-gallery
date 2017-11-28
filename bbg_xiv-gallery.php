@@ -893,25 +893,15 @@ EOD;
             ] );
 
             if ( self::$wp_rest_api_available && self::$use_wp_rest_api_if_available ) {
-                add_filter( 'rest_pre_dispatch', function( $null, $server, $request ) {
-                    error_log( 'FILTER::rest_pre_dispatch():$request=' . print_r( $request, true ) );
-                    # translate taxonomy slugs and names to ids since WP REST API doesn't accept slugs or names
-                    if ( !empty( $request[ 'bb-tags' ] ) ) {
-                        $bb_tags = array_map( 'trim', explode( ',', $request[ 'bb-tags' ] ) );
-                        if ( !is_numeric( $bb_tags[ 0 ] ) ) {
-                            $request[ 'bb-tags' ] = implode( ',', get_terms( [ 'taxonomy' => 'bb_tags', 'slug' => $bb_tags, 'name' => $bb_tags, 'fields' => 'ids',
-                                                                               'hide_empty' => FALSE ] ) );
-                        }
-                    }
-                    return NULL;
-                }, 10, 3 );
+                # add_filter( 'rest_pre_dispatch', function( $null, $server, $request ) {
+                #     error_log( 'FILTER::rest_pre_dispatch():$request=' . print_r( $request, true ) );
+                #     return NULL;
+                # }, 10, 3 );
                 add_filter( 'rest_attachment_query', function( $args, $request ) {
-                    error_log( 'FILTER::rest_attachment_query():$args=' . print_r( $args, true ) );
-                    error_log( 'FILTER::rest_attachment_query():$request=' . print_r( $request, true ) );
                     if ( !empty( $args[ 's' ] ) ) {
                         $terms = get_terms( [ 'taxonomy' => 'bb_tags', 'slug' => $args[ 's' ], 'name' => $args[ 's' ], 'fields' => 'ids', 'hide_empty' => FALSE ] );
-                        error_log( 'FILTER::rest_attachment_query():$terms=' . print_r( $terms, true ) );
                         if ( $terms ) {
+                            # taxonomy has a higher priority than search 
                             unset( $args[ 's' ] );
                             $args['tax_query'][] = [
                                                        'taxonomy'         => 'bb_tags',
@@ -921,7 +911,6 @@ EOD;
                                                    ];
                        }
                     }
-                    error_log( 'FILTER::rest_attachment_query():$args=' . print_r( $args, true ) );
                     return $args;
                 }, 10, 2 );
             }
