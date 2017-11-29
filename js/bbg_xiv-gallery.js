@@ -1562,6 +1562,7 @@
                     images.fetch({
                         data:{
                             search:query,
+                            // 'bb-tags':query,
                             page:page++,
                             per_page:searchLimit
                         },
