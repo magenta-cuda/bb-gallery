@@ -90,7 +90,8 @@
 			$entry.css('left', x);
 
 			//DEBUG// console.log('displayEntry: $image.width() = ' + $image.width() + ' $image.height() = ' + $image.height());
-
+/*
+ * Image reloading for an high quality of thumbnails not supported
 			// Image reloading for an high quality of thumbnails
 			var imageSrc = $image.attr('src');
 			var newImageSrc = imageSrc.replace(context.settings.extension, '').replace(context.usedSizeRangeRegExp, '') + 
@@ -114,7 +115,11 @@
 			} else {
 				$entry.stop().fadeTo(context.settings.imagesAnimationDuration, 1.0, loadNewImage);
 			}
+ * Image reloading for an high quality of thumbnails not supported
+ */
 
+      $entry.addClass('entry-visible');   // necessary since image reloading not done
+ 
 			// Captions ------------------------------
 			//TODO option for caption always visible
 			var captionMouseEvents = $entry.data('jg.captionMouseEvents');
