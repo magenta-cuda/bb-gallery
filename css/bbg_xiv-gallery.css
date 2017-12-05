@@ -826,19 +826,19 @@ div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide {
   div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide .carousel-indicators div.ui-slider {
     margin: 0; }
 
-body.bbg_xiv-twentysixteen_with_border div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide {
+body.bbg_xiv-twentysixteen_with_border div.bbg_xiv-bootstrap:not(.bbg_xiv-fullscreen_gallery) div.bbg_xiv-embedded_carousel div.carousel.slide {
   height: calc(0.9 * (100vh - (2 * 21px)) ); }
 
-body.bbg_xiv-twentysixteen_with_border.bbg_xiv-fixed_admin_bar div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide {
+body.bbg_xiv-twentysixteen_with_border.bbg_xiv-fixed_admin_bar div.bbg_xiv-bootstrap:not(.bbg_xiv-fullscreen_gallery) div.bbg_xiv-embedded_carousel div.carousel.slide {
   height: calc(0.9 * (100vh - (32px + (2 * 21px)))); }
   @media screen and (max-width: 782px) {
-    body.bbg_xiv-twentysixteen_with_border.bbg_xiv-fixed_admin_bar div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide {
+    body.bbg_xiv-twentysixteen_with_border.bbg_xiv-fixed_admin_bar div.bbg_xiv-bootstrap:not(.bbg_xiv-fullscreen_gallery) div.bbg_xiv-embedded_carousel div.carousel.slide {
       height: calc(0.9 * (100vh - (46px + (2 * 21px)))); } }
 
-body.bbg_xiv-fixed_admin_bar div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide {
+body.bbg_xiv-fixed_admin_bar div.bbg_xiv-bootstrap:not(.bbg_xiv-fullscreen_gallery) div.bbg_xiv-embedded_carousel div.carousel.slide {
   height: calc(0.9 * (100vh - 32px)); }
   @media screen and (max-width: 782px) {
-    body.bbg_xiv-fixed_admin_bar div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide {
+    body.bbg_xiv-fixed_admin_bar div.bbg_xiv-bootstrap:not(.bbg_xiv-fullscreen_gallery) div.bbg_xiv-embedded_carousel div.carousel.slide {
       height: calc(0.9 * (100vh - 46px)); } }
 
 div.bbg_xiv-bootstrap div.bbg_xiv-template_tabs_container nav.navbar, div.bbg_xiv-bootstrap div.bbg_xiv-gallery_tabs_container nav.navbar {

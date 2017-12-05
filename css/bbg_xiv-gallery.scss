@@ -1083,7 +1083,7 @@ div.bbg_xiv-bootstrap{
   }
 }
 
-body.bbg_xiv-twentysixteen_with_border div.bbg_xiv-bootstrap{
+body.bbg_xiv-twentysixteen_with_border div.bbg_xiv-bootstrap:not(.bbg_xiv-fullscreen_gallery){
   div.bbg_xiv-embedded_carousel{
     div.carousel.slide{
       height:calc(0.9 * (100vh - (2 * #{$twentysixteen-border-height})) );
@@ -1091,7 +1091,7 @@ body.bbg_xiv-twentysixteen_with_border div.bbg_xiv-bootstrap{
   }
 }
 
-body.bbg_xiv-twentysixteen_with_border.bbg_xiv-fixed_admin_bar div.bbg_xiv-bootstrap{
+body.bbg_xiv-twentysixteen_with_border.bbg_xiv-fixed_admin_bar div.bbg_xiv-bootstrap:not(.bbg_xiv-fullscreen_gallery){
   div.bbg_xiv-embedded_carousel{
     div.carousel.slide{
       height:calc(0.9 * (100vh - (#{$admin-bar-height} + (2 * #{$twentysixteen-border-height}))));
@@ -1102,7 +1102,7 @@ body.bbg_xiv-twentysixteen_with_border.bbg_xiv-fixed_admin_bar div.bbg_xiv-boots
   }
 }
 
-body.bbg_xiv-fixed_admin_bar div.bbg_xiv-bootstrap{
+body.bbg_xiv-fixed_admin_bar div.bbg_xiv-bootstrap:not(.bbg_xiv-fullscreen_gallery){
   div.bbg_xiv-embedded_carousel{
     div.carousel.slide{
       height:calc(0.9 * (100vh - #{$admin-bar-height}));

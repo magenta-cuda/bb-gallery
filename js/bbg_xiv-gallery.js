@@ -642,7 +642,7 @@
                             // portrait mode
                         } else {
                             // landscape mode
-                            $gallery.scrollTop( $gallery[0].scrollHeight - $gallery.height() );
+                            $gallery.scrollTop( $gallery[0].scrollHeight - $gallery.height() - 50 + 0.05 * $divCarousel.height() );
                         }
                     } else {
                         // not full screen
