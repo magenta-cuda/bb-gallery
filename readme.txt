@@ -46,6 +46,7 @@ https://bbfgallery.wordpress.com/
 = 1.8.2.4.3 =
 
 * disable loading of unneeded hi-res thumbnails
+* fix alignment bug in fullscreen landscape mode
 
 = 1.8.2.4.2 =
 
@@ -209,6 +210,7 @@ https://bbfgallery.wordpress.com/
 = 1.8.2.4.3 =
 
 * disable loading of unneeded hi-res thumbnails
+* fix alignment bug in fullscreen landscape mode
 
 = 1.8.2.4.2 =
 
