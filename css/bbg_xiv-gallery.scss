@@ -71,8 +71,11 @@ $mobile-admin-bar-height:46px;
         transition:opacity 1.5s ease-out;
     }
 
-    div.bbg_xiv-dense_inner{
+    div.bbg_xiv-dense_inner,div.bbg_xiv-dense_alt_inner{
         @include overlay_inner(5vh,5vw,90vw,90vh);
+        &.bbg_xiv-dense_alt_inner{
+            background-color:white;
+        }
         opacity:0.0;
         transition:opacity 1.5s ease-out;
 

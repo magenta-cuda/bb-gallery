@@ -324,7 +324,7 @@ div.bbg_xiv-flex_container {
     display: none;
     opacity: 0.0;
     transition: opacity 1.5s ease-out; }
-  div.bbg_xiv-flex_container div.bbg_xiv-dense_inner {
+  div.bbg_xiv-flex_container div.bbg_xiv-dense_inner, div.bbg_xiv-flex_container div.bbg_xiv-dense_alt_inner {
     position: fixed;
     top: 5vh;
     left: 5vw;
@@ -336,7 +336,9 @@ div.bbg_xiv-flex_container {
     display: none;
     opacity: 0.0;
     transition: opacity 1.5s ease-out; }
-    div.bbg_xiv-flex_container div.bbg_xiv-dense_inner img {
+    div.bbg_xiv-flex_container div.bbg_xiv-dense_inner.bbg_xiv-dense_alt_inner, div.bbg_xiv-flex_container div.bbg_xiv-dense_alt_inner.bbg_xiv-dense_alt_inner {
+      background-color: white; }
+    div.bbg_xiv-flex_container div.bbg_xiv-dense_inner img, div.bbg_xiv-flex_container div.bbg_xiv-dense_alt_inner img {
       display: block;
       width: auto;
       height: 100%;
@@ -346,12 +348,12 @@ div.bbg_xiv-flex_container {
       top: 0px;
       transform: translate(-50%, 0px); }
     @supports (object-fit: contain) {
-      div.bbg_xiv-flex_container div.bbg_xiv-dense_inner img.bbg_xiv-img_overlay {
+      div.bbg_xiv-flex_container div.bbg_xiv-dense_inner img.bbg_xiv-img_overlay, div.bbg_xiv-flex_container div.bbg_xiv-dense_alt_inner img.bbg_xiv-img_overlay {
         width: 100%;
         height: 100%;
         object-fit: contain; } }
     @supports not (object-fit: contain) {
-      div.bbg_xiv-flex_container div.bbg_xiv-dense_inner img.bbg_xiv-img_overlay {
+      div.bbg_xiv-flex_container div.bbg_xiv-dense_inner img.bbg_xiv-img_overlay, div.bbg_xiv-flex_container div.bbg_xiv-dense_alt_inner img.bbg_xiv-img_overlay {
         display: block;
         width: auto;
         height: 100%;
@@ -360,7 +362,7 @@ div.bbg_xiv-flex_container {
         left: 50%;
         top: 0px;
         transform: translate(-50%, 0px); } }
-    div.bbg_xiv-flex_container div.bbg_xiv-dense_inner h1.bbg_xiv-dense_title {
+    div.bbg_xiv-flex_container div.bbg_xiv-dense_inner h1.bbg_xiv-dense_title, div.bbg_xiv-flex_container div.bbg_xiv-dense_alt_inner h1.bbg_xiv-dense_title {
       position: absolute;
       top: 0px;
       left: 0px;
@@ -370,9 +372,9 @@ div.bbg_xiv-flex_container {
       color: cyan;
       text-align: center;
       text-shadow: 2px 2px 0px black; }
-      div.bbg_xiv-flex_container div.bbg_xiv-dense_inner h1.bbg_xiv-dense_title:hover {
+      div.bbg_xiv-flex_container div.bbg_xiv-dense_inner h1.bbg_xiv-dense_title:hover, div.bbg_xiv-flex_container div.bbg_xiv-dense_alt_inner h1.bbg_xiv-dense_title:hover {
         color: transparent; }
-    div.bbg_xiv-flex_container div.bbg_xiv-dense_inner h1.bbg_xiv-dense_caption {
+    div.bbg_xiv-flex_container div.bbg_xiv-dense_inner h1.bbg_xiv-dense_caption, div.bbg_xiv-flex_container div.bbg_xiv-dense_alt_inner h1.bbg_xiv-dense_caption {
       position: absolute;
       bottom: 0px;
       left: 0px;
@@ -381,9 +383,9 @@ div.bbg_xiv-flex_container {
       color: cyan;
       text-align: center;
       text-shadow: 2px 2px 0px black; }
-      div.bbg_xiv-flex_container div.bbg_xiv-dense_inner h1.bbg_xiv-dense_caption:hover {
+      div.bbg_xiv-flex_container div.bbg_xiv-dense_inner h1.bbg_xiv-dense_caption:hover, div.bbg_xiv-flex_container div.bbg_xiv-dense_alt_inner h1.bbg_xiv-dense_caption:hover {
         color: transparent; }
-    div.bbg_xiv-flex_container div.bbg_xiv-dense_inner button.bbg_xiv-dense_close {
+    div.bbg_xiv-flex_container div.bbg_xiv-dense_inner button.bbg_xiv-dense_close, div.bbg_xiv-flex_container div.bbg_xiv-dense_alt_inner button.bbg_xiv-dense_close {
       position: absolute;
       top: 10px;
       right: 10px;
@@ -394,7 +396,7 @@ div.bbg_xiv-flex_container {
       background-color: transparent;
       padding: 3px;
       border-radius: 5px; }
-      div.bbg_xiv-flex_container div.bbg_xiv-dense_inner button.bbg_xiv-dense_close:hover {
+      div.bbg_xiv-flex_container div.bbg_xiv-dense_inner button.bbg_xiv-dense_close:hover, div.bbg_xiv-flex_container div.bbg_xiv-dense_alt_inner button.bbg_xiv-dense_close:hover {
         background-color: red; }
 
 div.bbg_xiv-flex_container.bbg_xiv-flex_no_caption div.bbg_xiv-flex_item figure figcaption, div.bbg_xiv-gallery_container.bbg_xiv-flex_no_caption div.bbg_xiv-flex_item figure figcaption {
@@ -604,7 +606,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_outer {
   display: none;
   opacity: 0.0;
   transition: opacity 1.5s ease-out; }
-div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner {
+div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner, div.bbg_xiv-bootstrap div.bbg_xiv-dense_alt_inner {
   position: fixed;
   top: 5vh;
   left: 5vw;
@@ -616,7 +618,9 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner {
   display: none;
   opacity: 0.0;
   transition: opacity 1.5s ease-out; }
-  div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner img {
+  div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner.bbg_xiv-dense_alt_inner, div.bbg_xiv-bootstrap div.bbg_xiv-dense_alt_inner.bbg_xiv-dense_alt_inner {
+    background-color: white; }
+  div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner img, div.bbg_xiv-bootstrap div.bbg_xiv-dense_alt_inner img {
     display: block;
     width: auto;
     height: 100%;
@@ -626,12 +630,12 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner {
     top: 0px;
     transform: translate(-50%, 0px); }
   @supports (object-fit: contain) {
-    div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner img.bbg_xiv-img_overlay {
+    div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner img.bbg_xiv-img_overlay, div.bbg_xiv-bootstrap div.bbg_xiv-dense_alt_inner img.bbg_xiv-img_overlay {
       width: 100%;
       height: 100%;
       object-fit: contain; } }
   @supports not (object-fit: contain) {
-    div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner img.bbg_xiv-img_overlay {
+    div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner img.bbg_xiv-img_overlay, div.bbg_xiv-bootstrap div.bbg_xiv-dense_alt_inner img.bbg_xiv-img_overlay {
       display: block;
       width: auto;
       height: 100%;
@@ -640,7 +644,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner {
       left: 50%;
       top: 0px;
       transform: translate(-50%, 0px); } }
-  div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner h1.bbg_xiv-dense_title {
+  div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner h1.bbg_xiv-dense_title, div.bbg_xiv-bootstrap div.bbg_xiv-dense_alt_inner h1.bbg_xiv-dense_title {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -650,9 +654,9 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner {
     color: cyan;
     text-align: center;
     text-shadow: 2px 2px 0px black; }
-    div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner h1.bbg_xiv-dense_title:hover {
+    div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner h1.bbg_xiv-dense_title:hover, div.bbg_xiv-bootstrap div.bbg_xiv-dense_alt_inner h1.bbg_xiv-dense_title:hover {
       color: transparent; }
-  div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner h1.bbg_xiv-dense_caption {
+  div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner h1.bbg_xiv-dense_caption, div.bbg_xiv-bootstrap div.bbg_xiv-dense_alt_inner h1.bbg_xiv-dense_caption {
     position: absolute;
     bottom: 0px;
     left: 0px;
@@ -661,9 +665,9 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner {
     color: cyan;
     text-align: center;
     text-shadow: 2px 2px 0px black; }
-    div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner h1.bbg_xiv-dense_caption:hover {
+    div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner h1.bbg_xiv-dense_caption:hover, div.bbg_xiv-bootstrap div.bbg_xiv-dense_alt_inner h1.bbg_xiv-dense_caption:hover {
       color: transparent; }
-  div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner button.bbg_xiv-dense_close {
+  div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner button.bbg_xiv-dense_close, div.bbg_xiv-bootstrap div.bbg_xiv-dense_alt_inner button.bbg_xiv-dense_close {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -674,7 +678,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner {
     background-color: transparent;
     padding: 3px;
     border-radius: 5px; }
-    div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner button.bbg_xiv-dense_close:hover {
+    div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner button.bbg_xiv-dense_close:hover, div.bbg_xiv-bootstrap div.bbg_xiv-dense_alt_inner button.bbg_xiv-dense_close:hover {
       background-color: red; }
 
 div.bbg_xiv-bootstrap div.carousel.slide {
@@ -1113,7 +1117,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
     display: none;
     opacity: 0.0;
     transition: opacity 1.5s ease-out; }
-  div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner {
+  div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner, div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_alt_inner {
     position: fixed;
     top: 5vh;
     left: 5vw;
@@ -1125,7 +1129,9 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
     display: none;
     opacity: 0.0;
     transition: opacity 1.5s ease-out; }
-    div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner img {
+    div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner.bbg_xiv-dense_alt_inner, div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_alt_inner.bbg_xiv-dense_alt_inner {
+      background-color: white; }
+    div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner img, div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_alt_inner img {
       display: block;
       width: auto;
       height: 100%;
@@ -1135,12 +1141,12 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
       top: 0px;
       transform: translate(-50%, 0px); }
     @supports (object-fit: contain) {
-      div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner img.bbg_xiv-img_overlay {
+      div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner img.bbg_xiv-img_overlay, div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_alt_inner img.bbg_xiv-img_overlay {
         width: 100%;
         height: 100%;
         object-fit: contain; } }
     @supports not (object-fit: contain) {
-      div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner img.bbg_xiv-img_overlay {
+      div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner img.bbg_xiv-img_overlay, div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_alt_inner img.bbg_xiv-img_overlay {
         display: block;
         width: auto;
         height: 100%;
@@ -1149,7 +1155,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
         left: 50%;
         top: 0px;
         transform: translate(-50%, 0px); } }
-    div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner h1.bbg_xiv-dense_title {
+    div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner h1.bbg_xiv-dense_title, div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_alt_inner h1.bbg_xiv-dense_title {
       position: absolute;
       top: 0px;
       left: 0px;
@@ -1159,9 +1165,9 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
       color: cyan;
       text-align: center;
       text-shadow: 2px 2px 0px black; }
-      div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner h1.bbg_xiv-dense_title:hover {
+      div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner h1.bbg_xiv-dense_title:hover, div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_alt_inner h1.bbg_xiv-dense_title:hover {
         color: transparent; }
-    div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner h1.bbg_xiv-dense_caption {
+    div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner h1.bbg_xiv-dense_caption, div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_alt_inner h1.bbg_xiv-dense_caption {
       position: absolute;
       bottom: 0px;
       left: 0px;
@@ -1170,9 +1176,9 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
       color: cyan;
       text-align: center;
       text-shadow: 2px 2px 0px black; }
-      div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner h1.bbg_xiv-dense_caption:hover {
+      div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner h1.bbg_xiv-dense_caption:hover, div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_alt_inner h1.bbg_xiv-dense_caption:hover {
         color: transparent; }
-    div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner button.bbg_xiv-dense_close {
+    div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner button.bbg_xiv-dense_close, div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_alt_inner button.bbg_xiv-dense_close {
       position: absolute;
       top: 10px;
       right: 10px;
@@ -1183,7 +1189,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
       background-color: transparent;
       padding: 3px;
       border-radius: 5px; }
-      div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner button.bbg_xiv-dense_close:hover {
+      div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner button.bbg_xiv-dense_close:hover, div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_alt_inner button.bbg_xiv-dense_close:hover {
         background-color: red; }
 
 div.bbg_xiv-bootstrap.bbg_xiv-fullscreen_gallery {

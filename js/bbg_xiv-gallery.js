@@ -492,7 +492,6 @@
                     var galleryId=jQuery(img).parents("div[data-bbg_xiv-gallery-id]")[0].dataset.bbg_xivGalleryId;
                     data = bbg_xiv.images[ galleryId ].get( img.dataset.bbg_xivImageId ).attributes;
                     if ( ! alt ) {
-                        $altInner.hide();
                         fullImg[0].src=bbg_xiv.getSrc(data,"viewport",false);
                         if(data.bbg_srcset){
                             fullImg[0].srcset=bbg_xiv.getSrcset(data);
@@ -500,24 +499,36 @@
                             fullImg[0].removeAttribute("sizes");
                         }
                     } else {
-                        inner.hide();
                     }
                 } catch ( error ) {
                     console.log('##### broken 1');
                     fullImg[0].src=img.src;
                 }
-                fullTitle[0].textContent=bbg_xiv.getTitle(data);
-                fullCaption[0].textContent=bbg_xiv.getCaption(data);
+                if ( ! alt ) {
+                    fullTitle[0].textContent=bbg_xiv.getTitle(data);
+                    fullCaption[0].textContent=bbg_xiv.getCaption(data);
+                } else {
+                    // instantiate the alternate overlay
+                    $altInner.find( 'div.bbg_xiv-dense_caption' ).text( bbg_xiv.getCaption( data ) );
+                }
                 // show and fade in overlay
                 outer.show();
-                inner.show();
+                if ( ! alt ) {
+                    // show full image overlay
+                    $altInner.hide();
+                    inner.show();
+                } else {
+                    // show alternate overlay
+                    inner.hide();
+                    $altInner.show();
+                }
                 if ( bbg_xiv.guiInterface === 'touch' ) {
                     // force hover effects on touchscreen
                     fullTitle.css({   color: bbg_xiv.titleColor, textShadow: bbg_xiv.titleShadow});
                     fullCaption.css({ color: bbg_xiv.titleColor, textShadow: bbg_xiv.titleShadow});
                 }
                 window.setTimeout(function(){
-                    inner.css("opacity","1.0");
+                    ( ! alt ? inner : $altInner ).css( 'opacity', '1.0' );
                     outer.css("opacity","0.93");
                 },100);
                 e.preventDefault();

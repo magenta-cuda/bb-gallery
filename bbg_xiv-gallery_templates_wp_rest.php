@@ -259,6 +259,7 @@
     </div>
     <div class="bbg_xiv-dense_alt_inner">
         <button class="bbg_xiv-dense_close"><span class="glyphicon glyphicon-remove"></span></button>
+        <div class="bbg_xiv-dense_caption"></div>
     </div>
 </div>
 </script>
@@ -271,6 +272,7 @@
         <div class="caption">
             <a href="{{{ data.link }}}" target="_blank"><# print(bbg_xiv.getTitle(data)); #></a>
             <button class="bbg_xiv-dense_full_btn bbg_xiv-dense_from_justified btn"><span class="glyphicon glyphicon-fullscreen"></span></button>
+            <button class="bbg_xiv-dense_alt_btn bbg_xiv-dense_from_justified btn"><span class="glyphicon glyphicon-info-sign"></span></button>
         </div>
     </div>
 </script>
