@@ -434,10 +434,13 @@
         }
         // remember the initial statically loaded gallery so we can efficiently return to it
         bbg_xiv.galleries[gallery.id]=bbg_xiv.galleries[gallery.id]||{images:{"gallery_home":images},view:"gallery_home"};
-        function constructOverlay(){
+        function constructOverlay() {
             // gallery or dense view shows a full browser viewport view of an image when its fullscreen glyph is clicked
-            var outer = jqGallery.find( 'div.bbg_xiv-dense_outer' );
-            var inner = jqGallery.find( 'div.bbg_xiv-dense_inner' ).click(function() {
+            var outer     = jqGallery.find( 'div.bbg_xiv-dense_outer' );
+            var inner     = jqGallery.find( 'div.bbg_xiv-dense_inner' );
+            var $altInner = jqGallery.find( 'div.bbg_xiv-dense_alt_inner' );
+            inner.add( $altInner ).click( function() {
+                var inner = jQuery( this );
                 // fade out and hide overlay
                 inner.css("opacity","0.0");
                 outer.css("opacity","0.0");
@@ -470,8 +473,9 @@
                     }
                 );
             }
-            jqGallery.find("button.bbg_xiv-dense_full_btn").click(function(e){
+            jqGallery.find( 'button.bbg_xiv-dense_full_btn, button.bbg_xiv-dense_alt_btn' ).click( function( e ) {
                 var jqThis=jQuery(this);
+                var alt = jqThis.hasClass( 'bbg_xiv-dense_alt_btn' );   // use the alternate overlay view
                 var img;
                 // the buttons are of four different types so the associated image is found differently depending on the type
                 if(jqThis.hasClass("bbg_xiv-dense_from_image")){
@@ -487,11 +491,16 @@
                 try {
                     var galleryId=jQuery(img).parents("div[data-bbg_xiv-gallery-id]")[0].dataset.bbg_xivGalleryId;
                     data = bbg_xiv.images[ galleryId ].get( img.dataset.bbg_xivImageId ).attributes;
-                    fullImg[0].src=bbg_xiv.getSrc(data,"viewport",false);
-                    if(data.bbg_srcset){
-                        fullImg[0].srcset=bbg_xiv.getSrcset(data);
-                    }else{
-                        fullImg[0].removeAttribute("sizes");
+                    if ( ! alt ) {
+                        $altInner.hide();
+                        fullImg[0].src=bbg_xiv.getSrc(data,"viewport",false);
+                        if(data.bbg_srcset){
+                            fullImg[0].srcset=bbg_xiv.getSrcset(data);
+                        }else{
+                            fullImg[0].removeAttribute("sizes");
+                        }
+                    } else {
+                        inner.hide();
                     }
                 } catch ( error ) {
                     console.log('##### broken 1');
@@ -514,7 +523,7 @@
                 e.preventDefault();
                 e.stopPropagation();
             });
-        }
+        }   // function constructOverlay() {
         var titlesButton=jqGallery.parents("div.bbg_xiv-gallery").find("nav.navbar button.bbg_xiv-titles").hide();
         switch(view){
         case "Gallery":

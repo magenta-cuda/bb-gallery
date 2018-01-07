@@ -257,6 +257,9 @@
         <img class="img-rounded bbg_xiv-img_overlay" sizes="<# print(bbg_xiv.getSizes(null,'viewport',false)); #>">
         <h1 class="bbg_xiv-dense_caption"></h1>
     </div>
+    <div class="bbg_xiv-dense_alt_inner">
+        <button class="bbg_xiv-dense_close"><span class="glyphicon glyphicon-remove"></span></button>
+    </div>
 </div>
 </script>
 <!-- Justified Gallery Item Template -->
