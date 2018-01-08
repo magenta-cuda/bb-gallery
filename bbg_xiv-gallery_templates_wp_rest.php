@@ -259,7 +259,7 @@
     </div>
     <div class="bbg_xiv-dense_alt_inner">
         <button class="bbg_xiv-dense_close"><span class="glyphicon glyphicon-remove"></span></button>
-        <div class="bbg_xiv-dense_caption"></div>
+        <div class="bbg_xiv-dense_alt_item bbg_xiv-dense_caption"><span class="bbg_xiv-item_name">Caption: </span><span class="bbg_xiv-item_value"></span></div>
     </div>
 </div>
 </script>

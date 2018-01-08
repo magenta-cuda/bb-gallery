@@ -509,7 +509,7 @@
                     fullCaption[0].textContent=bbg_xiv.getCaption(data);
                 } else {
                     // instantiate the alternate overlay
-                    $altInner.find( 'div.bbg_xiv-dense_caption' ).text( bbg_xiv.getCaption( data ) );
+                    $altInner.find( 'div.bbg_xiv-dense_caption span.bbg_xiv-item_value' ).text( bbg_xiv.getCaption( data ) );
                 }
                 // show and fade in overlay
                 outer.show();

@@ -71,7 +71,7 @@ $mobile-admin-bar-height:46px;
         transition:opacity 1.5s ease-out;
     }
 
-    div.bbg_xiv-dense_inner,div.bbg_xiv-dense_alt_inner{
+    div.bbg_xiv-dense_inner{
         @include overlay_inner(5vh,5vw,90vw,90vh);
         &.bbg_xiv-dense_alt_inner{
             background-color:white;
@@ -137,6 +137,24 @@ $mobile-admin-bar-height:46px;
 
             &:hover{
                 color:transparent;
+            }
+        }
+        button.bbg_xiv-dense_close{
+            @include overlay_close_button();
+        }
+    }
+
+    div.bbg_xiv-dense_alt_inner{
+        @include overlay_inner(5vh,5vw,90vw,90vh);
+        background-color:white;
+        padding:20px 40px;
+        opacity:0.0;
+        transition:opacity 1.5s ease-out;
+        div.bbg_xiv-dense_alt_item{
+            span.bbg_xiv-item_name{
+                font-weight:bold;
+            }
+            span.bbg_xiv-item_value{
             }
         }
         button.bbg_xiv-dense_close{
