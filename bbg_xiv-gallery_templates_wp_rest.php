@@ -278,6 +278,9 @@
 </script>
 <!-- Justified Gallery Alt Overlay Template -->
 <script type="text/html" id="bbg_xiv-template_justified_alt_overlay">
+    <div class="bbg_xiv-dense_alt_item bbg_xiv-dense_title">
+        <span class="bbg_xiv-item_name">Title: </span><span class="bbg_xiv-item_value"><# print(bbg_xiv.getTitle(data)); #></span>
+    </div>
     <div class="bbg_xiv-dense_alt_item bbg_xiv-dense_caption">
         <span class="bbg_xiv-item_name">Caption: </span><span class="bbg_xiv-item_value"><# print(bbg_xiv.getCaption(data)); #></span>
     </div>

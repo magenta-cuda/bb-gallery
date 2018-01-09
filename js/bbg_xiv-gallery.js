@@ -475,9 +475,11 @@
             }
             var altOverlayView      = new bbg_xiv.ImageView();
             altOverlayView.template = _.template( jQuery( 'script#bbg_xiv-template_justified_alt_overlay' ).html(), null, bbg_xiv.templateOptions );
-            jqGallery.find( 'button.bbg_xiv-dense_full_btn, button.bbg_xiv-dense_alt_btn' ).click( function( e ) {
+            function showOverlay( e ) {
                 var jqThis=jQuery(this);
-                var alt = jqThis.hasClass( 'bbg_xiv-dense_alt_btn' );   // use the alternate overlay view
+                var click = e.type === 'click';
+                var hover = e.type === 'todo';
+                var alt   = jqThis.hasClass( 'bbg_xiv-dense_alt_btn' );   // use the alternate overlay view
                 var img;
                 // the buttons are of four different types so the associated image is found differently depending on the type
                 if(jqThis.hasClass("bbg_xiv-dense_from_image")){
@@ -533,7 +535,8 @@
                 },100);
                 e.preventDefault();
                 e.stopPropagation();
-            });
+            }
+            jqGallery.find( 'button.bbg_xiv-dense_full_btn, button.bbg_xiv-dense_alt_btn' ).click( showOverlay );
         }   // function constructOverlay() {
         var titlesButton=jqGallery.parents("div.bbg_xiv-gallery").find("nav.navbar button.bbg_xiv-titles").hide();
         switch(view){

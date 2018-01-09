@@ -400,10 +400,10 @@ div.bbg_xiv-flex_container {
         background-color: red; }
   div.bbg_xiv-flex_container div.bbg_xiv-dense_alt_inner {
     position: fixed;
-    top: 5vh;
-    left: 5vw;
-    width: 90vw;
-    height: 90vh;
+    top: 20vh;
+    left: 15vw;
+    width: 70vw;
+    height: 60vh;
     overflow-x: hidden;
     z-index: 10000;
     background-color: transparent;
@@ -711,10 +711,10 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner {
       background-color: red; }
 div.bbg_xiv-bootstrap div.bbg_xiv-dense_alt_inner {
   position: fixed;
-  top: 5vh;
-  left: 5vw;
-  width: 90vw;
-  height: 90vh;
+  top: 20vh;
+  left: 15vw;
+  width: 70vw;
+  height: 60vh;
   overflow-x: hidden;
   z-index: 10000;
   background-color: transparent;
@@ -1251,10 +1251,10 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
         background-color: red; }
   div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_alt_inner {
     position: fixed;
-    top: 5vh;
-    left: 5vw;
-    width: 90vw;
-    height: 90vh;
+    top: 20vh;
+    left: 15vw;
+    width: 70vw;
+    height: 60vh;
     overflow-x: hidden;
     z-index: 10000;
     background-color: transparent;

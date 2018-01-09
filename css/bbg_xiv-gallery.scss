@@ -145,7 +145,7 @@ $mobile-admin-bar-height:46px;
     }
 
     div.bbg_xiv-dense_alt_inner{
-        @include overlay_inner(5vh,5vw,90vw,90vh);
+        @include overlay_inner(20vh,15vw,70vw,60vh);
         background-color:white;
         padding:20px 40px;
         opacity:0.0;
