@@ -259,7 +259,7 @@
     </div>
     <div class="bbg_xiv-dense_alt_inner">
         <button class="bbg_xiv-dense_close"><span class="glyphicon glyphicon-remove"></span></button>
-        <div class="bbg_xiv-dense_alt_item bbg_xiv-dense_caption"><span class="bbg_xiv-item_name">Caption: </span><span class="bbg_xiv-item_value"></span></div>
+        <div class="bbg_xiv-dense_alt_items"></div>
     </div>
 </div>
 </script>
@@ -274,6 +274,12 @@
             <button class="bbg_xiv-dense_full_btn bbg_xiv-dense_from_justified btn"><span class="glyphicon glyphicon-fullscreen"></span></button>
             <button class="bbg_xiv-dense_alt_btn bbg_xiv-dense_from_justified btn"><span class="glyphicon glyphicon-info-sign"></span></button>
         </div>
+    </div>
+</script>
+<!-- Justified Gallery Alt Overlay Template -->
+<script type="text/html" id="bbg_xiv-template_justified_alt_overlay">
+    <div class="bbg_xiv-dense_alt_item bbg_xiv-dense_caption">
+        <span class="bbg_xiv-item_name">Caption: </span><span class="bbg_xiv-item_value"><# print(bbg_xiv.getCaption(data)); #></span>
     </div>
 </script>
 

@@ -473,6 +473,8 @@
                     }
                 );
             }
+            var altOverlayView      = new bbg_xiv.ImageView();
+            altOverlayView.template = _.template( jQuery( 'script#bbg_xiv-template_justified_alt_overlay' ).html(), null, bbg_xiv.templateOptions );
             jqGallery.find( 'button.bbg_xiv-dense_full_btn, button.bbg_xiv-dense_alt_btn' ).click( function( e ) {
                 var jqThis=jQuery(this);
                 var alt = jqThis.hasClass( 'bbg_xiv-dense_alt_btn' );   // use the alternate overlay view
@@ -498,18 +500,16 @@
                         }else{
                             fullImg[0].removeAttribute("sizes");
                         }
+                        fullTitle[0].textContent=bbg_xiv.getTitle(data);
+                        fullCaption[0].textContent=bbg_xiv.getCaption(data);
                     } else {
+                        // instantiate the alternate overlay
+                        altOverlayView.model = { attributes: data };
+                        $altInner.find( 'div.bbg_xiv-dense_alt_items' ).html( altOverlayView.render( true ) );
                     }
                 } catch ( error ) {
                     console.log('##### broken 1');
                     fullImg[0].src=img.src;
-                }
-                if ( ! alt ) {
-                    fullTitle[0].textContent=bbg_xiv.getTitle(data);
-                    fullCaption[0].textContent=bbg_xiv.getCaption(data);
-                } else {
-                    // instantiate the alternate overlay
-                    $altInner.find( 'div.bbg_xiv-dense_caption span.bbg_xiv-item_value' ).text( bbg_xiv.getCaption( data ) );
                 }
                 // show and fade in overlay
                 outer.show();
