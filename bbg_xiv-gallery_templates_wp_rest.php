@@ -292,8 +292,20 @@
     </div>
     <# if ( typeof data.bbg_full_src === 'object' ) { #>
     <div class="bbg_xiv-dense_alt_item bbg_xiv-dense_urls">
-        <span class="bbg_xiv-item_name">URL: </span>
-        <span class="bbg_xiv-item_value"> <a href="{{{ data.bbg_full_src[0] }}}">{{{ data.bbg_full_src[1] }}} x {{{ data.bbg_full_src[2] }}}</a></span>
+        <span class="bbg_xiv-item_name">URLs: </span>
+        <span class="bbg_xiv-item_value">Full: <a href="{{{ data.bbg_full_src[0] }}}">{{{ data.bbg_full_src[1] }}} x {{{ data.bbg_full_src[2] }}}</a></span>
+        <# if ( typeof data.bbg_large_src === 'object' && data.bbg_large_src[0] !== data.bbg_full_src[0] ) { #>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="bbg_xiv-item_value">Large: <a href="{{{ data.bbg_large_src[0] }}}">{{{ data.bbg_large_src[1] }}} x {{{ data.bbg_large_src[2] }}}</a></span>
+        <# } #>
+        <# if ( typeof data.bbg_medium_large_src === 'object' && data.bbg_medium_large_src[0] !== data.bbg_large_src[0] && data.bbg_medium_large_src[0] !== data.bbg_full_src[0] ) { #>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="bbg_xiv-item_value">Medium Large: <a href="{{{ data.bbg_medium_large_src[0] }}}">{{{ data.bbg_medium_large_src[1] }}} x {{{ data.bbg_medium_large_src[2] }}}</a></span>
+        <# } #>
+        <# if ( typeof data.bbg_medium_src === 'object' && data.bbg_medium_src[0] !== data.bbg_medium_large_src[0] && data.bbg_medium_src[0] !== data.bbg_large_src[0] && data.bbg_medium_src[0] !== data.bbg_full_src[0] ) { #>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="bbg_xiv-item_value">Medium: <a href="{{{ data.bbg_medium_src[0] }}}">{{{ data.bbg_medium_src[1] }}} x {{{ data.bbg_medium_src[2] }}}</a></span>
+        <# } #>
     </div>
     <# } #>
 </script>
