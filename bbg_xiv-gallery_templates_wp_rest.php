@@ -282,8 +282,20 @@
         <span class="bbg_xiv-item_name">Title: </span><span class="bbg_xiv-item_value"><# print(bbg_xiv.getTitle(data)); #></span>
     </div>
     <div class="bbg_xiv-dense_alt_item bbg_xiv-dense_caption">
-        <span class="bbg_xiv-item_name">Caption: </span><span class="bbg_xiv-item_value"><# print(bbg_xiv.getCaption(data)); #></span>
+        <span class="bbg_xiv-item_name">Caption: </span><span class="bbg_xiv-item_value"><# print(bbg_xiv.getCaption(data,true)); #></span>
     </div>
+    <div class="bbg_xiv-dense_alt_item bbg_xiv-dense_alt">
+        <span class="bbg_xiv-item_name">Alt: </span><span class="bbg_xiv-item_value"><# print(bbg_xiv.getAlt(data,true)); #></span>
+    </div>
+    <div class="bbg_xiv-dense_alt_item bbg_xiv-dense_alt">
+        <span class="bbg_xiv-item_name">Mime Type: </span><span class="bbg_xiv-item_value">{{{ data.mime_type }}}</span>
+    </div>
+    <# if ( typeof data.bbg_full_src === 'object' ) { #>
+    <div class="bbg_xiv-dense_alt_item bbg_xiv-dense_urls">
+        <span class="bbg_xiv-item_name">URL: </span>
+        <span class="bbg_xiv-item_value"> <a href="{{{ data.bbg_full_src[0] }}}">{{{ data.bbg_full_src[1] }}} x {{{ data.bbg_full_src[2] }}}</a></span>
+    </div>
+    <# } #>
 </script>
 
 <!-- Table Container Template -->

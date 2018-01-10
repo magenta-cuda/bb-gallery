@@ -439,7 +439,7 @@
             var outer     = jqGallery.find( 'div.bbg_xiv-dense_outer' );
             var inner     = jqGallery.find( 'div.bbg_xiv-dense_inner' );
             var $altInner = jqGallery.find( 'div.bbg_xiv-dense_alt_inner' );
-            inner.add( $altInner ).click( function() {
+            function hideOverlay() {
                 var inner = jQuery( this );
                 // fade out and hide overlay
                 inner.css("opacity","0.0");
@@ -451,7 +451,8 @@
                     outer.hide();
                     $navbar.css( 'opacity', '1.0' );
                 },2000);
-            });
+            }   // function hideOverlay() {
+            inner.add( $altInner ).click( hideOverlay );
             var fullImg     = inner.find( 'img' );
             var fullTitle   = inner.find( 'h1.bbg_xiv-dense_title' );
             var fullCaption = inner.find( 'h1.bbg_xiv-dense_caption' );
@@ -535,7 +536,7 @@
                 },100);
                 e.preventDefault();
                 e.stopPropagation();
-            }
+            }  // function showOverlay( e ) {
             jqGallery.find( 'button.bbg_xiv-dense_full_btn, button.bbg_xiv-dense_alt_btn' ).click( showOverlay );
         }   // function constructOverlay() {
         var titlesButton=jqGallery.parents("div.bbg_xiv-gallery").find("nav.navbar button.bbg_xiv-titles").hide();
