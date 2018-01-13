@@ -436,23 +436,35 @@
         bbg_xiv.galleries[gallery.id]=bbg_xiv.galleries[gallery.id]||{images:{"gallery_home":images},view:"gallery_home"};
         function constructOverlay() {
             // gallery or dense view shows a full browser viewport view of an image when its fullscreen glyph is clicked
-            var outer     = jqGallery.find( 'div.bbg_xiv-dense_outer' );
-            var inner     = jqGallery.find( 'div.bbg_xiv-dense_inner' );
-            var $altInner = jqGallery.find( 'div.bbg_xiv-dense_alt_inner' );
-            function hideOverlay() {
-                var inner = jQuery( this );
+            var outer          = jqGallery.find( 'div.bbg_xiv-dense_outer' );
+            var inner          = jqGallery.find( 'div.bbg_xiv-dense_inner' );
+            var $altInner      = jqGallery.find( 'div.bbg_xiv-dense_alt_inner' );
+            var overlayShowing = false;
+            var overlayLocked  = false;
+            function hideOverlay( e ) {
+                if ( overlayLocked && e.type !== 'click' ) {
+                    return;
+                }
+                var $inner;
+                if ( this.tagName === 'SPAN' ) {
+                    $inner = $altInner;
+                } else {
+                    $inner = jQuery( this );
+                }
+                overlayShowing = overlayLocked = false;
                 // fade out and hide overlay
-                inner.css("opacity","0.0");
+                $inner.css("opacity","0.0");
                 outer.css("opacity","0.0");
                 // workaround for a bug? in Chrome where navbar is not visible after an overlay is closed
                 var $navbar = jQuery( 'div.bbg_xiv-gallery nav.bbg_xiv-gallery_navbar' ).css( 'opacity', '0.99' );
                 window.setTimeout(function(){
-                    inner.hide();
+                    $inner.hide();
                     outer.hide();
                     $navbar.css( 'opacity', '1.0' );
                 },2000);
             }   // function hideOverlay() {
             inner.add( $altInner ).click( hideOverlay );
+            $altInner.mousemove( hideOverlay );
             var fullImg     = inner.find( 'img' );
             var fullTitle   = inner.find( 'h1.bbg_xiv-dense_title' );
             var fullCaption = inner.find( 'h1.bbg_xiv-dense_caption' );
@@ -477,20 +489,25 @@
             var altOverlayView      = new bbg_xiv.ImageView();
             altOverlayView.template = _.template( jQuery( 'script#bbg_xiv-template_justified_alt_overlay' ).html(), null, bbg_xiv.templateOptions );
             function showOverlay( e ) {
-                var jqThis=jQuery(this);
-                var click = e.type === 'click';
-                var hover = e.type === 'todo';
-                var alt   = jqThis.hasClass( 'bbg_xiv-dense_alt_btn' );   // use the alternate overlay view
+                var $button;
+                if ( this.tagName === 'SPAN' ) {
+                    $button = jQuery( this.parentNode );
+                } else {
+                    $button = jQuery( this );
+                }
+                overlayShowing = true;
+                overlayLocked  = e.type === 'click';
+                var alt        = $button.hasClass( 'bbg_xiv-dense_alt_btn' );   // use the alternate overlay view
                 var img;
                 // the buttons are of four different types so the associated image is found differently depending on the type
-                if(jqThis.hasClass("bbg_xiv-dense_from_image")){
-                    img = jqThis.parents( 'div.bbg_xiv-dense_flex_item' ).find( 'img' )[0];
-                }else if(jqThis.hasClass("bbg_xiv-dense_from_title")){
+                if ( $button.hasClass( 'bbg_xiv-dense_from_image' ) ) {
+                    img = $button.parents( 'div.bbg_xiv-dense_flex_item' ).find( 'img' )[0];
+                } else if ( $button.hasClass( 'bbg_xiv-dense_from_title' ) ) {
                     img = jQuery( 'div#' + this.parentNode.id.replace( 'title', 'image' ) ).find( 'img' )[0];
-                }else if(jqThis.hasClass("bbg_xiv-flex_from_image")){
-                    img = jqThis.parents( 'div.bbg_xiv-flex_item' ).find( 'img' )[0];
-                }else if(jqThis.hasClass("bbg_xiv-dense_from_justified")){
-                    img = jqThis.parents( 'div.bbg_xiv-justified_item' ).find( 'img' )[0];
+                } else if ( $button.hasClass( 'bbg_xiv-flex_from_image' ) ) {
+                    img = $button.parents( 'div.bbg_xiv-flex_item' ).find( 'img' )[0];
+                } else if ( $button.hasClass( 'bbg_xiv-dense_from_justified') ) {
+                    img = $button.parents( 'div.bbg_xiv-justified_item' ).find( 'img' )[0];
                 }
                 var data;
                 try {
@@ -538,6 +555,7 @@
                 e.stopPropagation();
             }  // function showOverlay( e ) {
             jqGallery.find( 'button.bbg_xiv-dense_full_btn, button.bbg_xiv-dense_alt_btn' ).click( showOverlay );
+            jqGallery.find( 'button.bbg_xiv-dense_alt_btn span.glyphicon' ).hover( showOverlay, hideOverlay );
         }   // function constructOverlay() {
         var titlesButton=jqGallery.parents("div.bbg_xiv-gallery").find("nav.navbar button.bbg_xiv-titles").hide();
         switch(view){
