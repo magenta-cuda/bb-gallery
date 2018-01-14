@@ -441,17 +441,25 @@
             var $altInner      = jqGallery.find( 'div.bbg_xiv-dense_alt_inner' );
             var overlayShowing = false;
             var overlayLocked  = false;
+            var mouseX         = NaN;
+            var mouseY         = NaN;
             function hideOverlay( e ) {
-                if ( overlayLocked && e.type !== 'click' ) {
-                    return;
+                if ( e.type !== 'click' ) {
+                    if ( overlayLocked ) {
+                        return;
+                    }
+                    if ( Math.abs( e.screenX - mouseX ) < 10 && Math.abs( e.screenY - mouseY ) < 10 ) {
+                        // ignore a small mouse movement
+                        return;
+                    }
                 }
-                var $inner;
-                if ( this.tagName === 'SPAN' ) {
+                var $inner = jQuery( this );
+                if ( $inner.hasClass( 'bbg_xiv-dense_outer' ) ) {
+                    // $inner really is outer so ...
                     $inner = $altInner;
-                } else {
-                    $inner = jQuery( this );
-                }
+                }   
                 overlayShowing = overlayLocked = false;
+                mouseX = mouseY = NaN;
                 // fade out and hide overlay
                 $inner.css("opacity","0.0");
                 outer.css("opacity","0.0");
@@ -464,7 +472,7 @@
                 },2000);
             }   // function hideOverlay() {
             inner.add( $altInner ).click( hideOverlay );
-            $altInner.mousemove( hideOverlay );
+            outer.add( $altInner ).mousemove( hideOverlay );
             var fullImg     = inner.find( 'img' );
             var fullTitle   = inner.find( 'h1.bbg_xiv-dense_title' );
             var fullCaption = inner.find( 'h1.bbg_xiv-dense_caption' );
@@ -497,6 +505,8 @@
                 }
                 overlayShowing = true;
                 overlayLocked  = e.type === 'click';
+                mouseX         = e.screenX;
+                mouseY         = e.screenY;
                 var alt        = $button.hasClass( 'bbg_xiv-dense_alt_btn' );   // use the alternate overlay view
                 var img;
                 // the buttons are of four different types so the associated image is found differently depending on the type
@@ -555,7 +565,7 @@
                 e.stopPropagation();
             }  // function showOverlay( e ) {
             jqGallery.find( 'button.bbg_xiv-dense_full_btn, button.bbg_xiv-dense_alt_btn' ).click( showOverlay );
-            jqGallery.find( 'button.bbg_xiv-dense_alt_btn span.glyphicon' ).hover( showOverlay, hideOverlay );
+            jqGallery.find( 'button.bbg_xiv-dense_alt_btn span.glyphicon' ).mouseenter( showOverlay );
         }   // function constructOverlay() {
         var titlesButton=jqGallery.parents("div.bbg_xiv-gallery").find("nav.navbar button.bbg_xiv-titles").hide();
         switch(view){
