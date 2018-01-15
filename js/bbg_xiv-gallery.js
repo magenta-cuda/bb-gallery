@@ -443,6 +443,7 @@
             var overlayLocked  = false;
             var mouseX         = NaN;
             var mouseY         = NaN;
+            var $caption       = null;
             function hideOverlay( e ) {
                 if ( e.type !== 'click' ) {
                     if ( overlayLocked ) {
@@ -476,6 +477,7 @@
                     outer.hide();
                     $navbar.css( 'opacity', '1.0' );
                 }, $inner !== $altInner ? 2000 : 500 );
+                $caption.css( { display: 'block', opacity: '0.7' } );
             }   // function hideOverlay( e ) {
             inner.add( $altInner ).click( hideOverlay );
             outer.add( $altInner ).mousemove( hideOverlay );
@@ -517,6 +519,7 @@
                 overlayLocked  = e.type === 'click';
                 mouseX         = e.screenX;
                 mouseY         = e.screenY;
+                $caption       = $button.parent();
                 var alt        = $button.hasClass( 'bbg_xiv-dense_alt_btn' );   // use the alternate overlay view
                 var img;
                 // the buttons are of four different types so the associated image is found differently depending on the type
