@@ -452,6 +452,12 @@
                         // ignore a small mouse movement
                         return;
                     }
+                } else {
+                    if ( ! overlayLocked ) {
+                        // when overlay is showing from hover use the first click in the inner to lock the overlay
+                        overlayLocked = true;
+                        return;
+                    }
                 }
                 var $inner = jQuery( this );
                 if ( $inner.hasClass( 'bbg_xiv-dense_outer' ) ) {
@@ -469,10 +475,14 @@
                     $inner.hide();
                     outer.hide();
                     $navbar.css( 'opacity', '1.0' );
-                },2000);
-            }   // function hideOverlay() {
+                }, $inner !== $altInner ? 2000 : 500 );
+            }   // function hideOverlay( e ) {
             inner.add( $altInner ).click( hideOverlay );
             outer.add( $altInner ).mousemove( hideOverlay );
+            // when overlay is showing from hover use a click in the outer to lock the overlay
+            outer.click( function( e ) {
+                overlayLocked = true;
+            } );
             var fullImg     = inner.find( 'img' );
             var fullTitle   = inner.find( 'h1.bbg_xiv-dense_title' );
             var fullCaption = inner.find( 'h1.bbg_xiv-dense_caption' );
