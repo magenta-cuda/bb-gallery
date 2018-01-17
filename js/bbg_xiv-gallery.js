@@ -477,7 +477,7 @@
                     outer.hide();
                     $navbar.css( 'opacity', '1.0' );
                 }, $inner !== $altInner ? 2000 : 500 );
-                $caption.css( { display: 'block', opacity: '0.7' } );
+                // $caption.css( { display: 'block', opacity: '0.7' } );
             }   // function hideOverlay( e ) {
             inner.add( $altInner ).click( hideOverlay );
             outer.add( $altInner ).mousemove( hideOverlay );
@@ -574,6 +574,7 @@
                     ( ! alt ? inner : $altInner ).css( 'opacity', '1.0' );
                     outer.css("opacity","0.93");
                 },100);
+                $caption.css( { display: 'block', opacity: '0.7' } );
                 e.preventDefault();
                 e.stopPropagation();
             }  // function showOverlay( e ) {
