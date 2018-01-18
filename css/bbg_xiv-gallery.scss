@@ -147,14 +147,20 @@ $mobile-admin-bar-height:46px;
     div.bbg_xiv-dense_alt_inner{
         @include overlay_inner(35vh,25vw,50vw,30vh);
         background-color:white;
-        padding:20px 40px;
+        padding:10px 40px;
         opacity:0.0;
         transition:opacity 1.5s ease-out;
-        div.bbg_xiv-dense_alt_item{
-            span.bbg_xiv-item_name{
-                font-weight:bold;
-            }
-            span.bbg_xiv-item_value{
+        span.bbg_xiv-click_to_lock_comment{
+            font-size:small;
+        }
+        div.bbg_xiv-dense_alt_items{
+            padding-top:10px;
+            div.bbg_xiv-dense_alt_item{
+                span.bbg_xiv-item_name{
+                    font-weight:bold;
+                }
+                span.bbg_xiv-item_value{
+                }
             }
         }
         button.bbg_xiv-dense_close{
@@ -880,7 +886,6 @@ div.bbg_xiv-bootstrap{
       }
       button.bbg_xiv-dense_from_justified{
         float:right;
-        padding:3px 10px;
         color:$icon-color;
         background-color:transparent;
         &.bbg_xiv-dense_full_btn{

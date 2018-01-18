@@ -258,6 +258,7 @@
         <h1 class="bbg_xiv-dense_caption"></h1>
     </div>
     <div class="bbg_xiv-dense_alt_inner">
+        <span class="bbg_xiv-click_to_lock_comment">Click anywhere to lock the display of this popup.</span>
         <button class="bbg_xiv-dense_close"><span class="glyphicon glyphicon-remove"></span></button>
         <div class="bbg_xiv-dense_alt_items"></div>
     </div>
