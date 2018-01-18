@@ -883,6 +883,12 @@ div.bbg_xiv-bootstrap{
         padding:3px 10px;
         color:$icon-color;
         background-color:transparent;
+        &.bbg_xiv-dense_full_btn{
+          padding:3px 10px 3px 0;
+        }
+        &.bbg_xiv-dense_alt_btn{
+          padding:3px 0 3px 10px;
+        }
       }
     }
   }
