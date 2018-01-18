@@ -3,7 +3,7 @@ Contributors: Magenta Cuda
 Tags: gallery, shortcode, lightbox, slideshow, responsive, plug-compatible, replacement
 Requires at least: 4.4
 Tested up to: 4.9
-Stable tag: 1.8.2.4.3
+Stable tag: 1.8.2.4.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,10 @@ https://bbfgallery.wordpress.com/
 13. [Admin Settings](https://bbfgallery.wordpress.com/#installation)
 
 == Changelog ==
+
+= 1.8.2.4.4 =
+
+* add info overlay to Miro's gallery
 
 = 1.8.2.4.3 =
 
@@ -206,6 +210,10 @@ https://bbfgallery.wordpress.com/
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.8.2.4.4 =
+
+* add info overlay to Miro's gallery
 
 = 1.8.2.4.3 =
 
