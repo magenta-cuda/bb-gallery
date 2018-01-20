@@ -455,17 +455,21 @@
                     }
                 } else {
                     if ( ! overlayLocked ) {
-                        // when overlay is showing from hover use the first click in the inner to lock the overlay
+                        // An unlocked overlay must be the alt overlay.
+                        // When the alt overlay is showing from a hover use the first click in the inner to lock the alt overlay.
                         overlayLocked = true;
+                        $altInner.addClass( 'bbg_xiv-locked' );
                         return;
                     }
                 }
+                // This is either a click event on a locked overlay or a large mouse move event on an unlocked alt overlay
                 var $inner = jQuery( this );
                 if ( $inner.hasClass( 'bbg_xiv-dense_outer' ) ) {
                     // $inner really is outer so ...
                     $inner = $altInner;
                 }   
                 overlayShowing = overlayLocked = false;
+                $altInner.removeClass( 'bbg_xiv-locked' );
                 mouseX = mouseY = NaN;
                 // fade out and hide overlay
                 $inner.css("opacity","0.0");
@@ -483,7 +487,11 @@
             outer.add( $altInner ).mousemove( hideOverlay );
             // when overlay is showing from hover use a click in the outer to lock the overlay
             outer.click( function( e ) {
-                overlayLocked = true;
+                if ( !overlayLocked ) {
+                    // The overlay must be the alt overlay.
+                    overlayLocked = true;
+                    $altInner.addClass( 'bbg_xiv-locked' );
+                }
             } );
             var fullImg     = inner.find( 'img' );
             var fullTitle   = inner.find( 'h1.bbg_xiv-dense_title' );

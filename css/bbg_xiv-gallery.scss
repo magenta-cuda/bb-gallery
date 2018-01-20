@@ -153,6 +153,15 @@ $mobile-admin-bar-height:46px;
         span.bbg_xiv-click_to_lock_comment{
             font-size:small;
         }
+        &.bbg_xiv-locked span.bbg_xiv-click_to_lock_comment{
+            display:none;
+        }
+        button.bbg_xiv-dense_close{
+            display:none;
+        }
+        &.bbg_xiv-locked button.bbg_xiv-dense_close{
+            display:inline;
+        }
         div.bbg_xiv-dense_alt_items{
             padding-top:10px;
             div.bbg_xiv-dense_alt_item{

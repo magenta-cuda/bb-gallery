@@ -414,6 +414,12 @@ div.bbg_xiv-flex_container {
     transition: opacity 1.5s ease-out; }
     div.bbg_xiv-flex_container div.bbg_xiv-dense_alt_inner span.bbg_xiv-click_to_lock_comment {
       font-size: small; }
+    div.bbg_xiv-flex_container div.bbg_xiv-dense_alt_inner.bbg_xiv-locked span.bbg_xiv-click_to_lock_comment {
+      display: none; }
+    div.bbg_xiv-flex_container div.bbg_xiv-dense_alt_inner button.bbg_xiv-dense_close {
+      display: none; }
+    div.bbg_xiv-flex_container div.bbg_xiv-dense_alt_inner.bbg_xiv-locked button.bbg_xiv-dense_close {
+      display: inline; }
     div.bbg_xiv-flex_container div.bbg_xiv-dense_alt_inner div.bbg_xiv-dense_alt_items {
       padding-top: 10px; }
       div.bbg_xiv-flex_container div.bbg_xiv-dense_alt_inner div.bbg_xiv-dense_alt_items div.bbg_xiv-dense_alt_item span.bbg_xiv-item_name {
@@ -732,6 +738,12 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_alt_inner {
   transition: opacity 1.5s ease-out; }
   div.bbg_xiv-bootstrap div.bbg_xiv-dense_alt_inner span.bbg_xiv-click_to_lock_comment {
     font-size: small; }
+  div.bbg_xiv-bootstrap div.bbg_xiv-dense_alt_inner.bbg_xiv-locked span.bbg_xiv-click_to_lock_comment {
+    display: none; }
+  div.bbg_xiv-bootstrap div.bbg_xiv-dense_alt_inner button.bbg_xiv-dense_close {
+    display: none; }
+  div.bbg_xiv-bootstrap div.bbg_xiv-dense_alt_inner.bbg_xiv-locked button.bbg_xiv-dense_close {
+    display: inline; }
   div.bbg_xiv-bootstrap div.bbg_xiv-dense_alt_inner div.bbg_xiv-dense_alt_items {
     padding-top: 10px; }
     div.bbg_xiv-bootstrap div.bbg_xiv-dense_alt_inner div.bbg_xiv-dense_alt_items div.bbg_xiv-dense_alt_item span.bbg_xiv-item_name {
@@ -1276,6 +1288,12 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
     transition: opacity 1.5s ease-out; }
     div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_alt_inner span.bbg_xiv-click_to_lock_comment {
       font-size: small; }
+    div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_alt_inner.bbg_xiv-locked span.bbg_xiv-click_to_lock_comment {
+      display: none; }
+    div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_alt_inner button.bbg_xiv-dense_close {
+      display: none; }
+    div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_alt_inner.bbg_xiv-locked button.bbg_xiv-dense_close {
+      display: inline; }
     div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_alt_inner div.bbg_xiv-dense_alt_items {
       padding-top: 10px; }
       div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_alt_inner div.bbg_xiv-dense_alt_items div.bbg_xiv-dense_alt_item span.bbg_xiv-item_name {
