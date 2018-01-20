@@ -445,6 +445,10 @@
             var mouseY         = NaN;
             var $caption       = null;
             function hideOverlay( e ) {
+                if ( ! overlayShowing ) {
+                    // ignore events when overlay is transitioning to hide
+                    return;
+                }
                 if ( e.type !== 'click' ) {
                     if ( overlayLocked ) {
                         return;
