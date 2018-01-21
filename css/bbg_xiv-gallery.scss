@@ -73,9 +73,6 @@ $mobile-admin-bar-height:46px;
 
     div.bbg_xiv-dense_inner{
         @include overlay_inner(5vh,5vw,90vw,90vh);
-        &.bbg_xiv-dense_alt_inner{
-            background-color:white;
-        }
         opacity:0.0;
         transition:opacity 1.5s ease-out;
 
@@ -145,9 +142,11 @@ $mobile-admin-bar-height:46px;
     }
 
     div.bbg_xiv-dense_alt_inner{
-        @include overlay_inner(35vh,25vw,50vw,30vh);
+        @include overlay_inner(30vh,25vw,50vw,40vh);
         background-color:white;
         padding:10px 40px;
+        border:5px solid cyan;
+        border-radius:10px;
         opacity:0.0;
         transition:opacity 1.5s ease-out;
         span.bbg_xiv-click_to_lock_comment{

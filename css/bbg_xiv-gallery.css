@@ -336,8 +336,6 @@ div.bbg_xiv-flex_container {
     display: none;
     opacity: 0.0;
     transition: opacity 1.5s ease-out; }
-    div.bbg_xiv-flex_container div.bbg_xiv-dense_inner.bbg_xiv-dense_alt_inner {
-      background-color: white; }
     div.bbg_xiv-flex_container div.bbg_xiv-dense_inner img {
       display: block;
       width: auto;
@@ -400,16 +398,18 @@ div.bbg_xiv-flex_container {
         background-color: red; }
   div.bbg_xiv-flex_container div.bbg_xiv-dense_alt_inner {
     position: fixed;
-    top: 35vh;
+    top: 30vh;
     left: 25vw;
     width: 50vw;
-    height: 30vh;
+    height: 40vh;
     overflow-x: hidden;
     z-index: 10000;
     background-color: transparent;
     display: none;
     background-color: white;
     padding: 10px 40px;
+    border: 5px solid cyan;
+    border-radius: 10px;
     opacity: 0.0;
     transition: opacity 1.5s ease-out; }
     div.bbg_xiv-flex_container div.bbg_xiv-dense_alt_inner span.bbg_xiv-click_to_lock_comment {
@@ -660,8 +660,6 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner {
   display: none;
   opacity: 0.0;
   transition: opacity 1.5s ease-out; }
-  div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner.bbg_xiv-dense_alt_inner {
-    background-color: white; }
   div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner img {
     display: block;
     width: auto;
@@ -724,16 +722,18 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner {
       background-color: red; }
 div.bbg_xiv-bootstrap div.bbg_xiv-dense_alt_inner {
   position: fixed;
-  top: 35vh;
+  top: 30vh;
   left: 25vw;
   width: 50vw;
-  height: 30vh;
+  height: 40vh;
   overflow-x: hidden;
   z-index: 10000;
   background-color: transparent;
   display: none;
   background-color: white;
   padding: 10px 40px;
+  border: 5px solid cyan;
+  border-radius: 10px;
   opacity: 0.0;
   transition: opacity 1.5s ease-out; }
   div.bbg_xiv-bootstrap div.bbg_xiv-dense_alt_inner span.bbg_xiv-click_to_lock_comment {
@@ -1210,8 +1210,6 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
     display: none;
     opacity: 0.0;
     transition: opacity 1.5s ease-out; }
-    div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner.bbg_xiv-dense_alt_inner {
-      background-color: white; }
     div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner img {
       display: block;
       width: auto;
@@ -1274,16 +1272,18 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
         background-color: red; }
   div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_alt_inner {
     position: fixed;
-    top: 35vh;
+    top: 30vh;
     left: 25vw;
     width: 50vw;
-    height: 30vh;
+    height: 40vh;
     overflow-x: hidden;
     z-index: 10000;
     background-color: transparent;
     display: none;
     background-color: white;
     padding: 10px 40px;
+    border: 5px solid cyan;
+    border-radius: 10px;
     opacity: 0.0;
     transition: opacity 1.5s ease-out; }
     div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_alt_inner span.bbg_xiv-click_to_lock_comment {

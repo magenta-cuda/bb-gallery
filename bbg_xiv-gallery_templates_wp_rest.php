@@ -259,6 +259,7 @@
     </div>
     <div class="bbg_xiv-dense_alt_inner">
         <span class="bbg_xiv-click_to_lock_comment">Click anywhere to lock the display of this popup.</span>
+        <span>&nbsp;</span>
         <button class="bbg_xiv-dense_close"><span class="glyphicon glyphicon-remove"></span></button>
         <div class="bbg_xiv-dense_alt_items"></div>
     </div>
@@ -293,7 +294,7 @@
     </div>
     <# if ( typeof data.bbg_full_src === 'object' ) { #>
     <div class="bbg_xiv-dense_alt_item bbg_xiv-dense_urls">
-        <span class="bbg_xiv-item_name">URLs: </span>
+        <span class="bbg_xiv-item_name">Image URLs: </span>
         <span class="bbg_xiv-item_value">Full: <a href="{{{ data.bbg_full_src[0] }}}">{{{ data.bbg_full_src[1] }}} x {{{ data.bbg_full_src[2] }}}</a></span>
         <# if ( typeof data.bbg_large_src === 'object' && data.bbg_large_src[0] !== data.bbg_full_src[0] ) { #>
         &nbsp;&nbsp;&nbsp;&nbsp;
@@ -307,6 +308,9 @@
         &nbsp;&nbsp;&nbsp;&nbsp;
         <span class="bbg_xiv-item_value">Medium: <a href="{{{ data.bbg_medium_src[0] }}}">{{{ data.bbg_medium_src[1] }}} x {{{ data.bbg_medium_src[2] }}}</a></span>
         <# } #>
+    </div>
+    <div class="bbg_xiv-dense_alt_item bbg_xiv-dense_link">
+        <span class="bbg_xiv-item_name">Page: <a href="{{{ data.link }}}"><# print(bbg_xiv.getTitle(data)); #></a></span>
     </div>
     <# } #>
 </script>
