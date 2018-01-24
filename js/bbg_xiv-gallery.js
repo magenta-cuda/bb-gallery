@@ -495,6 +495,8 @@
                     // The overlay must be the alt overlay.
                     overlayLocked = true;
                     $altInner.addClass( 'bbg_xiv-locked' );
+                } else {
+                    hideOverlay.call( this, e );
                 }
             } );
             var fullImg     = inner.find( 'img' );
