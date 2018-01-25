@@ -563,6 +563,12 @@
                         // instantiate the alternate overlay
                         altOverlayView.model = { attributes: data };
                         $altInner.find( 'div.bbg_xiv-dense_alt_items' ).html( altOverlayView.render( true ) );
+                        $altInner.find( 'span.bbg_xiv-item_value a' ).click( function( e ) {
+                            // click on a elements should be ignored if the overlay is not locked, propagation will then lock the overlay as expected
+                            if ( ! jQuery( this ).parents( 'div.bbg_xiv-dense_alt_inner' ).hasClass( 'bbg_xiv-locked' ) ) {
+                                e.preventDefault();
+                            }
+                        } );
                     }
                 } catch ( error ) {
                     console.log('##### broken 1');
