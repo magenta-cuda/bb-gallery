@@ -398,10 +398,10 @@ div.bbg_xiv-flex_container {
         background-color: red; }
   div.bbg_xiv-flex_container div.bbg_xiv-dense_alt_inner {
     position: fixed;
-    top: 30vh;
-    left: 25vw;
-    width: 50vw;
-    height: 40vh;
+    top: 25vh;
+    left: 20vw;
+    width: 60vw;
+    height: 50vh;
     overflow-x: hidden;
     z-index: 10000;
     background-color: transparent;
@@ -722,10 +722,10 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_inner {
       background-color: red; }
 div.bbg_xiv-bootstrap div.bbg_xiv-dense_alt_inner {
   position: fixed;
-  top: 30vh;
-  left: 25vw;
-  width: 50vw;
-  height: 40vh;
+  top: 25vh;
+  left: 20vw;
+  width: 60vw;
+  height: 50vh;
   overflow-x: hidden;
   z-index: 10000;
   background-color: transparent;
@@ -1272,10 +1272,10 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
         background-color: red; }
   div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_alt_inner {
     position: fixed;
-    top: 30vh;
-    left: 25vw;
-    width: 50vw;
-    height: 40vh;
+    top: 25vh;
+    left: 20vw;
+    width: 60vw;
+    height: 50vh;
     overflow-x: hidden;
     z-index: 10000;
     background-color: transparent;
