@@ -36,10 +36,11 @@ https://bbfgallery.wordpress.com/
 7. [Dense View](https://bbfgallery.wordpress.com/#dense)
 8. [Dynamically Loading Galleries](https://bbfgallery.wordpress.com/#alt_galleries)
 9. Dynamically Generating Galleries from Search Criteria
-10. [Overlay of a Selected Image](https://bbfgallery.wordpress.com/#overlay)
-11. Mobile Portrait View
-12. [User Options Pane](https://bbfgallery.wordpress.com/#options)
-13. [Admin Settings](https://bbfgallery.wordpress.com/#installation)
+10. [Large View Overlay of the Selected Image](https://bbfgallery.wordpress.com/#overlay)
+11. Info Overlay of the Selected Image
+12. Mobile Portrait View
+13. [User Options Pane](https://bbfgallery.wordpress.com/#options)
+14. [Admin Settings](https://bbfgallery.wordpress.com/#installation)
 
 == Changelog ==
 
