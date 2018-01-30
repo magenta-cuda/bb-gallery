@@ -291,6 +291,7 @@
             $justifiedGallery.find( 'img' ).css( 'margin', '0' );
         });
         if ( bbg_xiv.guiInterface === 'touch' ) {
+            justifiedContainer.addClass( 'bbg_xiv-touch' );
             $justifiedGallery.find( 'div.bbg_xiv-justified_item > a' ).click(function( e ) {
                 e.preventDefault();
             });
@@ -535,6 +536,9 @@
                 mouseY         = e.screenY;
                 $caption       = $button.parent();
                 var alt        = $button.hasClass( 'bbg_xiv-dense_alt_btn' );   // use the alternate overlay view
+                if ( alt && overlayLocked ) {
+                    $altInner.addClass( 'bbg_xiv-locked' );
+                }
                 var img;
                 // the buttons are of four different types so the associated image is found differently depending on the type
                 if ( $button.hasClass( 'bbg_xiv-dense_from_image' ) ) {

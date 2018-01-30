@@ -904,6 +904,13 @@ div.bbg_xiv-bootstrap{
         }
       }
     }
+    &.bbg_xiv-touch{
+      div.caption{
+        button.bbg_xiv-dense_from_justified.bbg_xiv-dense_alt_btn{
+          padding:3px 15px 3px 10px;
+        }
+      }
+    }
   }
 
   @include full_viewport_image_overlay();
