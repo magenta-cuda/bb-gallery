@@ -295,6 +295,9 @@
             $justifiedGallery.find( 'div.bbg_xiv-justified_item > a' ).click(function( e ) {
                 e.preventDefault();
             });
+            if ( window.matchMedia( '(max-aspect-ratio:1/1)' ).matches ) {
+                justifiedContainer.addClass( 'bbg_xiv-portrait' );
+            }  
         }
         justifiedContainer   = container.find( 'div.bbg_xiv-justified_container' );
         var galleryContainer = justifiedContainer.closest( 'div.bbg_xiv-gallery' ).removeClass( 'bbg_xiv-caption_visible' );
