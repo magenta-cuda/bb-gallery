@@ -322,11 +322,12 @@
           jQuery( img ).closest( 'a' ).click(function( e ) {
               e.preventDefault();
           });
-          jQuery( caption ).find( 'a' ).click(function( e ) {
-              if ( ! jQuery( this ).closest( 'div.caption' ).css( 'opacity' ) ) {
+          jQuery( caption ).find( 'a' ).click( function( e ) {
+              var $caption = jQuery( this ).closest( 'div.caption' );
+              if ( parseFloat( $caption.css( 'opacity' ) ) < 0.1 ) {
                   e.preventDefault();
               }
-          });
+          } );
         });
     };
 
