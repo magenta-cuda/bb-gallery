@@ -534,6 +534,10 @@
                 } else {
                     $button = jQuery( this );
                 }
+                if ( parseFloat( $button.closest( 'div.caption' ).css( 'opacity' ) ) < 0.1 ) {
+                    // click was on an invisible button so ignore it
+                    return;
+                }
                 overlayShowing = true;
                 overlayLocked  = e.type === 'click';
                 mouseX         = e.screenX;
