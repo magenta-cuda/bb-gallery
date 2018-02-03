@@ -180,6 +180,14 @@ $mobile-admin-bar-height:46px;
         @include overlay_inner(10vh,10vw,80vw,80vh);
         background-color:white;
     }
+    &.bbg_xiv-touch{
+        @media(min-width:768px){
+            div.bbg_xiv-dense_alt_inner{
+                @include overlay_inner(25vh,10vw,80vw,50vh);
+                background-color:white;
+            }
+        }
+    }
 }
 
 div.bbg_xiv-bootstrap{

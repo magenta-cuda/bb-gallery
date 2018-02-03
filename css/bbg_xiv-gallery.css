@@ -448,6 +448,18 @@ div.bbg_xiv-flex_container {
     background-color: transparent;
     display: none;
     background-color: white; }
+  @media (min-width: 768px) {
+    div.bbg_xiv-flex_container.bbg_xiv-touch div.bbg_xiv-dense_alt_inner {
+      position: fixed;
+      top: 25vh;
+      left: 10vw;
+      width: 80vw;
+      height: 50vh;
+      overflow-x: hidden;
+      z-index: 10000;
+      background-color: transparent;
+      display: none;
+      background-color: white; } }
 
 div.bbg_xiv-flex_container.bbg_xiv-flex_no_caption div.bbg_xiv-flex_item figure figcaption, div.bbg_xiv-gallery_container.bbg_xiv-flex_no_caption div.bbg_xiv-flex_item figure figcaption {
   display: none; }
@@ -785,6 +797,18 @@ div.bbg_xiv-bootstrap div.bbg_xiv-justified_container.bbg_xiv-touch div.bbg_xiv-
   background-color: transparent;
   display: none;
   background-color: white; }
+@media (min-width: 768px) {
+  div.bbg_xiv-bootstrap div.bbg_xiv-justified_container.bbg_xiv-touch div.bbg_xiv-dense_alt_inner {
+    position: fixed;
+    top: 25vh;
+    left: 10vw;
+    width: 80vw;
+    height: 50vh;
+    overflow-x: hidden;
+    z-index: 10000;
+    background-color: transparent;
+    display: none;
+    background-color: white; } }
 
 div.bbg_xiv-bootstrap div.carousel.slide {
   position: fixed;
@@ -1346,6 +1370,18 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
     background-color: transparent;
     display: none;
     background-color: white; }
+  @media (min-width: 768px) {
+    div.bbg_xiv-bootstrap div.bbg_xiv-dense_container.bbg_xiv-touch div.bbg_xiv-dense_alt_inner {
+      position: fixed;
+      top: 25vh;
+      left: 10vw;
+      width: 80vw;
+      height: 50vh;
+      overflow-x: hidden;
+      z-index: 10000;
+      background-color: transparent;
+      display: none;
+      background-color: white; } }
 
 div.bbg_xiv-bootstrap.bbg_xiv-fullscreen_gallery {
   position: fixed;
