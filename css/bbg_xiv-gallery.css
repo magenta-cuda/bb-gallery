@@ -396,6 +396,10 @@ div.bbg_xiv-flex_container {
       border-radius: 5px; }
       div.bbg_xiv-flex_container div.bbg_xiv-dense_inner button.bbg_xiv-dense_close:hover {
         background-color: red; }
+  @media (max-width: 767px) {
+    div.bbg_xiv-flex_container.bbg_xiv-touch div.bbg_xiv-dense_inner h1.bbg_xiv-dense_title, div.bbg_xiv-flex_container.bbg_xiv-touch div.bbg_xiv-dense_inner h1.bbg_xiv-dense_caption {
+      font-size: 16px;
+      margin-top: 8px; } }
   div.bbg_xiv-flex_container div.bbg_xiv-dense_alt_inner {
     position: fixed;
     top: 25vh;
@@ -746,6 +750,10 @@ div.bbg_xiv-bootstrap div.bbg_xiv-justified_container div.bbg_xiv-dense_inner {
     border-radius: 5px; }
     div.bbg_xiv-bootstrap div.bbg_xiv-justified_container div.bbg_xiv-dense_inner button.bbg_xiv-dense_close:hover {
       background-color: red; }
+@media (max-width: 767px) {
+  div.bbg_xiv-bootstrap div.bbg_xiv-justified_container.bbg_xiv-touch div.bbg_xiv-dense_inner h1.bbg_xiv-dense_title, div.bbg_xiv-bootstrap div.bbg_xiv-justified_container.bbg_xiv-touch div.bbg_xiv-dense_inner h1.bbg_xiv-dense_caption {
+    font-size: 16px;
+    margin-top: 8px; } }
 div.bbg_xiv-bootstrap div.bbg_xiv-justified_container div.bbg_xiv-dense_alt_inner {
   position: fixed;
   top: 25vh;
@@ -1319,6 +1327,10 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
       border-radius: 5px; }
       div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_inner button.bbg_xiv-dense_close:hover {
         background-color: red; }
+  @media (max-width: 767px) {
+    div.bbg_xiv-bootstrap div.bbg_xiv-dense_container.bbg_xiv-touch div.bbg_xiv-dense_inner h1.bbg_xiv-dense_title, div.bbg_xiv-bootstrap div.bbg_xiv-dense_container.bbg_xiv-touch div.bbg_xiv-dense_inner h1.bbg_xiv-dense_caption {
+      font-size: 16px;
+      margin-top: 8px; } }
   div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_alt_inner {
     position: fixed;
     top: 25vh;

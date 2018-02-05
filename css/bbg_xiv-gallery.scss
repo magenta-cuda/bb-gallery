@@ -140,6 +140,14 @@ $mobile-admin-bar-height:46px;
             @include overlay_close_button();
         }
     }
+    &.bbg_xiv-touch div.bbg_xiv-dense_inner{
+        @media(max-width:767px){
+            h1.bbg_xiv-dense_title,h1.bbg_xiv-dense_caption{
+                font-size:16px;
+                margin-top:8px;
+            }
+        }
+    }
 
     div.bbg_xiv-dense_alt_inner{
         @include overlay_inner(25vh,20vw,60vw,50vh);
