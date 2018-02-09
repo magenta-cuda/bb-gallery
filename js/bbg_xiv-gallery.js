@@ -21,8 +21,8 @@
 (function(){
     var bbg_xiv=window.bbg_xiv=window.bbg_xiv||{};
     // URLs
-    bbg_xiv.helpMVPUrl="https://bbfgallery.wordpress.com/#navbar";
-    bbg_xiv.helpOptionsUrl="https://bbfgallery.wordpress.com/#options";
+    bbg_xiv.docUrl         = "http://docs.magentacuda.com/";
+    bbg_xiv.helpOptionsUrl = "http://docs.magentacuda.com/#options";
     // Strings
     bbg_xiv.galleryOfGalleriesTitle=bbg_xiv_lang.galleryOfGalleriesTitle;
     // use WordPress templating syntax; see .../wp-includes/js/wp-util.js
@@ -1850,7 +1850,8 @@
             e.preventDefault();
         });
         jQuery("button.bbg_xiv-help").click(function(e){
-            window.open(bbg_xiv.helpMVPUrl,"_blank");
+            var view = jQuery( this ).closest( 'div.navbar-collapse' ).find( 'ul.navbar-nav li.bbg_xiv-select_view ul.bbg_xiv-view_menu li.bbg_xiv-view.active a' ).data( 'view' );
+            window.open( bbg_xiv.docUrl + '#view-' + view, '_blank' );
             this.blur();
             e.preventDefault();
         });
