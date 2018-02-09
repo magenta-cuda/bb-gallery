@@ -10,7 +10,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Responsive plug-compatible replacement for the built-in WordPress gallery shortcode.
 
 == Description ==
-This is a responsive, mobile-friendly, plug-compatible replacement for the built-in WordPress gallery shortcode. You can view a working sample web page using this plugin at [my portfolio website](http://magentacuda.com/). It is implemented using a [Backbone.js](http://backbonejs.org/) Model-View-Presenter (MVP) populated via the [WordPress REST API](http://v2.wp-api.org/). It is styled by a [Twitter Bootstrap 3](http://getbootstrap.com/) stylesheet and has touch optimizations from [jQuery Mobile](https://jquerymobile.com/). Using a MVP allows you to [switch instantaneously](https://bbfgallery.wordpress.com/#navbar) (i.e. without doing a HTTP request) between multiple views of a gallery. The default implementation supports a [gallery view](https://bbfgallery.wordpress.com/#gallery), [Miro's Justified Gallery](http://miromannino.github.io/Justified-Gallery/) view, a [carousel view](https://bbfgallery.wordpress.com/#carousel), a [tabs view](https://bbfgallery.wordpress.com/#tabs) and a [dense view](https://bbfgallery.wordpress.com/#dense) of the gallery. Using the WP REST API allows you to [dynamically load](https://bbfgallery.wordpress.com/#alt_galleries) (i.e. without reloading the entire page) new galleries. The view is styled by a Twitter Bootstrap 3 stylesheet so it is automatically responsive. You can easily modify the Backbone templates to create your own customized views of the gallery. The homepage for this plug-in is [https://bbfgallery.wordpress.com/](https://bbfgallery.wordpress.com/).
+This is a responsive, mobile-friendly, plug-compatible replacement for the built-in WordPress gallery shortcode. You can view a working sample web page using this plugin at [my portfolio website](http://magentacuda.com/). It is implemented using a [Backbone.js](http://backbonejs.org/) Model-View-Presenter (MVP) populated via the [WordPress REST API](http://v2.wp-api.org/). It is styled by a [Twitter Bootstrap 3](http://getbootstrap.com/) stylesheet and has touch optimizations from [jQuery Mobile](https://jquerymobile.com/). Using a MVP allows you to [switch instantaneously](http://docs.magentacuda.com/#navbar) (i.e. without doing a HTTP request) between multiple views of a gallery. The default implementation supports a [gallery view](http://docs.magentacuda.com/#gallery), [Miro's Justified Gallery](http://miromannino.github.io/Justified-Gallery/) view, a [carousel view](http://docs.magentacuda.com/#carousel), a [tabs view](http://docs.magentacuda.com/#tabs) and a [dense view](http://docs.magentacuda.com/#dense) of the gallery. Using the WP REST API allows you to [dynamically load](http://docs.magentacuda.com/#alt_galleries) (i.e. without reloading the entire page) new galleries. The view is styled by a Twitter Bootstrap 3 stylesheet so it is automatically responsive. You can easily modify the Backbone templates to create your own customized views of the gallery. The homepage for this plug-in is [http://docs.magentacuda.com/](http://docs.magentacuda.com/).
 
 == Installation ==
 1. Upload the folder "bb-gallery" to the "/wp-content/plugins/" directory.
@@ -24,23 +24,23 @@ This is a responsive, mobile-friendly, plug-compatible replacement for the built
 BB Gallery can preload full size images for better user interactivity. This does not work well for low bandwidth and/or slow cpus. You can set the bandwidth option to "low" to prevent the preloading of full size images.
 
 = Where is the documentation? =
-https://bbfgallery.wordpress.com/
+http://docs.magentacuda.com/
 
 == Screenshots ==
-1. [Multiple Views of a Gallery](https://bbfgallery.wordpress.com/#navbar)
+1. [Multiple Views of a Gallery](http://docs.magentacuda.com/#navbar)
 2. [Miro's Justified Gallery](http://miromannino.github.io/Justified-Gallery/)
-3. [Gallery View](https://bbfgallery.wordpress.com/#gallery)
-4. [Alternate Flexbox Gallery View](https://bbfgallery.wordpress.com/#gallery-flexbox)
-5. [Carousel View](https://bbfgallery.wordpress.com/#carousel)
-6. [Tabs View](https://bbfgallery.wordpress.com/#tabs)
-7. [Dense View](https://bbfgallery.wordpress.com/#dense)
-8. [Dynamically Loading Galleries](https://bbfgallery.wordpress.com/#alt_galleries)
+3. [Gallery View](http://docs.magentacuda.com/#gallery)
+4. [Alternate Flexbox Gallery View](http://docs.magentacuda.com/#gallery-flexbox)
+5. [Carousel View](http://docs.magentacuda.com/#carousel)
+6. [Tabs View](http://docs.magentacuda.com/#tabs)
+7. [Dense View](http://docs.magentacuda.com/#dense)
+8. [Dynamically Loading Galleries](http://docs.magentacuda.com/#alt_galleries)
 9. Dynamically Generating Galleries from Search Criteria
-10. [Large View Overlay of the Selected Image](https://bbfgallery.wordpress.com/#overlay)
+10. [Large View Overlay of the Selected Image](http://docs.magentacuda.com/#overlay)
 11. Info Overlay of the Selected Image
 12. Mobile Portrait View
-13. [User Options Pane](https://bbfgallery.wordpress.com/#options)
-14. [Admin Settings](https://bbfgallery.wordpress.com/#installation)
+13. [User Options Pane](http://docs.magentacuda.com/#options)
+14. [Admin Settings](http://docs.magentacuda.com/#installation)
 
 == Changelog ==
 
@@ -123,12 +123,12 @@ https://bbfgallery.wordpress.com/
 
 = 1.7.3 =
 
-* added tiles view - show images as [butt joined square image tiles](https://bbfgallery.wordpress.com/#gallery)
+* added tiles view - show images as [butt joined square image tiles](http://docs.magentacuda.com/#gallery)
 * css tweaks and bug fixes
 
 = 1.7.1.2 =
 
-* option to [embed carousel inside post content](https://bbfgallery.wordpress.com/#carousel)
+* option to [embed carousel inside post content](http://docs.magentacuda.com/#carousel)
 * option to individually specify initial view of gallery
 * css tweaks to prettify carousel
 
