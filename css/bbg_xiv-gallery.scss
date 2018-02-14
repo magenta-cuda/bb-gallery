@@ -588,10 +588,9 @@ div.bbg_xiv-flex_container{
             color:transparent;
             background-color:transparent;
 
-            button.bbg_xiv-dense_full_btn{
+            button.bbg_xiv-dense_alt_btn,button.bbg_xiv-dense_full_btn{
                 position:absolute;
                 top:10px;
-                right:10px;
                 z-index:1000;
                 font-size:14px;
                 padding:2px 2px 16px 16px;
@@ -601,7 +600,14 @@ div.bbg_xiv-flex_container{
                 line-height:100%;
                 box-shadow:none;
             }
-
+            button.bbg_xiv-dense_alt_btn{
+                left:10px;
+                padding:2px 16px 16px 2px;
+            }
+            button.bbg_xiv-dense_full_btn{
+                right:10px;
+                padding:2px 2px 16px 16px;
+            }
             &:hover{
                 color:gray;
                 border-color:gray;

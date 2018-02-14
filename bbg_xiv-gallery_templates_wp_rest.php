@@ -42,6 +42,12 @@
       <img class="img-rounded bbg_xiv-img_overlay" sizes="<# print(bbg_xiv.getSizes(null,'viewport',false)); #>">
       <h1 class="bbg_xiv-dense_caption"></h1>
     </div>
+    <div class="bbg_xiv-dense_alt_inner">
+        <span class="bbg_xiv-click_to_lock_comment">Click anywhere to lock the display of this popup.</span>
+        <span>&nbsp;</span>
+        <button class="bbg_xiv-dense_close"><span class="glyphicon glyphicon-remove"></span></button>
+        <div class="bbg_xiv-dense_alt_items"></div>
+    </div>
 </div>
 </script>
 <!-- Flex Item Template -->
@@ -57,6 +63,9 @@
         <a href="{{{ data.link }}}" target="_blank"<# if ( typeof data.gallery_index !== "undefined" ) { #> class="bbg_xiv-gallery_icon" data-gallery-index="{{{ data.gallery_index }}}"<# } #>>
             <!-- overlay for full viewport button -->
             <div class="bbg_xiv-dense_full_btn" title="<# print(bbg_xiv.getCaption(data)); #>">
+                <button class="bbg_xiv-dense_alt_btn bbg_xiv-flex_from_image btn">
+                    <span class="glyphicon glyphicon-info-sign"></span>
+                </button>
                 <button class="bbg_xiv-dense_full_btn bbg_xiv-flex_from_image btn">
                     <span class="glyphicon glyphicon-fullscreen"></span>
                 </button>
