@@ -682,6 +682,11 @@
                 jQuery( 'html' ).css( 'overflow-y', '' );
                 e.preventDefault();      
             });
+            jqGallery.find( 'a.bbg_xiv-carousel_info' ).click( function( e ) {
+                pause( this );
+                // TODO: show alt overlay
+                e.preventDefault();      
+            } );
             var input=jqGallery.find("div.bbg_xiv-jquery_mobile input[type='range']");
             input.slider();
             var prevChangeTime;

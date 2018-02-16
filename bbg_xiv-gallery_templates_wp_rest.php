@@ -97,6 +97,10 @@
   </div>
   <!-- Left and right controls -->
   <div class="left carousel-control">
+    <a class="bbg_xiv-carousel_info carousel-control" href="#">
+      <span class="glyphicon glyphicon-info-sign"></span>
+      <span class="sr-only">Info</span>
+    </a>
     <a class="bbg_xiv-carousel_left left carousel-control" href="#{{{ data.id }}}" data-slide="prev">
       <span class="glyphicon glyphicon-chevron-left"></span>
       <span class="sr-only">Previous</span>

@@ -1009,12 +1009,12 @@ div.bbg_xiv-bootstrap{
           bottom:0%;
         }
 
-        &.bbg_xiv-carousel_close{
+        &.bbg_xiv-carousel_info,&.bbg_xiv-carousel_close{
           top:0%;
           bottom:75%;
         }
 
-        &.bbg_xiv-carousel_left,&.bbg_xiv-carousel_first,&.bbg_xiv-carousel_play{
+        &.bbg_xiv-info,&.bbg_xiv-carousel_left,&.bbg_xiv-carousel_first,&.bbg_xiv-carousel_play{
           span.glyphicon{
             left:50%;
             margin-left:-10px;

@@ -871,10 +871,10 @@ div.bbg_xiv-bootstrap div.carousel.slide {
       div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.bbg_xiv-carousel_play, div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.bbg_xiv-carousel_help {
         top: 75%;
         bottom: 0%; }
-      div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.bbg_xiv-carousel_close {
+      div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.bbg_xiv-carousel_info, div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.bbg_xiv-carousel_close {
         top: 0%;
         bottom: 75%; }
-      div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.bbg_xiv-carousel_left span.glyphicon, div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.bbg_xiv-carousel_first span.glyphicon, div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.bbg_xiv-carousel_play span.glyphicon {
+      div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.bbg_xiv-info span.glyphicon, div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.bbg_xiv-carousel_left span.glyphicon, div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.bbg_xiv-carousel_first span.glyphicon, div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.bbg_xiv-carousel_play span.glyphicon {
         left: 50%;
         margin-left: -10px; }
       div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.bbg_xiv-carousel_right, div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.bbg_xiv-carousel_last, div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.bbg_xiv-carousel_close, div.bbg_xiv-bootstrap div.carousel.slide div.carousel-control a.carousel-control.bbg_xiv-carousel_help {
