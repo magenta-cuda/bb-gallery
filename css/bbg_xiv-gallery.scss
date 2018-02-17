@@ -1154,6 +1154,7 @@ div.bbg_xiv-bootstrap{
         margin:0;
       }
     }
+    @include full_viewport_image_overlay();
   }
 }
 

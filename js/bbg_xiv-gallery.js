@@ -190,6 +190,7 @@
             model:{
                 attributes:{
                     id:id,
+                    gallery:collection.id,
                     size:collection.length,
                     bullets:bulletsHtml,
                     items:imagesHtml
@@ -527,7 +528,10 @@
             altOverlayView.template = _.template( jQuery( 'script#bbg_xiv-template_justified_alt_overlay' ).html(), null, bbg_xiv.templateOptions );
             function showOverlay( e ) {
                 var $button;
-                if ( this.tagName === 'SPAN' ) {
+                if ( this.tagName === 'A' ) {
+                    // click from carousel info button
+                    $button = jQuery( this );
+                } else if ( this.tagName === 'SPAN' ) {
                     $button = jQuery( this.parentNode );
                 } else {
                     $button = jQuery( this );
@@ -541,13 +545,16 @@
                 mouseX         = e.screenX;
                 mouseY         = e.screenY;
                 $caption       = $button.parent();
-                var alt        = $button.hasClass( 'bbg_xiv-dense_alt_btn' );   // use the alternate overlay view
+                var alt        = $button.hasClass( 'bbg_xiv-carousel_info' ) || $button.hasClass( 'bbg_xiv-dense_alt_btn' );   // use the alternate overlay view
                 if ( alt && overlayLocked ) {
                     $altInner.addClass( 'bbg_xiv-locked' );
                 }
                 var img;
                 // the buttons are of four different types so the associated image is found differently depending on the type
-                if ( $button.hasClass( 'bbg_xiv-dense_from_image' ) ) {
+                if ( $button.hasClass( 'bbg_xiv-carousel_info' ) ) {
+                    // click from carousel info button
+                    img = $button.closest( 'div.carousel' ).find( 'div.carousel-inner figure.item.active img' )[0];
+                } else if ( $button.hasClass( 'bbg_xiv-dense_from_image' ) ) {
                     img = $button.parents( 'div.bbg_xiv-dense_flex_item' ).find( 'img' )[0];
                 } else if ( $button.hasClass( 'bbg_xiv-dense_from_title' ) ) {
                     img = jQuery( 'div#' + this.parentNode.id.replace( 'title', 'image' ) ).find( 'img' )[0];
@@ -582,7 +589,9 @@
                     }
                 } catch ( error ) {
                     console.log('##### broken 1');
-                    fullImg[0].src=img.src;
+                    if ( ! alt ) {
+                        fullImg[0].src = img.src;
+                    }
                 }
                 // show and fade in overlay
                 outer.show();
@@ -608,6 +617,11 @@
                 e.preventDefault();
                 e.stopPropagation();
             }  // function showOverlay( e ) {
+            jqGallery.find( 'a.bbg_xiv-carousel_info' ).click( function( e ) {
+                pause( this );
+                // show alt overlay
+                showOverlay.call( this, e );
+            } );
             jqGallery.find( 'button.bbg_xiv-dense_full_btn, button.bbg_xiv-dense_alt_btn' ).click( showOverlay );
             jqGallery.find( 'button.bbg_xiv-dense_alt_btn span.glyphicon' ).mouseenter( showOverlay );
         }   // function constructOverlay() {
@@ -641,6 +655,7 @@
             }
             var carouselId="bbg_xiv-carousel_"+gallery.id;
             bbg_xiv.renderCarousel(jqGallery,images,carouselId);
+            constructOverlay();
             // pause() can be called from a button's event handler to pause the carousel, the argument is the button
             function pause(button){
                 var carousel=jQuery(button).parents("div.carousel");
@@ -682,11 +697,6 @@
                 jQuery( 'html' ).css( 'overflow-y', '' );
                 e.preventDefault();      
             });
-            jqGallery.find( 'a.bbg_xiv-carousel_info' ).click( function( e ) {
-                pause( this );
-                // TODO: show alt overlay
-                e.preventDefault();      
-            } );
             var input=jqGallery.find("div.bbg_xiv-jquery_mobile input[type='range']");
             input.slider();
             var prevChangeTime;

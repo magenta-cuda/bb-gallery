@@ -76,7 +76,7 @@
 
 <!-- Carousel Container Template -->
 <script type="text/html" id="bbg_xiv-template_carousel_container">
-<div id="{{{ data.id }}}" class="carousel slide bbg_xiv-container" data-ride="carousel" data-interval="<?php echo get_option( 'bbg_xiv_carousel_interval', '2500' ); ?>">
+<div id="{{{ data.id }}}" class="carousel slide bbg_xiv-container" data-ride="carousel" data-interval="<?php echo get_option( 'bbg_xiv_carousel_interval', '2500' ); ?>" data-bbg_xiv-gallery-id="{{{ data.gallery }}}">
   <!-- Indicators -->
   <!-- the original Bootstrap carousel slide indicators which actually works very well in desktop browser but is a failure for mobile
   <ol class="carousel-indicators">
@@ -113,7 +113,7 @@
       <span class="glyphicon glyphicon-pause"></span>
       <span class="sr-only">Pause</span>
     </a>
-</div>
+  </div>
   <div class="right carousel-control">
     <a class="bbg_xiv-carousel_close carousel-control" href="#">
       <span class="glyphicon glyphicon-remove"></span>
@@ -131,6 +131,15 @@
       <span class="glyphicon glyphicon-question-sign"></span>
       <span class="sr-only">Help</span>
     </a>
+  </div>
+  <!-- Alt (Info) View of an Image -->
+  <div class="bbg_xiv-dense_outer">
+  </div>
+  <div class="bbg_xiv-dense_alt_inner">
+      <span class="bbg_xiv-click_to_lock_comment">Click anywhere to lock the display of this popup.</span>
+      <span>&nbsp;</span>
+      <button class="bbg_xiv-dense_close"><span class="glyphicon glyphicon-remove"></span></button>
+      <div class="bbg_xiv-dense_alt_items"></div>
   </div>
 </div>
 </script>

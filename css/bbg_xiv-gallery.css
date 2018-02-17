@@ -972,6 +972,157 @@ div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide {
     font-size: 2vh; }
   div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.carousel.slide .carousel-indicators div.ui-slider {
     margin: 0; }
+div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.bbg_xiv-dense_outer {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  background-color: black;
+  display: none;
+  opacity: 0.0;
+  transition: opacity 1.5s ease-out; }
+div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.bbg_xiv-dense_inner {
+  position: fixed;
+  top: 5vh;
+  left: 5vw;
+  width: 90vw;
+  height: 90vh;
+  overflow-x: hidden;
+  z-index: 10000;
+  background-color: transparent;
+  display: none;
+  opacity: 0.0;
+  transition: opacity 1.5s ease-out; }
+  div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.bbg_xiv-dense_inner img {
+    display: block;
+    width: auto;
+    height: 100%;
+    max-width: none;
+    position: absolute;
+    left: 50%;
+    top: 0px;
+    transform: translate(-50%, 0px); }
+  @supports (object-fit: contain) {
+    div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.bbg_xiv-dense_inner img.bbg_xiv-img_overlay {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; } }
+  @supports not (object-fit: contain) {
+    div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.bbg_xiv-dense_inner img.bbg_xiv-img_overlay {
+      display: block;
+      width: auto;
+      height: 100%;
+      max-width: none;
+      position: absolute;
+      left: 50%;
+      top: 0px;
+      transform: translate(-50%, 0px); } }
+  div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.bbg_xiv-dense_inner h1.bbg_xiv-dense_title {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 1000;
+    padding: 0;
+    color: cyan;
+    text-align: center;
+    text-shadow: 2px 2px 0px black; }
+    div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.bbg_xiv-dense_inner h1.bbg_xiv-dense_title:hover {
+      color: transparent; }
+  div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.bbg_xiv-dense_inner h1.bbg_xiv-dense_caption {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 1000;
+    color: cyan;
+    text-align: center;
+    text-shadow: 2px 2px 0px black; }
+    div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.bbg_xiv-dense_inner h1.bbg_xiv-dense_caption:hover {
+      color: transparent; }
+  div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.bbg_xiv-dense_inner button.bbg_xiv-dense_close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10000;
+    line-height: 100%;
+    font-size: 16px;
+    color: cyan;
+    background-color: transparent;
+    padding: 3px;
+    border-radius: 5px; }
+    div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.bbg_xiv-dense_inner button.bbg_xiv-dense_close:hover {
+      background-color: red; }
+@media (max-width: 767px) {
+  div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel.bbg_xiv-touch div.bbg_xiv-dense_inner h1.bbg_xiv-dense_title, div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel.bbg_xiv-touch div.bbg_xiv-dense_inner h1.bbg_xiv-dense_caption {
+    font-size: 16px;
+    margin-top: 8px; } }
+div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.bbg_xiv-dense_alt_inner {
+  position: fixed;
+  top: 25vh;
+  left: 20vw;
+  width: 60vw;
+  height: 50vh;
+  overflow-x: hidden;
+  z-index: 10000;
+  background-color: transparent;
+  display: none;
+  background-color: white;
+  padding: 10px 40px;
+  border: 5px solid cyan;
+  border-radius: 10px;
+  opacity: 0.0;
+  transition: opacity 1.5s ease-out; }
+  div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.bbg_xiv-dense_alt_inner span.bbg_xiv-click_to_lock_comment {
+    font-size: small; }
+  div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.bbg_xiv-dense_alt_inner.bbg_xiv-locked span.bbg_xiv-click_to_lock_comment {
+    display: none; }
+  div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.bbg_xiv-dense_alt_inner button.bbg_xiv-dense_close {
+    display: none; }
+  div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.bbg_xiv-dense_alt_inner.bbg_xiv-locked button.bbg_xiv-dense_close {
+    display: inline; }
+  div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.bbg_xiv-dense_alt_inner div.bbg_xiv-dense_alt_items {
+    padding-top: 10px; }
+    div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.bbg_xiv-dense_alt_inner div.bbg_xiv-dense_alt_items div.bbg_xiv-dense_alt_item span.bbg_xiv-item_name {
+      font-weight: bold; }
+  div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.bbg_xiv-dense_alt_inner button.bbg_xiv-dense_close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10000;
+    line-height: 100%;
+    font-size: 16px;
+    color: cyan;
+    background-color: transparent;
+    padding: 3px;
+    border-radius: 5px; }
+    div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel div.bbg_xiv-dense_alt_inner button.bbg_xiv-dense_close:hover {
+      background-color: red; }
+div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel.bbg_xiv-touch div.bbg_xiv-dense_alt_inner {
+  position: fixed;
+  top: 10vh;
+  left: 10vw;
+  width: 80vw;
+  height: 80vh;
+  overflow-x: hidden;
+  z-index: 10000;
+  background-color: transparent;
+  display: none;
+  background-color: white; }
+@media (min-width: 768px) {
+  div.bbg_xiv-bootstrap div.bbg_xiv-embedded_carousel.bbg_xiv-touch div.bbg_xiv-dense_alt_inner {
+    position: fixed;
+    top: 25vh;
+    left: 10vw;
+    width: 80vw;
+    height: 50vh;
+    overflow-x: hidden;
+    z-index: 10000;
+    background-color: transparent;
+    display: none;
+    background-color: white; } }
 
 body.bbg_xiv-twentysixteen_with_border div.bbg_xiv-bootstrap:not(.bbg_xiv-fullscreen_gallery) div.bbg_xiv-embedded_carousel div.carousel.slide {
   height: calc(0.9 * (100vh - (2 * 21px)) ); }
