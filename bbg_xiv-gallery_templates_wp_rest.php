@@ -147,7 +147,7 @@
 <script type="text/html" id="bbg_xiv-template_carousel_item">
 <figure class="item bbg_xiv-item<# if ( data.index === 0 ) { #> active<# } #>" data-index="{{{ data.index }}}">
   <a href="{{{ data.link }}}" target="_blank">
-    <img src="<# print(bbg_xiv.getSrc(data,'container',false)); #>" srcset="<# print(bbg_xiv.getSrcset(data)); #>" sizes="<# print(bbg_xiv.getSizes(data,'container',false)); #>">
+    <img src="<# print(bbg_xiv.getSrc(data,'container',false)); #>" srcset="<# print(bbg_xiv.getSrcset(data)); #>" sizes="<# print(bbg_xiv.getSizes(data,'container',false)); #>" data-bbg_xiv-image-id="{{{ data.id }}}">
   </a>
   <figcaption><# print(bbg_xiv.getTitle(data)); #><br><# print(bbg_xiv.getCaption(data)); #></figcaption>
 </figure>
