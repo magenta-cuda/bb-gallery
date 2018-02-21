@@ -544,7 +544,7 @@
                 overlayLocked  = e.type === 'click';
                 mouseX         = e.screenX;
                 mouseY         = e.screenY;
-                $caption       = $button.parent();
+                $caption       = $button.parent( 'div.caption' );
                 var alt        = $button.hasClass( 'bbg_xiv-carousel_info' ) || $button.hasClass( 'bbg_xiv-dense_alt_btn' );   // use the alternate overlay view
                 if ( alt && overlayLocked ) {
                     $altInner.addClass( 'bbg_xiv-locked' );
