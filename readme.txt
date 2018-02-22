@@ -3,7 +3,7 @@ Contributors: Magenta Cuda
 Tags: gallery, shortcode, lightbox, slideshow, responsive, plug-compatible, replacement
 Requires at least: 4.4
 Tested up to: 4.9
-Stable tag: 1.8.2.4.4
+Stable tag: 1.8.2.4.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,11 @@ http://docs.magentacuda.com/
 14. [Admin Settings](http://docs.magentacuda.com/#installation)
 
 == Changelog ==
+
+= 1.8.2.4.5 =
+
+* update links to new documentation website
+* add info overlay to gallery and carousel views
 
 = 1.8.2.4.4 =
 
@@ -211,6 +216,11 @@ http://docs.magentacuda.com/
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.8.2.4.5 =
+
+* update links to new documentation website
+* add info overlay to gallery and carousel views
 
 = 1.8.2.4.4 =
 
