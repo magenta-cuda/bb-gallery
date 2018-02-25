@@ -1866,7 +1866,7 @@
         });
         jQuery("button.bbg_xiv-help").click(function(e){
             var view = jQuery( this ).closest( 'div.navbar-collapse' ).find( 'ul.navbar-nav li.bbg_xiv-select_view ul.bbg_xiv-view_menu li.bbg_xiv-view.active a' ).data( 'view' );
-            window.open( bbg_xiv.docUrl + '#view-' + view, '_blank' );
+            window.open( bbg_xiv.docUrl + '#view-' + view.toLowerCase(), '_blank' );
             this.blur();
             e.preventDefault();
         });
