@@ -127,7 +127,7 @@
       <span class="glyphicon glyphicon-fast-forward"></span>
       <span class="sr-only">Last</span>
     </a>
-    <a class="bbg_xiv-carousel_help carousel-control" href="https://bbfgallery.wordpress.com/#carousel" target="_blank">
+    <a class="bbg_xiv-carousel_help carousel-control" href="http://docs.magentacuda.com/#view-carousel" target="_blank">
       <span class="glyphicon glyphicon-question-sign"></span>
       <span class="sr-only">Help</span>
     </a>
