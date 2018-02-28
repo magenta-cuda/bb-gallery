@@ -1328,7 +1328,7 @@ div.bbg_xiv-bootstrap div.bbg_xiv-dense_container {
     padding: 0px 7px;
     border: 1px solid gray;
     border-radius: 6px; }
-  div.bbg_xiv-bootstrap div.bbg_xiv-dense_container button.bbg_xiv-dense_close_btn {
+  div.bbg_xiv-bootstrap div.bbg_xiv-dense_container div.bbg_xiv-dense_right_btns {
     position: absolute;
     top: 5px;
     right: 25px;

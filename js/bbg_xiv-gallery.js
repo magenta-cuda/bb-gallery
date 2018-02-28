@@ -954,6 +954,10 @@
                     }
                 }
             });
+            jqGallery.find( 'button.bbg_xiv-dense_info_btn' ).click( function( e ) {
+                window.open( bbg_xiv.docUrl + '#view-dense', '_blank' );
+                e.preventDefault();      
+            } );
             jqGallery.find("button.bbg_xiv-dense_close_btn").click(function(e){
                 // restore "Gallery View"
                 bbg_xiv.resetGallery(jQuery(this).parents("div.bbg_xiv-gallery"));

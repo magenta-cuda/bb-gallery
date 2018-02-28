@@ -211,7 +211,10 @@
     <input type="radio" name="bbg_xiv-dense_li_mode" class="bbg_xiv-dense_li_mode" value="alt"
       <# if ( data.mode === "alt" ) { #>checked<# } #>>&nbsp;Alt
   </div>
-  <button type="button" class="bbg_xiv-dense_close_btn btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
+  <div class="bbg_xiv-dense_right_btns">
+    <button type="button" class="bbg_xiv-dense_info_btn btn"><span class="glyphicon glyphicon-question-sign"></span></button>
+    <button type="button" class="bbg_xiv-dense_close_btn btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
+  </div>
   <div class="bbg_xiv-dense_titles">
     <ul class="list-unstyled">
       {{{ data.titles }}}
