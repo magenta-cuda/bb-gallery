@@ -690,6 +690,10 @@
                 }
                 e.preventDefault();      
             });
+            jqGallery.find( 'a.bbg_xiv-carousel_help span.glyphicon' ).click( function( e ) {
+                window.open( bbg_xiv.docUrl + '#view-carousel', '_blank' );
+                e.preventDefault();      
+            } );
             jqGallery.find("a.bbg_xiv-carousel_close").click(function(e){
                 // restore "Gallery View"
                 jqGallery.removeClass("bbg_xiv-embedded_carousel");

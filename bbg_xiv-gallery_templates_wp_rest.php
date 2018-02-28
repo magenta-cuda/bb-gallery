@@ -97,7 +97,7 @@
   </div>
   <!-- Left and right controls -->
   <div class="left carousel-control">
-    <a class="bbg_xiv-carousel_info carousel-control" href="#">
+    <a class="bbg_xiv-carousel_info carousel-control" href="#" title="show image info">
       <span class="glyphicon glyphicon-info-sign"></span>
       <span class="sr-only">Info</span>
     </a>
@@ -127,7 +127,7 @@
       <span class="glyphicon glyphicon-fast-forward"></span>
       <span class="sr-only">Last</span>
     </a>
-    <a class="bbg_xiv-carousel_help carousel-control" href="http://docs.magentacuda.com/#view-carousel" target="_blank">
+    <a class="bbg_xiv-carousel_help carousel-control" target="_blank" title="get help">
       <span class="glyphicon glyphicon-question-sign"></span>
       <span class="sr-only">Help</span>
     </a>
