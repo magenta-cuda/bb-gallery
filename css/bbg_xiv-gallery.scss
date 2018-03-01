@@ -1472,13 +1472,18 @@ div.bbg_xiv-bootstrap{
 
     div.bbg_xiv-dense_right_btns{
       position:absolute;
-      top:5px;
+      top:10px;
       right:25px;
       z-index:5;
       color:#888;
       background-color:transparent;
       line-height:100%;
       padding:0px;
+      button.btn {
+        background-color:#fff;
+        border-color:#fff;
+        padding:2px;
+      }
     }
 
     div.bbg_xiv-dense_titles{
