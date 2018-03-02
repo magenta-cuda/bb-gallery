@@ -657,22 +657,23 @@
             bbg_xiv.renderCarousel(jqGallery,images,carouselId);
             constructOverlay();
             // pause() can be called from a button's event handler to pause the carousel, the argument is the button
-            function pause(button){
-                var carousel=jQuery(button).parents("div.carousel");
-                carousel.carousel("pause");
-                carousel.find("a.bbg_xiv-carousel_play span.glyphicon").removeClass("glyphicon-pause").addClass("glyphicon-play");
+            function pause( button ) {
+                var $carousel = jQuery( button ).parents( 'div.carousel' );
+                $carousel.carousel( 'pause' );
+                $carousel.find( 'a.bbg_xiv-carousel_play span.glyphicon' ).removeClass( 'glyphicon-pause' ).addClass( 'glyphicon-play' ).parent().attr( 'title', 'Play' );
             }
             // Wireup the handlers - this must be done here as the elements in the carousel view are dynamically created
             // Carousel pause handler
-            jqGallery.find("a.bbg_xiv-carousel_play").click(function(e){
-                var carousel=jQuery(this).parents("div.carousel");
-                var jqThis=jQuery(this).find("span.glyphicon");
-                if(jqThis.hasClass("glyphicon-pause")){
-                    pause(this);
-                }else{
-                    jqThis.removeClass("glyphicon-play").addClass("glyphicon-pause");
-                    carousel.carousel("next");
-                    carousel.carousel("cycle");
+            jqGallery.find( 'a.bbg_xiv-carousel_play' ).click( function( e ) {
+                var $this     = jQuery( this );
+                var $carousel = $this.parents( 'div.carousel' );
+                var $span     = $this.find( 'span.glyphicon' );
+                if ( $span.hasClass( 'glyphicon-pause' ) ) {
+                    pause( this );
+                } else {
+                    $span.removeClass( 'glyphicon-play' ).addClass( 'glyphicon-pause' ).parent().attr( 'title', 'Pause' );
+                    $carousel.carousel( 'next' );
+                    $carousel.carousel( 'cycle' );
                 }
                 e.preventDefault();      
             });
