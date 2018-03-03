@@ -37,8 +37,8 @@ http://docs.magentacuda.com/
 7. [Dense Gallery](http://docs.magentacuda.com/#view-dense)
 8. [Dynamically Loading Galleries](http://docs.magentacuda.com/#alt_galleries)
 9. Dynamically Generating Galleries from Search Criteria
-10. [Large View Overlay of the Selected Image](http://docs.magentacuda.com/#overlay)
-11. [Info Overlay of the Selected Image](http://docs.magentacuda.com/#alt-overlay)
+10. [Full-Size Image Overlay of the Selected Image](http://docs.magentacuda.com/#overlay)
+11. [Image Info Overlay of the Selected Image](http://docs.magentacuda.com/#alt-overlay)
 12. Mobile Portrait View
 13. [User Options Pane](http://docs.magentacuda.com/#options)
 14. [Admin Settings](http://docs.magentacuda.com/#installation)

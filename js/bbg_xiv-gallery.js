@@ -1746,43 +1746,48 @@
             jQuery( window ).resize();
         });
         jQuery( 'button.bbg_xiv-titles' ).click(function() {
-            var galleryContainer   = jQuery( this ).closest( 'div.bbg_xiv-bootstrap.bbg_xiv-gallery' );
-            var container          = galleryContainer.find( 'div.bbg_xiv-flex_container' );
-            if(container.length){
-                var figure=container.find("div.bbg_xiv-flex_item figure");
-                var caption=figure.find("figcaption");
-                if ( galleryContainer.hasClass( 'bbg_xiv-caption_visible' ) ) {
-                    caption.hide( 1000 );
-                    galleryContainer.removeClass( 'bbg_xiv-caption_visible' );
+            var $this             = jQuery( this );
+            var $galleryContainer = $this.closest( 'div.bbg_xiv-bootstrap.bbg_xiv-gallery' );
+            var $container        = $galleryContainer.find( 'div.bbg_xiv-flex_container' );
+            if ( $container.length ) {
+                var $figure  = $container.find( 'div.bbg_xiv-flex_item figure' );
+                var $caption = $figure.find( 'figcaption' );
+                if ( $galleryContainer.hasClass( 'bbg_xiv-caption_visible' ) ) {
+                    $caption.hide( 1000 );
+                    $galleryContainer.removeClass( 'bbg_xiv-caption_visible' );
+                    $this.attr( 'title', 'show titles' );
                 } else {
-                    caption.show( 1000 );
-                    galleryContainer.addClass( 'bbg_xiv-caption_visible' );
+                    $caption.show( 1000 );
+                    $galleryContainer.addClass( 'bbg_xiv-caption_visible' );
+                    $this.attr( 'title', 'hide titles' );
                 }
-                if(container.hasClass("bbg_xiv-contain")){
+                if ( $container.hasClass( 'bbg_xiv-contain' ) ) {
                     // in tiles contain mode center image if title not displayed
-                    if ( galleryContainer.hasClass( 'bbg_xiv-caption_visible' ) ) {
-                        figure.find("img").removeClass("bbg_xiv-vertical_center");
+                    if ( $galleryContainer.hasClass( 'bbg_xiv-caption_visible' ) ) {
+                        $figure.find( 'img' ).removeClass( 'bbg_xiv-vertical_center' );
                     }else{
-                        figure.find("img").addClass("bbg_xiv-vertical_center");
+                        $figure.find( 'img' ).addClass( 'bbg_xiv-vertical_center' );
                     }
                 }
                 return;
             }
-            container=galleryContainer.find( 'div.bbg_xiv-justified_container' );
-            if(container.length){
-                if ( galleryContainer.hasClass( 'bbg_xiv-caption_visible' ) ) {
-                    galleryContainer.removeClass( 'bbg_xiv-caption_visible' );
+            $container = $galleryContainer.find( 'div.bbg_xiv-justified_container' );
+            if ( $container.length ) {
+                if ( $galleryContainer.hasClass( 'bbg_xiv-caption_visible' ) ) {
+                    $galleryContainer.removeClass( 'bbg_xiv-caption_visible' );
+                    $this.attr( 'title', 'show captions' );
                 } else {
-                    galleryContainer.addClass( 'bbg_xiv-caption_visible' );
+                    $galleryContainer.addClass( 'bbg_xiv-caption_visible' );
+                    $this.attr( 'title', 'hide captions' );
                 }
-                window.setTimeout(function(){
-                    var caption=container.find("div.caption");
-                    if ( galleryContainer.hasClass( 'bbg_xiv-caption_visible' ) ) {
-                        caption.css({ display: 'block', opacity: '0.7' });
+                window.setTimeout( function() {
+                    var $caption = $container.find( 'div.caption' );
+                    if ( $galleryContainer.hasClass( 'bbg_xiv-caption_visible' ) ) {
+                        $caption.css( { display: 'block', opacity: '0.7' } );
                     } else {
-                        caption.css({ display: 'none',  opacity: '0.0' });
+                        $caption.css( { display: 'none',  opacity: '0.0' } );
                     }
-                },1000);
+                }, 1000 );
             }
         });
         // wireup the handler for setting options
