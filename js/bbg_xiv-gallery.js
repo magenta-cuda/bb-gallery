@@ -139,8 +139,8 @@
             });
         }
         var flexContainer    = container.find( 'div.bbg_xiv-flex_container');
-        var galleryContainer = flexContainer.closest( 'div.bbg_xiv-gallery' ).addClass( 'bbg_xiv-caption_visible' )
-                                                                             .find( 'button.bbg_xiv-titles' ).attr( 'title', 'hide titles' );
+        var galleryContainer = flexContainer.closest( 'div.bbg_xiv-gallery' ).addClass( 'bbg_xiv-caption_visible' );
+        galleryContainer.find( 'button.bbg_xiv-titles' ).attr( 'title', 'hide titles' );
         // flip display state of caption on hover
         container.find("div.bbg_xiv-dense_full_btn").hover(
             function() {
@@ -300,8 +300,8 @@
             justifiedContainer.addClass( window.matchMedia( '(max-aspect-ratio:1/1)' ).matches ? 'bbg_xiv-portrait' : 'bbg_xiv-landscape' );
         }
         justifiedContainer   = container.find( 'div.bbg_xiv-justified_container' );
-        var galleryContainer = justifiedContainer.closest( 'div.bbg_xiv-gallery' ).removeClass( 'bbg_xiv-caption_visible' )
-                                                                                  .find( 'button.bbg_xiv-titles' ).attr( 'title', 'show captions' );
+        var galleryContainer = justifiedContainer.closest( 'div.bbg_xiv-gallery' ).removeClass( 'bbg_xiv-caption_visible' );
+        galleryContainer.find( 'button.bbg_xiv-titles' ).attr( 'title', 'show captions' );
         // if CC has been set to visible then override Justified Gallery's hover handlers
         justifiedContainer.find("div.bbg_xiv-justified_gallery div.bbg_xiv-justified_item").each(function(){
           var img=this.querySelector("img");
@@ -1739,10 +1739,10 @@
         jQuery( 'button.bbg_xiv-fullscreen' ).click(function() {
             var $gallery = jQuery( this ).closest( 'div.bbg_xiv-gallery' );
             if ( $gallery.hasClass( 'bbg_xiv-fullscreen_gallery' ) ) {
-                $gallery.removeClass( 'bbg_xiv-fullscreen_gallery' );
+                $gallery.removeClass( 'bbg_xiv-fullscreen_gallery' ).find( 'button.bbg_xiv-fullscreen' ).attr( 'title', 'expand gallery to full-screen' );
                 jQuery( 'html' ).removeClass( 'bbg_xiv-fullscreen_gallery' );
             } else {
-                $gallery.addClass( 'bbg_xiv-fullscreen_gallery' );
+                $gallery.addClass( 'bbg_xiv-fullscreen_gallery' ).find( 'button.bbg_xiv-fullscreen' ).attr( 'title', 'shrink gallery from full-screen' );
                 jQuery( 'html' ).addClass( 'bbg_xiv-fullscreen_gallery' );
             }
             jQuery( window ).resize();
