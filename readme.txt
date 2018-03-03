@@ -29,16 +29,16 @@ http://docs.magentacuda.com/
 
 == Screenshots ==
 1. [Multiple Views of a Gallery](http://docs.magentacuda.com/#navbar)
-2. [Miro's Justified Gallery](http://miromannino.github.io/Justified-Gallery/)
-3. [Gallery View](http://docs.magentacuda.com/#gallery)
+2. [Miro's Justified Gallery](http://docs.magentacuda.com/#view-justified)
+3. [WordPress Gallery](http://docs.magentacuda.com/#view-gallery)
 4. [Alternate Flexbox Gallery View](http://docs.magentacuda.com/#gallery-flexbox)
-5. [Carousel View](http://docs.magentacuda.com/#carousel)
-6. [Tabs View](http://docs.magentacuda.com/#tabs)
-7. [Dense View](http://docs.magentacuda.com/#dense)
+5. [Carousel](http://docs.magentacuda.com/#view-carousel)
+6. [Tabbed Gallery](http://docs.magentacuda.com/#view-tabs)
+7. [Dense Gallery](http://docs.magentacuda.com/#view-dense)
 8. [Dynamically Loading Galleries](http://docs.magentacuda.com/#alt_galleries)
 9. Dynamically Generating Galleries from Search Criteria
 10. [Large View Overlay of the Selected Image](http://docs.magentacuda.com/#overlay)
-11. Info Overlay of the Selected Image
+11. [Info Overlay of the Selected Image](http://docs.magentacuda.com/#alt-overlay)
 12. Mobile Portrait View
 13. [User Options Pane](http://docs.magentacuda.com/#options)
 14. [Admin Settings](http://docs.magentacuda.com/#installation)
