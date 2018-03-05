@@ -97,37 +97,37 @@
   </div>
   <!-- Left and right controls -->
   <div class="left carousel-control">
-    <a class="bbg_xiv-carousel_info carousel-control" href="#" title="Show Image Info">
+    <a class="bbg_xiv-carousel_info carousel-control" href="#" title="<# print(bbg_xiv_lang['Show Image Info']); #>">
       <span class="glyphicon glyphicon-info-sign"></span>
       <span class="sr-only">Info</span>
     </a>
-    <a class="bbg_xiv-carousel_left left carousel-control" href="#{{{ data.id }}}" data-slide="prev" title="Previous">
+    <a class="bbg_xiv-carousel_left left carousel-control" href="#{{{ data.id }}}" data-slide="prev" title="<# print(bbg_xiv_lang['Previous']); #>">
       <span class="glyphicon glyphicon-chevron-left"></span>
       <span class="sr-only">Previous</span>
     </a>
-    <a class="bbg_xiv-carousel_first carousel-control" href="#" title="Go To First">
+    <a class="bbg_xiv-carousel_first carousel-control" href="#" title="<# print(bbg_xiv_lang['Go To First']); #>">
       <span class="glyphicon glyphicon-fast-backward"></span>
       <span class="sr-only">First</span>
     </a>
-    <a class="bbg_xiv-carousel_play carousel-control" href="#" title="Pause">
+    <a class="bbg_xiv-carousel_play carousel-control" href="#" title="<# print(bbg_xiv_lang['Pause']); #>">
       <span class="glyphicon glyphicon-pause"></span>
       <span class="sr-only">Pause</span>
     </a>
   </div>
   <div class="right carousel-control">
-    <a class="bbg_xiv-carousel_close carousel-control" href="#" title="Close">
+    <a class="bbg_xiv-carousel_close carousel-control" href="#" title="<# print(bbg_xiv_lang['Close']); #>">
       <span class="glyphicon glyphicon-remove"></span>
       <span class="sr-only">Close</span>
     </a>
-    <a class="bbg_xiv-carousel_right right carousel-control" href="#{{{ data.id }}}" data-slide="next" title="Next">
+    <a class="bbg_xiv-carousel_right right carousel-control" href="#{{{ data.id }}}" data-slide="next" title="<# print(bbg_xiv_lang['Next']); #>">
       <span class="glyphicon glyphicon-chevron-right"></span>
       <span class="sr-only">Next</span>
     </a>
-    <a class="bbg_xiv-carousel_last carousel-control" href="#" title="Go To Last">
+    <a class="bbg_xiv-carousel_last carousel-control" href="#" title="<# print(bbg_xiv_lang['Go To Last']); #>">
       <span class="glyphicon glyphicon-fast-forward"></span>
       <span class="sr-only">Last</span>
     </a>
-    <a class="bbg_xiv-carousel_help carousel-control" target="_blank" title="Get Help">
+    <a class="bbg_xiv-carousel_help carousel-control" target="_blank" title="<# print(bbg_xiv_lang['Get Help']); #>">
       <span class="glyphicon glyphicon-question-sign"></span>
       <span class="sr-only">Help</span>
     </a>
