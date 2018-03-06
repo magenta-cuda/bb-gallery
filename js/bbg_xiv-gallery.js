@@ -662,7 +662,7 @@
             function pause( button ) {
                 var $carousel = jQuery( button ).parents( 'div.carousel' );
                 $carousel.carousel( 'pause' );
-                $carousel.find( 'a.bbg_xiv-carousel_play span.glyphicon' ).removeClass( 'glyphicon-pause' ).addClass( 'glyphicon-play' ).parent().attr( 'title', 'Play' );
+                $carousel.find( 'a.bbg_xiv-carousel_play span.glyphicon' ).removeClass( 'glyphicon-pause' ).addClass( 'glyphicon-play' ).parent().attr( 'title', bbg_xiv_lang['Play'] );
             }
             // Wireup the handlers - this must be done here as the elements in the carousel view are dynamically created
             // Carousel pause handler
@@ -673,7 +673,7 @@
                 if ( $span.hasClass( 'glyphicon-pause' ) ) {
                     pause( this );
                 } else {
-                    $span.removeClass( 'glyphicon-play' ).addClass( 'glyphicon-pause' ).parent().attr( 'title', 'Pause' );
+                    $span.removeClass( 'glyphicon-play' ).addClass( 'glyphicon-pause' ).parent().attr( 'title', bbg_xiv_lang['Pause'] );
                     $carousel.carousel( 'next' );
                     $carousel.carousel( 'cycle' );
                 }
