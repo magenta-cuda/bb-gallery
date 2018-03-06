@@ -95,6 +95,12 @@ class BBG_XIV_Gallery {
         $bbg_xiv_data[ 'bbg_xiv_default_view' ]                      = get_option( 'bbg_xiv_default_view', 'Gallery' );
         $bbg_xiv_data[ 'bbg_xiv_wp_rest_api' ]                       = self::$wp_rest_api_available && self::$use_wp_rest_api_if_available;
         # translations for JavaScript side
+        $bbg_xiv_lang[ 'expand gallery to full-screen' ]             = __( 'expand gallery to full-screen',   'bb_gallery' );
+        $bbg_xiv_lang[ 'shrink gallery from full-screen' ]           = __( 'shrink gallery from full-screen', 'bb_gallery' );
+        $bbg_xiv_lang[ 'show captions' ]                             = __( 'show captions',                   'bb_gallery' );
+        $bbg_xiv_lang[ 'hide captions' ]                             = __( 'hide captions',                   'bb_gallery' );
+        $bbg_xiv_lang[ 'show titles' ]                               = __( 'show titles',                     'bb_gallery' );
+        $bbg_xiv_lang[ 'hide titles' ]                               = __( 'hide titles',                     'bb_gallery' );
         $bbg_xiv_lang[ 'Show Image Info' ]                           = __( 'Show Image Info',    'bb_gallery' );
         $bbg_xiv_lang[ 'Previous' ]                                  = __( 'Previous',           'bb_gallery' );
         $bbg_xiv_lang[ 'Go To First' ]                               = __( 'Go To First',        'bb_gallery' );

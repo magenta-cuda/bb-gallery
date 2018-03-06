@@ -140,7 +140,7 @@
         }
         var flexContainer    = container.find( 'div.bbg_xiv-flex_container');
         var galleryContainer = flexContainer.closest( 'div.bbg_xiv-gallery' ).addClass( 'bbg_xiv-caption_visible' );
-        galleryContainer.find( 'button.bbg_xiv-titles' ).attr( 'title', 'hide titles' );
+        galleryContainer.find( 'button.bbg_xiv-titles' ).attr( 'title', bbg_xiv_lang['hide titles'] );
         // flip display state of caption on hover
         container.find("div.bbg_xiv-dense_full_btn").hover(
             function() {
@@ -301,7 +301,7 @@
         }
         justifiedContainer   = container.find( 'div.bbg_xiv-justified_container' );
         var galleryContainer = justifiedContainer.closest( 'div.bbg_xiv-gallery' ).removeClass( 'bbg_xiv-caption_visible' );
-        galleryContainer.find( 'button.bbg_xiv-titles' ).attr( 'title', 'show captions' );
+        galleryContainer.find( 'button.bbg_xiv-titles' ).attr( 'title',  bbg_xiv_lang['show captions'] );
         // if CC has been set to visible then override Justified Gallery's hover handlers
         justifiedContainer.find("div.bbg_xiv-justified_gallery div.bbg_xiv-justified_item").each(function(){
           var img=this.querySelector("img");
@@ -1739,10 +1739,10 @@
         jQuery( 'button.bbg_xiv-fullscreen' ).click(function() {
             var $gallery = jQuery( this ).closest( 'div.bbg_xiv-gallery' );
             if ( $gallery.hasClass( 'bbg_xiv-fullscreen_gallery' ) ) {
-                $gallery.removeClass( 'bbg_xiv-fullscreen_gallery' ).find( 'button.bbg_xiv-fullscreen' ).attr( 'title', 'expand gallery to full-screen' );
+                $gallery.removeClass( 'bbg_xiv-fullscreen_gallery' ).find( 'button.bbg_xiv-fullscreen' ).attr( 'title', bbg_xiv_lang['expand gallery to full-screen'] );
                 jQuery( 'html' ).removeClass( 'bbg_xiv-fullscreen_gallery' );
             } else {
-                $gallery.addClass( 'bbg_xiv-fullscreen_gallery' ).find( 'button.bbg_xiv-fullscreen' ).attr( 'title', 'shrink gallery from full-screen' );
+                $gallery.addClass( 'bbg_xiv-fullscreen_gallery' ).find( 'button.bbg_xiv-fullscreen' ).attr( 'title', bbg_xiv_lang['shrink gallery from full-screen'] );
                 jQuery( 'html' ).addClass( 'bbg_xiv-fullscreen_gallery' );
             }
             jQuery( window ).resize();
@@ -1757,11 +1757,11 @@
                 if ( $galleryContainer.hasClass( 'bbg_xiv-caption_visible' ) ) {
                     $caption.hide( 1000 );
                     $galleryContainer.removeClass( 'bbg_xiv-caption_visible' );
-                    $this.attr( 'title', 'show titles' );
+                    $this.attr( 'title', bbg_xiv_lang['show titles'] );
                 } else {
                     $caption.show( 1000 );
                     $galleryContainer.addClass( 'bbg_xiv-caption_visible' );
-                    $this.attr( 'title', 'hide titles' );
+                    $this.attr( 'title', bbg_xiv_lang['hide titles'] );
                 }
                 if ( $container.hasClass( 'bbg_xiv-contain' ) ) {
                     // in tiles contain mode center image if title not displayed
@@ -1777,10 +1777,10 @@
             if ( $container.length ) {
                 if ( $galleryContainer.hasClass( 'bbg_xiv-caption_visible' ) ) {
                     $galleryContainer.removeClass( 'bbg_xiv-caption_visible' );
-                    $this.attr( 'title', 'show captions' );
+                    $this.attr( 'title', bbg_xiv_lang['show captions'] );
                 } else {
                     $galleryContainer.addClass( 'bbg_xiv-caption_visible' );
-                    $this.attr( 'title', 'hide captions' );
+                    $this.attr( 'title', bbg_xiv_lang['hide captions'] );
                 }
                 window.setTimeout( function() {
                     var $caption = $container.find( 'div.caption' );
