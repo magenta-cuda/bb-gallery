@@ -119,6 +119,9 @@ class BBG_XIV_Gallery {
         $bbg_xiv_lang[ 'galleryOfGalleriesTitle' ]                   = __(
             'Each image below represents a gallery. Please click on an image to load its gallery.',
                                                                                                  'bb_gallery' );
+        $bbg_xiv_lang[ 'Click anywhere to lock the display of this popup.' ]
+                                                                     = __(
+            'Click anywhere to lock the display of this popup.',                                 'bb_gallery' );
         $default_flags = [ ];
         switch ( get_option( 'bbg_xiv_use_tiles', 'Cover' ) ) {
         case 'Cover':
