@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BB Gallery 1.8.2.4.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/bb-gallery\n"
-"POT-Creation-Date: 2018-03-07 16:54:11+00:00\n"
+"POT-Creation-Date: 2018-03-08 04:06:27+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -347,7 +347,6 @@ msgid "This is the initial view of the gallery. The browser user can override th
 msgstr ""
 
 #: bbg_xiv-gallery.php:1038 bbg_xiv-gallery.php:1052 bbg_xiv-gallery.php:1059
-#: bbg_xiv-gallery.php:1066
 msgid " shortcode option."
 msgstr ""
 
@@ -364,70 +363,42 @@ msgid "See also the "
 msgstr ""
 
 #: bbg_xiv-gallery.php:1054
-msgid "Use Embedded Carousels"
-msgstr ""
-
-#: bbg_xiv-gallery.php:1057
-msgid "Embed carousels in their post content"
-msgstr ""
-
-#: bbg_xiv-gallery.php:1058
-msgid " (instead of using the entire viewport). See also the "
-msgstr ""
-
-#: bbg_xiv-gallery.php:1061
 msgid "Use Gallery Tabs"
 msgstr ""
 
-#: bbg_xiv-gallery.php:1064
+#: bbg_xiv-gallery.php:1057
 msgid "Show the alternate galleries as tabs."
 msgstr ""
 
-#: bbg_xiv-gallery.php:1065
+#: bbg_xiv-gallery.php:1058
 msgid " See also the "
 msgstr ""
 
-#: bbg_xiv-gallery.php:1068
-msgid "Use the WP REST API"
-msgstr ""
-
-#: bbg_xiv-gallery.php:1070
-msgid "Use the "
-msgstr ""
-
-#: bbg_xiv-gallery.php:1072
-msgid ". Beware this requires"
-msgstr ""
-
-#: bbg_xiv-gallery.php:1073
-msgid "pretty permalinks"
-msgstr ""
-
-#: bbg_xiv-gallery.php:1075
+#: bbg_xiv-gallery.php:1061
 msgid "Do not load Bootstrap"
 msgstr ""
 
-#: bbg_xiv-gallery.php:1079
+#: bbg_xiv-gallery.php:1065
 msgid "Enable if your theme or another plugin also loads bootstrap"
 msgstr ""
 
-#: bbg_xiv-gallery.php:1081
+#: bbg_xiv-gallery.php:1067
 msgid "Enable Table View"
 msgstr ""
 
-#: bbg_xiv-gallery.php:1083
+#: bbg_xiv-gallery.php:1069
 msgid "The \"Table View\" is primarily intended for developers."
 msgstr ""
 
-#: bbg_xiv-gallery.php:1103
+#: bbg_xiv-gallery.php:1087
 msgid "You can specify a list of galleries to be dynamically loaded into the same page using "
 msgstr ""
 
-#: bbg_xiv-gallery.php:1104
+#: bbg_xiv-gallery.php:1088
 msgid "BB Gallery's Menu"
 msgstr ""
 
-#: bbg_xiv-gallery.php:1107
+#: bbg_xiv-gallery.php:1091
 msgid "Gallery Menu Item"
 msgstr ""
 #. Plugin Name of the plugin/theme
@@ -435,7 +406,7 @@ msgid "BB Gallery"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "https://bbfgallery.wordpress.com/"
+msgid "http://docs.magentacuda.com/"
 msgstr ""
 
 #. Description of the plugin/theme
