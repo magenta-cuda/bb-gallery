@@ -2,7 +2,7 @@
 
 /*
 Plugin Name: BB Gallery
-Plugin URI: https://bbfgallery.wordpress.com/
+Plugin URI: http://docs.magentacuda.com/
 Description: Gallery using Backbone.js, Bootstrap 3 and CSS3 Flexbox
 Version: 1.8.2.4.5
 Author: Magenta Cuda
@@ -973,7 +973,7 @@ EOD
 
         add_action( 'admin_init', function( ) {
             add_settings_section( 'bbg_xiv_setting_section', 'BB Gallery', function( ) {
-                echo '<p id="bbg_xiv-conf_section"><a href="https://bbfgallery.wordpress.com/" target="_blank">BB Gallery</a>'
+                echo '<p id="bbg_xiv-conf_section"><a href="http://docs.magentacuda.com/" target="_blank">BB Gallery</a>'
                     . __( ' is a plug-compatible replacement for the built-in WordPress gallery shortcode.', 'bb_gallery' );
                 if ( get_option( 'bbg_xiv_version', '' ) === '' ) {
                     echo ' ' . __( 'These initial values for the following options should work reasonably well.', 'bb_gallery' )
@@ -1035,7 +1035,7 @@ EOD
                     . ( get_option( 'bbg_xiv_default_view', 'Gallery' ) === 'Tabs'     ? 'checked />' : '/>' )
                     . '<span class="bbg_xiv-radio_text">Tabs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><p>';
                 echo __( 'This is the initial view of the gallery. The browser user can override this setting. See also the ', 'bb_gallery' )
-                    . '<a href="https://bbfgallery.wordpress.com/#parameters" target="_blank">view ' . __( ' shortcode option.', 'bb_gallery' ) . '</a></p>';
+                    . '<a href="http://docs.magentacuda.com/#parameters" target="_blank">view ' . __( ' shortcode option.', 'bb_gallery' ) . '</a></p>';
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_use_tiles', __( 'Use Tiles', 'bb_gallery' ), function( ) {
                 $use_tiles = get_option( 'bbg_xiv_use_tiles', 'Cover' );
@@ -1047,30 +1047,16 @@ EOD
                     . '<span class="bbg_xiv-radio_text">Contain&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>';
                 echo '<input name="bbg_xiv_use_tiles" id="bbg_xiv_use_tiles_fill"  type="radio" value="Fill" '        . ( $use_tiles === 'Fill'     ? 'checked />' : '/>' )
                     . '<span class="bbg_xiv-radio_text">Fill&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><p>';
-                echo '<a href="https://bbfgallery.wordpress.com/#gallery" target="_blank">' . __( 'The gallery uses butt joined square image tiles.', 'bb_gallery' ) . '</a> '
+                echo '<a href="http://docs.magentacuda.com/#gallery" target="_blank">' . __( 'The gallery uses butt joined square image tiles.', 'bb_gallery' ) . '</a> '
                     . __( 'See also the ', 'bb_gallery' )
-                    . '<a href="https://bbfgallery.wordpress.com/#parameters" target="_blank">flags ' . __( ' shortcode option.', 'bb_gallery' ) . '</a></p>';
-            }, 'media',	'bbg_xiv_setting_section' );
-            add_settings_field( 'bbg_xiv_use_embedded_carousel', __( 'Use Embedded Carousels', 'bb_gallery' ), function( ) {
-                echo '<input name="bbg_xiv_use_embedded_carousel" id="bbg_xiv_use_embedded_carousel" type="checkbox" value="1" class="code" '
-                    . checked( get_option( 'bbg_xiv_use_embedded_carousel', TRUE ), 1, FALSE ) . ' /> '
-                    . '<a href="https://bbfgallery.wordpress.com/#carousel" target="_blank">' . __( 'Embed carousels in their post content', 'bb_gallery' ) . '</a>'
-                    . __( ' (instead of using the entire viewport). See also the ', 'bb_gallery' )
-                    . '<a href="https://bbfgallery.wordpress.com/#parameters" target="_blank">flags ' . __( ' shortcode option.', 'bb_gallery' ) . '</a>';
+                    . '<a href="http://docs.magentacuda.com/#parameters" target="_blank">flags ' . __( ' shortcode option.', 'bb_gallery' ) . '</a></p>';
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_use_gallery_tabs', __( 'Use Gallery Tabs', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_use_gallery_tabs" id="bbg_xiv_use_gallery_tabs" type="checkbox" value="1" class="code" '
                     . checked( get_option( 'bbg_xiv_use_gallery_tabs', TRUE ), 1, FALSE ) . ' /> '
-                    . '<a href="https://bbfgallery.wordpress.com/#alt_galleries" target="_blank">' . __( 'Show the alternate galleries as tabs.', 'bb_gallery' ) . '</a>'
+                    . '<a href="http://docs.magentacuda.com/#alt_galleries" target="_blank">' . __( 'Show the alternate galleries as tabs.', 'bb_gallery' ) . '</a>'
                     . __( ' See also the ', 'bb_gallery' )
-                    . '<a href="https://bbfgallery.wordpress.com/#parameters" target="_blank">mode ' . __( ' shortcode option.', 'bb_gallery' ) . '</a>';
-            }, 'media',	'bbg_xiv_setting_section' );
-            add_settings_field( 'bbg_xiv_wp_rest', __( 'Use the WP REST API', 'bb_gallery' ), function( ) {
-                echo '<input name="bbg_xiv_wp_rest" id="bbg_xiv_wp_rest" type="checkbox" value="1" class="code" '
-                    . checked( get_option( 'bbg_xiv_wp_rest', TRUE ), 1, FALSE ) . ' /> ' . __( 'Use the ', 'bb_gallery' )
-                    . '<a href="https://developer.wordpress.org/rest-api/" target="_blank">WordPress REST API</a>'
-                    . __( '. Beware this requires', 'bb_gallery' ) . ' <a href="' . admin_url( 'options-permalink.php' ) . '" target="_blank">' 
-                    . __( 'pretty permalinks', 'bb_gallery' ) . '</a>.';
+                    . '<a href="http://docs.magentacuda.com/#parameters" target="_blank">mode ' . __( ' shortcode option.', 'bb_gallery' ) . '</a>';
             }, 'media',	'bbg_xiv_setting_section' );
             add_settings_field( 'bbg_xiv_do_not_load_bootstrap', __( 'Do not load Bootstrap', 'bb_gallery' ), function( ) {
                 echo '<input name="bbg_xiv_do_not_load_bootstrap" id="bbg_xiv_do_not_load_bootstrap" type="checkbox" value="1" class="code" '
@@ -1101,7 +1087,7 @@ EOD
 
             add_settings_section( 'bbg_xiv_menu_section', 'BB Gallery Menu Settings', function( ) {
                 echo '<p>' . __( 'You can specify a list of galleries to be dynamically loaded into the same page using ', 'bb_gallery' )
-                    . '<a href="https://bbfgallery.wordpress.com/#alt_galleries" target="_blank">' . __( 'BB Gallery\'s Menu', 'bb_gallery' ) . '.</a></p>';
+                    . '<a href="http://docs.magentacuda.com/#alt_galleries" target="_blank">' . __( 'BB Gallery\'s Menu', 'bb_gallery' ) . '.</a></p>';
             }, 'media' );
             for ( $i = 1; $i <= self::$gallery_menu_items_count; $i++ ) {
                 add_settings_field( "bbg_xiv_gallery_menu_$i", __( 'Gallery Menu Item', 'bb_gallery' ) . " $i", function( ) use ( $i ) {
@@ -1120,7 +1106,7 @@ EOD
             } );
             add_filter( 'plugin_row_meta', function( $links, $file ) {
                 if ( $file === plugin_basename( __FILE__ ) ) {
-                    return array_merge( $links, [ 'docs' => '<a href="https://bbfgallery.wordpress.com/" target="_blank">View Documentation</a>' ] );
+                    return array_merge( $links, [ 'docs' => '<a href="http://docs.magentacuda.com/" target="_blank">View Documentation</a>' ] );
                 }
                 return (array) $links;
             }, 10, 2 );
