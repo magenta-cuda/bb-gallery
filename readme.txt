@@ -3,7 +3,7 @@ Contributors: Magenta Cuda
 Tags: gallery, shortcode, lightbox, slideshow, responsive, plug-compatible, replacement
 Requires at least: 4.4
 Tested up to: 4.9
-Stable tag: 1.8.2.4.5
+Stable tag: 1.8.2.4.5.2
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Responsive plug-compatible replacement for the built-in WordPress gallery shortcode.
 
 == Description ==
-This is a responsive, mobile-friendly, plug-compatible replacement for the built-in WordPress gallery shortcode. You can view a working sample web page using this plugin at [my portfolio website](https://magentacuda.com/demo-bbgallery/). It is implemented using a [Backbone.js](http://backbonejs.org/) Model-View-Presenter (MVP) populated via the [WordPress REST API](http://v2.wp-api.org/). It is styled by a [Twitter Bootstrap 3](http://getbootstrap.com/) stylesheet and has touch optimizations from [jQuery Mobile](https://jquerymobile.com/). Using a MVP allows you to [switch instantaneously](http://docs.magentacuda.com/#navbar) (i.e. without doing a HTTP request) between multiple views of a gallery. The default implementation supports a [gallery view](http://docs.magentacuda.com/#gallery), [Miro's Justified Gallery](http://miromannino.github.io/Justified-Gallery/) view, a [carousel view](http://docs.magentacuda.com/#carousel), a [tabs view](http://docs.magentacuda.com/#tabs) and a [dense view](http://docs.magentacuda.com/#dense) of the gallery. Using the WP REST API allows you to [dynamically load](http://docs.magentacuda.com/#alt_galleries) (i.e. without reloading the entire page) new galleries. The view is styled by a Twitter Bootstrap 3 stylesheet so it is automatically responsive. You can easily modify the Backbone templates to create your own customized views of the gallery. The homepage for this plug-in is [http://docs.magentacuda.com/](http://docs.magentacuda.com/).
+This is a responsive, mobile-friendly, plug-compatible replacement for the built-in WordPress gallery shortcode. You can view a working sample web page using this plugin at [my portfolio website](http://magentacuda.com/demo-bbgallery/). It is implemented using a [Backbone.js](http://backbonejs.org/) Model-View-Presenter (MVP) populated via the [WordPress REST API](http://v2.wp-api.org/). It is styled by a [Twitter Bootstrap 3](http://getbootstrap.com/) stylesheet and has touch optimizations from [jQuery Mobile](https://jquerymobile.com/). Using a MVP allows you to [switch instantaneously](http://docs.magentacuda.com/#navbar) (i.e. without doing a HTTP request) between multiple views of a gallery. The default implementation supports a [gallery view](http://docs.magentacuda.com/#gallery), [Miro's Justified Gallery](http://miromannino.github.io/Justified-Gallery/) view, a [carousel view](http://docs.magentacuda.com/#carousel), a [tabs view](http://docs.magentacuda.com/#tabs) and a [dense view](http://docs.magentacuda.com/#dense) of the gallery. Using the WP REST API allows you to [dynamically load](http://docs.magentacuda.com/#alt_galleries) (i.e. without reloading the entire page) new galleries. The view is styled by a Twitter Bootstrap 3 stylesheet so it is automatically responsive. You can easily modify the Backbone templates to create your own customized views of the gallery. The homepage for this plug-in is [http://docs.magentacuda.com/](http://docs.magentacuda.com/).
 
 == Installation ==
 1. Upload the folder "bb-gallery" to the "/wp-content/plugins/" directory.
@@ -44,6 +44,14 @@ http://docs.magentacuda.com/
 14. [Admin Settings](http://docs.magentacuda.com/#installation)
 
 == Changelog ==
+
+= 1.8.2.4.5.2 =
+
+* fix bad JavaScript file dependencies
+
+= 1.8.2.4.5.1 =
+
+* fix bad url
 
 = 1.8.2.4.5 =
 
@@ -217,6 +225,14 @@ http://docs.magentacuda.com/
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.8.2.4.5.2 =
+
+* fix bad JavaScript file dependencies
+
+= 1.8.2.4.5.1 =
+
+* fix bad url
 
 = 1.8.2.4.5 =
 

@@ -4,9 +4,9 @@
 Plugin Name: BB Gallery
 Plugin URI: http://docs.magentacuda.com/
 Description: Gallery using Backbone.js, Bootstrap 3 and CSS3 Flexbox
-Version: 1.8.2.4.5
+Version: 1.8.2.4.5.2
 Author: Magenta Cuda
-Author URI: https://profiles.wordpress.org/magenta-cuda/
+Author URI: http://magentacuda.com/
 License: GPL2
 */
 
@@ -959,12 +959,13 @@ EOD
             wp_enqueue_script( 'modernizr',         plugins_url( 'js/modernizr.js',               __FILE__ ) );
             wp_enqueue_script( 'justified-gallery', plugins_url( 'js/jquery.justifiedGallery.js', __FILE__ ), [ 'jquery' ] );
             wp_enqueue_script( 'jquery-mobile',     plugins_url( "js/jquery-mobile{$min}.js",     __FILE__ ), [ 'jquery' ] );
+            $deps = [ 'modernizr' ];
             if ( !get_option( 'bbg_xiv_do_not_load_bootstrap', FALSE ) ) {
                 wp_enqueue_script( 'bootstrap',     plugins_url( "js/bootstrap{$min}.js",         __FILE__ ), [ 'jquery' ], FALSE, TRUE );
-                $deps = [ 'bootstrap', 'justified-gallery' ];
-            } else {
-                $deps = [ 'justified-gallery' ];
+                $deps[ ] = 'bootstrap';
             }
+            $deps[ ] = 'jquery-mobile';
+            $deps[ ] = 'justified-gallery';
             if ( self::$wp_rest_api_available && self::$use_wp_rest_api_if_available ) {
                 $deps[ ] = 'wp-api';
             }
